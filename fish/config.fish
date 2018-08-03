@@ -1,6 +1,7 @@
 # wengwengweng
 
 # misc
+set fish_prompt_pwd_dir_length 0
 set fish_greeting ""
 
 # alias
@@ -24,6 +25,7 @@ abbr ga git add .
 abbr gc git commit -m
 abbr gp git push
 abbr gd git diff
+abbr gb git browse
 
 # go
 set -x GOPATH $HOME/.go
@@ -38,6 +40,6 @@ set -x TERM xterm-256color
 # editor
 set -x EDITOR nvim
 
-# start
-echo ""
+# sbin
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
