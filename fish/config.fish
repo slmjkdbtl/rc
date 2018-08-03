@@ -48,6 +48,11 @@ else
 	set -x EDITOR vim
 end
 
+# plugins
+set -g fish_plug_path "$HOME/.config/fish/plugins"
+plug "fisherman/z"
+plug "laughedelic/pisces"
+
 # sbin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
