@@ -1,17 +1,17 @@
 # wengwengweng
 
 # misc
-set fish_prompt_pwd_dir_length 0
-set fish_greeting ""
+set -g fish_prompt_pwd_dir_length 0
+set -g fish_greeting ""
 
 # alias
-alias git "hub"
 alias o "open"
 alias t "touch"
 alias c "set_color"
 alias size "du -sh"
 alias make "make -s"
-alias v "nvim"
+type -q nvim; and alias v "nvim"
+type -q hub; and alias git "hub"
 
 # nav
 function ..    ; cd .. ; end
@@ -28,17 +28,25 @@ abbr gd git diff
 abbr gb git browse
 
 # go
-set -x GOPATH $HOME/.go
-set -x PATH $GOPATH/bin $PATH
+if test -d $HOME/.go
+	set -x GOPATH $HOME/.go
+	set -x PATH $GOPATH/bin $PATH
+end
 
 # cargo
-set -x PATH $HOME/.cargo/bin $PATH
+if test -d $HOME/.cargo
+	set -x PATH $HOME/.cargo/bin $PATH
+end
 
 # term
 set -x TERM xterm-256color
 
 # editor
-set -x EDITOR nvim
+if type -q nvim
+	set -x EDITOR nvim
+else
+	set -x EDITOR vim
+end
 
 # sbin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
