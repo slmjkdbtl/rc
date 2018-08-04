@@ -39,7 +39,6 @@ set nowrapscan
 set showmatch
 set smartcase
 set hidden
-set hlsearch
 set noswapfile
 set autoread
 set autoindent
@@ -126,7 +125,7 @@ command! Filer
 	\ silent! VimFilerCurrentDir -buffer-name=browser -auto-cd -simple -parent
 
 " init
-func! s:init()
+func! s:hello()
 
 	if argc() == 0
 		Projekt
@@ -134,10 +133,17 @@ func! s:init()
 
 endfunc
 
-augroup init
+func! s:bye()
+
+	echo "bye~"
+
+endfunc
+
+augroup greet
 
 	autocmd!
-	autocmd VimEnter * :call s:init()
+	autocmd VimEnter * :call s:hello()
+	autocmd VimLeave * :call s:bye()
 
 augroup END
 

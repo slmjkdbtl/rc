@@ -28,6 +28,7 @@ endfor
 
 " global
 noremap : :
+noremap . .
 nnoremap r :!
 noremap <silent> <esc> <esc>:noh<cr>
 inoremap <silent> <esc> <esc>:noh<cr>
@@ -58,7 +59,7 @@ nnoremap < I
 vnoremap > <esc>`>a
 vnoremap < <esc>`<i
 nnoremap <return> a
-noremap <m-return> A<return>
+noremap <m-return> A<return>yo<bs><bs><esc>
 vnoremap <return> s
 inoremap <m-bs> <c-w>
 inoremap <tab> <tab>
@@ -83,13 +84,16 @@ nnoremap b :!make<space>
 " search
 nnoremap ? /
 vnoremap <silent> ? y/<c-r>"<cr>N
-noremap <silent> ; N
-noremap <silent> ' n
+noremap <silent> g :set hlsearch!<cr>
+noremap <silent> <m-;> NgN
+noremap <silent> <m-'> ngn
+vnoremap <silent> <m-;> <esc>NgN
+vnoremap <silent> <m-'> <esc>ngn
 
 " multiedit
-noremap . @q
+noremap <m-.> @q
 noremap \ q
-vnoremap <silent> \ y/<c-r>"<cr>N:noh<cr>qq
+vnoremap <silent> \ y/<c-r>"<cr>N:noh<cr>gvqq
 
 " selection
 noremap v v
@@ -121,13 +125,14 @@ endfor
 " vimfiler
 func! s:vimfiler_remap()
 
-	map <buffer> <return> <Plug>(vimfiler_cd_or_edit)
-	map <buffer> <space> <Plug>(vimfiler_expand_tree)
-	map <buffer> <tab> <Plug>(vimfiler_close)
-	map <buffer> <bs> <Plug>(vimfiler_switch_to_parent_directory)
-	map <buffer> 0 <Plug>(vimfiler_switch_to_project_directory)
-	map <buffer> j <Plug>(vimfiler_loop_cursor_down)
-	map <buffer> k <Plug>(vimfiler_loop_cursor_up)
+	map <silent> <buffer> <return> <Plug>(vimfiler_cd_or_edit)
+	map <silent> <buffer> <space> <Plug>(vimfiler_expand_tree)
+	map <silent> <buffer> <tab> <Plug>(vimfiler_close)
+	map <silent> <buffer> <bs> <Plug>(vimfiler_switch_to_parent_directory)
+	map <silent> <buffer> 0 <Plug>(vimfiler_switch_to_project_directory)
+	map <silent> <buffer> j <Plug>(vimfiler_loop_cursor_down)
+	map <silent> <buffer> k <Plug>(vimfiler_loop_cursor_up)
+	map <silent> <buffer> r <Plug>(vimfiler_close):Filer<cr>
 
 endfunc
 

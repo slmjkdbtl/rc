@@ -9,6 +9,7 @@ alias t "touch"
 alias c "set_color"
 alias size "du -sh"
 alias make "make -s"
+type -q exa; and alias ls "exa"
 type -q nvim; and alias v "nvim"
 type -q hub; and alias git "hub"
 
