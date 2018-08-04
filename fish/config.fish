@@ -49,9 +49,9 @@ else
 end
 
 # plugins
-set -g fish_plug_path "$HOME/.config/fish/plugins"
-plug "fisherman/z"
-plug "laughedelic/pisces"
+set -g fplug_path $HOME/.config/fish/plugins
+fplug load "fisherman/z"
+fplug load "laughedelic/pisces"
 
 # sbin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths

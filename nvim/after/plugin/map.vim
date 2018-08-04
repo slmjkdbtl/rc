@@ -64,7 +64,7 @@ vnoremap > <esc>`>a
 vnoremap < <esc>`<i
 nnoremap <return> a
 vnoremap <return> s
-inoremap <m-w> <c-w>
+inoremap <m-bs> <c-w>
 inoremap <tab> <tab>
 inoremap <return> <return>yo<backspace><backspace>
 

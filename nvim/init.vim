@@ -5,7 +5,6 @@ call plug#begin()
 Plug 'mhartington/oceanic-next'
 Plug 'nightsense/snow'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'lingceng/z.vim'
 Plug 'tbastos/vim-lua'
 Plug 'gmoe/vim-faust'
 Plug 'tikhomirov/vim-glsl'
