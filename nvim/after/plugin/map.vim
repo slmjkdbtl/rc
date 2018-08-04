@@ -29,7 +29,6 @@ endfor
 " global
 noremap : :
 nnoremap r :!
-noremap . @q
 noremap <silent> <esc> <esc>:noh<cr>
 inoremap <silent> <esc> <esc>:noh<cr>
 tnoremap <esc> <c-\><c-n>
@@ -59,14 +58,15 @@ nnoremap < I
 vnoremap > <esc>`>a
 vnoremap < <esc>`<i
 nnoremap <return> a
+noremap <m-return> A<return>
 vnoremap <return> s
 inoremap <m-bs> <c-w>
 inoremap <tab> <tab>
-inoremap <return> <return>yo<backspace><backspace>
+inoremap <return> <return>yo<bs><bs>
 
 " undo & redo
-noremap u u
-noremap o <c-r>
+noremap <silent> u u
+noremap <silent> o <c-r>
 
 " cut & copy & paste
 noremap <silent> p "*p
@@ -83,10 +83,11 @@ nnoremap b :!make<space>
 " search
 nnoremap ? /
 vnoremap <silent> ? y/<c-r>"<cr>N
-noremap <silent> n N
-noremap <silent> m n
+noremap <silent> ; N
+noremap <silent> ' n
 
 " multiedit
+noremap . @q
 noremap \ q
 vnoremap <silent> \ y/<c-r>"<cr>N:noh<cr>qq
 
@@ -145,7 +146,7 @@ nnoremap <silent> <tab> :Filer<cr>
 noremap <silent> <m-f> :CtrlP<cr>
 noremap <silent> <m-t> :CtrlPTag<cr>
 noremap <silent> <m-b> :CtrlPBuffer<cr>
-noremap <silent> <m-o> :NewITermTab<cr>
+noremap <silent> <m-`> :NewITermTab<cr>
 noremap <silent> / :Comment<cr>
 nnoremap <silent> <m-w> :Close<cr>
 nnoremap <silent> <m-[> :PrevFunc<cr>
