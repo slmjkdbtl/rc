@@ -29,10 +29,10 @@ endfor
 " global
 noremap : :
 nnoremap r :!
-noremap . .
+noremap . @q
 noremap <silent> <esc> <esc>:noh<cr>
+inoremap <silent> <esc> <esc>:noh<cr>
 tnoremap <esc> <c-\><c-n>
-inoremap <esc> <esc>
 
 " movement
 noremap k k
@@ -43,14 +43,10 @@ noremap q b
 noremap e e
 noremap <m-h> ^
 noremap <m-l> $
-noremap <m-left> b
-noremap <m-right> e
 inoremap <m-h> <left>
 inoremap <m-l> <right>
 inoremap <m-j> <down>
 inoremap <m-k> <up>
-inoremap <m-left> <c-left>
-inoremap <m-right> <c-right>
 
 " buffers
 noremap ` <c-^>
@@ -76,6 +72,7 @@ noremap o <c-r>
 noremap <silent> p "*p
 nnoremap <silent> y "*yy
 vnoremap <silent> y "*y`>
+nnoremap <silent> x "*dd
 vnoremap <silent> x "*d
 noremap <silent> d "_dd<esc>
 inoremap <silent> <m-p> <esc>"*pa
@@ -88,7 +85,10 @@ nnoremap ? /
 vnoremap <silent> ? y/<c-r>"<cr>N
 noremap <silent> n N
 noremap <silent> m n
-nnoremap <silent> c :noh<esc>cgn
+
+" multiedit
+noremap \ q
+vnoremap <silent> \ y/<c-r>"<cr>N:noh<cr>qq
 
 " selection
 noremap v v
@@ -151,4 +151,6 @@ nnoremap <silent> <m-w> :Close<cr>
 nnoremap <silent> <m-[> :PrevFunc<cr>
 nnoremap <silent> <m-]> :NextFunc<cr>
 noremap z :Projekt<space>
+
+
 

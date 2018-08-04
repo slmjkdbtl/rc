@@ -17,7 +17,7 @@ function tobin -d "move executable to bin" -a "file"
 
 			end
 
-			set bin /usr/local/bin
+			set -l bin /usr/local/bin
 			chmod +x $file
 			mv -v $file $bin
 

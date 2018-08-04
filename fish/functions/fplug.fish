@@ -10,15 +10,15 @@ function fplug -d "fish plugin manager" -a "command"
 		if test -d $fplug_path/$name
 
 			for i in $fplug_path/$name/functions/*.fish
-				source $i 2> /dev/null
+				source $i >/dev/null 2>&1
 			end
 
 			for i in $fplug_path/$name/conf.d/*.fish
-				source $i 2> /dev/null
+				source $i >/dev/null 2>&1
 			end
 
 			for i in $fplug_path/$name/*.fish
-				source $i 2> /dev/null
+				source $i >/dev/null 2>&1
 			end
 
 		end
@@ -39,15 +39,15 @@ function fplug -d "fish plugin manager" -a "command"
 				if test -d $dir
 
 					echo "  - updating $repo"
-					set -l l (pwd)
+					set -l wd (PWD)
 					cd $dir
-					git pull >/dev/null
-					cd $l
+					git pull >/dev/null 2>&1
+					cd $wd
 
 				else
 
 					echo "  - installing $repo"
-					git clone $repo $fplug_path/$name 2> /dev/null
+					git clone $repo $fplug_path/$name >/dev/null 2>&1
 
 				end
 

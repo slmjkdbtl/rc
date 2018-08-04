@@ -82,7 +82,7 @@ exec 'set list lcs=tab:\|\ '
 " oceanic
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
-colorscheme OceanicNext
+silent! colorscheme OceanicNext
 
 " vimfiler
 let g:vimfiler_as_default_explorer = 1

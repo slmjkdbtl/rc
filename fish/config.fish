@@ -38,10 +38,10 @@ if test -d $HOME/.cargo
 	set -x PATH $HOME/.cargo/bin $PATH
 end
 
-# term
+# env
+set -x BROWSER lynx
 set -x TERM xterm-256color
 
-# editor
 if type -q nvim
 	set -x EDITOR nvim
 else
