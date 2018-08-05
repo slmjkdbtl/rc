@@ -1,8 +1,5 @@
 # wengwengweng
 
-# misc
-set -g fish_greeting ""
-
 # alias
 alias o "open"
 alias t "touch"

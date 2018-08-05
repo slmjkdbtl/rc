@@ -66,6 +66,11 @@ rip
 	# rm alternative
 	https://github.com/nivekuil/rip/
 
+chunkwm
+
+	# window manager
+	https://koekeishiya.github.io/chunkwm/
+
 weechat
 
 	# chat
@@ -160,6 +165,16 @@ texpack
 
 	# texture packer
 	https://github.com/urraka/texpack/
+
+wireshark
+
+	# network tool
+	https://www.wireshark.org/
+
+tldr
+
+	# simple man pages
+	http://tldr.sh/
 
 wine
 
