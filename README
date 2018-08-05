@@ -1,34 +1,45 @@
 
-config files for
+.conf
 
 	- nvim
+
+		# editing
 		https://neovim.io/
 
 	- fish
+
+		# shell
 		https://fishshell.com/
 
 	- mpv
+
+		# video viewer
 		https://mpv.io/
 
-	- weechat
-		https://www.weechat.org/
-
 	- iterm
+
+		# workspace
 		https://iterm2.com/
 
-	- font
+	- proggy
+
+		# fonts
 		https://proggyfonts.net/
 
 	- .skhdrc
+
+		# keyboard shortcuts
 		https://github.com/koekeishiya/skhd/
 
 	- .tmux.conf
+
+		# terminal multiplexer
 		https://tmux.github.io/
 
-misc
-
 	- tools
+
 		# list of other tools i use on a daily basis
 
 	- scripts
+
 		# some applescripts

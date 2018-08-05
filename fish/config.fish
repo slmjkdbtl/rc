@@ -23,7 +23,6 @@ abbr ga git add .
 abbr gc git commit -m
 abbr gp git push
 abbr gd git diff
-abbr gb git browse
 
 # go
 if test -d $HOME/.go
