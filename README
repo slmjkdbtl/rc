@@ -1,29 +1,34 @@
 
-nvim
+config files for
 
-	- edit stuff
+	- nvim
+		https://neovim.io/
 
+	- fish
+		https://fishshell.com/
 
-fish
+	- mpv
+		https://mpv.io/
 
-	- the friendly interactive shell
+	- weechat
+		https://www.weechat.org/
 
+	- iterm
+		https://iterm2.com/
 
-skhd
+	- font
+		https://proggyfonts.net/
 
-	- keyboard shorcuts
+	- .skhdrc
+		https://github.com/koekeishiya/skhd/
 
+	- .tmux.conf
+		https://tmux.github.io/
 
-scripts
+misc
 
-	- applescript utilities
+	- tools
+		# list of other tools i use on a daily basis
 
-
-mpv
-
-	- video / audio
-
-
-tools
-
-	- external tools list
+	- scripts
+		# some applescripts

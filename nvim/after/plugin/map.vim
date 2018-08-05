@@ -39,14 +39,16 @@ noremap k k
 noremap j j
 noremap h h
 noremap l l
-noremap q b
-noremap e e
 noremap <m-h> ^
 noremap <m-l> $
+noremap <m-left> b
+noremap <m-right> e
 inoremap <m-h> <left>
 inoremap <m-l> <right>
 inoremap <m-j> <down>
 inoremap <m-k> <up>
+inoremap <m-left> <esc>ba
+inoremap <m-right> <esc>ea
 
 " buffers
 noremap ` <c-^>
@@ -85,15 +87,13 @@ nnoremap b :!make<space>
 nnoremap ? /
 vnoremap <silent> ? y/<c-r>"<cr>Ngv
 noremap <silent> g :set hlsearch!<cr>
-noremap <silent> <m-;> NgN
-noremap <silent> <m-'> ngn
-vnoremap <silent> <m-;> <esc>`<NgN
-vnoremap <silent> <m-'> <esc>`<ngn
+noremap <silent> <m-;> N
+noremap <silent> <m-'> n
 
 " multiedit
 noremap <m-.> @q
 noremap \ q
-vnoremap <silent> \ y/<c-r>"<cr>N:noh<cr>gvqq
+vnoremap <silent> \ y/<c-r>"<cr>N:noh<cr>qq
 
 " selection
 noremap v v

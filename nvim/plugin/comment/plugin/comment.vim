@@ -34,6 +34,7 @@ call comment#set([
 			\ 'make',
 			\ 'elixir',
 			\ 'conf',
+			\ 'cfg',
 			\ ], '#')
 
 call comment#set([

@@ -1,297 +1,176 @@
 
-other tools i use every day
+other tools
 
-iterm
+	- z
+		https://github.com/rupa/z/
 
-	# workplace
-	https://iterm2.com/
+	- brew
+		https://brew.sh/
 
-love2d
+	- fd
+		https://github.com/sharkdp/fd/
 
-	# game toolkit
-	http://love2d.org/
+	- exa
+		https://the.exa.website/
 
-aseprite
+	- sl
+		https://github.com/mtoyoda/sl/
 
-	# pixel art tool
-	https://www.aseprite.org/
+	- rip
+		https://github.com/nivekuil/rip/
 
-sunvox
+	- bat
+		https://github.com/sharkdp/bat/
 
-	# sound tool
-	http://warmplace.ru/soft/sunvox/
+	- watchexec
+		https://github.com/mattgreen/watchexec/
 
-amulet
+	- aira2
+		https://aria2.github.io/
 
-	# game toolkit
-	http://www.amulet.xyz/
+	- hex
+		https://github.com/sitkevij/hex/
 
-ctags
+	- fzf
+		https://github.com/junegunn/fzf
 
-	# tag generator
-	https://ctags.io/
+	- spot
+		https://github.com/rauchg/spot/
 
-z
+	- tokei
+		https://github.com/Aaronepower/tokei/
 
-	# jumper
-	https://github.com/rupa/z/
+	- espeak
+		https://espeak.sourceforge.io/
 
-tokei
+	- ctags
+		https://ctags.io/
 
-	# code counter
-	https://github.com/Aaronepower/tokei/
+	- chunkwm
+		https://koekeishiya.github.io/chunkwm/
 
-espeak
+	- weechat
+		https://weechat.org/
 
-	# speaker
-	https://espeak.sourceforge.io/
+	- wtf
+		http://cvsweb.netbsd.org/bsdweb.cgi/src/games/wtf/
 
-tmux
+	- fat
+		https://github.com/drummyfish/fat/
 
-	# terminal multiplexer
-	https://tmux.github.io/
+	- ffmpeg
+		https://ffmpeg.org/
 
-fd
+	- gifsicle
+		http://www.lcdf.org/gifsicle/
 
-	# find replacement
-	https://github.com/sharkdp/fd/
+	- tig
+		https://jonas.github.io/tig/
 
-exa
+	- hub
+		https://hub.github.com/
 
-	# ls replacement
-	https://the.exa.website/
+	- imagemagick
+		https://www.imagemagick.org/
 
-sl
+	- sox
+		http://sox.sourceforge.net/
 
-	# ls alternative
-	https://github.com/mtoyoda/sl/
+	- lynx
+		https://lynx.invisible-island.net/
 
-rip
+	- noti
+		https://github.com/variadico/noti/
 
-	# rm improved
-	https://github.com/nivekuil/rip/
+	- nms
+		https://github.com/bartobri/no-more-secrets/
 
-bat
+	- genact
+		https://github.com/svenstaro/genact/
 
-	# car replacement
-	https://github.com/sharkdp/bat/
+	- potrace
+		http://potrace.sourceforge.net/
 
-watchexec
+	- cowsay
+		https://github.com/tnalpgge/rank-amateur-cowsay/
 
-	# watch files and exec
-	https://github.com/mattgreen/watchexec/
+	- pandoc
+		https://pandoc.org/
 
-aira2
+	- rig
+		http://rig.sourceforge.net/
 
-	# download tool
-	https://aria2.github.io/
+	- slugify
+		https://github.com/benlinton/slugify/
 
-hex
+	- texpack
+		https://github.com/urraka/texpack/
 
-	# hex dump tool
-	https://github.com/sitkevij/hex/
+	- wireshark
+		https://www.wireshark.org/
 
-fzf
+	- tldr
+		http://tldr.sh/
 
-	# fuzzy finder
-	https://github.com/junegunn/fzf
+	- wine
+		https://www.winehq.org/
 
-spot
+	- twiggy
+		https://github.com/rustwasm/twiggy/
 
-	# code search tool
-	https://github.com/rauchg/spot/
+	- cmatrix
+		https://www.asty.org/cmatrix/
 
-chunkwm
+	- love2d
+		http://love2d.org/
 
-	# window manager
-	https://koekeishiya.github.io/chunkwm/
+	- aseprite
+		https://www.aseprite.org/
 
-weechat
+	- sunvox
+		http://warmplace.ru/soft/sunvox/
 
-	# chat
-	https://weechat.org/
+	- amulet
+		http://www.amulet.xyz/
 
-wtf
+	- annie
+		https://github.com/iawia002/annie/
 
-	# what the fuck
-	http://cvsweb.netbsd.org/bsdweb.cgi/src/games/wtf/
+	- grafx2
+		http://grafx2.chez.com/
 
-fat
+	- adium
+		https://adium.im/
 
-	# file enlargement
-	https://github.com/drummyfish/fat/
+	- zwopple
+		https://zwopple.com/zwoptex/
 
-ffmpeg
+	- openemu
+		http://openemu.org/
 
-	# video manipulation
-	https://ffmpeg.org/
+	- bfxr
+		https://www.bfxr.net/
 
-gifsicle
+	- boscaceoil
+		https://www.boscaceoil.net/
 
-	# gif manipulation
-	http://www.lcdf.org/gifsicle/
+	- handbrake
+		https://handbrake.fr/
 
-tig
+	- Crocotile
+		http://crocotile3d.com/
 
-	# git text interface
-	https://jonas.github.io/tig/
+	- Blender
+		https://www.blender.org/
 
-hub
+	- Trello
+		https://trello.com/
 
-	# github integration
-	https://hub.github.com/
+	- Gifox
+		https://gifox.io/
 
-imagemagick
+	- Patterns
+		https://krillapps.com/patterns/
 
-	# image manipulation
-	https://www.imagemagick.org/
-
-sox
-
-	# sound manipulation
-	http://sox.sourceforge.net/
-
-lynx
-
-	# web browser
-	https://lynx.invisible-island.net/
-
-noti
-
-	# trigger notification
-	https://github.com/variadico/noti/
-
-nms
-
-	# no more secrets
-	https://github.com/bartobri/no-more-secrets/
-
-genact
-
-	# working
-	https://github.com/svenstaro/genact/
-
-potrace
-
-	# bitmap to vector
-	http://potrace.sourceforge.net/
-
-cowsay
-
-	# cow say
-	https://github.com/tnalpgge/rank-amateur-cowsay/
-
-pandoc
-
-	# text file manipulation
-	https://pandoc.org/
-
-rig
-
-	# generate random info
-	http://rig.sourceforge.net/
-
-slugify
-
-	# format fixer
-	https://github.com/benlinton/slugify/
-
-texpack
-
-	# texture packer
-	https://github.com/urraka/texpack/
-
-wireshark
-
-	# network tool
-	https://www.wireshark.org/
-
-tldr
-
-	# simple man pages
-	http://tldr.sh/
-
-wine
-
-	# run win tools
-	https://www.winehq.org/
-
-twiggy
-
-	# code size profiler
-	https://github.com/rustwasm/twiggy/
-
-cmatrix
-
-	# console matrix
-	https://www.asty.org/cmatrix/
-
-annie
-
-	# video downloader
-	https://github.com/iawia002/annie/
-
-grafx2
-
-	# pixel art tool
-	http://grafx2.chez.com/
-
-adium
-
-	# chat app
-	https://adium.im/
-
-zwopple
-
-	# texture packer
-	https://zwopple.com/zwoptex/
-
-openemu
-
-	# console emulators
-	http://openemu.org/
-
-bfxr
-
-	# sound effect tool
-	https://www.bfxr.net/
-
-boscaceoil
-
-	# audio tool
-	https://www.boscaceoil.net/
-
-handbrake
-
-	# video conversion tool
-	https://handbrake.fr/
-
-Crocotile
-
-	# 2d 3d tilemap tool
-	http://crocotile3d.com/
-
-Blender
-
-	# 3d modling tool
-	https://www.blender.org/
-
-Trello
-
-	# todo tool
-	https://trello.com/
-
-Gifox
-
-	# gif recording tool
-	https://gifox.io/
-
-Patterns
-
-	# regexp tool
-	https://krillapps.com/patterns/
-
-Pokemon Showdown
-
-	# pokemon battle simulator tool
-	https://pokemonshowdown.com/
+	- Pokemon Showdown
+		https://pokemonshowdown.com/

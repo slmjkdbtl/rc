@@ -66,13 +66,13 @@ function fplug -d "fish plugin manager" -a "command"
 		set -g fplug_path "$HOME/.config/fish/plugins"
 	end
 
-	switch $command
+	switch "$command"
 		case load
 			load $argv[2]
 		case install
 			install $argv[2]
 		case "*"
-			echo "illegal action"
+			echo "command not found"
 	end
 
 	functions -e load
