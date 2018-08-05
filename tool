@@ -46,6 +46,11 @@ espeak
 	# speaker
 	https://espeak.sourceforge.io/
 
+tmux
+
+	# terminal multiplexer
+	https://tmux.github.io/
+
 fd
 
 	# find replacement

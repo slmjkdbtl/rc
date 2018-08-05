@@ -4,6 +4,7 @@ NVIM = ~/.config
 FISH = ~/.config
 MPV = ~/.config
 SCRIPTS = ~/.config
+TMUX = ~/
 SKHDRC = ~/
 
 .PHONY: link
@@ -20,3 +21,5 @@ link:
 	ln -sf $(realpath scripts) $(SCRIPTS)
 	echo "  - .skhdrc -> $(SKHDRC)"
 	ln -sf $(realpath .skhdrc) $(SKHDRC)
+	echo "  - .tmux.conf -> $(TMUX)"
+	ln -sf $(realpath .tmux.conf) $(TMUX)

@@ -2,26 +2,20 @@
 
 " plugins
 call plug#begin()
-Plug 'mhartington/oceanic-next'
-Plug 'nightsense/snow'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tbastos/vim-lua'
-Plug 'gmoe/vim-faust'
-Plug 'tikhomirov/vim-glsl'
-Plug 'pangloss/vim-javascript'
-Plug 'digitaltoad/vim-pug'
+Plug 'Shougo/vimfiler.vim'
+Plug 'mhinz/vim-signify'
+Plug 'mhartington/oceanic-next'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'rust-lang/rust.vim'
 Plug 'elixir-editors/vim-elixir'
+Plug 'tbastos/vim-lua'
+Plug 'tikhomirov/vim-glsl'
+Plug 'digitaltoad/vim-pug'
 Plug 'dag/vim-fish'
 Plug 'plasticboy/vim-markdown'
-Plug 'fatih/vim-go'
-Plug 'rust-lang/rust.vim'
-Plug 'ElmCast/elm-vim'
-Plug 'jdonaldson/vaxe'
-Plug 'mhinz/vim-signify'
 Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimfiler.vim'
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'skywind3000/asyncrun.vim'
 call plug#end()
 
 " config
@@ -48,6 +42,7 @@ set wildmenu
 set wildignorecase
 set ignorecase
 set cursorline
+" set shortmess=a
 set showtabline=2
 set path+=**
 set scrolloff=3

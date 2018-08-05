@@ -83,12 +83,12 @@ nnoremap b :!make<space>
 
 " search
 nnoremap ? /
-vnoremap <silent> ? y/<c-r>"<cr>N
+vnoremap <silent> ? y/<c-r>"<cr>Ngv
 noremap <silent> g :set hlsearch!<cr>
 noremap <silent> <m-;> NgN
 noremap <silent> <m-'> ngn
-vnoremap <silent> <m-;> <esc>NgN
-vnoremap <silent> <m-'> <esc>ngn
+vnoremap <silent> <m-;> <esc>`<NgN
+vnoremap <silent> <m-'> <esc>`<ngn
 
 " multiedit
 noremap <m-.> @q
@@ -103,8 +103,8 @@ vnoremap <space> <esc>
 noremap <m-a> ggVG
 
 " indent
-vnoremap <tab> >
-vnoremap <m-tab> <
+vnoremap <tab> >gv
+vnoremap <m-tab> <gv
 
 " tabs
 nnoremap <silent> <m-q> :tabp<cr>

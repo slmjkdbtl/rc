@@ -13,7 +13,7 @@ function fish_prompt
 
 	function show_git
 
-		git -C . rev-parse >/dev/null 2>&1
+		git rev-parse --abbrev-ref HEAD >/dev/null 2>&1
 
 		if test $status -eq 0
 

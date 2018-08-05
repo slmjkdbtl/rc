@@ -141,48 +141,73 @@ func! projekt#remove(key)
 
 		echo 'no projekts found'
 
-		return 0
+		return -1
 
 	endif
 
-	for l:p in l:projekts
+	if exists('a:name') && a:name != ''
 
-		if match(l:p.name, '\c' . a:key) != -1
+		for l:p in l:projekts
 
-			let l:format = s:format(l:p)
+			if match(l:p.name, '\c' . a:key) != -1
 
-			if confirm('> delete ' . l:format . '?', "&yes\n&no") == 1
+				let l:proj = l:p
 
-				let l:projekts = filter(l:projekts, 'v:val != l:p')
+				break
 
-				if s:write(l:projekts) != -1
+			endif
 
-					redraw
-					echo l:format . ' removed'
+		endfor
 
-					return 0
+	else
 
-				else
+		if exists('g:projekt_current')
 
-					echo 'error removing projekt'
+			let l:index = index(l:projekts, g:projekt_current)
 
-					return -1
-
-				endif
-
-			else
-
-				return 0
-
+			if l:index != -1
+				let l:proj = l:projekts[l:index]
 			endif
 
 		endif
 
-	endfor
+	end
 
-	echo a:key . ' not found'
+	if !exists('l:proj')
 
-	return -1
+		echo 'no projekt to star'
+
+		return -1
+
+	endif
+
+	let l:format = s:format(l:proj)
+
+	if confirm('> remove ' . l:format . '?', "&yes\n&no") == 1
+
+		let l:projekts = filter(l:projekts, 'v:val != l:proj')
+
+		if s:write(l:projekts) != -1
+
+			redraw
+			let l:format = s:format(l:proj)
+			echo l:format . ' removed'
+
+			return 0
+
+		else
+
+			echo 'error removing projekt'
+
+			return -1
+
+		endif
+
+	else
+
+		return -1
+
+	endif
 
 endfunc
 
@@ -194,52 +219,77 @@ func! projekt#star(key)
 
 		echo 'no projekts found'
 
-		return 0
+		return -1
 
 	endif
 
-	for l:p in l:projekts
+	if exists('a:name') && a:name != ''
 
-		if match(l:p.name, '\c' . a:key) != -1
+		for l:p in l:projekts
 
-			let l:format = s:format(l:p)
+			if match(l:p.name, '\c' . a:key) != -1
 
-			if confirm('> star ' . l:format . '?', "&yes\n&no") == 1
+				let l:proj = l:p
 
-				for l:pt in l:projekts
-					let l:pt.sign = '+'
-				endfor
+				break
 
-				let l:p.sign = '*'
+			endif
 
-				if s:write(l:projekts) != -1
+		endfor
 
-					redraw
-					echo l:format . ' starred'
+	else
 
-					return 0
+		if exists('g:projekt_current')
 
-				else
+			let l:index = index(l:projekts, g:projekt_current)
 
-					echo 'error starring projekt'
-
-					return -1
-
-				endif
-
-			else
-
-				return 0
-
+			if l:index != -1
+				let l:proj = l:projekts[l:index]
 			endif
 
 		endif
 
-	endfor
+	end
 
-	echo a:key ' not found'
+	if !exists('l:proj')
 
-	return -1
+		echo 'no projekt to star'
+
+		return -1
+
+	endif
+
+	let l:format = s:format(l:proj)
+
+	if confirm('> star ' . l:format . '?', "&yes\n&no") == 1
+
+		for l:p in l:projekts
+			let l:p.sign = '+'
+		endfor
+
+		let l:proj.sign = '*'
+
+		if s:write(l:projekts) != -1
+
+			redraw
+			let l:format = s:format(l:proj)
+			echo l:format . ' starred'
+
+			return 0
+
+		else
+
+			echo 'error starring projekt'
+
+			return -1
+
+		endif
+
+	else
+
+		return -1
+
+	endif
 
 endfunc
 
