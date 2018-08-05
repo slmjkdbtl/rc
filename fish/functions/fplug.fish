@@ -39,10 +39,9 @@ function fplug -d "fish plugin manager" -a "command"
 				if test -d $dir
 
 					echo "  - updating $repo"
-					set -l wd (PWD)
-					cd $dir
+					pushd $dir
 					git pull >/dev/null 2>&1
-					cd $wd
+					popd
 
 				else
 

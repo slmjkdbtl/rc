@@ -25,14 +25,17 @@ other tools
 	- watchexec
 		https://github.com/mattgreen/watchexec/
 
-	- aira2
-		https://aria2.github.io/
+	- zou
+		https://github.com/k0pernicus/zou/
+
+	- termplay
+		https://github.com/jD91mZM2/termplay/
 
 	- hex
 		https://github.com/sitkevij/hex/
 
-	- fzf
-		https://github.com/junegunn/fzf
+	- skim
+		https://github.com/lotabout/skim/
 
 	- spot
 		https://github.com/rauchg/spot/
@@ -48,6 +51,9 @@ other tools
 
 	- luajit
 		http://luajit.org/
+
+	- vimr
+		http://vimr.org/
 
 	- chunkwm
 		https://koekeishiya.github.io/chunkwm/
@@ -103,6 +109,9 @@ other tools
 	- pandoc
 		https://pandoc.org/
 
+	- hyperfine
+		https://github.com/sharkdp/hyperfine/
+
 	- rig
 		http://rig.sourceforge.net/
 
@@ -148,8 +157,35 @@ other tools
 	- grafx2
 		http://grafx2.chez.com/
 
+	- multipaint
+		http://multipaint.kameli.net/
+
+	- pd
+		https://puredata.info/
+
 	- adium
 		https://adium.im/
+
+	- keka
+		https://www.keka.io/
+
+	- sip
+		http://sipapp.io/
+
+	- simplenote
+		https://simplenote.com/
+
+	- spark
+		https://sparkmailapp.com/
+
+	- suohai
+		https://github.com/Sunnyyoung/Suohai/
+
+	- daisydisk
+		https://daisydiskapp.com/
+
+	- dash
+		https://kapeli.com/dash/
 
 	- zwopple
 		https://zwopple.com/zwoptex/
@@ -166,20 +202,30 @@ other tools
 	- handbrake
 		https://handbrake.fr/
 
-	- Crocotile
+	- crocotile
 		http://crocotile3d.com/
 
-	- Blender
+	- blender
 		https://www.blender.org/
 
-	- Trello
+	- trello
 		https://trello.com/
 
-	- Gifox
+	- bartender
+		https://www.macbartender.com/
+
+	- gifox
 		https://gifox.io/
 
-	- Patterns
+	- patterns
 		https://krillapps.com/patterns/
+
+	- tickeys
+		https://github.com/yingDev/Tickeys
 
 	- Pokemon Showdown
 		https://pokemonshowdown.com/
+
+	- loadsaver
+		https://alienmelon.itch.io/loadsaver-os-x-screensaver/
+

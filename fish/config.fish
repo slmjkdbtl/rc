@@ -36,9 +36,9 @@ if test -d $HOME/.cargo
 end
 
 # fzf
-if type -q fzf
+if type -q sk
 	if type -q fd
-		set -x FZF_DEFAULT_COMMAND "fd --type f"
+		set -x SKIM_DEFAULT_COMMAND "fd --type f"
 	end
 end
 

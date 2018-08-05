@@ -111,6 +111,12 @@ tnoremap <silent> <m-q> <c-\><c-n>:tabp<cr>
 tnoremap <silent> <m-e> <c-\><c-n>:tabn<cr>
 tnoremap <silent> <m-n> <c-\><c-n>:tabe<cr>:Projekt<cr>
 
+if has("gui_vimr")
+	for i in range(1, 9)
+		exec 'noremap <d-' . i . '> :tabn ' . i . '<cr>'
+	endfor
+endif
+
 " yo
 for i in range(1, 9)
 	exec 'noremap <f' . i . '> :echo "y' . repeat('o', i) . '"<cr>'

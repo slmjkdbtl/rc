@@ -12,3 +12,4 @@ augroup END
 
 set statusline=%!line#get_status()
 set tabline=%!line#get_tab()
+

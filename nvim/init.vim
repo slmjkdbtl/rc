@@ -6,14 +6,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/vimfiler.vim'
 Plug 'mhinz/vim-signify'
 Plug 'mhartington/oceanic-next'
-Plug 'skywind3000/asyncrun.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'tbastos/vim-lua'
 Plug 'tikhomirov/vim-glsl'
 Plug 'digitaltoad/vim-pug'
 Plug 'dag/vim-fish'
-Plug 'plasticboy/vim-markdown'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
@@ -71,9 +69,17 @@ set wildignore+=.tags,*.min.*,*.map
 filetype plugin indent on
 syntax enable
 
+if has("gui_macvim")
+
+	set guifont=ProggyCleanTT:h24
+	set macmeta
+
+end
+
+" show indent
 exec 'set list lcs=tab:\|\ '
 
-" oceanic
+" color
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 0
 silent! colorscheme OceanicNext
