@@ -80,7 +80,7 @@ exec 'set list lcs=tab:\|\ '
 
 " oceanic
 let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
+let g:oceanic_next_terminal_italic = 0
 silent! colorscheme OceanicNext
 
 " vimfiler

@@ -36,10 +36,10 @@ z
 	# jumper
 	https://github.com/rupa/z/
 
-loc
+tokei
 
 	# code counter
-	https://github.com/cgag/loc/
+	https://github.com/Aaronepower/tokei/
 
 espeak
 
@@ -48,12 +48,12 @@ espeak
 
 fd
 
-	# find alternative
+	# find replacement
 	https://github.com/sharkdp/fd/
 
 exa
 
-	# ls alternative
+	# ls replacement
 	https://the.exa.website/
 
 sl
@@ -63,8 +63,38 @@ sl
 
 rip
 
-	# rm alternative
+	# rm improved
 	https://github.com/nivekuil/rip/
+
+bat
+
+	# car replacement
+	https://github.com/sharkdp/bat/
+
+watchexec
+
+	# watch files and exec
+	https://github.com/mattgreen/watchexec/
+
+aira2
+
+	# download tool
+	https://aria2.github.io/
+
+hex
+
+	# hex dump tool
+	https://github.com/sitkevij/hex/
+
+fzf
+
+	# fuzzy finder
+	https://github.com/junegunn/fzf
+
+spot
+
+	# code search tool
+	https://github.com/rauchg/spot/
 
 chunkwm
 

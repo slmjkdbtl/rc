@@ -9,6 +9,7 @@ alias make "make -s"
 type -q exa; and alias ls "exa"
 type -q nvim; and alias v "nvim"
 type -q hub; and alias git "hub"
+type -q bat; and alias cat "bat --theme=TwoDark --style=plain"
 
 # nav
 function ..    ; cd .. ; end
@@ -33,6 +34,13 @@ end
 # cargo
 if test -d $HOME/.cargo
 	set -x PATH $HOME/.cargo/bin $PATH
+end
+
+# fzf
+if type -q fzf
+	if type -q fd
+		set -x FZF_DEFAULT_COMMAND "fd --type f"
+	end
 end
 
 # env

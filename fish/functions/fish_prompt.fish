@@ -7,6 +7,7 @@ function fish_prompt
 		set_color -o green
 		set -g fish_prompt_pwd_dir_length 0
 		echo -n (prompt_pwd)
+		set_color normal
 
 	end
 

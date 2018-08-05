@@ -4,19 +4,19 @@ NVIM = ~/.config
 FISH = ~/.config
 MPV = ~/.config
 SCRIPTS = ~/.config
-SKHDRC = ~
+SKHDRC = ~/
 
 .PHONY: link
 link:
 
 	echo "+ linking"
-	echo "  - nvim -> $(NVIM)/nvim"
+	echo "  - nvim -> $(NVIM)"
 	ln -sf $(realpath nvim) $(NVIM)
-	echo "  - fish -> $(FISH)/fish"
+	echo "  - fish -> $(FISH)"
 	ln -sf $(realpath fish) $(FISH)
-	echo "  - mpv -> $(MPV)/mpv"
+	echo "  - mpv -> $(MPV)"
 	ln -sf $(realpath mpv) $(MPV)
-	echo "  - scripts -> $(SCRIPTS)/scripts"
+	echo "  - scripts -> $(SCRIPTS)"
 	ln -sf $(realpath scripts) $(SCRIPTS)
-	echo "  - .skhdrc -> $(SKHDRC)/.skhdrc"
+	echo "  - .skhdrc -> $(SKHDRC)"
 	ln -sf $(realpath .skhdrc) $(SKHDRC)
