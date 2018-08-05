@@ -42,7 +42,7 @@ set wildmenu
 set wildignorecase
 set ignorecase
 set cursorline
-" set shortmess=a
+set hlsearch
 set showtabline=2
 set path+=**
 set scrolloff=3

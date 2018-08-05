@@ -46,6 +46,9 @@ other tools
 	- ctags
 		https://ctags.io/
 
+	- luajit
+		http://luajit.org/
+
 	- chunkwm
 		https://koekeishiya.github.io/chunkwm/
 
@@ -75,6 +78,9 @@ other tools
 
 	- sox
 		http://sox.sourceforge.net/
+
+	- miniserve
+		https://github.com/svenstaro/miniserve/
 
 	- lynx
 		https://lynx.invisible-island.net/
@@ -111,6 +117,9 @@ other tools
 
 	- tldr
 		http://tldr.sh/
+
+	- rustup
+		https://rustup.rs/
 
 	- wine
 		https://www.winehq.org/

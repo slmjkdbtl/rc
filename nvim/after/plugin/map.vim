@@ -85,15 +85,9 @@ nnoremap b :!make<space>
 
 " search
 nnoremap ? /
-vnoremap <silent> ? y/<c-r>"<cr>Ngv
-noremap <silent> g :set hlsearch!<cr>
+vnoremap <silent> ? y/<c-r>"<cr>N
 noremap <silent> <m-;> N
 noremap <silent> <m-'> n
-
-" multiedit
-noremap <m-.> @q
-noremap \ q
-vnoremap <silent> \ y/<c-r>"<cr>N:noh<cr>qq
 
 " selection
 noremap v v
@@ -145,6 +139,7 @@ augroup END
 
 " plugins
 call pair#bind()
+call multiedit#bind()
 noremap <silent> <m-k> :Scroll -12<cr>
 noremap <silent> <m-j> :Scroll 12<cr>
 nnoremap <silent> <tab> :Filer<cr>
