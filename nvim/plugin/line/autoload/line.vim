@@ -56,6 +56,11 @@ func! s:get_status_mode(bufn)
 		let l:text .= '%#StatusModeVisual#'
 		let l:text .= ' V-BLOCK '
 
+	elseif l:mode ==# 'c'
+
+		let l:text .= '%#StatusModeCommand#'
+		let l:text .= ' COMMAND '
+
 	else
 
 		let l:text .= l:mode

@@ -82,7 +82,6 @@ inoremap <silent> <m-p> <esc>"*pa
 
 " search
 nnoremap ? /
-vnoremap <silent> ? y/<c-r>"<cr>N
 noremap <silent> <m-;> N
 noremap <silent> <m-'> n
 
@@ -142,10 +141,10 @@ augroup END
 
 " plugins
 call pair#bind()
-call multiedit#bind()
+call search#bind()
 noremap <silent> <m-k> :Scroll -12<cr>
 noremap <silent> <m-j> :Scroll 12<cr>
-nnoremap <silent> <tab> :VimFilerCurrentDir<cr>
+nnoremap <silent> <tab> :Filer<cr>
 noremap <silent> <m-f> :CtrlP<cr>
 noremap <silent> <m-t> :CtrlPTag<cr>
 noremap <silent> <m-b> :CtrlPBuffer<cr>
@@ -155,6 +154,6 @@ noremap <silent> / :Comment<cr>
 nnoremap <silent> <m-w> :Close<cr>
 nnoremap <silent> <m-[> :PrevFunc<cr>
 nnoremap <silent> <m-]> :NextFunc<cr>
-noremap v :Make<space>
+noremap b :Make<space>
 noremap z :Projekt<space>
 

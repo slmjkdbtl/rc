@@ -88,14 +88,14 @@ silent! colorscheme OceanicNext
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimfiler_no_default_key_mappings = 1
-let g:vimfiler_ignore_pattern = ['^\.git$', '^\.DS_Store$', '.cache']
+let g:vimfiler_enable_auto_cd = 1
+" let g:vimfiler_ignore_filters = 'matcher_ignore_wildignore'
+"
+command Filer
+			\ VimFilerCurrentDir -parent -simple
 
-call vimfiler#custom#profile('default', 'context', {
-			\ 'auto_cd':  1,
-			\ 'simple': 1,
-			\ 'parent': 1,
-			\ 'edit_action': 'tabopen',
-			\ })
+command FilerProject
+			\ VimFilerCurrentDir -parent -edit-action=tabopen
 
 " signify
 let g:signify_vcs_list = [ 'git' ]
@@ -119,33 +119,19 @@ let g:ctrlp_reuse_window = 'vimfiler'
 let g:is_human_bean = 0
 
 " projekt
-let g:projekt_switch_action = 'VimFilerCurrentDir'
+let g:projekt_switch_action = 'FilerProject'
 
 " unload default plugins
 let g:loaded_netrwPlugin = 1
 let g:loaded_2html_plugin = 1
 let g:loaded_spellfile_plugin = 1
 
-" init
-func! s:hello()
-
-	if argc() == 0
-		Projekt
-	end
-
-endfunc
-
-func! s:bye()
-
-	echo "bye~"
-
-endfunc
-
+" hello
 augroup hello
 
 	autocmd!
-	autocmd VimEnter * :call s:hello()
-	autocmd VimLeave * :call s:bye()
+	autocmd VimEnter * if !argc() | Projekt
+	autocmd VimLeave * :echo 'bye~'
 	autocmd BufEnter * :exec 'lcd ' . expand('%:p:h')
 
 augroup END

@@ -341,6 +341,8 @@ endfunc
 
 func! projekt#jump(pattern)
 
+	echom a:pattern
+
 	let l:projekts = s:get()
 
 	if empty(l:projekts)
@@ -351,17 +353,21 @@ func! projekt#jump(pattern)
 
 	endif
 
-	if exists('a:pattern') && a:pattern != ''
-
-		let l:proj = s:search(l:projekts, a:pattern)
-
-	else
+	if a:pattern == '' || !exists('a:pattern')
 
 		let l:proj = s:search_starred(l:projekts)
 
 		if empty(l:proj)
 			let l:proj = l:projekts[0]
 		endif
+
+	elseif a:pattern == '*'
+
+		let l:proj = s:search_starred(l:projekts)
+
+	else
+
+		let l:proj = s:search(l:projekts, a:pattern)
 
 	endif
 
