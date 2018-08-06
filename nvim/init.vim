@@ -140,11 +140,12 @@ func! s:bye()
 
 endfunc
 
-augroup greet
+augroup hello
 
 	autocmd!
 	autocmd VimEnter * :call s:hello()
 	autocmd VimLeave * :call s:bye()
+	autocmd BufEnter * :exec 'lcd ' . expand('%:p:h')
 
 augroup END
 

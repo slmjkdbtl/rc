@@ -1,5 +1,7 @@
 " wengwengweng
 
+let s:dir = resolve(expand('<sfile>:p:h'))
+
 func! utils#rename(name)
 
 	let l:file = expand('%')
@@ -69,16 +71,9 @@ func! utils#mkdir(name)
 
 endfunc
 
-func! utils#cdtcb()
+func! utils#cdc()
 
 	exec 'lcd ' . expand('%:p:h')
-	pwd
-
-endfunc
-
-func! utils#open()
-
-	call system('open .')
 
 endfunc
 
@@ -122,6 +117,30 @@ func! utils#syncheck()
 	endif
 
 	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+
+endfunc
+
+func! utils#openfinder()
+
+	call system('open .')
+
+endfunc
+
+func! s:call_applescript(name, arg)
+
+	let l:fname = s:dir . '/' . a:name . '.applescript'
+
+	if (filereadable(l:fname))
+		return system('osascript ' . l:fname . ' ' . a:arg)
+	endif
+
+	return -1
+
+endfunc
+
+func! utils#openterm()
+
+	return s:call_applescript('ot', getcwd())
 
 endfunc
 

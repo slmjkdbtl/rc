@@ -149,7 +149,8 @@ nnoremap <silent> <tab> :Filer<cr>
 noremap <silent> <m-f> :CtrlP<cr>
 noremap <silent> <m-t> :CtrlPTag<cr>
 noremap <silent> <m-b> :CtrlPBuffer<cr>
-noremap <silent> <m-`> :NewITermTab<cr>
+noremap <silent> <m--> :OpenTerm<cr>
+noremap <silent> <m-=> :OpenFinder<cr>
 noremap <silent> / :Comment<cr>
 nnoremap <silent> <m-w> :Close<cr>
 nnoremap <silent> <m-[> :PrevFunc<cr>
