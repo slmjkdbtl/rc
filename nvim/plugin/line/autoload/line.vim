@@ -13,6 +13,10 @@ func! s:get_tab_title(bufn)
 		let l:text = fnamemodify(l:name, ':t')
 	endif
 
+	if l:text == ''
+		let l:text = '*'
+	endif
+
 	return l:text
 
 endfunc

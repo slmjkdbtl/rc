@@ -90,8 +90,12 @@ let g:vimfiler_force_overwrite_statusline = 0
 let g:vimfiler_no_default_key_mappings = 1
 let g:vimfiler_ignore_pattern = ['^\.git$', '^\.DS_Store$', '.cache']
 
-" markdown
-let g:vim_markdown_folding_disabled = 1
+call vimfiler#custom#profile('default', 'context', {
+			\ 'auto_cd':  1,
+			\ 'simple': 1,
+			\ 'parent': 1,
+			\ 'edit_action': 'tabopen',
+			\ })
 
 " signify
 let g:signify_vcs_list = [ 'git' ]
@@ -109,21 +113,18 @@ if executable('fd')
 endif
 
 let g:ctrlp_root_markers = [ '.git', 'main.lua' ]
+let g:ctrlp_reuse_window = 'vimfiler'
 
 " tommywiseau
 let g:is_human_bean = 0
 
 " projekt
-let g:projekt_switch_action = 'Filer'
+let g:projekt_switch_action = 'VimFilerCurrentDir'
 
 " unload default plugins
 let g:loaded_netrwPlugin = 1
 let g:loaded_2html_plugin = 1
 let g:loaded_spellfile_plugin = 1
-
-" alias
-command! Filer
-	\ silent! VimFilerCurrentDir -buffer-name=browser -auto-cd -simple -parent
 
 " init
 func! s:hello()

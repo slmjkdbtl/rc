@@ -129,7 +129,7 @@ func! s:vimfiler_remap()
 	map <silent> <buffer> 0 <Plug>(vimfiler_switch_to_project_directory)
 	map <silent> <buffer> j <Plug>(vimfiler_loop_cursor_down)
 	map <silent> <buffer> k <Plug>(vimfiler_loop_cursor_up)
-	map <silent> <buffer> r <Plug>(vimfiler_close):Filer<cr>
+	map <silent> <buffer> r <Plug>(vimfiler_close):VimFilerCurrentDir<cr>
 
 endfunc
 
@@ -145,7 +145,7 @@ call pair#bind()
 call multiedit#bind()
 noremap <silent> <m-k> :Scroll -12<cr>
 noremap <silent> <m-j> :Scroll 12<cr>
-nnoremap <silent> <tab> :Filer<cr>
+nnoremap <silent> <tab> :VimFilerCurrentDir<cr>
 noremap <silent> <m-f> :CtrlP<cr>
 noremap <silent> <m-t> :CtrlPTag<cr>
 noremap <silent> <m-b> :CtrlPBuffer<cr>
@@ -157,6 +157,4 @@ nnoremap <silent> <m-[> :PrevFunc<cr>
 nnoremap <silent> <m-]> :NextFunc<cr>
 noremap v :Make<space>
 noremap z :Projekt<space>
-
-
 
