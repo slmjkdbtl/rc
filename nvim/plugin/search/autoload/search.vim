@@ -2,8 +2,9 @@
 
 func! search#slugify(text)
 
-	let l:text = substitute(a:text, '\~', '\\~', '')
-	let l:text = substitute(a:text, '\[', '\\[', '')
+	let l:text = a:text
+	let l:text = substitute(l:text, '\~', '\\~', '')
+	let l:text = substitute(l:text, '\[', '\\[', '')
 
 	return l:text
 
@@ -27,7 +28,7 @@ func! search#multiedit_end()
 	let g:search_multiedit_mode = 3
 endfunc
 
-func! search#multiedit_end()
+func! search#multiedit_close()
 
 	normal! q
 
@@ -38,14 +39,24 @@ func! search#multiedit_end()
 
 	elseif g:search_multiedit_mode == 2
 
-		let @q = "n>" . @q
+		let @q = "n<" . @q
 		let g:search_multiedit_mode = 0
 
 	elseif g:search_multiedit_mode == 3
 
-		let @q = "n<" . @q
+		let @q = "n>" . @q
 		let g:search_multiedit_mode = 0
 
+	endif
+
+endfunc
+
+func! search#record()
+
+	if g:search_multiedit_mode
+		call search#multiedit_close()
+	else
+		normal! qq
 	endif
 
 endfunc
@@ -53,12 +64,12 @@ endfunc
 func! search#bind()
 
 	noremap n gn
-	vnoremap <silent> \ y/<c-r>"<cr>N:noh<cr>qq
+	vnoremap <silent> \ ""y:call search#slugifycopy()<cr>/<c-r>"<cr>N:noh<cr>qq
 	vnoremap <silent> ? ""y:call search#slugifycopy()<cr>/<c-r>"<cr>N
 	vnoremap <silent> <m-return> ""y:call search#slugifycopy()<cr>/<c-r>"<cr>N:noh<cr>:call search#multiedit_replace()<cr>qqgns
-	vnoremap <silent> <m->> ""y:call search#slugifycopy()<cr>/<c-r>"<cr>N:noh<cr>:call search#multiedit_begin()<cr>qq`>a
-	vnoremap <silent> <m-<> ""y:call search#slugifycopy()<cr>/<c-r>"<cr>N:noh<cr>:call search#multiedit_end()<cr>qq`<i
+	vnoremap <silent> <m-<> ""y:call search#slugifycopy()<cr>/<c-r>"<cr>N:noh<cr>:call search#multiedit_begin()<cr>qq`<i
+	vnoremap <silent> <m->> ""y:call search#slugifycopy()<cr>/<c-r>"<cr>N:noh<cr>:call search#multiedit_end()<cr>qq`>a
 	noremap <silent> <m-.> @q
-	noremap <silent> \ :call search#multiedit_end()<cr>
+	nnoremap <silent> \ :call search#record()<cr>
 
 endfunc

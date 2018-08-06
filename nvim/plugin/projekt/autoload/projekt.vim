@@ -60,7 +60,7 @@ func! s:search(projekts, key)
 		endif
 	endfor
 
-	return {}
+	return -1
 
 endfunc
 
@@ -72,7 +72,7 @@ func! s:search_starred(projekts)
 		endif
 	endfor
 
-	return {}
+	return -1
 
 endfunc
 
@@ -145,19 +145,17 @@ func! projekt#remove(key)
 
 	endif
 
-	if exists('a:name') && a:name != ''
+	if exists('a:key') && a:key != ''
 
-		for l:p in l:projekts
+		let l:proj = s:search(l:projekts, a:key)
 
-			if match(l:p.name, '\c' . a:key) != -1
+		if type(l:proj) == 1 && l:proj == -1
 
-				let l:proj = l:p
+			echo 'no projekt to remove'
 
-				break
+			return -1
 
-			endif
-
-		endfor
+		endif
 
 	else
 
@@ -171,15 +169,15 @@ func! projekt#remove(key)
 
 		endif
 
+		if !exists('l:proj')
+
+			echo 'no projekt to remove'
+
+			return -1
+
+		end
+
 	end
-
-	if !exists('l:proj')
-
-		echo 'no projekt to star'
-
-		return -1
-
-	endif
 
 	let l:format = s:format(l:proj)
 
@@ -223,19 +221,17 @@ func! projekt#star(key)
 
 	endif
 
-	if exists('a:name') && a:name != ''
+	if exists('a:key') && a:key != ''
 
-		for l:p in l:projekts
+		let l:proj = s:search(l:projekts, a:key)
 
-			if match(l:p.name, '\c' . a:key) != -1
+		if type(l:proj) == 0 && l:proj == -1
 
-				let l:proj = l:p
+			echo 'no projekt to star'
 
-				break
+			return -1
 
-			endif
-
-		endfor
+		endif
 
 	else
 
@@ -249,15 +245,15 @@ func! projekt#star(key)
 
 		endif
 
+		if !exists('l:proj')
+
+			echo 'no projekt to star'
+
+			return -1
+
+		end
+
 	end
-
-	if !exists('l:proj')
-
-		echo 'no projekt to star'
-
-		return -1
-
-	endif
 
 	let l:format = s:format(l:proj)
 

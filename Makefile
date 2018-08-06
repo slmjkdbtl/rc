@@ -1,11 +1,11 @@
 # wengwengweng
 
-NVIM = ~/.config
-FISH = ~/.config
-MPV = ~/.config
-SCRIPTS = ~/.config
-TMUX = ~/
-SKHDRC = ~/
+NVIM = $(HOME)/.config
+FISH = $(HOME)/.config
+MPV = $(HOME)/.config
+SCRIPTS = $(HOME)/.config
+TMUX = $(HOME)/
+SKHDRC = $(HOME)/
 
 .PHONY: link
 link:

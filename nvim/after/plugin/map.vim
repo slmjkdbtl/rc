@@ -128,7 +128,7 @@ func! s:vimfiler_remap()
 	map <silent> <buffer> 0 <Plug>(vimfiler_switch_to_project_directory)
 	map <silent> <buffer> j <Plug>(vimfiler_loop_cursor_down)
 	map <silent> <buffer> k <Plug>(vimfiler_loop_cursor_up)
-	map <silent> <buffer> r <Plug>(vimfiler_close):VimFilerCurrentDir<cr>
+	map <silent> <buffer> r <Plug>(vimfiler_close):FilerProject<cr>
 
 endfunc
 

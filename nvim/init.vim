@@ -90,12 +90,19 @@ let g:vimfiler_force_overwrite_statusline = 0
 let g:vimfiler_no_default_key_mappings = 1
 let g:vimfiler_enable_auto_cd = 1
 " let g:vimfiler_ignore_filters = 'matcher_ignore_wildignore'
-"
+
+let g:vimfiler_ignore_pattern = [
+			\ '^\.git$',
+			\ '^\.DS_Store$',
+			\ '.cache',
+			\ '^node_modules$',
+			\ ]
+
 command Filer
 			\ VimFilerCurrentDir -parent -simple
 
 command FilerProject
-			\ VimFilerCurrentDir -parent -edit-action=tabopen
+			\ VimFilerCurrentDir -parent -simple -edit-action=tabopen
 
 " signify
 let g:signify_vcs_list = [ 'git' ]
@@ -114,6 +121,43 @@ endif
 
 let g:ctrlp_root_markers = [ '.git', 'main.lua' ]
 let g:ctrlp_reuse_window = 'vimfiler'
+
+let g:ctrlp_prompt_mappings = {
+	\ 'PrtBS()':              ['<bs>'],
+	\ 'PrtDelete()':          [],
+	\ 'PrtDeleteWord()':      ['<m-bs>'],
+	\ 'PrtClear()':           [],
+	\ 'PrtSelectMove("j")':   ['<down>'],
+	\ 'PrtSelectMove("k")':   ['<up>'],
+	\ 'PrtSelectMove("t")':   [],
+	\ 'PrtSelectMove("b")':   [],
+	\ 'PrtSelectMove("u")':   [],
+	\ 'PrtSelectMove("d")':   [],
+	\ 'PrtHistory(-1)':       [],
+	\ 'PrtHistory(1)':        [],
+	\ 'AcceptSelection("e")': ['<cr>'],
+	\ 'AcceptSelection("h")': [],
+	\ 'AcceptSelection("t")': [],
+	\ 'AcceptSelection("v")': [],
+	\ 'ToggleFocus()':        [],
+	\ 'ToggleRegex()':        [],
+	\ 'ToggleByFname()':      [],
+	\ 'ToggleType(1)':        [],
+	\ 'ToggleType(-1)':       [],
+	\ 'PrtExpandDir()':       [],
+	\ 'PrtInsert("c")':       [],
+	\ 'PrtInsert()':          [],
+	\ 'PrtCurStart()':        [],
+	\ 'PrtCurEnd()':          [],
+	\ 'PrtCurLeft()':         [],
+	\ 'PrtCurRight()':        [],
+	\ 'PrtClearCache()':      [],
+	\ 'PrtDeleteEnt()':       [],
+	\ 'CreateNewFile()':      [],
+	\ 'MarkToOpen()':         [],
+	\ 'OpenMulti()':          [],
+	\ 'PrtExit()':            ['<esc>'],
+	\ }
 
 " tommywiseau
 let g:is_human_bean = 0

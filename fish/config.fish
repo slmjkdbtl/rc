@@ -24,24 +24,6 @@ abbr gc git commit -m
 abbr gp git push
 abbr gd git diff
 
-# go
-if test -d $HOME/.go
-	set -x GOPATH $HOME/.go
-	set -x PATH $GOPATH/bin $PATH
-end
-
-# cargo
-if test -d $HOME/.cargo
-	set -x PATH $HOME/.cargo/bin $PATH
-end
-
-# fzf
-if type -q sk
-	if type -q fd
-		set -x SKIM_DEFAULT_COMMAND "fd --type f"
-	end
-end
-
 # env
 set -x BROWSER lynx
 set -x TERM xterm-256color
@@ -57,12 +39,38 @@ set -g fplug_path $HOME/.config/fish/plugins
 fplug load "fisherman/z"
 fplug load "laughedelic/pisces"
 
+# sk
+if type -q sk
+	if type -q fd
+		set -x SKIM_DEFAULT_COMMAND "fd --type f"
+	end
+end
+
+# go
+if test -d $HOME/.go
+
+	set -x GOPATH $HOME/.go
+	set -x PATH $GOPATH/bin $PATH
+
+end
+
+# cargo
+if test -d $HOME/.cargo
+	set -x PATH $HOME/.cargo/bin $PATH
+end
+
 # sbin
-set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+if test -d /usr/local/sbin
+	set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+end
 
 # openssl
-set -g fish_user_paths "/usr/local/opt/openssl/bin" $fish_user_path
-set -gx LDFLAGS "-L/usr/local/opt/openssl/lib"
-set -gx CPPFLAGS "-I/usr/local/opt/openssl/include"
-set -gx PKG_CONFIG_PATH "/usr/local/opt/openssl/lib/pkgconfig"
+if test -d /usr/local/opt/openssl
+
+	set -g fish_user_paths "/usr/local/opt/openssl/bin" $fish_user_path
+	set -gx LDFLAGS "-L/usr/local/opt/openssl/lib"
+	set -gx CPPFLAGS "-I/usr/local/opt/openssl/include"
+	set -gx PKG_CONFIG_PATH "/usr/local/opt/openssl/lib/pkgconfig"
+
+end
 
