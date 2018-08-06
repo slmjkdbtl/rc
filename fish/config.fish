@@ -60,3 +60,9 @@ fplug load "laughedelic/pisces"
 # sbin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
+# openssl
+set -g fish_user_paths "/usr/local/opt/openssl/bin" $fish_user_path
+set -gx LDFLAGS "-L/usr/local/opt/openssl/lib"
+set -gx CPPFLAGS "-I/usr/local/opt/openssl/include"
+set -gx PKG_CONFIG_PATH "/usr/local/opt/openssl/lib/pkgconfig"
+

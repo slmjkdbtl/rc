@@ -28,9 +28,6 @@ other tools
 	- zou
 		https://github.com/k0pernicus/zou/
 
-	- termplay
-		https://github.com/jD91mZM2/termplay/
-
 	- hex
 		https://github.com/sitkevij/hex/
 

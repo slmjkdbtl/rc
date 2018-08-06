@@ -80,9 +80,6 @@ vnoremap <silent> x "*d
 noremap <silent> d "_dd<esc>
 inoremap <silent> <m-p> <esc>"*pa
 
-" make
-nnoremap b :!make<space>
-
 " search
 nnoremap ? /
 vnoremap <silent> ? y/<c-r>"<cr>N
@@ -157,6 +154,7 @@ noremap <silent> / :Comment<cr>
 nnoremap <silent> <m-w> :Close<cr>
 nnoremap <silent> <m-[> :PrevFunc<cr>
 nnoremap <silent> <m-]> :NextFunc<cr>
+noremap v :Make<space>
 noremap z :Projekt<space>
 
 

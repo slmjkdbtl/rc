@@ -69,7 +69,7 @@ func! utils#mkdir(name)
 
 endfunc
 
-func! utils#cd()
+func! utils#cdtcb()
 
 	exec 'lcd ' . expand('%:p:h')
 	pwd
@@ -79,6 +79,39 @@ endfunc
 func! utils#open()
 
 	call system('open .')
+
+endfunc
+
+func! utils#recfind(wd, file)
+
+	if !filereadable(a:wd . '/' . a:file)
+
+		let l:pd = fnamemodify(a:wd, ':h')
+
+		if l:pd != '.'
+			return utils#recfind(l:pd, a:file)
+		endif
+
+	else
+
+		return a:wd
+
+	endif
+
+endfunc
+
+func! utils#make(target)
+
+	let l:cwd = getcwd()
+	let l:mdir = utils#recfind(l:cwd, 'Makefile')
+
+	if isdirectory(l:mdir)
+
+		exec 'lcd ' . l:mdir
+		exec '!make ' . a:target
+		exec 'lcd ' . l:cwd
+
+	endif
 
 endfunc
 
