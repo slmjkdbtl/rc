@@ -36,7 +36,7 @@
 		# terminal multiplexer
 		https://tmux.github.io/
 
-	- terminfos
+	- super.terminfo
 
 		# custom term specs
 

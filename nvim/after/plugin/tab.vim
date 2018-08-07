@@ -1,6 +1,6 @@
 " wengwengweng
 
-augroup ftconfig
+augroup tab
 
 	autocmd!
 	autocmd FileType * setlocal noexpandtab

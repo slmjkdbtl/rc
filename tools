@@ -1,5 +1,5 @@
 
-other tools
+system tools
 
 	- z
 		https://github.com/rupa/z/
@@ -139,6 +139,12 @@ other tools
 	- cmatrix
 		https://www.asty.org/cmatrix/
 
+	- annie
+		https://github.com/iawia002/annie/
+
+
+apps
+
 	- love2d
 		http://love2d.org/
 
@@ -150,9 +156,6 @@ other tools
 
 	- amulet
 		http://www.amulet.xyz/
-
-	- annie
-		https://github.com/iawia002/annie/
 
 	- grafx2
 		http://grafx2.chez.com/
@@ -166,6 +169,9 @@ other tools
 	- adium
 		https://adium.im/
 
+	- pico8
+		https://www.lexaloffle.com/pico-8.php/
+
 	- keka
 		https://www.keka.io/
 
@@ -174,9 +180,6 @@ other tools
 
 	- simplenote
 		https://simplenote.com/
-
-	- spark
-		https://sparkmailapp.com/
 
 	- suohai
 		https://github.com/Sunnyyoung/Suohai/
@@ -214,6 +217,12 @@ other tools
 	- trello
 		https://trello.com/
 
+	- chrome
+		https://www.google.com/chrome/
+
+	- spark
+		https://sparkmailapp.com/
+
 	- bartender
 		https://www.macbartender.com/
 
@@ -235,9 +244,26 @@ other tools
 	- Affinity Designer
 		https://affinity.serif.com/designer/
 
+	- Pixelmator
+		http://www.pixelmator.com/
+
 	- Ableton Live
 		https://www.ableton.com/live/
+
+
+screensaver
 
 	- loadsaver
 		https://alienmelon.itch.io/loadsaver-os-x-screensaver/
 
+
+alfred
+
+	- dash
+		https://github.com/Kapeli/Dash-Alfred-Workflow/
+
+	- colors
+		http://www.packal.org/workflow/colors/
+
+	- emoji
+		http://www.packal.org/workflow/emoji/
