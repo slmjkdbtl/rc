@@ -63,6 +63,22 @@ endif
 
 let g:ctrlp_root_markers = [ '.git', 'main.lua' ]
 let g:ctrlp_reuse_window = 'vimfiler'
+let g:ctrlp_open_func = { 'files': 'CtrlpOpenFile' }
+
+func! CtrlpOpenFile(action, line)
+
+	let l:name = fnameescape(fnamemodify(a:line, ':p'))
+
+	if isdirectory(l:name)
+		exec 'lcd ' . l:name
+		FilerProject
+	elseif filereadable(l:name)
+		exec 'edit ' . l:name
+	endif
+
+	call ctrlp#exit()
+
+endfunc
 
 let g:ctrlp_prompt_mappings = {
 	\ 'PrtBS()':              ['<bs>'],
