@@ -16,9 +16,6 @@ system tools
 	- sl
 		https://github.com/mtoyoda/sl/
 
-	- rip
-		https://github.com/nivekuil/rip/
-
 	- bat
 		https://github.com/sharkdp/bat/
 
@@ -40,8 +37,8 @@ system tools
 	- tokei
 		https://github.com/Aaronepower/tokei/
 
-	- espeak
-		https://espeak.sourceforge.io/
+	- just
+		https://github.com/casey/just/
 
 	- ctags
 		https://ctags.io/
@@ -49,14 +46,23 @@ system tools
 	- luajit
 		http://luajit.org/
 
-	- macvim
-		https://github.com/macvim-dev/macvim/
+	- clac
+		https://github.com/soveran/clac/
 
-	- vimr
-		http://vimr.org/
+	- rip
+		https://github.com/nivekuil/rip/
+
+	- figlet
+		http://www.figlet.org/
+
+	- toilet
+		http://caca.zoy.org/wiki/toilet/
 
 	- chunkwm
 		https://koekeishiya.github.io/chunkwm/
+
+	- chuck
+		http://chuck.cs.princeton.edu/
 
 	- weechat
 		https://weechat.org/
@@ -73,6 +79,9 @@ system tools
 	- gifsicle
 		http://www.lcdf.org/gifsicle/
 
+	- catimg
+		https://github.com/posva/catimg/
+
 	- tig
 		https://jonas.github.io/tig/
 
@@ -82,17 +91,29 @@ system tools
 	- imagemagick
 		https://www.imagemagick.org/
 
+	- jpegoptim
+		https://github.com/tjko/jpegoptim/
+
 	- sox
 		http://sox.sourceforge.net/
 
+	- espeak
+		https://espeak.sourceforge.io/
+
 	- miniserve
 		https://github.com/svenstaro/miniserve/
+
+	- emojify
+		https://github.com/mrowa44/emojify/
 
 	- lynx
 		https://lynx.invisible-island.net/
 
 	- noti
 		https://github.com/variadico/noti/
+
+	- gource
+		https://github.com/acaudwell/Gource/
 
 	- nms
 		https://github.com/bartobri/no-more-secrets/
@@ -109,17 +130,32 @@ system tools
 	- pandoc
 		https://pandoc.org/
 
+	- zopfli
+		https://github.com/google/zopfli/
+
 	- hyperfine
 		https://github.com/sharkdp/hyperfine/
 
+	- appicon
+		https://github.com/Nonchalant/AppIcon/
+
+	- kakoune
+		https://github.com/mawww/kakoune/
+
 	- rig
 		http://rig.sourceforge.net/
+
+	- tree
+		http://mama.indstate.edu/users/ice/tree/
 
 	- slugify
 		https://github.com/benlinton/slugify/
 
 	- texpack
 		https://github.com/urraka/texpack/
+
+	- rgbds
+		https://github.com/rednex/rgbds/
 
 	- wireshark
 		https://www.wireshark.org/
@@ -133,14 +169,23 @@ system tools
 	- wine
 		https://www.winehq.org/
 
+	- mame
+		http://mamedev.org/
+
 	- twiggy
 		https://github.com/rustwasm/twiggy/
+
+	- duck
+		https://duck.sh/
 
 	- cmatrix
 		https://www.asty.org/cmatrix/
 
 	- annie
 		https://github.com/iawia002/annie/
+
+	- i2p
+		https://geti2p.net/
 
 
 apps
@@ -175,6 +220,9 @@ apps
 	- keka
 		https://www.keka.io/
 
+	- macvim
+		https://github.com/macvim-dev/macvim/
+
 	- sip
 		http://sipapp.io/
 
@@ -199,11 +247,20 @@ apps
 	- bfxr
 		https://www.bfxr.net/
 
+	- giflossy
+		https://kornel.ski/lossygif/
+
+	- supercollider
+		https://supercollider.github.io/
+
 	- boscaceoil
 		https://www.boscaceoil.net/
 
 	- xACT
 		http://xact.scottcbrown.org/
+
+	- impromptu
+		http://impromptu.moso.com.au/
 
 	- handbrake
 		https://handbrake.fr/
@@ -226,6 +283,12 @@ apps
 	- bartender
 		https://www.macbartender.com/
 
+	- fontforge
+		https://fontforge.github.io/
+
+	- imageoptim
+		https://imageoptim.com/
+
 	- gifox
 		https://gifox.io/
 
@@ -237,6 +300,9 @@ apps
 
 	- rack
 		https://vcvrack.com/
+
+	- cyberduck
+		https://cyberduck.io/
 
 	- Pokemon Showdown
 		https://pokemonshowdown.com/
@@ -267,3 +333,24 @@ alfred
 
 	- emoji
 		http://www.packal.org/workflow/emoji/
+
+
+games
+
+	- dwarf-fortress
+		http://bay12games.com/dwarves/
+
+	- dungeon
+		https://github.com/GOFAI/dungeon/
+
+	- nethack
+		https://www.nethack.org/
+
+	- rogue
+		https://sourceforge.net/projects/roguelike/
+
+	- ski
+		http://catb.org/~esr/ski/
+
+	- wumpus
+		http://www.catb.org/~esr/wumpus/

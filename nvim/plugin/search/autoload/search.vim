@@ -1,19 +1,23 @@
 " wengwengweng
 
-func! search#slugify(text)
+func! search#escape(text)
 
 	let l:text = a:text
-	let l:text = substitute(l:text, '\~', '\\~', '')
-	let l:text = substitute(l:text, '\[', '\\[', '')
-	let l:text = substitute(l:text, '\.', '\\.', '')
+	let l:text = substitute(l:text, '\~', '\\~', 'g')
+	let l:text = substitute(l:text, '\[', '\\[', 'g')
+	let l:text = substitute(l:text, '\.', '\\.', 'g')
+	let l:text = substitute(l:text, '\$', '\\$', 'g')
+	let l:text = substitute(l:text, '\/', '\\/', 'g')
+	let l:text = substitute(l:text, '\*', '\\*', 'g')
+	let l:text = substitute(l:text, '\ ', '\\s', 'g')
 
 	return l:text
 
 endfunc
 
-func! search#slugifycopy()
+func! search#escapecopy()
 
-	let @" = search#slugify(@")
+	let @" = search#escape(@")
 
 endfunc
 
@@ -65,11 +69,11 @@ endfunc
 func! search#bind()
 
 	noremap n gn
-	vnoremap <silent> \ ""y:call search#slugifycopy()<cr>/<c-r>"<cr>N:noh<cr>qq
-	vnoremap <silent> ? ""y:call search#slugifycopy()<cr>/<c-r>"<cr>N
-	vnoremap <silent> <m-return> ""y:call search#slugifycopy()<cr>/<c-r>"<cr>N:noh<cr>:call search#multiedit_replace()<cr>qqgns
-	vnoremap <silent> <m-<> ""y:call search#slugifycopy()<cr>/<c-r>"<cr>N:noh<cr>:call search#multiedit_begin()<cr>qq`<i
-	vnoremap <silent> <m->> ""y:call search#slugifycopy()<cr>/<c-r>"<cr>N:noh<cr>:call search#multiedit_end()<cr>qq`>a
+	vnoremap <silent> \ ""y:call search#escapecopy()<cr>/<c-r>"<cr>N:noh<cr>qq
+	vnoremap <silent> ? ""y:call search#escapecopy()<cr>/<c-r>"<cr>N
+	vnoremap <silent> <m-return> ""y:call search#escapecopy()<cr>/<c-r>"<cr>N:noh<cr>:call search#multiedit_replace()<cr>qqgns
+	vnoremap <silent> <m-<> ""y:call search#escapecopy()<cr>/<c-r>"<cr>N:noh<cr>:call search#multiedit_begin()<cr>qq`<i
+	vnoremap <silent> <m->> ""y:call search#escapecopy()<cr>/<c-r>"<cr>N:noh<cr>:call search#multiedit_end()<cr>qq`>a
 	noremap <silent> <m-.> @q
 	nnoremap <silent> \ :call search#record()<cr>
 

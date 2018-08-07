@@ -6,10 +6,9 @@ alias t "touch"
 alias c "set_color"
 alias size "du -sh"
 alias make "make -s"
-type -q exa; and alias ls "exa"
 type -q nvim; and alias v "nvim"
 type -q hub; and alias git "hub"
-type -q bat; and alias cat "bat --theme=TwoDark --style=plain"
+type -q bat; and alias bat "bat --theme=TwoDark --style=plain"
 
 # nav
 function ..    ; cd .. ; end

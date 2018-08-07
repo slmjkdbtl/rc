@@ -11,6 +11,7 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'digitaltoad/vim-pug'
 Plug 'tikhomirov/vim-glsl'
 Plug 'dag/vim-fish'
+Plug 'wilsaj/chuck.vim'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
