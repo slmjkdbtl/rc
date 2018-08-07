@@ -1,6 +1,6 @@
 " wengwengweng
 
-let s:dir = resolve(expand('<sfile>:p:h'))
+let s:dir = resolve(expand('<sfile>:p:h:h'))
 
 func! utils#rename(name)
 
@@ -41,7 +41,11 @@ func! utils#close()
 		if bufname('%') == ''
 			q
 		else
-			bd
+			try
+				bd
+			catch
+				q
+			endtry
 		endif
 	end
 
@@ -128,7 +132,7 @@ endfunc
 
 func! s:call_applescript(name, arg)
 
-	let l:fname = s:dir . '/' . a:name . '.applescript'
+	let l:fname = s:dir . '/scripts/' . a:name . '.applescript'
 
 	if (filereadable(l:fname))
 		return system('osascript ' . l:fname . ' ' . a:arg)
@@ -140,7 +144,7 @@ endfunc
 
 func! utils#openterm()
 
-	return s:call_applescript('ot', getcwd())
+	return s:call_applescript('openiniterm', getcwd())
 
 endfunc
 

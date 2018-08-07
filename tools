@@ -31,8 +31,8 @@ other tools
 	- hex
 		https://github.com/sitkevij/hex/
 
-	- skim
-		https://github.com/lotabout/skim/
+	- fzf
+		https://github.com/junegunn/fzf
 
 	- spot
 		https://github.com/rauchg/spot/

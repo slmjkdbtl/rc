@@ -39,10 +39,10 @@ set -g fplug_path $HOME/.config/fish/plugins
 fplug load "fisherman/z"
 fplug load "laughedelic/pisces"
 
-# sk
-if type -q sk
+# fzf
+if type -q fzf
 	if type -q fd
-		set -x SKIM_DEFAULT_COMMAND "fd --type f"
+		set -x FZF_DEFAULT_COMMAND "fd --type f"
 	end
 end
 

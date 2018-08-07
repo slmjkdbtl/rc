@@ -61,6 +61,10 @@ func! s:get_status_mode(bufn)
 		let l:text .= '%#StatusModeCommand#'
 		let l:text .= ' COMMAND '
 
+	elseif l:mode ==# 't'
+
+		let l:text .= '%#StatusModeTerminal#'
+		let l:text .= ' TERMINAL '
 	else
 
 		let l:text .= l:mode
@@ -80,15 +84,23 @@ func! s:get_status_path(bufn)
 	let l:text = ''
 	let l:text .= '%#StatusLine#'
 
-	if l:ft ==# 'vimfiler'
-		let l:text = fnamemodify(l:name, ':p:h')
-	elseif l:ft ==# 'ctrlp'
-		let l:text = 'searching...'
-	else
-		let l:text = fnamemodify(l:name, ':p')
-	endif
+	if mode() == 't'
 
-	let l:text = substitute(l:text, '/Users/\w*', '~', '')
+		let l:text = ''
+
+	else
+
+		if l:ft ==# 'vimfiler'
+			let l:text = fnamemodify(l:name, ':p:h')
+		elseif l:ft ==# 'ctrlp'
+			let l:text = 'searching...'
+		else
+			let l:text = fnamemodify(l:name, ':p')
+		endif
+
+		let l:text = substitute(l:text, '/Users/\w*', '~', '')
+
+	end
 
 	return l:text
 

@@ -7,6 +7,7 @@ Plug 'mhinz/vim-signify'
 Plug 'mhartington/oceanic-next'
 Plug 'tbastos/vim-lua'
 Plug 'cespare/vim-toml'
+Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'digitaltoad/vim-pug'
 Plug 'tikhomirov/vim-glsl'
 Plug 'dag/vim-fish'
@@ -19,8 +20,10 @@ let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 0
 
 if !has("gui_macvim")
+
 	set background=dark
 	silent! colorscheme OceanicNext
+
 endif
 
 " vimfiler
@@ -37,11 +40,11 @@ let g:vimfiler_ignore_pattern = [
 			\ '^node_modules$',
 			\ ]
 
-silent! command! Filer
-			\ VimFilerCurrentDir -parent -simple
+command! Filer
+			\ silent! VimFilerCurrentDir -parent -simple
 
-silent! command! FilerProject
-			\ VimFilerCurrentDir -parent -simple -edit-action=tabopen
+command! FilerProject
+			\ silent! VimFilerCurrentDir -parent -simple -edit-action=tabopen
 
 " signify
 let g:signify_vcs_list = [ 'git' ]

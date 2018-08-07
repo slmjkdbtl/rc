@@ -13,19 +13,9 @@ function fish_prompt
 
 	function show_git
 
-		git rev-parse --abbrev-ref HEAD >/dev/null 2>&1
-
-		if test $status -eq 0
-
-			set_color -d normal
-			echo -n " "
-			echo -n (git rev-parse --abbrev-ref HEAD)
-
-			if test -n (echo (git diff))
-				echo -n "*"
-			end
-
-		end
+		set_color $fish_color_git
+		echo -n (__fish_git_prompt | string trim | string replace '(' '' | string replace ')' '')
+		set_color normal
 
 	end
 
@@ -39,7 +29,8 @@ function fish_prompt
 	echo ""
 	echo -n " "
 	show_cwd
-# 	show_git
+	echo -n " "
+	show_git
 	echo ""
 	echo -n " "
 	show_prompt
