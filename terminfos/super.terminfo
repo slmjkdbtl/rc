@@ -1,0 +1,5 @@
+# wengwengweng
+
+super|super terminfo,
+  dim=\E[2m, sitm=\E[3m, ritm=\E[23m,
+  use=xterm-256color,

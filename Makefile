@@ -23,6 +23,8 @@ link:
 	ln -sf $(realpath .skhdrc) $(SKHDRC)
 	echo "  - .tmux.conf -> $(TMUX)"
 	ln -sf $(realpath .tmux.conf) $(TMUX)
+	echo "  - ticcing terminfos"
+	tic $(realpath terminfos/super.terminfo)
 
 .PHONY: vimrc
 vimrc:

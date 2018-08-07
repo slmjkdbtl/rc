@@ -36,6 +36,10 @@
 		# terminal multiplexer
 		https://tmux.github.io/
 
+	- terminfos
+
+		# custom term specs
+
 	- tools
 
 		# list of other tools i use on a daily basis

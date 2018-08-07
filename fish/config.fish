@@ -26,7 +26,7 @@ abbr gd git diff
 
 # env
 set -x BROWSER lynx
-set -x TERM xterm-256color
+set -x TERM super
 
 if type -q nvim
 	set -x EDITOR nvim
