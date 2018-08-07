@@ -1,10 +1,10 @@
 " wengwengweng
 
 func! jump#set(ft, pattern)
-	let g:funcleads[a:ft] = get(g:funcleads, a:ft, a:pattern)
+	let g:jump_marks[a:ft] = get(g:jump_marks, a:ft, a:pattern)
 endfunc
 
-func! jump#func(action)
+func! s:jump(action)
 
 	if a:action < 0
 		let flag = "b"
@@ -12,13 +12,21 @@ func! jump#func(action)
 		let flag = ""
 	endif
 
-	if !exists('b:funclead')
+	if !exists('b:jump_mark')
 		return -1
 	endif
 
-	if search(b:funclead, flag)
+	if search(b:jump_mark, flag)
 		normal! zt
 	endif
 
+endfunc
+
+func! jump#prev()
+	return s:jump(-1)
+endfunc
+
+func! jump#next()
+	return s:jump(1)
 endfunc
 

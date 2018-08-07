@@ -149,7 +149,7 @@ func! projekt#remove(key)
 
 		let l:proj = s:search(l:projekts, a:key)
 
-		if type(l:proj) == 1 && l:proj == -1
+		if type(l:proj) == 0 && l:proj == -1
 
 			echo 'no projekt to remove'
 
@@ -317,6 +317,8 @@ func! projekt#switch(proj)
 
 		silent! exec 'lcd ' . expand(a:proj.path)
 		silent! exec g:projekt_switch_action
+		redraw
+		echo s:format(a:proj)
 		let g:projekt_current = a:proj
 
 	elseif (filereadable(a:proj.path))
@@ -353,7 +355,7 @@ func! projekt#jump(pattern)
 
 		let l:proj = s:search_starred(l:projekts)
 
-		if empty(l:proj)
+		if type(l:proj) == 0 && l:proj == -1
 			let l:proj = l:projekts[0]
 		endif
 
@@ -367,13 +369,14 @@ func! projekt#jump(pattern)
 
 	endif
 
-	if !empty(l:proj)
+	if type(l:proj) == 4
 
 		return projekt#switch(l:proj)
 
 	else
 
-		echo "projekt not found"
+		redraw
+		echo 'projekt not found'
 
 		return -1
 

@@ -1,6 +1,6 @@
 " wengwengweng
 
-let g:funcleads = get(g:, 'funcleads', {})
+let g:jump_marks = get(g:, 'jump_marks', {})
 
 call jump#set('lua', 'function\s.\+(.*)')
 call jump#set('javascript', '\w\+(\w*)\s{')
@@ -12,16 +12,16 @@ call jump#set('scss', '\S*\s{')
 call jump#set('pug', '\w*(.*)')
 call jump#set('rust', 'fn\s.*(.*)')
 
-augroup funcleads
+augroup jumpmarks
 
 	autocmd!
 
-	for [ key, val ] in items(g:funcleads)
-		exec "autocmd FileType " . key . " let b:funclead = '" . val . "'"
+	for [ key, val ] in items(g:jump_marks)
+		exec "autocmd FileType " . key . " let b:jump_mark = '" . val . "'"
 	endfor
 
 augroup END
 
-command! PrevFunc :call jump#func(-1)
-command! NextFunc :call jump#func(1)
+command! PrevMark :call jump#prev()
+command! NextMark :call jump#next()
 

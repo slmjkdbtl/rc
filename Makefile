@@ -23,3 +23,12 @@ link:
 	ln -sf $(realpath .skhdrc) $(SKHDRC)
 	echo "  - .tmux.conf -> $(TMUX)"
 	ln -sf $(realpath .tmux.conf) $(TMUX)
+
+.PHONY: vimrc
+vimrc:
+
+	echo "+ copying to ~/.vim"
+	rm -rf $(HOME)/.vim
+	cp -r $(realpath nvim) $(HOME)/.vim
+	mv $(HOME)/.vim/init.vim $(HOME)/.vim/vimrc
+	mv $(HOME)/.vim/misc $(HOME)/.vim/autoload

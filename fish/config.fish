@@ -59,11 +59,6 @@ if test -d $HOME/.cargo
 	set -x PATH $HOME/.cargo/bin $PATH
 end
 
-# sbin
-if test -d /usr/local/sbin
-	set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
-end
-
 # openssl
 if test -d /usr/local/opt/openssl
 
@@ -74,3 +69,5 @@ if test -d /usr/local/opt/openssl
 
 end
 
+# sbin
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths

@@ -5,6 +5,7 @@ func! search#slugify(text)
 	let l:text = a:text
 	let l:text = substitute(l:text, '\~', '\\~', '')
 	let l:text = substitute(l:text, '\[', '\\[', '')
+	let l:text = substitute(l:text, '\.', '\\.', '')
 
 	return l:text
 

@@ -31,7 +31,7 @@ noremap : :
 noremap . .
 nnoremap r :!
 noremap <silent> <esc> <esc>:noh<cr>
-inoremap <silent> <esc> <esc>:noh<cr>
+inoremap <silent> <esc> <esc>
 tnoremap <esc> <c-\><c-n>
 
 " movement
@@ -82,8 +82,8 @@ inoremap <silent> <m-p> <esc>"*pa
 
 " search
 nnoremap ? /
-noremap <silent> <m-;> N
-noremap <silent> <m-'> n
+noremap <silent> <m-;> :exec 'silent! normal! N'<cr>
+noremap <silent> <m-'> :exec 'silent! normal! n'<cr>
 
 " selection
 noremap v v
@@ -93,8 +93,8 @@ vnoremap <space> <esc>
 noremap <m-a> ggVG
 
 " indent
-vnoremap <tab> >gv
-vnoremap <m-tab> <gv
+vnoremap <tab> >
+vnoremap <m-tab> <
 
 " tabs
 nnoremap <silent> <m-q> :tabp<cr>
@@ -128,7 +128,6 @@ func! s:vimfiler_remap()
 	map <silent> <buffer> 0 <Plug>(vimfiler_switch_to_project_directory)
 	map <silent> <buffer> j <Plug>(vimfiler_loop_cursor_down)
 	map <silent> <buffer> k <Plug>(vimfiler_loop_cursor_up)
-	map <silent> <buffer> r <Plug>(vimfiler_close):FilerProject<cr>
 
 endfunc
 
@@ -152,8 +151,8 @@ noremap <silent> <m--> :OpenTerm<cr>
 noremap <silent> <m-=> :OpenFinder<cr>
 noremap <silent> / :Comment<cr>
 nnoremap <silent> <m-w> :Close<cr>
-nnoremap <silent> <m-[> :PrevFunc<cr>
-nnoremap <silent> <m-]> :NextFunc<cr>
+nnoremap <silent> <m-[> :PrevMark<cr>
+nnoremap <silent> <m-]> :NextMark<cr>
 noremap b :Make<space>
 noremap z :Projekt<space>
 

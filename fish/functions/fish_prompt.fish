@@ -39,7 +39,7 @@ function fish_prompt
 	echo ""
 	echo -n " "
 	show_cwd
-	show_git
+# 	show_git
 	echo ""
 	echo -n " "
 	show_prompt
