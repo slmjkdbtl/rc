@@ -10,6 +10,7 @@ set title
 set showcmd
 set visualbell
 set nowrap
+set nowrapscan
 set showmatch
 set smartcase
 set hidden
@@ -51,16 +52,4 @@ set wildignore+=.tags,*.min.*,*.map
 exec 'set list lcs=tab:\|\ '
 filetype plugin indent on
 syntax enable
-
-if has("gui_macvim")
-
-	set showmode
-	set laststatus=0
-	set signcolumn=no
-	set guifont=hack:h14
-	set nolist
-	set macmeta
-
-end
-
 

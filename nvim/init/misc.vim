@@ -2,6 +2,8 @@
 
 func! s:hello()
 
+	Profile oceanic
+
 	if !argc()
 		Projekt
 	end
