@@ -2,7 +2,11 @@
 
 func! s:hello()
 
-	Profile oceanic
+	if has('gui_macvim')
+		Profile macvim
+	else
+		Profile oceanic
+	endif
 
 	if !argc()
 		Projekt

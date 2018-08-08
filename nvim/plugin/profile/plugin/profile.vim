@@ -1,3 +1,3 @@
 " wengwengweng
 
-command! -nargs=1 Profile :call profile#switch(<q-args>)
+command! -nargs=1 Profile :silent! call profile#switch(<q-args>)

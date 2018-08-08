@@ -4,13 +4,13 @@ func! s:macvim()
 
 	set showmode
 	set laststatus=0
-	set signcolumn=no
 	set guifont=hack:h14
 	set nolist
 	set macmeta
 	set background=light
 	colorscheme macvim
 	hi! LineNr guibg=MacTextBackgroundColor
+	hi! SignColumn guibg=MacTextBackgroundColor guifg=MacTextBackgroundColor
 
 endfunc
 

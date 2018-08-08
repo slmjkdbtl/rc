@@ -1,29 +1,29 @@
 # wengwengweng
 
 ifeq ($(XDG_CONFIG_HOME),)
-	CONFIG=$(HOME)/.config
+	CONFIG := $(HOME)/.config
 else
-	CONFIG=$(XDG_CONFIG_HOME)
+	CONFIG := $(XDG_CONFIG_HOME)
 endif
+
+TOCONFIG = nvim fish mpv scripts
+TOHOME = .skhdrc .tmux.conf .tigrc
 
 .PHONY: conf
 conf:
 
 	echo "+ linking"
-	echo "  - nvim -> $(CONFIG)"
-	ln -sf $(realpath nvim) $(CONFIG)
-	echo "  - fish -> $(CONFIG)"
-	ln -sf $(realpath fish) $(CONFIG)
-	echo "  - mpv -> $(CONFIG)"
-	ln -sf $(realpath mpv) $(CONFIG)
-	echo "  - scripts -> $(CONFIG)"
-	ln -sf $(realpath scripts) $(CONFIG)
-	echo "  - .skhdrc -> $(HOME)"
-	ln -sf $(realpath .skhdrc) $(HOME)
-	echo "  - .tmux.conf -> $(HOME)"
-	ln -sf $(realpath .tmux.conf) $(HOME)
-	echo "  - .tigrc-> $(HOME)"
-	ln -sf $(realpath .tigrc) $(HOME)
+
+	$(foreach f, $(TOCONFIG), \
+		echo "  - $(f) -> $(CONFIG)/$(f)"; \
+		ln -sf $(realpath $(f)) $(CONFIG); \
+	)
+
+	$(foreach f, $(TOHOME), \
+		echo "  - $(f) -> $(HOME)/$(f)"; \
+		ln -sf $(realpath $(f)) $(HOME); \
+	)
+
 	echo "+ ticcing terminfos"
 	tic $(realpath super.terminfo)
 	echo "+ copying nvim to ~/.vim"
