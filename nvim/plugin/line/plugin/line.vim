@@ -4,7 +4,7 @@ augroup title
 
 	autocmd!
 	autocmd
-		\ VimEnter,DirChanged,BufEnter
+		\ VimEnter, DirChanged, BufEnter
 		\ *
 		\ let &titlestring = line#get_title()
 

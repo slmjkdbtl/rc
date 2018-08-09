@@ -50,7 +50,7 @@ inoremap <m-k> <up>
 inoremap <m-left> <esc>ba
 inoremap <m-right> <esc>ea
 
-" if has('gui_macvim')
+if has('gui_macvim')
 
 	nnoremap <ScrollWheelUp> 2k
 	nnoremap <S-ScrollWheelUp> 2k
@@ -65,7 +65,14 @@ inoremap <m-right> <esc>ea
 	inoremap <S-ScrollWheelDown> <c-x><c-e>
 	inoremap <C-ScrollWheelDown> <c-x><c-e>
 
-" endif
+else
+
+	noremap <up> k
+	noremap <down> j
+	inoremap <up> <c-x><c-y>
+	inoremap <down> <c-x><c-e>
+
+endif
 
 " buffers
 noremap ` <c-^>

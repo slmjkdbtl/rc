@@ -6,11 +6,11 @@ func! s:macvim()
 	set laststatus=0
 	set guifont=hack:h14
 	set nolist
+	set signcolumn=no
 	set macmeta
 	set background=light
 	colorscheme macvim
 	hi! LineNr guibg=MacTextBackgroundColor
-	hi! SignColumn guibg=MacTextBackgroundColor guifg=MacTextBackgroundColor
 
 endfunc
 
