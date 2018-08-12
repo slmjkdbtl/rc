@@ -67,6 +67,9 @@ system tools
 	- irssi
 		https://irssi.org/
 
+	- ripgrep
+		https://github.com/BurntSushi/ripgrep/
+
 	- wtf
 		http://cvsweb.netbsd.org/bsdweb.cgi/src/games/wtf/
 

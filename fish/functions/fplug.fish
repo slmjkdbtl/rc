@@ -46,7 +46,7 @@ function fplug -d "fish plugin manager" -a "command"
 				else
 
 					echo "  - installing $repo"
-					git clone $repo $fplug_path/$name >/dev/null 2>&1
+					git clone "https://github.com/$repo" $fplug_path/$name >/dev/null 2>&1
 
 				end
 

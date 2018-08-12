@@ -25,14 +25,7 @@ let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimfiler_no_default_key_mappings = 1
 let g:vimfiler_enable_auto_cd = 1
-" let g:vimfiler_ignore_filters = 'matcher_ignore_wildignore'
-
-let g:vimfiler_ignore_pattern = [
-			\ '^\.git$',
-			\ '^\.DS_Store$',
-			\ '.cache',
-			\ '^node_modules$',
-			\ ]
+let g:vimfiler_ignore_filters = ['matcher_ignore_wildignore']
 
 command! Filer
 			\ silent! VimFilerCurrentDir -parent -simple

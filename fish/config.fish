@@ -58,6 +58,9 @@ if test -d $HOME/.cargo
 	set -x PATH $HOME/.cargo/bin $PATH
 end
 
+# brew
+set -x HOMEBREW_NO_AUTO_UPDATE 1
+
 # openssl
 if test -d /usr/local/opt/openssl
 

@@ -39,16 +39,14 @@ noremap k k
 noremap j j
 noremap h h
 noremap l l
-noremap <m-h> ^
-noremap <m-l> $
-noremap <m-left> b
-noremap <m-right> e
+noremap <m-h> b
+noremap <m-l> e
 inoremap <m-h> <left>
 inoremap <m-l> <right>
 inoremap <m-j> <down>
 inoremap <m-k> <up>
-inoremap <m-left> <esc>ba
-inoremap <m-right> <esc>ea
+noremap <m-up> <c-y>
+noremap <m-down> <c-e>
 
 if has('gui_macvim')
 
@@ -58,6 +56,12 @@ if has('gui_macvim')
 	nnoremap <ScrollWheelDown> 2j
 	nnoremap <S-ScrollWheelDown> 2j
 	nnoremap <C-ScrollWheelDown> 2j
+	nnoremap <ScrollWheelLeft> 2h
+	nnoremap <S-ScrollWheelLeft> 2h
+	nnoremap <C-ScrollWheelLeft> 2h
+	nnoremap <ScrollWheelRight> 2l
+	nnoremap <S-ScrollWheelRight> 2l
+	nnoremap <C-ScrollWheelRight> 2l
 	inoremap <ScrollWheelUp> <c-x><c-y>
 	inoremap <S-ScrollWheelUp> <c-x><c-y>
 	inoremap <C-ScrollWheelUp> <c-x><c-y>
@@ -67,8 +71,6 @@ if has('gui_macvim')
 
 else
 
-	noremap <up> k
-	noremap <down> j
 	inoremap <up> <c-x><c-y>
 	inoremap <down> <c-x><c-e>
 
@@ -90,6 +92,8 @@ vnoremap <return> s
 inoremap <m-bs> <c-w>
 inoremap <tab> <tab>
 inoremap <return> <return>yo<bs><bs>
+inoremap <m-return> <esc>mqa<return><esc>`qa<return>
+inoremap <m-space> <esc>mqa<space><esc>`qa<space>
 
 " undo & redo
 noremap <silent> u u

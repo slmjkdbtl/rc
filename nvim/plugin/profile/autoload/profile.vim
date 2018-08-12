@@ -4,7 +4,7 @@ func! s:macvim()
 
 	set showmode
 	set laststatus=0
-	set guifont=hack:h14
+	set guifont=hack:h16
 	set nolist
 	set signcolumn=no
 	set macmeta
