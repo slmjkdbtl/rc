@@ -4,7 +4,7 @@ func! s:macvim()
 
 	set showmode
 	set laststatus=0
-	set guifont=hack:h16
+	set guifont=Hack:h16
 	set nolist
 	set signcolumn=no
 	set macmeta
@@ -19,6 +19,7 @@ func! s:oceanic()
 	set noshowmode
 	set laststatus=2
 	set signcolumn=yes
+	set guifont=ProggyCleanTT:h24
 	exec 'set list lcs=tab:\|\ '
 	set background=dark
 	colorscheme OceanicNext

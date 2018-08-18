@@ -50,18 +50,18 @@ noremap <m-down> <c-e>
 
 if has('gui_macvim')
 
-	nnoremap <ScrollWheelUp> 2k
-	nnoremap <S-ScrollWheelUp> 2k
-	nnoremap <C-ScrollWheelUp> 2k
-	nnoremap <ScrollWheelDown> 2j
-	nnoremap <S-ScrollWheelDown> 2j
-	nnoremap <C-ScrollWheelDown> 2j
-	nnoremap <ScrollWheelLeft> 2h
-	nnoremap <S-ScrollWheelLeft> 2h
-	nnoremap <C-ScrollWheelLeft> 2h
-	nnoremap <ScrollWheelRight> 2l
-	nnoremap <S-ScrollWheelRight> 2l
-	nnoremap <C-ScrollWheelRight> 2l
+	nnoremap <ScrollWheelUp> k
+	nnoremap <S-ScrollWheelUp> k
+	nnoremap <C-ScrollWheelUp> k
+	nnoremap <ScrollWheelDown> j
+	nnoremap <S-ScrollWheelDown> j
+	nnoremap <C-ScrollWheelDown> j
+	nnoremap <ScrollWheelLeft> h
+	nnoremap <S-ScrollWheelLeft> h
+	nnoremap <C-ScrollWheelLeft> h
+	nnoremap <ScrollWheelRight> l
+	nnoremap <S-ScrollWheelRight> l
+	nnoremap <C-ScrollWheelRight> l
 	inoremap <ScrollWheelUp> <c-x><c-y>
 	inoremap <S-ScrollWheelUp> <c-x><c-y>
 	inoremap <C-ScrollWheelUp> <c-x><c-y>
@@ -121,8 +121,8 @@ vnoremap <space> <esc>
 noremap <m-a> ggVG
 
 " indent
-vnoremap <tab> >
-vnoremap <m-tab> <
+vnoremap <tab> >gv
+vnoremap <m-tab> <gv
 
 " tabs
 nnoremap <silent> <m-q> :tabp<cr>

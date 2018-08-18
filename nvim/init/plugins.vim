@@ -7,7 +7,6 @@ Plug 'mhinz/vim-signify'
 Plug 'mhartington/oceanic-next'
 Plug 'tbastos/vim-lua'
 Plug 'cespare/vim-toml'
-Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'digitaltoad/vim-pug'
 Plug 'tikhomirov/vim-glsl'
 Plug 'dag/vim-fish'
@@ -112,5 +111,13 @@ let g:projekt_switch_action = 'FilerProject'
 
 " unload default plugins
 let g:loaded_netrwPlugin = 1
+let g:loaded_getscriptPlugin = 1
+let g:loaded_zipPlugin = 1
+let g:loaded_tarPlugin = 1
+let g:loaded_vimballPlugin = 1
 let g:loaded_2html_plugin = 1
 let g:loaded_spellfile_plugin = 1
+let g:loaded_gzip = 1
+let g:loaded_rrhelper = 1
+let g:loaded_logiPat = 1
+

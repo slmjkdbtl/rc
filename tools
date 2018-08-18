@@ -43,6 +43,9 @@ system tools
 	- ctags
 		https://ctags.io/
 
+	- lazygit
+		https://github.com/jesseduffield/lazygit/
+
 	- luajit
 		http://luajit.org/
 
@@ -99,9 +102,6 @@ system tools
 
 	- sox
 		http://sox.sourceforge.net/
-
-	- espeak
-		https://espeak.sourceforge.io/
 
 	- miniserve
 		https://github.com/svenstaro/miniserve/
@@ -162,6 +162,9 @@ system tools
 
 	- wireshark
 		https://www.wireshark.org/
+
+	- espeak
+		https://espeak.sourceforge.io/
 
 	- tldr
 		http://tldr.sh/
