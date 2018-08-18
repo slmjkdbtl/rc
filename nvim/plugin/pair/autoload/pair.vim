@@ -5,13 +5,13 @@ func! pair#pair(ch1, ch2)
 	let l:line = getline('.')
 	let l:pos = col('.') - 1
 
-	if a:ch1 == "'" || a:ch2 == '"'
-		if l:line[l:pos - 1] =~ '\w' || l:line[l:pos - 1] == "'" || l:line[l:pos - 1] == '"'
+	if a:ch1 == "'"
+		if l:line[l:pos - 1] =~ '\w'
 			return a:ch1
 		endif
 	endif
 
-	if a:ch1 == "("
+	if a:ch1 == '('
 		if l:line[l:pos - 1] =~ '\w' && l:line[l:pos] =~ '\w'
 			return a:ch1
 		endif

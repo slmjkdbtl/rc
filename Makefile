@@ -6,20 +6,17 @@ else
 	CONFIG := $(XDG_CONFIG_HOME)
 endif
 
-TOCONFIG = nvim fish mpv scripts
-TOHOME = .skhdrc .tmux.conf .tigrc
-
 .PHONY: conf
 conf:
 
 	echo "+ linking"
 
-	$(foreach f, $(TOCONFIG), \
+	$(foreach f, nvim fish mpv scripts, \
 		echo "  - $(f) -> $(CONFIG)/$(f)"; \
 		ln -sf $(realpath $(f)) $(CONFIG); \
 	)
 
-	$(foreach f, $(TOHOME), \
+	$(foreach f, .skhdrc .tmux.conf .tigrc, \
 		echo "  - $(f) -> $(HOME)/$(f)"; \
 		ln -sf $(realpath $(f)) $(HOME); \
 	)

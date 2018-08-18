@@ -1,6 +1,5 @@
 # wengwengweng
 
-cmd + shift - return : open -a iTerm.app
 cmd + shift - t      : osascript ~/.config/scripts/f2t.applescript
 cmd + shift - e      : osascript ~/.config/scripts/f2t.applescript "nvim ."
 cmd + shift - 2      : screencapture -w $HOME/Desktop/(date +%s).png

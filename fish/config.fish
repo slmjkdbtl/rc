@@ -24,7 +24,7 @@ abbr gp git push
 abbr gd git diff
 
 # env
-set -x BROWSER lynx
+set -x BROWSER open
 set -x TERM super
 
 if type -q nvim
@@ -73,3 +73,4 @@ end
 
 # sbin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+

@@ -102,7 +102,7 @@ noremap <silent> o <c-r>
 " cut & copy & paste
 noremap <silent> p "*p
 nnoremap <silent> y "*yy
-vnoremap <silent> y "*y`>
+vnoremap <silent> y mq"*y`>`q
 nnoremap <silent> x "*dd
 vnoremap <silent> x "*d
 noremap <silent> d "_dd<esc>
