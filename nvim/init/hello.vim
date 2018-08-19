@@ -20,17 +20,10 @@ func! s:bye()
 
 endfunc
 
-func! s:autocd()
-
-	exec 'lcd ' . expand('%:p:h')
-
-endfunc
-
-augroup hello
+augroup Hello
 
 	autocmd!
-	autocmd VimEnter * call s:hello()
-	autocmd VimLeave * call s:bye()
-	autocmd BufEnter * silent! call s:autocd()
+	autocmd VimEnter * :call s:hello()
+	autocmd VimLeave * :call s:bye()
 
 augroup END

@@ -5,6 +5,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/vimfiler.vim'
 Plug 'mhinz/vim-signify'
 Plug 'mhartington/oceanic-next'
+Plug 'justinmk/vim-dirvish'
 Plug 'tbastos/vim-lua'
 Plug 'cespare/vim-toml'
 Plug 'digitaltoad/vim-pug'
@@ -20,7 +21,7 @@ let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 0
 
 " vimfiler
-let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_as_default_explorer = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimfiler_no_default_key_mappings = 1
 let g:vimfiler_enable_auto_cd = 1
@@ -49,22 +50,6 @@ endif
 
 let g:ctrlp_root_markers = [ '.git', 'main.lua' ]
 let g:ctrlp_reuse_window = 'vimfiler'
-let g:ctrlp_open_func = { 'files': 'CtrlpOpenFile' }
-
-func! CtrlpOpenFile(action, line)
-
-	let l:name = fnameescape(fnamemodify(a:line, ':p'))
-
-	if isdirectory(l:name)
-		exec 'lcd ' . l:name
-		FilerProject
-	elseif filereadable(l:name)
-		exec 'edit ' . l:name
-	endif
-
-	call ctrlp#exit()
-
-endfunc
 
 let g:ctrlp_prompt_mappings = {
 	\ 'PrtBS()':              ['<bs>'],

@@ -9,9 +9,11 @@ set noshowmode
 set title
 set showcmd
 set visualbell
+set wrap
+set nolinebreak
 set breakindent
 set breakindentopt=sbr
-set showbreak=>
+set showbreak=..
 set nowrapscan
 set showmatch
 set smartcase

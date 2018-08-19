@@ -1,9 +1,9 @@
 " wengwengweng
 
-augroup tab
+augroup Tab
 
 	autocmd!
-	autocmd FileType * setlocal noexpandtab
-	autocmd FileType * setlocal tabstop=4
+	autocmd FileType * :setlocal noexpandtab
+	autocmd FileType * :setlocal tabstop=4
 
 augroup END

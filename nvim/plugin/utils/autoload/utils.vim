@@ -132,7 +132,7 @@ endfunc
 
 func! s:call_applescript(name, arg)
 
-	let l:fname = s:dir . '/scripts/' . a:name . '.applescript'
+	let l:fname = s:dir . '/scripts/' . a:name . '.scpt'
 
 	if (filereadable(l:fname))
 		return system('osascript ' . l:fname . ' ' . a:arg)
