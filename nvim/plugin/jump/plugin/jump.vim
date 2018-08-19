@@ -12,7 +12,7 @@ call jump#set('scss', '\S*\s{')
 call jump#set('pug', '\w*(.*)')
 call jump#set('rust', 'fn\s.*(.*)')
 
-augroup jumpmarks
+augroup JumpMarks
 
 	autocmd!
 

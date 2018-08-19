@@ -23,7 +23,11 @@ endfunc
 augroup Hello
 
 	autocmd!
-	autocmd VimEnter * :call s:hello()
-	autocmd VimLeave * :call s:bye()
+
+	autocmd VimEnter *
+				\ :call s:hello()
+
+	autocmd VimLeave *
+				\ :call s:bye()
 
 augroup END

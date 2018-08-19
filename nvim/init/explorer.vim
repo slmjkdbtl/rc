@@ -20,6 +20,8 @@ endfunc
 augroup Explore
 
 	autocmd!
-	autocmd BufEnter * :silent! call s:explore()
+
+	autocmd BufEnter *
+				\ :silent! call s:explore()
 
 augroup END

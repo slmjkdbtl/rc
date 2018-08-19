@@ -159,10 +159,12 @@ func! s:vimfiler_remap()
 
 endfunc
 
-augroup vimfilerremap
+augroup VimfilerRemap
 
 	autocmd!
-	autocmd FileType vimfiler :call s:vimfiler_remap()
+
+	autocmd FileType vimfiler
+				\ :call s:vimfiler_remap()
 
 augroup END
 

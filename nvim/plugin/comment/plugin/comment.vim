@@ -49,7 +49,7 @@ call comment#set([
 			\ 'pug',
 			\ ], '\/\/-')
 
-augroup commentleads
+augroup CommentLeads
 
 	autocmd!
 

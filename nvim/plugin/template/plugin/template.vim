@@ -2,7 +2,7 @@
 
 let g:template_path = get(g:, 'template_path', '~/.config/nvim/templates')
 
-augroup templates
+augroup Template
 
 	autocmd!
 

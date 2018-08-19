@@ -1,11 +1,10 @@
 " wengwengweng
 
-augroup title
+augroup Title
 
 	autocmd!
-	autocmd
-		\ VimEnter, DirChanged, BufEnter
-		\ *
+
+	autocmd VimEnter, DirChanged, BufEnter *
 		\ let &titlestring = line#get_title()
 
 augroup END
