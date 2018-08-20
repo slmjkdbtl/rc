@@ -12,7 +12,6 @@ set visualbell
 set wrap
 set nolinebreak
 set breakindent
-set breakindentopt=sbr
 set showbreak=..
 set nowrapscan
 set showmatch
@@ -44,7 +43,7 @@ set whichwrap=h,l,<,>
 set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=utf-8,gbk
-set guicursor=n-v-c-sm-ci-ve-r-cr-o-i:block
+" set guicursor=n-v-c-sm-ci-ve-r-cr-o-i:block
 set shell=/usr/local/bin/fish
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*
 set wildignore=.git,.svn,.cache,.tmp,node_modules

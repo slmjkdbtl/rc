@@ -75,12 +75,6 @@ func! utils#mkdir(name)
 
 endfunc
 
-func! utils#cdc()
-
-	exec 'lcd ' . expand('%:p:h')
-
-endfunc
-
 func! utils#recfind(wd, file)
 
 	if !filereadable(a:wd . '/' . a:file)

@@ -3557,6 +3557,8 @@
 	<true/>
 	<key>DoubleClickPerformsSmartSelection</key>
 	<false/>
+	<key>DrawOutlineAroundCursor</key>
+	<false/>
 	<key>EnableDivisionView</key>
 	<true/>
 	<key>EnableRendezvous</key>
@@ -3568,7 +3570,22 @@
 	<key>FsTabDelay</key>
 	<real>10</real>
 	<key>GlobalKeyMap</key>
-	<dict/>
+	<dict>
+		<key>0xf700-0x280000</key>
+		<dict>
+			<key>Action</key>
+			<integer>10</integer>
+			<key>Text</key>
+			<string>[1;5A</string>
+		</dict>
+		<key>0xf701-0x280000</key>
+		<dict>
+			<key>Action</key>
+			<integer>10</integer>
+			<key>Text</key>
+			<string>[1;5B</string>
+		</dict>
+	</dict>
 	<key>HiddenAFRStrokeThickness</key>
 	<real>0.0</real>
 	<key>HiddenAdvancedFontRendering</key>
@@ -3594,22 +3611,26 @@
 	<key>Hotkey</key>
 	<true/>
 	<key>HotkeyChar</key>
-	<integer>32</integer>
+	<integer>13</integer>
 	<key>HotkeyCode</key>
-	<integer>49</integer>
+	<integer>36</integer>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>HotkeyModifiers</key>
-	<integer>131330</integer>
+	<integer>1179914</integer>
 	<key>IRMemory</key>
 	<integer>4</integer>
 	<key>JobName</key>
+	<true/>
+	<key>KillSessionsOnLogout</key>
 	<true/>
 	<key>LeftCommand</key>
 	<integer>7</integer>
 	<key>LeftOption</key>
 	<integer>2</integer>
 	<key>LoadPrefsFromCustomFolder</key>
+	<true/>
+	<key>LowFiCombiningMarks</key>
 	<true/>
 	<key>MaxVertically</key>
 	<false/>
@@ -3677,13 +3698,13 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>330 306 620 392 0 0 1280 777 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
-	<string>360 226 606 469 0 0 1280 778 </string>
+	<string>360 225 606 469 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>213 275 796 486 0 0 1280 777 </string>
+	<string>385 282 796 486 0 0 1280 777 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>80 193 592 584 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>202 118 934 627 0 0 1280 777 </string>
+	<string>136 136 924 623 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>52 85 934 627 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -3696,6 +3717,8 @@
 	<array>
 		<dict>
 			<key>ASCII Anti Aliased</key>
+			<false/>
+			<key>ASCII Ligatures</key>
 			<false/>
 			<key>Allow Title Reporting</key>
 			<true/>
@@ -3920,13 +3943,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.3167208731174469</real>
+				<real>0.20392156862745098</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.25995418429374695</real>
+				<real>0.16862745098039217</real>
 				<key>Red Component</key>
-				<real>0.2321750819683075</real>
+				<real>0.11372549019607843</real>
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<false/>
@@ -4064,36 +4087,7 @@
 				<string>telnet</string>
 			</array>
 			<key>Keyboard Map</key>
-			<dict>
-				<key>0xf700-0x280000</key>
-				<dict>
-					<key>Action</key>
-					<integer>10</integer>
-					<key>Text</key>
-					<string>[1;5A</string>
-				</dict>
-				<key>0xf701-0x280000</key>
-				<dict>
-					<key>Action</key>
-					<integer>10</integer>
-					<key>Text</key>
-					<string>[1;5B</string>
-				</dict>
-				<key>0xf702-0x280000</key>
-				<dict>
-					<key>Action</key>
-					<integer>10</integer>
-					<key>Text</key>
-					<string>[1;5D</string>
-				</dict>
-				<key>0xf703-0x280000</key>
-				<dict>
-					<key>Action</key>
-					<integer>10</integer>
-					<key>Text</key>
-					<string>[1;5C</string>
-				</dict>
-			</dict>
+			<dict/>
 			<key>Link Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -4286,11 +4280,13 @@
 			<key>Terminal Type</key>
 			<string>super</string>
 			<key>Thin Strokes</key>
-			<integer>4</integer>
+			<integer>0</integer>
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Triggers</key>
 			<array/>
+			<key>Unicode Version</key>
+			<integer>9</integer>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -4398,6 +4394,8 @@
 	<false/>
 	<key>PasteFromClipboard</key>
 	<false/>
+	<key>PerformDictionaryLookupOnQuickLook</key>
+	<false/>
 	<key>PinchToChangeFontSizeDisabled</key>
 	<true/>
 	<key>PointerActions</key>
@@ -4425,9 +4423,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-08-18T17:28:24Z</date>
+	<date>2018-08-20T15:03:20Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
+	<key>SearchCommand</key>
+	<string>https://duckduckgo.com/?q=%@</string>
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
@@ -4454,8 +4454,10 @@
 	<integer>0</integer>
 	<key>TabViewType</key>
 	<integer>0</integer>
+	<key>TerminalMargin</key>
+	<integer>12</integer>
 	<key>TerminalVMargin</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>ThreeFingerEmulates</key>
 	<false/>
 	<key>TmuxDashboardLimit</key>
@@ -4483,6 +4485,10 @@
 	<true/>
 	<key>UseModernScrollWheelAccumulator</key>
 	<true/>
+	<key>UseSystemCursorWhenPossible</key>
+	<false/>
+	<key>VerticalBarCursorWidth</key>
+	<real>1</real>
 	<key>WebKitDefaultFontSize</key>
 	<integer>11</integer>
 	<key>WebKitStandardFont</key>
@@ -4502,7 +4508,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.2.0</string>
+	<string>3.2.1beta1</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

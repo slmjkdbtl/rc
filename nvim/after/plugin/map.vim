@@ -35,18 +35,18 @@ inoremap <silent> <esc> <esc>
 tnoremap <esc> <c-\><c-n>
 
 " movement
-noremap k k
-noremap j j
+noremap k gk
+noremap j gj
 noremap h h
 noremap l l
 noremap <m-h> b
 noremap <m-l> e
-inoremap <m-h> <left>
-inoremap <m-l> <right>
-inoremap <m-j> <down>
-inoremap <m-k> <up>
 noremap <m-up> <c-y>
 noremap <m-down> <c-e>
+inoremap <m-j> <c-o>gj
+inoremap <m-k> <c-o>gk
+inoremap <m-h> <left>
+inoremap <m-l> <right>
 
 if has('gui_macvim')
 

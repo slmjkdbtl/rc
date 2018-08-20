@@ -28,10 +28,10 @@ let g:vimfiler_enable_auto_cd = 1
 let g:vimfiler_ignore_filters = ['matcher_ignore_wildignore']
 
 command! Filer
-			\ silent! VimFilerCurrentDir -parent -simple
+			\ :silent! VimFilerCurrentDir -parent -simple
 
 command! FilerProject
-			\ silent! VimFilerCurrentDir -parent -simple -edit-action=tabopen
+			\ :silent! VimFilerCurrentDir -parent -simple -edit-action=tabopen
 
 " signify
 let g:signify_vcs_list = [ 'git' ]
@@ -50,6 +50,7 @@ endif
 
 let g:ctrlp_root_markers = [ '.git', 'main.lua' ]
 let g:ctrlp_reuse_window = 'vimfiler'
+let g:ctrlp_use_caching = 0
 
 let g:ctrlp_prompt_mappings = {
 	\ 'PrtBS()':              ['<bs>'],
