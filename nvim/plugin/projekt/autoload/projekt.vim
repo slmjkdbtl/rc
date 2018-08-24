@@ -339,8 +339,6 @@ endfunc
 
 func! projekt#jump(pattern)
 
-	echom a:pattern
-
 	let l:projekts = s:get()
 
 	if empty(l:projekts)

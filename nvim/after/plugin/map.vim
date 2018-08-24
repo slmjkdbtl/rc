@@ -164,7 +164,7 @@ augroup VimfilerRemap
 	autocmd!
 
 	autocmd FileType vimfiler
-				\ :call s:vimfiler_remap()
+				\ call s:vimfiler_remap()
 
 augroup END
 

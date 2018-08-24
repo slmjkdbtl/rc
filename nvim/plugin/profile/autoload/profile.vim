@@ -23,7 +23,7 @@ func! s:oceanic()
 	exec 'set list lcs=tab:\|\ '
 	set background=dark
 	colorscheme OceanicNext
-	hi! Normal               guibg=#212d3c
+	hi! Normal               guibg=#282f3b
 	hi! LineNr               guibg=none
 	hi! SignColumn           guibg=none
 	hi! EndOfBuffer          guibg=none

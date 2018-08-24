@@ -23,8 +23,8 @@ augroup JumpMarks
 augroup END
 
 command! PrevMark
-			\ :call jump#prev()
+			\ call jump#prev()
 
 command! NextMark
-			\ :call jump#next()
+			\ call jump#next()
 

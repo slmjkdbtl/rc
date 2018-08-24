@@ -5,8 +5,9 @@ augroup Trim
 	autocmd!
 
 	autocmd BufWritePre *
-				\ :call trim#trim()
+				\ call trim#trim()
 
 augroup END
 
-command! Trim :call trim#trim()
+command! Trim
+			\ call trim#trim()

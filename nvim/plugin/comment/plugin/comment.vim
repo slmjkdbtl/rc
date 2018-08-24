@@ -60,5 +60,5 @@ augroup CommentLeads
 augroup END
 
 command! -range Comment
-			\ :<line1>,<line2>call comment#toggle()
+			\ <line1>,<line2>call comment#toggle()
 
