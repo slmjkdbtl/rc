@@ -28,6 +28,7 @@ endfor
 
 " global
 noremap : :
+noremap <m-space> :
 noremap . .
 nnoremap r :!
 noremap <silent> <esc> <esc>:noh<cr>
@@ -94,6 +95,7 @@ inoremap <tab> <tab>
 inoremap <return> <return>yo<bs><bs>
 inoremap <m-return> <esc>mqa<return><esc>`qa<return>
 inoremap <m-space> <esc>mqa<space><esc>`qa<space>
+cnoremap <m-bs> <c-w>
 
 " undo & redo
 noremap <silent> u u
