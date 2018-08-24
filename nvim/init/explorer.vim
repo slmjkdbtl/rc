@@ -7,7 +7,7 @@ func! s:explore()
 	if isdirectory(l:name)
 
 		exec 'lcd ' . l:name
-		FilerProject
+		Filer
 
 	elseif filereadable(l:name)
 
@@ -22,6 +22,7 @@ augroup Explore
 	autocmd!
 
 	autocmd BufEnter *
-				\ :silent! call s:explore()
+				\ call s:explore()
 
 augroup END
+

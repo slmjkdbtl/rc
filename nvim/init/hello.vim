@@ -2,15 +2,13 @@
 
 func! s:hello()
 
+	echo 'yo'
+
 	if has('gui_macvim')
 		Profile macvim
 	else
 		Profile oceanic
 	endif
-
-	if !argc()
-		Projekt
-	end
 
 endfunc
 

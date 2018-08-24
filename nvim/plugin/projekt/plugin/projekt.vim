@@ -1,7 +1,6 @@
 " wengwengweng
 
 let g:projekt_file = get(g:, 'projekt_file', '~/.projekts')
-let g:projekt_switch_action = get(g:, 'projekt_switch_action', '')
 
 command! -nargs=? Projekt
 			\ call projekt#jump(<q-args>)

@@ -100,6 +100,8 @@ cnoremap <m-bs> <c-w>
 " undo & redo
 noremap <silent> u u
 noremap <silent> o <c-r>
+inoremap <silent> <m-u> <c-o>u
+inoremap <silent> <m-o> <c-o><c-r>
 
 " cut & copy & paste
 noremap <silent> p "*p
@@ -123,8 +125,8 @@ vnoremap <space> <esc>
 noremap <m-a> ggVG
 
 " indent
-vnoremap <tab> >gv
-vnoremap <m-tab> <gv
+vnoremap <tab> >
+vnoremap <m-tab> <
 
 " tabs
 nnoremap <silent> <m-q> :tabp<cr>

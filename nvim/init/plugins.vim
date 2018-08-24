@@ -2,10 +2,8 @@
 
 call plug#begin()
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'Shougo/vimfiler.vim'
 Plug 'mhinz/vim-signify'
 Plug 'mhartington/oceanic-next'
-Plug 'justinmk/vim-dirvish'
 Plug 'tbastos/vim-lua'
 Plug 'cespare/vim-toml'
 Plug 'digitaltoad/vim-pug'
@@ -20,19 +18,6 @@ call plug#end()
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 0
 
-" vimfiler
-let g:vimfiler_as_default_explorer = 0
-let g:vimfiler_force_overwrite_statusline = 0
-let g:vimfiler_no_default_key_mappings = 1
-let g:vimfiler_enable_auto_cd = 1
-let g:vimfiler_ignore_filters = ['matcher_ignore_wildignore']
-
-command! Filer
-			\ silent! VimFilerCurrentDir -parent -simple
-
-command! FilerProject
-			\ silent! VimFilerCurrentDir -parent -simple -edit-action=tabopen
-
 " signify
 let g:signify_vcs_list = [ 'git' ]
 let g:signify_sign_show_text = 1
@@ -45,11 +30,10 @@ let g:signify_sign_changedelete = g:signify_sign_change
 
 " ctrlp
 if executable('fd')
-	let g:ctrlp_user_command = 'fd .'
+	let g:ctrlp_user_command = 'fd . -t f'
 endif
 
-let g:ctrlp_root_markers = [ '.git', 'main.lua' ]
-let g:ctrlp_reuse_window = 'vimfiler'
+let g:ctrlp_reuse_window = 'filer'
 let g:ctrlp_use_caching = 0
 
 let g:ctrlp_prompt_mappings = {
@@ -91,9 +75,6 @@ let g:ctrlp_prompt_mappings = {
 
 " tommywiseau
 let g:is_human_bean = 0
-
-" projekt
-let g:projekt_switch_action = 'FilerProject'
 
 " unload default plugins
 let g:loaded_netrwPlugin = 1
