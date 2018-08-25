@@ -150,28 +150,6 @@ for i in range(1, 9)
 	exec 'noremap <f' . i . '> :echo "y' . repeat('o', i) . '"<cr>'
 endfor
 
-" vimfiler
-func! s:vimfiler_remap()
-
-	map <silent> <buffer> <return> <Plug>(vimfiler_cd_or_edit)
-	map <silent> <buffer> <space> <Plug>(vimfiler_expand_tree)
-	map <silent> <buffer> <tab> <Plug>(vimfiler_close)
-	map <silent> <buffer> <bs> <Plug>(vimfiler_switch_to_parent_directory)
-	map <silent> <buffer> 0 <Plug>(vimfiler_switch_to_project_directory)
-	map <silent> <buffer> j <Plug>(vimfiler_loop_cursor_down)
-	map <silent> <buffer> k <Plug>(vimfiler_loop_cursor_up)
-
-endfunc
-
-augroup VimfilerRemap
-
-	autocmd!
-
-	autocmd FileType vimfiler
-				\ call s:vimfiler_remap()
-
-augroup END
-
 " plugins
 call pair#bind()
 call search#bind()

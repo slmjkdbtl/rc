@@ -1,7 +1,7 @@
 " wengwengweng
 
-set number
-set ruler
+set nonumber
+set noruler
 set noexpandtab
 set smarttab
 set termguicolors
@@ -23,6 +23,7 @@ set autoindent
 set incsearch
 set lazyredraw
 set wildmenu
+set list
 set wildignorecase
 set ignorecase
 set cursorline
@@ -45,14 +46,13 @@ set termencoding=utf-8
 set fileencodings=utf-8,gbk
 set guicursor=n-v-c-sm-ci-ve-r-cr-o:block,i:ver25
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*
-set wildignore=.git,.svn,.cache,.tmp,node_modules
 set wildignore+=.DS_Store
+set wildignore+=.tags,*.min.*,*.map
 set wildignore+=*.so,*.o,*.out,*.swp,*.zip,*.app,*.exe,*.dll,*~
 set wildignore+=*.png,*.jpg,*.gif,*.ico,*.icns,*.ase
 set wildignore+=*.mov,*.mp4,*.avi,*.mkv
 set wildignore+=*.mp3,*.wav,*.ogg
-set wildignore+=.tags,*.min.*,*.map
-exec 'set list lcs=tab:\|\ '
+exec 'set listchars=tab:\|\ '
 filetype plugin indent on
 syntax enable
 

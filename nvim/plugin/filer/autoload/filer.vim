@@ -1,5 +1,7 @@
 " wengwengweng
 
+let s:srcdir = expand('<sfile>:h:h:p')
+
 func! s:get_files()
 
 	let files = glob(getcwd() . '/*', 0, 1)
@@ -10,9 +12,23 @@ endfunc
 
 func! s:get_listing()
 
+	let flist = []
+	let dlist = []
+
+	for f in s:get_files()
+
+		if isdirectory(f)
+			let dlist += [ f ]
+		elseif filereadable(f)
+			let flist += [ f ]
+		endif
+
+	endfor
+
 	let list = []
 	let list += [ '..' ]
-	let list += s:get_files()
+	let list += dlist
+	let list += flist
 
 	return list
 
@@ -40,12 +56,20 @@ func! s:render()
 
 	endfor
 
+	:$,$d
+
 endfunc
 
 func! filer#back()
 
 	lcd ..
 	call filer#refresh()
+
+endfunc
+
+func! filer#toggle()
+
+	" ...
 
 endfunc
 
@@ -82,9 +106,13 @@ func! filer#open()
 	setlocal filetype=filer
 	setlocal buftype=nofile
 	setlocal bufhidden=wipe
+	setlocal mouse=n
+	setlocal nobuflisted
+	exec 'source '.fnameescape(s:srcdir . '/syntax/filer.vim')
 	call filer#refresh()
 	noremap <buffer><silent> <return> :call filer#enter()<cr>
 	noremap <buffer><silent> <bs> :call filer#back()<cr>
+	noremap <buffer><silent> <tab> :call filer#toggle()<cr>
 
 endfunc
 
