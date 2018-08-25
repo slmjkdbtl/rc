@@ -5,11 +5,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'w0rp/ale'
 Plug 'mhinz/vim-signify'
 Plug 'mhartington/oceanic-next'
-Plug 'tbastos/vim-lua'
-Plug 'cespare/vim-toml'
-Plug 'tikhomirov/vim-glsl'
-Plug 'dag/vim-fish'
-Plug 'wilsaj/chuck.vim'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " color

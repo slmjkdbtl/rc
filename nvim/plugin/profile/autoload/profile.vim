@@ -29,6 +29,7 @@ func! s:oceanic()
 	hi! EndOfBuffer              guibg=none
 	hi! TabLine                  gui=none
 	hi! TabLineSel               guibg=none
+	hi! CursorLine               gui=bold
 	hi! CursorLineNr             guibg=none
 	hi! DiffAdd                  guibg=none
 	hi! DiffDelete               guibg=none

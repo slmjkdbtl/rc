@@ -80,6 +80,15 @@ func! filer#expand()
 
 endfunc
 
+func! filer#copy()
+
+	let linepos = line('.')
+	let item = b:listing[linepos - 1]
+
+" 	let "* = item
+
+endfunc
+
 func! filer#enter()
 
 	let linepos = line('.')
@@ -151,6 +160,7 @@ func! filer#bind()
 	noremap <buffer><silent> <bs> :call filer#back()<cr>
 	noremap <buffer><silent> <tab> :call filer#toggle()<cr>
 	noremap <buffer><silent> <space> :call filer#expand()<cr>
+	noremap <buffer><silent> y :call filer#copy()<cr>
 	noremap <buffer><silent> j j
 	noremap <buffer><silent> k k
 
