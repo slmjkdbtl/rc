@@ -30,7 +30,8 @@ endfor
 noremap : :
 noremap <m-space> :
 noremap . .
-nnoremap r :!
+nnoremap ! :!
+nnoremap w :w<cr>
 noremap <silent> <esc> <esc>:noh<cr>
 inoremap <silent> <esc> <esc>
 tnoremap <esc> <c-\><c-n>
@@ -131,13 +132,13 @@ vnoremap <m-tab> <
 " tabs
 nnoremap <silent> <m-q> :tabp<cr>
 nnoremap <silent> <m-e> :tabn<cr>
-nnoremap <silent> <m-n> :tabe<cr>:Projekt<cr>
+nnoremap <silent> <m-n> :tabe<cr>
 inoremap <silent> <m-q> <esc>:tabp<cr>
 inoremap <silent> <m-e> <esc>:tabn<cr>
-inoremap <silent> <m-n> <esc>:tabe<cr>:Projekt<cr>
+inoremap <silent> <m-n> <esc>:tabe<cr>
 tnoremap <silent> <m-q> <c-\><c-n>:tabp<cr>
 tnoremap <silent> <m-e> <c-\><c-n>:tabn<cr>
-tnoremap <silent> <m-n> <c-\><c-n>:tabe<cr>:Projekt<cr>
+tnoremap <silent> <m-n> <c-\><c-n>:tabe<cr>
 
 if has("gui_vimr")
 	for i in range(1, 9)

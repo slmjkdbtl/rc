@@ -36,11 +36,11 @@ endfunc
 
 func! s:render()
 
-	:1,$d
+	silent! 1,$d
 
-	for i in range(len(b:filer_listing))
+	for i in range(len(b:listing))
 
-		let line = b:filer_listing[i]
+		let line = b:listing[i]
 
 		if line == '..'
 			let displayline = '..'
@@ -56,7 +56,8 @@ func! s:render()
 
 	endfor
 
-	:$,$d
+	silent! $,$d
+	redraw!
 
 endfunc
 
@@ -73,30 +74,55 @@ func! filer#toggle()
 
 endfunc
 
+func! filer#expand()
+
+	" ...
+
+endfunc
+
 func! filer#enter()
 
 	let linepos = line('.')
-	let item = b:filer_listing[linepos - 1]
+	let item = b:listing[linepos - 1]
 
 	if isdirectory(item)
+
 		silent! exec 'lcd ' . fnamemodify(item, ':p')
 		call filer#refresh()
+
 	elseif filereadable(item)
+
 		silent! exec 'edit ' . fnamemodify(item, ':p')
+
 	endif
+
+endfunc
+
+func! filer#search(char)
+
+	let b:search_char = a:char
+
+	for i in range(len(b:listing))
+
+		let name = fnamemodify(b:listing[i], ':t')[0:0]
+
+		if name == a:char
+			exec ':' . (i + 1)
+		endif
+
+	endfor
 
 endfunc
 
 func! filer#refresh()
 
-	let b:filer_listing = s:get_listing()
+	let b:listing = s:get_listing()
 
 	setlocal modifiable
 	call s:render()
 	setlocal nomodifiable
 	setlocal nomodified
 	:2
-	redraw
 
 endfunc
 
@@ -106,13 +132,27 @@ func! filer#open()
 	setlocal filetype=filer
 	setlocal buftype=nofile
 	setlocal bufhidden=wipe
-	setlocal mouse=n
 	setlocal nobuflisted
 	exec 'source '.fnameescape(s:srcdir . '/syntax/filer.vim')
 	call filer#refresh()
+	call filer#bind()
+
+endfunc
+
+func! filer#bind()
+
+" 	let keys = split('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890', '.\zs')
+
+" 	for k in keys
+" 		exec 'noremap <silent> ' . k . ' :call filer#search("' . k . '")<cr>'
+" 	endfor
+
 	noremap <buffer><silent> <return> :call filer#enter()<cr>
 	noremap <buffer><silent> <bs> :call filer#back()<cr>
 	noremap <buffer><silent> <tab> :call filer#toggle()<cr>
+	noremap <buffer><silent> <space> :call filer#expand()<cr>
+	noremap <buffer><silent> j j
+	noremap <buffer><silent> k k
 
 endfunc
 

@@ -2,6 +2,7 @@
 
 call plug#begin()
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'w0rp/ale'
 Plug 'mhinz/vim-signify'
 Plug 'mhartington/oceanic-next'
 Plug 'tbastos/vim-lua'
@@ -24,6 +25,12 @@ let g:signify_sign_delete = '-'
 let g:signify_sign_delete_first_line = g:signify_sign_delete
 let g:signify_sign_change = '~'
 let g:signify_sign_changedelete = g:signify_sign_change
+
+" ale
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_sign_error = '>'
+let g:ale_sign_warning = '*'
+let g:ale_sign_info = '?'
 
 " ctrlp
 if executable('fd')

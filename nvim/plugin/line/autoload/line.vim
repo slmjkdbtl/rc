@@ -6,7 +6,7 @@ func! s:get_tab_title(bufn)
 	let l:ft = getbufvar(a:bufn, '&ft')
 	let l:text = ''
 
-	if l:ft ==# 'vimfiler'
+	if l:ft ==# 'filer'
 		let l:text = 'filer'
 " 		let l:text = fnamemodify(l:name, ':p:h:t')
 	else

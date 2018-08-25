@@ -39,8 +39,12 @@ func! s:oceanic()
 	hi! StatusModeInsert         guibg=#CB9B9C gui=bold
 	hi! StatusModeCommand        guibg=#908cab gui=bold
 	hi! StatusModeTerminal       guibg=#7FA5A5 gui=bold
-	hi! vimfilerNormalFile       guibg=none
-	hi! vimUserFunc              guibg=none
+	hi! SpellBad                 gui=none guibg=none
+	hi! SpellCap                 gui=none guibg=none
+	hi! ErrorMsg                 guibg=none
+	hi! ALEErrorSign             gui=none guibg=none
+	hi! ALEWarningSign           gui=none guibg=none
+	hi! ALEInfoSign              gui=none guibg=none
 	hi! link TabLineFill         TabLine
 	hi! link NvimInternalError   Error
 

@@ -10,6 +10,10 @@ func! s:hello()
 		Profile oceanic
 	endif
 
+	if !argc()
+		Yo
+	endif
+
 endfunc
 
 func! s:bye()
