@@ -89,14 +89,41 @@ func! s:to_item(item)
 
 endfunc
 
-func! browser#back()
+func! s:refresh()
 
-	lcd ..
-	call browser#refresh()
+	let b:listing = s:get_listing()
+
+	setlocal modifiable
+	call s:render()
+	setlocal nomodifiable
+	setlocal nomodified
+	call s:to_line(2)
 
 endfunc
 
-func! browser#toggle()
+func! s:bind()
+
+	noremap <buffer><silent> <return> :call browser#enter()<cr>
+	noremap <buffer><silent> <bs> :call browser#back()<cr>
+	noremap <buffer><silent> <tab> :call browser#close()<cr>
+	noremap <buffer><silent> <space> :call browser#expand()<cr>
+	noremap <buffer><silent> y :call browser#copy()<cr>
+	noremap <buffer><silent> j j
+	noremap <buffer><silent> k k
+
+endfunc
+
+func! browser#back()
+
+	let prev_dir = getcwd()
+
+	lcd ..
+	call s:refresh()
+	call s:to_item(prev_dir)
+
+endfunc
+
+func! browser#close()
 
 	bd
 
@@ -119,12 +146,13 @@ endfunc
 
 func! browser#enter()
 
+	let current_dir = getcwd()
 	let item = s:get_current()
 
 	if isdirectory(item)
 
 		silent! exec 'lcd ' . item
-		call browser#refresh()
+		call s:refresh()
 
 	elseif filereadable(item)
 
@@ -150,51 +178,22 @@ func! browser#search(char)
 
 endfunc
 
-func! browser#refresh()
-
-	let b:listing = s:get_listing()
-
-	setlocal modifiable
-	call s:render()
-	setlocal nomodifiable
-	setlocal nomodified
-	call s:to_line(2)
-
-endfunc
-
 func! browser#open()
 
 	let current_buffer = expand('%:p')
-	let b:listing = []
-	let b:history = []
 
 	enew
+
+	let b:listing = []
+
 	setlocal filetype=browser
 	setlocal buftype=nofile
 	setlocal bufhidden=wipe
 	setlocal nobuflisted
 	exec 'source ' . fnameescape(s:srcdir . '/syntax/browser.vim')
-	call browser#refresh()
-	call browser#bind()
+	call s:refresh()
+	call s:bind()
 	call s:to_item(current_buffer)
-
-endfunc
-
-func! browser#bind()
-
-	let keys = split('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890', '.\zs')
-
-	for k in keys
-		exec 'noremap <silent> <m-' . k . '> :call browser#search("' . k . '")<cr>'
-	endfor
-
-	noremap <buffer><silent> <return> :call browser#enter()<cr>
-	noremap <buffer><silent> <bs> :call browser#back()<cr>
-	noremap <buffer><silent> <tab> :call browser#toggle()<cr>
-	noremap <buffer><silent> <space> :call browser#expand()<cr>
-	noremap <buffer><silent> y :call browser#copy()<cr>
-	noremap <buffer><silent> j j
-	noremap <buffer><silent> k k
 
 endfunc
 
