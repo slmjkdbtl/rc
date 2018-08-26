@@ -54,9 +54,9 @@ endfunc
 
 func! profile#switch(p)
 
-	if a:p == 'oceanic'
+	if a:p ==# 'oceanic'
 		call s:oceanic()
-	elseif a:p == 'macvim'
+	elseif a:p ==# 'macvim'
 		call s:macvim()
 	endif
 

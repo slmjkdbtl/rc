@@ -17,7 +17,7 @@ augroup JumpMarks
 	autocmd!
 
 	for [ key, val ] in items(g:jump_marks)
-		exec "autocmd FileType " . key . " let b:jump_mark = '" . val . "'"
+		exec 'autocmd FileType ' . key . " let b:jump_mark = '" . val . "'"
 	endfor
 
 augroup END

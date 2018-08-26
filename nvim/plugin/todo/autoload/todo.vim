@@ -4,7 +4,7 @@ func! todo#view()
 
 	if !filereadable(g:todo_file)
 
-		echoerr "can't read todo file"
+		echo "can't read todo file"
 		return -1
 
 	endif

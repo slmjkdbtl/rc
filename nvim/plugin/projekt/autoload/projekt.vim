@@ -2,23 +2,23 @@
 
 func! s:get()
 
-	let l:file = expand(g:projekt_file)
+	let file = expand(g:projekt_file)
 
-	if !filereadable(l:file)
+	if !filereadable(file)
 		return []
 	endif
 
-	let l:projekts = []
+	let projekts = []
 
-	for l:p in readfile(l:file)
+	for p in readfile(file)
 
-		let l:sign = l:p[0:0]
-		let l:name = matchstr(l:p, '\[.*\]')
-		let l:path = matchstr(l:p, '(.*)')
-		let l:name = l:name[1:strlen(l:name) - 2]
-		let l:path = l:path[1:strlen(l:path) - 2]
+		let sign = p[0:0]
+		let name = matchstr(p, '\[.*\]')
+		let path = matchstr(p, '(.*)')
+		let name = name[1:strlen(name) - 2]
+		let path = path[1:strlen(path) - 2]
 
-		let l:projekts = l:projekts + [{
+		let projekts = projekts + [{
 			\ 'sign': sign,
 			\ 'name': name,
 			\ 'path': path,
@@ -26,19 +26,19 @@ func! s:get()
 
 	endfor
 
-	return l:projekts
+	return projekts
 
 endfunc
 
 func! s:write(projekts)
 
-	let l:list = []
+	let list = []
 
-	for l:p in a:projekts
-		let l:list = l:list + [ s:format(l:p) ]
+	for p in a:projekts
+		let list = list + [ s:format(p) ]
 	endfor
 
-	if writefile(l:list, expand(g:projekt_file)) == -1
+	if writefile(list, expand(g:projekt_file)) == -1
 		return -1
 	endif
 
@@ -50,13 +50,13 @@ func! s:format(proj)
 
 	return a:proj.sign . ' [' . a:proj.name . '](' . a:proj.path . ')'
 
-endfunc!
+endfunc
 
 func! s:search(projekts, key)
 
-	for l:p in a:projekts
-		if match(l:p.name, '\c' . a:key) != -1
-			return l:p
+	for p in a:projekts
+		if match(p.name, '\c' . a:key) != -1
+			return p
 		endif
 	endfor
 
@@ -66,9 +66,9 @@ endfunc
 
 func! s:search_starred(projekts)
 
-	for l:p in a:projekts
-		if l:p.sign == '*'
-			return l:p
+	for p in a:projekts
+		if p.sign ==# '*'
+			return p
 		endif
 	endfor
 
@@ -78,46 +78,46 @@ endfunc
 
 func! projekt#add(name)
 
-	let l:projekts = s:get()
+	let projekts = s:get()
 
-	if exists('a:name') && a:name != ''
+	if exists('a:name') && a:name !=# ''
 
-		let l:name = a:name
+		let name = a:name
 
-		if (l:name == expand('%:t'))
-			let l:path = expand('%:p')
+		if (name == expand('%:t'))
+			let path = expand('%:p')
 		else
-			let l:path = getcwd()
+			let path = getcwd()
 		endif
 
 	else
 
-		let l:name = fnamemodify(getcwd(), ":p:h:t")
-		let l:path = getcwd()
+		let name = fnamemodify(getcwd(), ':p:h:t')
+		let path = getcwd()
 
 	endif
 
-	for l:p in l:projekts
-		if l:p.name == l:name || l:p.path == l:path
+	for p in projekts
+		if p.name == name || p.path == path
 			echo 'projekt already exists'
 			return -1
 		endif
 	endfor
 
-	let l:proj = {
+	let proj = {
 		\ 'sign': '+',
-		\ 'name': l:name,
-		\ 'path': l:path,
+		\ 'name': name,
+		\ 'path': path,
 	\ }
 
-	let l:format = s:format(l:proj)
+	let format = s:format(proj)
 
-	if confirm('> add ' . l:format . '?', "&yes\n&no") == 1
+	if confirm('> add ' . format . '?', "&yes\n&no") == 1
 
-		if s:write(l:projekts + [ l:proj ]) != -1
+		if s:write(projekts + [ proj ]) != -1
 
 			redraw
-			echo l:format . ' added'
+			echo format . ' added'
 
 			return 0
 
@@ -135,9 +135,9 @@ endfunc
 
 func! projekt#remove(key)
 
-	let l:projekts = s:get()
+	let projekts = s:get()
 
-	if empty(l:projekts)
+	if empty(projekts)
 
 		echo 'no projekts found'
 
@@ -145,11 +145,11 @@ func! projekt#remove(key)
 
 	endif
 
-	if exists('a:key') && a:key != ''
+	if exists('a:key') && a:key !=# ''
 
-		let l:proj = s:search(l:projekts, a:key)
+		let proj = s:search(projekts, a:key)
 
-		if type(l:proj) == 0 && l:proj == -1
+		if type(proj) == 0 && proj == -1
 
 			echo 'no projekt to remove'
 
@@ -161,15 +161,15 @@ func! projekt#remove(key)
 
 		if exists('g:projekt_current')
 
-			let l:index = index(l:projekts, g:projekt_current)
+			let index = index(projekts, g:projekt_current)
 
-			if l:index != -1
-				let l:proj = l:projekts[l:index]
+			if index != -1
+				let proj = projekts[index]
 			endif
 
 		endif
 
-		if !exists('l:proj')
+		if !exists('proj')
 
 			echo 'no projekt to remove'
 
@@ -179,17 +179,17 @@ func! projekt#remove(key)
 
 	end
 
-	let l:format = s:format(l:proj)
+	let format = s:format(proj)
 
-	if confirm('> remove ' . l:format . '?', "&yes\n&no") == 1
+	if confirm('> remove ' . format . '?', "&yes\n&no") == 1
 
-		let l:projekts = filter(l:projekts, 'v:val != l:proj')
+		let projekts = filter(projekts, 'v:val != proj')
 
-		if s:write(l:projekts) != -1
+		if s:write(projekts) != -1
 
 			redraw
-			let l:format = s:format(l:proj)
-			echo l:format . ' removed'
+			let format = s:format(proj)
+			echo format . ' removed'
 
 			return 0
 
@@ -211,9 +211,9 @@ endfunc
 
 func! projekt#star(key)
 
-	let l:projekts = s:get()
+	let projekts = s:get()
 
-	if empty(l:projekts)
+	if empty(projekts)
 
 		echo 'no projekts found'
 
@@ -221,11 +221,11 @@ func! projekt#star(key)
 
 	endif
 
-	if exists('a:key') && a:key != ''
+	if exists('a:key') && a:key !=# ''
 
-		let l:proj = s:search(l:projekts, a:key)
+		let proj = s:search(projekts, a:key)
 
-		if type(l:proj) == 0 && l:proj == -1
+		if type(proj) == 0 && proj == -1
 
 			echo 'no projekt to star'
 
@@ -237,15 +237,15 @@ func! projekt#star(key)
 
 		if exists('g:projekt_current')
 
-			let l:index = index(l:projekts, g:projekt_current)
+			let index = index(projekts, g:projekt_current)
 
-			if l:index != -1
-				let l:proj = l:projekts[l:index]
+			if index != -1
+				let proj = projekts[index]
 			endif
 
 		endif
 
-		if !exists('l:proj')
+		if !exists('proj')
 
 			echo 'no projekt to star'
 
@@ -255,21 +255,21 @@ func! projekt#star(key)
 
 	end
 
-	let l:format = s:format(l:proj)
+	let format = s:format(proj)
 
-	if confirm('> star ' . l:format . '?', "&yes\n&no") == 1
+	if confirm('> star ' . format . '?', "&yes\n&no") == 1
 
-		for l:p in l:projekts
-			let l:p.sign = '+'
+		for p in projekts
+			let p.sign = '+'
 		endfor
 
-		let l:proj.sign = '*'
+		let proj.sign = '*'
 
-		if s:write(l:projekts) != -1
+		if s:write(projekts) != -1
 
 			redraw
-			let l:format = s:format(l:proj)
-			echo l:format . ' starred'
+			let format = s:format(proj)
+			echo format . ' starred'
 
 			return 0
 
@@ -291,9 +291,9 @@ endfunc
 
 func! projekt#list()
 
-	let l:projekts = s:get()
+	let projekts = s:get()
 
-	if empty(l:projekts)
+	if empty(projekts)
 
 		echo 'no projekts found'
 
@@ -301,8 +301,8 @@ func! projekt#list()
 
 	endif
 
-	for l:p in l:projekts
-		echo s:format(l:p)
+	for p in projekts
+		echo s:format(p)
 	endfor
 
 endfunc
@@ -339,9 +339,9 @@ endfunc
 
 func! projekt#jump(pattern)
 
-	let l:projekts = s:get()
+	let projekts = s:get()
 
-	if empty(l:projekts)
+	if empty(projekts)
 
 		echo 'no projekts found'
 
@@ -349,27 +349,27 @@ func! projekt#jump(pattern)
 
 	endif
 
-	if a:pattern == '' || !exists('a:pattern')
+	if a:pattern ==# '' || !exists('a:pattern')
 
-		let l:proj = s:search_starred(l:projekts)
+		let proj = s:search_starred(projekts)
 
-		if type(l:proj) == 0 && l:proj == -1
-			let l:proj = l:projekts[0]
+		if type(proj) == 0 && proj == -1
+			let proj = projekts[0]
 		endif
 
-	elseif a:pattern == '*'
+	elseif a:pattern ==# '*'
 
-		let l:proj = s:search_starred(l:projekts)
+		let proj = s:search_starred(projekts)
 
 	else
 
-		let l:proj = s:search(l:projekts, a:pattern)
+		let proj = s:search(projekts, a:pattern)
 
 	endif
 
-	if type(l:proj) == 4
+	if type(proj) == 4
 
-		return projekt#switch(l:proj)
+		return projekt#switch(proj)
 
 	else
 

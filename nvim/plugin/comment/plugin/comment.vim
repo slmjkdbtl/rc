@@ -54,7 +54,7 @@ augroup CommentLeads
 	autocmd!
 
 	for [ key, val ] in items(g:commentleads)
-		exec "autocmd FileType " . key . " let b:commentlead = '" . val . "'"
+		exec 'autocmd FileType ' . key . " let b:commentlead = '" . val . "'"
 	endfor
 
 augroup END

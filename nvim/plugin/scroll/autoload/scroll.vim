@@ -9,9 +9,9 @@ func! scroll#scroll(dist)
 		let start = reltime()
 
 		if a:dist < 0
-			exec "normal! k"
+			exec 'normal! k'
 		else
-			exec "normal! j"
+			exec 'normal! j'
 		endif
 
 		redraw
@@ -21,7 +21,7 @@ func! scroll#scroll(dist)
 		let snooze = float2nr(g:scroll_duration - dt)
 
 		if snooze > 0
-			exec "sleep " . snooze . "m"
+			exec 'sleep ' . snooze . 'm'
 		endif
 
 	endfor

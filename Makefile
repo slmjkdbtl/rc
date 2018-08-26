@@ -11,7 +11,7 @@ conf:
 
 	echo "+ linking"
 
-	$(foreach f, nvim fish mpv scripts, \
+	$(foreach f, nvim fish mpv hammerspoon scripts, \
 		echo "  - $(f) -> $(CONFIG)/$(f)"; \
 		ln -sf $(realpath $(f)) $(CONFIG); \
 	)

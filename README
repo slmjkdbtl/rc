@@ -11,15 +11,20 @@
 		# shell
 		https://fishshell.com/
 
+	- iterm
+
+		# workspace
+		https://iterm2.com/
+
 	- mpv
 
 		# media player
 		https://mpv.io/
 
-	- iterm
+	- hammerspoon
 
-		# workspace
-		https://iterm2.com/
+		# macos automation
+		http://www.hammerspoon.org/
 
 	- proggy
 

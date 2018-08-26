@@ -4,18 +4,18 @@ let s:dir = resolve(expand('<sfile>:p:h:h'))
 
 func! utils#rename(name)
 
-	let l:file = expand('%')
-	let l:name = expand('%:t')
-	let l:dir = expand('%:h')
+	let file = expand('%')
+	let name = expand('%:t')
+	let dir = expand('%:h')
 
-	if a:name == '' || a:name =~ '\s'
+	if a:name ==# '' || a:name =~# '\s'
 		echo 'name no good'
 	end
 
-	if confirm('> rename ' . l:name . ' to ' . a:name . '?' , "&yes\n&no") == 1
+	if confirm('> rename ' . name . ' to ' . a:name . '?' , "&yes\n&no") == 1
 
-		silent! exec 'saveas ' . l:dir . '/' . a:name
-		call delete(l:file)
+		silent! exec 'saveas ' . dir . '/' . a:name
+		call delete(file)
 
 	end
 
@@ -23,12 +23,12 @@ endfunc
 
 func! utils#delete()
 
-	let l:name = expand('%:t')
-	let l:file = expand('%')
+	let name = expand('%:t')
+	let file = expand('%')
 
-	if confirm('> delete ' . l:name . '?', "&yes\n&no") == 1
+	if confirm('> delete ' . name . '?', "&yes\n&no") == 1
 
-		call delete(l:file)
+		call delete(file)
 		bdelete!
 
 	end
@@ -38,7 +38,7 @@ endfunc
 func! utils#close()
 
 	if confirm('> close ' . bufname('%') .'?', "&yes\n&no") == 1
-		if bufname('%') == ''
+		if bufname('%') ==# ''
 			q
 		else
 			try
@@ -53,16 +53,16 @@ endfunc
 
 func! utils#copy(name)
 
-	let l:file = expand('%')
-	let l:name = expand('%:t')
-	let l:dir = expand('%:h')
+	let file = expand('%')
+	let name = expand('%:t')
+	let dir = expand('%:h')
 
-	if a:name == '' || a:name =~ '\s' || a:name == l:file
+	if a:name ==# '' || a:name =~# '\s' || a:name ==# file
 		echo 'name no good'
 	endif
 
 	if confirm('> copy to ' . a:name . '?' , "&yes\n&no") == 1
-		silent! exec 'saveas ' . l:dir . '/' . a:name
+		silent! exec 'saveas ' . dir . '/' . a:name
 	endif
 
 endfunc
@@ -79,10 +79,10 @@ func! utils#recfind(wd, file)
 
 	if !filereadable(a:wd . '/' . a:file)
 
-		let l:pd = fnamemodify(a:wd, ':h')
+		let pd = fnamemodify(a:wd, ':h')
 
-		if l:pd != '.'
-			return utils#recfind(l:pd, a:file)
+		if pd !=# '.'
+			return utils#recfind(pd, a:file)
 		endif
 
 	else
@@ -95,14 +95,14 @@ endfunc
 
 func! utils#make(target)
 
-	let l:cwd = getcwd()
-	let l:mdir = utils#recfind(l:cwd, 'Makefile')
+	let cwd = getcwd()
+	let mdir = utils#recfind(cwd, 'Makefile')
 
-	if isdirectory(l:mdir)
+	if isdirectory(mdir)
 
-		exec 'lcd ' . l:mdir
+		exec 'lcd ' . mdir
 		exec '!make ' . a:target
-		exec 'lcd ' . l:cwd
+		exec 'lcd ' . cwd
 
 	endif
 
@@ -110,7 +110,7 @@ endfunc
 
 func! utils#syncheck()
 
-	if !exists("*synstack")
+	if !exists('*synstack')
 		return
 	endif
 
@@ -126,10 +126,10 @@ endfunc
 
 func! s:call_applescript(name, arg)
 
-	let l:fname = s:dir . '/scripts/' . a:name . '.scpt'
+	let fname = s:dir . '/scripts/' . a:name . '.scpt'
 
-	if (filereadable(l:fname))
-		return system('osascript ' . l:fname . ' ' . a:arg)
+	if (filereadable(fname))
+		return system('osascript ' . fname . ' ' . a:arg)
 	endif
 
 	return -1

@@ -2,22 +2,13 @@
 
 func! s:get_tab_title(bufn)
 
-	let l:name = bufname(a:bufn)
-	let l:ft = getbufvar(a:bufn, '&ft')
-	let l:text = ''
+	let text = fnamemodify(bufname(a:bufn), ':t')
 
-	if l:ft ==# 'browser'
-		let l:text = 'browser'
-" 		let l:text = fnamemodify(l:name, ':p:h:t')
-	else
-		let l:text = fnamemodify(l:name, ':t')
+	if text ==# ''
+		let text = '*'
 	endif
 
-	if l:text == ''
-		let l:text = '*'
-	endif
-
-	return l:text
+	return text
 
 endfunc
 
@@ -33,76 +24,84 @@ endfunc
 
 func! s:get_status_mode(bufn)
 
-	let l:text = ''
-	let l:mode = mode(a:bufn)
+	let text = ''
+	let mode = mode(a:bufn)
 
-	if l:mode ==# 'n'
+	if mode ==# 'n'
 
-		let l:text .= '%#StatusModeNormal#'
-		let l:text .= ' NORMAL '
+		let text .= '%#StatusModeNormal#'
+		let text .= ' NORMAL '
 
-	elseif l:mode ==# 'i'
+	elseif mode ==# 'i'
 
-		let l:text .= '%#StatusModeInsert#'
-		let l:text .= ' INSERT '
+		let text .= '%#StatusModeInsert#'
+		let text .= ' INSERT '
 
-	elseif l:mode ==? 'v'
+	elseif mode ==? 'v'
 
-		let l:text .= '%#StatusModeVisual#'
-		let l:text .= ' VISUAL '
+		let text .= '%#StatusModeVisual#'
+		let text .= ' VISUAL '
 
-	elseif l:mode ==# 'CTRL-V'
+	elseif mode ==# 'CTRL-V'
 
-		let l:text .= '%#StatusModeVisual#'
-		let l:text .= ' V-BLOCK '
+		let text .= '%#StatusModeVisual#'
+		let text .= ' V-BLOCK '
 
-	elseif l:mode ==# 'c'
+	elseif mode ==# 'c'
 
-		let l:text .= '%#StatusModeCommand#'
-		let l:text .= ' COMMAND '
+		let text .= '%#StatusModeCommand#'
+		let text .= ' COMMAND '
 
-	elseif l:mode ==# 't'
+	elseif mode ==# 't'
 
-		let l:text .= '%#StatusModeTerminal#'
-		let l:text .= ' TERMINAL '
+		let text .= '%#StatusModeTerminal#'
+		let text .= ' TERMINAL '
 	else
 
-		let l:text .= l:mode
+		let text .= mode
 
 	endif
 
-	let l:text .= '%#StatusLine#'
+	let text .= '%#StatusLine#'
 
-	return l:text
+	return text
 
 endfunc
 
 func! s:get_status_path(bufn)
 
-	let l:name = bufname(a:bufn)
-	let l:ft = getbufvar(a:bufn, '&ft')
-	let l:text = ''
-	let l:text .= '%#StatusLine#'
+	let name = bufname(a:bufn)
+	let ft = getbufvar(a:bufn, '&ft')
+	let text = ''
+	let text .= '%#StatusLine#'
 
-	if mode() == 't'
+	if mode() ==# 't'
 
-		let l:text = ''
+		let text = ''
 
 	else
 
-		if l:ft ==# 'vimfiler'
-			let l:text = fnamemodify(l:name, ':p:h')
-		elseif l:ft ==# 'ctrlp'
-			let l:text = 'searching...'
+		if ft ==# 'ctrlp'
+
+			let text = 'searching...'
+
 		else
-			let l:text = fnamemodify(l:name, ':p')
+
+			let path = fnamemodify(name, ':p')
+
+			if filereadable(path)
+				let text = path
+			else
+				let text = name
+			endif
+
 		endif
 
-		let l:text = substitute(l:text, '/Users/\w*', '~', '')
+		let text = substitute(text, '/Users/\w*', '~', '')
 
 	end
 
-	return l:text
+	return text
 
 endfunc
 
@@ -118,16 +117,16 @@ endfunc
 
 func! s:get_status_filetype(bufn)
 
-	let l:ft = getbufvar(a:bufn, '&ft')
-	let l:text = ''
+	let ft = getbufvar(a:bufn, '&ft')
+	let text = ''
 
-	if l:ft == ''
-		let l:text .= '[*]'
+	if ft ==# ''
+		let text .= '[*]'
 	else
-		let l:text .= '[' . l:ft . ']'
+		let text .= '[' . ft . ']'
 	endif
 
-	return '%#StatusLine#' . l:text
+	return '%#StatusLine#' . text
 
 endfunc
 
@@ -139,64 +138,64 @@ endfunc
 
 func! line#get_title()
 
-	let l:bufn = tabpagebuflist(tabpagenr())[0]
-	let l:name = bufname(l:bufn)
-	let l:ft = getbufvar(l:bufn, '&ft')
-	let l:text = ''
+	let bufn = tabpagebuflist(tabpagenr())[0]
+	let name = bufname(bufn)
+	let ft = getbufvar(bufn, '&ft')
+	let text = ''
 
-	if l:ft ==# 'vimfiler'
-		let l:text = fnamemodify(l:name, ':p:h:t')
+	if ft ==# 'vimfiler'
+		let text = fnamemodify(name, ':p:h:t')
 	else
-		let l:text = fnamemodify(l:name, ':t')
+		let text = fnamemodify(name, ':t')
 	endif
 
-	return l:text
+	return text
 
 endfunc
 
 func! line#get_tab()
 
-	let l:line = ''
+	let line = ''
 
-	for l:i in range(tabpagenr('$'))
+	for i in range(tabpagenr('$'))
 
-		let l:bufn = tabpagebuflist(l:i + 1)[0]
-		let l:bufname = bufname(l:bufn)
+		let bufn = tabpagebuflist(i + 1)[0]
+		let bufname = bufname(bufn)
 
-		if l:i + 1 == tabpagenr()
-			let l:line .= '%#TabLineSel#'
+		if i + 1 == tabpagenr()
+			let line .= '%#TabLineSel#'
 		else
-			let l:line .= '%#TabLine#'
+			let line .= '%#TabLine#'
 		endif
 
-		let l:line .= ' '
-		let l:line .= s:get_tab_title(l:bufn)
-		let l:line .= s:get_tab_modified(l:bufn)
-		let l:line .= ' '
+		let line .= ' '
+		let line .= s:get_tab_title(bufn)
+		let line .= s:get_tab_modified(bufn)
+		let line .= ' '
 
 	endfor
 
-	let l:line .= '%#TabLineFill#'
+	let line .= '%#TabLineFill#'
 
-	return l:line
+	return line
 
 endfunc
 
 func! line#get_status()
 
-	let l:line = ''
-	let l:line .= s:get_status_mode('%')
-	let l:line .= ' '
-	let l:line .= s:get_status_path('%')
-	let l:line .= ' '
-	let l:line .= s:get_status_modified('%')
+	let line = ''
+	let line .= s:get_status_mode('%')
+	let line .= ' '
+	let line .= s:get_status_path('%')
+	let line .= ' '
+	let line .= s:get_status_modified('%')
 
-	let l:line .= '%='
+	let line .= '%='
 
-	let l:line .= s:get_status_filetype('%')
-	let l:line .= ' '
-	let l:line .= s:get_status_curpos('%')
+	let line .= s:get_status_filetype('%')
+	let line .= ' '
+	let line .= s:get_status_curpos('%')
 
-	return l:line
+	return line
 
 endfunc

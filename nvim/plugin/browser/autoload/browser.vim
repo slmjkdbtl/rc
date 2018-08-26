@@ -42,7 +42,7 @@ func! s:render()
 
 		let line = b:listing[i]
 
-		if line == '..'
+		if line ==# '..'
 			let displayline = '..'
 		elseif isdirectory(line)
 			let displayline = '+ ' . fnamemodify(line, ':t')
@@ -77,8 +77,6 @@ endfunc
 
 func! s:to_item(item)
 
-	echom a:item
-
 	for i in range(len(b:listing))
 
 		if b:listing[i] == a:item
@@ -92,7 +90,9 @@ endfunc
 func! s:refresh()
 
 	let b:listing = s:get_listing()
+	let name = fnamemodify(getcwd(), ':t')
 
+	exec 'file ' . name
 	setlocal modifiable
 	call s:render()
 	setlocal nomodifiable
@@ -125,7 +125,7 @@ endfunc
 
 func! browser#close()
 
-	bd
+	bw
 
 endfunc
 

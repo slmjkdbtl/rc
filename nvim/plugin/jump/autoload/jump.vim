@@ -7,9 +7,9 @@ endfunc
 func! s:jump(action)
 
 	if a:action < 0
-		let flag = "b"
+		let flag = 'b'
 	else
-		let flag = ""
+		let flag = ''
 	endif
 
 	if !exists('b:jump_mark')

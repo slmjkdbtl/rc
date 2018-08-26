@@ -2,16 +2,16 @@
 
 func! search#escape(text)
 
-	let l:text = a:text
-	let l:text = substitute(l:text, '\~', '\\~', 'g')
-	let l:text = substitute(l:text, '\[', '\\[', 'g')
-	let l:text = substitute(l:text, '\.', '\\.', 'g')
-	let l:text = substitute(l:text, '\$', '\\$', 'g')
-	let l:text = substitute(l:text, '\/', '\\/', 'g')
-	let l:text = substitute(l:text, '\*', '\\*', 'g')
-	let l:text = substitute(l:text, '\ ', '\\s', 'g')
+	let text = a:text
+	let text = substitute(text, '\~', '\\~', 'g')
+	let text = substitute(text, '\[', '\\[', 'g')
+	let text = substitute(text, '\.', '\\.', 'g')
+	let text = substitute(text, '\$', '\\$', 'g')
+	let text = substitute(text, '\/', '\\/', 'g')
+	let text = substitute(text, '\*', '\\*', 'g')
+	let text = substitute(text, '\ ', '\\s', 'g')
 
-	return l:text
+	return text
 
 endfunc
 

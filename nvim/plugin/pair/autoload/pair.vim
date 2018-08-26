@@ -2,17 +2,17 @@
 
 func! pair#pair(ch1, ch2)
 
-	let l:line = getline('.')
-	let l:pos = col('.') - 1
+	let line = getline('.')
+	let pos = col('.') - 1
 
-	if a:ch1 == "'"
-		if l:line[l:pos - 1] =~ '\w'
+	if a:ch1 ==# "'"
+		if line[pos - 1] =~# '\w'
 			return a:ch1
 		endif
 	endif
 
-	if a:ch1 == '('
-		if l:line[l:pos - 1] =~ '\w' && l:line[l:pos] =~ '\w'
+	if a:ch1 ==# '('
+		if line[pos - 1] =~# '\w' && line[pos] =~# '\w'
 			return a:ch1
 		endif
 	endif
@@ -27,11 +27,11 @@ endfunc
 
 func! pair#del()
 
-	let l:line = getline('.')
-	let l:pos = col('.') - 1
+	let line = getline('.')
+	let pos = col('.') - 1
 
-	for l:w in g:pair_wrappers
-		if l:line[l:pos - 1 : l:pos] == l:w[0] . l:w[1]
+	for w in g:pair_wrappers
+		if line[pos - 1 : pos] == w[0] . w[1]
 			return "\<backspace>\<del>"
 		endif
 	endfor
@@ -42,12 +42,12 @@ endfunc
 
 func! pair#bind()
 
-	for l:p in g:pair_wrappers
+	for p in g:pair_wrappers
 
-		let l:ech1 = substitute(l:p[0], "'", "''", 'g')
-		let l:ech2 = substitute(l:p[1], "'", "''", 'g')
+		let ech1 = substitute(p[0], "'", "''", 'g')
+		let ech2 = substitute(p[1], "'", "''", 'g')
 
-		exec 'inoremap <silent> ' . p[0] . " <c-r>=pair#pair('" . l:ech1 . "', '" . l:ech2 . "')<cr>"
+		exec 'inoremap <silent> ' . p[0] . " <c-r>=pair#pair('" . ech1 . "', '" . ech2 . "')<cr>"
 		exec 'vnoremap <silent> ' . p[0] . ' <esc>`<i' . p[0] . '<esc>`>a<right>' . p[1] . '<esc>'
 
 	endfor
