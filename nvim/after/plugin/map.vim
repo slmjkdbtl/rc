@@ -32,6 +32,7 @@ noremap <m-space> :
 noremap . .
 nnoremap ! :!
 nnoremap w :w<cr>
+noremap c :redraw!<cr>
 noremap <silent> <esc> <esc>:noh<cr>
 inoremap <silent> <esc> <esc>
 tnoremap <esc> <c-\><c-n>
@@ -78,10 +79,10 @@ else
 
 endif
 
-" buffers
-noremap ` <c-^>
-noremap <silent> - :bp<cr>
-noremap <silent> = :bn<cr>
+" buffer
+noremap <silent> ` <c-^>
+noremap <silent> - :silent! bp<cr>
+noremap <silent> = :silent! bN<cr>
 
 " edit
 nnoremap > A
@@ -129,18 +130,7 @@ noremap <m-a> ggVG
 vnoremap <tab> >
 vnoremap <m-tab> <
 
-" tabs
-nnoremap <silent> <m-q> :tabp<cr>
-nnoremap <silent> <m-e> :tabn<cr>
-nnoremap <silent> <m-n> :tabe<cr>
-inoremap <silent> <m-q> <esc>:tabp<cr>
-inoremap <silent> <m-e> <esc>:tabn<cr>
-inoremap <silent> <m-n> <esc>:tabe<cr>
-tnoremap <silent> <m-q> <c-\><c-n>:tabp<cr>
-tnoremap <silent> <m-e> <c-\><c-n>:tabn<cr>
-tnoremap <silent> <m-n> <c-\><c-n>:tabe<cr>
-
-if has("gui_vimr")
+if has('gui_vimr')
 	for i in range(1, 9)
 		exec 'noremap <d-' . i . '> :tabn ' . i . '<cr>'
 	endfor

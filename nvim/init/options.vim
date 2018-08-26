@@ -30,7 +30,6 @@ set cursorline
 set hlsearch
 set clipboard=unnamed
 set guioptions+=!
-set showtabline=2
 set path+=**
 set scrolloff=3
 set signcolumn=yes

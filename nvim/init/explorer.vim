@@ -7,6 +7,7 @@ func! s:explore()
 	if isdirectory(l:name)
 
 		exec 'lcd ' . l:name
+		bw
 		Browser
 
 	elseif filereadable(l:name)

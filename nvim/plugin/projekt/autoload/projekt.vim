@@ -317,13 +317,12 @@ func! projekt#switch(proj)
 
 		silent! exec 'lcd ' . expand(a:proj.path)
 		silent! exec 'edit ' . expand(a:proj.path)
-		redraw
 		echo s:format(a:proj)
 		let g:projekt_current = a:proj
 
 	elseif (filereadable(a:proj.path))
 
-		silent! exec 'e ' . expand(a:proj.path)
+		silent! exec 'edit ' . expand(a:proj.path)
 		let g:projekt_current = a:proj
 
 	else
