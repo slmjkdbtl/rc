@@ -125,7 +125,9 @@ endfunc
 
 func! browser#close()
 
-	silent! bw
+	if &filetype ==# 'browser'
+		silent! bw
+	endif
 
 endfunc
 
@@ -156,6 +158,7 @@ func! browser#enter()
 
 	elseif filereadable(item)
 
+		call browser#close()
 		silent! exec 'edit ' . item
 
 	endif

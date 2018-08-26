@@ -11,7 +11,7 @@ func! s:hello()
 	endif
 
 	if !argc()
-		Yo
+		Star
 	endif
 
 endfunc
@@ -33,3 +33,4 @@ augroup Hello
 				\ :call s:bye()
 
 augroup END
+

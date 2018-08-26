@@ -71,7 +71,7 @@ endfunc
 func! s:get_status_path(bufn)
 
 	let name = bufname(a:bufn)
-	let ft = getbufvar(a:bufn, '&ft')
+	let ft = getbufvar(a:bufn, '&filetype')
 	let text = ''
 	let text .= '%#StatusLine#'
 
@@ -121,7 +121,7 @@ endfunc
 
 func! s:get_status_filetype(bufn)
 
-	let ft = getbufvar(a:bufn, '&ft')
+	let ft = getbufvar(a:bufn, '&filetype')
 	let text = ''
 
 	if ft ==# ''
@@ -144,14 +144,8 @@ func! line#get_title()
 
 	let bufn = tabpagebuflist(tabpagenr())[0]
 	let name = bufname(bufn)
-	let ft = getbufvar(bufn, '&ft')
-	let text = ''
-
-	if ft ==# 'vimfiler'
-		let text = fnamemodify(name, ':p:h:t')
-	else
-		let text = fnamemodify(name, ':t')
-	endif
+	let ft = getbufvar(bufn, '&filetype')
+	let text = fnamemodify(name, ':t')
 
 	return text
 

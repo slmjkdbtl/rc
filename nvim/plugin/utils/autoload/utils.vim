@@ -82,6 +82,22 @@ func! utils#write()
 
 endfunc
 
+func! utils#kill_hidden()
+
+	let tpbl = []
+
+	call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+
+	let bufs = filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+
+	for b in bufs
+		silent execute 'bwipeout' b
+	endfor
+
+	echo 'Cleared ' . len(bufs) . ' buffers'
+
+endfunc
+
 func! utils#recfind(wd, file)
 
 	if !filereadable(a:wd . '/' . a:file)

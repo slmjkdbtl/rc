@@ -18,6 +18,9 @@ command! -nargs=0 Close
 command! -nargs=0 Write
 			\ call utils#write()
 
+command! -nargs=0 KillHidden
+			\ call utils#kill_hidden()
+
 command! -nargs=? Make
 			\ call utils#make(<q-args>)
 

@@ -28,7 +28,7 @@ set wildignorecase
 set ignorecase
 set cursorline
 set hlsearch
-set clipboard=unnamed
+set showtabline=2
 set guioptions+=!
 set path+=**
 set scrolloff=3
