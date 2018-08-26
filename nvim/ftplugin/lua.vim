@@ -1,5 +1,5 @@
 " wengwengweng
 
-iabbrev <buffer> function function<space>end<left><left><left><left>
-iabbrev <buffer> do doend<left><left><left>
-iabbrev <buffer> then thenend<left><left><left>
+inoreabbrev <buffer> function function<space>end<left><left><left><left>
+inoreabbrev <buffer> do doend<left><left><left>
+inoreabbrev <buffer> then thenend<left><left><left>

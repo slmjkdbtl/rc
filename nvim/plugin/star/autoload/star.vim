@@ -51,7 +51,17 @@ func! star#shine()
 	setlocal nobuflisted
 	call star#draw(0)
 
-	let b:timer = timer_start(100, 'star#draw', {'repeat': -1})
+	let b:timer = timer_start(96, 'star#draw', {
+				\ 'repeat': -1
+				\ })
+
+	augroup Star
+
+		autocmd!
+		autocmd BufLeave,BufHidden,BufUnload *
+					\ call star#leave()
+
+	augroup END
 
 endfunc
 

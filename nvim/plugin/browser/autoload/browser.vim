@@ -87,7 +87,20 @@ func! s:to_item(item)
 
 endfunc
 
-func! s:refresh()
+func! s:bind()
+
+	noremap <buffer><silent> <return> :call browser#enter()<cr>
+	noremap <buffer><silent> <bs> :call browser#back()<cr>
+	noremap <buffer><silent> <tab> :call browser#close()<cr>
+	noremap <buffer><silent> <space> :call browser#expand()<cr>
+	noremap <buffer><silent> y :call browser#copy()<cr>
+	noremap <buffer><silent> r :call browser#refresh()<cr>
+	noremap <buffer><silent> j j
+	noremap <buffer><silent> k k
+
+endfunc
+
+func! browser#refresh()
 
 	let b:listing = s:get_listing()
 	let name = fnamemodify(getcwd(), ':t')
@@ -101,24 +114,12 @@ func! s:refresh()
 
 endfunc
 
-func! s:bind()
-
-	noremap <buffer><silent> <return> :call browser#enter()<cr>
-	noremap <buffer><silent> <bs> :call browser#back()<cr>
-	noremap <buffer><silent> <tab> :call browser#close()<cr>
-	noremap <buffer><silent> <space> :call browser#expand()<cr>
-	noremap <buffer><silent> y :call browser#copy()<cr>
-	noremap <buffer><silent> j j
-	noremap <buffer><silent> k k
-
-endfunc
-
 func! browser#back()
 
 	let prev_dir = getcwd()
 
 	lcd ..
-	call s:refresh()
+	call browser#refresh()
 	call s:to_item(prev_dir)
 
 endfunc
@@ -126,7 +127,19 @@ endfunc
 func! browser#close()
 
 	if &filetype ==# 'browser'
-		silent! bw
+
+		for b in getbufinfo()
+
+			if b.listed
+
+				silent! bw
+
+				return
+
+			endif
+
+		endfor
+
 	endif
 
 endfunc
@@ -154,7 +167,7 @@ func! browser#enter()
 	if isdirectory(item)
 
 		silent! exec 'lcd ' . item
-		call s:refresh()
+		call browser#refresh()
 
 	elseif filereadable(item)
 
@@ -194,7 +207,7 @@ func! browser#open()
 	setlocal bufhidden=wipe
 	setlocal nobuflisted
 	exec 'source ' . fnameescape(s:srcdir . '/syntax/browser.vim')
-	call s:refresh()
+	call browser#refresh()
 	call s:bind()
 	call s:to_item(current_buffer)
 

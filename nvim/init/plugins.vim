@@ -28,6 +28,9 @@ let g:ale_sign_error = '>'
 let g:ale_sign_warning = '*'
 let g:ale_sign_info = '?'
 
+" polyglot
+let g:polyglot_disabled = [ 'coffee-script' ]
+
 " ctrlp
 if executable('fd')
 	let g:ctrlp_user_command = 'fd . -t f'

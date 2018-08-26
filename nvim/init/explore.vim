@@ -16,6 +16,8 @@ func! s:explore()
 
 	endif
 
+	silent! CleanBuf
+
 endfunc
 
 augroup Explore

@@ -82,19 +82,26 @@ func! utils#write()
 
 endfunc
 
-func! utils#kill_hidden()
+func! utils#clean_buf()
 
-	let tpbl = []
+	let n = 0
 
-	call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+	for b in getbufinfo()
 
-	let bufs = filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+		if !b.listed
 
-	for b in bufs
-		silent execute 'bwipeout' b
+			if !b.changed
+
+				silent! bw b.bufnr
+				let n += 1
+
+			endif
+
+		endif
+
 	endfor
 
-	echo 'Cleared ' . len(bufs) . ' buffers'
+	echo 'Cleared ' . n . ' buffers'
 
 endfunc
 
