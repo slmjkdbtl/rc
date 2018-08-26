@@ -156,7 +156,7 @@ call pair#bind()
 call search#bind()
 noremap <silent> <m-k> :Scroll -12<cr>
 noremap <silent> <m-j> :Scroll 12<cr>
-nnoremap <silent> <tab> :Filer<cr>
+nnoremap <silent> <tab> :Browser<cr>
 noremap <silent> <m-f> :CtrlP<cr>
 noremap <silent> <m-t> :CtrlPTag<cr>
 noremap <silent> <m-b> :CtrlPBuffer<cr>

@@ -6,8 +6,8 @@ func! s:get_tab_title(bufn)
 	let l:ft = getbufvar(a:bufn, '&ft')
 	let l:text = ''
 
-	if l:ft ==# 'filer'
-		let l:text = 'filer'
+	if l:ft ==# 'browser'
+		let l:text = 'browser'
 " 		let l:text = fnamemodify(l:name, ':p:h:t')
 	else
 		let l:text = fnamemodify(l:name, ':t')

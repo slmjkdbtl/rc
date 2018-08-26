@@ -35,14 +35,15 @@ func! s:oceanic()
 	hi! DiffDelete               guibg=none
 	hi! DiffChange               guibg=none
 	hi! Error                    guibg=#e66a74
+	hi! SpellBad                 gui=none guibg=none
+	hi! SpellCap                 gui=none guibg=none
+	hi! ErrorMsg                 guibg=none
+	hi! vimUserFunc              guibg=none
 	hi! StatusModeNormal         guibg=#7FA5A5 gui=bold
 	hi! StatusModeVisual         guibg=#7FA37F gui=bold
 	hi! StatusModeInsert         guibg=#CB9B9C gui=bold
 	hi! StatusModeCommand        guibg=#908cab gui=bold
 	hi! StatusModeTerminal       guibg=#7FA5A5 gui=bold
-	hi! SpellBad                 gui=none guibg=none
-	hi! SpellCap                 gui=none guibg=none
-	hi! ErrorMsg                 guibg=none
 	hi! ALEErrorSign             gui=none guibg=none
 	hi! ALEWarningSign           gui=none guibg=none
 	hi! ALEInfoSign              gui=none guibg=none

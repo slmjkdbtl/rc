@@ -33,7 +33,7 @@ if executable('fd')
 	let g:ctrlp_user_command = 'fd . -t f'
 endif
 
-let g:ctrlp_reuse_window = 'filer'
+let g:ctrlp_reuse_window = 'browser'
 let g:ctrlp_use_caching = 0
 
 let g:ctrlp_prompt_mappings = {
