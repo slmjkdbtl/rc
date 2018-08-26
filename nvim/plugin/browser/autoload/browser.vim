@@ -125,7 +125,7 @@ endfunc
 
 func! browser#close()
 
-	bw
+	silent! bw
 
 endfunc
 

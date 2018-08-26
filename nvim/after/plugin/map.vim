@@ -31,8 +31,7 @@ noremap : :
 noremap <m-space> :
 noremap . .
 nnoremap ! :!
-nnoremap w :w<cr>
-noremap c :redraw!<cr>
+noremap <silent> c :redraw!<cr>
 noremap <silent> <esc> <esc>:noh<cr>
 inoremap <silent> <esc> <esc>
 tnoremap <esc> <c-\><c-n>
@@ -81,8 +80,8 @@ endif
 
 " buffer
 noremap <silent> ` <c-^>
-noremap <silent> - :silent! bp<cr>
-noremap <silent> = :silent! bN<cr>
+noremap <silent> - :silent! bprev<cr>
+noremap <silent> = :silent! bnext<cr>
 
 " edit
 nnoremap > A
@@ -156,6 +155,7 @@ noremap <silent> / :Comment<cr>
 nnoremap <silent> <m-w> :Close<cr>
 nnoremap <silent> <m-[> :PrevMark<cr>
 nnoremap <silent> <m-]> :NextMark<cr>
-noremap b :Make<space>
+noremap <silent> w :Write<cr>
+noremap m :Make<space>
 noremap z :Projekt<space>
 

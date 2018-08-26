@@ -1,30 +1,11 @@
 " wengwengweng
 
-func! s:macvim()
-
-	set showmode
-	set laststatus=0
-	set guifont=Hack:h16
-	set nolist
-	set signcolumn=no
-	set macmeta
-	set background=light
-	colorscheme macvim
-	hi! LineNr guibg=MacTextBackgroundColor
-
-endfunc
-
 func! s:oceanic()
 
-	set noshowmode
-	set laststatus=2
-	set signcolumn=yes
-	set guifont=ProggyCleanTT:h24
-	exec 'set list lcs=tab:\|\ '
-	set background=dark
 	colorscheme OceanicNext
 	hi! Normal                   guibg=#282f3b
 	hi! LineNr                   guibg=none
+	hi! WildMenu                 gui=bold
 	hi! SignColumn               guibg=none
 	hi! EndOfBuffer              guibg=none
 	hi! TabLine                  gui=none
@@ -56,8 +37,6 @@ func! profile#switch(p)
 
 	if a:p ==# 'oceanic'
 		call s:oceanic()
-	elseif a:p ==# 'macvim'
-		call s:macvim()
 	endif
 
 endfunc

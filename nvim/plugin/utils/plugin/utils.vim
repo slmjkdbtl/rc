@@ -15,6 +15,9 @@ command! -nargs=1 Mkdir
 command! -nargs=0 Close
 			\ call utils#close()
 
+command! -nargs=0 Write
+			\ call utils#write()
+
 command! -nargs=? Make
 			\ call utils#make(<q-args>)
 

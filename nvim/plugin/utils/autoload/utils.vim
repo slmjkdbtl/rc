@@ -39,12 +39,12 @@ func! utils#close()
 
 	if confirm('> close ' . bufname('%') .'?', "&yes\n&no") == 1
 		if bufname('%') ==# ''
-			q
+			silent! q
 		else
 			try
-				bd
+				silent! bd
 			catch
-				q
+				silent! q
 			endtry
 		endif
 	end
@@ -72,6 +72,13 @@ func! utils#mkdir(name)
 	if confirm('> create ' . a:name . '?' , "&yes\n&no") == 1
 		silent! call mkdir(a:name)
 	endif
+
+endfunc
+
+func! utils#write()
+
+	:silent! w
+	echo "'" . bufname('%') . "' written"
 
 endfunc
 

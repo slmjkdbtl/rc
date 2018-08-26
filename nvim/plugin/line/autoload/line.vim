@@ -85,6 +85,10 @@ func! s:get_status_path(bufn)
 
 			let text = 'searching...'
 
+		elseif ft ==# 'browser'
+
+			let text = fnamemodify(name, ':p:h')
+
 		else
 
 			let path = fnamemodify(name, ':p')
