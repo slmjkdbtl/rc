@@ -1,6 +1,6 @@
 " wengwengweng
 
-func! search#escape(text)
+func! s:escape(text)
 
 	let text = a:text
 	let text = substitute(text, '\~', '\\~', 'g')
@@ -8,73 +8,171 @@ func! search#escape(text)
 	let text = substitute(text, '\.', '\\.', 'g')
 	let text = substitute(text, '\$', '\\$', 'g')
 	let text = substitute(text, '\/', '\\/', 'g')
-	let text = substitute(text, '\*', '\\*', 'g')
-	let text = substitute(text, '\ ', '\\s', 'g')
 
 	return text
 
 endfunc
 
-func! search#escapecopy()
+func! s:get_selected()
 
-	let @" = search#escape(@")
+	let [ ls, cs ] = getpos("'<")[1:2]
+	let [ le, ce ] = getpos("'>")[1:2]
 
-endfunc
+	if ls ==# le
 
-func! search#multiedit_replace()
-	let g:search_multiedit_mode = 1
-endfunc
+		let line = getline(ls)
+		let word = line[(cs - 1):(ce - 1)]
 
-func! search#multiedit_begin()
-	let g:search_multiedit_mode = 2
-endfunc
+		return word
 
-func! search#multiedit_end()
-	let g:search_multiedit_mode = 3
-endfunc
+	else
 
-func! search#multiedit_close()
-
-	normal! q
-
-	if g:search_multiedit_mode == 1
-
-		let @q = "n\<cr>" . @q
-		let g:search_multiedit_mode = 0
-
-	elseif g:search_multiedit_mode == 2
-
-		let @q = "n<" . @q
-		let g:search_multiedit_mode = 0
-
-	elseif g:search_multiedit_mode == 3
-
-		let @q = "n>" . @q
-		let g:search_multiedit_mode = 0
+		return ''
 
 	endif
 
 endfunc
 
-func! search#record()
+func! s:is_focused()
 
-	if g:search_multiedit_mode
-		call search#multiedit_close()
+	let pos = col('.')
+	let line = getline('.')
+
+	return line[(pos - 1) : (pos + len(b:word) - 2)] == b:word
+
+endfunc
+
+func! s:select()
+
+	if !exists('b:word')
+		return
+	endif
+
+	exec 'normal! v' . (len(b:word) - 1) . 'l'
+
+endfunc
+
+func! s:search(text)
+
+	let b:word = a:text
+
+	if b:word !=# ''
+		call search(s:escape(b:word))
+	endif
+
+endfunc
+
+func! s:edit_close()
+
+	if b:edit_mode ==# 1
+		let @q = "\<cr>" . @q
+	elseif b:edit_mode ==# 2
+		let @q = '<' . @q
+	elseif b:edit_mode ==# 3
+		let @q = '>' . @q
+	endif
+
+	let b:edit_mode = 0
+
+endfunc
+
+func! search#prompt()
+
+	let text = input('search: ')
+
+	call s:search(text)
+
+endfunc
+
+func! search#selected()
+
+	let text = s:get_selected()
+
+	if type(text) == 1 && text !=# ''
+		call s:search(text)
+	endif
+
+endfunc
+
+func! search#prev()
+
+	if !exists('b:word')
+		return
+	endif
+
+	call search(s:escape(b:word), 'b')
+
+endfunc
+
+func! search#next()
+
+	if !exists('b:word')
+		return
+	endif
+
+	call search(s:escape(b:word))
+
+endfunc
+
+func! search#toggle_record()
+
+	if b:edit_mode
+
+		normal! q
+		call s:edit_close()
+
 	else
+
 		normal! qq
+
+	endif
+
+endfunc
+
+func! search#edit_start(mode)
+
+	call search#selected()
+
+	if !exists('b:word')
+		return
+	endif
+
+	let b:edit_mode = a:mode
+
+	call s:select()
+	normal! qq
+
+	if b:edit_mode ==# 1
+		exec 'normal! s'
+	elseif b:edit_mode ==# 2
+		exec "normal! \<esc>`<i"
+	elseif b:edit_mode ==# 3
+		exec "normal! \<esc>`>a"
+	endif
+
+endfunc
+
+func! search#edit_apply()
+
+	if s:is_focused()
+
+		call s:select()
+		normal! @q
+
 	endif
 
 endfunc
 
 func! search#bind()
 
-	noremap n gn
-	vnoremap <silent> \ ""y:call search#escapecopy()<cr>/<c-r>"<cr>N:noh<cr>qq
-	vnoremap <silent> ? ""y:call search#escapecopy()<cr>/<c-r>"<cr>N
-	vnoremap <silent> <m-return> ""y:call search#escapecopy()<cr>/<c-r>"<cr>N:noh<cr>:call search#multiedit_replace()<cr>qqgns
-	vnoremap <silent> <m-<> ""y:call search#escapecopy()<cr>/<c-r>"<cr>N:noh<cr>:call search#multiedit_begin()<cr>qq`<i
-	vnoremap <silent> <m->> ""y:call search#escapecopy()<cr>/<c-r>"<cr>N:noh<cr>:call search#multiedit_end()<cr>qq`>a
-	noremap <silent> <m-.> @q
-	nnoremap <silent> \ :call search#record()<cr>
+	noremap ? :call search#prompt()<cr>
+	vnoremap <silent> ? :call search#selected()<cr>
+	noremap <silent> <m-;> :call search#prev()<cr>
+	noremap <silent> <m-'> :call search#next()<cr>
+	noremap <silent> \ :call search#toggle_record()<cr>
+	vnoremap <silent> <m-return> :call search#edit_start(1)<cr>a
+	vnoremap <silent> <m-<> :call search#edit_start(2)<cr>a
+	vnoremap <silent> <m->> :call search#edit_start(3)<cr>a
+	noremap <silent> <m-.> :call search#edit_apply()<cr>
 
 endfunc

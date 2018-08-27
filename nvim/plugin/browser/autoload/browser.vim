@@ -127,19 +127,7 @@ endfunc
 func! browser#close()
 
 	if &filetype ==# 'browser'
-
-		for b in getbufinfo()
-
-			if b.listed
-
-				silent! bw
-
-				return
-
-			endif
-
-		endfor
-
+		silent! bw
 	endif
 
 endfunc
@@ -202,7 +190,7 @@ func! browser#open()
 
 	let b:listing = []
 
-	setlocal filetype=browser
+	setfiletype browser
 	setlocal buftype=nofile
 	setlocal bufhidden=wipe
 	setlocal nobuflisted

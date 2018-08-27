@@ -138,6 +138,14 @@ func! utils#make(target)
 
 endfunc
 
+func! utils#get_bufs()
+
+	for b in getbufinfo()
+		echom b.name
+	endfor
+
+endfunc
+
 func! utils#syncheck()
 
 	if !exists('*synstack')

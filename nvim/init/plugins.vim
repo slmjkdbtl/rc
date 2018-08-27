@@ -31,7 +31,7 @@ let g:ale_sign_info = '?'
 
 " ctrlp
 if executable('fd')
-	let g:ctrlp_user_command = 'fd . -t f'
+	let g:ctrlp_user_command = 'fd .'
 endif
 
 let g:ctrlp_reuse_window = 'browser'

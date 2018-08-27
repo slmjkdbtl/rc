@@ -39,7 +39,7 @@ func! game#new(name)
 	setlocal bufhidden=wipe
 	setlocal nocursorline
 	setlocal nobuflisted
-	exec 'setlocal filetype=' . b:name
+	exec 'setfiletype ' . b:name
 	exec 'file ' . b:name
 
 	call game#draw(0)

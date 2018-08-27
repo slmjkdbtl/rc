@@ -42,11 +42,11 @@ endfunc
 func! star#shine()
 
 	enew
-	setlocal filetype=space
 	setlocal buftype=nofile
 	setlocal bufhidden=wipe
 	setlocal nocursorline
 	setlocal nobuflisted
+	setfiletype space
 	file space
 	call star#draw(0)
 

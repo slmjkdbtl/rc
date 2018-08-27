@@ -2,10 +2,10 @@
 
 func! trim#trim()
 
-	let l:save = winsaveview()
+	let save = winsaveview()
 
 	%s/\s\+$//e
-	call winrestview(l:save)
+	call winrestview(save)
 
 endfunc
 

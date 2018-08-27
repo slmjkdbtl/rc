@@ -113,11 +113,6 @@ vnoremap <silent> x "*d
 noremap <silent> d "_dd<esc>
 inoremap <silent> <m-p> <esc>"*pa
 
-" search
-nnoremap ? /
-noremap <silent> <m-;> :exec 'silent! normal! N'<cr>
-noremap <silent> <m-'> :exec 'silent! normal! n'<cr>
-
 " selection
 noremap v v
 noremap <m-v> <c-v>
