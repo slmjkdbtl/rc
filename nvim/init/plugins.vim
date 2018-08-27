@@ -6,6 +6,7 @@ Plug 'w0rp/ale'
 Plug 'mhinz/vim-signify'
 Plug 'mhartington/oceanic-next'
 Plug 'sheerun/vim-polyglot'
+Plug 'wilsaj/chuck.vim'
 call plug#end()
 
 " color
@@ -27,9 +28,6 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_error = '>'
 let g:ale_sign_warning = '*'
 let g:ale_sign_info = '?'
-
-" polyglot
-let g:polyglot_disabled = [ 'coffee-script' ]
 
 " ctrlp
 if executable('fd')
