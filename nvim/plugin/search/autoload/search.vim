@@ -13,7 +13,7 @@ func! s:escape(text)
 
 endfunc
 
-func! s:get_selected()
+func! s:get_selected() range
 
 	let [ ls, cs ] = getpos("'<")[1:2]
 	let [ le, ce ] = getpos("'>")[1:2]
@@ -35,29 +35,40 @@ endfunc
 
 func! s:is_focused()
 
+	if !exists('b:pattern')
+		return
+	endif
+
 	let pos = col('.')
 	let line = getline('.')
 
-	return line[(pos - 1) : (pos + len(b:word) - 2)] == b:word
+	return line[(pos - 1) : (pos + len(b:pattern) - 2)] =~# b:pattern
 
 endfunc
 
 func! s:select()
 
-	if !exists('b:word')
+	if !s:is_focused()
 		return
 	endif
 
-	exec 'normal! v' . (len(b:word) - 1) . 'l'
+	exec 'normal! v' . (len(b:pattern) - 1) . 'l'
 
 endfunc
 
 func! s:search(text)
 
-	let b:word = a:text
+	let b:pattern = a:text
 
-	if b:word !=# ''
-		call search(s:escape(b:word))
+	if b:pattern !=# ''
+
+		let result = search(s:escape(b:pattern))
+
+		if !result
+			redraw!
+			echo 'no result'
+		endif
+
 	endif
 
 endfunc
@@ -96,21 +107,21 @@ endfunc
 
 func! search#prev()
 
-	if !exists('b:word')
+	if !exists('b:pattern')
 		return
 	endif
 
-	call search(s:escape(b:word), 'b')
+	call search(s:escape(b:pattern), 'b')
 
 endfunc
 
 func! search#next()
 
-	if !exists('b:word')
+	if !exists('b:pattern')
 		return
 	endif
 
-	call search(s:escape(b:word))
+	call search(s:escape(b:pattern))
 
 endfunc
 
@@ -133,7 +144,7 @@ func! search#edit_start(mode)
 
 	call search#selected()
 
-	if !exists('b:word')
+	if !exists('b:pattern')
 		return
 	endif
 
@@ -158,6 +169,17 @@ func! search#edit_apply()
 
 		call s:select()
 		normal! @q
+
+	else
+
+		call search(b:pattern, 'w')
+
+		if s:is_focused()
+
+			call s:select()
+			normal! @q
+
+		endif
 
 	endif
 
