@@ -5,8 +5,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'w0rp/ale'
 Plug 'mhinz/vim-signify'
 Plug 'mhartington/oceanic-next'
-Plug 'sheerun/vim-polyglot'
-Plug 'wilsaj/chuck.vim'
 call plug#end()
 
 " color
@@ -35,7 +33,6 @@ if executable('fd')
 endif
 
 let g:ctrlp_reuse_window = 'browser'
-let g:ctrlp_use_caching = 0
 
 let g:ctrlp_prompt_mappings = {
 	\ 'PrtBS()':              ['<bs>'],
@@ -88,4 +85,9 @@ let g:loaded_spellfile_plugin = 1
 let g:loaded_gzip = 1
 let g:loaded_rrhelper = 1
 let g:loaded_logiPat = 1
+
+" custom plugins
+for p in glob(expand('<sfile>:p:h:h') . '/plugin/*', 0, 1)
+	exec 'set rtp^=' . p
+endfor
 

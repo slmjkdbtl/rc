@@ -14,7 +14,10 @@ func! utils#rename(name)
 
 	if confirm('> rename ' . name . ' to ' . a:name . '?' , "&yes\n&no") == 1
 
+		let oldbufname = bufname('%')
+
 		silent! exec 'saveas ' . dir . '/' . a:name
+		exec 'bw' . bufnr(oldbufname)
 		call delete(file)
 
 	end

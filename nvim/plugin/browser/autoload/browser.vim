@@ -1,7 +1,5 @@
 " wengwengweng
 
-let s:srcdir = expand('<sfile>:h:h:p')
-
 func! s:get_files()
 
 	let files = glob(getcwd() . '/*', 0, 1)
@@ -194,7 +192,6 @@ func! browser#open()
 	setlocal buftype=nofile
 	setlocal bufhidden=wipe
 	setlocal nobuflisted
-	exec 'source ' . fnameescape(s:srcdir . '/syntax/browser.vim')
 	call browser#refresh()
 	call s:bind()
 	call s:to_item(current_buffer)

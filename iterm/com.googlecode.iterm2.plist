@@ -34,6 +34,8 @@
 	<true/>
 	<key>CommandSelection</key>
 	<true/>
+	<key>ConservativeURLGuessing</key>
+	<true/>
 	<key>Control</key>
 	<integer>1</integer>
 	<key>CopyLastNewline</key>
@@ -3704,7 +3706,7 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>80 193 592 584 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>52 70 948 635 0 0 1280 777 </string>
+	<string>252 119 948 658 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>52 85 934 627 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -4032,13 +4034,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.2322496771812439</real>
+				<real>0.23137254901960785</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.23225310444831848</real>
+				<real>0.18431372549019609</real>
 				<key>Red Component</key>
-				<real>0.2322467565536499</real>
+				<real>0.15686274509803921</real>
 			</dict>
 			<key>Cursor Type</key>
 			<integer>2</integer>
@@ -4423,7 +4425,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-08-24T17:50:43Z</date>
+	<date>2018-08-27T22:53:59Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>SearchCommand</key>

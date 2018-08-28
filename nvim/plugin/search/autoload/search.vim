@@ -35,14 +35,14 @@ endfunc
 
 func! s:is_focused()
 
-	if !exists('b:pattern')
+	if !exists('b:search_pattern')
 		return
 	endif
 
 	let pos = col('.')
 	let line = getline('.')
 
-	return line[(pos - 1) : (pos + len(b:pattern) - 2)] =~# b:pattern
+	return line[(pos - 1) : (pos + len(b:search_pattern) - 2)] =~# b:search_pattern
 
 endfunc
 
@@ -52,21 +52,29 @@ func! s:select()
 		return
 	endif
 
-	exec 'normal! v' . (len(b:pattern) - 1) . 'l'
+	exec 'normal! v' . (len(b:search_pattern) - 1) . 'l'
 
 endfunc
 
 func! s:search(text)
 
-	let b:pattern = a:text
+	let b:search_pattern = a:text
 
-	if b:pattern !=# ''
+	if b:search_pattern !=# ''
 
-		let result = search(s:escape(b:pattern))
+		let result = search(s:escape(b:search_pattern))
 
 		if !result
-			redraw!
-			echo 'no result'
+
+			let result = search(s:escape(b:search_pattern), 'b')
+
+			if !result
+
+				redraw
+				echo 'no result'
+
+			endif
+
 		endif
 
 	endif
@@ -75,15 +83,15 @@ endfunc
 
 func! s:edit_close()
 
-	if b:edit_mode ==# 1
+	if b:search_edit_mode ==# 1
 		let @q = "\<cr>" . @q
-	elseif b:edit_mode ==# 2
+	elseif b:search_edit_mode ==# 2
 		let @q = '<' . @q
-	elseif b:edit_mode ==# 3
+	elseif b:search_edit_mode ==# 3
 		let @q = '>' . @q
 	endif
 
-	let b:edit_mode = 0
+	let b:search_edit_mode = 0
 
 endfunc
 
@@ -107,27 +115,31 @@ endfunc
 
 func! search#prev()
 
-	if !exists('b:pattern')
+	if !exists('b:search_pattern')
 		return
 	endif
 
-	call search(s:escape(b:pattern), 'b')
+	call search(s:escape(b:search_pattern), 'b')
+
+	let b:search_dir = -1
 
 endfunc
 
 func! search#next()
 
-	if !exists('b:pattern')
+	if !exists('b:search_pattern')
 		return
 	endif
 
-	call search(s:escape(b:pattern))
+	call search(s:escape(b:search_pattern))
+
+	let b:search_dir = 1
 
 endfunc
 
 func! search#toggle_record()
 
-	if b:edit_mode
+	if b:search_edit_mode
 
 		normal! q
 		call s:edit_close()
@@ -144,20 +156,20 @@ func! search#edit_start(mode)
 
 	call search#selected()
 
-	if !exists('b:pattern')
+	if !exists('b:search_pattern')
 		return
 	endif
 
-	let b:edit_mode = a:mode
+	let b:search_edit_mode = a:mode
 
 	call s:select()
 	normal! qq
 
-	if b:edit_mode ==# 1
+	if b:search_edit_mode ==# 1
 		exec 'normal! s'
-	elseif b:edit_mode ==# 2
+	elseif b:search_edit_mode ==# 2
 		exec "normal! \<esc>`<i"
-	elseif b:edit_mode ==# 3
+	elseif b:search_edit_mode ==# 3
 		exec "normal! \<esc>`>a"
 	endif
 
@@ -172,7 +184,13 @@ func! search#edit_apply()
 
 	else
 
-		call search(b:pattern, 'w')
+		if b:search_dir == -1
+			let flag = 'b'
+		else
+			let flag = ''
+		endif
+
+		call search(b:search_pattern, 'w' . flag)
 
 		if s:is_focused()
 
@@ -187,14 +205,15 @@ endfunc
 
 func! search#bind()
 
-	noremap ? :call search#prompt()<cr>
+	nnoremap ? :call search#prompt()<cr>
 	vnoremap <silent> ? :call search#selected()<cr>
-	noremap <silent> <m-;> :call search#prev()<cr>
-	noremap <silent> <m-'> :call search#next()<cr>
-	noremap <silent> \ :call search#toggle_record()<cr>
+	nnoremap <silent> <m-;> :call search#prev()<cr>
+	nnoremap <silent> <m-'> :call search#next()<cr>
+	nnoremap <silent> \ :call search#toggle_record()<cr>
 	vnoremap <silent> <m-return> :call search#edit_start(1)<cr>a
 	vnoremap <silent> <m-<> :call search#edit_start(2)<cr>a
 	vnoremap <silent> <m->> :call search#edit_start(3)<cr>a
-	noremap <silent> <m-.> :call search#edit_apply()<cr>
+	nnoremap <silent> <m-.> :call search#edit_apply()<cr>
 
 endfunc
+
