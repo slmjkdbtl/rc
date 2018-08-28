@@ -3,15 +3,8 @@
 func! s:get_comment()
 
 	let c = &commentstring
-	let l = len(c)
 
-	if c[(l - 2) : (l - 1)] ==# '%s'
-		return substitute(c, '%s', ' %s', '')
-	elseif c[0 : 1] ==# '%s'
-		return substitute(c, '%s', '%s ', '')
-	else
-		return substitute(c, '%s', ' %s ', '')
-	endif
+	return c
 
 endfunc
 

@@ -11,7 +11,7 @@ func! s:hello()
 	endif
 
 	if !argc()
-		Star
+		Space
 	endif
 
 endfunc

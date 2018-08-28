@@ -139,7 +139,7 @@ endfunc
 
 func! search#toggle_record()
 
-	if b:search_edit_mode
+	if exists('b:search_edit_mode') && b:search_edit_mode
 
 		normal! q
 		call s:edit_close()
@@ -177,6 +177,8 @@ endfunc
 
 func! search#edit_apply()
 
+	let save = winsaveview()
+
 	if s:is_focused()
 
 		call s:select()
@@ -200,6 +202,8 @@ func! search#edit_apply()
 		endif
 
 	endif
+
+	call winrestview(save)
 
 endfunc
 

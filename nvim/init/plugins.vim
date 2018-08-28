@@ -86,8 +86,3 @@ let g:loaded_gzip = 1
 let g:loaded_rrhelper = 1
 let g:loaded_logiPat = 1
 
-" custom plugins
-for p in glob(expand('<sfile>:p:h:h') . '/plugin/*', 0, 1)
-	exec 'set rtp^=' . p
-endfor
-

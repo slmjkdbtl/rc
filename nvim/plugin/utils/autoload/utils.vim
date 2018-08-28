@@ -41,14 +41,15 @@ endfunc
 func! utils#close()
 
 	if confirm('> close ' . bufname('%') .'?', "&yes\n&no") == 1
-		if bufname('%') ==# ''
+
+		try
+			silent! bd
+		catch
 			silent! q
-		else
-			try
-				silent! bd
-			catch
-				silent! q
-			endtry
+		endtry
+
+		if bufname('%') ==# ''
+			Space
 		endif
 	end
 

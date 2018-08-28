@@ -1,6 +1,6 @@
 " wengwengweng
 
-func! syntax#load(name, comment)
+func! syntax#set(name, comment)
 
 	exec 'setlocal filetype=' . a:name
 	exec 'setlocal syntax=' . a:name

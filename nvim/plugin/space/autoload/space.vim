@@ -1,12 +1,12 @@
 " wengwengweng
 
-func! star#leave()
+func! space#leave()
 
 	call timer_stop(b:timer)
 
 endfunc
 
-func! star#draw(timer)
+func! space#draw(timer)
 
 	setlocal modifiable
 	silent! 1,$d
@@ -39,7 +39,7 @@ func! star#draw(timer)
 
 endfunc
 
-func! star#shine()
+func! space#shine()
 
 	enew
 	setlocal buftype=nofile
@@ -48,17 +48,17 @@ func! star#shine()
 	setlocal nobuflisted
 	setfiletype space
 	file space
-	call star#draw(0)
+	call space#draw(0)
 
-	let b:timer = timer_start(96, 'star#draw', {
+	let b:timer = timer_start(96, 'space#draw', {
 				\ 'repeat': -1
 				\ })
 
-	augroup Star
+	augroup Space
 
 		autocmd!
 		autocmd BufLeave,BufHidden,BufUnload space
-					\ call star#leave()
+					\ call space#leave()
 
 	augroup END
 
