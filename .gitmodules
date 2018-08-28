@@ -1,4 +1,4 @@
-[submodule "nvim/plugin/tommywiseau"]
-	path = nvim/plugin/tommywiseau
+[submodule "nvim/plugins/tommywiseau"]
+	path = nvim/plugins/tommywiseau
 	url = https://github.com/slmjkdbtl/tommywiseau.vim.git
 	branch = master

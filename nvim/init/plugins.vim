@@ -86,3 +86,8 @@ let g:loaded_gzip = 1
 let g:loaded_rrhelper = 1
 let g:loaded_logiPat = 1
 
+" custom
+for p in glob(fnamemodify($MYVIMRC, ':h') . '/plugins/*', 0, 1)
+	exec 'set rtp^=' . p
+endfor
+

@@ -1,28 +1,20 @@
 " wengwengweng
 
-func! s:get_comment()
-
-	let c = &commentstring
-
-	return c
-
-endfunc
-
 func! s:is_commented(line)
 
-	return a:line =~ substitute(s:get_comment(), '%s', '.*', '')
+	return a:line =~ substitute(&commentstring, '%s', '.*', '')
 
 endfunc
 
 func! s:comment(line)
 
-	return substitute(s:get_comment(), '%s', a:line, '')
+	return substitute(&commentstring, '%s', a:line, '')
 
 endfunc
 
 func! s:uncomment(line)
 
-	return substitute(a:line, substitute(s:get_comment(), '%s', '', ''), '', '')
+	return substitute(a:line, substitute(&commentstring, '%s', '', ''), '', '')
 
 endfunc
 

@@ -1,9 +1,7 @@
 " wengwengweng
 
-let s:srcdir = expand('<sfile>:p:h:h')
 let g:syntax_list = get(g:, 'syntax_list', [])
 
-exec 'set rtp^=' . s:srcdir . ''
 call syntax#add('*.vim', 'vim', '', '\"\ %s')
 call syntax#add('*.hx', 'haxe', 'jdonaldson/vaxe', '//\ %s')
 call syntax#add('*.lua', 'lua', 'tbastos/vim-lua', '--\ %s')
@@ -12,7 +10,7 @@ call syntax#add('*.ck', 'chuck', 'wilsaj/chuck.vim', '//\ %s')
 call syntax#add('*.js', 'javascript', 'pangloss/vim-javascript', '//\ %s')
 call syntax#add('*.ts', 'typescript', 'leafgarland/typescript-vim', '//\ %s')
 call syntax#add('*.fish', 'fish', 'dag/vim-fish', '#\ %s')
-call syntax#add('*.html', 'html', 'othree/html5.vim', '<!-- %s -->')
+call syntax#add('*.html', 'html', 'othree/html5.vim', '<!--\ %s\ -->')
 call syntax#add('*.cpp', 'cpp', 'octol/vim-cpp-enhanced-highlight', '//\ %s')
 call syntax#add('*.go', 'go', 'fatih/vim-go', '//\ %s')
 call syntax#add('*.carp', 'carp', 'hellerve/carp-vim', ';;\ %s')
@@ -29,6 +27,7 @@ call syntax#add('*.toml', 'toml', 'cespare/vim-toml', '#\ %s')
 call syntax#add('*.{md,markdown}', 'markdown', 'plasticboy/vim-markdown', '%s')
 call syntax#add('*.{scpt,applescript}', 'applescript', 'mityu/vim-applescript', '--\ %s')
 call syntax#add('*/nginx/*.conf', 'nginx', 'chr4/nginx.vim', '#\ %s')
+call syntax#add('Caddyfile', 'caddyfile', 'isobit/vim-caddyfile', '#\ %s')
 call syntax#add('tmux.conf', 'tmux', 'ericpruitt/tmux.vim', '#\ %s')
 call syntax#load()
 
