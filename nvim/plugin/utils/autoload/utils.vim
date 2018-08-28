@@ -51,6 +51,7 @@ func! utils#close()
 		if bufname('%') ==# ''
 			Space
 		endif
+
 	end
 
 endfunc
