@@ -48,7 +48,7 @@ func! utils#close()
 			silent! q
 		endtry
 
-		if bufname('%') ==# ''
+		if empty(bufname('%'))
 			Space
 		endif
 

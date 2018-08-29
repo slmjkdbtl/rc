@@ -1,5 +1,6 @@
 " wengwengweng
 
+" extern
 call plug#begin()
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'w0rp/ale'

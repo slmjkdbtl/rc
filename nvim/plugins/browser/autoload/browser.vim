@@ -89,7 +89,7 @@ func! s:bind()
 
 	noremap <buffer><silent> <return> :call browser#enter()<cr>
 	noremap <buffer><silent> <bs> :call browser#back()<cr>
-	noremap <buffer><silent> <tab> :silent! call browser#close()<cr>
+	noremap <buffer><silent> <tab> :call browser#close()<cr>
 	noremap <buffer><silent> <space> :call browser#expand()<cr>
 	noremap <buffer><silent> y :call browser#copy()<cr>
 	noremap <buffer><silent> r :call browser#refresh()<cr>
@@ -126,16 +126,11 @@ func! browser#close()
 
 	if &filetype ==# 'browser'
 
-		for b in getbufinfo()
+		silent! bw
 
-			if b.listed && b.name !=# ''
-
-				silent! bw
-				return
-
-			endif
-
-		endfor
+		if empty(bufname('%'))
+			call browser#open()
+		endif
 
 	endif
 
