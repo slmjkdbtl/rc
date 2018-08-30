@@ -3,6 +3,7 @@
 let g:syntax_list = get(g:, 'syntax_list', [])
 
 call syntax#add('*.vim', 'vim', '', '\"\ %s')
+call syntax#add('muttrc,*.muttrc', 'neomuttrc', '', '#\ %s')
 call syntax#add('*.hx', 'haxe', 'jdonaldson/vaxe', '//\ %s')
 call syntax#add('*.lua', 'lua', 'tbastos/vim-lua', '--\ %s')
 call syntax#add('*.rs', 'rust', 'rust-lang/rust.vim', '//\ %s')

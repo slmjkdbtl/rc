@@ -11,12 +11,12 @@ conf:
 
 	echo "+ linking"
 
-	$(foreach f, nvim fish mpv hammerspoon scripts, \
+	$(foreach f, nvim fish mutt mpv hammerspoon scripts, \
 		echo "  - $(f) -> $(CONFIG)/$(f)"; \
 		ln -sf $(realpath $(f)) $(CONFIG); \
 	)
 
-	$(foreach f, .skhdrc .tmux.conf .tigrc, \
+	$(foreach f, .skhdrc .tmux.conf .offlineimaprc .tigrc, \
 		echo "  - $(f) -> $(HOME)/$(f)"; \
 		ln -sf $(realpath $(f)) $(HOME); \
 	)

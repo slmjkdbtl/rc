@@ -3702,11 +3702,11 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>360 225 606 469 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>236 330 1018 447 0 0 1280 777 </string>
+	<string>337 301 928 394 0 0 1280 777 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>80 193 592 584 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>265 142 948 635 0 0 1280 777 </string>
+	<string>163 77 946 686 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>52 85 934 627 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -3731,13 +3731,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.24705880880355835</real>
+				<real>0.19215686274509805</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.24705880880355835</real>
+				<real>0.14509803921568629</real>
 				<key>Red Component</key>
-				<real>0.24705880880355835</real>
+				<real>0.11764705882352941</real>
 			</dict>
 			<key>Ansi 1 Color</key>
 			<dict>
@@ -3913,13 +3913,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.24705880880355835</real>
+				<real>0.19215686274509805</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.24705880880355835</real>
+				<real>0.14509803921568629</real>
 				<key>Red Component</key>
-				<real>0.24705880880355835</real>
+				<real>0.11764705882352941</real>
 			</dict>
 			<key>Ansi 9 Color</key>
 			<dict>
@@ -3985,13 +3985,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.78431372549019607</real>
+				<real>0.83921568627450982</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.78431372549019607</real>
+				<real>0.83921568627450982</real>
 				<key>Red Component</key>
-				<real>0.78431372549019607</real>
+				<real>0.83921568627450982</real>
 			</dict>
 			<key>Character Encoding</key>
 			<integer>4</integer>
@@ -4008,13 +4008,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.83742713928222656</real>
+				<real>0.83921568627450982</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.83743780851364136</real>
+				<real>0.83921568627450982</real>
 				<key>Red Component</key>
-				<real>0.83741801977157593</real>
+				<real>0.83921568627450982</real>
 			</dict>
 			<key>Cursor Guide Color</key>
 			<dict>
@@ -4063,13 +4063,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.78431372549019607</real>
+				<real>0.83921568627450982</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.78431372549019607</real>
+				<real>0.83921568627450982</real>
 				<key>Red Component</key>
-				<real>0.78431372549019607</real>
+				<real>0.83921568627450982</real>
 			</dict>
 			<key>Guid</key>
 			<string>7B0162E7-F8FA-4933-A562-6AD010864E0A</string>
@@ -4142,26 +4142,26 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.83742713928222656</real>
+				<real>0.83921568627450982</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.83743780851364136</real>
+				<real>0.83921568627450982</real>
 				<key>Red Component</key>
-				<real>0.83741801977157593</real>
+				<real>0.83921568627450982</real>
 			</dict>
 			<key>Selection Color</key>
 			<dict>
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.39138942956924438</real>
+				<real>0.7686274509803922</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.39139476418495178</real>
+				<real>0.7803921568627451</real>
 				<key>Red Component</key>
-				<real>0.39138484001159668</real>
+				<real>0.48627450980392156</real>
 			</dict>
 			<key>Semantic History</key>
 			<dict>
@@ -4425,7 +4425,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-08-27T22:53:59Z</date>
+	<date>2018-08-28T23:47:22Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>SearchCommand</key>

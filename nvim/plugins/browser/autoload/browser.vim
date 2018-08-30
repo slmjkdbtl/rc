@@ -3,8 +3,11 @@
 func! s:get_files()
 
 	let files = glob(getcwd() . '/*', 0, 1)
+	let hidden = glob(getcwd() . '/.*', 0, 1)
+	let hidden = filter(hidden, 'fnamemodify(v:val, ":t") !=# ".."')
+	let hidden = filter(hidden, 'fnamemodify(v:val, ":t") !=# "."')
 
-	return files
+	return hidden + files
 
 endfunc
 

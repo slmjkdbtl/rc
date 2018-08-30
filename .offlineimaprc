@@ -1,0 +1,16 @@
+[general]
+accounts = outlook
+
+[Account outlook]
+localrepository = outlook-local
+remoterepository = outlook-remote
+
+[Repository outlook-remote]
+type = IMAP
+remotehost = imap-mail.outlook.com
+remoteuser = voygagaga@outlook.com
+sslcacertfile = /usr/local/etc/openssl/cert.pem
+
+[Repository outlook-local]
+type = Maildir
+localfolders = ~/.mail/outlook

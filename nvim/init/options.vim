@@ -46,6 +46,7 @@ set termencoding=utf-8
 set fileencodings=utf-8,gbk
 set guicursor=n-v-c-sm-ci-ve-r-cr-o:block,i:ver25
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*
+set wildignore=.git,.svn,.cache,.tmp,node_modules
 set wildignore+=.DS_Store
 set wildignore+=.tags,*.min.*,*.map
 set wildignore+=*.so,*.o,*.out,*.swp,*.zip,*.tar.*,*.app,*.exe,*.dll,*~

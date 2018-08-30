@@ -6,7 +6,8 @@ alias t "touch"
 alias c "set_color"
 alias size "du -sh"
 alias make "make -s"
-type -q nvim; and alias v "nvim"
+type -q nvim; and alias vim "nvim"
+type -q neomutt; and alias mutt "neomutt"
 type -q hub; and alias git "hub"
 type -q bat; and alias bat "bat --theme=TwoDark --style=plain"
 type -q bat; and alias cat bat
@@ -27,7 +28,7 @@ abbr gd git diff
 
 # env
 set -x BROWSER open
-set -x TERM super
+set -x TERM xterm-super
 
 if type -q nvim
 	set -x EDITOR nvim

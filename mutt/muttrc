@@ -1,0 +1,9 @@
+# wengwengweng
+
+set editor = $EDITOR
+set sendmail="msmtp"
+
+bind index g imap-fetch-mail
+
+source colors.muttrc
+source account.muttrc
