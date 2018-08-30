@@ -2,8 +2,10 @@
 
 set editor = $EDITOR
 set sendmail="msmtp"
-
-bind index g imap-fetch-mail
+set sort = 'reverse-date'
+set sidebar_visible = yes
+set sidebar_width = 16
+macro index g "<shell-escape>offlineimap -o<enter>" "run offlineimap to sync all mail"
 
 source colors.muttrc
 source account.muttrc

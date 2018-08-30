@@ -94,14 +94,20 @@ func! s:bind()
 	noremap <buffer><silent> <bs> :call browser#back()<cr>
 	noremap <buffer><silent> <tab> :call browser#close()<cr>
 	noremap <buffer><silent> <space> :call browser#expand()<cr>
-	noremap <buffer><silent> y :call browser#copy()<cr>
-	noremap <buffer><silent> r :call browser#refresh()<cr>
+	noremap <buffer><silent> <esc> :call browser#drop()<cr>
+	noremap <buffer><silent> y :call browser#copy_path()<cr>
+	noremap <buffer><silent> r :call browser#refresh(line('.'))<cr>
+	noremap <buffer><silent> <m-r> :call browser#rename()<cr>
+	noremap <buffer><silent> <m-d> :call browser#delete()<cr>
+	noremap <buffer><silent> <m-c> :call browser#copy()<cr>
+	noremap <buffer><silent> <m-x> :call browser#cut()<cr>
+	noremap <buffer><silent> <m-p> :call browser#paste()<cr>
 	noremap <buffer><silent> j j
 	noremap <buffer><silent> k k
 
 endfunc
 
-func! browser#refresh()
+func! browser#refresh(...)
 
 	let b:listing = s:get_listing()
 	let name = fnamemodify(getcwd(), ':t')
@@ -111,7 +117,12 @@ func! browser#refresh()
 	call s:render()
 	setlocal nomodifiable
 	setlocal nomodified
-	call s:to_line(2)
+
+	if exists('a:1')
+		call s:to_line(a:1)
+	else
+		call s:to_line(2)
+	endif
 
 endfunc
 
@@ -145,7 +156,77 @@ func! browser#expand()
 
 endfunc
 
+func! browser#rename()
+
+	let file = s:get_current()
+	let name = fnamemodify(file, ':t')
+	let text = input('rename ' . name . ' to: ')
+
+	call system('mv ' . name . ' ' . text)
+	call browser#refresh(line('.'))
+
+endfunc
+
 func! browser#copy()
+
+	let file = s:get_current()
+	let name = fnamemodify(file, ':t')
+	let b:holding = file
+
+	echo 'holding ' . name
+
+endfunc
+
+func! browser#paste()
+
+	if !exists('b:holding')
+
+		echo 'no holding file'
+		return
+
+	endif
+
+	let cwd = getcwd()
+	let name = fnamemodify(b:holding, ':t')
+
+	call system('cp ' . b:holding . ' ' . cwd)
+	echo 'pasted ' . name
+	unlet b:holding
+	call browser#refresh(line('.'))
+
+endfunc
+
+func! browser#drop()
+
+	if exists('b:holding')
+
+		echo 'dropped ' . fnamemodify(b:holding, ':t')
+		unlet b:holding
+
+	endif
+
+endfunc
+
+func! browser#delete()
+
+	let path = s:get_current()
+	let name = fnamemodify(path, ':t')
+
+	if filereadable(path) || isdirectory(path) && path !=# '..'
+
+		if confirm('> delete ' . name . '?', "&yes\n&no") == 1
+
+			call system('mv ' . path . ' ' . '~/.Trash')
+			silent! exec 'bw ' . name
+			call browser#refresh(line('.'))
+
+		end
+
+	endif
+
+endfunc
+
+func! browser#copy_path()
 
 	let item = s:get_current()
 	let @* = item

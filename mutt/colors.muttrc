@@ -24,14 +24,14 @@ mono error bold
 color normal default default
 color indicator brightblack white
 color sidebar_highlight red default
-color sidebar_divider brightblack black
+color sidebar_divider black black
 color sidebar_flagged red black
 color sidebar_new green black
 color normal brightyellow default
 color error red default
 color tilde black default
 color message cyan default
-color markers red white
+color markers default default
 color attachment white default
 color search brightmagenta default
 color status brightyellow black

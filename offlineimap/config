@@ -1,5 +1,6 @@
 [general]
 accounts = outlook
+pythonfile = ~/.config/offlineimap/utils.py
 
 [Account outlook]
 localrepository = outlook-local
@@ -9,6 +10,7 @@ remoterepository = outlook-remote
 type = IMAP
 remotehost = imap-mail.outlook.com
 remoteuser = voygagaga@outlook.com
+remotepasseval = get_pass("voygagaga@outlook.com")
 sslcacertfile = /usr/local/etc/openssl/cert.pem
 
 [Repository outlook-local]
