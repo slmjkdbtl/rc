@@ -90,11 +90,27 @@ func! s:to_line(ln)
 
 endfunc
 
+func! s:get_git_dir()
+
+	return substitute(system('git rev-parse --show-toplevel'), "\n", '', '')
+
+endfunc
+
+func! s:get_git_modified()
+
+	if !isdirectory(b:git_dir)
+		return []
+	endif
+
+	return split(system('git ls-files -m'), "\n")
+
+endfunc
+
 func! s:to_item(item)
 
 	for i in range(len(b:listing))
 
-		if b:listing[i] == a:item
+		if b:listing[i] ==# a:item
 			call s:to_line(i + 1)
 		endif
 
@@ -116,6 +132,7 @@ func! s:bind()
 	noremap <buffer><silent> <m-c> :call browser#copy()<cr>
 	noremap <buffer><silent> <m-x> :call browser#cut()<cr>
 	noremap <buffer><silent> <m-p> :call browser#paste()<cr>
+	noremap <buffer><silent> <m-m> :call browser#mkdir()<cr>
 	noremap <buffer><silent> j j
 	noremap <buffer><silent> k k
 
@@ -174,9 +191,18 @@ func! browser#rename()
 
 	let file = s:get_current()
 	let name = fnamemodify(file, ':t')
-	let text = input('rename ' . name . ' to: ')
+	let new_name = input('rename ' . name . ' to: ')
 
-	call system('mv ' . name . ' ' . text)
+	call system('mv ' . name . ' ' . new_name)
+	call browser#refresh(line('.'))
+
+endfunc
+
+func! browser#mkdir()
+
+	let name = input('create dir: ')
+
+	call system('mkdir ' . name)
 	call browser#refresh(line('.'))
 
 endfunc
@@ -298,6 +324,16 @@ func! browser#open()
 	enew
 
 	let b:listing = []
+
+" 	use async
+" 	let git_dir = s:get_git_dir()
+"
+" 	if isdirectory(git_dir)
+"
+" 		let b:git_dir = git_dir
+" 		let b:git_modified = s:get_git_modified()
+"
+" 	endif
 
 	setfiletype browser
 	setlocal buftype=nofile

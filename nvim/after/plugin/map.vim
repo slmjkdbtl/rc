@@ -28,7 +28,6 @@ endfor
 
 " global
 noremap : :
-noremap <m-space> :
 noremap . .
 nnoremap ! :!
 noremap <silent> c :redraw!<cr>
