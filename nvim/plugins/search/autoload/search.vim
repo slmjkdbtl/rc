@@ -25,10 +25,7 @@ endfunc
 
 func! s:is_focused()
 
-	let pos = col('.')
-	let line = getline('.')
-
-	return line[(pos - 1) : (pos + len(@/) - 2)] =~# @/
+	return searchpos(@/, 'cn') ==# [ line('.'), col('.') ]
 
 endfunc
 
@@ -71,49 +68,82 @@ endfunc
 
 func! search#edit_start()
 
-	let b:search_edit_recording = 1
+	if s:is_focused()
 
-	call s:normal('gnd')
-	call s:normal("\<esc>")
-	call s:normal('qq')
-	call feedkeys('i', 'n')
+		let b:record_mode = 1
+		let b:recording = 1
 
-endfunc
-
-func! search#edit_end()
-
-	if exists('b:search_edit_recording')
-
-		call s:normal('q')
-		let @q = @q[0:(len(@q) - 2)]
-		unlet b:search_edit_recording
+		call s:normal('gnd')
+		call s:normal("\<esc>")
+		call s:normal('qq')
+		call feedkeys('i', 'n')
 
 	endif
 
 endfunc
 
-func! search#edit_apply()
+func! search#record_toggle()
 
-	if s:is_focused()
+	if exists('b:recording') && b:recording && b:record_mode ==# 1
 
-		call s:normal('gnd')
-		call s:normal("\<esc>")
-		call feedkeys('i', 'n')
-		call feedkeys(@q)
+		call s:normal('q')
+		let @q = @q[0:(len(@q) - 2)]
+		let b:recording = 0
 
 	else
-"
-		if exists('b:search_dir') && b:search_dir ==# -1
-			let flag = 'b'
-		else
-			let flag = ''
-		endif
-"
-		let line = search(@/, 'w' . flag)
 
-		if line
-			call search#edit_apply()
+		if exists('b:recording') && b:recording && b:record_mode ==# 2
+
+			call s:normal('q')
+			let @q = @q[0:(len(@q) - 2)]
+			let b:recording = 0
+
+		else
+
+			call s:normal('qq')
+			let b:record_mode = 2
+			let b:recording = 1
+
 		endif
+
+	endif
+
+endfunc
+
+func! search#record_apply()
+
+	if b:recording
+		return
+	endif
+
+	if b:record_mode ==# 1
+
+		if s:is_focused()
+
+			call s:normal('gnd')
+			call s:normal("\<esc>")
+			call feedkeys('i', 'n')
+			call feedkeys(@q)
+
+		else
+	"
+			if exists('b:search_dir') && b:search_dir ==# -1
+				let flag = 'b'
+			else
+				let flag = ''
+			endif
+	"
+			let line = search(@/, 'w' . flag)
+
+			if line
+				call search#record_apply()
+			endif
+
+		endif
+
+	elseif b:record_mode ==# 2
+
+		call feedkeys(@q)
 
 	endif
 
@@ -123,11 +153,12 @@ func! search#bind()
 
 	nnoremap ? /
 	vnoremap <silent> ? :call search#selected()<cr>:set hlsearch<cr>
-	nnoremap <silent> <m-;> :call search#prev()<cr>:set hlsearch<cr>
-	nnoremap <silent> <m-'> :call search#next()<cr>:set hlsearch<cr>
+	nnoremap <silent> <m-;> :call search#prev()<cr>
+	nnoremap <silent> <m-'> :call search#next()<cr>
 	nnoremap <silent> <m-return> :call search#edit_start()<cr>
-	nnoremap <silent> \ :call search#edit_end()<cr>
-	nnoremap <silent> <m-.> :call search#edit_apply()<cr>
+	nnoremap <silent> \ :call search#record_toggle()<cr>
+	nnoremap <silent> <m-.> :call search#record_apply()<cr>
+	nnoremap <silent> <m-space> :set hlsearch<cr>
 
 endfunc
 
