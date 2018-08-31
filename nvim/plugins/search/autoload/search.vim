@@ -47,7 +47,7 @@ func! search#selected()
 	if type(text) == 1 && text !=# ''
 
 		call s:search(text)
-		call search#prev()
+		call search(@/, 'b')
 
 	endif
 
@@ -103,7 +103,7 @@ func! search#edit_apply()
 
 	else
 "
-		if b:search_dir == -1
+		if exists('b:search_dir') && b:search_dir ==# -1
 			let flag = 'b'
 		else
 			let flag = ''
