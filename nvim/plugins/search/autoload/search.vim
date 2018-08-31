@@ -6,19 +6,6 @@ func! s:normal(cmd)
 
 endfunc
 
-func! s:escape(text)
-
-	let text = a:text
-	let chars = [ '~', '[', '.', '$', '/', '*' ]
-
-	for c in chars
-		let text = escape(text, c)
-	endfor
-
-	return text
-
-endfunc
-
 func! s:get_selected() range
 
 	if a:firstline ==# a:lastline
@@ -41,7 +28,7 @@ func! s:is_focused()
 	let pos = col('.')
 	let line = getline('.')
 
-	return line[(pos - 1) : (pos + len(@/) - 2)] ==# @/
+	return line[(pos - 1) : (pos + len(@/) - 2)] =~# @/
 
 endfunc
 
@@ -68,7 +55,7 @@ endfunc
 
 func! search#prev()
 
-	call search(s:escape(@/), 'b')
+	call search(@/, 'b')
 
 	let b:search_dir = -1
 
@@ -76,53 +63,30 @@ endfunc
 
 func! search#next()
 
-	call search(s:escape(@/))
+	call search(@/)
 
 	let b:search_dir = 1
 
 endfunc
 
-func! search#toggle_record()
+func! search#edit_start()
 
-	if exists('b:search_edit_mode')
-		call s:normal('q')
-	else
-		call s:normal('qq')
-	endif
+	let b:search_edit_recording = 1
+
+	call s:normal('gnd')
+	call s:normal("\<esc>")
+	call s:normal('qq')
+	call feedkeys('i', 'n')
 
 endfunc
 
-func! search#edit_start(mode)
+func! search#edit_end()
 
-	call search#selected()
-	call s:normal('gn')
+	if exists('b:search_edit_recording')
 
-	if a:mode ==# 1
-
-		let b:search_edit_mode = 1
-
-		call s:normal('d')
-		call s:normal("\<esc>")
-		call s:normal('qq')
-		call feedkeys('i', 'n')
-
-" 	elseif a:mode ==# 2
-"
-" 		let b:search_edit_mode = 2
-"
-" 		call s:normal('`<')
-" 		call s:normal("<esc>")
-" 		call s:normal('qq')
-" 		call feedkeys('i', 'n')
-"
-" 	elseif a:mode ==# 3
-"
-" 		let b:search_edit_mode = 3
-"
-" 		call s:normal('`>')
-" 		call s:normal("<esc>")
-" 		call s:normal('qq')
-" 		call feedkeys('a', 'n')
+		call s:normal('q')
+		let @q = @q[0:(len(@q) - 2)]
+		unlet b:search_edit_recording
 
 	endif
 
@@ -132,31 +96,10 @@ func! search#edit_apply()
 
 	if s:is_focused()
 
-		if b:search_edit_mode ==# 1
-
-			call s:normal('gn')
-			call s:normal('d')
-			call s:normal("\<esc>")
-			call feedkeys('i', 'n')
-			call feedkeys(@q)
-
-" 		elseif b:search_edit_mode ==# 2
-"
-" 			call s:normal('gn')
-" 			call s:normal('`<')
-" 			call s:normal("<esc>")
-" 			call feedkeys('i', 'n')
-" 			call feedkeys(@q)
-"
-" 		elseif b:search_edit_mode ==# 3
-"
-" 			call s:normal('gn')
-" 			call s:normal('`>')
-" 			call s:normal("<esc>")
-" 			call feedkeys('a', 'n')
-" 			call feedkeys(@q)
-
-		endif
+		call s:normal('gnd')
+		call s:normal("\<esc>")
+		call feedkeys('i', 'n')
+		call feedkeys(@q)
 
 	else
 "
@@ -166,7 +109,7 @@ func! search#edit_apply()
 			let flag = ''
 		endif
 "
-		let line = search(s:escape(@/), 'w' . flag)
+		let line = search(@/, 'w' . flag)
 
 		if line
 			call search#edit_apply()
@@ -182,10 +125,8 @@ func! search#bind()
 	vnoremap <silent> ? :call search#selected()<cr>:set hlsearch<cr>
 	nnoremap <silent> <m-;> :call search#prev()<cr>:set hlsearch<cr>
 	nnoremap <silent> <m-'> :call search#next()<cr>:set hlsearch<cr>
-	nnoremap <silent> \ :call search#toggle_record()<cr>
-	vnoremap <silent> <m-return> :call search#edit_start(1)<cr>
-	vnoremap <silent> <m-<> :call search#edit_start(2)<cr>
-	vnoremap <silent> <m->> :call search#edit_start(3)<cr>
+	nnoremap <silent> <m-return> :call search#edit_start()<cr>
+	nnoremap <silent> \ :call search#edit_end()<cr>
 	nnoremap <silent> <m-.> :call search#edit_apply()<cr>
 
 endfunc
