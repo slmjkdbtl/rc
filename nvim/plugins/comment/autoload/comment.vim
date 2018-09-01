@@ -8,7 +8,7 @@ endfunc
 
 func! s:comment(line)
 
-	return substitute(&commentstring, '%s', a:line, '')
+	return substitute(&commentstring, '%s', escape(a:line, '&\'), '')
 
 endfunc
 

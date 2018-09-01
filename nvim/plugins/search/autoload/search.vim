@@ -1,5 +1,11 @@
 " wengwengweng
 
+func! s:escape(text)
+
+	return escape(a:text, '~.*[')
+
+endfunc
+
 func! s:normal(cmd)
 
 	exec 'normal! ' . a:cmd
@@ -31,7 +37,7 @@ endfunc
 
 func! s:search(text)
 
-	let @/ = a:text
+	let @/ = s:escape(a:text)
 
 endfunc
 

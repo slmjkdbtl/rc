@@ -12,7 +12,7 @@ func! s:end(pat)
 	return a:pat . '\s*$'
 endfunc
 
-let s:open = s:options([ s:end('function()'), s:end('function\s.*(.*)'), s:end('repeat'), s:end('then'), s:end('do'), s:end('{'), ])
+let s:open = s:options([ s:end('function()'), s:end('function\s.\+(.*)'), s:end('repeat'), s:end('then'), s:end('do'), s:end('{'), ])
 let s:middle = s:options([ s:end('else'), s:end('elseif'), ])
 let s:close = s:options([ s:end('end'), 'until', s:end('}'), ])
 
