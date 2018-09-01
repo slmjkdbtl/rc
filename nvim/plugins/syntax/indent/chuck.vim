@@ -1,8 +1,8 @@
 " wengwengweng
 
 setlocal nosmartindent
-setlocal indentexpr=GetLuaIndent()
-setlocal indentkeys=o,0=end,0=until,0=elseif,0=else,0=}
+setlocal indentexpr=GetChuckIndent()
+setlocal indentkeys=o,0=}
 
 func! s:options(list)
 	return '\%(' . join(a:list, '\|') . '\)'
@@ -12,11 +12,11 @@ func! s:end(pat)
 	return a:pat . '\s*$'
 endfunc
 
-let s:open = s:options([ s:end('function()'), s:end('function\s.*(.*)'), s:end('repeat'), s:end('then'), s:end('do'), s:end('{'), ])
-let s:middle = s:options([ s:end('else'), s:end('elseif'), ])
-let s:close = s:options([ s:end('end'), 'until', s:end('}'), ])
+let s:open = s:options([ s:end('{'), ])
+let s:middle = s:options([ s:end('else'), ])
+let s:close = s:options([ s:end('}'), ])
 
-func! GetLuaIndent()
+func! GetChuckIndent()
 
 	let line = getline(v:lnum)
 	let pnr = prevnonblank(v:lnum - 1)

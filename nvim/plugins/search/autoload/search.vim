@@ -41,12 +41,8 @@ func! search#selected()
 
 	let text = s:get_selected()
 
-	if type(text) == 1 && text !=# ''
-
-		call s:search(text)
-		call search(@/, 'b')
-
-	endif
+	call s:search(text)
+	call search(@/, 'b')
 
 endfunc
 
@@ -79,6 +75,13 @@ func! search#edit_start()
 		call feedkeys('i', 'n')
 
 	endif
+
+endfunc
+
+func! search#edit_start_selected()
+
+	call search#selected()
+	call search#edit_start()
 
 endfunc
 
@@ -155,7 +158,8 @@ func! search#bind()
 	vnoremap <silent> ? :call search#selected()<cr>:set hlsearch<cr>
 	nnoremap <silent> <m-;> :call search#prev()<cr>
 	nnoremap <silent> <m-'> :call search#next()<cr>
-	nnoremap <silent> <m-return> :call search#edit_start()<cr>
+" 	nnoremap <silent> <m-return> :call search#edit_start()<cr>
+	vnoremap <silent> <m-return> :call search#edit_start_selected()<cr>
 	nnoremap <silent> \ :call search#record_toggle()<cr>
 	nnoremap <silent> <m-.> :call search#record_apply()<cr>
 	nnoremap <silent> <m-space> :set hlsearch<cr>

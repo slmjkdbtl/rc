@@ -124,6 +124,7 @@ vnoremap <m-tab> <
 " yo
 for i in range(1, 9)
 	exec 'noremap <f' . i . '> :echo "y' . repeat('o', i) . '"<cr>'
+	exec 'inoremap <f' . i . '> <nop>'
 endfor
 
 " plugins

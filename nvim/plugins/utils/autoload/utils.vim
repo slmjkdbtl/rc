@@ -40,13 +40,16 @@ endfunc
 
 func! utils#close()
 
+	if &modified
+
+		echo 'cannot close modified buffer'
+		return
+
+	endif
+
 	if confirm('> close ' . bufname('%') .'?', "&yes\n&no") == 1
 
-		try
-			silent! bd
-		catch
-			silent! q
-		endtry
+		silent! bd
 
 		if empty(bufname('%'))
 			Space

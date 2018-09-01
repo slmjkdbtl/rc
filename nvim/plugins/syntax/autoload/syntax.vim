@@ -41,9 +41,9 @@ func! syntax#download()
 
 		let args = '--fail --create-dir'
 		let syntax_url = 'https://raw.githubusercontent.com/' . s.repo . '/master/syntax/' . s.ft . '.vim'
-		let indent_url = 'https://raw.githubusercontent.com/' . s.repo . '/master/indent/' . s.ft . '.vim'
+" 		let indent_url = 'https://raw.githubusercontent.com/' . s.repo . '/master/indent/' . s.ft . '.vim'
 		let syntax_file = s:srcdir . '/syntax/' . s.ft . '.vim'
-		let indent_file = s:srcdir . '/indent/' . s.ft . '.vim'
+" 		let indent_file = s:srcdir . '/indent/' . s.ft . '.vim'
 
 		call system('curl ' . args . ' ' . syntax_url . ' -o ' . syntax_file)
 
@@ -51,11 +51,11 @@ func! syntax#download()
 			" ...
 		endif
 
-		call system('curl ' . args . ' ' . indent_url . ' -o ' . indent_file)
+" 		call system('curl ' . args . ' ' . indent_url . ' -o ' . indent_file)
 
-		if v:shell_error ==# 0
+" 		if v:shell_error ==# 0
 			" ...
-		endif
+" 		endif
 
 	endfor
 
