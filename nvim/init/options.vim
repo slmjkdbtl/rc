@@ -14,7 +14,6 @@ set nolinebreak
 set breakindent
 set showbreak=..
 set nowrapscan
-set showmatch
 set smartcase
 set hidden
 set noswapfile

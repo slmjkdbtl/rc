@@ -11,14 +11,14 @@ func! space#draw(timer)
 	setlocal modifiable
 	silent! 1,$d
 
-	let width = winwidth('%')
-	let height = winheight('%')
+	let width = winwidth(0)
+	let height = winheight(0)
 
-	for i in range(height - 14)
+	for i in range(height)
 
 		let chars = ''
 
-		for j in range(width)
+		for j in range(width - 4)
 
 			let rd = luaeval('math.random()')
 

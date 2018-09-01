@@ -30,10 +30,11 @@ let g:ale_sign_info = '?'
 
 " ctrlp
 if executable('fd')
-	let g:ctrlp_user_command = 'fd .'
+	let g:ctrlp_user_command = 'fd -H .'
 endif
 
 let g:ctrlp_reuse_window = 'browser'
+let g:ctrlp_show_hidden = 1
 
 let g:ctrlp_prompt_mappings = {
 	\ 'PrtBS()':              ['<bs>'],
