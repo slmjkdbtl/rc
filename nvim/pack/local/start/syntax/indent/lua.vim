@@ -1,5 +1,6 @@
 " wengwengweng
 
+setlocal nocindent
 setlocal nosmartindent
 setlocal indentexpr=GetLuaIndent()
 setlocal indentkeys=o,0=end,0=until,0=elseif,0=else,0=}

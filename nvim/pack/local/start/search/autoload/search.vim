@@ -72,7 +72,7 @@ func! search#edit_start()
 
 	if s:is_focused()
 
-		let b:record_mode = 1
+		let g:record_mode = 1
 		let b:recording = 1
 
 		call s:normal('gnd')
@@ -93,7 +93,10 @@ endfunc
 
 func! search#record_toggle()
 
-	if exists('b:recording') && b:recording && b:record_mode ==# 1
+	let b:recording = get(b:, 'recording', 0)
+	let g:record_mode = get(g:, 'record_mode', 0)
+
+	if b:recording && g:record_mode ==# 1
 
 		call s:normal('q')
 		let @q = @q[0:(len(@q) - 2)]
@@ -101,7 +104,7 @@ func! search#record_toggle()
 
 	else
 
-		if exists('b:recording') && b:recording && b:record_mode ==# 2
+		if b:recording && g:record_mode ==# 2
 
 			call s:normal('q')
 			let @q = @q[0:(len(@q) - 2)]
@@ -110,7 +113,7 @@ func! search#record_toggle()
 		else
 
 			call s:normal('qq')
-			let b:record_mode = 2
+			let g:record_mode = 2
 			let b:recording = 1
 
 		endif
@@ -121,11 +124,15 @@ endfunc
 
 func! search#record_apply()
 
-	if b:recording
+	if exists('b:recording') && b:recording
 		return
 	endif
 
-	if b:record_mode ==# 1
+	if !exists('g:record_mode')
+		return
+	endif
+
+	if g:record_mode ==# 1
 
 		if s:is_focused()
 
@@ -150,7 +157,7 @@ func! search#record_apply()
 
 		endif
 
-	elseif b:record_mode ==# 2
+	elseif g:record_mode ==# 2
 
 		call feedkeys(@q)
 

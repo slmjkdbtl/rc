@@ -1,16 +1,8 @@
 " wengwengweng
 
-" extern
-call plug#begin()
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'w0rp/ale'
-Plug 'mhinz/vim-signify'
-Plug 'mhartington/oceanic-next'
-call plug#end()
-
 " color
 let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 0
+let g:oceanic_next_terminal_italic = 1
 
 " signify
 let g:signify_vcs_list = [ 'git' ]
@@ -87,9 +79,4 @@ let g:loaded_spellfile_plugin = 1
 let g:loaded_gzip = 1
 let g:loaded_rrhelper = 1
 let g:loaded_logiPat = 1
-
-" custom
-for p in glob(fnamemodify($MYVIMRC, ':h') . '/plugins/*', 0, 1)
-	exec 'set rtp^=' . p
-endfor
 

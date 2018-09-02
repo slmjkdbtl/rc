@@ -1,6 +1,6 @@
 " wengwengweng
 
-func! s:get_tab_title(bufn)
+func! s:get_tab_title(bufn) abort
 
 	let text = fnamemodify(bufname(a:bufn), ':t')
 
@@ -12,7 +12,7 @@ func! s:get_tab_title(bufn)
 
 endfunc
 
-func! s:get_tab_modified(bufn)
+func! s:get_tab_modified(bufn) abort
 
 	if getbufvar(a:bufn, '&modified')
 		return ' [~]'
@@ -22,7 +22,7 @@ func! s:get_tab_modified(bufn)
 
 endfunc
 
-func! s:get_status_mode(bufn)
+func! s:get_status_mode(bufn) abort
 
 	let text = ''
 	let mode = mode(a:bufn)
@@ -37,12 +37,17 @@ func! s:get_status_mode(bufn)
 		let text .= '%#StatusModeInsert#'
 		let text .= ' INSERT '
 
-	elseif mode ==? 'v'
+	elseif mode ==# 'v'
 
 		let text .= '%#StatusModeVisual#'
 		let text .= ' VISUAL '
 
-	elseif mode ==# 'CTRL-V'
+	elseif mode ==# 'V'
+
+		let text .= '%#StatusModeVisual#'
+		let text .= ' V-LINE '
+
+	elseif mode ==# "\<C-v>"
 
 		let text .= '%#StatusModeVisual#'
 		let text .= ' V-BLOCK '
@@ -68,7 +73,7 @@ func! s:get_status_mode(bufn)
 
 endfunc
 
-func! s:get_status_path(bufn)
+func! s:get_status_path(bufn) abort
 
 	let name = bufname(a:bufn)
 	let ft = getbufvar(a:bufn, '&filetype')
@@ -105,7 +110,7 @@ func! s:get_status_path(bufn)
 
 endfunc
 
-func! s:get_status_modified(bufn)
+func! s:get_status_modified(bufn) abort
 
 	if getbufvar(a:bufn, '&modified')
 		return '%#StatusLine#[~]'
@@ -115,7 +120,7 @@ func! s:get_status_modified(bufn)
 
 endfunc
 
-func! s:get_status_filetype(bufn)
+func! s:get_status_filetype(bufn) abort
 
 	let ft = getbufvar(a:bufn, '&filetype')
 	let text = ''
@@ -130,13 +135,13 @@ func! s:get_status_filetype(bufn)
 
 endfunc
 
-func! s:get_status_curpos(bufn)
+func! s:get_status_curpos(bufn) abort
 
 	return '%#StatusLineNC# %l:%c %#StatusLine#'
 
 endfunc
 
-func! line#get_title()
+func! line#get_title() abort
 
 	let bufn = tabpagebuflist(tabpagenr())[0]
 	let name = bufname(bufn)
@@ -147,7 +152,7 @@ func! line#get_title()
 
 endfunc
 
-func! line#get_tab()
+func! line#get_tab() abort
 
 	let line = ''
 
@@ -175,7 +180,7 @@ func! line#get_tab()
 
 endfunc
 
-func! line#get_status()
+func! line#get_status() abort
 
 	let line = ''
 	let line .= s:get_status_mode('%')
