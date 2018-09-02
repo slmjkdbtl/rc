@@ -9,6 +9,8 @@ set noshowmode
 set title
 set showcmd
 set visualbell
+set showmatch
+set matchtime=0
 set wrap
 set nolinebreak
 set breakindent
