@@ -38,6 +38,8 @@ tnoremap <esc> <c-\><c-n>
 " movement
 noremap k gk
 noremap j gj
+noremap <up> gk
+noremap <down> gj
 noremap h h
 noremap l l
 noremap <m-h> b
@@ -46,34 +48,8 @@ inoremap <m-j> <c-o>gj
 inoremap <m-k> <c-o>gk
 inoremap <m-h> <left>
 inoremap <m-l> <right>
-
-if has('gui_macvim')
-
-	nnoremap <ScrollWheelUp> k
-	nnoremap <S-ScrollWheelUp> k
-	nnoremap <C-ScrollWheelUp> k
-	nnoremap <ScrollWheelDown> j
-	nnoremap <S-ScrollWheelDown> j
-	nnoremap <C-ScrollWheelDown> j
-	nnoremap <ScrollWheelLeft> h
-	nnoremap <S-ScrollWheelLeft> h
-	nnoremap <C-ScrollWheelLeft> h
-	nnoremap <ScrollWheelRight> l
-	nnoremap <S-ScrollWheelRight> l
-	nnoremap <C-ScrollWheelRight> l
-	inoremap <ScrollWheelUp> <c-x><c-y>
-	inoremap <S-ScrollWheelUp> <c-x><c-y>
-	inoremap <C-ScrollWheelUp> <c-x><c-y>
-	inoremap <ScrollWheelDown> <c-x><c-e>
-	inoremap <S-ScrollWheelDown> <c-x><c-e>
-	inoremap <C-ScrollWheelDown> <c-x><c-e>
-
-else
-
-	inoremap <up> <c-x><c-y>
-	inoremap <down> <c-x><c-e>
-
-endif
+inoremap <up> <c-x><c-y>
+inoremap <down> <c-x><c-e>
 
 " buffer
 nnoremap <silent> ` <c-^>

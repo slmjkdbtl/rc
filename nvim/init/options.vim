@@ -55,4 +55,5 @@ set wildignore+=*.mp3,*.wav,*.ogg
 exec 'set listchars=tab:\|\ '
 filetype plugin indent on
 syntax enable
+colorscheme super
 
