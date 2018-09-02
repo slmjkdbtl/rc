@@ -55,6 +55,8 @@ inoremap <down> <c-x><c-e>
 nnoremap <silent> ` <c-^>
 nnoremap <silent> - :silent! bprev<cr>
 nnoremap <silent> = :silent! bnext<cr>
+nnoremap <silent> <m-q> :silent! bprev<cr>
+nnoremap <silent> <m-e> :silent! bnext<cr>
 
 " edit
 nnoremap > A

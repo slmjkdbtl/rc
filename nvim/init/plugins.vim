@@ -1,9 +1,5 @@
 " wengwengweng
 
-" color
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 0
-
 " signify
 let g:signify_vcs_list = [ 'git' ]
 let g:signify_sign_show_text = 1

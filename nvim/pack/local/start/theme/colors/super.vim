@@ -95,14 +95,14 @@ call s:hi('VertSplit',                  s:base00, s:base02, '',          '')
 call s:hi('ColorColumn',                '',       s:base01, '',          '')
 call s:hi('CursorColumn',               '',       s:base01, '',          '')
 call s:hi('CursorLine',                 '',       s:base01, s:bold,      '')
-call s:hi('CursorLineNr',               s:base03, s:base01, '',          '')
+call s:hi('CursorLineNr',               s:base03, s:base01, s:bold,          '')
 call s:hi('PMenu',                      s:base04, s:base01, '',          '')
 call s:hi('PMenuSel',                   s:base10, s:base0D, '',          '')
 call s:hi('PmenuSbar',                  '',       s:base02, '',          '')
 call s:hi('PmenuThumb',                 '',       s:base07, '',          '')
-call s:hi('TabLine',                    s:base01, s:base00, '',          '')
-call s:hi('TabLineFill',                s:base01, s:base00, '',          '')
-call s:hi('TabLineSel',                 s:base0B, s:base00, '',          '')
+call s:hi('TabLine',                    s:base02, s:base00, 'none',      '')
+call s:hi('TabLineFill',                s:base00, s:base00, '',          '')
+call s:hi('TabLineSel',                 s:base0B, s:base00, s:bold,      '')
 call s:hi('helpExample',                s:base0A, '',       '',          '')
 call s:hi('helpCommand',                s:base0A, '',       '',          '')
 
@@ -134,19 +134,19 @@ call s:hi('Todo',                       s:base0A, s:base01, '',          '')
 call s:hi('Type',                       s:base0A, '',       '',          '')
 call s:hi('Typedef',                    s:base0A, '',       '',          '')
 
-call s:hi('SpellBad',                   '',       '',       '',          '')
-call s:hi('SpellLocal',                 '',       '',       '',          '')
-call s:hi('SpellCap',                   '',       '',       '',          '')
-call s:hi('SpellRare',                  '',       '',       '',          '')
+call s:hi('SpellBad',                   '',       '',       'none',      '')
+call s:hi('SpellLocal',                 '',       '',       'none',      '')
+call s:hi('SpellCap',                   '',       '',       'none',      '')
+call s:hi('SpellRare',                  '',       '',       'none',      '')
 
 call s:hi('cssColor',                   s:base0C, '',       '',          '')
 call s:hi('cssBraces',                  s:base05, '',       '',          '')
 call s:hi('cssClassName',               s:base0E, '',       '',          '')
 
-call s:hi('DiffAdd',                    ''      , s:base01, '',          '')
-call s:hi('DiffChange',                 ''      , s:base01, '',          '')
-call s:hi('DiffDelete',                 ''      , s:base01, '',          '')
-call s:hi('DiffText',                   s:base0D, s:base01, '',          '')
+call s:hi('DiffAdd',                    s:base0B, s:base00, '',          '')
+call s:hi('DiffChange',                 s:base02, s:base00, '',          '')
+call s:hi('DiffDelete',                 s:base08, s:base00, '',          '')
+call s:hi('DiffText',                   s:base0D, s:base00, '',          '')
 call s:hi('DiffAdded',                  s:base10, s:base0B, '',          '')
 call s:hi('DiffFile',                   s:base08, s:base00, '',          '')
 call s:hi('DiffNewFile',                s:base0B, s:base00, '',          '')
@@ -179,16 +179,17 @@ call s:hi('ALEErrorSign',               s:base08, s:base00, '',          '')
 call s:hi('ALEWarningSign',             s:base0A, s:base00, '',          '')
 call s:hi('ALEInfoSign',                s:base10, s:base00, '',          '')
 
+call s:hi('vimUserFunc',                '',       s:none,   '',          '')
+call s:hi('vimFunc',                    '',       s:none,   '',          '')
+
 call s:hi('sassidChar',                 s:base08, '',       '',          '')
 call s:hi('sassClassChar',              s:base09, '',       '',          '')
 call s:hi('sassInclude',                s:base0E, '',       '',          '')
 call s:hi('sassMixing',                 s:base0E, '',       '',          '')
 call s:hi('sassMixinName',              s:base0D, '',       '',          '')
 
-hi! SpellBad
-			\ gui=none
-hi! SpellCap
-			\ gui=none
+hi! vimUserFunc
+			\ guibg=none
 hi! StatusModeNormal
 			\ guibg=#7FA5A5 gui=bold
 hi! StatusModeVisual

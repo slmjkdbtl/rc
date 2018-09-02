@@ -3020,11 +3020,11 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>360 225 606 469 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>0 193 796 486 0 0 1280 777 </string>
+	<string>0 250 796 486 0 0 1280 777 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>80 193 592 584 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>237 105 948 658 0 0 1280 777 </string>
+	<string>58 97 970 658 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>52 85 934 627 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -3743,7 +3743,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-08-30T08:55:23Z</date>
+	<date>2018-08-31T11:04:05Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>SearchCommand</key>
@@ -3777,7 +3777,7 @@
 	<key>TerminalMargin</key>
 	<integer>12</integer>
 	<key>TerminalVMargin</key>
-	<integer>6</integer>
+	<integer>8</integer>
 	<key>ThreeFingerEmulates</key>
 	<false/>
 	<key>TmuxDashboardLimit</key>

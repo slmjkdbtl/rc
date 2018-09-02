@@ -1,27 +1,5 @@
 " wengwengweng
 
-func! s:get_tab_title(bufn) abort
-
-	let text = fnamemodify(bufname(a:bufn), ':t')
-
-	if text ==# ''
-		let text = '*'
-	endif
-
-	return text
-
-endfunc
-
-func! s:get_tab_modified(bufn) abort
-
-	if getbufvar(a:bufn, '&modified')
-		return ' [~]'
-	else
-		return ''
-	end
-
-endfunc
-
 func! s:get_status_mode(bufn) abort
 
 	let text = ''
@@ -152,24 +130,25 @@ func! line#get_title() abort
 
 endfunc
 
-func! line#get_tab() abort
+func! line#get_bufline() abort
 
 	let line = ''
 
-	for i in range(tabpagenr('$'))
+	for b in getbufinfo({'buflisted': 1})
 
-		let bufn = tabpagebuflist(i + 1)[0]
-		let bufname = bufname(bufn)
-
-		if i + 1 == tabpagenr()
+		if b.bufnr ==# bufnr('%')
 			let line .= '%#TabLineSel#'
 		else
 			let line .= '%#TabLine#'
 		endif
 
 		let line .= ' '
-		let line .= s:get_tab_title(bufn)
-		let line .= s:get_tab_modified(bufn)
+		let line .= fnamemodify(b.name, ':t')
+
+		if b.changed
+			let line .= ' [~]'
+		endif
+
 		let line .= ' '
 
 	endfor
@@ -180,7 +159,7 @@ func! line#get_tab() abort
 
 endfunc
 
-func! line#get_status() abort
+func! line#get_statusline() abort
 
 	let line = ''
 	let line .= s:get_status_mode('%')

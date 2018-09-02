@@ -9,6 +9,6 @@ augroup Title
 
 augroup END
 
-set statusline=%!line#get_status()
-set tabline=%!line#get_tab()
+set statusline=%!line#get_statusline()
+set tabline=%!line#get_bufline()
 
