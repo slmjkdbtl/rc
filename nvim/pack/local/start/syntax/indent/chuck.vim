@@ -2,19 +2,27 @@
 
 setlocal nosmartindent
 setlocal indentexpr=GetChuckIndent()
-setlocal indentkeys=o,0=}
+setlocal indentkeys=o,=}
 
 func! s:options(list)
 	return '\%(' . join(a:list, '\|') . '\)'
+endfunc
+
+func! s:start(pat)
+	return '^\s*' . a:pat
 endfunc
 
 func! s:end(pat)
 	return a:pat . '\s*$'
 endfunc
 
+func! s:whole(pat)
+	return s:start(s:end(a:pat))
+endfunc
+
 let s:open = s:options([ s:end('{'), ])
 let s:middle = s:options([ s:end('else'), ])
-let s:close = s:options([ s:end('}'), ])
+let s:close = s:options([ s:whole('}'), ])
 
 func! GetChuckIndent()
 

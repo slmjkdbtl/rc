@@ -3,15 +3,11 @@
 " Author: Mike Hartington
 " ===============================================================
 
-" {{{ Setup
-  set background=dark
-  hi clear
-  if exists("syntax_on")
-    syntax reset
-  endif
-  let g:colors_name="OceanicNext"
-" }}}
-" {{{ Italics
+set background=dark
+hi clear
+syntax reset
+let g:colors_name="theme"
+
   let g:oceanic_next_terminal_italic = get(g:, 'oceanic_next_terminal_italic', 0)
   let s:italic = ""
   if g:oceanic_next_terminal_italic == 1
