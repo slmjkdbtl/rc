@@ -1,6 +1,3 @@
-[submodule "nvim/pack/extern/start/oceanic-next"]
-	path = nvim/pack/extern/start/oceanic-next
-	url = git://github.com/mhartington/oceanic-next.git
 [submodule "nvim/pack/extern/start/vim-signify"]
 	path = nvim/pack/extern/start/vim-signify
 	url = git://github.com/mhinz/vim-signify.git

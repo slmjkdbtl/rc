@@ -2,7 +2,7 @@
 
 func! s:oceanic()
 
-	colorscheme OceanicNext
+	colorscheme theme
 
 	hi! Normal
 				\ guibg=#282f3b
