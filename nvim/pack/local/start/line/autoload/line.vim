@@ -119,14 +119,9 @@ func! s:get_status_curpos(bufn) abort
 
 endfunc
 
-func! line#get_title() abort
+func! line#get_title()
 
-	let bufn = tabpagebuflist(tabpagenr())[0]
-	let name = bufname(bufn)
-	let ft = getbufvar(bufn, '&filetype')
-	let text = fnamemodify(name, ':t')
-
-	return text
+	return bufname('%')
 
 endfunc
 
@@ -134,7 +129,7 @@ func! line#get_bufline() abort
 
 	let line = ''
 
-	for b in getbufinfo({'buflisted': 1})
+	for b in getbufinfo({ 'buflisted': 1 })
 
 		if b.bufnr ==# bufnr('%')
 			let line .= '%#TabLineSel#'

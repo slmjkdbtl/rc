@@ -380,3 +380,4 @@ func! projekt#jump(pattern)
 	endif
 
 endfunc
+

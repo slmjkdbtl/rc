@@ -113,7 +113,6 @@ noremap <silent> <m-j> :Scroll 12<cr>
 nnoremap <silent> <tab> :Browser<cr>
 nnoremap <silent> <m-f> :CtrlP<cr>
 nnoremap <silent> <m-t> :CtrlPTag<cr>
-nnoremap <silent> <m-b> :CtrlPBuffer<cr>
 nnoremap <silent> <m--> :OpenTerm<cr>
 nnoremap <silent> <m-=> :OpenFinder<cr>
 noremap <silent> / :Comment<cr>

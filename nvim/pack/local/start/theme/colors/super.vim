@@ -1,28 +1,37 @@
 " wengwengweng
 
+set termguicolors
 set background=dark
 hi clear
 syntax reset
-
-let g:colors_name = 'super'
 
 let s:italic = ''
 let s:bold = 'bold'
 let s:base00 = [ '#282f3b', '235' ]
 let s:base01 = [ '#303743', '237' ]
-let s:base02 = [ '#45515C', '240' ]
+let s:base02 = [ '#454c5c', '240' ]
 let s:base03 = [ '#65737e', '243' ]
 let s:base04 = [ '#a7adba', '145' ]
+" text
 let s:base05 = [ '#c0c5ce', '251' ]
 let s:base06 = [ '#cdd3de', '252' ]
+" white
 let s:base07 = [ '#d8dee9', '253' ]
+" red
 let s:base08 = [ '#ec5f67', '203' ]
+" orange
 let s:base09 = [ '#f99157', '209' ]
+" yellow
 let s:base0A = [ '#fac863', '221' ]
+" green
 let s:base0B = [ '#99c794', '114' ]
+" cyan
 let s:base0C = [ '#62b3b2', '73' ]
+" blue
 let s:base0D = [ '#6699cc', '68' ]
+" purple
 let s:base0E = [ '#c594c5', '176' ]
+" brown
 let s:base0F = [ '#ab7967', '137' ]
 let s:base10 = [ '#ffffff', '15' ]
 let s:none = [ 'NONE', 'NONE' ]
@@ -86,7 +95,7 @@ call s:hi('Conceal',                    s:base0D, s:base00, '',          '')
 call s:hi('Cursor',                     s:base00, s:base05, '',          '')
 call s:hi('NonText',                    s:base02, '',       '',          '')
 call s:hi('Normal',                     s:base05, s:base00, '',          '')
-call s:hi('EndOfBuffer',                s:base05, s:base00, '',          '')
+call s:hi('EndOfBuffer',                s:base00, s:base00, '',          '')
 call s:hi('LineNr',                     s:base03, s:base00, '',          '')
 call s:hi('SignColumn',                 s:base00, s:base00, '',          '')
 call s:hi('StatusLine',                 s:base01, s:base03, '',          '')
@@ -95,7 +104,7 @@ call s:hi('VertSplit',                  s:base00, s:base02, '',          '')
 call s:hi('ColorColumn',                '',       s:base01, '',          '')
 call s:hi('CursorColumn',               '',       s:base01, '',          '')
 call s:hi('CursorLine',                 '',       s:base01, s:bold,      '')
-call s:hi('CursorLineNr',               s:base03, s:base01, s:bold,          '')
+call s:hi('CursorLineNr',               s:base03, s:base01, s:bold,      '')
 call s:hi('PMenu',                      s:base04, s:base01, '',          '')
 call s:hi('PMenuSel',                   s:base10, s:base0D, '',          '')
 call s:hi('PmenuSbar',                  '',       s:base02, '',          '')
@@ -108,7 +117,7 @@ call s:hi('helpCommand',                s:base0A, '',       '',          '')
 
 call s:hi('Boolean',                    s:base09, '',       '',          '')
 call s:hi('Character',                  s:base08, '',       '',          '')
-call s:hi('Comment',                    s:base02, '',       s:italic,    '')
+call s:hi('Comment',                    s:base03, '',       '',          '')
 call s:hi('Conditional',                s:base0E, '',       '',          '')
 call s:hi('Constant',                   s:base09, '',       '',          '')
 call s:hi('Define',                     s:base0E, '',       '',          '')
