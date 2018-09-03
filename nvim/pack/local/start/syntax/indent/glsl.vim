@@ -1,11 +1,9 @@
-" Language: OpenGL Shading Language
-" Maintainer: Sergey Tikhomirov <sergey@tikhomirov.io>
+" wengwengweng
 
-if exists("b:did_indent")
-  finish
-endif
+setlocal indentexpr=
+setlocal nolisp
+setlocal nosmartindent
+setlocal cindent
+setlocal autoindent
+setlocal cinkeys=0},0],o,O
 
-setlocal autoindent cindent
-setlocal formatoptions+=roq
-
-" vim:set sts=2 sw=2 :

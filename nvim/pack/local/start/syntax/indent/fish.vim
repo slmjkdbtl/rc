@@ -2,6 +2,7 @@
 
 setlocal nocindent
 setlocal nosmartindent
+setlocal autoindent
 setlocal indentexpr=GetFishIndent()
 setlocal indentkeys=o,=end,=else,=case
 

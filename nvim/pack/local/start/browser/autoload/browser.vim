@@ -325,14 +325,13 @@ func! browser#open()
 
 	let b:listing = []
 
-" 	use async
 " 	let git_dir = s:get_git_dir()
-"
+
 " 	if isdirectory(git_dir)
-"
+
 " 		let b:git_dir = git_dir
 " 		let b:git_modified = s:get_git_modified()
-"
+
 " 	endif
 
 	setfiletype browser
