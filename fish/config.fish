@@ -12,6 +12,7 @@ type -q hub; and alias git "hub"
 type -q bat; and alias bat "bat --theme=TwoDark --style=plain"
 type -q bat; and alias cat bat
 type -q exa; and alias ls exa
+type -q lazygit; and alias lg lazygit
 
 # nav
 function ..    ; cd .. ; end

@@ -2,7 +2,7 @@
 
 func! template#auto()
 
-	if exists('&commentstring')
+	if exists('&commentstring') && !empty(&commentstring)
 
 		call append(0, substitute(&commentstring, '%s', 'wengwengweng', ''))
 		call append(1, '')

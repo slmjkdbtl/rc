@@ -24,7 +24,7 @@ endfunc
 
 let s:open = s:options([ s:end('function()'), s:whole('function\s.\+(.*)'), s:whole('repeat'), s:end('then'), s:end('do'), s:end('{'), ])
 let s:middle = s:options([ s:whole('else'), s:start('elseif'), ])
-let s:close = s:options([ s:whole('end'), s:start('until'), s:start('}'), ])
+let s:close = s:options([ s:start('end'), s:start('until'), s:start('}'), ])
 
 func! GetLuaIndent()
 

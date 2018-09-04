@@ -47,15 +47,15 @@ func! utils#close()
 
 	endif
 
-	if confirm('> close ' . bufname('%') .'?', "&yes\n&no") == 1
+	if &filetype ==# 'space'
+		q
+	endif
 
-		silent! bd
+	silent! bd
 
-		if empty(bufname('%'))
-			Space
-		endif
-
-	end
+	if empty(bufname('%'))
+		Space
+	endif
 
 endfunc
 
