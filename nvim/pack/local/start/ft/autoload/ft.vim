@@ -2,7 +2,7 @@
 
 let s:srcdir = expand('<sfile>:p:h:h')
 
-func! syntax#add(pat, ft, repo, comment)
+func! ft#add(pat, ft, repo, comment)
 
 	let g:syntax_list += [{
 				\ 'pat': a:pat,
@@ -13,7 +13,7 @@ func! syntax#add(pat, ft, repo, comment)
 
 endfunc
 
-func! syntax#load()
+func! ft#load()
 
 	augroup Syntax
 
@@ -31,7 +31,7 @@ func! syntax#load()
 
 endfunc
 
-func! syntax#download()
+func! ft#download()
 
 	for s in g:syntax_list
 
