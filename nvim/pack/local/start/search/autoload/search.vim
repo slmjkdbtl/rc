@@ -75,10 +75,9 @@ func! search#edit_start()
 		let g:record_mode = 1
 		let b:recording = 1
 
-		call s:normal('gnd')
-		call s:normal("\<esc>")
+		call s:normal('gn')
+		call feedkeys('s', 'n')
 		call s:normal('qq')
-		call feedkeys('i', 'n')
 
 	endif
 
@@ -136,9 +135,8 @@ func! search#record_apply()
 
 		if s:is_focused()
 
-			call s:normal('gnd')
-			call s:normal("\<esc>")
-			call feedkeys('i', 'n')
+			call s:normal('gn')
+			call feedkeys('s', 'n')
 			call feedkeys(@q)
 
 		else

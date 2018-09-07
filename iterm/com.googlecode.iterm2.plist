@@ -2880,7 +2880,7 @@
 	<key>DrawOutlineAroundCursor</key>
 	<false/>
 	<key>EnableDivisionView</key>
-	<true/>
+	<false/>
 	<key>EnableRendezvous</key>
 	<false/>
 	<key>FlashTabBarInFullscreen</key>
@@ -2990,8 +2990,8 @@
 	<false/>
 	<key>NSSplitView Subview Frames NSColorPanelSplitView</key>
 	<array>
-		<string>0.000000, 0.000000, 224.000000, 263.000000, NO, NO</string>
-		<string>0.000000, 264.000000, 224.000000, 43.000000, NO, NO</string>
+		<string>0.000000, 0.000000, 231.000000, 312.000000, NO, NO</string>
+		<string>0.000000, 313.000000, 231.000000, 43.000000, NO, NO</string>
 	</array>
 	<key>NSTableView Columns v2 KeyBingingTable</key>
 	<data>
@@ -3034,11 +3034,11 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>360 225 606 469 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>390 261 796 486 0 0 1280 777 </string>
+	<string>185 289 796 486 0 0 1280 777 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>80 193 592 584 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>58 97 970 658 0 0 1280 777 </string>
+	<string>248 139 948 638 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>52 85 934 627 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -3427,13 +3427,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.78431372549019607</real>
+				<real>1</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.60784313725490191</real>
+				<real>0.97130968701094389</real>
 				<key>Red Component</key>
-				<real>0.41568627450980394</real>
+				<real>0.0617523193359375</real>
 			</dict>
 			<key>Log Directory</key>
 			<string></string>
@@ -3757,7 +3757,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-09-02T04:54:32Z</date>
+	<date>2018-09-05T21:27:14Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>SearchCommand</key>
@@ -3844,7 +3844,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.2.1beta2</string>
+	<string>3.2.1beta3</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
