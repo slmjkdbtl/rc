@@ -35,20 +35,6 @@ func! s:get_listing()
 
 endfunc
 
-func! s:get_trash()
-
-	let os = substitute(system('uname'), "\n", '', '')
-
-	if os =~? 'Darwin'
-		return '~/.Trash'
-	elseif os =~? 'Linux'
-		return '~/.local/share/Trash'
-	else
-		return 0
-	endif
-
-endfunc
-
 func! s:render()
 
 	silent! 1,$d
@@ -128,7 +114,7 @@ func! s:bind()
 	noremap <buffer><silent> y :call browser#copy_path()<cr>
 	noremap <buffer><silent> r :call browser#refresh(line('.'))<cr>
 	noremap <buffer><silent> <m-r> :call browser#rename()<cr>
-	noremap <buffer><silent> <m-d> :call browser#delete()<cr>
+" 	noremap <buffer><silent> <m-d> :call browser#delete()<cr>
 	noremap <buffer><silent> <m-c> :call browser#copy()<cr>
 	noremap <buffer><silent> <m-x> :call browser#cut()<cr>
 	noremap <buffer><silent> <m-p> :call browser#paste()<cr>
@@ -256,14 +242,7 @@ func! browser#delete()
 
 		if confirm('> delete ' . name . '?', "&yes\n&no") == 1
 
-			let trash = s:get_trash()
-
-			if isdirectory(expand(trash))
-				call system('mv ' . path . ' ' . trash)
-			else
-				call system('rm -rf ' . path)
-			endif
-
+			call system('rm -rf ' . path)
 			silent! exec 'bw ' . name
 			call browser#refresh(line('.'))
 

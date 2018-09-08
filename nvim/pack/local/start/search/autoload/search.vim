@@ -72,11 +72,11 @@ func! search#edit_start()
 
 	if s:is_focused()
 
-		let g:record_mode = 1
 		let b:recording = 1
+		let g:record_mode = 1
+		let g:record_startkeys = ''
 
 		call s:normal('gn')
-		call feedkeys('s', 'n')
 		call s:normal('qq')
 
 	endif
@@ -87,6 +87,8 @@ func! search#edit_start_selected()
 
 	call search#selected()
 	call search#edit_start()
+	call feedkeys('s', 'n')
+	let g:record_startkeys = 's'
 
 endfunc
 
@@ -136,7 +138,7 @@ func! search#record_apply()
 		if s:is_focused()
 
 			call s:normal('gn')
-			call feedkeys('s', 'n')
+			call feedkeys(get(g:, 'record_startkeys', ''), 'n')
 			call feedkeys(@q)
 
 		else
@@ -169,7 +171,7 @@ func! search#bind()
 	vnoremap <silent> ? :call search#selected()<cr>:set hlsearch<cr>
 	nnoremap <silent> <m-;> :call search#prev()<cr>
 	nnoremap <silent> <m-'> :call search#next()<cr>
-" 	nnoremap <silent> <m-return> :call search#edit_start()<cr>
+	nnoremap <silent> <m-\> :call search#edit_start()<cr>
 	vnoremap <silent> <m-return> :call search#edit_start_selected()<cr>
 	nnoremap <silent> \ :call search#record_toggle()<cr>
 	nnoremap <silent> <m-.> :call search#record_apply()<cr>
