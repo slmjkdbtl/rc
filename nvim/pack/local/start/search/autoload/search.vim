@@ -167,15 +167,42 @@ endfunc
 
 func! search#bind()
 
-	nnoremap ? /
-	vnoremap <silent> ? :call search#selected()<cr>:set hlsearch<cr>
-	nnoremap <silent> <m-;> :call search#prev()<cr>
-	nnoremap <silent> <m-'> :call search#next()<cr>
-	nnoremap <silent> <m-\> :call search#edit_start()<cr>
-	vnoremap <silent> <m-return> :call search#edit_start_selected()<cr>
-	nnoremap <silent> \ :call search#record_toggle()<cr>
-	nnoremap <silent> <m-.> :call search#record_apply()<cr>
-	nnoremap <silent> <m-space> :set hlsearch<cr>
+	nmap ? <Plug>(search_prompt)
+	vmap <silent> ? <Plug>(search_selected)
+	nmap <silent> <m-;> <Plug>(search_prev)
+	nmap <silent> <m-'> <Plug>(search_next)
+	nmap <silent> <m-\> <Plug>(search_edit_start)
+	vmap <silent> <m-return> <Plug>(search_edit_start_selected)
+	nmap <silent> \ <Plug>(search_record_toggle)
+	nmap <silent> <m-.> <Plug>(search_record_apply)
+	nmap <silent> <m-space> <Plug>(search_highlight)
 
 endfunc
+
+nnoremap <Plug>(search_prompt)
+			\ /
+
+vnoremap <silent> <Plug>(search_selected)
+			\ :call search#selected()<cr>:set hlsearch<cr>
+
+nnoremap <silent> <Plug>(search_prev)
+			\ :call search#prev()<cr>
+
+nnoremap <silent> <Plug>(search_next)
+			\ :call search#next()<cr>
+
+nnoremap <silent> <Plug>(search_edit_start)
+			\ :call search#edit_start()<cr>
+
+vnoremap <silent> <Plug>(search_edit_start_selected)
+			\ :call search#edit_start_selected()<cr>
+
+nnoremap <silent> <Plug>(search_record_toggle)
+			\ :call search#record_toggle()<cr>
+
+nnoremap <silent> <Plug>(search_record_apply)
+			\ :call search#record_apply()<cr>
+
+nnoremap <silent> <Plug>(search_highlight)
+			\ :set hlsearch<cr>
 

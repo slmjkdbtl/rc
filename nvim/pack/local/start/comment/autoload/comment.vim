@@ -18,7 +18,7 @@ func! s:uncomment(line)
 
 endfunc
 
-func! comment#toggle()
+func! comment#toggle() range
 
 	let line = getline('.')
 
@@ -29,4 +29,7 @@ func! comment#toggle()
 	endif
 
 endfunc
+
+noremap <silent> <Plug>(comment_toggle)
+			\ :call comment#toggle()<cr>
 

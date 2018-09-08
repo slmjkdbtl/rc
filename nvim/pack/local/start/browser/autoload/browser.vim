@@ -106,21 +106,18 @@ endfunc
 
 func! s:bind()
 
-	noremap <buffer><silent> <return> :call browser#enter()<cr>
-	noremap <buffer><silent> <bs> :call browser#back()<cr>
-	noremap <buffer><silent> <tab> :call browser#close()<cr>
-	noremap <buffer><silent> <space> :call browser#expand()<cr>
-	noremap <buffer><silent> <esc> :call browser#drop()<cr>
-	noremap <buffer><silent> y :call browser#copy_path()<cr>
-	noremap <buffer><silent> r :call browser#refresh(line('.'))<cr>
-	noremap <buffer><silent> <m-r> :call browser#rename()<cr>
-" 	noremap <buffer><silent> <m-d> :call browser#delete()<cr>
-	noremap <buffer><silent> <m-c> :call browser#copy()<cr>
-	noremap <buffer><silent> <m-x> :call browser#cut()<cr>
-	noremap <buffer><silent> <m-p> :call browser#paste()<cr>
-	noremap <buffer><silent> <m-m> :call browser#mkdir()<cr>
-	noremap <buffer><silent> j j
-	noremap <buffer><silent> k k
+	map <buffer><silent> <return> <Plug>(browser_enter)
+	map <buffer><silent> <bs> <Plug>(browser_back)
+	map <buffer><silent> <tab> <Plug>(browser_close)
+	map <buffer><silent> y <Plug>(browser_copy_path)
+	map <buffer><silent> r <Plug>(browser_refresh)
+	map <buffer><silent> <m-r> <Plug>(browser_rename)
+	map <buffer><silent> <m-c> <Plug>(browser_copy)
+	map <buffer><silent> <m-p> <Plug>(browser_paste)
+	map <buffer><silent> <esc> <Plug>(browser_drop)
+	map <buffer><silent> <m-m> <Plug>(browser_mkdir)
+	map <buffer><silent> k <Plug>(browser_up)
+	map <buffer><silent> j <Plug>(browser_down)
 
 endfunc
 
@@ -164,12 +161,6 @@ func! browser#close()
 		endif
 
 	endif
-
-endfunc
-
-func! browser#expand()
-
-	" ...
 
 endfunc
 
@@ -322,4 +313,40 @@ func! browser#open()
 	call s:to_item(current_buffer)
 
 endfunc
+
+noremap <silent> <Plug>(browser_enter)
+			\ :call browser#enter()<cr>
+
+noremap <silent> <Plug>(browser_back)
+			\ :call browser#back()<cr>
+
+noremap <silent> <Plug>(browser_close)
+			\ :call browser#close()<cr>
+
+noremap <silent> <Plug>(browser_copy_path)
+			\ :call browser#copy_path()<cr>
+
+noremap <silent> <Plug>(browser_refresh)
+			\ :call browser#refresh(line('.'))<cr>
+
+noremap <silent> <Plug>(browser_rename)
+			\ :call browser#rename()<cr>
+
+noremap <silent> <Plug>(browser_copy)
+			\ :call browser#copy()<cr>
+
+noremap <silent> <Plug>(browser_paste)
+			\ :call browser#paste()<cr>
+
+noremap <silent> <Plug>(browser_drop)
+			\ :call browser#drop()<cr>
+
+noremap <silent> <Plug>(browser_mkdir)
+			\ :call browser#mkdir()<cr>
+
+noremap <silent> <Plug>(browser_up)
+			\ k
+
+noremap <silent> <Plug>(browser_down)
+			\ j
 

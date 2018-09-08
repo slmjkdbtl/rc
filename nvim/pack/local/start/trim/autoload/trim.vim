@@ -9,3 +9,6 @@ func! trim#trim()
 
 endfunc
 
+noremap <silent> <Plug>(trim)
+			\ :call trim#trim()<cr>
+
