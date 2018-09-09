@@ -3034,11 +3034,11 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>360 225 606 469 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>185 289 796 486 0 0 1280 777 </string>
+	<string>326 265 918 512 0 0 1280 777 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>80 193 592 584 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>248 139 948 638 0 0 1280 777 </string>
+	<string>327 91 948 686 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>52 85 934 627 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -3063,13 +3063,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.19215686274509805</real>
+				<real>0.15294117647058825</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.14509803921568629</real>
+				<real>0.10588235294117647</real>
 				<key>Red Component</key>
-				<real>0.11764705882352941</real>
+				<real>0.078431372549019607</real>
 			</dict>
 			<key>Ansi 1 Color</key>
 			<dict>
@@ -3245,13 +3245,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.19215686274509805</real>
+				<real>0.15294117647058825</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.14509803921568629</real>
+				<real>0.10588235294117647</real>
 				<key>Red Component</key>
-				<real>0.11764705882352941</real>
+				<real>0.078431372549019607</real>
 			</dict>
 			<key>Ansi 9 Color</key>
 			<dict>
@@ -3757,7 +3757,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-09-05T21:27:14Z</date>
+	<date>2018-09-08T01:54:58Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>SearchCommand</key>

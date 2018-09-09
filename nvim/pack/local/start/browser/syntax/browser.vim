@@ -1,20 +1,42 @@
 " wengwengweng
 
-syntax match FilerParent
+syntax match BrowserParent
 			\ '^..$'
-syntax match FilerDirHead
+			\ contained
+			\ containedin=BrowserItem
+
+syntax match BrowserDirHead
 			\ '^+'
 			\ contained
-syntax match FilerDir
-			\ '^+.*'
-			\ contains=FilerDirHead
+			\ containedin=BrowserDir
 
-highlight def link FilerFile
+syntax match BrowserMarked
+			\ '>\s'
+			\ contained
+			\ containedin=BrowserItem
+
+syntax match BrowserDir
+			\ '^+.*'
+			\ contained
+			\ containedin=BrowserItem
+			\ contains=BrowserDirHead,BrowserMarked
+
+syntax match BrowserItem
+			\ '^.*$'
+			\ contains=BrowserDir,BrowserMarked
+
+highlight def link BrowserItem
 			\ Normal
-highlight def link FilerDir
+
+highlight def link BrowserDir
 			\ Function
-highlight def link FilerDirHead
+
+highlight def link BrowserDirHead
 			\ Special
-highlight def link FilerParent
+
+highlight def link BrowserParent
 			\ PreProc
+
+highlight def link BrowserMarked
+			\ String
 

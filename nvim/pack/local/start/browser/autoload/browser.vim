@@ -11,6 +11,24 @@ func! s:get_files()
 
 endfunc
 
+func! s:is_same(f1, f2)
+
+	return fnamemodify(a:f1, ':p') ==# fnamemodify(a:f2, ':p')
+
+endfunc
+
+func! s:is_marked(f)
+
+	for m in b:marked
+		if s:is_same(a:f, m)
+			return 1
+		endif
+	endfor
+
+	return 0
+
+endfunc
+
 func! s:get_listing()
 
 	let flist = []
@@ -41,19 +59,30 @@ func! s:render()
 
 	for i in range(len(b:listing))
 
-		let line = b:listing[i]
+		let item = b:listing[i]
+		let displayline = ''
 
-		if line ==# '..'
+		if item ==# '..'
+
 			let displayline = '..'
-		elseif isdirectory(line)
-			let displayline = '+ ' . fnamemodify(line, ':t')
-		elseif filereadable(line)
-			let displayline = '  ' . fnamemodify(line, ':t')
+
+		else
+
+			if isdirectory(item)
+				let displayline .= '+ '
+			elseif filereadable(item)
+				let displayline .= '  '
+			endif
+
+			if s:is_marked(item)
+				let displayline .= '> '
+			endif
+
+			let displayline .= fnamemodify(item, ':t')
+
 		endif
 
-		if exists('displayline')
-			call append(i, displayline)
-		endif
+		call append(i, displayline)
 
 	endfor
 
@@ -110,6 +139,7 @@ func! s:bind()
 	map <buffer><silent> <bs> <Plug>(browser_back)
 	map <buffer><silent> <tab> <Plug>(browser_close)
 	map <buffer><silent> y <Plug>(browser_copy_path)
+	map <buffer><silent> <space> <Plug>(browser_mark)
 	map <buffer><silent> r <Plug>(browser_refresh)
 	map <buffer><silent> <m-r> <Plug>(browser_rename)
 	map <buffer><silent> <m-c> <Plug>(browser_copy)
@@ -137,6 +167,24 @@ func! browser#refresh(...)
 	else
 		call s:to_line(2)
 	endif
+
+endfunc
+
+func! browser#mark()
+
+	if line('.') ==# 1
+		return
+	endif
+
+	let file = s:get_current()
+
+	if s:is_marked(file)
+		call remove(b:marked, index(b:marked, file))
+	else
+		let b:marked += [ file ]
+	endif
+
+	call browser#refresh(line('.'))
 
 endfunc
 
@@ -184,43 +232,17 @@ func! browser#mkdir()
 
 endfunc
 
-func! browser#copy()
-
-	let file = s:get_current()
-	let name = fnamemodify(file, ':t')
-	let b:holding = file
-
-	echo 'holding ' . name
-
-endfunc
-
 func! browser#paste()
 
-	if !exists('b:holding')
-
-		echo 'no holding file'
-		return
-
-	endif
-
 	let cwd = getcwd()
-	let name = fnamemodify(b:holding, ':t')
-
-	call system('cp ' . b:holding . ' ' . cwd)
-	echo 'pasted ' . name
-	unlet b:holding
-	call browser#refresh(line('.'))
 
 endfunc
 
 func! browser#drop()
 
-	if exists('b:holding')
-
-		echo 'dropped ' . fnamemodify(b:holding, ':t')
-		unlet b:holding
-
-	endif
+	echo 'dropped ' . len(b:marked) . ' items'
+	let b:marked = []
+	call browser#refresh(line('.'))
 
 endfunc
 
@@ -294,6 +316,7 @@ func! browser#open()
 	enew
 
 	let b:listing = []
+	let b:marked = []
 
 " 	let git_dir = s:get_git_dir()
 
@@ -310,7 +333,6 @@ func! browser#open()
 	setlocal nobuflisted
 	call browser#refresh()
 	call s:bind()
-	call s:to_item(current_buffer)
 
 endfunc
 
@@ -328,6 +350,9 @@ noremap <silent> <Plug>(browser_copy_path)
 
 noremap <silent> <Plug>(browser_refresh)
 			\ :call browser#refresh(line('.'))<cr>
+
+noremap <silent> <Plug>(browser_mark)
+			\ :call browser#mark()<cr>
 
 noremap <silent> <Plug>(browser_rename)
 			\ :call browser#rename()<cr>
