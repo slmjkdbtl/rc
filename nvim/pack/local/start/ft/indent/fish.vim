@@ -4,7 +4,7 @@ setlocal nocindent
 setlocal nosmartindent
 setlocal autoindent
 setlocal indentexpr=GetFishIndent()
-setlocal indentkeys=o,=end,=else,=case
+setlocal indentkeys=o,O,=end,=else,=case
 
 func! s:options(list)
 	return '\%(' . join(a:list, '\|') . '\)'
@@ -22,9 +22,23 @@ func! s:whole(pat)
 	return s:start(s:end(a:pat))
 endfunc
 
-let s:open = s:options([ s:start('function\s.\+'), s:start('if'), s:start('for'), s:start('while'), s:start('switch'), ])
-let s:middle = s:options([ s:whole('else'), s:start('else\sif\s.*'), s:start('case'), ])
-let s:close = s:options([ s:whole('end'), ])
+let s:open = s:options([
+			\ s:start('function\s.\+'),
+			\ s:start('if'),
+			\ s:start('for'),
+			\ s:start('while'),
+			\ s:start('switch'),
+			\ ])
+
+let s:middle = s:options([
+			\ s:whole('else'),
+			\ s:start('else\sif\s.*'),
+			\ s:start('case'),
+			\ ])
+
+let s:close = s:options([
+			\ s:whole('end'),
+			\ ])
 
 func! GetFishIndent()
 

@@ -120,6 +120,6 @@ nnoremap <silent> <m-w> :Close<cr>
 nnoremap <silent> <m-[> :PrevMark<cr>
 nnoremap <silent> <m-]> :NextMark<cr>
 nnoremap <silent> w :Write<cr>
-nnoremap b :Make<space>
+nnoremap m :Make<space>
 nnoremap z :Projekt<space>
 

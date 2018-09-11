@@ -125,7 +125,7 @@ func! s:to_item(item)
 
 	for i in range(len(b:listing))
 
-		if b:listing[i] ==# a:item
+		if s:is_same(b:listing[i], a:item)
 			call s:to_line(i + 1)
 		endif
 
@@ -332,6 +332,7 @@ func! browser#open()
 	setlocal bufhidden=wipe
 	setlocal nobuflisted
 	call browser#refresh()
+	call s:to_item(current_buffer)
 	call s:bind()
 
 endfunc

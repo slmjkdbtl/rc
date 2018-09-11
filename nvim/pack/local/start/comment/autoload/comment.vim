@@ -18,7 +18,7 @@ func! s:uncomment(line)
 
 endfunc
 
-func! comment#toggle() range
+func! comment#toggle()
 
 	let line = getline('.')
 

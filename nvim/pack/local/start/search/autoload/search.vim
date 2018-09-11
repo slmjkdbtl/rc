@@ -2,7 +2,7 @@
 
 func! s:escape(text)
 
-	return escape(a:text, '~.*[')
+	return escape(a:text, '~.*[\')
 
 endfunc
 

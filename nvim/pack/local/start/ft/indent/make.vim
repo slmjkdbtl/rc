@@ -3,8 +3,8 @@
 setlocal nocindent
 setlocal nosmartindent
 setlocal autoindent
-setlocal indentexpr=GetLuaIndent()
-setlocal indentkeys=o,O,0},=end,=until,=elseif,=else,
+setlocal indentexpr=GetMakeIndent()
+setlocal indentkeys=o,O,=fi,=),=else
 
 func! s:options(list)
 	return '\%(' . join(a:list, '\|') . '\)'
@@ -22,32 +22,30 @@ func! s:whole(pat)
 	return s:start(s:end(a:pat))
 endfunc
 
+let s:lead = s:end('^.*:\(\s.*\)*')
+
 let s:open = s:options([
-			\ s:end('function(.*)'),
-			\ s:whole('function\s.\+(.*)'),
-			\ s:whole('repeat'),
-			\ s:end('then'),
-			\ s:end('do'),
-			\ s:end('{'),
+			\ s:end('then\s*\\'),
 			\ ])
 
 let s:middle = s:options([
-			\ s:whole('else'),
-			\ s:start('elseif'),
+			\ s:start('else'),
 			\ ])
 
 let s:close = s:options([
-			\ s:start('end'),
-			\ s:start('until'),
-			\ s:start('}'),
+			\ s:start('fi'),
 			\ ])
 
-func! GetLuaIndent()
+func! GetMakeIndent()
 
 	let line = getline(v:lnum)
 	let pnr = prevnonblank(v:lnum - 1)
 	let pline = getline(pnr)
 	let plen = len(pline)
+
+	if pline =~# s:lead && pline !~# '^\.PHONY'
+		return indent(pnr) + &tabstop
+	endif
 
 	if pline =~# s:open && line !~# s:close && line !~# s:middle
 		return indent(pnr) + &tabstop

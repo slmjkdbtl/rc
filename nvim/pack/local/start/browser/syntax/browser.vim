@@ -26,7 +26,7 @@ syntax match BrowserItem
 			\ contains=BrowserDir,BrowserMarked
 
 highlight def link BrowserItem
-			\ Normal
+			\ Cleared
 
 highlight def link BrowserDir
 			\ Function
