@@ -24,7 +24,7 @@ endfunc
 
 let s:open = s:options([
 			\ s:end('function(.*)'),
-			\ s:whole('function\s.\+(.*)'),
+			\ s:end('function\s.\+(.*)'),
 			\ s:whole('repeat'),
 			\ s:end('then'),
 			\ s:end('do'),

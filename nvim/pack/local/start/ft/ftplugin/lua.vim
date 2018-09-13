@@ -27,7 +27,7 @@ func! <sid>do()
 
 	let l = getline('.')
 
-	if l =~# '^\s*for\s.*in.*\s'
+	if l =~# '^\s*for\s'
 		return 'doend' . s:repeat("\<left>", 3)
 	endif
 
@@ -39,7 +39,7 @@ func! <sid>then()
 
 	let l = getline('.')
 
-	if l =~# '^\s*if\s.*\s'
+	if l =~# '^\s*if\s'
 		return 'thenend' . s:repeat("\<left>", 3)
 	endif
 

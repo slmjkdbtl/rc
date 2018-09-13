@@ -48,7 +48,10 @@ func! search#selected()
 	let text = s:get_selected()
 
 	call s:search(text)
-	call search(@/, 'b')
+
+	if !s:is_focused()
+		call search(@/, 'b')
+	endif
 
 endfunc
 
