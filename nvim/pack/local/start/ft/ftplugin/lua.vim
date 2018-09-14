@@ -27,7 +27,7 @@ func! <sid>do()
 
 	let l = getline('.')
 
-	if l =~# '^\s*for\s'
+	if l =~# '^\s*for\s' || l =~# '^\s*while\s'
 		return 'doend' . s:repeat("\<left>", 3)
 	endif
 

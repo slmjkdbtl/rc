@@ -4,7 +4,7 @@ setlocal nocindent
 setlocal nosmartindent
 setlocal autoindent
 setlocal indentexpr=GetLuaIndent()
-setlocal indentkeys=o,O,0},=end,=until,=elseif,=else,
+setlocal indentkeys=o,O,0},0),=end,=until,=elseif,=else,
 
 func! s:options(list)
 	return '\%(' . join(a:list, '\|') . '\)'
@@ -29,6 +29,7 @@ let s:open = s:options([
 			\ s:end('then'),
 			\ s:end('do'),
 			\ s:end('{'),
+			\ s:end('('),
 			\ ])
 
 let s:middle = s:options([
@@ -40,6 +41,7 @@ let s:close = s:options([
 			\ s:start('end'),
 			\ s:start('until'),
 			\ s:start('}'),
+			\ s:end(')'),
 			\ ])
 
 func! GetLuaIndent()

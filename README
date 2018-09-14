@@ -16,11 +16,6 @@
 		# workspace
 		https://iterm2.com/
 
-	- mutt
-
-		# email client
-		https://neomutt.org/
-
 	- mpv
 
 		# media player
@@ -57,3 +52,4 @@
 	- scripts
 
 		# some applescripts
+

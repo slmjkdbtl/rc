@@ -25,12 +25,15 @@ abbr ga git add .
 abbr gc git commit -m
 abbr gp git push
 abbr gd git diff
+abbr gb git browse
 type -q lazygit; and abbr lg lazygit
 
 # env
 set -x BROWSER open
 set -x TERM xterm-super
 set -x PAGER less
+set -x LC_ALL en_US.UTF-8
+set -x LANG en_US.UTF-8
 
 if type -q nvim
 	set -x EDITOR nvim
@@ -38,17 +41,15 @@ else
 	set -x EDITOR vim
 end
 
-# plugins
-set -g fplug_path $HOME/.config/fish/plugins
-fplug load "fisherman/z"
-fplug load "laughedelic/pisces"
-
 # fzf
 if type -q fzf
 	if type -q fd
 		set -x FZF_DEFAULT_COMMAND "fd --type f"
 	end
 end
+
+# jump
+status --is-interactive; and . (jump shell | psub)
 
 # go
 if test -d $HOME/.go
