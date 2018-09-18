@@ -317,7 +317,6 @@ func! projekt#switch(proj)
 
 		silent! exec 'lcd ' . expand(a:proj.path)
 		silent! exec 'edit ' . expand(a:proj.path)
-		echo s:format(a:proj)
 		let g:projekt_current = a:proj
 
 	elseif (filereadable(a:proj.path))

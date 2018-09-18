@@ -146,14 +146,6 @@ func! utils#make(target)
 
 endfunc
 
-func! utils#get_bufs()
-
-	for b in getbufinfo()
-		echom b.name
-	endfor
-
-endfunc
-
 func! utils#syncheck()
 
 	if !exists('*synstack')
@@ -165,26 +157,10 @@ func! utils#syncheck()
 endfunc
 
 func! utils#openfinder()
-
 	call system('open .')
-
-endfunc
-
-func! s:call_applescript(name, arg)
-
-	let fname = s:dir . '/scripts/' . a:name . '.scpt'
-
-	if (filereadable(fname))
-		return system('osascript ' . fname . ' ' . a:arg)
-	endif
-
-	return -1
-
 endfunc
 
 func! utils#openterm()
-
-	return s:call_applescript('openiniterm', getcwd())
-
+	call system('open -a iTerm ' . getcwd())
 endfunc
 

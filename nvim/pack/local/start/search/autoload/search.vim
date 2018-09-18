@@ -73,6 +73,8 @@ endfunc
 
 func! search#edit_start()
 
+	noh
+
 	if s:is_focused()
 
 		let b:recording = 1

@@ -30,26 +30,23 @@ endfor
 noremap : :
 noremap . .
 nnoremap ! :!
-noremap <silent> c :redraw!<cr>
 noremap <silent> <esc> <esc>:noh<cr>
 inoremap <silent> <esc> <esc>
-tnoremap <esc> <c-\><c-n>
+tnoremap <silent> <esc> <c-\><c-n>
 
 " movement
-noremap k gk
-noremap j gj
-noremap <up> gk
-noremap <down> gj
-noremap h h
-noremap l l
-noremap <m-h> b
-noremap <m-l> e
-inoremap <m-j> <c-o>gj
-inoremap <m-k> <c-o>gk
-inoremap <m-h> <left>
-inoremap <m-l> <right>
-inoremap <up> <c-x><c-y>
-inoremap <down> <c-x><c-e>
+noremap <silent> k gk
+noremap <silent> j gj
+noremap <silent> <up> gk
+noremap <silent> <down> gj
+noremap <silent> h h
+noremap <silent> l l
+noremap <silent> <m-h> b
+noremap <silent> <m-l> e
+inoremap <silent> <up> <c-x><c-y>
+inoremap <silent> <down> <c-x><c-e>
+inoremap <silent> <m-h> <c-o>b
+inoremap <silent> <m-l> <c-o>e
 
 " buffer
 nnoremap <silent> ` <c-^>
@@ -59,28 +56,25 @@ nnoremap <silent> <m-q> :silent! bprev<cr>
 nnoremap <silent> <m-e> :silent! bnext<cr>
 
 " edit
-nnoremap > A
-nnoremap < I
-vnoremap > <esc>`>a
-vnoremap < <esc>`<i
-nnoremap <return> a
-nnoremap <m-return> A<return>yo<bs><bs><esc>
-vnoremap <return> s
-inoremap <m-bs> <c-w>
-inoremap <tab> <tab>
-inoremap <return> <return>yo<bs><bs>
-inoremap <m-return> <esc>mqa<return><esc>`qa<return>
-inoremap <m-space> <esc>mqa<space><esc>`qa<space>
+nnoremap <silent> > A
+nnoremap <silent> < I
+vnoremap <silent> > <esc>`>a
+vnoremap <silent> < <esc>`<i
+nnoremap <silent> <return> a
+nnoremap <silent> <m-return> A<return>yo<bs><bs><esc>
+vnoremap <silent> <return> s
+inoremap <silent> <m-bs> <c-w>
+inoremap <silent> <tab> <tab>
+inoremap <silent> <return> <return>yo<bs><bs>
+inoremap <silent> <m-return> <esc>mqa<return><esc>`qa<return>
 cnoremap <m-bs> <c-w>
 
 " undo & redo
 nnoremap <silent> u u
 nnoremap <silent> o <c-r>
-inoremap <silent> <m-u> <c-o>u
-inoremap <silent> <m-o> <c-o><c-r>
 
 " cut & copy & paste
-noremap <silent> p "*p
+noremap <silent> p "*P
 nnoremap <silent> y "*yy
 vnoremap <silent> y mq"*y`>`q
 nnoremap <silent> x "*dd
@@ -89,15 +83,15 @@ noremap <silent> d "_dd<esc>
 inoremap <silent> <m-p> <esc>"*pa
 
 " selection
-nnoremap v v
-nnoremap <m-v> <c-v>
-nnoremap <space> viw
-vnoremap <space> <esc>
-noremap <m-a> ggVG
+nnoremap <silent> v v
+nnoremap <silent> <m-v> <c-v>
+nnoremap <silent> <space> viw
+vnoremap <silent> <space> <esc>
+nnoremap <silent> <m-a> ggVG
 
 " indent
-vnoremap <tab> >
-vnoremap <m-tab> <
+vnoremap <silent> <tab> >
+vnoremap <silent> <m-tab> <
 
 " yo
 for i in range(1, 9)
