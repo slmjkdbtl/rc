@@ -35,7 +35,7 @@
 	<key>CommandSelection</key>
 	<true/>
 	<key>ConservativeURLGuessing</key>
-	<true/>
+	<false/>
 	<key>Control</key>
 	<integer>1</integer>
 	<key>CopyLastNewline</key>
@@ -3034,11 +3034,11 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>360 225 606 469 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>326 304 1018 447 0 0 1280 777 </string>
+	<string>201 256 796 486 0 0 1280 777 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>80 193 592 584 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>286 139 948 638 0 0 1280 777 </string>
+	<string>159 131 948 638 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>52 85 934 627 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -3757,7 +3757,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-09-15T23:23:55Z</date>
+	<date>2018-09-17T22:05:47Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>SearchCommand</key>

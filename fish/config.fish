@@ -49,7 +49,9 @@ if type -q fzf
 end
 
 # jump
-status --is-interactive; and . (jump shell | psub)
+if type -q jump
+	status --is-interactive; and . (jump shell --bind=z | psub)
+end
 
 # go
 if test -d $HOME/.go

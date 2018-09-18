@@ -45,8 +45,6 @@ noremap <silent> <m-h> b
 noremap <silent> <m-l> e
 inoremap <silent> <up> <c-x><c-y>
 inoremap <silent> <down> <c-x><c-e>
-inoremap <silent> <m-h> <c-o>b
-inoremap <silent> <m-l> <c-o>e
 
 " buffer
 nnoremap <silent> ` <c-^>
