@@ -8,9 +8,9 @@ syntax reset
 let s:italic = ''
 let s:bold = 'bold'
 let s:base00 = [ '#1e2531', '235' ]
-let s:base01 = [ '#303743', '237' ]
-let s:base02 = [ '#454c5c', '240' ]
-let s:base03 = [ '#65737e', '243' ]
+let s:base01 = [ '#262d39', '237' ]
+let s:base02 = [ '#3e4555', '240' ]
+let s:base03 = [ '#5b6974', '243' ]
 let s:base04 = [ '#a7adba', '145' ]
 " text
 let s:base05 = [ '#c0c5ce', '251' ]
