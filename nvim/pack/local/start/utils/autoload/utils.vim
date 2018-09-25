@@ -51,7 +51,7 @@ func! utils#close()
 		q
 	endif
 
-	silent! bd
+	silent! bw
 
 	if empty(bufname('%'))
 		Space

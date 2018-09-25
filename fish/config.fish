@@ -12,6 +12,7 @@ type -q hub; and alias git "hub"
 type -q bat; and alias bat "env PAGER='' bat --theme=TwoDark --style=plain"
 type -q bat; and alias cat bat
 type -q exa; and alias ls exa
+alias sfxr "amulet ~/Things/misc/sfxr.lua"
 
 # nav
 function ..    ; cd .. ; end

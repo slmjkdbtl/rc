@@ -7,7 +7,7 @@ syntax reset
 
 let s:italic = ''
 let s:bold = 'bold'
-let s:base00 = [ '#282f3b', '235' ]
+let s:base00 = [ '#1e2531', '235' ]
 let s:base01 = [ '#303743', '237' ]
 let s:base02 = [ '#454c5c', '240' ]
 let s:base03 = [ '#65737e', '243' ]

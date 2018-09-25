@@ -8,6 +8,10 @@ endfunc
 
 func! s:comment(line)
 
+	if empty(a:line)
+		return a:line
+	endif
+
 	return substitute(&commentstring, '%s', escape(a:line, '&\.'), '')
 
 endfunc
