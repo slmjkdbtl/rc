@@ -211,6 +211,9 @@ system tools
 	- m-cli
 		https://github.com/rgcr/m-cli/
 
+	- wifi-password
+		https://github.com/rauchg/wifi-password/
+
 	- i2p
 		https://geti2p.net/
 
@@ -313,8 +316,8 @@ apps
 	- trello
 		https://trello.com/
 
-	- chrome
-		https://www.google.com/chrome/
+	- hexfiend
+		http://ridiculousfish.com/hexfiend/
 
 	- monitor
 		https://conduitlabs.com/
@@ -393,6 +396,9 @@ games
 
 	- nethack
 		https://www.nethack.org/
+
+	- angband
+		http://rephial.org/
 
 	- rogue
 		https://sourceforge.net/projects/roguelike/

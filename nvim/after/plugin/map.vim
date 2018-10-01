@@ -85,6 +85,7 @@ nnoremap <silent> v v
 nnoremap <silent> <m-v> V
 nnoremap <silent> <space> viw
 vnoremap <silent> <space> <esc>
+nnoremap <silent> <m-a> ggVG
 
 " indent
 vnoremap <silent> <tab> >
