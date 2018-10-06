@@ -1,9 +1,6 @@
 [submodule "nvim/pack/extern/start/vim-signify"]
 	path = nvim/pack/extern/start/vim-signify
 	url = git://github.com/mhinz/vim-signify.git
-[submodule "nvim/pack/extern/start/ctrlp.vim"]
-	path = nvim/pack/extern/start/ctrlp.vim
-	url = git://github.com/ctrlpvim/ctrlp.vim.git
 [submodule "nvim/pack/extern/start/ale"]
 	path = nvim/pack/extern/start/ale
 	url = git://github.com/w0rp/ale.git

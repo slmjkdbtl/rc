@@ -53,3 +53,46 @@
 
 		# some applescripts
 
+vim plugins
+
+	I've written several vim plugins to learn vim, they're all under nvim/pack/local/start
+
+	- browser
+		simple file browser
+
+	- comment
+		toggle comment
+
+	- jump
+		jumping through markers
+
+	- line
+		custom statusline & tabline
+
+	- pair
+		autopair in insert mode
+
+	- projekt
+		project directory jumping
+
+	- scroll
+		smooth scrolling
+
+	- search
+		enhanced searching & multiline editing
+
+	- space
+		custom start screen
+
+	- theme
+		my colorscheme
+
+	- tommywiseau
+		meaning of life
+
+	- trim
+		trim whitespaces on save
+
+	- utils
+		simple util commands
+

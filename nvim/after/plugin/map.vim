@@ -81,8 +81,7 @@ noremap <silent> d "_dd<esc>
 inoremap <silent> <m-p> <esc>"*pa
 
 " selection
-nnoremap <silent> v v
-nnoremap <silent> <m-v> V
+nnoremap <silent> v V
 nnoremap <silent> <space> viw
 vnoremap <silent> <space> <esc>
 nnoremap <silent> <m-a> ggVG
@@ -90,6 +89,10 @@ nnoremap <silent> <m-a> ggVG
 " indent
 vnoremap <silent> <tab> >
 vnoremap <silent> <m-tab> <
+
+" search
+nnoremap f :find<space>
+nnoremap t :tag<space>
 
 " yo
 for i in range(1, 9)
@@ -103,8 +106,6 @@ call search#bind()
 noremap <silent> <m-k> :Scroll -12<cr>
 noremap <silent> <m-j> :Scroll 12<cr>
 nnoremap <silent> <tab> :Browser<cr>
-nnoremap <silent> <m-f> :CtrlP<cr>
-nnoremap <silent> <m-t> :CtrlPTag<cr>
 nnoremap <silent> <m--> :OpenTerm<cr>
 nnoremap <silent> <m-=> :OpenFinder<cr>
 noremap <silent> / :Comment<cr>

@@ -16,51 +16,6 @@ let g:ale_sign_error = '>'
 let g:ale_sign_warning = '*'
 let g:ale_sign_info = '?'
 
-" ctrlp
-if executable('fd')
-	let g:ctrlp_user_command = 'fd -H .'
-endif
-
-let g:ctrlp_reuse_window = 'browser'
-let g:ctrlp_show_hidden = 1
-
-let g:ctrlp_prompt_mappings = {
-	\ 'PrtBS()':              ['<bs>'],
-	\ 'PrtDelete()':          [],
-	\ 'PrtDeleteWord()':      ['<m-bs>'],
-	\ 'PrtClear()':           [],
-	\ 'PrtSelectMove("j")':   ['<down>'],
-	\ 'PrtSelectMove("k")':   ['<up>'],
-	\ 'PrtSelectMove("t")':   [],
-	\ 'PrtSelectMove("b")':   [],
-	\ 'PrtSelectMove("u")':   [],
-	\ 'PrtSelectMove("d")':   [],
-	\ 'PrtHistory(-1)':       [],
-	\ 'PrtHistory(1)':        [],
-	\ 'AcceptSelection("e")': ['<cr>'],
-	\ 'AcceptSelection("h")': [],
-	\ 'AcceptSelection("t")': [],
-	\ 'AcceptSelection("v")': [],
-	\ 'ToggleFocus()':        [],
-	\ 'ToggleRegex()':        [],
-	\ 'ToggleByFname()':      [],
-	\ 'ToggleType(1)':        [],
-	\ 'ToggleType(-1)':       [],
-	\ 'PrtExpandDir()':       [],
-	\ 'PrtInsert("c")':       [],
-	\ 'PrtInsert()':          [],
-	\ 'PrtCurStart()':        [],
-	\ 'PrtCurEnd()':          [],
-	\ 'PrtCurLeft()':         [],
-	\ 'PrtCurRight()':        [],
-	\ 'PrtClearCache()':      [],
-	\ 'PrtDeleteEnt()':       [],
-	\ 'CreateNewFile()':      [],
-	\ 'MarkToOpen()':         [],
-	\ 'OpenMulti()':          [],
-	\ 'PrtExit()':            ['<esc>'],
-	\ }
-
 " tommywiseau
 let g:is_human_bean = 0
 
