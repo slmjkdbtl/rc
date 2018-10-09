@@ -85,7 +85,7 @@ endfunc
 
 func! utils#write()
 
-	:silent! w
+	silent! w
 	echo "'" . bufname('%') . "' written"
 
 endfunc
@@ -140,6 +140,21 @@ func! utils#make(target)
 
 		exec 'lcd ' . mdir
 		exec '!make ' . a:target
+		exec 'lcd ' . cwd
+
+	endif
+
+endfunc
+
+func! utils#just(target)
+
+	let cwd = getcwd()
+	let mdir = utils#recfind(cwd, 'justfile')
+
+	if isdirectory(mdir)
+
+		exec 'lcd ' . mdir
+		exec '!just ' . a:target
 		exec 'lcd ' . cwd
 
 	endif

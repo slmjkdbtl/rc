@@ -53,6 +53,7 @@
 
 		# some applescripts
 
+
 vim plugins
 
 	I've written several vim plugins to learn vim, they're all under nvim/pack/local/start
@@ -95,4 +96,6 @@ vim plugins
 
 	- utils
 		simple util commands
+
+	I still use 2 external plugins: ale and vim-signify
 

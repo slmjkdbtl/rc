@@ -24,15 +24,7 @@ func! <sid>function()
 endfunc
 
 func! <sid>do()
-
-	let l = getline('.')
-
-	if l =~# '^\s*for\s' || l =~# '^\s*while\s'
-		return 'doend' . s:repeat("\<left>", 3)
-	endif
-
-	return 'do'
-
+	return 'doend' . s:repeat("\<left>", 3)
 endfunc
 
 func! <sid>then()

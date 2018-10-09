@@ -6,13 +6,15 @@ alias t "touch"
 alias c "set_color"
 alias size "du -sh"
 alias make "make -s"
-type -q nvim; and alias v "nvim"
+alias v "nvim"
+alias ase "/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
+alias sfxr "amulet ~/.tools/sfxr.lua"
+
+# replacements
 type -q neomutt; and alias mutt "neomutt"
 type -q hub; and alias git "hub"
-type -q bat; and alias bat "env PAGER='' bat --theme=TwoDark --style=plain"
-type -q bat; and alias cat bat
+type -q bat; and alias cat "env PAGER='' bat --theme=TwoDark --style=plain"
 type -q exa; and alias ls exa
-alias sfxr "amulet ~/Things/misc/sfxr.lua"
 
 # nav
 function ..    ; cd .. ; end
@@ -27,14 +29,13 @@ abbr gc git commit -m
 abbr gp git push
 abbr gd git diff
 abbr gb git browse
-type -q lazygit; and abbr lg lazygit
+abbr gmisc "git add .; git commit -m 'misc'; git push"
+abbr lg lazygit
 
 # env
 set -x BROWSER open
 set -x TERM xterm-super
 set -x PAGER less
-set -x LC_ALL en_US.UTF-8
-set -x LANG en_US.UTF-8
 
 if type -q nvim
 	set -x EDITOR nvim
@@ -56,10 +57,8 @@ end
 
 # go
 if test -d $HOME/.go
-
 	set -x GOPATH $HOME/.go
 	set -x PATH $GOPATH/bin $PATH
-
 end
 
 # cargo
@@ -67,7 +66,7 @@ if test -d $HOME/.cargo
 	set -x PATH $HOME/.cargo/bin $PATH
 end
 
-# brew
+# homebrew
 set -x HOMEBREW_NO_AUTO_UPDATE 1
 
 # openssl

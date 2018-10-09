@@ -24,6 +24,9 @@ command! -nargs=0 CleanBuf
 command! -nargs=? Make
 			\ call utils#make(<q-args>)
 
+command! -nargs=? Just
+			\ call utils#just(<q-args>)
+
 command! -nargs=0 SynCheck
 			\ call utils#syncheck()
 
