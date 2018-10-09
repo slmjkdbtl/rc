@@ -29,7 +29,6 @@ abbr gc git commit -m
 abbr gp git push
 abbr gd git diff
 abbr gb git browse
-abbr gmisc "git add .; git commit -m 'misc'; git push"
 abbr lg lazygit
 
 # env
