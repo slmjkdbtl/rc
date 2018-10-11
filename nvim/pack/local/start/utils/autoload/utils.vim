@@ -146,15 +146,15 @@ func! utils#make(target)
 
 endfunc
 
-func! utils#just(target)
+func! utils#make(target)
 
 	let cwd = getcwd()
-	let mdir = utils#recfind(cwd, 'justfile')
+	let mdir = utils#recfind(cwd, 'Makefile')
 
 	if isdirectory(mdir)
 
 		exec 'lcd ' . mdir
-		exec '!just ' . a:target
+		exec '!make ' . a:target
 		exec 'lcd ' . cwd
 
 	endif

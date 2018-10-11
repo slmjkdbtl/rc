@@ -187,9 +187,6 @@ system tools
 	- tldr
 		http://tldr.sh/
 
-	- rustup
-		https://rustup.rs/
-
 	- wine
 		https://www.winehq.org/
 
@@ -217,6 +214,9 @@ system tools
 
 apps
 
+	- amulet
+		http://www.amulet.xyz/
+
 	- love2d
 		http://love2d.org/
 
@@ -225,9 +225,6 @@ apps
 
 	- sunvox
 		http://warmplace.ru/soft/sunvox/
-
-	- amulet
-		http://www.amulet.xyz/
 
 	- grafx2
 		http://grafx2.chez.com/

@@ -2,10 +2,10 @@
 
 # alias
 alias o "open"
+alias f "open ."
 alias t "touch"
 alias c "set_color"
 alias size "du -sh"
-alias make "make -s"
 alias v "nvim"
 alias ase "/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias sfxr "amulet ~/.tools/sfxr.lua"
