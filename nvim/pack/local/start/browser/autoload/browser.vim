@@ -133,24 +133,6 @@ func! s:to_item(item)
 
 endfunc
 
-func! s:bind()
-
-	map <buffer><silent> <return> <Plug>(browser_enter)
-	map <buffer><silent> <bs> <Plug>(browser_back)
-	map <buffer><silent> <tab> <Plug>(browser_close)
-	map <buffer><silent> y <Plug>(browser_copy_path)
-	map <buffer><silent> <space> <Plug>(browser_mark)
-	map <buffer><silent> r <Plug>(browser_refresh)
-	map <buffer><silent> <m-r> <Plug>(browser_rename)
-	map <buffer><silent> <m-c> <Plug>(browser_copy)
-	map <buffer><silent> <m-p> <Plug>(browser_paste)
-	map <buffer><silent> <esc> <Plug>(browser_drop)
-	map <buffer><silent> <m-m> <Plug>(browser_mkdir)
-	map <buffer><silent> k <Plug>(browser_up)
-	map <buffer><silent> j <Plug>(browser_down)
-
-endfunc
-
 func! browser#refresh(...)
 
 	let b:listing = s:get_listing()
@@ -190,6 +172,7 @@ endfunc
 
 func! browser#back()
 
+	let b:marked = []
 	let prev_dir = getcwd()
 
 	lcd ..
@@ -205,7 +188,7 @@ func! browser#close()
 		silent! bd
 
 		if empty(bufname('%'))
-			call browser#open()
+			call browser#start()
 		endif
 
 	endif
@@ -228,7 +211,14 @@ func! browser#mkdir()
 	let name = input('create dir: ')
 
 	call system('mkdir ' . name)
-	call browser#refresh(line('.'))
+	call browser#refresh()
+	call s:to_item(name)
+
+endfunc
+
+func! browser#copy()
+
+	let cwd = getcwd()
 
 endfunc
 
@@ -243,6 +233,15 @@ func! browser#drop()
 	echo 'dropped ' . len(b:marked) . ' items'
 	let b:marked = []
 	call browser#refresh(line('.'))
+
+endfunc
+
+func! browser#open()
+
+	let file = s:get_current()
+	let name = fnamemodify(file, ':t')
+
+	call system('open ' . name)
 
 endfunc
 
@@ -277,6 +276,7 @@ endfunc
 func! browser#enter()
 
 	let current_dir = getcwd()
+	let b:marked = []
 	let item = s:get_current()
 
 	if isdirectory(item)
@@ -309,7 +309,7 @@ func! browser#search(char)
 
 endfunc
 
-func! browser#open()
+func! browser#start()
 
 	let current_buffer = expand('%:p')
 
@@ -333,7 +333,27 @@ func! browser#open()
 	setlocal nobuflisted
 	call browser#refresh()
 	call s:to_item(current_buffer)
-	call s:bind()
+	call browser#bind()
+
+endfunc
+
+func! browser#bind()
+
+	map <buffer><silent> <return> <Plug>(browser_enter)
+	map <buffer><silent> <bs> <Plug>(browser_back)
+	map <buffer><silent> <tab> <Plug>(browser_close)
+	map <buffer><silent> y <Plug>(browser_copy_path)
+	map <buffer><silent> <space> <Plug>(browser_mark)
+	map <buffer><silent> r <Plug>(browser_refresh)
+	map <buffer><silent> <m-r> <Plug>(browser_rename)
+	map <buffer><silent> <m-c> <Plug>(browser_copy)
+	map <buffer><silent> <m-p> <Plug>(browser_paste)
+	map <buffer><silent> <m-o> <Plug>(browser_open)
+	map <buffer><silent> <m-d> <Plug>(browser_delete)
+	map <buffer><silent> <m-m> <Plug>(browser_mkdir)
+	map <buffer><silent> <esc> <Plug>(browser_drop)
+	map <buffer><silent> k <Plug>(browser_up)
+	map <buffer><silent> j <Plug>(browser_down)
 
 endfunc
 
@@ -355,6 +375,9 @@ noremap <silent> <Plug>(browser_refresh)
 noremap <silent> <Plug>(browser_mark)
 			\ :call browser#mark()<cr>
 
+noremap <silent> <Plug>(browser_delete)
+			\ :call browser#delete()<cr>
+
 noremap <silent> <Plug>(browser_rename)
 			\ :call browser#rename()<cr>
 
@@ -363,6 +386,9 @@ noremap <silent> <Plug>(browser_copy)
 
 noremap <silent> <Plug>(browser_paste)
 			\ :call browser#paste()<cr>
+
+noremap <silent> <Plug>(browser_open)
+			\ :call browser#open()<cr>
 
 noremap <silent> <Plug>(browser_drop)
 			\ :call browser#drop()<cr>

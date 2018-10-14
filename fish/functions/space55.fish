@@ -3,6 +3,7 @@
 function space55 -a "thing"
 
 	set -l projects \
+		wHEREStIGA \
 		PFISH \
 		DIRTY-FINGER \
 		Big-Birds-Question-About-Life \
