@@ -2,13 +2,13 @@
 
 func! s:get()
 
-	let file = expand(g:projekt_file)
+	let file = expand(g:bookmark_file)
 
 	if !filereadable(file)
 		return []
 	endif
 
-	let projekts = []
+	let bookmarks = []
 
 	for p in readfile(file)
 
@@ -18,7 +18,7 @@ func! s:get()
 		let name = name[1:strlen(name) - 2]
 		let path = path[1:strlen(path) - 2]
 
-		let projekts = projekts + [{
+		let bookmarks = bookmarks + [{
 			\ 'sign': sign,
 			\ 'name': name,
 			\ 'path': path,
@@ -26,19 +26,19 @@ func! s:get()
 
 	endfor
 
-	return projekts
+	return bookmarks
 
 endfunc
 
-func! s:write(projekts)
+func! s:write(bookmarks)
 
 	let list = []
 
-	for p in a:projekts
+	for p in a:bookmarks
 		let list = list + [ s:format(p) ]
 	endfor
 
-	if writefile(list, expand(g:projekt_file)) == -1
+	if writefile(list, expand(g:bookmark_file)) == -1
 		return -1
 	endif
 
@@ -52,9 +52,9 @@ func! s:format(proj)
 
 endfunc
 
-func! s:search(projekts, key)
+func! s:search(bookmarks, key)
 
-	for p in a:projekts
+	for p in a:bookmarks
 		if match(p.name, '\c' . a:key) != -1
 			return p
 		endif
@@ -64,9 +64,9 @@ func! s:search(projekts, key)
 
 endfunc
 
-func! s:search_starred(projekts)
+func! s:search_starred(bookmarks)
 
-	for p in a:projekts
+	for p in a:bookmarks
 		if p.sign ==# '*'
 			return p
 		endif
@@ -76,9 +76,9 @@ func! s:search_starred(projekts)
 
 endfunc
 
-func! projekt#add(name)
+func! bookmark#add(name)
 
-	let projekts = s:get()
+	let bookmarks = s:get()
 
 	if exists('a:name') && a:name !=# ''
 
@@ -97,9 +97,9 @@ func! projekt#add(name)
 
 	endif
 
-	for p in projekts
+	for p in bookmarks
 		if p.name == name || p.path == path
-			echo 'projekt already exists'
+			echo 'bookmark already exists'
 			return -1
 		endif
 	endfor
@@ -114,7 +114,7 @@ func! projekt#add(name)
 
 	if confirm('> add ' . format . '?', "&yes\n&no") == 1
 
-		if s:write(projekts + [ proj ]) != -1
+		if s:write(bookmarks + [ proj ]) != -1
 
 			redraw
 			echo format . ' added'
@@ -123,7 +123,7 @@ func! projekt#add(name)
 
 		else
 
-			echo 'error adding projekt'
+			echo 'error adding bookmark'
 
 			return -1
 
@@ -133,13 +133,13 @@ func! projekt#add(name)
 
 endfunc
 
-func! projekt#remove(key)
+func! bookmark#remove(key)
 
-	let projekts = s:get()
+	let bookmarks = s:get()
 
-	if empty(projekts)
+	if empty(bookmarks)
 
-		echo 'no projekts found'
+		echo 'no bookmarks found'
 
 		return -1
 
@@ -147,11 +147,11 @@ func! projekt#remove(key)
 
 	if exists('a:key') && a:key !=# ''
 
-		let proj = s:search(projekts, a:key)
+		let proj = s:search(bookmarks, a:key)
 
 		if type(proj) == 0 && proj == -1
 
-			echo 'no projekt to remove'
+			echo 'no bookmark to remove'
 
 			return -1
 
@@ -159,19 +159,19 @@ func! projekt#remove(key)
 
 	else
 
-		if exists('g:projekt_current')
+		if exists('g:bookmark_current')
 
-			let index = index(projekts, g:projekt_current)
+			let index = index(bookmarks, g:bookmark_current)
 
 			if index != -1
-				let proj = projekts[index]
+				let proj = bookmarks[index]
 			endif
 
 		endif
 
 		if !exists('proj')
 
-			echo 'no projekt to remove'
+			echo 'no bookmark to remove'
 
 			return -1
 
@@ -183,9 +183,9 @@ func! projekt#remove(key)
 
 	if confirm('> remove ' . format . '?', "&yes\n&no") == 1
 
-		let projekts = filter(projekts, 'v:val != proj')
+		let bookmarks = filter(bookmarks, 'v:val != proj')
 
-		if s:write(projekts) != -1
+		if s:write(bookmarks) != -1
 
 			redraw
 			let format = s:format(proj)
@@ -195,7 +195,7 @@ func! projekt#remove(key)
 
 		else
 
-			echo 'error removing projekt'
+			echo 'error removing bookmark'
 
 			return -1
 
@@ -209,13 +209,13 @@ func! projekt#remove(key)
 
 endfunc
 
-func! projekt#star(key)
+func! bookmark#star(key)
 
-	let projekts = s:get()
+	let bookmarks = s:get()
 
-	if empty(projekts)
+	if empty(bookmarks)
 
-		echo 'no projekts found'
+		echo 'no bookmarks found'
 
 		return -1
 
@@ -223,11 +223,11 @@ func! projekt#star(key)
 
 	if exists('a:key') && a:key !=# ''
 
-		let proj = s:search(projekts, a:key)
+		let proj = s:search(bookmarks, a:key)
 
 		if type(proj) == 0 && proj == -1
 
-			echo 'no projekt to star'
+			echo 'no bookmark to star'
 
 			return -1
 
@@ -235,19 +235,19 @@ func! projekt#star(key)
 
 	else
 
-		if exists('g:projekt_current')
+		if exists('g:bookmark_current')
 
-			let index = index(projekts, g:projekt_current)
+			let index = index(bookmarks, g:bookmark_current)
 
 			if index != -1
-				let proj = projekts[index]
+				let proj = bookmarks[index]
 			endif
 
 		endif
 
 		if !exists('proj')
 
-			echo 'no projekt to star'
+			echo 'no bookmark to star'
 
 			return -1
 
@@ -259,13 +259,13 @@ func! projekt#star(key)
 
 	if confirm('> star ' . format . '?', "&yes\n&no") == 1
 
-		for p in projekts
+		for p in bookmarks
 			let p.sign = '+'
 		endfor
 
 		let proj.sign = '*'
 
-		if s:write(projekts) != -1
+		if s:write(bookmarks) != -1
 
 			redraw
 			let format = s:format(proj)
@@ -275,7 +275,7 @@ func! projekt#star(key)
 
 		else
 
-			echo 'error starring projekt'
+			echo 'error starring bookmark'
 
 			return -1
 
@@ -289,25 +289,25 @@ func! projekt#star(key)
 
 endfunc
 
-func! projekt#list()
+func! bookmark#list()
 
-	let projekts = s:get()
+	let bookmarks = s:get()
 
-	if empty(projekts)
+	if empty(bookmarks)
 
-		echo 'no projekts found'
+		echo 'no bookmarks found'
 
 		return 0
 
 	endif
 
-	for p in projekts
+	for p in bookmarks
 		echo s:format(p)
 	endfor
 
 endfunc
 
-func! projekt#switch(proj)
+func! bookmark#switch(proj)
 
 	if !exists('a:proj.path')
 		return -1
@@ -317,12 +317,12 @@ func! projekt#switch(proj)
 
 		silent! exec 'lcd ' . expand(a:proj.path)
 		silent! exec 'edit ' . expand(a:proj.path)
-		let g:projekt_current = a:proj
+		let g:bookmark_current = a:proj
 
 	elseif (filereadable(a:proj.path))
 
 		silent! exec 'edit ' . expand(a:proj.path)
-		let g:projekt_current = a:proj
+		let g:bookmark_current = a:proj
 
 	else
 
@@ -335,13 +335,13 @@ func! projekt#switch(proj)
 
 endfunc
 
-func! projekt#jump(pattern)
+func! bookmark#jump(pattern)
 
-	let projekts = s:get()
+	let bookmarks = s:get()
 
-	if empty(projekts)
+	if empty(bookmarks)
 
-		echo 'no projekts found'
+		echo 'no bookmarks found'
 
 		return 0
 
@@ -349,30 +349,30 @@ func! projekt#jump(pattern)
 
 	if a:pattern ==# '' || !exists('a:pattern')
 
-		let proj = s:search_starred(projekts)
+		let proj = s:search_starred(bookmarks)
 
 		if type(proj) == 0 && proj == -1
-			let proj = projekts[0]
+			let proj = bookmarks[0]
 		endif
 
 	elseif a:pattern ==# '*'
 
-		let proj = s:search_starred(projekts)
+		let proj = s:search_starred(bookmarks)
 
 	else
 
-		let proj = s:search(projekts, a:pattern)
+		let proj = s:search(bookmarks, a:pattern)
 
 	endif
 
 	if type(proj) == 4
 
-		return projekt#switch(proj)
+		return bookmark#switch(proj)
 
 	else
 
 		redraw
-		echo 'projekt not found'
+		echo 'bookmark not found'
 
 		return -1
 

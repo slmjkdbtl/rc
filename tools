@@ -1,5 +1,4 @@
-
-system tools
+tools, apps and games
 
 	- z
 		https://github.com/rupa/z/
@@ -13,11 +12,20 @@ system tools
 	- exa
 		https://the.exa.website/
 
-	- sl
-		https://github.com/mtoyoda/sl/
+	- rg
+		https://github.com/BurntSushi/ripgrep/
 
 	- bat
 		https://github.com/sharkdp/bat/
+
+	- sox
+		http://sox.sourceforge.net/
+
+	- miniserve
+		https://github.com/svenstaro/miniserve/
+
+	- jump
+		https://github.com/gsamokovarov/jump/
 
 	- watchexec
 		https://github.com/mattgreen/watchexec/
@@ -25,14 +33,8 @@ system tools
 	- zou
 		https://github.com/k0pernicus/zou/
 
-	- hex
-		https://github.com/sitkevij/hex/
-
 	- fzf
 		https://github.com/junegunn/fzf
-
-	- spot
-		https://github.com/rauchg/spot/
 
 	- tokei
 		https://github.com/Aaronepower/tokei/
@@ -42,6 +44,9 @@ system tools
 
 	- ctags
 		https://ctags.io/
+
+	- sl
+		https://github.com/mtoyoda/sl/
 
 	- lazygit
 		https://github.com/jesseduffield/lazygit/
@@ -106,17 +111,11 @@ system tools
 	- jpegoptim
 		https://github.com/tjko/jpegoptim/
 
-	- sox
-		http://sox.sourceforge.net/
-
-	- miniserve
-		https://github.com/svenstaro/miniserve/
+	- hex
+		https://github.com/sitkevij/hex/
 
 	- emojify
 		https://github.com/mrowa44/emojify/
-
-	- jump
-		https://github.com/gsamokovarov/jump/
 
 	- gifski
 		https://gif.ski/
@@ -211,14 +210,11 @@ system tools
 	- i2p
 		https://geti2p.net/
 
-
-apps
-
 	- amulet
 		http://www.amulet.xyz/
 
-	- love2d
-		http://love2d.org/
+	- O.H.R.RPG.C.E
+		http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page/
 
 	- aseprite
 		https://www.aseprite.org/
@@ -361,14 +357,8 @@ apps
 	- Ableton Live
 		https://www.ableton.com/live/
 
-
-screensaver
-
 	- loadsaver
 		https://alienmelon.itch.io/loadsaver-os-x-screensaver/
-
-
-alfred
 
 	- dash
 		https://github.com/Kapeli/Dash-Alfred-Workflow/
@@ -378,9 +368,6 @@ alfred
 
 	- emoji
 		http://www.packal.org/workflow/emoji/
-
-
-games
 
 	- dwarf-fortress
 		http://bay12games.com/dwarves/

@@ -114,5 +114,5 @@ nnoremap <silent> <m-[> :PrevMark<cr>
 nnoremap <silent> <m-]> :NextMark<cr>
 nnoremap <silent> w :Write<cr>
 nnoremap m :!just<space>
-nnoremap z :Projekt<space>
+nnoremap z :Bookmark<space>
 

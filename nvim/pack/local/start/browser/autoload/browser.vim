@@ -275,8 +275,6 @@ endfunc
 
 func! browser#enter()
 
-	let current_dir = getcwd()
-	let b:marked = []
 	let item = s:get_current()
 
 	if isdirectory(item)
@@ -339,8 +337,10 @@ endfunc
 
 func! browser#bind()
 
-	map <buffer><silent> <return> <Plug>(browser_enter)
-	map <buffer><silent> <bs> <Plug>(browser_back)
+	map <buffer><silent> l <Plug>(browser_enter)
+	map <buffer><silent> h <Plug>(browser_back)
+	map <buffer><silent> k <Plug>(browser_up)
+	map <buffer><silent> j <Plug>(browser_down)
 	map <buffer><silent> <tab> <Plug>(browser_close)
 	map <buffer><silent> y <Plug>(browser_copy_path)
 	map <buffer><silent> <space> <Plug>(browser_mark)
@@ -352,8 +352,6 @@ func! browser#bind()
 	map <buffer><silent> <m-d> <Plug>(browser_delete)
 	map <buffer><silent> <m-m> <Plug>(browser_mkdir)
 	map <buffer><silent> <esc> <Plug>(browser_drop)
-	map <buffer><silent> k <Plug>(browser_up)
-	map <buffer><silent> j <Plug>(browser_down)
 
 endfunc
 

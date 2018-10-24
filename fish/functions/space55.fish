@@ -2,13 +2,15 @@
 
 function space55 -a "thing"
 
+	pushd $PWD
+
 	set -l projects \
 		wHEREStIGA \
 		PFISH \
 		DIRTY-FINGER \
 		Big-Birds-Question-About-Life \
 		Shoot-Ducks \
-		TURKEY \
+		SUPER-TURKEY-BOY \
 		Drunken-Tavern
 
 	function show_status
@@ -24,16 +26,13 @@ function space55 -a "thing"
 	for i in $projects
 
 		echo "+ $i"
-		c yellow; echo "  - core"; c normal
 		cd ~/Things/$i/core
-		git pull 1>/dev/null
-		show_status
-		c yellow; echo "  - comps"; c normal
-		cd ~/Things/$i/comps
 		git pull 1>/dev/null
 		show_status
 
 	end
+
+	popd
 
 end
 
