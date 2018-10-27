@@ -59,22 +59,25 @@ vim plugins
 	I've written several vim plugins to learn vim, they're all under nvim/pack/local/start
 
 	- browser
-		simple file browser
+		simple file browser & manager
+
+	- bookmark
+		bookmark management & jumping
 
 	- comment
 		toggle comment
 
-	- jump
-		jumping through markers
-
 	- line
 		custom statusline & tabline
 
+	- trim
+		trim whitespaces on save
+
+	- jump
+		jumping through markers
+
 	- pair
 		autopair in insert mode
-
-	- projekt
-		project directory jumping
 
 	- scroll
 		smooth scrolling
@@ -88,14 +91,11 @@ vim plugins
 	- theme
 		my colorscheme
 
-	- tommywiseau
-		meaning of life
-
-	- trim
-		trim whitespaces on save
-
 	- utils
 		simple util commands
+
+	- tommywiseau
+		meaning of life
 
 	I still use 2 external plugins: ale and vim-signify
 

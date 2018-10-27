@@ -85,10 +85,11 @@ nnoremap <silent> v V
 nnoremap <silent> <space> viw
 vnoremap <silent> <space> <esc>
 nnoremap <silent> <m-a> ggVG
+nnoremap <silent> <m-v> gv
 
 " indent
 vnoremap <silent> <tab> >
-vnoremap <silent> <m-tab> <
+vnoremap <silent> <bs> <
 
 " search
 nnoremap f :find<space>

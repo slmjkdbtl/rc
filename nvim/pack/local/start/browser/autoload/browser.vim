@@ -337,6 +337,8 @@ endfunc
 
 func! browser#bind()
 
+	map <buffer><silent> <return> <Plug>(browser_enter)
+	map <buffer><silent> <bs> <Plug>(browser_back)
 	map <buffer><silent> l <Plug>(browser_enter)
 	map <buffer><silent> h <Plug>(browser_back)
 	map <buffer><silent> k <Plug>(browser_up)
