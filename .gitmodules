@@ -1,12 +1,9 @@
-[submodule "nvim/pack/extern/start/vim-signify"]
-	path = nvim/pack/extern/start/vim-signify
-	url = git://github.com/mhinz/vim-signify.git
-[submodule "nvim/pack/local/start/tommywiseau"]
-	path = nvim/pack/local/start/tommywiseau
-	url = git://github.com/slmjkdbtl/tommywiseau.vim.git
 [submodule "nvim/pack/extern/opt/ale"]
 	path = nvim/pack/extern/opt/ale
 	url = git://github.com/w0rp/ale.git
 [submodule "nvim/pack/extern/opt/signify"]
 	path = nvim/pack/extern/opt/signify
 	url = git://github.com/mhinz/vim-signify.git
+[submodule "nvim/pack/local/opt/tommywiseau"]
+	path = nvim/pack/local/opt/tommywiseau
+	url = git://github.com/slmjkdbtl/tommywiseau.vim.git
