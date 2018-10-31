@@ -1,5 +1,6 @@
 " wengwengweng
 
+set magic
 set nonumber
 set noruler
 set noexpandtab
@@ -8,7 +9,8 @@ set termguicolors
 set noshowmode
 set title
 set showcmd
-set visualbell
+set noerrorbells
+set novisualbell
 set showmatch
 set matchtime=0
 set wrap
@@ -52,11 +54,12 @@ set wildignore+=.DS_Store
 set wildignore+=.tags,*.min.*,*.map
 set wildignore+=*.zip,*.tar.*,*.app,*.ipa
 set wildignore+=*.so,*.o,*.out,*.swp,*.exe,*.elf,*.hex,*.dll,*~
-set wildignore+=*.png,*.jpg,*.gif,*.ico,*.icns,*.ase
+set wildignore+=*.png,*.jpg,*.gif,*.pdf,*.ico,*.icns,*.ase
 set wildignore+=*.mov,*.mp4,*.avi,*.mkv
 set wildignore+=*.mp3,*.wav,*.ogg
 exec 'set listchars=tab:\|\ '
-filetype plugin indent on
+filetype plugin on
+filetype indent on
 syntax enable
 colorscheme super
 

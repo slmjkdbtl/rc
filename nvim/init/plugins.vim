@@ -1,6 +1,22 @@
 " wengwengweng
 
+packadd! bookmark
+packadd! browser
+packadd! comment
+packadd! ft
+packadd! jump
+packadd! line
+packadd! pair
+packadd! scroll
+packadd! search
+packadd! space
+packadd! theme
+packadd! tommywiseau
+packadd! trim
+packadd! utils
+
 " signify
+packadd! signify
 let g:signify_vcs_list = [ 'git' ]
 let g:signify_sign_show_text = 1
 let g:signify_sign_show_count = 0
@@ -11,6 +27,7 @@ let g:signify_sign_change = '~'
 let g:signify_sign_changedelete = g:signify_sign_change
 
 " ale
+packadd! ale
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_error = '>'
 let g:ale_sign_warning = '*'

@@ -30,6 +30,9 @@ tools, apps and games
 	- watchexec
 		https://github.com/mattgreen/watchexec/
 
+	- groff
+		https://www.gnu.org/software/groff/
+
 	- zou
 		https://github.com/k0pernicus/zou/
 
@@ -99,8 +102,8 @@ tools, apps and games
 	- catimg
 		https://github.com/posva/catimg/
 
-	- htop
-		https://github.com/hishamhm/htop/
+	- gotop
+		https://github.com/cjbassi/gotop/
 
 	- tig
 		https://jonas.github.io/tig/
@@ -278,6 +281,9 @@ tools, apps and games
 
 	- bfxr
 		https://www.bfxr.net/
+
+	- keycastr
+		https://github.com/keycastr/keycastr/
 
 	- chuck
 		http://chuck.cs.princeton.edu/

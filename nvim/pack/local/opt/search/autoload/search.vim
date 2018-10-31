@@ -35,19 +35,14 @@ func! s:is_focused()
 
 endfunc
 
-func! s:search(text)
-
-	let @/ = s:escape(a:text)
-
-endfunc
-
 func! search#selected()
 
 	call s:normal("gv\<esc>")
 
 	let text = s:get_selected()
-
-	call s:search(text)
+	let text = escape(text, "\\/.*'$^~[]")
+	let text = substitute(text, "\n$", '', '')
+	let @/ = text
 
 	if !s:is_focused()
 		call search(@/, 'b')

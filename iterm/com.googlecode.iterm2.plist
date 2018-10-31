@@ -3036,11 +3036,11 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>360 225 606 469 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>320 249 796 486 0 0 1280 777 </string>
+	<string>280 302 770 429 0 0 1280 777 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>80 193 592 584 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>159 116 948 638 0 0 1280 777 </string>
+	<string>229 114 948 662 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>52 85 934 627 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -3664,7 +3664,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>70A0F3E7-FC65-4E6B-AEFA-45B6BD54DEF6</string>
 	<key>NoSyncLastTipTime</key>
-	<real>554712937.97134304</real>
+	<real>561946691.76828206</real>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -3709,6 +3709,9 @@
 		<string>0016</string>
 		<string>0017</string>
 		<string>0018</string>
+		<string>0019</string>
+		<string>0019</string>
+		<string>0019</string>
 		<string>0019</string>
 		<string>0019</string>
 	</array>
@@ -3759,7 +3762,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-09-24T21:05:34Z</date>
+	<date>2018-10-29T16:29:09Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>SearchCommand</key>
@@ -3789,7 +3792,7 @@
 	<key>TabStyle</key>
 	<integer>0</integer>
 	<key>TabStyleWithAutomaticOption</key>
-	<integer>1</integer>
+	<integer>4</integer>
 	<key>TabViewType</key>
 	<integer>0</integer>
 	<key>TerminalMargin</key>
@@ -3846,7 +3849,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.2.1beta6</string>
+	<string>3.2.4beta4</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
