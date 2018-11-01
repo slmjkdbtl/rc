@@ -8,6 +8,10 @@ endfunc
 
 func! space#draw(timer)
 
+	if !exists('*luaeval')
+		return
+	endif
+
 	setlocal modifiable
 	silent! 1,$d
 

@@ -53,6 +53,10 @@
 
 		# some applescripts
 
+	- workflows
+
+		# some automator workflows & actions
+
 
 vim plugins
 

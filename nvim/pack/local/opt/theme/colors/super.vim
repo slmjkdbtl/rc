@@ -143,7 +143,7 @@ call s:hi('Todo',                       s:base0A, s:base01, '',          '')
 call s:hi('Type',                       s:base0A, '',       '',          '')
 call s:hi('Typedef',                    s:base0A, '',       '',          '')
 
-call s:hi('SpellBad',                   '',       '',       'none',      '')
+call s:hi('SpellBad',                   '',       s:base02, 'none',      '')
 call s:hi('SpellLocal',                 '',       '',       'none',      '')
 call s:hi('SpellCap',                   '',       '',       'none',      '')
 call s:hi('SpellRare',                  '',       '',       'none',      '')
