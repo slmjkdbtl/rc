@@ -40,6 +40,12 @@ func! pair#del()
 
 endfunc
 
+func! pair#edit()
+
+	" ...
+
+endfunc
+
 func! pair#bind()
 
 	for p in g:pair_wrappers

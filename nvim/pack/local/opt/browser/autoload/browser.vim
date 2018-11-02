@@ -354,6 +354,7 @@ func! browser#bind()
 	map <buffer><silent> <m-d> <Plug>(browser_delete)
 	map <buffer><silent> <m-m> <Plug>(browser_mkdir)
 	map <buffer><silent> <esc> <Plug>(browser_drop)
+	map <buffer> f :find<space>
 
 endfunc
 

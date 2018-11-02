@@ -10,8 +10,9 @@ alias j "just"
 alias size "du -sh ."
 alias disk "df -h ."
 alias ase "/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
-alias sfxr "amulet ~/.tools/sfxr.lua"
 alias vps "ssh t@wengwengweng.me"
+alias website "open https://www.wengwengweng.me/"
+alias sfxr "amulet ~/.tools/sfxr.lua"
 
 # replacements
 type -q neomutt; and alias mutt "neomutt"

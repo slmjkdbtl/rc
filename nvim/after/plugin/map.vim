@@ -45,6 +45,8 @@ noremap <silent> <m-h> b
 noremap <silent> <m-l> e
 inoremap <silent> <up> <c-x><c-y>
 inoremap <silent> <down> <c-x><c-e>
+nnoremap <silent> { {
+nnoremap <silent> } }
 
 " buffer
 nnoremap <silent> ` <c-^>
@@ -65,6 +67,7 @@ inoremap <silent> <m-bs> <c-w>
 inoremap <silent> <tab> <tab>
 inoremap <silent> <return> <return>yo<bs><bs>
 inoremap <silent> <m-return> <esc>mqa<return><esc>`qa<return>
+nnoremap <silent> c ci
 cnoremap <m-bs> <c-w>
 
 " undo & redo
@@ -92,7 +95,7 @@ vnoremap <silent> <tab> >
 vnoremap <silent> <bs> <
 
 " search
-nnoremap f :find<space>
+nnoremap f f
 nnoremap t :tag<space>
 
 " yo

@@ -11,6 +11,7 @@ call jump#set('markdown', [ '^#\%[#####]', ])
 call jump#set('css', [ '\S*\s{', ])
 call jump#set('scss', [ '\S*\s{', ])
 call jump#set('pug', [ '\w*(.*)', ])
+call jump#set('nroff', [ '^\.\S', ])
 
 augroup JumpMarks
 
