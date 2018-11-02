@@ -167,12 +167,12 @@ func! browser#mark()
 	endif
 
 	call browser#refresh(line('.'))
+	echo 'marked ' . len(b:marked) . ' items'
 
 endfunc
 
 func! browser#back()
 
-	let b:marked = []
 	let prev_dir = getcwd()
 
 	lcd ..
@@ -219,12 +219,34 @@ endfunc
 func! browser#copy()
 
 	let cwd = getcwd()
+	let n = len(b:marked)
+	let first = b:marked[0]
+
+	for f in b:marked
+		call system('cp -nr ' . f . ' ' . cwd)
+	endfor
+
+	silent! call browser#drop()
+	call browser#refresh()
+	call s:to_item(fnamemodify(first, ':t'))
+	echo 'copied ' . n . ' items'
 
 endfunc
 
-func! browser#paste()
+func! browser#move()
 
 	let cwd = getcwd()
+	let n = len(b:marked)
+	let first = b:marked[0]
+
+	for f in b:marked
+		call system('mv ' . f . ' ' . cwd)
+	endfor
+
+	silent! call browser#drop()
+	call browser#refresh()
+	call s:to_item(fnamemodify(first, ':t'))
+	echo 'moved ' . n . ' items'
 
 endfunc
 
@@ -349,7 +371,7 @@ func! browser#bind()
 	map <buffer><silent> r <Plug>(browser_refresh)
 	map <buffer><silent> <m-r> <Plug>(browser_rename)
 	map <buffer><silent> <m-c> <Plug>(browser_copy)
-	map <buffer><silent> <m-p> <Plug>(browser_paste)
+	map <buffer><silent> <m-x> <Plug>(browser_move)
 	map <buffer><silent> <m-o> <Plug>(browser_open)
 	map <buffer><silent> <m-d> <Plug>(browser_delete)
 	map <buffer><silent> <m-m> <Plug>(browser_mkdir)
@@ -385,8 +407,8 @@ noremap <silent> <Plug>(browser_rename)
 noremap <silent> <Plug>(browser_copy)
 			\ :call browser#copy()<cr>
 
-noremap <silent> <Plug>(browser_paste)
-			\ :call browser#paste()<cr>
+noremap <silent> <Plug>(browser_move)
+			\ :call browser#move()<cr>
 
 noremap <silent> <Plug>(browser_open)
 			\ :call browser#open()<cr>

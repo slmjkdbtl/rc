@@ -14,11 +14,16 @@ alias vps "ssh t@wengwengweng.me"
 alias website "open https://www.wengwengweng.me/"
 alias sfxr "amulet ~/.tools/sfxr.lua"
 
-# replacements
-type -q neomutt; and alias mutt "neomutt"
-type -q hub; and alias git "hub"
-type -q bat; and alias cat "env PAGER='' bat --theme=TwoDark --style=plain"
-type -q exa; and alias ls exa
+type -q neomutt; and \
+	alias mutt "neomutt"
+type -q hub; and \
+	alias git "hub"
+type -q bat; and \
+	alias cat "env PAGER='' bat --theme=TwoDark --style=plain"
+type -q exa; and \
+	alias ls exa
+type -q lazygit; \
+	and alias lg lazygit
 
 # nav
 function ..    ; cd .. ; end
@@ -33,12 +38,12 @@ abbr gc git commit -m
 abbr gp git push
 abbr gd git diff
 abbr gb git browse
-abbr lg lazygit
 
 # env
 set -x BROWSER open
 set -x TERM xterm-super
 set -x PAGER less
+set -x LANG en_US.UTF-8
 
 if type -q nvim
 	set -x EDITOR nvim
