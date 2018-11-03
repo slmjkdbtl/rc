@@ -11,7 +11,7 @@ alias size "du -sh ."
 alias disk "df -h ."
 alias ports "netstat -tulpn"
 alias ase "/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
-alias vps "ssh t@wengwengweng.me"
+alias vps "ssh t@wengwengweng"
 alias website "open https://www.wengwengweng.me/"
 alias sfxr "amulet ~/.tools/sfxr.lua"
 

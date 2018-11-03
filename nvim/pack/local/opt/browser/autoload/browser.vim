@@ -19,6 +19,10 @@ endfunc
 
 func! s:is_marked(f)
 
+	if !exists('b:marked')
+		return 0
+	endif
+
 	for m in b:marked
 		if s:is_same(a:f, m)
 			return 1
@@ -135,6 +139,10 @@ endfunc
 
 func! browser#refresh(...)
 
+	if &filetype !=# 'browser'
+		return
+	endif
+
 	let b:listing = s:get_listing()
 	let name = fnamemodify(getcwd(), ':t')
 
@@ -224,22 +232,21 @@ func! browser#bulk_rename()
 	enew
 
 	let b:marked = marked
-	setfiletype bulkrename
-	setlocal buftype=nofile
+	setfiletype rename
+	setlocal buftype=acwrite
 	setlocal bufhidden=wipe
-	setlocal nobuflisted
-	file bulkrename
+	file rename
 
 	for i in range(n)
 		call append(i, fnamemodify(marked[i], ':t'))
 	endfor
 
-	call cursor(0, 0)
+	call cursor(1, 1)
 
-	augroup BulkRename
+	augroup BrowserBulkRename
 
 		autocmd!
-		autocmd BufLeave bulkrename
+		autocmd BufWriteCmd rename
 					\ call s:bulk_rename_apply()
 
 	augroup END
@@ -252,7 +259,7 @@ func! s:bulk_rename_apply()
 	let files = b:marked
 
 	for i in range(len(names))
-		call system('mv ' . fnamemodify(files[i], ':t') . ' ' . names[i])
+		call jobstart('mv ' . fnamemodify(files[i], ':t') . ' ' . names[i], { 'on_exit': function('browser#refresh') })
 	endfor
 
 	call browser#start()
