@@ -54,9 +54,6 @@ set wildignore+=.DS_Store
 set wildignore+=.tags,*.min.*,*.map
 set wildignore+=*.zip,*.tar.*,*.app,*.ipa
 set wildignore+=*.so,*.o,*.out,*.swp,*.exe,*.elf,*.hex,*.dll,*~
-set wildignore+=*.png,*.jpg,*.gif,*.pdf,*.ico,*.icns,*.ase
-set wildignore+=*.mov,*.mp4,*.avi,*.mkv
-set wildignore+=*.mp3,*.wav,*.ogg
 exec 'set listchars=tab:\|\ '
 filetype plugin on
 filetype indent on

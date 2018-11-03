@@ -197,12 +197,65 @@ endfunc
 
 func! browser#rename()
 
+	if len(b:marked) > 0
+		return browser#bulk_rename()
+	endif
+
 	let file = s:get_current()
 	let name = fnamemodify(file, ':t')
 	let new_name = input('rename ' . name . ' to: ')
 
 	call system('mv ' . name . ' ' . new_name)
 	call browser#refresh(line('.'))
+
+endfunc
+
+func! browser#bulk_rename()
+
+	let marked = b:marked
+	let n = len(b:marked)
+
+	silent! call browser#drop()
+
+	if confirm('> rename ' . n . ' files?', "&yes\n&no") != 1
+		return
+	end
+
+	enew
+
+	let b:marked = marked
+	setfiletype bulkrename
+	setlocal buftype=nofile
+	setlocal bufhidden=wipe
+	setlocal nobuflisted
+	file bulkrename
+
+	for i in range(n)
+		call append(i, fnamemodify(marked[i], ':t'))
+	endfor
+
+	call cursor(0, 0)
+
+	augroup BulkRename
+
+		autocmd!
+		autocmd BufLeave bulkrename
+					\ call s:bulk_rename_apply()
+
+	augroup END
+
+endfunc
+
+func! s:bulk_rename_apply()
+
+	let names = getline(1,'$')
+	let files = b:marked
+
+	for i in range(len(names))
+		call system('mv ' . fnamemodify(files[i], ':t') . ' ' . names[i])
+	endfor
+
+	call browser#start()
 
 endfunc
 
@@ -220,6 +273,17 @@ func! browser#copy()
 
 	let cwd = getcwd()
 	let n = len(b:marked)
+
+	if n == 0
+		echo 'no marked files'
+		return
+	endif
+
+	if confirm('> move ' . n . ' files?', "&yes\n&no") != 1
+		silent! call browser#drop()
+		return
+	end
+
 	let first = b:marked[0]
 
 	for f in b:marked
@@ -229,6 +293,7 @@ func! browser#copy()
 	silent! call browser#drop()
 	call browser#refresh()
 	call s:to_item(fnamemodify(first, ':t'))
+	redraw!
 	echo 'copied ' . n . ' items'
 
 endfunc
@@ -237,15 +302,27 @@ func! browser#move()
 
 	let cwd = getcwd()
 	let n = len(b:marked)
-	let first = b:marked[0]
+
+	if n == 0
+		echo 'no marked files'
+		return
+	endif
+
+	if confirm('> move ' . n . ' files?', "&yes\n&no") != 1
+		silent! call browser#drop()
+		return
+	end
 
 	for f in b:marked
 		call system('mv ' . f . ' ' . cwd)
 	endfor
 
+	let first = b:marked[0]
+
 	silent! call browser#drop()
 	call browser#refresh()
 	call s:to_item(fnamemodify(first, ':t'))
+	redraw!
 	echo 'moved ' . n . ' items'
 
 endfunc
@@ -255,15 +332,6 @@ func! browser#drop()
 	echo 'dropped ' . len(b:marked) . ' items'
 	let b:marked = []
 	call browser#refresh(line('.'))
-
-endfunc
-
-func! browser#open()
-
-	let file = s:get_current()
-	let name = fnamemodify(file, ':t')
-
-	call system('open ' . name)
 
 endfunc
 
@@ -306,8 +374,14 @@ func! browser#enter()
 
 	elseif filereadable(item)
 
-		call browser#close()
-		silent! exec 'edit ' . item
+		let ext = fnamemodify(item, ':e')
+
+		if index([ 'jpg', 'png', 'pdf', 'ico', 'icns', 'ase', 'gif', 'mp4', 'mkv', 'mov', 'avi', 'mp3', 'wav', 'ogg', ], ext) >= 0
+			call system('open ' . item)
+		else
+			call browser#close()
+			silent! exec 'edit ' . item
+		endif
 
 	endif
 
@@ -372,7 +446,6 @@ func! browser#bind()
 	map <buffer><silent> <m-r> <Plug>(browser_rename)
 	map <buffer><silent> <m-c> <Plug>(browser_copy)
 	map <buffer><silent> <m-x> <Plug>(browser_move)
-	map <buffer><silent> <m-o> <Plug>(browser_open)
 	map <buffer><silent> <m-d> <Plug>(browser_delete)
 	map <buffer><silent> <m-m> <Plug>(browser_mkdir)
 	map <buffer><silent> <esc> <Plug>(browser_drop)
@@ -409,9 +482,6 @@ noremap <silent> <Plug>(browser_copy)
 
 noremap <silent> <Plug>(browser_move)
 			\ :call browser#move()<cr>
-
-noremap <silent> <Plug>(browser_open)
-			\ :call browser#open()<cr>
 
 noremap <silent> <Plug>(browser_drop)
 			\ :call browser#drop()<cr>

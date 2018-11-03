@@ -9,6 +9,7 @@ alias v "nvim"
 alias j "just"
 alias size "du -sh ."
 alias disk "df -h ."
+alias ports "netstat -tulpn"
 alias ase "/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias vps "ssh t@wengwengweng.me"
 alias website "open https://www.wengwengweng.me/"
@@ -22,8 +23,8 @@ type -q bat; and \
 	alias cat "env PAGER='' bat --theme=TwoDark --style=plain"
 type -q exa; and \
 	alias ls exa
-type -q lazygit; \
-	and alias lg lazygit
+type -q lazygit; and \
+	alias lg lazygit
 
 # nav
 function ..    ; cd .. ; end
