@@ -67,6 +67,9 @@ end
 # go
 if test -d $HOME/.go
 	set -x GOPATH $HOME/.go
+end
+
+if test -d $GOPATH/bin
 	set -x PATH $GOPATH/bin $PATH
 end
 
@@ -77,17 +80,4 @@ end
 
 # homebrew
 set -x HOMEBREW_NO_AUTO_UPDATE 1
-
-# openssl
-if test -d /usr/local/opt/openssl
-
-	set -g fish_user_paths "/usr/local/opt/openssl/bin" $fish_user_path
-	set -gx LDFLAGS "-L/usr/local/opt/openssl/lib"
-	set -gx CPPFLAGS "-I/usr/local/opt/openssl/include"
-	set -gx PKG_CONFIG_PATH "/usr/local/opt/openssl/lib/pkgconfig"
-
-end
-
-# sbin
-set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
