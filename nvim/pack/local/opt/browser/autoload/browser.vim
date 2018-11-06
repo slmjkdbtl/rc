@@ -57,6 +57,18 @@ func! s:get_listing()
 
 endfunc
 
+func! s:job(cmd, opt)
+
+	if exists('*jobstart')
+		call jobstart(a:cmd, a:opt)
+	elseif exists('*job_start')
+		call job_start(a:cmd)
+	else
+		call system(a:cmd)
+	endif
+
+endfunc
+
 func! s:render()
 
 	silent! 1,$d
@@ -259,7 +271,7 @@ func! s:bulk_rename_apply()
 	let files = b:marked
 
 	for i in range(len(names))
-		call jobstart('mv ' . fnamemodify(files[i], ':t') . ' ' . names[i], { 'on_exit': function('browser#refresh') })
+		call s:job('mv ' . fnamemodify(files[i], ':t') . ' ' . names[i], { 'on_exit': function('browser#refresh') })
 	endfor
 
 	call browser#start()

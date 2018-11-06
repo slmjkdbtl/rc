@@ -4,7 +4,7 @@ augroup Title
 
 	autocmd!
 
-	autocmd DirChanged, BufEnter, BufLeave *
+	autocmd DirChanged,BufEnter,BufLeave *
 		\ let &titlestring = line#get_title()
 
 augroup END
