@@ -117,7 +117,7 @@ endfunc
 
 func! s:to_line(ln)
 
-	exec ':' . a:ln
+	call cursor(a:ln, 3)
 
 endfunc
 
