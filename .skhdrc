@@ -1,6 +1,5 @@
 # wengwengweng
 
-cmd + shift - t      : osascript ~/.config/scripts/f2t.scpt
 cmd + shift - 2      : screencapture -w $HOME/Desktop/(date +%s).png
 cmd + shift - 3      : screencapture $HOME/Desktop/(date +%s).png
 cmd + shift - 4      : screencapture -i $HOME/Desktop/(date +%s).png

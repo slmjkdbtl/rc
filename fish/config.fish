@@ -52,6 +52,8 @@ else
 	set -x EDITOR vim
 end
 
+set -x PATH $HOME/.bin $PATH
+
 # fzf
 if type -q fzf
 	if type -q fd

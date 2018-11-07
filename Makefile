@@ -11,7 +11,9 @@ install:
 
 	echo "+ linking"
 
-	$(foreach f, nvim fish alacritty mpv hammerspoon scripts, \
+	mkdir -p $(CONFIG)
+
+	$(foreach f, nvim fish alacritty mpv hammerspoon, \
 		echo "  - $(f) -> $(CONFIG)/$(f)"; \
 		ln -sf $(realpath $(f)) $(CONFIG); \
 	)
