@@ -89,3 +89,9 @@ set -x CARP_DIR $HOME/.carp
 # homebrew
 set -x HOMEBREW_NO_AUTO_UPDATE 1
 
+# sbin
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+
+# android
+set -x ANDROID_SDK_ROOT "/usr/local/share/android-sdk"
+
