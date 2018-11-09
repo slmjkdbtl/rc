@@ -57,6 +57,9 @@ tools, apps and games
 	- lazygit
 		https://github.com/jesseduffield/lazygit/
 
+	- ncdu
+		https://dev.yorhel.nl/ncdu/
+
 	- luajit
 		http://luajit.org/
 
@@ -110,6 +113,9 @@ tools, apps and games
 
 	- pass
 		https://www.passwordstore.org/
+
+	- entr
+		http://www.entrproject.org/
 
 	- gotop
 		https://github.com/cjbassi/gotop/
@@ -389,6 +395,9 @@ tools, apps and games
 
 	- emoji
 		http://www.packal.org/workflow/emoji/
+
+	- kill
+		https://github.com/ngreenstein/alfred-process-killer/
 
 	- dwarf-fortress
 		http://bay12games.com/dwarves/
