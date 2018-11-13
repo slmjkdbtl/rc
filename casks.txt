@@ -3,9 +3,10 @@ acorn
 adium
 adobe-creative-cloud
 alfred
-android-sdk
+android-studio
 appcleaner
 aseprite
+baidunetdisk
 basictex
 bfxr
 blender
@@ -18,7 +19,9 @@ discord
 docker
 dolphin
 dropbox
+dwarf-fortress
 epic-games
+fastlane
 flash-player
 flume
 flux
@@ -37,6 +40,7 @@ insomnia
 itch
 iterm2
 java
+java8
 keka
 keycastr
 licecap
@@ -63,7 +67,6 @@ processing
 reaper
 servo
 shadowsocksx-ng
-simplenote
 sip
 sketch
 skype
@@ -80,6 +83,7 @@ transmission
 twine
 twitch
 unity-hub
+unity-web-player
 vagrant
 vimr
 virtualbox

@@ -37,6 +37,12 @@ call ft#add('Caddyfile', 'caddyfile', 'isobit/vim-caddyfile', '#\ %s')
 call ft#add('tmux.conf', 'tmux', 'ericpruitt/tmux.vim', '#\ %s')
 call ft#load()
 
-autocmd FileType *
-			\ setlocal formatoptions-=cro
+augroup FileTypeConfig
+
+	autocmd FileType *
+				\ setlocal formatoptions-=cro|
+				\ setlocal noexpandtab|
+				\ setlocal tabstop=4
+
+augroup END
 

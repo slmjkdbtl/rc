@@ -96,7 +96,6 @@ vnoremap <silent> <bs> <
 
 " search
 nnoremap f f
-nnoremap t :tag<space>
 
 " yo
 for i in range(1, 9)
@@ -119,4 +118,6 @@ nnoremap <silent> <m-]> :NextMark<cr>
 nnoremap <silent> w :Write<cr>
 nnoremap m :!just<space>
 nnoremap z :Bookmark<space>
+nnoremap <m-f> :find<space>
+nnoremap <m-t> :tag<space>
 

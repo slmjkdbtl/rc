@@ -54,8 +54,13 @@ else
 	set -x EDITOR vim
 end
 
-set -x PATH $HOME/.bin $PATH
-set -x PATH $HOME/.local/bin $PATH
+if test -d $HOME/.bin
+	set -x PATH $HOME/.bin $PATH
+end
+
+if test -d $HOME/.local/.bin
+	set -x PATH $HOME/.local/bin $PATH
+end
 
 # fzf
 if type -q fzf
@@ -83,6 +88,11 @@ if test -d $HOME/.cargo
 	set -x PATH $HOME/.cargo/bin $PATH
 end
 
+# fastlane
+if test -d $HOME/.fastlane
+	set -x PATH $HOME/.fastlane/bin $PATH
+end
+
 # carp
 set -x CARP_DIR $HOME/.carp
 
@@ -91,7 +101,4 @@ set -x HOMEBREW_NO_AUTO_UPDATE 1
 
 # sbin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
-
-# android
-set -x ANDROID_SDK_ROOT "/usr/local/share/android-sdk"
 
