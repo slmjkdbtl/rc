@@ -48,6 +48,8 @@ func! s:get_listing()
 
 	endfor
 
+	call sort(flist, {a1, a2 -> fnamemodify(a1, ':e') == fnamemodify(a2, ':e') ? 0 : fnamemodify(a1, ':e') > fnamemodify(a2, ':e') ? 1 : -1})
+
 	let list = []
 	let list += [ '..' ]
 	let list += dlist
@@ -395,7 +397,7 @@ func! browser#enter()
 
 		let ext = fnamemodify(item, ':e')
 
-		if index([ 'jpg', 'png', 'pdf', 'ico', 'icns', 'ase', 'gif', 'mp4', 'mkv', 'mov', 'avi', 'mp3', 'wav', 'ogg', ], ext) >= 0
+		if index([ 'jpg', 'png', 'pdf', 'ico', 'icns', 'ase', 'gif', 'mp4', 'mkv', 'mov', 'avi', 'mp3', 'wav', 'ogg', 'obj', ], ext) >= 0
 			call system('open ' . item)
 		else
 			call browser#close()
