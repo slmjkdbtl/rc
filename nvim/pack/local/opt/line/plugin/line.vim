@@ -1,5 +1,7 @@
 " wengwengweng
 
+let g:line_custom_status = get(g:, 'line_custom_statuses', '')
+
 augroup Title
 
 	autocmd!

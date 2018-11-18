@@ -390,18 +390,31 @@ func! browser#enter()
 
 	if isdirectory(item)
 
-		silent! exec 'lcd ' . item
+		silent! exec 'lcd ' . escape(item, '# ')
 		call browser#refresh()
 
 	elseif filereadable(item)
 
 		let ext = fnamemodify(item, ':e')
 
-		if index([ 'jpg', 'png', 'pdf', 'ico', 'icns', 'ase', 'gif', 'mp4', 'mkv', 'mov', 'avi', 'mp3', 'wav', 'ogg', 'obj', ], ext) >= 0
-			call system('open ' . item)
+		if index([ 'jpg', 'png', 'pdf', 'ico', 'icns', 'ase', 'gif', 'mp4', 'mkv', 'mov', 'avi', 'wav', 'ogg', 'obj', ], ext) >= 0
+
+			call system('open ' . escape(item, ' '))
+
+		elseif index([ 'mp3', ], ext) >= 0
+
+			let path = fnamemodify(item, ':p')
+			let file = substitute(path, '/Users/t/Files/MUSIC/', '', '')
+
+			call system('mpc clear')
+			call system('mpc add ' . escape(file, ' '))
+			MusicPlay
+
 		else
+
 			call browser#close()
 			silent! exec 'edit ' . item
+
 		endif
 
 	endif

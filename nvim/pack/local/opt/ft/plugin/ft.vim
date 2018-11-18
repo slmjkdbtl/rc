@@ -44,5 +44,9 @@ augroup FileTypeConfig
 				\ setlocal noexpandtab|
 				\ setlocal tabstop=4
 
+	autocmd FileType crontab
+				\ setlocal nobackup|
+				\ setlocal nowritebackup
+
 augroup END
 

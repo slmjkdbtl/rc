@@ -165,6 +165,8 @@ func! line#get_statusline() abort
 
 	let line .= '%='
 
+	let line .= g:line_custom_status
+	let line .= ' '
 	let line .= s:get_status_filetype('%')
 	let line .= ' '
 	let line .= s:get_status_curpos('%')

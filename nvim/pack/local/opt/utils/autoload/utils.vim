@@ -176,6 +176,6 @@ func! utils#openfinder()
 endfunc
 
 func! utils#openterm()
-	call system('open -a iTerm ' . getcwd())
+	call system('open -a iTerm ' . escape(getcwd(), ' '))
 endfunc
 

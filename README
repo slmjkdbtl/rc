@@ -41,6 +41,10 @@
 		# terminal multiplexer
 		https://tmux.github.io/
 
+	- .mpdconf
+		# music player daemon
+		https://www.musicpd.org/
+
 	- super.terminfo
 
 		# custom term specs
@@ -67,6 +71,9 @@ vim plugins
 
 	- bookmark
 		bookmark management & jumping
+
+	- music
+		play music in vim with mpc
 
 	- comment
 		toggle comment

@@ -69,6 +69,7 @@ packadd! comment
 packadd! ft
 packadd! jump
 packadd! line
+packadd! music
 packadd! pair
 packadd! scroll
 packadd! search

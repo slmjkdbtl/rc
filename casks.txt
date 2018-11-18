@@ -2,6 +2,7 @@ ableton-live-lite
 acorn
 adium
 adobe-creative-cloud
+alacritty
 alfred
 android-studio
 appcleaner
@@ -25,13 +26,16 @@ fastlane
 flash-player
 flume
 flux
+folx
 fontforge
 fs-uae
 gifox
 gitup
 godot
+golly
 google-backup-and-sync
 google-chrome
+google-hangouts
 grafx
 hammerspoon
 handbrake
@@ -79,7 +83,6 @@ telegram
 thunderbird
 tickeys
 tiled
-transmission
 twine
 twitch
 unity-hub
@@ -88,4 +91,5 @@ vagrant
 vimr
 virtualbox
 wechat
+wine-staging
 xiami

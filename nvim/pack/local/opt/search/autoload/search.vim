@@ -1,11 +1,5 @@
 " wengwengweng
 
-func! s:escape(text)
-
-	return escape(a:text, '~.*[\')
-
-endfunc
-
 func! s:normal(cmd)
 
 	exec 'normal! ' . a:cmd

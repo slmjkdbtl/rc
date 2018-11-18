@@ -1,0 +1,23 @@
+# wengwengweng
+
+db_file              "~/.mpd/database"
+log_file             "~/.mpd/log"
+playlist_directory   "~/.mpd/playlists"
+pid_file             "~/.mpd/pid"
+state_file           "~/.mpd/state"
+sticker_file         "~/.mpd/sticker.sql"
+music_directory      "~/Files/MUSIC"
+
+audio_output {
+	type "alsa"
+	name "mpd alsamixer-output"
+	mixer_type "software"
+}
+
+audio_output {
+	type "fifo"
+	name "toggle_visualizer"
+	path "/tmp/mpd.fifo"
+	format "44100:16:2"
+}
+
