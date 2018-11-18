@@ -476,7 +476,7 @@ endfunc
 
 func! browser#solidify()
 
-	setlocal buftype=
+	setlocal buftype=nowrite
 	setlocal bufhidden=
 	setlocal buflisted
 	let b:solid = 1

@@ -94,9 +94,6 @@ nnoremap <silent> <m-v> gv
 vnoremap <silent> <tab> >
 vnoremap <silent> <bs> <
 
-" search
-nnoremap f f
-
 " plugins
 call pair#bind()
 call search#bind()
