@@ -15,3 +15,14 @@ command! MusicPrev
 command! MusicNext
 			\ call music#next()
 
+command! MusicVolDown
+			\ call music#voldown()
+
+command! MusicVolUp
+			\ call music#volup()
+
+command! MusicList
+			\ call music#list()
+
+call music#update_status()
+

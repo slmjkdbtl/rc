@@ -109,12 +109,14 @@ noremap <silent> / :Comment<cr>
 nnoremap <silent> <m-w> :Close<cr>
 nnoremap <silent> <m-[> :PrevMark<cr>
 nnoremap <silent> <m-]> :NextMark<cr>
-nnoremap <silent> <f1> :MusicPlay<cr>
-nnoremap <silent> <f2> :MusicPause<cr>
-nnoremap <silent> <f3> :MusicPrev<cr>
-nnoremap <silent> <f4> :MusicNext<cr>
+nnoremap <silent> <F8> :MusicToggle<cr>
+nnoremap <silent> <F7> :MusicPrev<cr>
+nnoremap <silent> <F9> :MusicNext<cr>
+nnoremap <silent> <F11> :MusicVolDown<cr>
+nnoremap <silent> <F12> :MusicVolUp<cr>
 nnoremap <silent> w :Write<cr>
 nnoremap m :!just<space>
 nnoremap z :Bookmark<space>
 nnoremap <m-f> :find<space>
 nnoremap <m-t> :tag<space>
+

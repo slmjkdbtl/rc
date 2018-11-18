@@ -1,5 +1,9 @@
 " wengwengweng
 
+func! s:trim(t)
+	return substitute(a:t, '\n', '', '')
+endfunc
+
 func! s:get_files()
 
 	let files = glob(getcwd() . '/*', 0, 1)
@@ -123,19 +127,46 @@ func! s:to_line(ln)
 
 endfunc
 
-func! s:get_git_dir()
+func! browser#update_git()
 
-	return substitute(system('git rev-parse --show-toplevel'), "\n", '', '')
+	call jobstart('git rev-parse --show-toplevel', {
+				\ 'on_stdout': function('browser#update_git_dir')
+				\ })
 
 endfunc
 
-func! s:get_git_modified()
+func! browser#update_git_dir(j, d, e)
 
-	if !isdirectory(b:git_dir)
-		return []
+	if empty(join(a:d, ''))
+		return
 	endif
 
-	return split(system('git ls-files -m'), "\n")
+	let out = s:trim(a:d[0])
+
+	if isdirectory(out)
+
+		let b:git_dir = out
+
+		call jobstart('git ls-files -m', {
+					\ 'on_stdout': function('browser#update_git_modified')
+					\ })
+
+	else
+
+		let b:git_dir = ''
+		let b:git_modified = []
+
+	endif
+
+endfunc
+
+func! browser#update_git_modified(j, d, e)
+
+	if empty(join(a:d, ''))
+		return
+	endif
+
+	let b:git_modified = a:d
 
 endfunc
 
@@ -165,6 +196,8 @@ func! browser#refresh(...)
 	call s:render()
 	setlocal nomodifiable
 	setlocal nomodified
+
+	call browser#update_git()
 
 	if exists('a:1')
 		call s:to_line(a:1)
@@ -204,6 +237,10 @@ func! browser#back()
 endfunc
 
 func! browser#close()
+
+	if b:solid
+		return
+	endif
 
 	if &filetype ==# 'browser'
 
@@ -401,7 +438,7 @@ func! browser#enter()
 
 			call system('open ' . escape(item, ' '))
 
-		elseif index([ 'mp3', ], ext) >= 0
+		elseif index([ 'mp3', 'wav', 'ogg', ], ext) >= 0
 
 			let path = fnamemodify(item, ':p')
 			let file = substitute(path, '/Users/t/Files/MUSIC/', '', '')
@@ -437,6 +474,15 @@ func! browser#search(char)
 
 endfunc
 
+func! browser#solidify()
+
+	setlocal buftype=
+	setlocal bufhidden=
+	setlocal buflisted
+	let b:solid = 1
+
+endfunc
+
 func! browser#start()
 
 	let current_buffer = expand('%:p')
@@ -445,15 +491,11 @@ func! browser#start()
 
 	let b:listing = []
 	let b:marked = []
+	let b:solid = 0
+	let b:git_dir = ''
+	let b:git_modified = []
 
-" 	let git_dir = s:get_git_dir()
-
-" 	if isdirectory(git_dir)
-
-" 		let b:git_dir = git_dir
-" 		let b:git_modified = s:get_git_modified()
-
-" 	endif
+	call browser#update_git()
 
 	setfiletype browser
 	setlocal buftype=nofile
@@ -483,6 +525,7 @@ func! browser#bind()
 	map <buffer><silent> <m-d> <Plug>(browser_delete)
 	map <buffer><silent> <m-m> <Plug>(browser_mkdir)
 	map <buffer><silent> <esc> <Plug>(browser_drop)
+	map <buffer><silent> <m-s> <Plug>(browser_solidify)
 
 endfunc
 
@@ -521,6 +564,9 @@ noremap <silent> <Plug>(browser_drop)
 
 noremap <silent> <Plug>(browser_mkdir)
 			\ :call browser#mkdir()<cr>
+
+noremap <silent> <Plug>(browser_solidify)
+			\ :call browser#solidify()<cr>
 
 noremap <silent> <Plug>(browser_up)
 			\ k
