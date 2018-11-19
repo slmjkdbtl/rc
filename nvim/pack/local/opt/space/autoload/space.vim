@@ -1,11 +1,5 @@
 " wengwengweng
 
-func! space#leave()
-
-	call timer_stop(b:timer)
-
-endfunc
-
 func! space#draw(timer)
 
 	if !exists('*luaeval')
@@ -43,6 +37,20 @@ func! space#draw(timer)
 
 endfunc
 
+func! space#start()
+
+	let g:space_timer = timer_start(96, 'space#draw', {
+				\ 'repeat': -1
+				\ })
+
+endfunc
+
+func! space#stop()
+
+	call timer_stop(g:space_timer)
+
+endfunc
+
 func! space#shine()
 
 	enew
@@ -53,18 +61,7 @@ func! space#shine()
 	setfiletype space
 	file space
 	call space#draw(0)
-
-	let b:timer = timer_start(96, 'space#draw', {
-				\ 'repeat': -1
-				\ })
-
-	augroup Space
-
-		autocmd!
-		autocmd BufLeave,BufHidden,BufUnload space
-					\ call space#leave()
-
-	augroup END
+	call space#start()
 
 endfunc
 

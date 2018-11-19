@@ -90,6 +90,11 @@ vnoremap <silent> <space> <esc>
 nnoremap <silent> <m-a> ggVG
 nnoremap <silent> <m-v> gv
 
+" tabs
+for i in range(1, 12)
+	exec 'nnoremap <silent> <f' . i . '> :tabn ' . i '<cr>'
+endfor
+
 " indent
 vnoremap <silent> <tab> >
 vnoremap <silent> <bs> <
@@ -106,11 +111,6 @@ noremap <silent> / :Comment<cr>
 nnoremap <silent> <m-w> :Close<cr>
 nnoremap <silent> <m-[> :PrevMark<cr>
 nnoremap <silent> <m-]> :NextMark<cr>
-nnoremap <silent> <F8> :MusicToggle<cr>
-nnoremap <silent> <F7> :MusicPrev<cr>
-nnoremap <silent> <F9> :MusicNext<cr>
-nnoremap <silent> <F11> :MusicVolDown<cr>
-nnoremap <silent> <F12> :MusicVolUp<cr>
 nnoremap <silent> w :Write<cr>
 nnoremap m :!just<space>
 nnoremap z :Bookmark<space>

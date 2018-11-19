@@ -6,7 +6,7 @@ syntax match BrowserParent
 			\ containedin=BrowserItem
 
 syntax match BrowserDirHead
-			\ '^+'
+			\ '^\(+\|-\)'
 			\ contained
 			\ containedin=BrowserDir
 
@@ -16,7 +16,7 @@ syntax match BrowserMarked
 			\ containedin=BrowserItem
 
 syntax match BrowserDir
-			\ '^+.*'
+			\ '^\(+\|-\).*'
 			\ contained
 			\ containedin=BrowserItem
 			\ contains=BrowserDirHead,BrowserMarked

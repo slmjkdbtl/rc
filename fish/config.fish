@@ -16,6 +16,7 @@ alias vps "ssh t@wengwengweng"
 alias website "open https://www.wengwengweng.me/"
 alias dsclean "sudo find . -type f -name .DS_Store -delete; killall Finder"
 alias sfxr "amulet $HOME/Things/tools/sfxr.lua"
+alias anywhere "sudo spctl --master-disable"
 
 type -q neomutt; and \
 	alias mutt "neomutt"

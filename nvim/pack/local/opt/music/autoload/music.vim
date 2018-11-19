@@ -56,6 +56,33 @@ func! music#voldown()
 	call system('mpc volume -3')
 endfunc
 
+func! music#open()
+
+	enew
+
+	file music
+	setfiletype music
+	setlocal buftype=nowrite
+	setlocal bufhidden=
+	setlocal buflisted
+	setlocal nocursorline
+	call s:render()
+
+endfunc
+
+func! s:render()
+
+	setlocal modifiable
+	silent! 1,$d
+
+	call append(0, 'yo')
+
+	silent! $,$d
+	setlocal nomodifiable
+	setlocal nomodified
+
+endfunc
+
 func! music#volup()
 	call system('mpc volume +3')
 endfunc

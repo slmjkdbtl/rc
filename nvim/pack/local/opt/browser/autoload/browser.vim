@@ -4,17 +4,6 @@ func! s:trim(t)
 	return substitute(a:t, '\n', '', '')
 endfunc
 
-func! s:get_files()
-
-	let files = glob(getcwd() . '/*', 0, 1)
-	let hidden = glob(getcwd() . '/.*', 0, 1)
-	let hidden = filter(hidden, 'fnamemodify(v:val, ":t") !=# ".."')
-	let hidden = filter(hidden, 'fnamemodify(v:val, ":t") !=# "."')
-
-	return hidden + files
-
-endfunc
-
 func! s:is_same(f1, f2)
 
 	return fnamemodify(a:f1, ':p') ==# fnamemodify(a:f2, ':p')
@@ -37,12 +26,34 @@ func! s:is_marked(f)
 
 endfunc
 
-func! s:get_listing()
+func! s:is_expanded(f)
+
+	if !exists('b:expanded')
+		return 0
+	endif
+
+	for m in b:expanded
+		if s:is_same(a:f, m)
+			return 1
+		endif
+	endfor
+
+	return 0
+
+endfunc
+
+func! browser#get_listing(path)
+
+	let files = glob(a:path . '/*', 0, 1)
+	let hidden = glob(a:path . '/.*', 0, 1)
+	let hidden = filter(hidden, 'fnamemodify(v:val, ":t") !=# ".."')
+	let hidden = filter(hidden, 'fnamemodify(v:val, ":t") !=# "."')
+	let files += hidden
 
 	let flist = []
 	let dlist = []
 
-	for f in s:get_files()
+	for f in files
 
 		if isdirectory(f)
 			let dlist += [ f ]
@@ -77,6 +88,7 @@ endfunc
 
 func! s:render()
 
+	setlocal modifiable
 	silent! 1,$d
 
 	for i in range(len(b:listing))
@@ -91,7 +103,11 @@ func! s:render()
 		else
 
 			if isdirectory(item)
-				let displayline .= '+ '
+				if s:is_expanded(item)
+					let displayline .= '- '
+				else
+					let displayline .= '+ '
+				endif
 			elseif filereadable(item)
 				let displayline .= '  '
 			endif
@@ -109,6 +125,8 @@ func! s:render()
 	endfor
 
 	silent! $,$d
+	setlocal nomodifiable
+	setlocal nomodified
 
 endfunc
 
@@ -188,15 +206,11 @@ func! browser#refresh(...)
 		return
 	endif
 
-	let b:listing = s:get_listing()
+	let b:listing = browser#get_listing(getcwd())
 	let name = fnamemodify(getcwd(), ':t')
 
 	exec 'file ' . name
-	setlocal modifiable
 	call s:render()
-	setlocal nomodifiable
-	setlocal nomodified
-
 	call browser#update_git()
 
 	if exists('a:1')
@@ -223,6 +237,28 @@ func! browser#mark()
 
 	call browser#refresh(line('.'))
 	echo 'marked ' . len(b:marked) . ' items'
+
+endfunc
+
+func! browser#expand()
+
+	if line('.') ==# 1
+		return
+	endif
+
+	let file = s:get_current()
+
+	if !isdirectory(file)
+		return
+	endif
+
+	if s:is_expanded(file)
+		call remove(b:expanded, index(b:expanded, file))
+	else
+		let b:expanded += [ file ]
+	endif
+
+	call browser#refresh(line('.'))
 
 endfunc
 
@@ -434,18 +470,9 @@ func! browser#enter()
 
 		let ext = fnamemodify(item, ':e')
 
-		if index([ 'jpg', 'png', 'pdf', 'ico', 'icns', 'ase', 'gif', 'mp4', 'mkv', 'mov', 'avi', 'wav', 'ogg', 'obj', ], ext) >= 0
+		if index([ 'jpg', 'png', 'pdf', 'ico', 'icns', 'ase', 'gif', 'mp4', 'mkv', 'mov', 'avi', 'mp3', 'wav', 'ogg', 'obj', ], ext) >= 0
 
 			call system('open ' . escape(item, ' '))
-
-		elseif index([ 'mp3', 'wav', 'ogg', ], ext) >= 0
-
-			let path = fnamemodify(item, ':p')
-			let file = substitute(path, '/Users/t/Files/MUSIC/', '', '')
-
-			call system('mpc clear')
-			call system('mpc add ' . escape(file, ' '))
-			MusicPlay
 
 		else
 
@@ -494,6 +521,7 @@ func! browser#start()
 	let b:solid = 0
 	let b:git_dir = ''
 	let b:git_modified = []
+	let b:expanded = []
 
 	call browser#update_git()
 
@@ -518,6 +546,7 @@ func! browser#bind()
 	map <buffer><silent> <tab> <Plug>(browser_close)
 	map <buffer><silent> y <Plug>(browser_copy_path)
 	map <buffer><silent> <space> <Plug>(browser_mark)
+	map <buffer><silent> e <Plug>(browser_expand)
 	map <buffer><silent> r <Plug>(browser_refresh)
 	map <buffer><silent> <m-r> <Plug>(browser_rename)
 	map <buffer><silent> <m-c> <Plug>(browser_copy)
@@ -546,6 +575,9 @@ noremap <silent> <Plug>(browser_refresh)
 
 noremap <silent> <Plug>(browser_mark)
 			\ :call browser#mark()<cr>
+
+noremap <silent> <Plug>(browser_expand)
+			\ :call browser#expand()<cr>
 
 noremap <silent> <Plug>(browser_delete)
 			\ :call browser#delete()<cr>

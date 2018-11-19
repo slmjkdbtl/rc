@@ -101,6 +101,9 @@ let g:ale_set_highlights = 0
 " tommywiseau
 let g:is_human_bean = 0
 
+" music
+let g:music_dir = $HOME . '/Files/MUSIC'
+
 " unload default plugins
 let g:loaded_netrwPlugin = 1
 let g:loaded_getscriptPlugin = 1
@@ -138,6 +141,10 @@ func! s:hello()
 	if !argc()
 		Space
 	endif
+
+" 	tabnew
+" 	Music
+" 	tabn 1
 
 endfunc
 
