@@ -54,7 +54,6 @@ set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*
 set wildignore=.git,.svn,.cache,.tmp,node_modules
 set wildignore+=.DS_Store
 set wildignore+=.tags,*.min.*,*.map
-set wildignore+=*.zip,*.tar.*,*.app,*.ipa
 set wildignore+=*.so,*.o,*.out,*.swp,*.exe,*.elf,*.hex,*.dll,*~
 exec 'set listchars=tab:\|\ '
 filetype plugin on
@@ -69,7 +68,6 @@ packadd! comment
 packadd! ft
 packadd! jump
 packadd! line
-packadd! music
 packadd! pair
 packadd! scroll
 packadd! search
@@ -97,12 +95,13 @@ let g:ale_sign_error = '>'
 let g:ale_sign_warning = '*'
 let g:ale_sign_info = '?'
 let g:ale_set_highlights = 0
+let g:ale_linters = {
+\   'cpp': [''],
+\   'hpp': [''],
+\}
 
 " tommywiseau
 let g:is_human_bean = 0
-
-" music
-let g:music_dir = $HOME . '/Files/MUSIC'
 
 " unload default plugins
 let g:loaded_netrwPlugin = 1
@@ -141,10 +140,6 @@ func! s:hello()
 	if !argc()
 		Space
 	endif
-
-" 	tabnew
-" 	Music
-" 	tabn 1
 
 endfunc
 

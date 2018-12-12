@@ -15,17 +15,11 @@ command! -nargs=1 Mkdir
 command! -nargs=0 Close
 			\ call utils#close()
 
-command! -nargs=0 Write
-			\ call utils#write()
-
 command! -nargs=0 CleanBuf
 			\ call utils#clean_buf()
 
 command! -nargs=? Make
 			\ call utils#make(<q-args>)
-
-command! -nargs=? Just
-			\ call utils#just(<q-args>)
 
 command! -nargs=0 SynCheck
 			\ call utils#syncheck()

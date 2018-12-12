@@ -90,14 +90,14 @@ vnoremap <silent> <space> <esc>
 nnoremap <silent> <m-a> ggVG
 nnoremap <silent> <m-v> gv
 
-" tabs
-for i in range(1, 12)
-	exec 'nnoremap <silent> <f' . i . '> :tabn ' . i '<cr>'
-endfor
-
 " indent
 vnoremap <silent> <tab> >
 vnoremap <silent> <bs> <
+
+" misc
+noremap <m-t> <c-]>
+nnoremap <m-f> :find<space>
+nnoremap <silent> w :w<cr>
 
 " plugins
 call pair#bind()
@@ -111,9 +111,6 @@ noremap <silent> / :Comment<cr>
 nnoremap <silent> <m-w> :Close<cr>
 nnoremap <silent> <m-[> :PrevMark<cr>
 nnoremap <silent> <m-]> :NextMark<cr>
-nnoremap <silent> w :Write<cr>
-nnoremap m :!just<space>
 nnoremap z :Bookmark<space>
-nnoremap <m-f> :find<space>
-nnoremap <m-t> :tag<space>
+nnoremap m :Make<space>
 

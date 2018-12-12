@@ -47,6 +47,7 @@ java
 java8
 keka
 keycastr
+kid3
 licecap
 lightworks
 love

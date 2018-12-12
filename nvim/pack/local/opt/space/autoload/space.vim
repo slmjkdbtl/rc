@@ -6,6 +6,10 @@ func! space#draw(timer)
 		return
 	endif
 
+	if &ft !=# 'space'
+		return
+	endif
+
 	setlocal modifiable
 	silent! 1,$d
 

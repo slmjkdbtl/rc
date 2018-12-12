@@ -44,8 +44,9 @@ endfunc
 
 func! browser#get_listing(path)
 
-	let files = glob(a:path . '/*', 0, 1)
-	let hidden = glob(a:path . '/.*', 0, 1)
+	let path = escape(a:path, '# ')
+	let files = glob(path . '/*', 0, 1)
+	let hidden = glob(path . '/.*', 0, 1)
 	let hidden = filter(hidden, 'fnamemodify(v:val, ":t") !=# ".."')
 	let hidden = filter(hidden, 'fnamemodify(v:val, ":t") !=# "."')
 	let files += hidden

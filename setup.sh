@@ -35,4 +35,6 @@ sudo chsh -s /usr/local/bin/fish
 
 # finder show path
 defaults write com.apple.finder ShowPathbar -bool true
+# disable itunes backup
+defaults write com.apple.iTunes DeviceBackupsDisabled -bool YES
 

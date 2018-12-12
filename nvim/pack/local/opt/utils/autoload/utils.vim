@@ -83,13 +83,6 @@ func! utils#mkdir(name)
 
 endfunc
 
-func! utils#write()
-
-	silent! w
-	echo "'" . bufname('%') . "' written"
-
-endfunc
-
 func! utils#clean_buf()
 
 	let n = 0
@@ -126,21 +119,6 @@ func! utils#recfind(wd, file)
 	else
 
 		return a:wd
-
-	endif
-
-endfunc
-
-func! utils#make(target)
-
-	let cwd = getcwd()
-	let mdir = utils#recfind(cwd, 'Makefile')
-
-	if isdirectory(mdir)
-
-		exec 'lcd ' . mdir
-		exec '!make ' . a:target
-		exec 'lcd ' . cwd
 
 	endif
 
