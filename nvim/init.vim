@@ -50,8 +50,8 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=utf-8,gbk
 set guicursor=n-v-c-sm-ci-ve-r-cr-o:block,i:ver25
-set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*
-set wildignore=.git,.svn,.cache,.tmp,node_modules
+set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
+set wildignore=.git,.svn,.cache,.tmp,node_modules,.tup
 set wildignore+=.DS_Store
 set wildignore+=.tags,*.min.*,*.map
 set wildignore+=*.so,*.o,*.out,*.swp,*.exe,*.elf,*.hex,*.dll,*~
@@ -95,7 +95,12 @@ let g:ale_sign_error = '>'
 let g:ale_sign_warning = '*'
 let g:ale_sign_info = '?'
 let g:ale_set_highlights = 0
+
+let g:ale_rust_cargo_check_examples = 1
+let g:ale_rust_cargo_check_tests = 1
+
 let g:ale_linters = {
+\   'rust': ['cargo'],
 \   'cpp': [''],
 \   'hpp': [''],
 \}

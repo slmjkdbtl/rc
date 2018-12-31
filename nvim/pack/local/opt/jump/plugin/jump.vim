@@ -3,6 +3,8 @@
 let g:jump_marks = get(g:, 'jump_marks', {})
 
 call jump#set('lua', [ 'function\s.\+(.*)', 'function(.*)' ])
+call jump#set('cpp', [ '\w\+\s.\+(.*)\s{', 'struct\s\w\+\s{', 'class\s\w\+\s{', 'enum\s\w\+\s{' ])
+call jump#set('c', [ '\w\+\s.\+(.*)\s{', 'struct\s\w\+\s{', 'class\s\w\+\s{', 'enum\s\w\+\s{' ])
 call jump#set('rust', [ 'fn\s.\+(.*)', 'struct\s.\+', 'impl\s.\+', 'enum\s.\+', ])
 call jump#set('javascript', [ '\w\+(\w*)\s{', ])
 call jump#set('vim', [ 'fu\%[nction]!\s.\+(.*)', ])

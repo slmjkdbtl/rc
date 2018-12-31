@@ -99,6 +99,12 @@ noremap <m-t> <c-]>
 nnoremap <m-f> :find<space>
 nnoremap <silent> w :w<cr>
 
+" yo
+for i in range(1, 9)
+	exec 'noremap <f' . i . '> :echo "y' . repeat('o', i) . '"<cr>'
+	exec 'inoremap <f' . i . '> <nop>'
+endfor
+
 " plugins
 call pair#bind()
 call search#bind()
@@ -112,5 +118,5 @@ nnoremap <silent> <m-w> :Close<cr>
 nnoremap <silent> <m-[> :PrevMark<cr>
 nnoremap <silent> <m-]> :NextMark<cr>
 nnoremap z :Bookmark<space>
-nnoremap m :Make<space>
+nnoremap m :!just<space>
 

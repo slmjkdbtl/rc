@@ -59,25 +59,15 @@ func! s:get_status_path(bufn) abort
 	let text .= '%#StatusLine#'
 
 	if mode() ==# 't'
-
 		let text = ''
-
 	else
 
-		if ft ==# 'ctrlp'
+		let path = fnamemodify(name, ':p')
 
-			let text = 'searching...'
-
+		if filereadable(path) || isdirectory(path)
+			let text = path
 		else
-
-			let path = fnamemodify(name, ':p')
-
-			if filereadable(path) || isdirectory(path)
-				let text = path
-			else
-				let text = fnamemodify(path, ':h')
-			endif
-
+			let text = fnamemodify(path, ':h')
 		endif
 
 		let text = substitute(text, '/Users/\w*', '~', '')
