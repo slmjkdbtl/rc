@@ -11,6 +11,7 @@ alias disk "df -h ."
 alias ncdu "ncdu --color=dark"
 alias v "nvim"
 alias make "make -s"
+alias youtube-music "youtube-dl -x --audio-format mp3"
 alias opengate "sudo spctl --master-disable"
 alias ase "/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias vps "ssh t@wengwengweng"
@@ -97,6 +98,9 @@ end
 
 # carp
 set -x CARP_DIR $HOME/.carp
+
+# sccache
+set -x RUSTC_WRAPPER sccache
 
 # homebrew
 set -x HOMEBREW_NO_AUTO_UPDATE 1
