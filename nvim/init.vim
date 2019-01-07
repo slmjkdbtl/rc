@@ -64,6 +64,7 @@ colorscheme super
 " plugins
 packadd! bookmark
 packadd! browser
+packadd! todo
 packadd! comment
 packadd! ft
 packadd! jump

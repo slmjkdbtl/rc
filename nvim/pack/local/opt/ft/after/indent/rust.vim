@@ -2,6 +2,7 @@
 
 setlocal indentexpr=
 setlocal nolisp
+setlocal noexpandtab
 setlocal nosmartindent
 setlocal cindent
 setlocal autoindent

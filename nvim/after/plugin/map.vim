@@ -108,8 +108,8 @@ endfor
 " plugins
 call pair#bind()
 call search#bind()
-noremap <silent> <m-k> :Scroll -12<cr>
-noremap <silent> <m-j> :Scroll 12<cr>
+noremap <silent> <m-k> :Scroll -8<cr>
+noremap <silent> <m-j> :Scroll 8<cr>
 nnoremap <silent> <tab> :Browser<cr>
 nnoremap <silent> <m--> :OpenTerm<cr>
 nnoremap <silent> <m-=> :OpenFinder<cr>
