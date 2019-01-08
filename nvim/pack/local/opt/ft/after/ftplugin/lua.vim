@@ -1,6 +1,5 @@
 " wengwengweng
 
-setlocal commentstring=--\ %s
 inoreabbrev <buffer> <expr> function <sid>function()
 inoreabbrev <buffer> <expr> do <sid>do()
 inoreabbrev <buffer> <expr> then <sid>then()

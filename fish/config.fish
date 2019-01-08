@@ -100,7 +100,8 @@ end
 set -x CARP_DIR $HOME/.carp
 
 # sccache
-set -x RUSTC_WRAPPER sccache
+type -q sccache; and \
+	set -x RUSTC_WRAPPER sccache
 
 # homebrew
 set -x HOMEBREW_NO_AUTO_UPDATE 1

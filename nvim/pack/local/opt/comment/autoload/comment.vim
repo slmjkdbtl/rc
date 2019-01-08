@@ -12,13 +12,13 @@ func! s:comment(line)
 		return a:line
 	endif
 
-	return substitute(&commentstring, '%s', escape(a:line, '&\.'), '')
+	return substitute(&commentstring, '%s', ' ' . escape(a:line, '&\.'), '')
 
 endfunc
 
 func! s:uncomment(line)
 
-	return substitute(a:line, substitute(&commentstring, '%s', '', ''), '', '')
+	return substitute(a:line, substitute(&commentstring, '%s', '', '') . ' ', '', '')
 
 endfunc
 

@@ -115,8 +115,10 @@ nnoremap <silent> <m--> :OpenTerm<cr>
 nnoremap <silent> <m-=> :OpenFinder<cr>
 noremap <silent> / :Comment<cr>
 nnoremap <silent> <m-w> :Close<cr>
-nnoremap <silent> <m-[> :PrevMark<cr>
-nnoremap <silent> <m-]> :NextMark<cr>
+" nnoremap <silent> <m-[> :PrevMark<cr>
+" nnoremap <silent> <m-]> :NextMark<cr>
+nnoremap <silent> <m-[> :ALEPrevious<cr>
+nnoremap <silent> <m-]> :ALENext<cr>
 nnoremap z :Bookmark<space>
 nnoremap m :!just<space>
 

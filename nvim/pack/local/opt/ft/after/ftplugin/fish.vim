@@ -1,6 +1,6 @@
 " wengwengweng
 
-setlocal commentstring=#\ %s
+setlocal commentstring=#%s
 inoreabbrev <buffer> <expr> function <sid>function()
 inoreabbrev <buffer> <expr> if <sid>if()
 inoreabbrev <buffer> <expr> for <sid>for()
