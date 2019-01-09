@@ -15,10 +15,10 @@ set novisualbell
 set showmatch
 set matchtime=0
 set wrap
+set nowrapscan
 set nolinebreak
 set breakindent
 set showbreak=..
-set nowrapscan
 set smartcase
 set hidden
 set noswapfile
@@ -74,7 +74,6 @@ packadd! scroll
 packadd! search
 packadd! space
 packadd! theme
-packadd! tommywiseau
 packadd! trim
 packadd! utils
 
@@ -96,17 +95,20 @@ let g:ale_sign_error = '>'
 let g:ale_sign_warning = '*'
 let g:ale_sign_info = '?'
 let g:ale_set_highlights = 0
-
 let g:ale_rust_cargo_check_examples = 1
 let g:ale_rust_cargo_check_tests = 1
 
 let g:ale_linters = {
-\   'rust': ['cargo'],
+\   'rust': ['rls', 'cargo'],
 \   'cpp': [''],
 \   'hpp': [''],
 \}
 
+packadd! racer
+au FileType rust nmap <m-t> <Plug>(rust-def)
+
 " tommywiseau
+packadd! tommywiseau
 let g:is_human_bean = 0
 
 " unload default plugins

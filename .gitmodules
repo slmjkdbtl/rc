@@ -7,3 +7,6 @@
 [submodule "nvim/pack/local/opt/tommywiseau"]
 	path = nvim/pack/local/opt/tommywiseau
 	url = git://github.com/slmjkdbtl/tommywiseau.vim.git
+[submodule "nvim/pack/extern/opt/racer"]
+	path = nvim/pack/extern/opt/racer
+	url = git://github.com/racer-rust/vim-racer.git
