@@ -2,6 +2,37 @@
 
 let s:srcdir = expand('<sfile>:p:h:h')
 
+func! s:use(name)
+	exec 'set runtimepath+=' . s:srcdir . '/nvim/tools/' . a:name
+endfunc
+
+call s:use('bookmark')
+call s:use('theme')
+call s:use('todo')
+call s:use('browser')
+call s:use('todo')
+call s:use('comment')
+call s:use('ft')
+call s:use('jump')
+call s:use('line')
+call s:use('pair')
+call s:use('scroll')
+call s:use('search')
+call s:use('space')
+call s:use('theme')
+call s:use('trim')
+call s:use('utils')
+call s:use('theme')
+call s:use('tommywiseau')
+
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'w0rp/ale'
+Plug 'mhinz/vim-signify'
+Plug 'racer-rust/vim-racer'
+
+call plug#end()
+
 " options
 set magic
 set nonumber
@@ -63,30 +94,6 @@ filetype indent on
 syntax enable
 colorscheme super
 
-call plug#begin('~/.local/share/nvim/plugged')
-Plug 'w0rp/ale'
-Plug 'mhinz/vim-signify'
-Plug 'racer-rust/vim-racer'
-Plug 'dermusikman/sonicpi.vim'
-Plug '~/.conf/nvim/custom/bookmark'
-Plug '~/.conf/nvim/custom/todo'
-Plug '~/.conf/nvim/custom/browser'
-Plug '~/.conf/nvim/custom/todo'
-Plug '~/.conf/nvim/custom/comment'
-Plug '~/.conf/nvim/custom/ft'
-Plug '~/.conf/nvim/custom/jump'
-Plug '~/.conf/nvim/custom/line'
-Plug '~/.conf/nvim/custom/pair'
-Plug '~/.conf/nvim/custom/scroll'
-Plug '~/.conf/nvim/custom/search'
-Plug '~/.conf/nvim/custom/space'
-Plug '~/.conf/nvim/custom/theme'
-Plug '~/.conf/nvim/custom/trim'
-Plug '~/.conf/nvim/custom/utils'
-Plug '~/.conf/nvim/custom/theme'
-Plug '~/.conf/nvim/custom/tommywiseau'
-call plug#end()
-
 " signify
 let g:signify_vcs_list = [ 'git' ]
 let g:signify_sign_show_text = 1
@@ -111,6 +118,12 @@ let g:ale_linters = {
 \   'cpp': [''],
 \   'hpp': [''],
 \}
+
+" sonicpi
+let g:sonicpi_command = 'sonic-pi-tool'
+let g:sonicpi_send = 'eval-stdin'
+let g:sonicpi_stop = 'stop'
+let g:vim_redraw = 1
 
 " racer
 au FileType rust nmap <m-t> <Plug>(rust-def)
