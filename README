@@ -66,6 +66,9 @@ vim plugins
 
 	I've written several vim plugins to learn vim, they're all under nvim/tools/
 
+	- plug
+		simplified plugin manager
+
 	- browser
 		simple file browser & manager
 

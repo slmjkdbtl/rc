@@ -2,27 +2,11 @@
 
 let s:srcdir = expand('<sfile>:p:h:h')
 
-func! s:load(name)
-	exec 'set runtimepath+=' . a:name
-endfunc
-
-func! s:loadall(path)
-	for f in glob(a:path . '/*', 0, 1)
-		if isdirectory(f)
-			call s:load(f)
-		endif
-	endfor
-endfunc
-
-call s:loadall(s:srcdir . '/nvim/tools')
-
-call plug#begin('~/.local/share/nvim/plugged')
-
-Plug 'w0rp/ale'
-Plug 'mhinz/vim-signify'
-Plug 'racer-rust/vim-racer'
-
-call plug#end()
+call plug#add('w0rp/ale')
+call plug#add('mhinz/vim-signify')
+call plug#add('racer-rust/vim-racer')
+call plug#setup()
+call plug#loadall(s:srcdir . '/nvim/tools')
 
 " options
 set magic
@@ -109,12 +93,6 @@ let g:ale_linters = {
 \   'cpp': [''],
 \   'hpp': [''],
 \}
-
-" sonicpi
-let g:sonicpi_command = 'sonic-pi-tool'
-let g:sonicpi_send = 'eval-stdin'
-let g:sonicpi_stop = 'stop'
-let g:vim_redraw = 1
 
 " racer
 au FileType rust nmap <m-t> <Plug>(rust-def)
