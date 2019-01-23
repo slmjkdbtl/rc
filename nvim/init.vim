@@ -2,28 +2,19 @@
 
 let s:srcdir = expand('<sfile>:p:h:h')
 
-func! s:use(name)
-	exec 'set runtimepath+=' . s:srcdir . '/nvim/tools/' . a:name
+func! s:load(name)
+	exec 'set runtimepath+=' . a:name
 endfunc
 
-call s:use('bookmark')
-call s:use('theme')
-call s:use('todo')
-call s:use('browser')
-call s:use('todo')
-call s:use('comment')
-call s:use('ft')
-call s:use('jump')
-call s:use('line')
-call s:use('pair')
-call s:use('scroll')
-call s:use('search')
-call s:use('space')
-call s:use('theme')
-call s:use('trim')
-call s:use('utils')
-call s:use('theme')
-call s:use('tommywiseau')
+func! s:loadall(path)
+	for f in glob(a:path . '/*', 0, 1)
+		if isdirectory(f)
+			call s:load(f)
+		endif
+	endfor
+endfunc
+
+call s:loadall(s:srcdir . '/nvim/tools')
 
 call plug#begin('~/.local/share/nvim/plugged')
 

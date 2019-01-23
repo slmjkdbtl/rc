@@ -112,3 +112,6 @@ set -x LLVM_ROOT /usr/local/opt/emscripten/libexec/llvm/bin
 # sbin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
+# ruby
+set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
+

@@ -64,7 +64,7 @@
 
 vim plugins
 
-	I've written several vim plugins to learn vim, they're all under nvim/pack/local/start
+	I've written several vim plugins to learn vim, they're all under nvim/tools/
 
 	- browser
 		simple file browser & manager
@@ -107,6 +107,4 @@ vim plugins
 
 	- tommywiseau
 		meaning of life
-
-	I still use 2 external plugins: ale and vim-signify
 
