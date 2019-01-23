@@ -1,14 +1,24 @@
 " wengwengweng
 
 let s:dir = expand('~/.local/share/nvim/plug')
+let s:custom_dir = ''
 let s:plugins = {}
 
-func! plug#set_dir(dir)
-	let s:dir = a:dir
+func! plug#dir(dir)
+	let s:custom_dir = a:dir
 endfunc
 
 func! plug#load(name)
-	exec 'set runtimepath+=' . a:name
+
+	if isdirectory(a:name)
+		exec 'set runtimepath+=' . a:name
+	else
+		let oname = s:custom_dir . '/' . a:name
+		if isdirectory(oname)
+			exec 'set runtimepath+=' . oname
+		endif
+	endif
+
 endfunc
 
 func! plug#loadall(path)

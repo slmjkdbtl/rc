@@ -2,10 +2,32 @@
 
 let s:srcdir = expand('<sfile>:p:h:h')
 
+" local plugins
+call plug#dir(s:srcdir . '/nvim/tools')
+call plug#load('bookmark')
+call plug#load('theme')
+call plug#load('todo')
+call plug#load('browser')
+call plug#load('todo')
+call plug#load('comment')
+call plug#load('ft')
+call plug#load('jump')
+call plug#load('line')
+call plug#load('pair')
+call plug#load('scroll')
+call plug#load('search')
+call plug#load('space')
+call plug#load('theme')
+call plug#load('trim')
+call plug#load('utils')
+call plug#load('theme')
+call plug#load('pi')
+call plug#load('tommywiseau')
+
+" external plugins
 call plug#add('w0rp/ale')
 call plug#add('mhinz/vim-signify')
 call plug#add('racer-rust/vim-racer')
-call plug#loadall(s:srcdir . '/nvim/tools')
 
 " options
 set magic
