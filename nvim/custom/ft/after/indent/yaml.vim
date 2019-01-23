@@ -8,4 +8,6 @@ setlocal nosmartindent
 setlocal nocindent
 setlocal nolisp
 setlocal indentexpr=
+setlocal formatoptions+=ro
+setlocal comments=b:-
 

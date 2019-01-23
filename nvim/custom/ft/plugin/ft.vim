@@ -6,5 +6,3 @@ call ft#detect("*.dyon", "dyon")
 call ft#detect("*.{vert,frag}", "glsl")
 call ft#detect('Tupfile', 'tup')
 
-autocmd FileType * setlocal formatoptions-=cro
-

@@ -1,5 +1,7 @@
 " wengwengweng
 
+let s:srcdir = expand('<sfile>:p:h:h')
+
 " options
 set magic
 set nonumber
@@ -43,7 +45,7 @@ set laststatus=2
 set tabstop=4
 set shiftwidth=4
 set mouse=a
-set formatoptions-=cro
+set formatoptions=tcjro
 set tags+=./.tags;,.tags
 set whichwrap=h,l,<,>
 set encoding=utf-8
@@ -61,24 +63,31 @@ filetype indent on
 syntax enable
 colorscheme super
 
-" plugins
-packadd! bookmark
-packadd! browser
-packadd! todo
-packadd! comment
-packadd! ft
-packadd! jump
-packadd! line
-packadd! pair
-packadd! scroll
-packadd! search
-packadd! space
-packadd! theme
-packadd! trim
-packadd! utils
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'w0rp/ale'
+Plug 'mhinz/vim-signify'
+Plug 'racer-rust/vim-racer'
+Plug 'dermusikman/sonicpi.vim'
+Plug '~/.conf/nvim/custom/bookmark'
+Plug '~/.conf/nvim/custom/todo'
+Plug '~/.conf/nvim/custom/browser'
+Plug '~/.conf/nvim/custom/todo'
+Plug '~/.conf/nvim/custom/comment'
+Plug '~/.conf/nvim/custom/ft'
+Plug '~/.conf/nvim/custom/jump'
+Plug '~/.conf/nvim/custom/line'
+Plug '~/.conf/nvim/custom/pair'
+Plug '~/.conf/nvim/custom/scroll'
+Plug '~/.conf/nvim/custom/search'
+Plug '~/.conf/nvim/custom/space'
+Plug '~/.conf/nvim/custom/theme'
+Plug '~/.conf/nvim/custom/trim'
+Plug '~/.conf/nvim/custom/utils'
+Plug '~/.conf/nvim/custom/theme'
+Plug '~/.conf/nvim/custom/tommywiseau'
+call plug#end()
 
 " signify
-packadd! signify
 let g:signify_vcs_list = [ 'git' ]
 let g:signify_sign_show_text = 1
 let g:signify_sign_show_count = 0
@@ -89,7 +98,6 @@ let g:signify_sign_change = '~'
 let g:signify_sign_changedelete = g:signify_sign_change
 
 " ale
-packadd! ale
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_error = '>'
 let g:ale_sign_warning = '*'
@@ -104,11 +112,10 @@ let g:ale_linters = {
 \   'hpp': [''],
 \}
 
-packadd! racer
+" racer
 au FileType rust nmap <m-t> <Plug>(rust-def)
 
 " tommywiseau
-packadd! tommywiseau
 let g:is_human_bean = 0
 
 " unload default plugins
