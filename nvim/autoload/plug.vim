@@ -1,7 +1,7 @@
 " wengwengweng
 
 let s:dir = expand('~/.local/share/nvim/plug')
-let s:plugins = []
+let s:plugins = {}
 
 func! plug#set_dir(dir)
 	let s:dir = a:dir
@@ -19,20 +19,24 @@ func! plug#loadall(path)
 	endfor
 endfunc
 
-func! plug#add(name)
-	let s:plugins = s:plugins + [a:name]
-endfunc
+func! plug#add(repo)
 
-func! plug#setup()
-	call plug#loadall(s:dir)
+	let name = split(a:repo, '/')[1]
+	let dir = s:dir . '/' . name
+
+	let s:plugins[name] = {
+		\ 'url': 'https://github.com/' . a:repo . '.git'
+		\ }
+
+	call plug#load(dir)
+
 endfunc
 
 func! plug#install()
 
-	for p in s:plugins
+	for name in keys(s:plugins)
 
-		let url = 'https://github.com/' . p . '.git'
-		let name = split(p, '/')[1]
+		let url = s:plugins[name].url
 		let dir = s:dir . '/' . name
 
 		if !isdirectory(dir)
@@ -50,6 +54,28 @@ func! plug#install()
 		endif
 
 	endfor
+
+	echo 'done'
+
+endfunc
+
+func! plug#clean()
+
+	for name in glob(s:dir . '/*', 0, 1)
+
+		let p = fnamemodify(name, ':t')
+
+		if !has_key(s:plugins, p)
+
+			echo 'removing ' . p
+			call system('rm -rf ' . name)
+			redraw
+
+		endif
+
+	endfor
+
+	echo 'done'
 
 endfunc
 

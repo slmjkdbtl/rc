@@ -5,7 +5,6 @@ let s:srcdir = expand('<sfile>:p:h:h')
 call plug#add('w0rp/ale')
 call plug#add('mhinz/vim-signify')
 call plug#add('racer-rust/vim-racer')
-call plug#setup()
 call plug#loadall(s:srcdir . '/nvim/tools')
 
 " options
