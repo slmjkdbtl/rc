@@ -1,12 +1,15 @@
+# wengwengweng
 
 == DOING
 
 == TODO
 - tidy up ft
+- change indent for text files
 - fix space error
 - browser tree view
 - browser show git changed files
 - more customizable statusline
 
 == DONE
+- sonic pi syntax detection
 

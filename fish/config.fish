@@ -57,11 +57,7 @@ else
 	set -x EDITOR vim
 end
 
-if test -d $HOME/.bin
-	set -x PATH $HOME/.bin $PATH
-end
-
-if test -d $HOME/.local/.bin
+if test -d $HOME/.local/bin
 	set -x PATH $HOME/.local/bin $PATH
 end
 

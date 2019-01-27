@@ -10,6 +10,7 @@ endfunc
 
 func! pi#mode()
 
+	runtime! syntax/pi.vim
 	map <buffer><silent> <f8> <Plug>(pi_send)
 	map <buffer><silent> <f10> <Plug>(pi_stop)
 
