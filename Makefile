@@ -13,12 +13,12 @@ install:
 
 	mkdir -p $(CONFIG)
 
-	$(foreach f, nvim fish alacritty mpv hammerspoon, \
+	$(foreach f, nvim fish alacritty mpv, \
 		echo "  - $(f) -> $(CONFIG)/$(f)"; \
 		ln -sf $(realpath $(f)) $(CONFIG); \
 	)
 
-	$(foreach f, .skhdrc .tmux.conf .tigrc .mpdconf, \
+	$(foreach f, .chunkwmrc .skhdrc .tmux.conf .tigrc .mpdconf, \
 		echo "  - $(f) -> $(HOME)/$(f)"; \
 		ln -sf $(realpath $(f)) $(HOME); \
 	)

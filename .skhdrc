@@ -3,3 +3,10 @@
 cmd + shift - 2      : screencapture -w $HOME/Desktop/(date +%s).png
 cmd + shift - 3      : screencapture $HOME/Desktop/(date +%s).png
 cmd + shift - 4      : screencapture -i $HOME/Desktop/(date +%s).png
+
+cmd + shift - up    : chunkc tiling::window --focus north
+cmd + shift - down  : chunkc tiling::window --focus south
+cmd + shift - left  : chunkc tiling::window --focus west
+cmd + shift - right : chunkc tiling::window --focus east
+cmd + shift - f     : chunkc tiling::window --toggle fullscreen
+

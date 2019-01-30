@@ -1,0 +1,27 @@
+# wengwengweng
+
+chunkc core::plugin_dir /usr/local/opt/chunkwm/share/chunkwm/plugins
+
+chunkc core::hotload 0
+
+chunkc set bsp_spawn_left               1
+chunkc set bsp_optimal_ratio            1.618
+chunkc set bsp_split_mode               optimal
+chunkc set bsp_split_ratio              0.5
+
+chunkc set global_desktop_mode          bsp
+chunkc set global_desktop_offset_top    12
+chunkc set global_desktop_offset_left   12
+chunkc set global_desktop_offset_right  12
+chunkc set global_desktop_offset_bottom 12
+chunkc set global_desktop_offset_gap    12
+
+chunkc set focused_border_width         3
+chunkc set focused_border_color         0xff00ffff
+
+chunkc set ffm_bypass_modifier           fn
+chunkc set ffm_standby_on_float          1
+
+chunkc core::load tiling.so
+chunkc core::load border.so
+chunkc core::load ffm.so

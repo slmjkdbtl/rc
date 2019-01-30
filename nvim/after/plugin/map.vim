@@ -45,8 +45,7 @@ noremap <silent> <m-h> b
 noremap <silent> <m-l> e
 inoremap <silent> <up> <c-x><c-y>
 inoremap <silent> <down> <c-x><c-e>
-nnoremap <silent> { {
-nnoremap <silent> } }
+nnoremap <silent> % %
 
 " buffer
 nnoremap <silent> ` <c-^>
@@ -100,7 +99,7 @@ nnoremap <m-f> :find<space>
 nnoremap <silent> w :w<cr>
 
 " yo
-for i in range(1, 9)
+for i in range(1, 12)
 	exec 'noremap <f' . i . '> :echo "y' . repeat('o', i) . '"<cr>'
 	exec 'inoremap <f' . i . '> <nop>'
 endfor
@@ -115,10 +114,10 @@ nnoremap <silent> <m--> :OpenTerm<cr>
 nnoremap <silent> <m-=> :OpenFinder<cr>
 noremap <silent> / :Comment<cr>
 nnoremap <silent> <m-w> :Close<cr>
-" nnoremap <silent> <m-[> :PrevMark<cr>
-" nnoremap <silent> <m-]> :NextMark<cr>
-nnoremap <silent> <m-[> :ALEPrevious<cr>
-nnoremap <silent> <m-]> :ALENext<cr>
+nnoremap <silent> <m-[> :PrevMark<cr>
+nnoremap <silent> <m-]> :NextMark<cr>
+" nnoremap <silent> <m-[> :ALEPrevious<cr>
+" nnoremap <silent> <m-]> :ALENext<cr>
 nnoremap z :Bookmark<space>
 nnoremap m :!just<space>
 
