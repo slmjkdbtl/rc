@@ -7,7 +7,6 @@ cmd + shift - 4     : screencapture -i $HOME/Desktop/(date +%s).png
 cmd + shift - k     : chunkc tiling::window --focus prev
 cmd + shift - j     : chunkc tiling::window --focus next
 cmd + shift - f     : chunkc tiling::window --toggle fullscreen
-cmd + shift - g     : chunkc tiling::window --swap biggest
 
 cmd + shift - f1    : chunkc tiling::desktop --layout bsp
 cmd + shift - f2    : chunkc tiling::desktop --layout monocle

@@ -110,7 +110,7 @@ let g:ale_rust_cargo_check_examples = 1
 let g:ale_rust_cargo_check_tests = 1
 
 let g:ale_linters = {
-\   'rust': ['rls', 'cargo'],
+\   'rust': ['cargo', 'rls'],
 \   'vim': ['vint'],
 \   'cpp': [''],
 \   'hpp': [''],

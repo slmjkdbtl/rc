@@ -72,9 +72,6 @@ tools, apps and games
 	- ncdu
 		https://dev.yorhel.nl/ncdu/
 
-	- luajit
-		http://luajit.org/
-
 	- clac
 		https://github.com/soveran/clac/
 
@@ -129,8 +126,8 @@ tools, apps and games
 	- gotop
 		https://github.com/cjbassi/gotop/
 
-	- nvr
-		https://github.com/mhinz/neovim-remote/
+	- ix
+		http://ix.io
 
 	- tig
 		https://jonas.github.io/tig/
@@ -185,6 +182,9 @@ tools, apps and games
 
 	- zopfli
 		https://github.com/google/zopfli/
+
+	- upx
+		https://github.com/upx/upx/
 
 	- hyperfine
 		https://github.com/sharkdp/hyperfine/
