@@ -49,10 +49,13 @@ nnoremap <silent> % %
 
 " buffer
 nnoremap <silent> ` <c-^>
+tnoremap <silent> ` <c-\><c-n><c-^>
 nnoremap <silent> - :silent! bprev<cr>
 nnoremap <silent> = :silent! bnext<cr>
 nnoremap <silent> <m-q> :silent! bprev<cr>
+tnoremap <silent> <m-q> <c-\><c-n>:silent! bprev<cr>
 nnoremap <silent> <m-e> :silent! bnext<cr>
+tnoremap <silent> <m-e> <c-\><c-n>:silent! bnext<cr>
 
 " edit
 nnoremap <silent> > A

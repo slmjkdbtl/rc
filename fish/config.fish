@@ -112,3 +112,6 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 # ruby
 set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
 
+# wasmer
+set -x WASMER_DIR $HOME/.wasmer
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"

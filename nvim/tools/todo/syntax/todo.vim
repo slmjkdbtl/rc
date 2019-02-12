@@ -1,7 +1,7 @@
 " wengwengweng
 
 syntax match TODOComment
-			\ '^#.*$'
+			\ '#.*$'
 
 syntax match TODOItem
 			\ '^\s*-.*$'
