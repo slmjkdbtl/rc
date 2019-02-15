@@ -24,3 +24,12 @@ call mode#add(
 			\ {-> execute('setlocal nonumber')}
 			\ )
 
+call mode#add(
+			\ 'wrap',
+			\ {-> execute('setlocal wrap')},
+			\ {-> execute('setlocal nowrap')}
+			\ )
+
+command! -nargs=1 ToggleMode
+			\ call mode#toggle(<q-args>)
+

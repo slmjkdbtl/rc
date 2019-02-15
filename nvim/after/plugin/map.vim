@@ -121,10 +121,11 @@ nnoremap <silent> <m-[> :PrevMark<cr>
 nnoremap <silent> <m-]> :NextMark<cr>
 nnoremap <silent> <m-n> :ALEPrevious<cr>
 nnoremap <silent> <m-m> :ALENext<cr>
-nnoremap <silent> <f1> :call mode#toggle('comment')<cr>
-nnoremap <silent> <f2> :call mode#toggle('spell')<cr>
-nnoremap <silent> <f3> :call mode#toggle('number')<cr>
-nnoremap <silent> <f4> :call mode#toggle('paste')<cr>
+nnoremap <silent> <f1> :ToggleMode comment<cr>
+nnoremap <silent> <f2> :ToggleMode spell<cr>
+nnoremap <silent> <f3> :ToggleMode number<cr>
+nnoremap <silent> <f4> :ToggleMode wrap<cr>
+nnoremap <silent> <f5> :ToggleMode paste<cr>
 nnoremap z :Bookmark<space>
 nnoremap m :!just<space>
 
