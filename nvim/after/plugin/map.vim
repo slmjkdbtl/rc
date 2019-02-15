@@ -103,7 +103,7 @@ nnoremap <silent> w :w<cr>
 
 " yo
 for i in range(1, 12)
-	exec 'noremap <f' . i . '> :echo "y' . repeat('o', i) . '"<cr>'
+	exec 'noremap <f' . i . '> <nop>'
 	exec 'inoremap <f' . i . '> <nop>'
 endfor
 
@@ -121,6 +121,8 @@ nnoremap <silent> <m-[> :PrevMark<cr>
 nnoremap <silent> <m-]> :NextMark<cr>
 nnoremap <silent> <m-n> :ALEPrevious<cr>
 nnoremap <silent> <m-m> :ALENext<cr>
+nnoremap <silent> <f1> :call mode#toggle('comment')<cr>
+nnoremap <silent> <f2> :call mode#toggle('spell')<cr>
 nnoremap z :Bookmark<space>
 nnoremap m :!just<space>
 

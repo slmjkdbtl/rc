@@ -12,6 +12,10 @@ setlocal indentexpr=GetElmIndent()
 setlocal indentkeys+=0=else,0=if,0=of,0=import,0=then,0=type,0\|,0},0\],0),=-},0=in
 setlocal nolisp
 setlocal nosmartindent
+setlocal tabstop=2
+setlocal shiftwidth=2
+setlocal noautoindent
+setlocal formatoptions+=ro
 
 " Comment formatting
 setlocal comments=s1fl:{-,mb:\ ,ex:-},:--
