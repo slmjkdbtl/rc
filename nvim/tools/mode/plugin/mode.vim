@@ -1,21 +1,26 @@
 " wengwengweng
 
-func! SpellOn()
-	setlocal spell
-endfunc
+call mode#add(
+			\ 'spell',
+			\ {-> execute('setlocal spell')},
+			\ {-> execute('setlocal nospell')}
+			\ )
 
-func! SpellOff()
-	setlocal nospell
-endfunc
+call mode#add(
+			\ 'comment',
+			\ {-> execute('setlocal formatoptions+=ro')},
+			\ {-> execute('setlocal formatoptions-=ro')}
+			\ )
 
-func! CommentOn()
-	setlocal formatoptions+=ro
-endfunc
+call mode#add(
+			\ 'paste',
+			\ {-> execute('setlocal paste')},
+			\ {-> execute('setlocal nopaste')}
+			\ )
 
-func! CommentOff()
-	setlocal formatoptions-=ro
-endfunc
-
-call mode#add('spell', function('SpellOn'), function('SpellOff'))
-call mode#add('comment', function('CommentOn'), function('CommentOff'))
+call mode#add(
+			\ 'number',
+			\ {-> execute('setlocal number')},
+			\ {-> execute('setlocal nonumber')}
+			\ )
 

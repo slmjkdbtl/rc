@@ -45,6 +45,7 @@ set novisualbell
 set showmatch
 set matchtime=0
 set wrap
+set nospell
 set nowrapscan
 set nolinebreak
 set breakindent

@@ -123,6 +123,8 @@ nnoremap <silent> <m-n> :ALEPrevious<cr>
 nnoremap <silent> <m-m> :ALENext<cr>
 nnoremap <silent> <f1> :call mode#toggle('comment')<cr>
 nnoremap <silent> <f2> :call mode#toggle('spell')<cr>
+nnoremap <silent> <f3> :call mode#toggle('number')<cr>
+nnoremap <silent> <f4> :call mode#toggle('paste')<cr>
 nnoremap z :Bookmark<space>
 nnoremap m :!just<space>
 
