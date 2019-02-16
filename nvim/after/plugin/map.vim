@@ -116,7 +116,7 @@ noremap <silent> <m-j> :Scroll 8<cr>
 nnoremap <silent> <tab> :Browser<cr>
 nnoremap <silent> <m--> :OpenTerm<cr>
 nnoremap <silent> <m-=> :OpenFinder<cr>
-noremap <silent> / :Comment<cr>
+noremap <silent> / :CommentToggle<cr>
 nnoremap <silent> <m-w> :Close<cr>
 nnoremap <silent> <m-[> :PrevMark<cr>
 nnoremap <silent> <m-]> :NextMark<cr>
