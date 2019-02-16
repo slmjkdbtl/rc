@@ -1,5 +1,6 @@
 " wengwengweng
 
+setlocal commentstring=\"%s
 inoreabbrev <buffer> <expr> func! <sid>func()
 inoreabbrev <buffer> <expr> if <sid>if()
 inoreabbrev <buffer> <expr> for <sid>for()

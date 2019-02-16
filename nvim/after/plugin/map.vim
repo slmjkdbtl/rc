@@ -89,8 +89,9 @@ inoremap <silent> <m-p> <esc>"*pa
 nnoremap <silent> v V
 nnoremap <silent> <space> viw
 vnoremap <silent> <space> <esc>
+vnoremap <silent> v <esc>
 nnoremap <silent> <m-a> ggVG
-nnoremap <silent> <m-v> gv
+nnoremap <silent> <m-v> v
 
 " indent
 vnoremap <silent> <tab> >
@@ -121,11 +122,11 @@ nnoremap <silent> <m-[> :PrevMark<cr>
 nnoremap <silent> <m-]> :NextMark<cr>
 nnoremap <silent> <m-n> :ALEPrevious<cr>
 nnoremap <silent> <m-m> :ALENext<cr>
-nnoremap <silent> <f1> :ToggleMode comment<cr>
-nnoremap <silent> <f2> :ToggleMode spell<cr>
-nnoremap <silent> <f3> :ToggleMode number<cr>
-nnoremap <silent> <f4> :ToggleMode wrap<cr>
-nnoremap <silent> <f5> :ToggleMode paste<cr>
+nnoremap <silent> <f1> :ModeToggle comment<cr>
+nnoremap <silent> <f2> :ModeToggle spell<cr>
+nnoremap <silent> <f3> :ModeToggle number<cr>
+nnoremap <silent> <f4> :ModeToggle wrap<cr>
+nnoremap <silent> <f5> :ModeToggle paste<cr>
 nnoremap z :Bookmark<space>
 nnoremap m :!just<space>
 

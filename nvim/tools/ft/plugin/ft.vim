@@ -13,10 +13,5 @@ call ft#detect('*.ck', 'chuck')
 call ft#detect('*.scd', 'supercollider')
 call ft#detect('*.{vert,frag}', 'glsl')
 call ft#detect('Tupfile', 'tup')
-
-call ft#comment('*.cs', '//%s')
-call ft#comment('*.elm', '--%s')
-call ft#comment('*.swift', '//%s')
-call ft#comment('*.{vert,frag}', '//%s')
-call ft#comment('*.toml', '#%s')
+call ft#detect('TODO', 'yaml')
 

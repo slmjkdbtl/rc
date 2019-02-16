@@ -30,6 +30,12 @@ call mode#add(
 			\ {-> execute('setlocal nowrap')}
 			\ )
 
-command! -nargs=1 ToggleMode
+command! -nargs=1 ModeToggle
 			\ call mode#toggle(<q-args>)
+
+command! -nargs=1 ModeOn
+			\ call mode#on(<q-args>)
+
+command! -nargs=1 ModeOff
+			\ call mode#off(<q-args>)
 

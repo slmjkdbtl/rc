@@ -2,7 +2,7 @@
 
 let s:items = {}
 
-func! mode#toggle(name)
+func! mode#on(name)
 
 	let item = s:items[a:name]
 
@@ -10,24 +10,38 @@ func! mode#toggle(name)
 		let b:modes = {}
 	endif
 
-	if !has_key(b:modes, a:name)
-		let b:modes[a:name] = 0
+	let b:modes[a:name] = 1
+
+	call item.on()
+	echo a:name . ' mode on'
+
+endfunc
+
+func! mode#off(name)
+
+	let item = s:items[a:name]
+
+	if !exists('b:modes')
+		let b:modes = {}
 	endif
 
-	let status = b:modes[a:name]
+	let b:modes[a:name] = 0
 
-	if status == 0
+	call item.off()
+	echo a:name . ' mode off'
 
-		let b:modes[a:name] = 1
-		call item.on()
-		echo a:name . ' mode on'
+endfunc
 
-	elseif status == 1
+func! mode#toggle(name)
 
-		let b:modes[a:name] = 0
-		call item.off()
-		echo a:name . ' mode off'
+	if !exists('b:modes')
+		let b:modes = {}
+	endif
 
+	if !has_key(b:modes, a:name) || b:modes[a:name] ==# 0
+		call mode#on(a:name)
+	else
+		call mode#off(a:name)
 	endif
 
 endfunc
