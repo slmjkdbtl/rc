@@ -12,4 +12,6 @@
 
 == DONE
 - sonic pi syntax detection
+- mode plugin
+- seperate plug#install and plug#update
 

@@ -55,12 +55,6 @@ func! plug#install()
 			call system('git clone ' . url . ' ' . dir)
 			redraw
 
-		else
-
-			echo 'updating ' . name
-			call system('cd ' . dir . ' && git pull')
-			redraw
-
 		endif
 
 	endfor
@@ -88,4 +82,29 @@ func! plug#clean()
 	echo 'done'
 
 endfunc
+
+func! plug#update()
+
+	for path in glob(s:dir . '/*', 0, 1)
+
+		let name = fnamemodify(path, ':t')
+
+		echo 'updating ' . name
+		call system('cd ' . path . ' && git pull')
+		redraw
+
+	endfor
+
+	echo 'done'
+
+endfunc
+
+command! -nargs=0 PlugInstall
+			\ call plug#install()
+
+command! -nargs=0 PlugUpdate
+			\ call plug#update()
+
+command! -nargs=0 PlugClean
+			\ call plug#clean()
 

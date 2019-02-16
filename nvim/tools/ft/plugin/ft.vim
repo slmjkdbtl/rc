@@ -3,6 +3,7 @@
 call ft#detect('*.toml', 'toml')
 call ft#detect('*.carp', 'carp')
 call ft#detect('*.metal', 'c')
+call ft#detect('*.ms', 'nroff')
 call ft#detect('*.elm', 'elm')
 call ft#detect('*.fish', 'fish')
 call ft#detect('*.swift', 'swift')
