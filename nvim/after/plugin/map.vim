@@ -108,10 +108,6 @@ for i in range(1, 12)
 	exec 'inoremap <f' . i . '> <nop>'
 endfor
 
-func! Scroll() range
-    normal! j
-endfunc
-
 " plugins
 call pair#bind()
 call search#bind()

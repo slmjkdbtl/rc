@@ -424,6 +424,7 @@ endfunc
 
 func! browser#drop()
 
+	redraw
 	echo 'dropped ' . len(b:marked) . ' items'
 	let b:marked = []
 	call browser#refresh(line('.'))

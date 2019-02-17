@@ -1,6 +1,6 @@
 " wengwengweng
 
-func! s:scroll(dist) range
+func! s:scroll(dist)
 
 	let speed = 1
 
