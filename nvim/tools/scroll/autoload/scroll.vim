@@ -1,14 +1,14 @@
 " wengwengweng
 
-func! s:scroll(dir) range
+func! s:scroll(dist) range
 
 	let speed = 1
 
-	for i in range(&scroll)
+	for i in range(abs(a:dist))
 
 		let start = reltime()
 
-		if a:dir < 0
+		if a:dist < 0
 			exec 'normal! k'
 		else
 			exec 'normal! j'
@@ -29,11 +29,11 @@ func! s:scroll(dir) range
 endfunc
 
 func! scroll#up()
-	call s:scroll(-1)
+	call s:scroll(-&scroll)
 endfunc
 
 func! scroll#down()
-	call s:scroll(1)
+	call s:scroll(&scroll)
 endfunc
 
 noremap <silent> <Plug>(scroll_up)

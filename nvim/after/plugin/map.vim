@@ -31,7 +31,7 @@ endfor
 noremap : :
 noremap . .
 nnoremap ! :!
-noremap <silent> <esc> <esc>:noh<cr>
+noremap <silent> <esc> <esc><cmd>noh<cr>
 inoremap <silent> <esc> <esc>
 tnoremap <silent> <esc> <c-\><c-n>
 
@@ -51,12 +51,12 @@ nnoremap <silent> % %
 " buffer
 nnoremap <silent> ` <c-^>
 tnoremap <silent> ` <c-\><c-n><c-^>
-nnoremap <silent> - :silent! bprev<cr>
-nnoremap <silent> = :silent! bnext<cr>
-nnoremap <silent> <m-q> :silent! bprev<cr>
-tnoremap <silent> <m-q> <c-\><c-n>:silent! bprev<cr>
-nnoremap <silent> <m-e> :silent! bnext<cr>
-tnoremap <silent> <m-e> <c-\><c-n>:silent! bnext<cr>
+nnoremap <silent> - <cmd>silent! bprev<cr>
+nnoremap <silent> = <cmd>silent! bnext<cr>
+nnoremap <silent> <m-q> <cmd>silent! bprev<cr>
+tnoremap <silent> <m-q> <cmd>silent! bprev<cr>
+nnoremap <silent> <m-e> <cmd>silent! bnext<cr>
+tnoremap <silent> <m-e> <cmd>silent! bnext<cr>
 
 " edit
 nnoremap <silent> > A
@@ -108,11 +108,15 @@ for i in range(1, 12)
 	exec 'inoremap <f' . i . '> <nop>'
 endfor
 
+func! Scroll() range
+    normal! j
+endfunc
+
 " plugins
 call pair#bind()
 call search#bind()
-noremap <silent> <m-k> :ScrollUp<cr>
-noremap <silent> <m-j> :ScrollDown<cr>
+noremap <silent> <m-k> <cmd>ScrollUp<cr>
+noremap <silent> <m-j> <cmd>ScrollDown<cr>
 nnoremap <silent> <tab> :Browser<cr>
 nnoremap <silent> <m--> :OpenTerm<cr>
 nnoremap <silent> <m-=> :OpenFinder<cr>
