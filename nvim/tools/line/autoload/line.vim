@@ -104,15 +104,11 @@ func! s:get_status_filetype(bufn) abort
 endfunc
 
 func! s:get_status_curpos(bufn) abort
-
 	return '%#StatusLineNC# %l:%c %#StatusLine#'
-
 endfunc
 
-func! line#get_title()
-
+func! line#get_title() abort
 	return bufname('%')
-
 endfunc
 
 func! line#get_bufline() abort

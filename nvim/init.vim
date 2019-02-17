@@ -114,9 +114,6 @@ let g:ale_rust_cargo_check_tests = 1
 
 let g:ale_linters = {
 \   'rust': ['cargo', 'rls'],
-\   'vim': ['vint'],
-\   'cpp': [''],
-\   'hpp': [''],
 \}
 
 " racer

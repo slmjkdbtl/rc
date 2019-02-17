@@ -1,6 +1,6 @@
 " wengwengweng
 
-func! s:scroll(dist)
+func! scroll#scroll(dist)
 
 	let speed = 1
 
@@ -29,11 +29,11 @@ func! s:scroll(dist)
 endfunc
 
 func! scroll#up()
-	call s:scroll(-&scroll)
+	call scroll#scroll(-&scroll)
 endfunc
 
 func! scroll#down()
-	call s:scroll(&scroll)
+	call scroll#scroll(&scroll)
 endfunc
 
 noremap <silent> <Plug>(scroll_up)

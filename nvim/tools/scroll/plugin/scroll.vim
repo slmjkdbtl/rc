@@ -2,6 +2,9 @@
 
 let g:scroll_duration = get(g:, 'scroll_duration', 7)
 
+command! -nargs=1 Scroll
+			\ call scroll#scroll(<q-args>)
+
 command! -nargs=0 ScrollUp
 			\ call scroll#up()
 
