@@ -2,6 +2,9 @@
 
 " unmap
 mapclear
+imapclear
+cmapclear
+tmapclear
 map <tab> <nop>
 map <space> <nop>
 map <return> <nop>
@@ -88,7 +91,6 @@ nnoremap <silent> v V
 nnoremap <silent> <space> viw
 vnoremap <silent> <space> <esc>
 vnoremap <silent> v <esc>
-nnoremap <silent> <m-a> ggVG
 nnoremap <silent> <m-v> v
 
 " indent

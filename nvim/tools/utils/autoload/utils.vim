@@ -139,6 +139,18 @@ func! utils#make(target)
 
 endfunc
 
+func! utils#tabify()
+
+	let save = winsaveview()
+
+	normal! ggVG
+	normal! >
+	normal! ggVG
+	normal! <
+	call winrestview(save)
+
+endfunc
+
 func! utils#syncheck()
 
 	if !exists('*synstack')

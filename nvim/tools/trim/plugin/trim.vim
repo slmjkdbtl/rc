@@ -1,13 +1,6 @@
 " wengwengweng
 
-augroup Trim
-
-	autocmd!
-
-	autocmd BufWritePre *
-				\ call trim#trim()
-
-augroup END
+call trim#trim_on_save()
 
 command! Trim
 			\ call trim#trim()

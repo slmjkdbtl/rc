@@ -36,3 +36,9 @@ func! scroll#down()
 	call s:scroll(1)
 endfunc
 
+noremap <silent> <Plug>(scroll_up)
+			\ :call scroll#up()<cr>
+
+noremap <silent> <Plug>(scroll_down)
+			\ :call scroll#down()<cr>
+
