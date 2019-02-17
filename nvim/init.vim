@@ -66,6 +66,7 @@ set hlsearch
 set showtabline=2
 set guioptions+=!
 set path+=**
+set scroll=8
 set scrolloff=3
 set signcolumn=yes
 set display+=lastline

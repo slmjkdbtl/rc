@@ -1,16 +1,18 @@
 # wengwengweng
 
-== DOING
+doing:
 
-== TODO
+todo:
 - tidy up ft
 - change indent for text files
 - fix space error
 - browser tree view
 - browser show git changed files
 - more customizable statusline
+- redesign search
+- smooth scroll in visual mode
 
-== DONE
+done:
 - sonic pi syntax detection
 - mode plugin
 - seperate plug#install and plug#update

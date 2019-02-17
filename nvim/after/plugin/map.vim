@@ -7,9 +7,7 @@ map <space> <nop>
 map <return> <nop>
 map <backspace> <nop>
 
-let keys = split('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM`~!@#$%^&*()-=_+[]{}\;<>?/', '.\zs')
-
-for k in keys
+for k in split('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM`~!@#$%^&*()-=_+[]{}\;<>?/', '.\zs')
 
 	exec 'map ' . k . ' <nop>'
 	exec 'map <m-' . k . '> <nop>'
@@ -108,11 +106,17 @@ for i in range(1, 12)
 	exec 'inoremap <f' . i . '> <nop>'
 endfor
 
+func! Scroll() range
+	normal! j
+endfunc
+
+noremap <silent> <m-t> :call Scroll()<cr>
+
 " plugins
 call pair#bind()
 call search#bind()
-noremap <silent> <m-k> :Scroll -8<cr>
-noremap <silent> <m-j> :Scroll 8<cr>
+noremap <silent> <m-k> :ScrollUp<cr>
+noremap <silent> <m-j> :ScrollDown<cr>
 nnoremap <silent> <tab> :Browser<cr>
 nnoremap <silent> <m--> :OpenTerm<cr>
 nnoremap <silent> <m-=> :OpenFinder<cr>

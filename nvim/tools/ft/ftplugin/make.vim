@@ -2,5 +2,3 @@
 
 setlocal commentstring=#%s
 
-inoremap <buffer> : :<space>
-
