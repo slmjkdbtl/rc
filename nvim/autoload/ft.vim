@@ -1,7 +1,7 @@
 " wengwengweng
 
-let s:syntax_dir = expand('~/.local/share/nvim/site/syntax')
-let s:indent_dir = expand('~/.local/share/nvim/site/indent')
+let s:syntax_dir = expand('~/.vimextern/syntax')
+let s:indent_dir = expand('~/.vimextern/indent')
 
 func! ft#detect(pat, ft)
 
@@ -12,15 +12,16 @@ endfunc
 
 func! ft#comment(ft, comment, alt)
 
-	let comments = []
+	let comments = ''
 
 	for c in a:alt
-		let comments += [ 'b:' . c ]
+		let comments .= ',b:' . c
 	endfor
 
 	exec 'autocmd FileType ' . a:ft . ' '
-				\ . 'setlocal commentstring=' . a:comment . '%s |'
-				\ . 'setlocal comments=b:' . a:comment . ',' . join(comments, ',')
+				\ . 'setlocal commentstring=' . a:comment . '%s'
+				\ . ' | '
+				\ . 'setlocal comments=b:' . a:comment . comments
 
 endfunc
 

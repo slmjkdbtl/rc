@@ -48,7 +48,15 @@ endfunc
 
 func! pair#bind()
 
-	for p in g:pair_wrappers
+	let wrappers = [
+		\ ['(', ')'],
+		\ ["'", "'"],
+		\ ['"', '"'],
+		\ ['{', '}'],
+		\ ['[', ']'],
+	\ ]
+
+	for p in wrappers
 
 		let ech1 = substitute(p[0], "'", "''", 'g')
 		let ech2 = substitute(p[1], "'", "''", 'g')

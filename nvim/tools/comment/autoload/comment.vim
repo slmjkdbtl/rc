@@ -4,7 +4,7 @@ func! s:is_commented(line)
 	return a:line =~ substitute(&commentstring, '%s', '.*', '')
 endfunc
 
-func! s:is_wrapped_comment()
+func! s:is_commentstring_valid()
 
 	let c = &commentstring
 	let l = len(c)
@@ -21,8 +21,8 @@ func! comment#on()
 		return
 	endif
 
-	if s:is_wrapped_comment()
-		echo "doesn't support wrapped commentstring yet"
+	if s:is_commentstring_valid()
+		echo "invalid commentstring"
 		return
 	endif
 
@@ -40,8 +40,8 @@ func! comment#off()
 		return
 	endif
 
-	if s:is_wrapped_comment()
-		echo "doesn't support wrapped commentstring yet"
+	if s:is_commentstring_valid()
+		echo "invalid commentstring"
 		return
 	endif
 

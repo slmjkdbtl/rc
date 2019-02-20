@@ -1,6 +1,6 @@
 " wengwengweng
 
-let s:dir = expand('~/.local/share/nvim/plug')
+let s:dir = expand('~/.vimextern/plug')
 let s:custom_dir = ''
 let s:plugins = {}
 
