@@ -1,9 +1,11 @@
 " wengwengweng
 
 func! s:normal(cmd)
-
 	exec 'normal! ' . a:cmd
+endfunc
 
+func! s:is_focused()
+	return searchpos(@/, 'cn') ==# [ line('.'), col('.') ]
 endfunc
 
 func! s:get_selected() range
@@ -20,12 +22,6 @@ func! s:get_selected() range
 		return ''
 
 	endif
-
-endfunc
-
-func! s:is_focused()
-
-	return searchpos(@/, 'cn') ==# [ line('.'), col('.') ]
 
 endfunc
 
@@ -136,13 +132,13 @@ func! search#record_apply()
 			call feedkeys(@q)
 
 		else
-	"
+
 			if exists('b:search_dir') && b:search_dir ==# -1
 				let flag = 'b'
 			else
 				let flag = ''
 			endif
-	"
+
 			let line = search(@/, 'w' . flag)
 
 			if line

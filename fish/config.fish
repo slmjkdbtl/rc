@@ -117,3 +117,4 @@ if test -d $HOME/.wasmer
 	set -x WASMER_DIR $HOME/.wasmer
 	[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 end
+

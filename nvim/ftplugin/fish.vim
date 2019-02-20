@@ -1,7 +1,6 @@
 " wengwengweng
 
-setlocal commentstring=\"%s
-inoreabbrev <buffer> <expr> func! <sid>func()
+inoreabbrev <buffer> <expr> function <sid>function()
 inoreabbrev <buffer> <expr> if <sid>if()
 inoreabbrev <buffer> <expr> for <sid>for()
 
@@ -17,15 +16,15 @@ func! s:repeat(ch, num)
 
 endfunc
 
-func! <sid>func()
-	return 'func! endfunc' . s:repeat("\<left>", 8)
+func! <sid>function()
+	return 'function end' . s:repeat("\<left>", 4)
 endfunc
 
 func! <sid>if()
-	return 'if endif' . s:repeat("\<left>", 6)
+	return 'if end' . s:repeat("\<left>", 4)
 endfunc
 
 func! <sid>for()
-	return 'for endfor' . s:repeat("\<left>", 7)
+	return 'for end' . s:repeat("\<left>", 4)
 endfunc
 

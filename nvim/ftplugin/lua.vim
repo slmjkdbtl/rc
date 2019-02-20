@@ -1,9 +1,8 @@
 " wengwengweng
 
-setlocal commentstring=#%s
 inoreabbrev <buffer> <expr> function <sid>function()
-inoreabbrev <buffer> <expr> if <sid>if()
-inoreabbrev <buffer> <expr> for <sid>for()
+inoreabbrev <buffer> <expr> do <sid>do()
+inoreabbrev <buffer> <expr> then <sid>then()
 
 func! s:repeat(ch, num)
 
@@ -18,14 +17,24 @@ func! s:repeat(ch, num)
 endfunc
 
 func! <sid>function()
+
 	return 'function end' . s:repeat("\<left>", 4)
+
 endfunc
 
-func! <sid>if()
-	return 'if end' . s:repeat("\<left>", 4)
+func! <sid>do()
+	return 'doend' . s:repeat("\<left>", 3)
 endfunc
 
-func! <sid>for()
-	return 'for end' . s:repeat("\<left>", 4)
+func! <sid>then()
+
+	let l = getline('.')
+
+	if l =~# '^\s*if\s'
+		return 'thenend' . s:repeat("\<left>", 3)
+	endif
+
+	return 'then'
+
 endfunc
 

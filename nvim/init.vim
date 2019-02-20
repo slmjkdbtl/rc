@@ -1,16 +1,13 @@
 " wengwengweng
 
-let s:srcdir = expand('<sfile>:p:h:h')
-
 " local plugins
-call plug#dir(s:srcdir . '/nvim/tools')
+call plug#dir(expand('<sfile>:p:h:h') . '/nvim/tools')
 call plug#load('bookmark')
 call plug#load('theme')
 call plug#load('todo')
 call plug#load('browser')
 call plug#load('todo')
 call plug#load('comment')
-call plug#load('ft')
 call plug#load('jump')
 call plug#load('line')
 call plug#load('pair')
@@ -29,6 +26,34 @@ call plug#load('tommywiseau')
 call plug#add('w0rp/ale')
 call plug#add('mhinz/vim-signify')
 call plug#add('racer-rust/vim-racer')
+
+" ft
+call ft#detect('*.toml', 'toml')
+call ft#detect('*.carp', 'carp')
+call ft#detect('*.metal', 'c')
+call ft#detect('*.ms', 'nroff')
+call ft#detect('*.elm', 'elm')
+call ft#detect('*.fish', 'fish')
+call ft#detect('*.swift', 'swift')
+call ft#detect('*.pug', 'pug')
+call ft#detect('*.dyon', 'dyon')
+call ft#detect('*.ck', 'chuck')
+call ft#detect('*.scd', 'supercollider')
+call ft#detect('*.{vert,frag}', 'glsl')
+call ft#detect('Tupfile', 'tup')
+call ft#detect('TODO', 'yaml')
+
+call ft#comment('rust', '//', ['//!'])
+call ft#comment('cs', '//', [])
+call ft#comment('elm', '--', [])
+call ft#comment('glsl', '//', [])
+call ft#comment('lua', '--', [])
+call ft#comment('swift', '//', [])
+call ft#comment('pug', '//', [])
+call ft#comment('toml', '#', [])
+call ft#comment('fish', '#', [])
+call ft#comment('yaml', '#', ['-'])
+call ft#comment('vim', '\"', [])
 
 " options
 set magic
@@ -50,6 +75,8 @@ set nowrapscan
 set nolinebreak
 set breakindent
 set showbreak=..
+set commentstring=%s
+set comments=
 set smartcase
 set hidden
 set noswapfile
@@ -66,7 +93,7 @@ set hlsearch
 set showtabline=2
 set guioptions+=!
 set path+=**
-set scroll=8
+set scroll=1
 set scrolloff=3
 set signcolumn=yes
 set display+=lastline
