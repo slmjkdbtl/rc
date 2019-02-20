@@ -17,9 +17,7 @@ func! s:repeat(ch, num)
 endfunc
 
 func! <sid>function()
-
 	return 'function end' . s:repeat("\<left>", 4)
-
 endfunc
 
 func! <sid>do()

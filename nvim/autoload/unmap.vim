@@ -33,5 +33,10 @@ func! unmap#disable_defaults()
 
 	endfor
 
+	for i in range(1, 12)
+		exec 'noremap <f' . i . '> <nop>'
+		exec 'inoremap <f' . i . '> <nop>'
+	endfor
+
 endfunc
 

@@ -23,9 +23,9 @@ call plug#load('pi')
 call plug#load('tommywiseau')
 
 " external plugins
-call plug#add('w0rp/ale')
-call plug#add('mhinz/vim-signify')
-call plug#add('racer-rust/vim-racer')
+call plug#remote('w0rp/ale')
+call plug#remote('mhinz/vim-signify')
+call plug#remote('racer-rust/vim-racer')
 
 " ft
 call ft#detect('*.toml', 'toml')
@@ -41,18 +41,18 @@ call ft#detect('*.ck', 'chuck')
 call ft#detect('*.scd', 'supercollider')
 call ft#detect('*.{vert,frag}', 'glsl')
 call ft#detect('Tupfile', 'tup')
-call ft#detect('TODO', 'yaml')
 
 call ft#comment('rust', '//', ['//!'])
 call ft#comment('cs', '//', [])
-call ft#comment('elm', '--', [])
 call ft#comment('glsl', '//', [])
-call ft#comment('lua', '--', [])
 call ft#comment('swift', '//', [])
 call ft#comment('pug', '//', [])
+call ft#comment('elm', '--', [])
+call ft#comment('lua', '--', [])
 call ft#comment('toml', '#', [])
 call ft#comment('fish', '#', [])
 call ft#comment('yaml', '#', ['-'])
+call ft#comment('tup', '#', ['-'])
 call ft#comment('vim', '\"', [])
 
 " options
@@ -82,6 +82,7 @@ set hidden
 set noswapfile
 set autoread
 set autoindent
+set nosmartindent
 set incsearch
 set lazyredraw
 set wildmenu

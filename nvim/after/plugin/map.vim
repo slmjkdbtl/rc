@@ -79,12 +79,6 @@ noremap <m-t> <c-]>
 nnoremap <m-f> :find<space>
 nnoremap <silent> w :w<cr>
 
-" yo
-for i in range(1, 12)
-	exec 'noremap <f' . i . '> <nop>'
-	exec 'inoremap <f' . i . '> <nop>'
-endfor
-
 " plugins
 call pair#bind()
 call search#bind()

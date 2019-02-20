@@ -29,7 +29,7 @@ func! plug#loadall(path)
 	endfor
 endfunc
 
-func! plug#add(repo)
+func! plug#remote(repo)
 
 	let name = split(a:repo, '/')[1]
 	let dir = s:dir . '/' . name

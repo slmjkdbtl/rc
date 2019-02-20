@@ -1,19 +1,19 @@
 # wengwengweng
 
-doing:
-- tidy up ft
-- refactor pair
+== DOING
+- load remote syntax & indent
 
-todo:
+== TODO
 - fix space error
 - browser tree view
 - browser show git changed files
 - more customizable statusline
 - redesign search
 
-done:
+== DONE
 - sonic pi syntax detection
 - mode plugin
 - seperate plug#install and plug#update
 - smooth scroll in visual mode
+- tidy up ft
 
