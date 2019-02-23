@@ -1,7 +1,7 @@
 " wengwengweng
 
-let s:dir = expand('~/.vimextern/plug')
-let s:custom_dir = ''
+let s:dir = g:src_dir . '/remote'
+let s:custom_dir = g:src_dir . '/tools'
 let s:plugins = {}
 
 func! plug#dir(dir)
@@ -98,13 +98,4 @@ func! plug#update()
 	echo 'done'
 
 endfunc
-
-command! -nargs=0 PlugInstall
-			\ call plug#install()
-
-command! -nargs=0 PlugUpdate
-			\ call plug#update()
-
-command! -nargs=0 PlugClean
-			\ call plug#clean()
 

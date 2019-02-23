@@ -1,12 +1,9 @@
 " wengwengweng
 
-let src = expand('<sfile>:p:h')
-
-exec 'set runtimepath=' . src
-exec 'set runtimepath+=' . expand('~/.vimextern')
+let g:src_dir = expand('<sfile>:p:h')
+exec 'set runtimepath=' . g:src_dir
 
 " local plugins
-call plug#dir(src . '/tools')
 call plug#load('bookmark')
 call plug#load('theme')
 call plug#load('browser')
@@ -40,13 +37,19 @@ call ft#detect('*.elm', 'elm')
 call ft#detect('*.fish', 'fish')
 call ft#detect('*.swift', 'swift')
 call ft#detect('*.pug', 'pug')
-call ft#detect('*.dyon', 'dyon')
 call ft#detect('*.ck', 'chuck')
 call ft#detect('*.scd', 'supercollider')
 call ft#detect('*.yml', 'yaml')
 call ft#detect('*.rs', 'rust')
+call ft#detect('*.lua', 'lua')
+call ft#detect('*.tex', 'tex')
 call ft#detect('*.{vert,frag}', 'glsl')
 call ft#detect('*.vim', 'vim')
+call ft#detect('*.md', 'markdown')
+call ft#detect('*.cs', 'cs')
+call ft#detect('.gitignore', 'conf')
+call ft#detect('Justfile', 'conf')
+call ft#detect('Makefile', 'make')
 call ft#detect('TODO', 'TODO')
 call ft#detect('Tupfile', 'tup')
 
@@ -63,6 +66,7 @@ call ft#comment('fish', '#', [])
 call ft#comment('yaml', '#', ['-'])
 call ft#comment('tup', '#', [])
 call ft#comment('vim', '\"', [])
+call ft#comment('tex', '%', [])
 
 " options
 set magic
@@ -80,6 +84,7 @@ set showmatch
 set matchtime=0
 set wrap
 set nospell
+set spelllang=en
 set nowrapscan
 set nolinebreak
 set breakindent
@@ -118,6 +123,7 @@ set whichwrap=h,l,<,>
 set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=utf-8,gbk
+set clipboard=unnamedplus
 set guicursor=n-v-c-sm-ci-ve-r-cr-o:block,i:ver25
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
 set wildignore=.git,.svn,.cache,.tmp,node_modules,.tup
@@ -125,9 +131,6 @@ set wildignore+=.DS_Store
 set wildignore+=.tags,*.min.*,*.map
 set wildignore+=*.so,*.o,*.out,*.swp,*.exe,*.elf,*.hex,*.dll,*~
 exec 'set listchars=tab:\|\ '
-filetype plugin on
-filetype indent on
-syntax enable
 colorscheme super
 
 " signify
@@ -159,52 +162,32 @@ au FileType rust nmap <m-t> <Plug>(rust-def)
 " tommywiseau
 let g:is_human_bean = 0
 
-" unload default plugins
-let g:loaded_netrwPlugin = 1
-let g:loaded_getscriptPlugin = 1
-let g:loaded_zipPlugin = 1
-let g:loaded_tarPlugin = 1
-let g:loaded_vimballPlugin = 1
-let g:loaded_2html_plugin = 1
-let g:loaded_spellfile_plugin = 1
-let g:loaded_gzip = 1
-let g:loaded_rrhelper = 1
-let g:loaded_logiPat = 1
-
-func! s:explore()
-
-	let l:name = expand('%:p')
-
-	if isdirectory(l:name)
-
-		exec 'lcd ' . l:name
-		bd
-		Browser
-
-	elseif filereadable(l:name)
-
-		exec 'lcd ' . expand('%:p:h')
-
-	endif
-
-	silent! CleanBuf
-
-endfunc
-
-func! s:hello()
-
-	if !argc()
-		Space
-	endif
-
-endfunc
-
 augroup Explore
 
 	autocmd!
 
 	autocmd BufEnter *
 				\ call s:explore()
+
+	func! s:explore()
+
+		let l:name = expand('%:p')
+
+		if isdirectory(l:name)
+
+			exec 'lcd ' . l:name
+			bd
+			Browser
+
+		elseif filereadable(l:name)
+
+			exec 'lcd ' . expand('%:p:h')
+
+		endif
+
+		silent! CleanBuf
+
+	endfunc
 
 augroup END
 
@@ -213,7 +196,15 @@ augroup Hello
 	autocmd!
 
 	autocmd VimEnter *
-				\ :call s:hello()
+				\ call s:hello()
+
+	func! s:hello()
+
+		if !argc()
+			Space
+		endif
+
+	endfunc
 
 augroup END
 
@@ -273,12 +264,11 @@ nnoremap <silent> o <c-r>
 
 " cut & copy & paste
 noremap <silent> p "*P
-nnoremap <silent> y "*yy
-vnoremap <silent> y mq"*y`>`q
-nnoremap <silent> x "*dd
-vnoremap <silent> x "*d
+nnoremap <silent> y yy
+vnoremap <silent> y mqy`>`q
+nnoremap <silent> x dd
+vnoremap <silent> x d
 noremap <silent> d "_dd<esc>
-inoremap <silent> <m-p> <esc>"*pa
 
 " selection
 nnoremap <silent> v V
@@ -317,5 +307,4 @@ nnoremap <silent> <f4> :ModeToggle wrap<cr>
 nnoremap <silent> <f5> :ModeToggle paste<cr>
 nnoremap z :Bookmark<space>
 nnoremap m :!just<space>
-
 

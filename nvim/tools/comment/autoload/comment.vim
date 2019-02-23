@@ -1,7 +1,7 @@
 " wengwengweng
 
 func! s:is_commented(line)
-	return a:line =~ substitute(&commentstring, '%s', '.*', '')
+	return a:line =~# '^\s*' . substitute(&commentstring, '%s', '.*', '')
 endfunc
 
 func! s:is_commentstring_valid()
@@ -45,7 +45,7 @@ func! comment#off()
 		return
 	endif
 
-	let commented = substitute(line, substitute(&commentstring, '%s', '', '') . ' ', '', '')
+	let commented = substitute(line, '^\s*' . substitute(&commentstring, '%s', '', '') . ' ', '', '')
 
 	call setline('.', commented)
 

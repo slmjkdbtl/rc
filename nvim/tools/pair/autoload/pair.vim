@@ -1,5 +1,13 @@
 " wengwengweng
 
+let s:wrappers = [
+	\ ['(', ')'],
+	\ ["'", "'"],
+	\ ['"', '"'],
+	\ ['{', '}'],
+	\ ['[', ']'],
+\ ]
+
 func! pair#pair(ch1, ch2)
 
 	let line = getline('.')
@@ -21,16 +29,12 @@ func! pair#pair(ch1, ch2)
 
 endfunc
 
-func! pair#wrap(ch1, ch2)
-	" ...
-endfunc
-
 func! pair#del()
 
 	let line = getline('.')
 	let pos = col('.') - 1
 
-	for w in g:pair_wrappers
+	for w in s:wrappers
 		if line[pos - 1 : pos] == w[0] . w[1]
 			return "\<backspace>\<del>"
 		endif
@@ -40,23 +44,9 @@ func! pair#del()
 
 endfunc
 
-func! pair#edit()
-
-	" ...
-
-endfunc
-
 func! pair#bind()
 
-	let wrappers = [
-		\ ['(', ')'],
-		\ ["'", "'"],
-		\ ['"', '"'],
-		\ ['{', '}'],
-		\ ['[', ']'],
-	\ ]
-
-	for p in wrappers
+	for p in s:wrappers
 
 		let ech1 = substitute(p[0], "'", "''", 'g')
 		let ech2 = substitute(p[1], "'", "''", 'g')

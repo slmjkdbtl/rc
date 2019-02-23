@@ -364,6 +364,10 @@ func! browser#mkdir()
 
 endfunc
 
+func! browser#mkfile()
+	exec 'e ' . input('create file: ')
+endfunc
+
 func! browser#copy()
 
 	let cwd = getcwd()
@@ -440,7 +444,7 @@ func! browser#delete()
 
 		if confirm('> delete ' . name . '?', "&yes\n&no") == 1
 
-			call system('rm -rf ' . path)
+			call system('trash ' . path)
 			silent! exec 'bw ' . name
 			call browser#refresh(line('.'))
 
@@ -555,6 +559,7 @@ func! browser#bind()
 	map <buffer><silent> <m-x> <Plug>(browser_move)
 	map <buffer><silent> <m-d> <Plug>(browser_delete)
 	map <buffer><silent> <m-m> <Plug>(browser_mkdir)
+	map <buffer><silent> <m-n> <Plug>(browser_mkfile)
 	map <buffer><silent> <esc> <Plug>(browser_drop)
 	map <buffer><silent> <m-s> <Plug>(browser_solidify)
 
@@ -598,6 +603,9 @@ noremap <silent> <Plug>(browser_drop)
 
 noremap <silent> <Plug>(browser_mkdir)
 			\ :call browser#mkdir()<cr>
+
+noremap <silent> <Plug>(browser_mkfile)
+			\ :call browser#mkfile()<cr>
 
 noremap <silent> <Plug>(browser_solidify)
 			\ :call browser#solidify()<cr>

@@ -9,9 +9,9 @@ func! scroll#scroll(dist)
 		let start = reltime()
 
 		if a:dist < 0
-			exec 'normal! k'
+			exec 'normal! gk'
 		else
-			exec 'normal! j'
+			exec 'normal! gj'
 		endif
 
 		redraw
