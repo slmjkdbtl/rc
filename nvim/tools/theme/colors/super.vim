@@ -5,6 +5,8 @@ set background=dark
 hi clear
 syntax reset
 
+let g:colors_name = 'super'
+
 let s:italic = ''
 let s:bold = 'bold'
 let s:base00 = [ '#1e2531', '235' ]
