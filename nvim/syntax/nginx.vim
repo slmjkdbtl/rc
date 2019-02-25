@@ -2240,27 +2240,6 @@ syn keyword ngxThirdPartyLuaBlock ssl_certificate_by_lua_block contained
 syn keyword ngxThirdPartyLuaBlock ssl_session_fetch_by_lua_block contained
 syn keyword ngxThirdPartyLuaBlock ssl_session_store_by_lua_block contained
 
-
-" Nested syntax in ERB templating statements
-" Subtype needs to be set to '', otherwise recursive errors occur when opening *.nginx files
-let b:eruby_subtype = ''
-unlet b:current_syntax
-syn include @ERB syntax/eruby.vim
-syn region ngxTemplate start=+<%[^\=]+ end=+%>+ oneline contains=@ERB
-syn region ngxTemplateVar start=+<%=+ end=+%>+ oneline
-let b:current_syntax = "nginx"
-
-" Nested syntax in Jinja templating statements
-" This dependend on https://github.com/lepture/vim-jinja
-unlet b:current_syntax
-try
-  syn include @JINJA syntax/jinja.vim
-  syn region ngxTemplate start=+{%+ end=+%}+ oneline contains=@JINJA
-  syn region ngxTemplateVar start=+{{+ end=+}}+ oneline
-catch
-endtry
-let b:current_syntax = "nginx"
-
 " Enable nested LUA syntax highlighting
 unlet b:current_syntax
 syn include @LUA syntax/lua.vim
