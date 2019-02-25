@@ -229,25 +229,7 @@ if main_syntax != 'java' || exists("java_javascript")
   syn region  javaScriptExpression contained start=+&{+ keepend end=+};+ contains=@htmlJavaScript,@htmlPreproc
 endif
 
-if main_syntax != 'java' || exists("java_vb")
-  " VB SCRIPT
-  syn include @htmlVbScript syntax/vb.vim
-  unlet b:current_syntax
-  syn region  javaScript start=+<script \_[^>]*language *=\_[^>]*vbscript\_[^>]*>+ keepend end=+</script\_[^>]*>+me=s-1 contains=@htmlVbScript,htmlCssStyleComment,htmlScriptTag,@htmlPreproc
-endif
-
 syn cluster htmlJavaScript      add=@htmlPreproc
-
-if main_syntax != 'java' || exists("java_css")
-  " embedded style sheets
-  syn keyword htmlArg           contained media
-  syn include @htmlCss syntax/css.vim
-  unlet b:current_syntax
-  syn region cssStyle start=+<style+ keepend end=+</style>+ contains=@htmlCss,htmlTag,htmlEndTag,htmlCssStyleComment,@htmlPreproc
-  syn match htmlCssStyleComment contained "\(<!--\|-->\)"
-  syn region htmlCssDefinition matchgroup=htmlArg start='style="' keepend matchgroup=htmlString end='"' contains=css.*Attr,css.*Prop,cssComment,cssLength,cssColor,cssURL,cssImportant,cssError,cssString,@htmlPreproc
-  hi def link htmlStyleArg htmlString
-endif
 
 if main_syntax == "html"
   " synchronizing (does not always work if a comment includes legal

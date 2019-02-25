@@ -483,7 +483,7 @@ func! browser#enter()
 		else
 
 			call browser#close()
-			silent! exec 'edit ' . item
+			exec 'edit ' . item
 
 		endif
 
