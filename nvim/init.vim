@@ -147,6 +147,7 @@ call ft#comment('tmux', '#', [])
 call ft#comment('terminfo', '#', [])
 call ft#comment('ini', '#', [])
 call ft#comment('hxml', '#', [])
+call ft#comment('nginx', '#', [])
 call ft#comment('clojure', ';', [])
 call ft#comment('carp', ';', [])
 call ft#comment('lisp', ';', [])
@@ -369,7 +370,7 @@ vnoremap <silent> <tab> >
 vnoremap <silent> <bs> <
 
 " misc
-noremap <m-t> <c-]>
+noremap <silent> <m-t> <c-]>
 nnoremap <m-f> :find<space>
 nnoremap <silent> w :w<cr>
 
