@@ -22,7 +22,6 @@ func! comment#on()
 	endif
 
 	if s:is_commentstring_valid()
-		echo "invalid commentstring"
 		return
 	endif
 
@@ -41,7 +40,6 @@ func! comment#off()
 	endif
 
 	if s:is_commentstring_valid()
-		echo "invalid commentstring"
 		return
 	endif
 
