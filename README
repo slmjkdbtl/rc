@@ -75,8 +75,8 @@ vim plugins
 	- bookmark
 		bookmark management & jumping
 
-	- music
-		play music in vim with mpc
+	- grep
+		interactive grep
 
 	- comment
 		toggle comment
