@@ -276,7 +276,7 @@ hi def link rustStorage       StorageClass
 hi def link rustObsoleteStorage Error
 hi def link rustLifetime      Special
 hi def link rustLabel         Label
-hi def link rustInvalidBareKeyword Error
+" hi def link rustInvalidBareKeyword Error
 hi def link rustExternCrate   rustKeyword
 hi def link rustObsoleteExternMod Error
 hi def link rustBoxPlacementParens Delimiter

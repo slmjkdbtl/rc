@@ -8,6 +8,7 @@ call plug#load('bookmark')
 call plug#load('theme')
 call plug#load('browser')
 call plug#load('todo')
+call plug#load('dirt')
 call plug#load('comment')
 call plug#load('jump')
 call plug#load('line')
@@ -66,7 +67,9 @@ call ft#detect('*.plist', 'xml')
 call ft#detect('*.c', 'c')
 call ft#detect('*.h', 'c')
 call ft#detect('*.cpp', 'cpp')
+call ft#detect('*.cc', 'cpp')
 call ft#detect('*.hpp', 'cpp')
+call ft#detect('*.m', 'objc')
 call ft#detect('*.go', 'go')
 call ft#detect('*.tex', 'tex')
 call ft#detect('*.cls', 'tex')
@@ -96,6 +99,8 @@ call ft#detect('*.dart', 'dart')
 call ft#detect('*.terminfo', 'terminfo')
 call ft#detect('*.conf', 'conf')
 call ft#detect('*.txt', 'text')
+call ft#detect('*.pest', 'pest')
+call ft#detect('*.syn', 'pest')
 call ft#detect('.gitignore', 'conf')
 call ft#detect('.cfg', 'conf')
 call ft#detect('*conf', 'conf')
@@ -114,6 +119,7 @@ call ft#detect('Tupfile', 'tup')
 call ft#detect('LICENSE', 'license')
 call ft#detect('README', 'readme')
 call ft#detect('TODO', 'TODO')
+call ft#detect('*.dirt', 'dirt')
 
 call ft#comment('rust', '//', ['//!'])
 call ft#comment('cs', '//', [])
@@ -219,7 +225,6 @@ set whichwrap=h,l,<,>
 set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=utf-8,gbk
-set clipboard=unnamedplus
 set guicursor=n-v-c-sm-ci-ve-r-cr-o:block,i:ver25
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
 set wildignore=.git,.svn,.cache,.tmp,node_modules,.tup
@@ -250,6 +255,7 @@ let g:ale_rust_cargo_check_tests = 1
 
 let g:ale_linters = {
 \   'rust': ['cargo', 'rls'],
+\   'cs': []
 \}
 
 " racer
@@ -359,13 +365,13 @@ nnoremap <silent> u u
 nnoremap <silent> o <c-r>
 
 " cut & copy & paste
-noremap <silent> p P
-nnoremap <silent> y yy
-vnoremap <silent> y mqy`>`q
-nnoremap <silent> x dd
-vnoremap <silent> x d
+noremap <silent> p "*P
+nnoremap <silent> y "*yy
+vnoremap <silent> y mq"*y`>`q
+nnoremap <silent> x "*dd
+vnoremap <silent> x "*d
 noremap <silent> d "_dd<esc>
-inoremap <silent> <m-p> <esc>pa
+inoremap <silent> <m-p> <esc>"*pa
 
 " selection
 nnoremap <silent> v V
@@ -402,6 +408,7 @@ nnoremap <silent> <f2> :ModeToggle spell<cr>
 nnoremap <silent> <f3> :ModeToggle number<cr>
 nnoremap <silent> <f4> :ModeToggle wrap<cr>
 nnoremap <silent> <f5> :ModeToggle paste<cr>
+nnoremap <silent> <f6> :ModeToggle expandtab<cr>
 nnoremap z :Bookmark<space>
 nnoremap m :!just<space>
 

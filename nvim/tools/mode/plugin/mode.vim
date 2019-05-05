@@ -7,6 +7,12 @@ call mode#add(
 			\ )
 
 call mode#add(
+			\ 'expandtab',
+			\ {-> execute('setlocal expandtab')},
+			\ {-> execute('setlocal noexpandtab')}
+			\ )
+
+call mode#add(
 			\ 'comment',
 			\ {-> execute('setlocal formatoptions+=ro')},
 			\ {-> execute('setlocal formatoptions-=ro')}

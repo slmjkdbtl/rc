@@ -54,8 +54,9 @@ tools, apps and games
 	- fzf
 		https://github.com/junegunn/fzf
 
-	- tokei
-		https://github.com/Aaronepower/tokei/
+	- loc
+		https://github.com/cgag/loc/
+
 
 	- just
 		https://github.com/casey/just/
@@ -95,6 +96,9 @@ tools, apps and games
 
 	- ripgrep
 		https://github.com/BurntSushi/ripgrep/
+
+	- sd
+		https://github.com/chmln/sd/
 
 	- wtf
 		http://cvsweb.netbsd.org/bsdweb.cgi/src/games/wtf/

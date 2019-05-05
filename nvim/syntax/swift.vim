@@ -296,4 +296,3 @@ highlight default link swiftLineDirective PreProc
 syn sync minlines=100
 
 let b:current_syntax = "swift"
-
