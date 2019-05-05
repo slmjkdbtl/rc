@@ -1,14 +1,39 @@
 " wengwengweng
 
-func! grep#search(txt)
+let s:searching = 0
 
-	let l:grepprgb = &grepprg
+func! s:search_start()
+
+	if s:searching
+		return
+	endif
+
+	let s:searching = 1
+	let s:grepprg = &grepprg
 	let &grepprg = g:grep_cmd
 
-	let l:te = &t_te
-	let l:ti = &t_ti
+	let s:te = &t_te
+	let s:ti = &t_ti
 	set t_te=
 	set t_ti=
+
+endfunc
+
+func! s:search_end()
+
+	if !s:searching
+		return
+	endif
+
+	let s:searching = 0
+
+	let &t_te = s:te
+	let &t_ti = s:ti
+	let &grepprg = s:grepprg
+
+endfunc
+
+func! grep#search(txt)
 
 	let l:opts = ' '
 
@@ -20,13 +45,16 @@ func! grep#search(txt)
 		let l:opts = l:opts . '-S '
 	endif
 
-	silent! exe 'grep! ' . l:opts . '"' . a:txt . '"'
-    exe 'botright copen'
-" 	echom getqflist()
+	call s:search_start()
 
-	let &t_te=l:te
-	let &t_ti=l:ti
-	let &grepprg = l:grepprgb
+	silent! exe 'grep! ' . l:opts . '"' . a:txt . '"'
+
+	for d in getqflist()
+" 		echo bufname(d.bufnr) ':' d.lnum '   ' d.text
+	endfor
+
+	exe 'botright copen'
+	call s:search_end()
 
 endfunc
 

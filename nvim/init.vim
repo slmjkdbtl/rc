@@ -261,10 +261,6 @@ let g:ale_linters = {
 " racer
 au FileType rust nmap <m-t> <Plug>(rust-def)
 
-" rg
-let g:rg_highlight = 1
-let g:rg_derive_root = 1
-
 " tommywiseau
 let g:is_human_bean = 0
 
@@ -413,6 +409,7 @@ nnoremap <silent> <f3> :ModeToggle number<cr>
 nnoremap <silent> <f4> :ModeToggle wrap<cr>
 nnoremap <silent> <f5> :ModeToggle paste<cr>
 nnoremap <silent> <f6> :ModeToggle expandtab<cr>
+nnoremap f :Grep<space>
 nnoremap z :Bookmark<space>
 nnoremap m :!just<space>
 
