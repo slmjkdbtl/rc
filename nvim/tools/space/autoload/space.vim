@@ -57,13 +57,9 @@ endfunc
 
 func! space#shine()
 
-	enew
-	setlocal buftype=nofile
-	setlocal bufhidden=wipe
+	call view#new()
 	setlocal nocursorline
-	setlocal nobuflisted
 	setfiletype space
-	file space
 	call space#draw(0)
 	call space#start()
 

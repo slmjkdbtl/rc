@@ -518,9 +518,10 @@ endfunc
 
 func! browser#start()
 
-	let current_buffer = expand('%:p')
+	let cur_buf = expand('%:p')
 
-	enew
+	call view#new()
+	setfiletype browser
 
 	let b:listing = []
 	let b:marked = []
@@ -530,13 +531,8 @@ func! browser#start()
 	let b:expanded = []
 
 	call browser#update_git()
-
-	setfiletype browser
-	setlocal buftype=nofile
-	setlocal bufhidden=wipe
-	setlocal nobuflisted
 	call browser#refresh()
-	call s:to_item(current_buffer)
+	call s:to_item(cur_buf)
 	call browser#bind()
 
 endfunc

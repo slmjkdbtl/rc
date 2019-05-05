@@ -4,6 +4,7 @@ let g:src_dir = expand('<sfile>:p:h')
 exec 'set runtimepath=' . g:src_dir
 
 " local plugins
+call plug#load('view')
 call plug#load('bookmark')
 call plug#load('theme')
 call plug#load('browser')
