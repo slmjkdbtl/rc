@@ -8,29 +8,25 @@ func! view#new()
 	setlocal nobuflisted
 	setlocal nomodifiable
 	setlocal nomodified
-	let b:listings = []
+	let b:view_lines = []
 
 endfunc
 
-func! view#update(list)
+func! view#update(lines)
 
-	let b:listings = a:list
+	let b:view_lines = a:lines
 
 	setlocal modifiable
 	silent! 1,$d
 
-	for i in range(len(a:list))
-		call append(i, a:list[i])
+	for i in range(len(a:lines))
+		call append(i, a:lines[i])
 	endfor
 
 	silent! $,$d
 	setlocal nomodifiable
 	setlocal nomodified
 
-endfunc
-
-func! view#line_num()
-	return line(.)
 endfunc
 
 func! view#to(n)
