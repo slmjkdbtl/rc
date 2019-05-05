@@ -21,7 +21,7 @@ call plug#load('theme')
 call plug#load('trim')
 call plug#load('utils')
 call plug#load('theme')
-call plug#load('pi')
+call plug#load('grep')
 call plug#load('tommywiseau')
 
 " external plugins
@@ -260,6 +260,10 @@ let g:ale_linters = {
 
 " racer
 au FileType rust nmap <m-t> <Plug>(rust-def)
+
+" rg
+let g:rg_highlight = 1
+let g:rg_derive_root = 1
 
 " tommywiseau
 let g:is_human_bean = 0
