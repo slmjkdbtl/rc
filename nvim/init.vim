@@ -4,7 +4,6 @@ let g:src_dir = expand('<sfile>:p:h')
 exec 'set runtimepath=' . g:src_dir
 
 " local plugins
-call plug#load('view')
 call plug#load('bookmark')
 call plug#load('theme')
 call plug#load('browser')
@@ -81,6 +80,7 @@ call ft#detect('*.vim', 'vim')
 call ft#detect('*.fish', 'fish')
 call ft#detect('*.md', 'markdown')
 call ft#detect('*.cs', 'cs')
+call ft#detect('*.fs', 'fsharp')
 call ft#detect('*.swift', 'swift')
 call ft#detect('*.hs', 'haskell')
 call ft#detect('*.json', 'json')
@@ -410,7 +410,7 @@ nnoremap <silent> <f3> :ModeToggle number<cr>
 nnoremap <silent> <f4> :ModeToggle wrap<cr>
 nnoremap <silent> <f5> :ModeToggle paste<cr>
 nnoremap <silent> <f6> :ModeToggle expandtab<cr>
-nnoremap f :Grep<space>
+nnoremap <m-g> :Grep<space>
 nnoremap z :Bookmark<space>
 nnoremap m :!just<space>
 

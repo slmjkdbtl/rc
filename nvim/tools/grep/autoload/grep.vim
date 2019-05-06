@@ -42,9 +42,6 @@ endfunc
 
 func! grep#search(txt)
 
-	botright new
-	call view#new()
-
 	let l:opts = ' '
 
 	if &ignorecase == 1
@@ -59,6 +56,13 @@ func! grep#search(txt)
 
 	silent! exec 'grep! ' . l:opts . '"' . a:txt . '"'
 
+	botright new
+	enew
+	setlocal buftype=nofile
+	setlocal bufhidden=wipe
+	setlocal nobuflisted
+	setlocal expandtab
+
 	let b:grep_results = []
 
 	for d in getqflist()
@@ -72,8 +76,17 @@ func! grep#search(txt)
 
 	endfor
 
-	call view#update(s:get_lines())
-	call view#to(1)
+	let lines = s:get_lines()
+
+	for i in range(len(lines))
+		call append(i, lines[i])
+	endfor
+
+	retab
+
+	setlocal nomodifiable
+	setlocal nomodified
+	:1
 
 	let @/ = escape(a:txt, "\\/.*'$^~[]")
 	call feedkeys(":set hlsearch\<cr>", 'n')
@@ -89,7 +102,7 @@ func! grep#open()
 	let item = b:grep_results[line('.') - 1]
 
 	if exists('item')
-		exec 'bd'
+		call view#close()
 		exec 'edit ' . item.file
 		exec ':' . item.line
 	endif

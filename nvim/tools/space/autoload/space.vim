@@ -11,7 +11,7 @@ func! space#draw(timer)
 	endif
 
 	setlocal modifiable
-	silent! 1,$d
+	silent! %d
 
 	let width = winwidth(0)
 	let height = winheight(0)
@@ -57,7 +57,12 @@ endfunc
 
 func! space#shine()
 
-	call view#new()
+	enew
+	setlocal buftype=nofile
+	setlocal bufhidden=wipe
+	setlocal nobuflisted
+	setlocal nomodifiable
+	setlocal nomodified
 	setlocal nocursorline
 	setfiletype space
 	call space#draw(0)

@@ -90,7 +90,7 @@ endfunc
 func! s:render()
 
 	setlocal modifiable
-	silent! 1,$d
+	silent! %d
 
 	for i in range(len(b:listing))
 
@@ -125,7 +125,6 @@ func! s:render()
 
 	endfor
 
-	silent! $,$d
 	setlocal nomodifiable
 	setlocal nomodified
 
@@ -520,7 +519,12 @@ func! browser#start()
 
 	let cur_buf = expand('%:p')
 
-	call view#new()
+	enew
+	setlocal buftype=nofile
+	setlocal bufhidden=wipe
+	setlocal nobuflisted
+	setlocal nomodifiable
+	setlocal nomodified
 	setfiletype browser
 
 	let b:listing = []
