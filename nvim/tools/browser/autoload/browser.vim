@@ -125,6 +125,7 @@ func! s:render()
 
 	endfor
 
+	silent! $d
 	setlocal nomodifiable
 	setlocal nomodified
 
@@ -525,6 +526,7 @@ func! browser#start()
 	setlocal nobuflisted
 	setlocal nomodifiable
 	setlocal nomodified
+	setlocal nonumber
 	setfiletype browser
 
 	let b:listing = []

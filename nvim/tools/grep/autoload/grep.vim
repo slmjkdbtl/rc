@@ -33,7 +33,8 @@ func! s:get_lines()
 	let lines = []
 
 	for l in b:grep_results
-		let lines += [ l.file . ':' . l.line . '   ' . l.text ]
+		let lines += [ '= ' . l.file . ':' . string(l.line)  ]
+		let lines += [ l.text ]
 	endfor
 
 	return lines
@@ -58,6 +59,7 @@ func! grep#search(txt)
 
 	botright new
 	enew
+	setfiletype grep
 	setlocal buftype=nofile
 	setlocal bufhidden=wipe
 	setlocal nobuflisted
@@ -84,12 +86,10 @@ func! grep#search(txt)
 
 	retab
 
+	silent! $d
 	setlocal nomodifiable
 	setlocal nomodified
 	:1
-
-	let @/ = escape(a:txt, "\\/.*'$^~[]")
-	call feedkeys(":set hlsearch\<cr>", 'n')
 
 	map <buffer><silent> <return> <Plug>(grep_open)
 
@@ -99,10 +99,10 @@ endfunc
 
 func! grep#open()
 
-	let item = b:grep_results[line('.') - 1]
+	let item = b:grep_results[(line('.') - 1) / 2]
 
 	if exists('item')
-		call view#close()
+		bw
 		exec 'edit ' . item.file
 		exec ':' . item.line
 	endif

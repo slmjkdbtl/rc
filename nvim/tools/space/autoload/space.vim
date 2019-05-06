@@ -64,6 +64,7 @@ func! space#shine()
 	setlocal nomodifiable
 	setlocal nomodified
 	setlocal nocursorline
+	setlocal nonumber
 	setfiletype space
 	call space#draw(0)
 	call space#start()
