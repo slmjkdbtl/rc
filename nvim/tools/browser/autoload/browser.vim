@@ -281,7 +281,7 @@ func! browser#close()
 
 	if &filetype ==# 'browser'
 
-		silent! bd
+		silent! bw
 
 		if empty(bufname('%'))
 			call browser#start()
