@@ -60,11 +60,22 @@ func! space#shine()
 	enew
 	setlocal buftype=nofile
 	setlocal bufhidden=wipe
+	setlocal nocursorcolumn
+	setlocal nocursorline
 	setlocal nobuflisted
+	setlocal nolist
+	setlocal nonumber
+	setlocal norelativenumber
+	setlocal nospell
+	setlocal colorcolumn=
+	setlocal foldcolumn=0
+	setlocal matchpairs=
+	setlocal noswapfile
+	setlocal nonumber
+	setlocal signcolumn=no
 	setlocal nomodifiable
 	setlocal nomodified
-	setlocal nocursorline
-	setlocal nonumber
+	setlocal statusline=\ space
 	setfiletype space
 	call space#draw(0)
 	call space#start()

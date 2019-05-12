@@ -5,6 +5,7 @@ exec 'set runtimepath=' . g:src_dir
 
 " local plugins
 call plug#load('bookmark')
+call plug#load('grep')
 call plug#load('theme')
 call plug#load('browser')
 call plug#load('todo')
@@ -21,14 +22,12 @@ call plug#load('theme')
 call plug#load('trim')
 call plug#load('utils')
 call plug#load('theme')
-call plug#load('grep')
 call plug#load('tommywiseau')
 
 " external plugins
 call plug#remote('w0rp/ale')
 call plug#remote('mhinz/vim-signify')
 call plug#remote('racer-rust/vim-racer')
-call plug#remote('majutsushi/tagbar')
 
 " ft
 call ft#detect('*.toml', 'toml')

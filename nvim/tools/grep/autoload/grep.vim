@@ -2,30 +2,30 @@
 
 func! grep#search(txt)
 
-	let l:opts = ' '
-
-	if &ignorecase == 1
-		let l:opts = l:opts . '-i '
-	endif
-
-	if &smartcase == 1
-		let l:opts = l:opts . '-S '
-	endif
-
 	let prev_grepprg = &grepprg
 	let prev_grepformat = &grepformat
 	let &grepprg = g:grep_cmd
 	let &grepformat = g:grep_format
 
-	silent! exec 'grep! ' . l:opts . '"' . a:txt . '"'
+	silent! exec 'grep! "' . a:txt . '"'
 
 	botright new
 	enew
 	setfiletype grep
 	setlocal buftype=nofile
 	setlocal bufhidden=wipe
+	setlocal nocursorcolumn
 	setlocal nobuflisted
+	setlocal nolist
+	setlocal nonumber
+	setlocal norelativenumber
+	setlocal nospell
+	setlocal colorcolumn=
+	setlocal foldcolumn=0
+	setlocal matchpairs=
+	setlocal noswapfile
 	setlocal expandtab
+	exec 'setlocal statusline=\ ' . a:txt
 
 	let b:grep_results = {}
 	let b:grep_view = []
@@ -92,7 +92,7 @@ func! grep#search(txt)
 
 endfunc
 
-func! grep#open()
+func! <sid>open()
 
 	let item = b:grep_view[line('.') - 1]
 
@@ -104,6 +104,6 @@ func! grep#open()
 
 endfunc
 
-noremap <silent> <Plug>(grep_open)
-			\ :call grep#open()<cr>
+noremap <silent> <plug>(grep_open)
+			\ :call <sid>open()<cr>
 

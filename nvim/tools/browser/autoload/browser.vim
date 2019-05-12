@@ -139,9 +139,7 @@ func! s:get_current()
 endfunc
 
 func! s:to_line(ln)
-
 	call cursor(a:ln, 3)
-
 endfunc
 
 func! browser#update_git()
@@ -211,6 +209,7 @@ func! browser#refresh(...)
 	exec 'file ' . name
 	call s:render()
 	call browser#update_git()
+	exec 'setlocal statusline=\ ' . substitute(getcwd(), $HOME, '~', '')
 
 	if exists('a:1')
 		call s:to_line(a:1)
@@ -521,11 +520,20 @@ func! browser#start()
 	enew
 	setlocal buftype=nofile
 	setlocal bufhidden=wipe
+	setlocal nocursorcolumn
 	setlocal nobuflisted
+	setlocal nolist
+	setlocal nonumber
+	setlocal norelativenumber
+	setlocal nospell
+	setlocal colorcolumn=
+	setlocal foldcolumn=0
+	setlocal matchpairs=
+	setlocal noswapfile
 	setlocal nomodifiable
 	setlocal nomodified
-	setlocal nonumber
 	setfiletype browser
+	exec 'setlocal statusline=\ ' . substitute(getcwd(), $HOME, '~', '')
 
 	let b:listing = []
 	let b:marked = []

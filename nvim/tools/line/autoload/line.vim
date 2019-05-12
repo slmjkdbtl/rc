@@ -70,7 +70,7 @@ func! s:get_status_path(bufn) abort
 			let text = fnamemodify(path, ':h')
 		endif
 
-		let text = substitute(text, '/Users/\w*', '~', '')
+		let text = substitute(text, $HOME, '~', '')
 
 	end
 

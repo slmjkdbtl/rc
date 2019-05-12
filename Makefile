@@ -18,7 +18,7 @@ install:
 		ln -sf $(realpath $(f)) $(CONFIG); \
 	)
 
-	$(foreach f, .chunkwmrc .skhdrc .tmux.conf .tigrc .mpdconf, \
+	$(foreach f, .yabairc .skhdrc .tmux.conf .tigrc .mpdconf, \
 		echo "  - $(f) -> $(HOME)/$(f)"; \
 		ln -sf $(realpath $(f)) $(HOME); \
 	)
