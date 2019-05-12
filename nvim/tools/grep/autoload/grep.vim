@@ -84,7 +84,8 @@ func! grep#search(txt)
 	setlocal nomodified
 	call cursor(1, 1)
 
-	map <buffer><silent> <return> <Plug>(grep_open)
+	map <buffer><silent> <return> <plug>(grep_open)
+	map <buffer><silent> <2-leftmouse> <plug>(grep_open)
 
 	let &grepprg = prev_grepprg
 	let &grepformat = prev_grepformat

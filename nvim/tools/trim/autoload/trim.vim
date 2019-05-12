@@ -22,6 +22,6 @@ augroup END
 
 endfunc
 
-noremap <silent> <Plug>(trim)
+noremap <silent> <plug>(trim)
 			\ :call trim#trim()<cr>
 

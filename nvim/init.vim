@@ -392,6 +392,7 @@ vnoremap <silent> <bs> <
 noremap <silent> <m-t> <c-]>
 nnoremap <m-f> :find<space>
 nnoremap <silent> w :w<cr>
+nnoremap * *
 
 " plugins
 call pair#bind()

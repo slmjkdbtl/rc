@@ -5,9 +5,7 @@ func! s:trim(t)
 endfunc
 
 func! s:is_same(f1, f2)
-
 	return fnamemodify(a:f1, ':p') ==# fnamemodify(a:f2, ':p')
-
 endfunc
 
 func! s:is_marked(f)
@@ -90,7 +88,7 @@ endfunc
 func! s:render()
 
 	setlocal modifiable
-	silent! %d
+	silent! %delete
 
 	for i in range(len(b:listing))
 
@@ -125,7 +123,7 @@ func! s:render()
 
 	endfor
 
-	silent! $d
+	silent! $delete
 	setlocal nomodifiable
 	setlocal nomodified
 
@@ -500,7 +498,7 @@ func! browser#search(char)
 		let name = fnamemodify(b:listing[i], ':t')[0:0]
 
 		if name == a:char
-			exec ':' . (i + 1)
+			call cursor(i + 1, 1)
 		endif
 
 	endfor
@@ -545,76 +543,77 @@ endfunc
 
 func! browser#bind()
 
-	map <buffer><silent> <return> <Plug>(browser_enter)
-	map <buffer><silent> <bs> <Plug>(browser_back)
-	map <buffer><silent> l <Plug>(browser_enter)
-	map <buffer><silent> h <Plug>(browser_back)
-	map <buffer><silent> k <Plug>(browser_up)
-	map <buffer><silent> j <Plug>(browser_down)
-	map <buffer><silent> <tab> <Plug>(browser_close)
-	map <buffer><silent> y <Plug>(browser_copy_path)
-	map <buffer><silent> <space> <Plug>(browser_mark)
-	map <buffer><silent> e <Plug>(browser_expand)
-	map <buffer><silent> r <Plug>(browser_refresh)
-	map <buffer><silent> <m-r> <Plug>(browser_rename)
-	map <buffer><silent> <m-c> <Plug>(browser_copy)
-	map <buffer><silent> <m-x> <Plug>(browser_move)
-	map <buffer><silent> <m-d> <Plug>(browser_delete)
-	map <buffer><silent> <m-m> <Plug>(browser_mkdir)
-	map <buffer><silent> <m-n> <Plug>(browser_mkfile)
-	map <buffer><silent> <esc> <Plug>(browser_drop)
-	map <buffer><silent> <m-s> <Plug>(browser_solidify)
+	map <buffer><silent> <return> <plug>(browser_enter)
+	map <buffer><silent> <2-leftmouse> <plug>(browser_enter)
+	map <buffer><silent> <bs> <plug>(browser_back)
+	map <buffer><silent> l <plug>(browser_enter)
+	map <buffer><silent> h <plug>(browser_back)
+	map <buffer><silent> k <plug>(browser_up)
+	map <buffer><silent> j <plug>(browser_down)
+	map <buffer><silent> <tab> <plug>(browser_close)
+	map <buffer><silent> y <plug>(browser_copy_path)
+	map <buffer><silent> <space> <plug>(browser_mark)
+	map <buffer><silent> e <plug>(browser_expand)
+	map <buffer><silent> r <plug>(browser_refresh)
+	map <buffer><silent> <m-r> <plug>(browser_rename)
+	map <buffer><silent> <m-c> <plug>(browser_copy)
+	map <buffer><silent> <m-x> <plug>(browser_move)
+	map <buffer><silent> <m-d> <plug>(browser_delete)
+	map <buffer><silent> <m-m> <plug>(browser_mkdir)
+	map <buffer><silent> <m-n> <plug>(browser_mkfile)
+	map <buffer><silent> <esc> <plug>(browser_drop)
+	map <buffer><silent> <m-s> <plug>(browser_solidify)
 
 endfunc
 
-noremap <silent> <Plug>(browser_enter)
+noremap <silent> <plug>(browser_enter)
 			\ :call browser#enter()<cr>
 
-noremap <silent> <Plug>(browser_back)
+noremap <silent> <plug>(browser_back)
 			\ :call browser#back()<cr>
 
-noremap <silent> <Plug>(browser_close)
+noremap <silent> <plug>(browser_close)
 			\ :call browser#close()<cr>
 
-noremap <silent> <Plug>(browser_copy_path)
+noremap <silent> <plug>(browser_copy_path)
 			\ :call browser#copy_path()<cr>
 
-noremap <silent> <Plug>(browser_refresh)
+noremap <silent> <plug>(browser_refresh)
 			\ :call browser#refresh(line('.'))<cr>
 
-noremap <silent> <Plug>(browser_mark)
+noremap <silent> <plug>(browser_mark)
 			\ :call browser#mark()<cr>
 
-noremap <silent> <Plug>(browser_expand)
+noremap <silent> <plug>(browser_expand)
 			\ :call browser#expand()<cr>
 
-noremap <silent> <Plug>(browser_delete)
+noremap <silent> <plug>(browser_delete)
 			\ :call browser#delete()<cr>
 
-noremap <silent> <Plug>(browser_rename)
+noremap <silent> <plug>(browser_rename)
 			\ :call browser#rename()<cr>
 
-noremap <silent> <Plug>(browser_copy)
+noremap <silent> <plug>(browser_copy)
 			\ :call browser#copy()<cr>
 
-noremap <silent> <Plug>(browser_move)
+noremap <silent> <plug>(browser_move)
 			\ :call browser#move()<cr>
 
-noremap <silent> <Plug>(browser_drop)
+noremap <silent> <plug>(browser_drop)
 			\ :call browser#drop()<cr>
 
-noremap <silent> <Plug>(browser_mkdir)
+noremap <silent> <plug>(browser_mkdir)
 			\ :call browser#mkdir()<cr>
 
-noremap <silent> <Plug>(browser_mkfile)
+noremap <silent> <plug>(browser_mkfile)
 			\ :call browser#mkfile()<cr>
 
-noremap <silent> <Plug>(browser_solidify)
+noremap <silent> <plug>(browser_solidify)
 			\ :call browser#solidify()<cr>
 
-noremap <silent> <Plug>(browser_up)
+noremap <silent> <plug>(browser_up)
 			\ k
 
-noremap <silent> <Plug>(browser_down)
+noremap <silent> <plug>(browser_down)
 			\ j
 

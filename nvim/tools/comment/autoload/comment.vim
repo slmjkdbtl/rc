@@ -61,12 +61,12 @@ func! comment#toggle()
 
 endfunc
 
-noremap <silent> <Plug>(comment_toggle)
+noremap <silent> <plug>(comment_toggle)
 			\ :call comment#toggle()<cr>
 
-noremap <silent> <Plug>(comment_on)
+noremap <silent> <plug>(comment_on)
 			\ :call comment#on()<cr>
 
-noremap <silent> <Plug>(comment_off)
+noremap <silent> <plug>(comment_off)
 			\ :call comment#off()<cr>
 

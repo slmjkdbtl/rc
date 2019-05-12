@@ -34,9 +34,9 @@ func! jump#next()
 	return s:jump(1)
 endfunc
 
-noremap <silent> <Plug>(jump_prev)
+noremap <silent> <plug>(jump_prev)
 			\ :call jump#prev()<cr>
 
-noremap <silent> <Plug>(jump_next)
+noremap <silent> <plug>(jump_next)
 			\ :call jump#next()<cr>
 
