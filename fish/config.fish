@@ -88,6 +88,11 @@ if test -d $HOME/.cargo
 	set -x PATH $HOME/.cargo/bin $PATH
 end
 
+# flutter
+if test -d $HOME/.flutter
+	set -x PATH $HOME/.flutter/bin $PATH
+end
+
 # fastlane
 if test -d $HOME/.fastlane
 	set -x PATH $HOME/.fastlane/bin $PATH

@@ -1,46 +1,5 @@
 " wengwengweng
 
-let s:searching = 0
-
-func! s:search_start()
-
-	if s:searching
-		return
-	endif
-
-	let s:searching = 1
-	let s:prev_grepprg = &grepprg
-	let s:prev_grepformat = &grepformat
-	let &grepprg = g:grep_cmd
-	let &grepformat = g:grep_format
-
-endfunc
-
-func! s:search_end()
-
-	if !s:searching
-		return
-	endif
-
-	let s:searching = 0
-	let &grepprg = s:prev_grepprg
-	let &grepformat = s:prev_grepformat
-
-endfunc
-
-func! s:get_lines()
-
-	let lines = []
-
-	for l in b:grep_results
-		let lines += [ '= ' . l.file . ':' . string(l.line)  ]
-		let lines += [ l.text ]
-	endfor
-
-	return lines
-
-endfunc
-
 func! grep#search(txt)
 
 	let l:opts = ' '
@@ -53,7 +12,10 @@ func! grep#search(txt)
 		let l:opts = l:opts . '-S '
 	endif
 
-	call s:search_start()
+	let prev_grepprg = &grepprg
+	let prev_grepformat = &grepformat
+	let &grepprg = g:grep_cmd
+	let &grepformat = g:grep_format
 
 	silent! exec 'grep! ' . l:opts . '"' . a:txt . '"'
 
@@ -65,46 +27,78 @@ func! grep#search(txt)
 	setlocal nobuflisted
 	setlocal expandtab
 
-	let b:grep_results = []
+	let b:grep_results = {}
+	let b:grep_view = []
 
 	for d in getqflist()
 
-		let b:grep_results += [{
-					\ 'file': bufname(d.bufnr),
-					\ 'line': d.lnum,
-					\ 'col': d.col,
-					\ 'text': d.text,
+		let fname = bufname(d.bufnr)
+		let item = {
+			\ 'line': d.lnum,
+			\ 'col': d.col,
+			\ 'text': d.text,
+			\ }
+
+		if has_key(b:grep_results, fname)
+			let b:grep_results[fname] += [item]
+		else
+			let b:grep_results[fname] = [item]
+		endif
+
+	endfor
+
+	for fname in keys(b:grep_results)
+
+		let entries = b:grep_results[fname]
+
+		let b:grep_view += [{
+					\ 'text': '= ' . fname,
+					\ 'file': fname,
+					\ 'line': 1,
+					\ }]
+
+		for e in entries
+
+			let b:grep_view += [{
+						\ 'text': string(e.line) . ': ' . e.text,
+						\ 'file': fname,
+						\ 'line': e.line,
+						\ }]
+
+		endfor
+
+		let b:grep_view += [{
+					\ 'text': '',
 					\ }]
 
 	endfor
 
-	let lines = s:get_lines()
-
-	for i in range(len(lines))
-		call append(i, lines[i])
+	for i in range(len(b:grep_view))
+		call append(i, b:grep_view[i].text)
 	endfor
 
 	retab
 
-	silent! $d
+	silent! $delete
 	setlocal nomodifiable
 	setlocal nomodified
-	:1
+	call cursor(1, 1)
 
 	map <buffer><silent> <return> <Plug>(grep_open)
 
-	call s:search_end()
+	let &grepprg = prev_grepprg
+	let &grepformat = prev_grepformat
 
 endfunc
 
 func! grep#open()
 
-	let item = b:grep_results[(line('.') - 1) / 2]
+	let item = b:grep_view[line('.') - 1]
 
-	if exists('item')
+	if exists('item') && has_key(item, 'file')
 		bw
 		exec 'edit ' . item.file
-		exec ':' . item.line
+		call cursor(item.line, 1)
 	endif
 
 endfunc
