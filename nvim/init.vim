@@ -20,6 +20,7 @@ call plug#load('space')
 call plug#load('mode')
 call plug#load('theme')
 call plug#load('trim')
+call plug#load('mru')
 call plug#load('utils')
 call plug#load('theme')
 call plug#load('tommywiseau')
@@ -257,12 +258,12 @@ let g:ale_rust_cargo_check_examples = 1
 let g:ale_rust_cargo_check_tests = 1
 
 let g:ale_linters = {
-\   'rust': ['cargo', 'rls'],
-\   'cs': []
-\}
+	\ 'rust': ['cargo', 'rls'],
+	\ 'cs': []
+\ }
 
 " racer
-au FileType rust nmap <m-t> <Plug>(rust-def)
+au FileType rust nmap <m-t> <plug>(rust-def)
 
 " tommywiseau
 let g:is_human_bean = 0
@@ -396,6 +397,7 @@ nnoremap * *
 " plugins
 call pair#bind()
 call search#bind()
+call mru#start()
 noremap <silent> <m-k> <cmd>ScrollUp<cr>
 noremap <silent> <m-j> <cmd>ScrollDown<cr>
 nnoremap <silent> <tab> :Browser<cr>
@@ -403,8 +405,8 @@ nnoremap <silent> <m--> :OpenTerm<cr>
 nnoremap <silent> <m-=> :OpenFinder<cr>
 noremap <silent> / :CommentToggle<cr>
 nnoremap <silent> <m-w> :Close<cr>
-nnoremap <silent> <m-[> :PrevMark<cr>
-nnoremap <silent> <m-]> :NextMark<cr>
+" nnoremap <silent> <m-[> :PrevMark<cr>
+" nnoremap <silent> <m-]> :NextMark<cr>
 nnoremap <silent> <m-n> :ALEPrevious<cr>
 nnoremap <silent> <m-m> :ALENext<cr>
 nnoremap <silent> <f1> :ModeToggle comment<cr>

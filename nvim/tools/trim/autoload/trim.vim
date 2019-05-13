@@ -18,7 +18,7 @@ func! trim#trim_on_save()
 		autocmd BufWritePre *
 					\ call trim#trim()
 
-augroup END
+	augroup END
 
 endfunc
 

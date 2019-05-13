@@ -2,28 +2,32 @@
 
 let g:jump_marks = get(g:, 'jump_marks', {})
 
-call jump#set('lua', [ 'function\s.\+(.*)', 'function(.*)' ])
-call jump#set('cpp', [ '\w\+\s.\+(.*)\s{', 'struct\s\w\+\s{', 'class\s\w\+\s{', 'enum\s\w\+\s{' ])
-call jump#set('c', [ '\w\+\s.\+(.*)\s{', 'struct\s\w\+\s{', 'class\s\w\+\s{', 'enum\s\w\+\s{' ])
-call jump#set('rust', [ 'fn\s.\+(.*)', 'struct\s.\+', 'impl\s.\+', 'enum\s.\+', ])
-call jump#set('javascript', [ '\w\+(\w*)\s{', ])
-call jump#set('vim', [ 'fu\%[nction]\s.\+(.*)', ])
-call jump#set('make', [ '^[^.]\w\+:', ])
-call jump#set('markdown', [ '^#\%[#####]', ])
-call jump#set('css', [ '\S*\s{', ])
-call jump#set('scss', [ '\S*\s{', ])
-call jump#set('pug', [ '\w*(.*)', ])
-call jump#set('nroff', [ '^\.\S', ])
+" call jump#set('lua', [ 'function\s.\+(.*)', 'function(.*)' ])
+" call jump#set('cpp', [ '\w\+\s.\+(.*)\s{', 'struct\s\w\+\s{', 'class\s\w\+\s{', 'enum\s\w\+\s{' ])
+" call jump#set('c', [ '\w\+\s.\+(.*)\s{', 'struct\s\w\+\s{', 'class\s\w\+\s{', 'enum\s\w\+\s{' ])
+" call jump#set('rust', [ 'fn\s.\+(.*)', 'struct\s.\+', 'impl\s.\+', 'enum\s.\+', ])
+" call jump#set('javascript', [ '\w\+(\w*)\s{', ])
+" call jump#set('vim', [ 'fu\%[nction]\s.\+(.*)', ])
+" call jump#set('make', [ '^[^.]\w\+:', ])
+" call jump#set('markdown', [ '^#\%[#####]', ])
+" call jump#set('css', [ '\S*\s{', ])
+" call jump#set('scss', [ '\S*\s{', ])
+" call jump#set('pug', [ '\w*(.*)', ])
+" call jump#set('nroff', [ '^\.\S', ])
 
-augroup JumpMarks
+call jump#set('lua', {
+	\ 'function': [ 'function\s%s(.*)' ],
+\ })
 
-	autocmd!
+" augroup JumpMarks
 
-	for [ key, val ] in items(g:jump_marks)
-		exec 'autocmd FileType ' . key . " let b:jump_mark = '" . val . "'"
-	endfor
+" 	autocmd!
 
-augroup END
+" 	for [ key, val ] in items(g:jump_marks)
+" 		exec 'autocmd FileType ' . key . " let b:jump_mark = '" . val . "'"
+" 	endfor
+
+" augroup END
 
 command! PrevMark
 			\ call jump#prev()

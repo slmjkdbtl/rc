@@ -75,6 +75,7 @@ func! space#shine()
 	setlocal signcolumn=no
 	setlocal nomodifiable
 	setlocal nomodified
+	setlocal nowrap
 	setlocal statusline=\ space
 	setfiletype space
 	call space#draw(0)

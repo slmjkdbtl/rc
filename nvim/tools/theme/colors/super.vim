@@ -164,8 +164,6 @@ call s:hi('ALEErrorSign',               s:base08, s:base00, '',          '')
 call s:hi('ALEWarningSign',             s:base0A, s:base00, '',          '')
 call s:hi('ALEInfoSign',                s:base10, s:base00, '',          '')
 
-hi! vimUserFunc
-			\ guibg=none
 hi! StatusModeNormal
 			\ guibg=#7FA5A5 gui=bold
 hi! StatusModeVisual

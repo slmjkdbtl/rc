@@ -538,6 +538,7 @@ func! browser#start()
 	setlocal foldcolumn=0
 	setlocal matchpairs=
 	setlocal noswapfile
+	setlocal nowrap
 	setlocal nomodifiable
 	setlocal nomodified
 	setfiletype browser

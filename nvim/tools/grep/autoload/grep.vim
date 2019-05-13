@@ -25,6 +25,7 @@ func! grep#search(txt)
 	setlocal matchpairs=
 	setlocal noswapfile
 	setlocal expandtab
+	setlocal nowrap
 	exec 'setlocal statusline=\ ' . a:txt
 
 	let b:grep_results = {}
@@ -82,8 +83,6 @@ func! grep#search(txt)
 	for i in range(len(b:grep_view))
 		call setline(i + 1, b:grep_view[i].text)
 	endfor
-
-	retab
 
 	silent! $delete
 	setlocal nomodifiable

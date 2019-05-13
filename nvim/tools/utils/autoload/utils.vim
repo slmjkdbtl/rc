@@ -41,17 +41,15 @@ endfunc
 func! utils#close()
 
 	if &modified
-
 		echo 'cannot close modified buffer'
 		return
-
 	endif
 
 	if &filetype ==# 'space'
-		q
+		quit
 	endif
 
-	silent! bw
+	silent! bwipe
 
 	if empty(bufname('%'))
 		Space
