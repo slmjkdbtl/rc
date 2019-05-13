@@ -87,8 +87,20 @@ func! grep#search(txt)
 	map <buffer><silent> <return> <plug>(grep_open)
 	map <buffer><silent> <2-leftmouse> <plug>(grep_open)
 
+	autocmd CursorMoved <buffer>
+				\ call <sid>cursor()
+
 	let &grepprg = prev_grepprg
 	let &grepformat = prev_grepformat
+
+endfunc
+
+func! <sid>cursor()
+
+	let ln = line('.')
+	let cn = col('.')
+
+	call cursor(ln, 1)
 
 endfunc
 

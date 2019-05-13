@@ -535,6 +535,9 @@ func! browser#start()
 	setfiletype browser
 	exec 'setlocal statusline=\ ' . substitute(getcwd(), $HOME, '~', '')
 
+	autocmd CursorMoved <buffer>
+				\ call <sid>cursor()
+
 	let b:listing = []
 	let b:marked = []
 	let b:solid = 0
@@ -546,6 +549,18 @@ func! browser#start()
 	call browser#refresh()
 	call s:to_item(cur_buf)
 	call browser#bind()
+
+endfunc
+
+func! <sid>cursor()
+
+	let ln = line('.')
+
+	if ln == 1
+		call cursor(ln, 1)
+	else
+		call cursor(ln, 3)
+	endif
 
 endfunc
 
