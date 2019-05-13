@@ -150,10 +150,6 @@ call s:hi('SpellLocal',                 '',       '',       'none',      '')
 call s:hi('SpellCap',                   '',       '',       'none',      '')
 call s:hi('SpellRare',                  '',       '',       'none',      '')
 
-call s:hi('cssColor',                   s:base0C, '',       '',          '')
-call s:hi('cssBraces',                  s:base05, '',       '',          '')
-call s:hi('cssClassName',               s:base0E, '',       '',          '')
-
 call s:hi('DiffAdd',                    s:base0B, s:base00, '',          '')
 call s:hi('DiffChange',                 s:base02, s:base00, '',          '')
 call s:hi('DiffDelete',                 s:base08, s:base00, '',          '')
@@ -164,40 +160,9 @@ call s:hi('DiffNewFile',                s:base0B, s:base00, '',          '')
 call s:hi('DiffLine',                   s:base0D, s:base00, '',          '')
 call s:hi('DiffRemoved',                s:base10, s:base08, '',          '')
 
-call s:hi('gitCommitOverflow',          s:base08, '',       '',          '')
-call s:hi('gitCommitSummary',           s:base0B, '',       '',          '')
-
-call s:hi('htmlBold',                   s:base0A, '',       '',          '')
-call s:hi('htmlItalic',                 s:base0E, '',       '',          '')
-call s:hi('htmlTag',                    s:base0C, '',       '',          '')
-call s:hi('htmlEndTag',                 s:base0C, '',       '',          '')
-call s:hi('htmlArg',                    s:base0A, '',       '',          '')
-call s:hi('htmlTagName',                s:base07, '',       '',          '')
-
-call s:hi('javaScript',                 s:base05, '',       '',          '')
-call s:hi('javaScriptNumber',           s:base09, '',       '',          '')
-call s:hi('javaScriptBraces',           s:base05, '',       '',          '')
-
-call s:hi('markdownCode',               s:base0B, '',       '',          '')
-call s:hi('markdownCodeBlock',          s:base0B, '',       '',          '')
-call s:hi('markdownHeadingDelimiter',   s:base0D, '',       '',          '')
-call s:hi('markdownItalic',             s:base0E, '',       s:italic,    '')
-call s:hi('markdownBold',               s:base0A, '',       s:bold,      '')
-call s:hi('markdownCodeDelimiter',      s:base0F, '',       s:italic,    '')
-call s:hi('markdownError',              s:base05, s:base00, '',          '')
-
 call s:hi('ALEErrorSign',               s:base08, s:base00, '',          '')
 call s:hi('ALEWarningSign',             s:base0A, s:base00, '',          '')
 call s:hi('ALEInfoSign',                s:base10, s:base00, '',          '')
-
-call s:hi('vimUserFunc',                '',       s:none,   '',          '')
-call s:hi('vimFunc',                    '',       s:none,   '',          '')
-
-call s:hi('sassidChar',                 s:base08, '',       '',          '')
-call s:hi('sassClassChar',              s:base09, '',       '',          '')
-call s:hi('sassInclude',                s:base0E, '',       '',          '')
-call s:hi('sassMixing',                 s:base0E, '',       '',          '')
-call s:hi('sassMixinName',              s:base0D, '',       '',          '')
 
 hi! vimUserFunc
 			\ guibg=none

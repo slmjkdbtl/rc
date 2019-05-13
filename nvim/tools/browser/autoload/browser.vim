@@ -119,11 +119,10 @@ func! s:render()
 
 		endif
 
-		call append(i, displayline)
+		call setline(i + 1, displayline)
 
 	endfor
 
-	silent! $delete
 	setlocal nomodifiable
 	setlocal nomodified
 
@@ -332,7 +331,7 @@ func! browser#bulk_rename()
 	file rename
 
 	for i in range(n)
-		call append(i, fnamemodify(marked[i], ':t'))
+		call setline(i + 1, fnamemodify(marked[i], ':t'))
 	endfor
 
 	call cursor(1, 1)

@@ -59,11 +59,17 @@ func! grep#search(txt)
 
 		for e in entries
 
-			let b:grep_view += [{
-						\ 'text': string(e.line) . ': ' . e.text,
-						\ 'file': fname,
-						\ 'line': e.line,
-						\ }]
+			let last = b:grep_view[len(b:grep_view) - 1]
+
+			let item = {
+				\ 'text': string(e.line) . ': ' . e.text,
+				\ 'file': fname,
+				\ 'line': e.line,
+				\ }
+
+			if item != last
+				let b:grep_view += [item]
+			endif
 
 		endfor
 
@@ -74,7 +80,7 @@ func! grep#search(txt)
 	endfor
 
 	for i in range(len(b:grep_view))
-		call append(i, b:grep_view[i].text)
+		call setline(i + 1, b:grep_view[i].text)
 	endfor
 
 	retab
@@ -92,6 +98,8 @@ func! grep#search(txt)
 
 	let &grepprg = prev_grepprg
 	let &grepformat = prev_grepformat
+
+	let m = matchadd('GrepKeyword', a:txt)
 
 endfunc
 

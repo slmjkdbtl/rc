@@ -12,3 +12,6 @@ highlight def link GrepFile
 highlight def link GrepLine
 			\ Special
 
+highlight def link GrepKeyword
+			\ Search
+
