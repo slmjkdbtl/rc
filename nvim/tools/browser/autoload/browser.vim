@@ -197,6 +197,15 @@ func! s:to_item(item)
 
 endfunc
 
+func! s:update_statusline()
+
+	let dir = substitute(getcwd(), $HOME, '~', '')
+	let dir = escape(dir, ' ')
+
+	exec 'setlocal statusline=\ ' . dir
+
+endfunc
+
 func! browser#refresh(...)
 
 	if &filetype !=# 'browser'
@@ -208,8 +217,8 @@ func! browser#refresh(...)
 
 	exec 'file ' . name
 	call s:render()
+	call s:update_statusline()
 	call browser#update_git()
-	exec 'setlocal statusline=\ ' . substitute(getcwd(), $HOME, '~', '')
 
 	if exists('a:1')
 		call s:to_line(a:1)
@@ -533,7 +542,7 @@ func! browser#start()
 	setlocal nomodifiable
 	setlocal nomodified
 	setfiletype browser
-	exec 'setlocal statusline=\ ' . substitute(getcwd(), $HOME, '~', '')
+	call s:update_statusline()
 
 	autocmd CursorMoved <buffer>
 				\ call <sid>cursor()
