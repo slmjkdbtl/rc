@@ -23,6 +23,7 @@ func! s:init(mode, dir)
 	setlocal bufhidden=wipe
 	setlocal nocursorcolumn
 	setlocal nobuflisted
+	setlocal cursorline
 	setlocal nolist
 	setlocal nonumber
 	setlocal norelativenumber

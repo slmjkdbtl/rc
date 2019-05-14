@@ -528,6 +528,7 @@ func! browser#start()
 	noautocmd enew
 	setlocal buftype=nofile
 	setlocal bufhidden=wipe
+	setlocal cursorline
 	setlocal nocursorcolumn
 	setlocal nobuflisted
 	setlocal nolist

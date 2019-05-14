@@ -26,9 +26,6 @@ call plug#load('tommywiseau')
 call plug#remote('w0rp/ale')
 call plug#remote('mhinz/vim-signify')
 call plug#remote('racer-rust/vim-racer')
-call plug#remote('ctrlpvim/ctrlp.vim')
-call plug#remote('junegunn/fzf.vim')
-set rtp+=/usr/local/opt/fzf
 
 " ft
 call ft#detect('*.toml', 'toml')
