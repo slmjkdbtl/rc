@@ -51,3 +51,7 @@ func! mru#start()
 
 endfunc
 
+func! mru#show()
+	" ...
+endfunc
+
