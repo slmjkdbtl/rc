@@ -162,9 +162,17 @@ func! s:update_grep(pat)
 
 	endfor
 
-	for i in range(len(b:grep_results))
+	let num = len(b:grep_results)
+
+	for i in range(num)
 		call setline(i + 1, b:grep_results[i].text)
 	endfor
+
+	if num > 16
+		resize 16
+	else
+		exec 'resize ' . num
+	endif
 
 	setlocal nomodifiable
 	setlocal nomodified
