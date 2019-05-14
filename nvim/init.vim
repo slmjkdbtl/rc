@@ -6,7 +6,6 @@ exec 'set runtimepath=' . g:src_dir
 " local plugins
 call plug#load('bookmark')
 call plug#load('find')
-call plug#load('grep')
 call plug#load('browser')
 call plug#load('todo')
 call plug#load('dirt')
@@ -391,8 +390,6 @@ vnoremap <silent> <bs> <
 
 " misc
 noremap <silent> <m-t> <c-]>
-nnoremap <m-f> :find<space>
-nnoremap <silent> <m-f> :FF<cr>
 nnoremap <silent> w :w<cr>
 nnoremap * *
 
@@ -417,7 +414,8 @@ nnoremap <silent> <f3> :ModeToggle number<cr>
 nnoremap <silent> <f4> :ModeToggle wrap<cr>
 nnoremap <silent> <f5> :ModeToggle paste<cr>
 nnoremap <silent> <f6> :ModeToggle expandtab<cr>
-nnoremap <m-g> :Grep<space>
+nnoremap <m-f> :Find<cr>
+nnoremap <m-g> :Grep<cr>
 nnoremap z :Bookmark<space>
 nnoremap m :!just<space>
 

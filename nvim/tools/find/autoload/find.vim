@@ -68,10 +68,14 @@ func! s:refresh_cmd()
 endfunc
 
 func! s:up()
-	" ...
+	call cursor(line('.') - 1, 1)
 endfunc
 
 func! s:down()
+	call cursor(line('.') + 1, 1)
+endfunc
+
+func! s:enter()
 	" ...
 endfunc
 
@@ -80,9 +84,7 @@ func! s:poll()
 	let nr = getchar()
 	let ch = nr2char(nr)
 
-	if nr == 27
-		call s:close()
-	else
+	while nr != 27
 
 		if nr == "\<bs>"
 			call s:del()
@@ -90,14 +92,20 @@ func! s:poll()
 			call s:up()
 		elseif nr == "\<down>"
 			call s:down()
+		elseif nr == "\<return>"
+			call s:enter()
 		elseif type(ch) == 1
 			call s:input(ch)
 		endif
 
 		call s:update()
-		call s:poll()
 
-	endif
+		let nr = getchar()
+		let ch = nr2char(nr)
+
+	endwhile
+
+	call s:close()
 
 endfunc
 
@@ -115,8 +123,16 @@ endfunc
 
 func! s:update_grep(pat)
 
+	if empty(a:pat)
+		return
+	endif
+
 	setlocal modifiable
 	silent! %delete
+
+	if exists('b:match')
+		call matchdelete(b:match)
+	endif
 
 	let prev_grepprg = &grepprg
 	let prev_grepformat = &grepformat
@@ -150,9 +166,10 @@ func! s:update_grep(pat)
 		call setline(i + 1, b:grep_results[i].text)
 	endfor
 
-	silent! $delete
 	setlocal nomodifiable
 	setlocal nomodified
+	call cursor(line('$'), 1)
+	let b:match = matchadd('GrepKeyword', a:pat)
 
 endfunc
 

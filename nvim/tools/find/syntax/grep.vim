@@ -1,17 +1,18 @@
 " wengwengweng
 
 syntax match GrepFile
-			\ '^=\s.*$'
+			\ '^.\+:\d\+:'
 
 syntax match GrepLine
-			\ '^\d\+:'
+			\ '\d\+:'
+			\ contained
 
 highlight def link GrepFile
-			\ PreProc
+			\ Comment
 
 highlight def link GrepLine
-			\ Special
+			\ Comment
 
 highlight def link GrepKeyword
-			\ Search
+			\ WildMenu
 
