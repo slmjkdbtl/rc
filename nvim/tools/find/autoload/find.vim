@@ -76,15 +76,41 @@ func! s:down()
 endfunc
 
 func! s:enter()
-	" ...
+
+	if b:mode == 'grep'
+		call s:enter_grep()
+	elseif b:mode == 'find'
+		call s:enter_find()
+	endif
+
+endfunc
+
+func! s:enter_grep()
+
+	let item = b:grep_results[line('.') - 1]
+
+	if exists('item') && has_key(item, 'file')
+
+		call s:close()
+		exec 'edit ' . item.file
+		call cursor(item.line, item.col)
+
+	endif
+
 endfunc
 
 func! s:poll()
 
+	if !exists('b:mode')
+		return
+	endif
+
 	let nr = getchar()
 	let ch = nr2char(nr)
 
-	while nr != 27
+	if nr == 27
+		call s:close()
+	else
 
 		if nr == "\<bs>"
 			call s:del()
@@ -92,29 +118,27 @@ func! s:poll()
 			call s:up()
 		elseif nr == "\<down>"
 			call s:down()
-		elseif nr == "\<return>"
+		elseif nr == 13
 			call s:enter()
 		elseif type(ch) == 1
 			call s:input(ch)
 		endif
 
 		call s:update()
+		call s:poll()
 
-		let nr = getchar()
-		let ch = nr2char(nr)
-
-	endwhile
-
-	call s:close()
+	endif
 
 endfunc
 
 func! s:update()
+
 	if b:mode == 'grep'
 		call s:update_grep(b:input)
 	elseif b:mode == 'find'
 		call s:update_find(b:input)
 	endif
+
 endfunc
 
 func! s:update_find(txt)
@@ -123,7 +147,7 @@ endfunc
 
 func! s:update_grep(pat)
 
-	if empty(a:pat)
+	if len(a:pat) <= g:find_min_input
 		return
 	endif
 
@@ -168,11 +192,9 @@ func! s:update_grep(pat)
 		call setline(i + 1, b:grep_results[i].text)
 	endfor
 
-	if num > 16
-		resize 16
-	else
-		exec 'resize ' . num
-	endif
+	let height = num > g:find_max_height ? g:find_max_height : num
+
+	exec 'resize ' . height
 
 	setlocal nomodifiable
 	setlocal nomodified
@@ -187,18 +209,6 @@ func! s:cursor()
 	let cn = col('.')
 
 	call cursor(ln, 1)
-
-endfunc
-
-func! s:open()
-
-	let item = b:find_view[line('.') - 1]
-
-	if exists('item') && has_key(item, 'file')
-		bw
-		exec 'edit ' . item.file
-		call cursor(item.line, 1)
-	endif
 
 endfunc
 
