@@ -525,7 +525,7 @@ func! browser#start()
 
 	let cur_buf = expand('%:p')
 
-	enew
+	noautocmd enew
 	setlocal buftype=nofile
 	setlocal bufhidden=wipe
 	setlocal nocursorcolumn

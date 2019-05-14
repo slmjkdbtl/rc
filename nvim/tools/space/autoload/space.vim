@@ -57,7 +57,7 @@ endfunc
 
 func! space#shine()
 
-	enew
+	noautocmd enew
 	setlocal buftype=nofile
 	setlocal bufhidden=wipe
 	setlocal nocursorcolumn

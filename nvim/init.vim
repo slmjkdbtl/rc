@@ -5,6 +5,7 @@ exec 'set runtimepath=' . g:src_dir
 
 " local plugins
 call plug#load('bookmark')
+call plug#load('find')
 call plug#load('grep')
 call plug#load('browser')
 call plug#load('todo')
@@ -26,6 +27,9 @@ call plug#load('tommywiseau')
 call plug#remote('w0rp/ale')
 call plug#remote('mhinz/vim-signify')
 call plug#remote('racer-rust/vim-racer')
+call plug#remote('ctrlpvim/ctrlp.vim')
+call plug#remote('junegunn/fzf.vim')
+set rtp+=/usr/local/opt/fzf
 
 " ft
 call ft#detect('*.toml', 'toml')
@@ -388,6 +392,7 @@ vnoremap <silent> <bs> <
 " misc
 noremap <silent> <m-t> <c-]>
 nnoremap <m-f> :find<space>
+nnoremap <silent> <m-f> :FF<cr>
 nnoremap <silent> w :w<cr>
 nnoremap * *
 

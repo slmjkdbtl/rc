@@ -20,6 +20,7 @@ alias dsclean "sudo find . -type f -name .DS_Store -delete; killall Finder"
 alias sfxr "amulet $HOME/Things/tools/sfxr.lua"
 alias anywhere "sudo spctl --master-disable"
 alias toix "curl -F 'f:1=<-' ix.io"
+alias fzf "fzf --color=bg+:4,info:3,spinner:5,pointer:2"
 
 type -q neomutt; and \
 	alias mutt "neomutt"
