@@ -8,8 +8,11 @@ let g:find_min_input = get(g:, 'find_min_input', 2)
 let g:find_win_top = get(g:, 'find_win_top', 0)
 
 command! Find
-			\ call find#find()
+			\ call find#start('find')
 
 command! Grep
-			\ call find#grep()
+			\ call find#start('grep')
+
+command! MRU
+			\ call find#start('mru')
 

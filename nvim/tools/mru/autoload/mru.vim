@@ -22,6 +22,10 @@ func! s:write(list)
 
 endfunc
 
+func! mru#get()
+	return s:get()
+endfunc
+
 func! mru#add(file)
 
 	if !filereadable(a:file)
@@ -49,9 +53,5 @@ func! mru#start()
 
 	augroup END
 
-endfunc
-
-func! mru#show()
-	" ...
 endfunc
 

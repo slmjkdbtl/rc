@@ -1,34 +1,21 @@
 " wengwengweng
 
-func! find#find()
+func! find#start(mode)
 
 	if s:is_active()
 		return
 	endif
 
-	call s:init('find')
+	call s:open()
+	call s:init(a:mode)
 	call s:poll()
 
 endfunc
 
-func! find#grep()
-
-	if s:is_active()
-		return
-	endif
-
-	call s:init('grep')
-	call s:poll()
-
-endfunc
-
-func! s:init(mode)
+func! s:open()
 
 	botright new
 	noautocmd enew
-
-	let b:mode = a:mode
-	let b:input = ''
 
 	setlocal buftype=nofile
 	setlocal bufhidden=wipe
@@ -46,15 +33,47 @@ func! s:init(mode)
 	setlocal expandtab
 	setlocal nowrap
 	resize 0
-	exec 'setfiletype ' . b:mode
-	exec 'setlocal statusline=\ ' . b:mode
 
 	redraw
 
 endfunc
 
+func! s:poll()
+
+	while 1
+
+		let nr = getchar()
+		let ch = nr2char(nr)
+
+		if nr == 27
+			call s:close()
+			break
+		elseif nr == "\<bs>"
+			call s:del()
+			call s:update()
+		elseif nr == "\<up>"
+			call s:up()
+		elseif nr == "\<down>"
+			call s:down()
+		elseif nr == 13
+			call s:enter()
+		elseif type(ch) == 1
+			call s:input(ch)
+			call s:update()
+		endif
+
+		if !s:is_active()
+			break
+		endif
+
+		redraw
+
+	endwhile
+
+endfunc
+
 func! s:is_active()
-	return &filetype == 'find' || &filetype == 'grep'
+	return &ft == 'find' || &ft == 'grep' || &ft == 'mru'
 endfunc
 
 func! s:close()
@@ -101,92 +120,6 @@ func! s:down()
 	call cursor(line('.') + 1, 1)
 endfunc
 
-func! s:enter()
-
-	if b:mode == 'grep'
-		call s:enter_grep()
-	elseif b:mode == 'find'
-		call s:enter_find()
-	endif
-
-endfunc
-
-func! s:enter_find()
-
-	let item = b:find_results[line('.') - 1]
-
-	if exists('item')
-
-		call s:close()
-		exec 'edit ' . item
-
-	endif
-
-endfunc
-
-func! s:enter_grep()
-
-	let item = b:grep_results[line('.') - 1]
-
-	if exists('item') && has_key(item, 'file')
-
-		call s:close()
-		exec 'edit ' . item.file
-		call cursor(item.line, item.col)
-
-	endif
-
-endfunc
-
-func! s:poll()
-
-	while 1
-
-		let nr = getchar()
-		let ch = nr2char(nr)
-
-		if nr == 27
-			call s:close()
-			break
-		elseif nr == "\<bs>"
-			call s:del()
-			call s:update()
-		elseif nr == "\<up>"
-			call s:up()
-		elseif nr == "\<down>"
-			call s:down()
-		elseif nr == 13
-			call s:enter()
-		elseif type(ch) == 1
-			call s:input(ch)
-			call s:update()
-		endif
-
-		if !s:is_active()
-			break
-		endif
-
-		redraw
-
-	endwhile
-
-endfunc
-
-func! s:update()
-
-	if len(b:input) < g:find_min_input
-		call s:clear()
-		return
-	endif
-
-	if b:mode == 'grep'
-		call s:update_grep(b:input)
-	elseif b:mode == 'find'
-		call s:update_find(b:input)
-	endif
-
-endfunc
-
 func! s:set_height(n)
 	exec 'resize ' . (a:n > g:find_max_height ? g:find_max_height : a:n)
 endfunc
@@ -201,13 +134,54 @@ func! s:clear()
 
 endfunc
 
+func! s:init(mode)
+
+	let b:mode = a:mode
+	let b:input = ''
+	exec 'setfiletype ' . b:mode
+	exec 'setlocal statusline=\ ' . b:mode
+	redraw
+
+	call function('s:init_' . b:mode)()
+
+endfunc
+
+func! s:update()
+
+	call function('s:update_' . b:mode)(b:input)
+
+	if g:find_win_top
+		call cursor(1, 1)
+	else
+		call cursor(line('$'), 1)
+	endif
+
+endfunc
+
+func! s:enter()
+	call function('s:enter_' . b:mode)()
+endfunc
+
+func! s:init_grep()
+	" ...
+endfunc
+
+func! s:init_find()
+	" ...
+endfunc
+
+func! s:init_mru()
+	let b:mru_files = mru#get()
+	call s:update_mru('')
+endfunc
+
 func! s:update_find(pat)
 
 	if exists('b:match')
 		call matchdelete(b:match)
 	endif
 
-	if empty(a:pat)
+	if len(b:input) < g:find_min_input
 		call s:clear()
 		return
 	endif
@@ -231,12 +205,6 @@ func! s:update_find(pat)
 
 	call s:set_height(num)
 
-	if g:find_win_top
-		call cursor(1, 1)
-	else
-		call cursor(line('$'), 1)
-	endif
-
 	let b:match = matchadd('FindKeyword', a:pat)
 
 endfunc
@@ -245,7 +213,7 @@ func! s:update_grep(pat)
 
 	let b:grep_results = []
 
-	if empty(a:pat)
+	if len(b:input) < g:find_min_input
 		call s:clear()
 		return
 	endif
@@ -296,13 +264,89 @@ func! s:update_grep(pat)
 	setlocal nomodifiable
 	setlocal nomodified
 
-	if g:find_win_top
-		call cursor(1, 1)
+	let b:match = matchadd('GrepKeyword', a:pat)
+
+endfunc
+
+func! s:update_mru(pat)
+
+" 	if exists('b:match')
+" 		call matchdelete(b:match)
+" 	endif
+
+	let b:mru_results = []
+
+	if empty(a:pat)
+		let b:mru_results = b:mru_files
 	else
-		call cursor(line('$'), 1)
+
+		for f in b:mru_files
+			if a:pat =~ f
+				if g:find_win_top
+					let b:mru_results += [f]
+				else
+					let b:mru_results = [f] + b:mru_results
+				endif
+			endif
+		endfor
+
 	endif
 
-	let b:match = matchadd('GrepKeyword', a:pat)
+	let num = len(b:mru_results)
+
+	setlocal modifiable
+	silent! %delete
+
+	for i in range(num)
+		call setline(i + 1, b:mru_results[i])
+	endfor
+
+	setlocal nomodifiable
+	setlocal nomodified
+
+	call s:set_height(num)
+
+	let b:match = matchadd('MRUKeyword', a:pat)
+
+endfunc
+
+func! s:enter_find()
+
+	let item = b:find_results[line('.') - 1]
+
+	if exists('item')
+
+		call s:close()
+		exec 'edit ' . item
+
+	endif
+
+endfunc
+
+func! s:enter_grep()
+
+	let item = b:grep_results[line('.') - 1]
+
+	if exists('item') && has_key(item, 'file')
+
+		call s:close()
+		exec 'edit ' . item.file
+		call cursor(item.line, item.col)
+
+	endif
+
+endfunc
+
+func! s:enter_mru()
+
+	let item = b:mru_results[line('.') - 1]
+
+	if exists('item')
+
+		call s:close()
+		exec 'edit ' . item
+
+	endif
 
 endfunc
 
