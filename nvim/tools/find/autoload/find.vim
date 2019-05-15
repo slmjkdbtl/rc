@@ -1,22 +1,21 @@
 " wengwengweng
 
 func! find#find()
-	call s:init('find', 'bot')
+	call s:init('find')
 	call s:poll()
 endfunc
 
 func! find#grep()
-	call s:init('grep', 'bot')
+	call s:init('grep')
 	call s:poll()
 endfunc
 
-func! s:init(mode, dir)
+func! s:init(mode)
 
 	botright new
 	noautocmd enew
 
 	let b:mode = a:mode
-	let b:dir = a:dir
 	let b:input = ''
 
 	setlocal buftype=nofile
@@ -34,6 +33,7 @@ func! s:init(mode, dir)
 	setlocal noswapfile
 	setlocal expandtab
 	setlocal nowrap
+	resize 0
 	exec 'setfiletype ' . b:mode
 	exec 'setlocal statusline=\ ' . b:mode
 
@@ -92,10 +92,10 @@ func! s:enter_find()
 
 	let item = b:find_results[line('.') - 1]
 
-	if exists('item') && has_key(item, 'file')
+	if exists('item')
 
 		call s:close()
-		exec 'edit ' . item.file
+		exec 'edit ' . item
 
 	endif
 
@@ -162,34 +162,55 @@ func! s:update()
 endfunc
 
 func! s:set_height(n)
-	exec 'resize ' . a:n > g:find_max_height ? g:find_max_height : a:n
+	exec 'resize ' . (a:n > g:find_max_height ? g:find_max_height : a:n)
 endfunc
 
 func! s:update_find(pat)
 
-	let b:grep_results = []
-
-	setlocal modifiable
-	silent! %delete
+	if empty(a:pat)
+		return
+	endif
 
 	if exists('b:match')
 		call matchdelete(b:match)
 	endif
 
+	let b:find_results = systemlist('fd ' . a:pat)
+	let num = len(b:find_results)
+
+	if !g:find_win_top
+		let b:find_results = reverse(b:find_results)
+	endif
+
+	setlocal modifiable
+	silent! %delete
+
+	for i in range(num)
+		call setline(i + 1, b:find_results[i])
+	endfor
+
 	setlocal nomodifiable
 	setlocal nomodified
 
-	if b:dir == 'bot'
-		call cursor(line('$'), 1)
-	else
+	call s:set_height(num)
+
+	if g:find_win_top
 		call cursor(1, 1)
+	else
+		call cursor(line('$'), 1)
 	endif
 
-	let b:match = matchadd('GrepKeyword', a:pat)
+	let b:match = matchadd('FindKeyword', a:pat)
 
 endfunc
 
 func! s:update_grep(pat)
+
+	let b:grep_results = []
+
+	if empty(a:pat)
+		return
+	endif
 
 	if exists('b:match')
 		call matchdelete(b:match)
@@ -202,8 +223,6 @@ func! s:update_grep(pat)
 
 	silent! exec 'grep! "' . a:pat . '"'
 
-	let b:grep_results = []
-
 	for d in getqflist()
 
 		let fname = bufname(d.bufnr)
@@ -215,10 +234,10 @@ func! s:update_grep(pat)
 			\ 'col': d.col,
 			\ }
 
-		if b:dir == 'bot'
-			let b:grep_results = [entry] + b:grep_results
-		else
+		if g:find_win_top
 			let b:grep_results += [entry]
+		else
+			let b:grep_results = [entry] + b:grep_results
 		endif
 
 	endfor
@@ -236,10 +255,10 @@ func! s:update_grep(pat)
 	setlocal nomodifiable
 	setlocal nomodified
 
-	if b:dir == 'bot'
-		call cursor(line('$'), 1)
-	else
+	if g:find_win_top
 		call cursor(1, 1)
+	else
+		call cursor(line('$'), 1)
 	endif
 
 	let b:match = matchadd('GrepKeyword', a:pat)
