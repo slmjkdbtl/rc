@@ -70,12 +70,10 @@ endfunc
 
 func! s:up()
 	call cursor(line('.') - 1, 1)
-	redraw
 endfunc
 
 func! s:down()
 	call cursor(line('.') + 1, 1)
-	redraw
 endfunc
 
 func! s:enter()
@@ -143,6 +141,8 @@ func! s:poll()
 			break
 		endif
 
+		redraw
+
 	endwhile
 
 endfunc
@@ -150,6 +150,7 @@ endfunc
 func! s:update()
 
 	if len(b:input) < g:find_min_input
+		call s:clear()
 		return
 	endif
 
@@ -165,14 +166,25 @@ func! s:set_height(n)
 	exec 'resize ' . (a:n > g:find_max_height ? g:find_max_height : a:n)
 endfunc
 
-func! s:update_find(pat)
+func! s:clear()
 
-	if empty(a:pat)
-		return
-	endif
+	setlocal modifiable
+	silent! %delete
+	setlocal nomodifiable
+	setlocal nomodified
+	call s:set_height(1)
+
+endfunc
+
+func! s:update_find(pat)
 
 	if exists('b:match')
 		call matchdelete(b:match)
+	endif
+
+	if empty(a:pat)
+		call s:clear()
+		return
 	endif
 
 	let b:find_results = systemlist('fd ' . a:pat)
@@ -209,6 +221,7 @@ func! s:update_grep(pat)
 	let b:grep_results = []
 
 	if empty(a:pat)
+		call s:clear()
 		return
 	endif
 
