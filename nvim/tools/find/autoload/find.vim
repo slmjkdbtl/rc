@@ -34,6 +34,9 @@ func! s:open()
 	setlocal nowrap
 	resize 0
 
+	let b:input = ''
+	call s:refresh_cmd()
+
 	redraw
 
 endfunc
@@ -78,9 +81,7 @@ endfunc
 
 func! s:close()
 
-	if exists('b:match')
-		call matchdelete(b:match)
-	endif
+	call clearmatches()
 
 	if s:is_active()
 		bwipe
@@ -137,7 +138,6 @@ endfunc
 func! s:init(mode)
 
 	let b:mode = a:mode
-	let b:input = ''
 	exec 'setfiletype ' . b:mode
 	exec 'setlocal statusline=\ ' . b:mode
 	redraw
@@ -177,9 +177,7 @@ endfunc
 
 func! s:update_find(pat)
 
-	if exists('b:match')
-		call matchdelete(b:match)
-	endif
+	call clearmatches()
 
 	if len(b:input) < g:find_min_input
 		call s:clear()
@@ -205,7 +203,7 @@ func! s:update_find(pat)
 
 	call s:set_height(num)
 
-	let b:match = matchadd('FindKeyword', a:pat)
+	call matchadd('FindKeyword', a:pat)
 
 endfunc
 
@@ -218,9 +216,7 @@ func! s:update_grep(pat)
 		return
 	endif
 
-	if exists('b:match')
-		call matchdelete(b:match)
-	endif
+	call clearmatches()
 
 	let prev_grepprg = &grepprg
 	let prev_grepformat = &grepformat
@@ -264,17 +260,15 @@ func! s:update_grep(pat)
 	setlocal nomodifiable
 	setlocal nomodified
 
-	let b:match = matchadd('GrepKeyword', a:pat)
+	call matchadd('GrepKeyword', a:pat)
 
 endfunc
 
 func! s:update_mru(pat)
 
-" 	if exists('b:match')
-" 		call matchdelete(b:match)
-" 	endif
-
 	let b:mru_results = []
+
+	call clearmatches()
 
 	if empty(a:pat)
 		let b:mru_results = b:mru_files
@@ -306,7 +300,7 @@ func! s:update_mru(pat)
 
 	call s:set_height(num)
 
-	let b:match = matchadd('MRUKeyword', a:pat)
+	call matchadd('MRUKeyword', a:pat)
 
 endfunc
 

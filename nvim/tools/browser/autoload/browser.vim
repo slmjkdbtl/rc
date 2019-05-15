@@ -212,9 +212,7 @@ func! browser#refresh(...)
 	endif
 
 	let b:listing = browser#get_listing(getcwd())
-	let name = fnamemodify(getcwd(), ':t')
 
-	exec 'file ' . name
 	call s:render()
 	call s:update_statusline()
 	call browser#update_git()
