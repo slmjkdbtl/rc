@@ -280,18 +280,8 @@ endfunc
 
 func! browser#close()
 
-	if b:solid
-		return
-	endif
-
-	if &filetype ==# 'browser'
-
-		silent! bw
-
-		if empty(bufname('%'))
-			call browser#start()
-		endif
-
+	if browser#is_active()
+		bwipe
 	endif
 
 endfunc
@@ -512,12 +502,28 @@ func! browser#search(char)
 
 endfunc
 
-func! browser#solidify()
+func! browser#is_active()
+	return &filetype == 'browser'
+endfunc
 
-	setlocal buftype=nowrite
-	setlocal bufhidden=
-	setlocal buflisted
-	let b:solid = 1
+func! browser#toggle()
+
+	if browser#is_active()
+		call browser#close()
+	else
+		call browser#start()
+	endif
+
+endfunc
+
+func! browser#start_split()
+
+	let cur_buf = expand('%:p')
+
+	vertical new
+	exec 'vertical resize ' . g:browser_width
+	call browser#start()
+	call s:to_item(cur_buf)
 
 endfunc
 
@@ -546,11 +552,10 @@ func! browser#start()
 	call s:update_statusline()
 
 	autocmd CursorMoved <buffer>
-				\ call <sid>cursor()
+				\ call <sid>cursor_bound()
 
 	let b:listing = []
 	let b:marked = []
-	let b:solid = 0
 	let b:git_dir = ''
 	let b:git_modified = []
 	let b:expanded = []
@@ -562,7 +567,7 @@ func! browser#start()
 
 endfunc
 
-func! <sid>cursor()
+func! <sid>cursor_bound()
 
 	let ln = line('.')
 
@@ -583,7 +588,6 @@ func! browser#bind()
 	map <buffer><silent> h <plug>(browser_back)
 	map <buffer><silent> k <plug>(browser_up)
 	map <buffer><silent> j <plug>(browser_down)
-	map <buffer><silent> <tab> <plug>(browser_close)
 	map <buffer><silent> y <plug>(browser_copy_path)
 	map <buffer><silent> <space> <plug>(browser_mark)
 	map <buffer><silent> e <plug>(browser_expand)
@@ -595,7 +599,6 @@ func! browser#bind()
 	map <buffer><silent> <m-m> <plug>(browser_mkdir)
 	map <buffer><silent> <m-n> <plug>(browser_mkfile)
 	map <buffer><silent> <esc> <plug>(browser_drop)
-	map <buffer><silent> <m-s> <plug>(browser_solidify)
 
 endfunc
 
@@ -640,9 +643,6 @@ noremap <silent> <plug>(browser_mkdir)
 
 noremap <silent> <plug>(browser_mkfile)
 			\ :call browser#mkfile()<cr>
-
-noremap <silent> <plug>(browser_solidify)
-			\ :call browser#solidify()<cr>
 
 noremap <silent> <plug>(browser_up)
 			\ k

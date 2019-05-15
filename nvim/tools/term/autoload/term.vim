@@ -9,16 +9,16 @@ func! term#toggle()
 	else
 
 		botright new
-		exec "resize " . g:term_height
+		exec 'resize ' . g:term_height
 
 		try
 
-			exec "buffer " . g:term_buf
+			exec 'buffer ' . g:term_buf
 
 		catch
 
-			call termopen($SHELL, {"detach": 0})
-			let g:term_buf = bufnr("")
+			call termopen($SHELL, { 'detach': 0 })
+			let g:term_buf = bufnr('')
 			setlocal nonumber
 			setlocal norelativenumber
 			setlocal signcolumn=no

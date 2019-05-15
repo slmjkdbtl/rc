@@ -45,15 +45,7 @@ func! utils#close()
 		return
 	endif
 
-	if &filetype ==# 'space'
-		quit
-	endif
-
 	silent! bwipe
-
-	if empty(bufname('%'))
-		Space
-	endif
 
 endfunc
 

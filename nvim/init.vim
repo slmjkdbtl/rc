@@ -267,16 +267,20 @@ augroup Explore
 	autocmd!
 
 	autocmd BufEnter *
-				\ call s:explore()
+				\ call s:enter()
 
-	func! s:explore()
+	func! s:enter()
 
 		let l:name = expand('%:p')
+
+		if empty(bufname('%'))
+			Browser
+		endif
 
 		if isdirectory(l:name)
 
 			exec 'lcd ' . l:name
-			bd
+			bwipe
 			Browser
 
 		elseif filereadable(l:name)
@@ -392,11 +396,11 @@ call search#bind()
 call mru#start()
 noremap <silent> <m-k> <cmd>ScrollUp<cr>
 noremap <silent> <m-j> <cmd>ScrollDown<cr>
-nnoremap <silent> <tab> :Browser<cr>
+nnoremap <silent> <tab> :BrowserToggle<cr>
 nnoremap <silent> <m--> :OpenTerm<cr>
 nnoremap <silent> <m-=> :OpenFinder<cr>
 noremap <silent> / :CommentToggle<cr>
-nnoremap <silent> <m-t> :TermToggle<cr>
+" nnoremap <silent> <m-t> :TermToggle<cr>
 tnoremap <silent> <m-t> <c-\><c-n>:TermToggle<cr>
 nnoremap <silent> <m-w> :Close<cr>
 " nnoremap <silent> <m-[> :PrevMark<cr>
