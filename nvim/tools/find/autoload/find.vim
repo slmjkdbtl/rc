@@ -1,13 +1,25 @@
 " wengwengweng
 
 func! find#find()
+
+	if s:is_active()
+		return
+	endif
+
 	call s:init('find')
 	call s:poll()
+
 endfunc
 
 func! find#grep()
+
+	if s:is_active()
+		return
+	endif
+
 	call s:init('grep')
 	call s:poll()
+
 endfunc
 
 func! s:init(mode)
@@ -37,11 +49,24 @@ func! s:init(mode)
 	exec 'setfiletype ' . b:mode
 	exec 'setlocal statusline=\ ' . b:mode
 
+	redraw
+
+endfunc
+
+func! s:is_active()
+	return &filetype == 'find' || &filetype == 'grep'
 endfunc
 
 func! s:close()
-	silent redraw
-	bwipe
+
+	if exists('b:match')
+		call matchdelete(b:match)
+	endif
+
+	if s:is_active()
+		bwipe
+	endif
+
 endfunc
 
 func! s:del()
@@ -137,7 +162,7 @@ func! s:poll()
 			call s:update()
 		endif
 
-		if !exists('b:mode')
+		if !s:is_active()
 			break
 		endif
 
@@ -235,6 +260,9 @@ func! s:update_grep(pat)
 	let &grepformat = g:grep_format
 
 	silent! exec 'grep! "' . a:pat . '"'
+
+	let &grepprg = prev_grepprg
+	let &grepformat = prev_grepformat
 
 	for d in getqflist()
 
