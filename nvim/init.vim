@@ -7,7 +7,7 @@ exec 'set runtimepath=' . g:src_dir
 call plug#load('bookmark')
 call plug#load('find')
 call plug#load('browser')
-call plug#load('todo')
+call plug#load('term')
 call plug#load('dirt')
 call plug#load('comment')
 call plug#load('mark')
@@ -25,7 +25,6 @@ call plug#load('tommywiseau')
 " external plugins
 call plug#remote('w0rp/ale')
 call plug#remote('mhinz/vim-signify')
-call plug#remote('racer-rust/vim-racer')
 
 " ft
 call ft#detect('*.toml', 'toml')
@@ -90,6 +89,7 @@ call ft#detect('*.hss', 'hss')
 call ft#detect('*.scala', 'scala')
 call ft#detect('*.srt', 'srt')
 call ft#detect('*.js', 'javascript')
+call ft#detect('*.jsx', 'javascript')
 call ft#detect('*.vue', 'vue')
 call ft#detect('*.rb', 'ruby')
 call ft#detect('*.html', 'html')
@@ -259,9 +259,6 @@ let g:ale_linters = {
 	\ 'cs': []
 \ }
 
-" racer
-au FileType rust nmap <m-t> <plug>(rust-def)
-
 " tommywiseau
 let g:is_human_bean = 0
 
@@ -386,7 +383,6 @@ vnoremap <silent> <tab> >
 vnoremap <silent> <bs> <
 
 " misc
-noremap <silent> <m-t> <c-]>
 nnoremap <silent> w :w<cr>
 nnoremap * *
 
@@ -400,6 +396,8 @@ nnoremap <silent> <tab> :Browser<cr>
 nnoremap <silent> <m--> :OpenTerm<cr>
 nnoremap <silent> <m-=> :OpenFinder<cr>
 noremap <silent> / :CommentToggle<cr>
+nnoremap <silent> <m-t> :TermToggle<cr>
+tnoremap <silent> <m-t> <c-\><c-n>:TermToggle<cr>
 nnoremap <silent> <m-w> :Close<cr>
 " nnoremap <silent> <m-[> :PrevMark<cr>
 " nnoremap <silent> <m-]> :NextMark<cr>
