@@ -70,10 +70,12 @@ endfunc
 
 func! s:up()
 	call cursor(line('.') - 1, 1)
+	redraw
 endfunc
 
 func! s:down()
 	call cursor(line('.') + 1, 1)
+	redraw
 endfunc
 
 func! s:enter()
@@ -82,6 +84,19 @@ func! s:enter()
 		call s:enter_grep()
 	elseif b:mode == 'find'
 		call s:enter_find()
+	endif
+
+endfunc
+
+func! s:enter_find()
+
+	let item = b:find_results[line('.') - 1]
+
+	if exists('item') && has_key(item, 'file')
+
+		call s:close()
+		exec 'edit ' . item.file
+
 	endif
 
 endfunc
@@ -102,19 +117,17 @@ endfunc
 
 func! s:poll()
 
-	if !exists('b:mode')
-		return
-	endif
+	while 1
 
-	let nr = getchar()
-	let ch = nr2char(nr)
+		let nr = getchar()
+		let ch = nr2char(nr)
 
-	if nr == 27
-		call s:close()
-	else
-
-		if nr == "\<bs>"
+		if nr == 27
+			call s:close()
+			break
+		elseif nr == "\<bs>"
 			call s:del()
+			call s:update()
 		elseif nr == "\<up>"
 			call s:up()
 		elseif nr == "\<down>"
@@ -123,16 +136,22 @@ func! s:poll()
 			call s:enter()
 		elseif type(ch) == 1
 			call s:input(ch)
+			call s:update()
 		endif
 
-		call s:update()
-		call s:poll()
+		if !exists('b:mode')
+			break
+		endif
 
-	endif
+	endwhile
 
 endfunc
 
 func! s:update()
+
+	if len(b:input) < g:find_min_input
+		return
+	endif
 
 	if b:mode == 'grep'
 		call s:update_grep(b:input)
@@ -142,18 +161,35 @@ func! s:update()
 
 endfunc
 
-func! s:update_find(txt)
-	" ...
+func! s:set_height(n)
+	exec 'resize ' . a:n > g:find_max_height ? g:find_max_height : a:n
 endfunc
 
-func! s:update_grep(pat)
+func! s:update_find(pat)
 
-	if len(a:pat) <= g:find_min_input
-		return
-	endif
+	let b:grep_results = []
 
 	setlocal modifiable
 	silent! %delete
+
+	if exists('b:match')
+		call matchdelete(b:match)
+	endif
+
+	setlocal nomodifiable
+	setlocal nomodified
+
+	if b:dir == 'bot'
+		call cursor(line('$'), 1)
+	else
+		call cursor(1, 1)
+	endif
+
+	let b:match = matchadd('GrepKeyword', a:pat)
+
+endfunc
+
+func! s:update_grep(pat)
 
 	if exists('b:match')
 		call matchdelete(b:match)
@@ -187,32 +223,26 @@ func! s:update_grep(pat)
 
 	endfor
 
+	setlocal modifiable
+	silent! %delete
+
 	let num = len(b:grep_results)
 
 	for i in range(num)
 		call setline(i + 1, b:grep_results[i].text)
 	endfor
 
-	let height = num > g:find_max_height ? g:find_max_height : num
-
-	exec 'resize ' . height
-
+	call s:set_height(num)
 	setlocal nomodifiable
 	setlocal nomodified
-	call cursor(line('$'), 1)
+
+	if b:dir == 'bot'
+		call cursor(line('$'), 1)
+	else
+		call cursor(1, 1)
+	endif
+
 	let b:match = matchadd('GrepKeyword', a:pat)
 
 endfunc
-
-func! s:cursor()
-
-	let ln = line('.')
-	let cn = col('.')
-
-	call cursor(ln, 1)
-
-endfunc
-
-noremap <silent> <plug>(find_open)
-			\ :call <sid>open()<cr>
 
