@@ -19,6 +19,9 @@ call mark#set('lua', {
 	\ 'function': [ 'function\s\zs.\+\ze(.*)', '\zsfunction(.*)\ze' ],
 \ })
 
+command! MarkToggle
+			\ call mark#toggle()
+
 command! PrevMark
 			\ call mark#jump_prev()
 

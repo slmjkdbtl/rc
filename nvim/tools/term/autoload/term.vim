@@ -14,10 +14,26 @@ func! term#toggle()
 		try
 
 			exec 'buffer ' . g:term_buf
+			setlocal nonumber
+			setlocal norelativenumber
+			setlocal signcolumn=no
+			setlocal nobuflisted
+			setlocal nocursorline
+			setlocal nocursorcolumn
+			setlocal nolist
+			setlocal norelativenumber
+			setlocal nospell
+			setlocal colorcolumn=
+			setlocal foldcolumn=0
+			setlocal matchpairs=
+			setlocal noswapfile
+			setlocal nowrap
+			setlocal nomodifiable
+			setlocal nomodified
 
 		catch
 
-			call termopen($SHELL, { 'detach': 0 })
+			terminal
 			let g:term_buf = bufnr('')
 			setlocal nonumber
 			setlocal norelativenumber

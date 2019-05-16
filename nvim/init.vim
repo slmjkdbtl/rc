@@ -273,10 +273,6 @@ augroup Explore
 
 		let l:name = expand('%:p')
 
-		if empty(bufname('%'))
-			Browser
-		endif
-
 		if isdirectory(l:name)
 
 			exec 'lcd ' . l:name

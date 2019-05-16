@@ -8,6 +8,44 @@ func! s:capture(str, pat)
 	return matchstr(a:str, s:tpat(a:pat))
 endfunc
 
+func! mark#is_active()
+	" ...
+endfunc
+
+func! mark#toggle()
+	" ...
+endfunc
+
+func! mark#close()
+
+	bwipe
+
+endfunc
+
+func! mark#open()
+
+	noautocmd enew
+	setlocal buftype=nofile
+	setlocal bufhidden=wipe
+	setlocal nobuflisted
+	setlocal nocursorline
+	setlocal nocursorcolumn
+	setlocal nolist
+	setlocal nonumber
+	setlocal norelativenumber
+	setlocal nospell
+	setlocal colorcolumn=
+	setlocal foldcolumn=0
+	setlocal matchpairs=
+	setlocal noswapfile
+	setlocal nowrap
+	setlocal nomodifiable
+	setlocal nomodified
+	setfiletype marks
+	setlocal statusline=\ marks
+
+endfunc
+
 func! mark#set(ft, patterns)
 	let g:marks[a:ft] = get(g:marks, a:ft, a:patterns)
 endfunc

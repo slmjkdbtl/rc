@@ -160,3 +160,4 @@ func! line#get_statusline() abort
 	return line
 
 endfunc
+

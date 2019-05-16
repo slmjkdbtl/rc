@@ -525,6 +525,10 @@ func! browser#start_split()
 
 endfunc
 
+func! browser#close_split()
+
+endfunc
+
 func! browser#start()
 
 	let cur_buf = expand('%:p')
