@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AllowDragOfTabIntoNewWindow</key>
+	<true/>
 	<key>AlternateMouseScroll</key>
 	<true/>
 	<key>AppleAntiAliasingThreshold</key>
@@ -12,6 +14,12 @@
 	<integer>1</integer>
 	<key>AppleWindowTabbingMode</key>
 	<string>manual</string>
+	<key>ColoredSelectedTabOutlineStrength</key>
+	<real>0.5</real>
+	<key>ColoredUnselectedTabTextProminence</key>
+	<real>0.5</real>
+	<key>CompactMinimalTabBarHeight</key>
+	<real>32</real>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>super</key>
@@ -360,6 +368,12 @@
 	<string>7B0162E7-F8FA-4933-A562-6AD010864E0A</string>
 	<key>DefaultTabBarHeight</key>
 	<real>16</real>
+	<key>DimBackgroundWindows</key>
+	<false/>
+	<key>DimInactiveSplitPanes</key>
+	<true/>
+	<key>DimOnlyText</key>
+	<true/>
 	<key>DisableFullscreenTransparency</key>
 	<true/>
 	<key>EnableDivisionView</key>
@@ -399,9 +413,13 @@
 	</dict>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
+	<key>HideActivityIndicator</key>
+	<true/>
 	<key>HideScrollbar</key>
 	<true/>
 	<key>HideTab</key>
+	<true/>
+	<key>HideTabCloseButton</key>
 	<true/>
 	<key>HideTabNumber</key>
 	<true/>
@@ -419,6 +437,16 @@
 	<false/>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
+	<key>MiddleClickClosesTab</key>
+	<false/>
+	<key>MinimalSplitPaneDividerProminence</key>
+	<real>0.05000000074505806</real>
+	<key>MinimalTabStyleBackgroundColorDifference</key>
+	<real>0.029999999329447746</real>
+	<key>MinimalTabStyleOutlineStrength</key>
+	<real>0.10000000149011612</real>
+	<key>MinimalTabStyleTreatLeftInsetAsPartOfFirstTab</key>
+	<false/>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/.conf/iterm</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
@@ -470,7 +498,7 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>255 161 1068 682 0 0 1440 877 </string>
+	<string>187 155 1068 682 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>218 221 1068 602 0 0 1440 877 </string>
 	<key>NeverWarnAboutShortLivedSessions_7B0162E7-F8FA-4933-A562-6AD010864E0A</key>
@@ -707,13 +735,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.19215686619281769</real>
+				<real>0.17254901960784313</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.14509804546833038</real>
+				<real>0.12549019607843137</real>
 				<key>Red Component</key>
-				<real>0.11764705926179886</real>
+				<real>0.098039215686274508</real>
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<false/>
@@ -1086,7 +1114,7 @@
 		<key>screenFrame</key>
 		<string>{{0, 0}, {1440, 900}}</string>
 		<key>topLeft</key>
-		<string>{161, 781}</string>
+		<string>{99, 820}</string>
 	</dict>
 	<key>NoSyncHaveRequestedFullDiskAccess</key>
 	<true/>
@@ -1097,7 +1125,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>74FBE34B-2C3C-41D8-91BB-AB4A405CCA1C</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>3</integer>
+	<integer>4</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1522,6 +1550,14 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
+				<string>currentTab.titleOverrideFormat</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
 				<string>currentTab.currentSession.hostname</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
@@ -1629,7 +1665,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.pid</string>
+				<string>iterm2.localhostName</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1637,7 +1673,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>iterm2.localhostName</string>
+				<string>currentSession.path</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1677,7 +1713,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.path</string>
+				<string>currentSession.pid</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1739,7 +1775,7 @@
 	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.43859707446808516</real>
+	<real>0.25994847074468086</real>
 	<key>StretchTabsToFillBar</key>
 	<true/>
 	<key>TabStyleWithAutomaticOption</key>
