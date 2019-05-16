@@ -36,27 +36,6 @@ nonnumeric_search = false
 align = "Left"
 
 [[columns]]
-kind = "ReadBytes"
-style = "ByUnit"
-numeric_search = false
-nonnumeric_search = false
-align = "Right"
-
-[[columns]]
-kind = "WriteBytes"
-style = "ByUnit"
-numeric_search = false
-nonnumeric_search = false
-align = "Right"
-
-[[columns]]
-kind = "Separator"
-style = "White"
-numeric_search = false
-nonnumeric_search = false
-align = "Left"
-
-[[columns]]
 kind = "CpuTime"
 style = "BrightCyan"
 numeric_search = false
@@ -86,6 +65,6 @@ descending = ""
 tree_symbols = ["│", "─", "┬", "├", "└"]
 
 [sort]
-column = 0
+column = 3
 order = "Descending"
 
