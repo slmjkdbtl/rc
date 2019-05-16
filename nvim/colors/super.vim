@@ -9,8 +9,8 @@ let g:colors_name = 'super'
 
 let s:italic = ''
 let s:bold = 'bold'
-let s:base00 = [ '#1e2531', '235' ]
-let s:base01 = [ '#262d39', '237' ]
+let s:base00 = [ '#19202c', '235' ]
+let s:base01 = [ '#212834', '237' ]
 let s:base02 = [ '#3e4555', '240' ]
 let s:base03 = [ '#5b6974', '243' ]
 let s:base04 = [ '#a7adba', '145' ]
