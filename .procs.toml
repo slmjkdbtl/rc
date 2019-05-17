@@ -65,6 +65,6 @@ descending = ""
 tree_symbols = ["│", "─", "┬", "├", "└"]
 
 [sort]
-column = 3
+column = 2
 order = "Descending"
 
