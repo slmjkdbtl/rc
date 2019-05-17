@@ -1,116 +1,19 @@
 
 .conf
 
-	- nvim
-
-		# editing
-		https://neovim.io/
-
-	- fish
-
-		# shell
-		https://fishshell.com/
-
-	- iterm
-
-		# workspace
-		https://iterm2.com/
-
-	- mpv
-
-		# media player
-		https://mpv.io/
-
-	- hammerspoon
-
-		# macos automation
-		http://www.hammerspoon.org/
-
-	- proggy
-
-		# font
-		https://proggyfonts.net/
-
-	- .skhdrc
-
-		# keyboard shortcuts
-		https://github.com/koekeishiya/skhd/
-
-	- .tmux.conf
-
-		# terminal multiplexer
-		https://tmux.github.io/
-
-	- .mpdconf
-		# music player daemon
-		https://www.musicpd.org/
-
-	- super.terminfo
-
-		# custom term specs
-
-	- tools
-
-		# list of other tools i use on a daily basis
-
-	- scripts
-
-		# some applescripts
-
-	- workflows
-
-		# some automator workflows & actions
-
-
-vim plugins
-
-	I've written several vim plugins to learn vim, they're all under nvim/tools/
-
-	- plug
-		simplified plugin manager
-
-	- browser
-		simple file browser & manager
-
-	- bookmark
-		bookmark management & jumping
-
-	- grep
-		interactive grep
-
-	- comment
-		toggle comment
-
-	- line
-		custom statusline & tabline
-
-	- trim
-		trim whitespaces on save
-
-	- jump
-		jumping through markers
-
-	- pair
-		autopair in insert mode
-
-	- scroll
-		smooth scrolling
-
-	- search
-		enhanced searching & multiline editing
-
-	- space
-		custom start screen
-
-	- theme
-		my colorscheme
-
-	- utils
-		simple util commands
-
-	- TODO
-		simple syntax for my TODO files
-
-	- tommywiseau
-		meaning of life
+my config files for
+- neovim
+- fish
+- iterm
+- macos
+- mpv
+- mutt
+- mbsync
+- hammerspoon
+- tmux
+- mpd
+- terminfo
+- homebrew
+- skhd
+- chunkwm
 

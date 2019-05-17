@@ -1,0 +1,58 @@
+this config should be used without vim's default runtime
+set $VIMRUNTIME to this config's path
+
+autoload
+
+	- plug
+		simple plugin manager
+
+	- ft
+		filetype registry
+
+	- unmap
+		unmapping default key maps
+
+tools
+
+	- bookmark
+		bookmark management & jumping
+
+	- browser
+		simple file browser & manager
+
+	- comment
+		toggle comment
+
+	- find
+		find & grep interface
+
+	- line
+		custom statusline & bufline
+
+	- mark
+		jumping through markers
+
+	- mode
+		simple mode toggling
+
+	- mru
+		mru tracker
+
+	- pair
+		autopair in insert & visual
+
+	- scroll
+		smooth scrolling
+
+	- search
+		enhanced searching & multiline editing
+
+	- space
+		start screen
+
+	- term
+		terminal utilities
+
+	- utils
+		util commands
+
