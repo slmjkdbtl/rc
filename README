@@ -2,18 +2,19 @@
 .conf
 
 my config files for
-- neovim
-- fish
-- iterm
-- macos
-- mpv
-- mutt
-- mbsync
-- hammerspoon
-- tmux
-- mpd
-- terminfo
-- homebrew
-- skhd
-- chunkwm
+
+	- neovim
+	- fish
+	- iterm
+	- macos
+	- mpv
+	- mutt
+	- mbsync
+	- hammerspoon
+	- tmux
+	- mpd
+	- terminfo
+	- homebrew
+	- skhd
+	- chunkwm
 
