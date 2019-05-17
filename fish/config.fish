@@ -52,8 +52,8 @@ set -x BROWSER open
 set -x TERM xterm-super
 set -x PAGER less
 set -x LANG en_US.UTF-8
-set -x XDG_CONFIG_HOME "$HOME/.config"
-set -x VIMRUNTIME "$XDG_CONFIG_HOME/nvim"
+set -x XDG_CONFIG_HOME $HOME/.config
+set -x VIMRUNTIME $XDG_CONFIG_HOME/nvim
 
 if type -q nvim
 	set -x EDITOR nvim

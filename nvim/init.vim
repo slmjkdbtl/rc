@@ -1,7 +1,5 @@
 " wengwengweng
 
-let g:src_dir = expand('<sfile>:p:h')
-
 " local plugins
 call plug#load('bookmark')
 call plug#load('find')

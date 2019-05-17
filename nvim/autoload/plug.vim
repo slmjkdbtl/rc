@@ -1,7 +1,7 @@
 " wengwengweng
 
-let s:dir = g:src_dir . '/remote'
-let s:custom_dir = g:src_dir . '/tools'
+let s:dir = $VIMRUNTIME . '/remote'
+let s:custom_dir = $VIMRUNTIME . '/tools'
 let s:plugins = {}
 
 func! plug#dir(dir)
