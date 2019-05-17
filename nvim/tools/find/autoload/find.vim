@@ -6,13 +6,12 @@ func! find#start(mode)
 		return
 	endif
 
-	call s:open()
-	call s:init(a:mode)
+	call s:open(a:mode)
 	call s:poll()
 
 endfunc
 
-func! s:open()
+func! s:open(mode)
 
 	botright new
 	noautocmd enew
@@ -34,10 +33,14 @@ func! s:open()
 	setlocal nowrap
 	resize 0
 
+	let b:mode = a:mode
 	let b:input = ''
-	call s:refresh_cmd()
 
+	exec 'setfiletype ' . b:mode
+	exec 'setlocal statusline=\ ' . b:mode
 	redraw
+
+	call s:refresh_cmd()
 
 endfunc
 
@@ -76,7 +79,7 @@ func! s:poll()
 endfunc
 
 func! s:is_active()
-	return &ft == 'find' || &ft == 'grep' || &ft == 'mru'
+	return &ft == 'find' || &ft == 'grep'
 endfunc
 
 func! s:close()
@@ -135,17 +138,6 @@ func! s:clear()
 
 endfunc
 
-func! s:init(mode)
-
-	let b:mode = a:mode
-	exec 'setfiletype ' . b:mode
-	exec 'setlocal statusline=\ ' . b:mode
-	redraw
-
-	call function('s:init_' . b:mode)()
-
-endfunc
-
 func! s:update()
 
 	call function('s:update_' . b:mode)(b:input)
@@ -160,19 +152,6 @@ endfunc
 
 func! s:enter()
 	call function('s:enter_' . b:mode)()
-endfunc
-
-func! s:init_grep()
-	" ...
-endfunc
-
-func! s:init_find()
-	" ...
-endfunc
-
-func! s:init_mru()
-	let b:mru_files = mru#get()
-	call s:update_mru('')
 endfunc
 
 func! s:update_find(pat)
@@ -264,46 +243,6 @@ func! s:update_grep(pat)
 
 endfunc
 
-func! s:update_mru(pat)
-
-	let b:mru_results = []
-
-	call clearmatches()
-
-	if empty(a:pat)
-		let b:mru_results = b:mru_files
-	else
-
-		for f in b:mru_files
-			if a:pat =~ f
-				if g:find_win_top
-					let b:mru_results += [f]
-				else
-					let b:mru_results = [f] + b:mru_results
-				endif
-			endif
-		endfor
-
-	endif
-
-	let num = len(b:mru_results)
-
-	setlocal modifiable
-	silent! %delete
-
-	for i in range(num)
-		call setline(i + 1, b:mru_results[i])
-	endfor
-
-	setlocal nomodifiable
-	setlocal nomodified
-
-	call s:set_height(num)
-
-	call matchadd('MRUKeyword', a:pat)
-
-endfunc
-
 func! s:enter_find()
 
 	let item = b:find_results[line('.') - 1]
@@ -326,19 +265,6 @@ func! s:enter_grep()
 		call s:close()
 		exec 'edit ' . item.file
 		call cursor(item.line, item.col)
-
-	endif
-
-endfunc
-
-func! s:enter_mru()
-
-	let item = b:mru_results[line('.') - 1]
-
-	if exists('item')
-
-		call s:close()
-		exec 'edit ' . item
 
 	endif
 

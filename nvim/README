@@ -1,4 +1,6 @@
-this config should be used without vim's default runtime
+my vim runtime
+
+should be used without vim's default runtime
 set $VIMRUNTIME to this config's path
 
 autoload

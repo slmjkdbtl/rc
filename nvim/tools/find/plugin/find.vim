@@ -13,6 +13,3 @@ command! Find
 command! Grep
 			\ call find#start('grep')
 
-command! MRU
-			\ call find#start('mru')
-
