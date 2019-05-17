@@ -60,7 +60,7 @@ func! s:poll()
 			call s:down()
 		elseif nr == 13
 			call s:enter()
-		elseif type(ch) == 1
+		elseif nr >= 0x20 && type(ch) == 1
 			call s:input(ch)
 			call s:update()
 		endif
@@ -69,7 +69,7 @@ func! s:poll()
 			break
 		endif
 
-		redraw
+		call s:refresh_cmd()
 
 	endwhile
 
