@@ -1,7 +1,6 @@
 " wengwengweng
 
 let g:src_dir = expand('<sfile>:p:h')
-exec 'set runtimepath=' . g:src_dir
 
 " local plugins
 call plug#load('bookmark')
@@ -272,18 +271,14 @@ augroup Explore
 
 	func! s:enter()
 
-		let l:name = expand('%:p')
+		let name = expand('%:p')
 
-		if isdirectory(l:name)
-
-			exec 'lcd ' . l:name
+		if isdirectory(name)
+			exec 'lcd ' . name
 			bwipe
 			Browser
-
-		elseif filereadable(l:name)
-
+		elseif filereadable(name)
 			exec 'lcd ' . expand('%:p:h')
-
 		endif
 
 		silent! CleanBuf
