@@ -27,6 +27,7 @@ call plug#remote('mhinz/vim-signify')
 call ft#detect('*.toml', 'toml')
 call ft#detect('*.carp', 'carp')
 call ft#detect('*.metal', 'c')
+call ft#detect('*.awk', 'awk')
 call ft#detect('*.ms', 'nroff')
 call ft#detect('*.elm', 'elm')
 call ft#detect('*.fish', 'fish')
@@ -112,12 +113,17 @@ call ft#detect('*.bat', 'batch')
 call ft#detect('Dockerfile', 'docker')
 call ft#detect('Vagrantfile', 'ruby')
 call ft#detect('Brewfile', 'brew')
-call ft#detect('Justfile', 'conf')
+call ft#detect('Justfile', 'make')
 call ft#detect('Makefile', 'make')
+call ft#detect('Makefile*', 'make')
+call ft#detect('*.mk', 'make')
 call ft#detect('Tupfile', 'tup')
+call ft#detect('*.tup', 'tup')
 call ft#detect('LICENSE', 'license')
 call ft#detect('README', 'readme')
 call ft#detect('TODO', 'TODO')
+call ft#detect('*.cmake', 'cmake')
+call ft#detect('CMakeLists.txt', 'cmake')
 call ft#detect('*.dirt', 'dirt')
 
 call ft#comment('rust', '//', ['//!'])
@@ -253,7 +259,6 @@ let g:ale_rust_cargo_check_examples = 1
 let g:ale_rust_cargo_check_tests = 1
 
 let g:ale_linters = {
-	\ 'rust': ['cargo', 'rls'],
 	\ 'cs': []
 \ }
 

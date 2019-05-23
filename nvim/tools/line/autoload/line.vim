@@ -108,7 +108,15 @@ func! s:get_status_curpos(bufn) abort
 endfunc
 
 func! line#get_title() abort
-	return bufname('%')
+
+	let name = bufname('%')
+
+	if empty(name)
+		return &filetype
+	else
+		return name
+	endif
+
 endfunc
 
 func! line#get_bufline() abort
@@ -151,7 +159,6 @@ func! line#get_statusline() abort
 
 	let line .= '%='
 
-	let line .= g:line_custom_status
 	let line .= ' '
 	let line .= s:get_status_filetype('%')
 	let line .= ' '

@@ -103,9 +103,6 @@ syn sync match makeCommandSync groupthere makeCommands "^[A-Za-z0-9_./$()%-][A-Z
 hi def link makeNextLine		makeSpecial
 hi def link makeCmdNextLine	makeSpecial
 hi def link makeSpecTarget		Statement
-if !exists("make_no_commands")
-hi def link makeCommands		Number
-endif
 hi def link makeImplicit		Function
 hi def link makeTarget		Function
 hi def link makeInclude		Include

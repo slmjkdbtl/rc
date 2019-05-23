@@ -464,7 +464,7 @@ hi def link cInclude		Include
 hi def link cPreProc		PreProc
 hi def link cDefine		Macro
 hi def link cIncluded		cString
-hi def link cError		Error
+" hi def link cError		Error
 hi def link cStatement		Statement
 hi def link cCppInWrapper	cCppOutWrapper
 hi def link cCppOutWrapper	cPreCondit
