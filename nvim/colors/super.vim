@@ -7,7 +7,7 @@ syntax reset
 
 let g:colors_name = 'super'
 
-let s:italic = ''
+let s:italic = 'italic'
 let s:bold = 'bold'
 let s:base00 = [ '#19202c', '235' ]
 let s:base01 = [ '#212834', '237' ]

@@ -26,12 +26,3 @@ install:
 	echo "+ ticcing terminfos"
 	tic $(realpath super.terminfo)
 
-.PHONY: casks
-casks: casks.txt
-
-	echo "+ installing casks"
-
-	while read l; do \
-		brew cask install $$l; \
-	done < casks.txt
-

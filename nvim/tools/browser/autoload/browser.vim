@@ -143,7 +143,7 @@ endfunc
 
 func! browser#update_git()
 
-	call jobstart('git rev-parse --show-toplevel', {
+	call s:job('git rev-parse --show-toplevel', {
 				\ 'on_stdout': function('browser#update_git_dir')
 				\ })
 
@@ -161,7 +161,7 @@ func! browser#update_git_dir(j, d, e)
 
 		let b:git_dir = out
 
-		call jobstart('git ls-files -m', {
+		call s:job('git ls-files -m', {
 					\ 'on_stdout': function('browser#update_git_modified')
 					\ })
 

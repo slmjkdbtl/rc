@@ -48,6 +48,7 @@ call ft#detect('*.proto', 'proto')
 call ft#detect('*.capnp', 'capnp')
 call ft#detect('*.lisp', 'lisp')
 call ft#detect('*.el', 'lisp')
+call ft#detect('*.ket', 'ketos')
 call ft#detect('*.obj', 'obj')
 call ft#detect('*.rst', 'rst')
 call ft#detect('*.php', 'php')
@@ -171,6 +172,7 @@ call ft#comment('nginx', '#', [])
 call ft#comment('clojure', ';', [])
 call ft#comment('carp', ';', [])
 call ft#comment('lisp', ';', [])
+call ft#comment('ketos', ';', [])
 call ft#comment('vim', '\"', [])
 call ft#comment('tex', '%', [])
 call ft#comment('nroff', "'''", [])
@@ -212,6 +214,7 @@ set wildignorecase
 set ignorecase
 set cursorline
 set hlsearch
+set cpoptions=aABceFs
 set showtabline=2
 set guioptions+=!
 set path+=**

@@ -10,13 +10,10 @@ alias size "du -h -d 1 . | sort -h"
 alias disk "df -h ."
 alias ncdu "ncdu --color=dark"
 alias v "nvim"
-alias ym "youtube-dl -x --audio-format mp3"
-alias yv "youtube-dl"
+alias yg "you-get"
 alias ase "/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias vps "ssh t@wengwengweng"
-alias website "open https://www.wengwengweng.me/"
 alias dsclean "sudo find . -type f -name .DS_Store -delete; killall Finder"
-alias sfxr "amulet $HOME/Things/tools/sfxr.lua"
 alias anywhere "sudo spctl --master-disable"
 alias toix "curl -F 'f:1=<-' ix.io"
 alias fzf "fzf --color=bg+:4,info:3,spinner:5,pointer:2"
@@ -60,8 +57,23 @@ else
 	set -x EDITOR vim
 end
 
-if test -d $HOME/.local/bin
-	set -x PATH $HOME/.local/bin $PATH
+# personal bin
+set -x BIN $HOME/.bin
+set -x PATH $BIN $PATH
+
+function tobin -d "move executable to bin" -a "file"
+	switch "$file"
+		case ""
+			c red; echo "no file provided"; c normal
+			return 1
+		case "*"
+			if not test -e "$file"
+				c red; echo "file not exist"; c normal
+				return 1
+			end
+			chmod +x $file
+			install -v $file $BIN
+	end
 end
 
 # fzf
@@ -77,28 +89,17 @@ if type -q jump
 end
 
 # go
-if test -d $HOME/.go
-	set -x GOPATH $HOME/.go
-end
-
-if test -d $GOPATH/bin
-	set -x PATH $GOPATH/bin $PATH
-end
+set -x GOPATH $HOME/.go
+set -x PATH $GOPATH/bin $PATH
 
 # cargo
-if test -d $HOME/.cargo
-	set -x PATH $HOME/.cargo/bin $PATH
-end
+set -x PATH $HOME/.cargo/bin $PATH
 
 # flutter
-if test -d $HOME/.flutter
-	set -x PATH $HOME/.flutter/bin $PATH
-end
+set -x PATH $HOME/.flutter/bin $PATH
 
 # fastlane
-if test -d $HOME/.fastlane
-	set -x PATH $HOME/.fastlane/bin $PATH
-end
+set -x PATH $HOME/.fastlane/bin $PATH
 
 # carp
 set -x CARP_DIR $HOME/.carp
@@ -118,10 +119,4 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 # ruby
 set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
-
-# wasmer
-if test -d $HOME/.wasmer
-	set -x WASMER_DIR $HOME/.wasmer
-	[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
-end
 
