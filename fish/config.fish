@@ -89,17 +89,28 @@ if type -q jump
 end
 
 # go
-set -x GOPATH $HOME/.go
-set -x PATH $GOPATH/bin $PATH
+if test -d $HOME/.go
+	set -x GOPATH $HOME/.go
+end
+
+if test -d $GOPATH/bin
+	set -x PATH $GOPATH/bin $PATH
+end
 
 # cargo
-set -x PATH $HOME/.cargo/bin $PATH
+if test -d $HOME/.cargo
+	set -x PATH $HOME/.cargo/bin $PATH
+end
 
 # flutter
-set -x PATH $HOME/.flutter/bin $PATH
+if test -d $HOME/.flutter
+	set -x PATH $HOME/.flutter/bin $PATH
+end
 
 # fastlane
-set -x PATH $HOME/.fastlane/bin $PATH
+if test -d $HOME/.fastlane
+	set -x PATH $HOME/.fastlane/bin $PATH
+end
 
 # carp
 set -x CARP_DIR $HOME/.carp
