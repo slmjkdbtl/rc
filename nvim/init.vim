@@ -126,6 +126,7 @@ call ft#detect('TODO', 'TODO')
 call ft#detect('*.cmake', 'cmake')
 call ft#detect('CMakeLists.txt', 'cmake')
 call ft#detect('*.dirt', 'dirt')
+call ft#detect('/etc/hosts', 'conf')
 
 call ft#comment('rust', '//', ['//!'])
 call ft#comment('cs', '//', [])

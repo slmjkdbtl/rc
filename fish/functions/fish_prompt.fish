@@ -2,6 +2,16 @@
 
 function fish_prompt
 
+	function show_usr
+
+		set_color white --dim
+		echo -n (whoami)
+		echo -n "@"
+		echo -n (hostname)
+		set_color normal
+
+	end
+
 	function show_cwd
 
 		set_color -o green
@@ -28,6 +38,9 @@ function fish_prompt
 
 	end
 
+# 	echo ""
+# 	echo -n " "
+# 	show_usr
 	echo ""
 	echo -n " "
 	show_cwd

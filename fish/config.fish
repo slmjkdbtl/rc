@@ -58,8 +58,10 @@ else
 end
 
 # personal bin
-set -x BIN $HOME/.bin
-set -x PATH $BIN $PATH
+if test -d $HOME/.bin
+	set -x BIN $HOME/.bin
+	set -x PATH $BIN $PATH
+end
 
 function tobin -d "move executable to bin" -a "file"
 	switch "$file"
@@ -129,5 +131,7 @@ set -x LLVM_ROOT /usr/local/opt/emscripten/libexec/llvm/bin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 # ruby
-set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
+if test -d /usr/local/opt/ruby/bin
+	set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
+end
 
