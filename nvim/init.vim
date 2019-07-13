@@ -178,6 +178,7 @@ call ft#comment('ketos', ';', [])
 call ft#comment('vim', '\"', [])
 call ft#comment('tex', '%', [])
 call ft#comment('nroff', "'''", [])
+call ft#comment('TODO', "#", ['-'])
 
 " options
 set magic
