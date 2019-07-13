@@ -14,7 +14,6 @@ alias yg "you-get"
 alias ase "/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias vps "ssh t@wengwengweng"
 alias dsclean "sudo fd -H -I -t f '.DS_Store' -x 'rm'; killall Finder"
-alias anywhere "sudo spctl --master-disable"
 alias toix "curl -F 'f:1=<-' ix.io"
 alias fzf "fzf --color=bg+:4,info:3,spinner:5,pointer:2"
 

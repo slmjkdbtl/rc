@@ -9,11 +9,8 @@ tools, apps and games
 	- z
 		https://github.com/rupa/z/
 
-	- mpd
-		https://www.musicpd.org/
-
-	- mpc
-		https://www.musicpd.org/clients/mpc/
+	- hub
+		https://hub.github.com/
 
 	- fd
 		https://github.com/sharkdp/fd/
@@ -21,8 +18,17 @@ tools, apps and games
 	- exa
 		https://the.exa.website/
 
+	- tig
+		https://jonas.github.io/tig/
+
 	- rg
 		https://github.com/BurntSushi/ripgrep/
+
+	- mpd
+		https://www.musicpd.org/
+
+	- mpc
+		https://www.musicpd.org/clients/mpc/
 
 	- procs
 		https://github.com/dalance/procs/
@@ -60,7 +66,6 @@ tools, apps and games
 	- loc
 		https://github.com/cgag/loc/
 
-
 	- just
 		https://github.com/casey/just/
 
@@ -85,8 +90,8 @@ tools, apps and games
 	- msmtp
 		https://marlam.de/msmtp/
 
-	- offlineimap
-		https://www.offlineimap.org/
+	- isync
+		https://isync.sourceforge.io/
 
 	- figlet
 		http://www.figlet.org/
@@ -94,11 +99,11 @@ tools, apps and games
 	- toilet
 		http://caca.zoy.org/wiki/toilet/
 
+	- fonttools
+		https://github.com/fonttools/fonttools/
+
 	- irssi
 		https://irssi.org/
-
-	- ripgrep
-		https://github.com/BurntSushi/ripgrep/
 
 	- sd
 		https://github.com/chmln/sd/
@@ -133,20 +138,11 @@ tools, apps and games
 	- pass
 		https://www.passwordstore.org/
 
-	- entr
-		http://www.entrproject.org/
-
 	- gotop
 		https://github.com/cjbassi/gotop/
 
 	- ix
 		http://ix.io
-
-	- tig
-		https://jonas.github.io/tig/
-
-	- hub
-		https://hub.github.com/
 
 	- dosbox
 		https://www.dosbox.com/
@@ -168,9 +164,6 @@ tools, apps and games
 
 	- gifski
 		https://gif.ski/
-
-	- certbot
-		https://certbot.eff.org/
 
 	- lynx
 		https://lynx.invisible-island.net/
@@ -228,9 +221,6 @@ tools, apps and games
 
 	- rgbds
 		https://github.com/rednex/rgbds/
-
-	- wireshark
-		https://www.wireshark.org/
 
 	- espeak
 		https://espeak.sourceforge.io/
@@ -301,9 +291,6 @@ tools, apps and games
 	- virtualbox
 		https://www.virtualbox.org/
 
-	- macvim
-		https://github.com/macvim-dev/macvim/
-
 	- sip
 		http://sipapp.io/
 
@@ -312,9 +299,6 @@ tools, apps and games
 
 	- hammerspoon
 		https://www.hammerspoon.org/
-
-	- suohai
-		https://github.com/Sunnyyoung/Suohai/
 
 	- daisydisk
 		https://daisydiskapp.com/
@@ -403,6 +387,24 @@ tools, apps and games
 	- rack
 		https://vcvrack.com/
 
+	- obs
+		https://obsproject.com/
+
+	- monodraw
+		https://monodraw.helftone.com/
+
+	- milkytracker
+		https://milkytracker.titandemo.org/
+
+	- makehuman
+		http://www.makehuman.org/
+
+	- licecap
+		https://www.cockos.com/licecap/
+
+	- etcher
+		https://balena.io/etcher
+
 	- cyberduck
 		https://cyberduck.io/
 
@@ -412,8 +414,8 @@ tools, apps and games
 	- Affinity Designer
 		https://affinity.serif.com/designer/
 
-	- Pixelmator
-		http://www.pixelmator.com/
+	- Acorn
+		https://flyingmeat.com/acorn/
 
 	- Ableton Live
 		https://www.ableton.com/live/

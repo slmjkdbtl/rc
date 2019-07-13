@@ -4,11 +4,8 @@ cmd + shift - 2     : screencapture -w $HOME/Desktop/(date +%s).png
 cmd + shift - 3     : screencapture $HOME/Desktop/(date +%s).png
 cmd + shift - 4     : screencapture -i $HOME/Desktop/(date +%s).png
 
-cmd + shift - k     : chunkc tiling::window --focus prev
-cmd + shift - j     : chunkc tiling::window --focus next
-cmd + shift - f     : chunkc tiling::window --toggle fullscreen
-
-cmd + shift - f1    : chunkc tiling::desktop --layout bsp
-cmd + shift - f2    : chunkc tiling::desktop --layout monocle
-cmd + shift - f3    : chunkc tiling::desktop --layout float
+shift + alt - left : yabai -m window --move rel:-64:0
+shift + alt - right : yabai -m window --move rel:64:0
+shift + alt - up : yabai -m window --move rel:0:-64
+shift + alt - down : yabai -m window --move rel:0:64
 

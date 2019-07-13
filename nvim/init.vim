@@ -16,6 +16,7 @@ call plug#load('space')
 call plug#load('mode')
 call plug#load('trim')
 call plug#load('mru')
+call plug#load('pi')
 call plug#load('utils')
 call plug#load('tommywiseau')
 
