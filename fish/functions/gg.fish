@@ -1,9 +1,9 @@
 # wengwengweng
 
-function gg -a "message"
+function gg -a "msg"
 
 	git add .
-	git commit -m $message
+	git commit -m $msg
 	git push
 
 end

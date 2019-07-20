@@ -103,6 +103,7 @@ call ft#detect('*.conf', 'conf')
 call ft#detect('*.txt', 'text')
 call ft#detect('*.pest', 'pest')
 call ft#detect('*.py', 'python')
+call ft#detect('*.scpt', 'applescript')
 call ft#detect('.gitignore', 'conf')
 call ft#detect('.cfg', 'conf')
 call ft#detect('*conf', 'conf')
@@ -171,6 +172,7 @@ call ft#comment('terminfo', '#', [])
 call ft#comment('ini', '#', [])
 call ft#comment('hxml', '#', [])
 call ft#comment('nginx', '#', [])
+call ft#comment('applescript', '#', [])
 call ft#comment('clojure', ';', [])
 call ft#comment('carp', ';', [])
 call ft#comment('lisp', ';', [])
@@ -336,7 +338,9 @@ noremap <silent> <m-h> b
 noremap <silent> <m-l> e
 inoremap <silent> <up> <c-x><c-y>
 inoremap <silent> <down> <c-x><c-e>
-nnoremap <silent> % %
+noremap <silent> % %
+noremap <silent> ^ gg
+noremap <silent> $ G
 
 " buffer
 nnoremap <silent> ` <c-^>

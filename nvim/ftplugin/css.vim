@@ -1,4 +1,0 @@
-" wengwengweng
-
-inoremap <buffer> : :<space>
-

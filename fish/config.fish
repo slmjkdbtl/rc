@@ -1,21 +1,22 @@
 # wengwengweng
 
 # alias
-alias o "open"
 alias f "open ."
 alias t "touch"
 alias c "set_color"
 alias j "just"
 alias size "du -h -d 1 . | sort -h"
 alias disk "df -h ."
-alias ncdu "ncdu --color=dark"
 alias v "nvim"
 alias yg "you-get"
+alias dl "aria2c"
 alias ase "/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias vps "ssh t@wengwengweng"
 alias dsclean "sudo fd -H -I -t f '.DS_Store' -x 'rm'; killall Finder"
 alias toix "curl -F 'f:1=<-' ix.io"
 alias fzf "fzf --color=bg+:4,info:3,spinner:5,pointer:2"
+alias dockerclean "docker rmi (docker images -qa -f 'dangling=true'); docker rm (docker ps -a -q)"
+alias ip "ifconfig | grep 'inet.*broadcast' | awk '{print \$2}'"
 
 type -q neomutt; and \
 	alias mutt "neomutt"
