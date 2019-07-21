@@ -3,7 +3,7 @@
 cmd + shift - 2 : screencapture -w $HOME/Desktop/(date +%s).png
 cmd + shift - 3 : screencapture $HOME/Desktop/(date +%s).png
 cmd + shift - 4 : screencapture -i $HOME/Desktop/(date +%s).png
-cmd + shift - m : osascript -e 'tell application "Finder" to do shell script "open -a iTerm " & (quoted form of POSIX path of (folder of the front window as string) as string)'
+# cmd + shift - m : osascript -e 'tell application "Finder" to if "Finder" is in (name of first application process whose frontmost is true) then do shell script "open -a iTerm " & (quoted form of POSIX path of (folder of the front window as string) as string)'
 
 shift + alt - left : yabai -m window --move rel:-48:0
 shift + alt - right : yabai -m window --move rel:48:0

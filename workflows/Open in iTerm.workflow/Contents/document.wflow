@@ -21,25 +21,17 @@
 					<true/>
 					<key>Types</key>
 					<array>
-						<string>com.apple.cocoa.string</string>
+						<string>com.apple.applescript.object</string>
 					</array>
 				</dict>
 				<key>AMActionVersion</key>
-				<string>2.0.3</string>
+				<string>1.0.2</string>
 				<key>AMApplication</key>
 				<array>
 					<string>Automator</string>
 				</array>
 				<key>AMParameterProperties</key>
 				<dict>
-					<key>COMMAND_STRING</key>
-					<dict/>
-					<key>CheckedForUserDefaultShell</key>
-					<dict/>
-					<key>inputMethod</key>
-					<dict/>
-					<key>shell</key>
-					<dict/>
 					<key>source</key>
 					<dict/>
 				</dict>
@@ -49,39 +41,22 @@
 					<string>List</string>
 					<key>Types</key>
 					<array>
-						<string>com.apple.cocoa.string</string>
+						<string>com.apple.applescript.object</string>
 					</array>
 				</dict>
 				<key>ActionBundlePath</key>
-				<string>/System/Library/Automator/Run Shell Script.action</string>
+				<string>/System/Library/Automator/Run AppleScript.action</string>
 				<key>ActionName</key>
-				<string>Run Shell Script</string>
+				<string>Run AppleScript</string>
 				<key>ActionParameters</key>
 				<dict>
-					<key>COMMAND_STRING</key>
-					<string>for f in $@
-do
-	dir=$(dirname $f)
-	ext=${f##*.}
-	name=$(basename $f .$ext)
-	if [ "$ext" = "jpg" ]; then
-		mkdir -p $dir/minified
-		/usr/local/bin/jpegoptim $f -m95 --dest $dir/minified
-	fi
-done</string>
-					<key>CheckedForUserDefaultShell</key>
-					<true/>
-					<key>inputMethod</key>
-					<integer>1</integer>
-					<key>shell</key>
-					<string>/bin/bash</string>
 					<key>source</key>
-					<string></string>
+					<string>tell application "Finder"	do shell script "open -a iTerm " &amp; (quoted form of POSIX path of (folder of the front window as string) as string)end tell</string>
 				</dict>
 				<key>BundleIdentifier</key>
-				<string>com.apple.RunShellScript</string>
+				<string>com.apple.Automator.RunScript</string>
 				<key>CFBundleVersion</key>
-				<string>2.0.3</string>
+				<string>1.0.2</string>
 				<key>CanShowSelectedItemsWhenRun</key>
 				<false/>
 				<key>CanShowWhenRun</key>
@@ -91,21 +66,17 @@ done</string>
 					<string>AMCategoryUtilities</string>
 				</array>
 				<key>Class Name</key>
-				<string>RunShellScriptAction</string>
+				<string>RunScriptAction</string>
 				<key>InputUUID</key>
-				<string>88E72000-11B1-41E8-9ACB-C83D2289AC4A</string>
+				<string>6785C820-289F-4BC9-AE5E-2837BE050020</string>
 				<key>Keywords</key>
 				<array>
-					<string>Shell</string>
-					<string>Script</string>
-					<string>Command</string>
 					<string>Run</string>
-					<string>Unix</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>F0CC6522-734F-403B-9E1C-DC5001EAD67B</string>
+				<string>363447AA-C174-48B5-8B21-BF15043D9FFB</string>
 				<key>UUID</key>
-				<string>5BCC7322-0887-4274-96FD-878FCDC7F1C4</string>
+				<string>F95C9D8A-D20C-43B4-870E-9C939A022A81</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -115,20 +86,12 @@ done</string>
 					<key>0</key>
 					<dict>
 						<key>default value</key>
-						<integer>0</integer>
-						<key>name</key>
-						<string>inputMethod</string>
-						<key>required</key>
-						<string>0</string>
-						<key>type</key>
-						<string>0</string>
-						<key>uuid</key>
-						<string>0</string>
-					</dict>
-					<key>1</key>
-					<dict>
-						<key>default value</key>
-						<string></string>
+						<string>on run {input, parameters}
+	
+	(* Your script goes here *)
+	
+	return input
+end run</string>
 						<key>name</key>
 						<string>source</string>
 						<key>required</key>
@@ -136,46 +99,7 @@ done</string>
 						<key>type</key>
 						<string>0</string>
 						<key>uuid</key>
-						<string>1</string>
-					</dict>
-					<key>2</key>
-					<dict>
-						<key>default value</key>
-						<false/>
-						<key>name</key>
-						<string>CheckedForUserDefaultShell</string>
-						<key>required</key>
 						<string>0</string>
-						<key>type</key>
-						<string>0</string>
-						<key>uuid</key>
-						<string>2</string>
-					</dict>
-					<key>3</key>
-					<dict>
-						<key>default value</key>
-						<string></string>
-						<key>name</key>
-						<string>COMMAND_STRING</string>
-						<key>required</key>
-						<string>0</string>
-						<key>type</key>
-						<string>0</string>
-						<key>uuid</key>
-						<string>3</string>
-					</dict>
-					<key>4</key>
-					<dict>
-						<key>default value</key>
-						<string>/bin/sh</string>
-						<key>name</key>
-						<string>shell</string>
-						<key>required</key>
-						<string>0</string>
-						<key>type</key>
-						<string>0</string>
-						<key>uuid</key>
-						<string>4</string>
 					</dict>
 				</dict>
 				<key>conversionLabel</key>
@@ -183,9 +107,9 @@ done</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:305.000000</string>
+				<string>309.000000:368.000000</string>
 				<key>nibPath</key>
-				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
+				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
 			<true/>
@@ -209,11 +133,11 @@ done</string>
 			<string>/System/Library/CoreServices/Finder.app</string>
 		</array>
 		<key>inputTypeIdentifier</key>
-		<string>com.apple.Automator.fileSystemObject</string>
+		<string>com.apple.Automator.nothing</string>
 		<key>outputTypeIdentifier</key>
 		<string>com.apple.Automator.nothing</string>
 		<key>presentationMode</key>
-		<integer>15</integer>
+		<integer>11</integer>
 		<key>processesInput</key>
 		<integer>0</integer>
 		<key>serviceApplicationBundleID</key>
@@ -221,7 +145,7 @@ done</string>
 		<key>serviceApplicationPath</key>
 		<string>/System/Library/CoreServices/Finder.app</string>
 		<key>serviceInputTypeIdentifier</key>
-		<string>com.apple.Automator.fileSystemObject</string>
+		<string>com.apple.Automator.nothing</string>
 		<key>serviceOutputTypeIdentifier</key>
 		<string>com.apple.Automator.nothing</string>
 		<key>serviceProcessesInput</key>
@@ -229,7 +153,7 @@ done</string>
 		<key>systemImageName</key>
 		<string>NSActionTemplate</string>
 		<key>useAutomaticInputType</key>
-		<integer>0</integer>
+		<integer>1</integer>
 		<key>workflowTypeIdentifier</key>
 		<string>com.apple.Automator.servicesMenu</string>
 	</dict>

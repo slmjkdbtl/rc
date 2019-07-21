@@ -12,7 +12,7 @@
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>pngquant</string>
+				<string>Compress PNG</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>runWorkflowAsService</string>

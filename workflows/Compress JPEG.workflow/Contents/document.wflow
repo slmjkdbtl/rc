@@ -64,8 +64,9 @@ do
 	dir=$(dirname $f)
 	ext=${f##*.}
 	name=$(basename $f .$ext)
-	if [ "$ext" = "wav" ] || [ "$ext" = "mp3" ]; then
-		/usr/local/bin/sox $f $dir/$name.ogg
+	if [ "$ext" = "jpg" ]; then
+		mkdir -p $dir/minified
+		/usr/local/bin/jpegoptim $f -m95 --dest $dir/minified
 	fi
 done</string>
 					<key>CheckedForUserDefaultShell</key>
@@ -92,7 +93,7 @@ done</string>
 				<key>Class Name</key>
 				<string>RunShellScriptAction</string>
 				<key>InputUUID</key>
-				<string>6C03A57A-B2CF-4FFD-84FE-B200BC232DF4</string>
+				<string>E14FB9D0-7CF8-46F5-8557-098DAADC712A</string>
 				<key>Keywords</key>
 				<array>
 					<string>Shell</string>
@@ -102,9 +103,9 @@ done</string>
 					<string>Unix</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>4F0E6343-5359-4761-90D0-1E1D8E1E501E</string>
+				<string>A8276559-2945-46EE-A261-E9CA10A776DC</string>
 				<key>UUID</key>
-				<string>57573BD0-B70F-43D2-BBB2-A76214B2DFE5</string>
+				<string>2F35DFBF-60AA-42C0-B4AE-5E47E192EE8B</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>

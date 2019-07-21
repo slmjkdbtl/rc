@@ -64,9 +64,8 @@ do
 	dir=$(dirname $f)
 	ext=${f##*.}
 	name=$(basename $f .$ext)
-	if [ "$ext" = "png" ]; then
-		mkdir -p $dir/minified
-		/usr/local/bin/pngquant $f -o $dir/minified/$name.png
+	if [ "$ext" = "wav" ] || [ "$ext" = "mp3" ]; then
+		/usr/local/bin/sox $f $dir/$name.ogg
 	fi
 done</string>
 					<key>CheckedForUserDefaultShell</key>
@@ -93,7 +92,7 @@ done</string>
 				<key>Class Name</key>
 				<string>RunShellScriptAction</string>
 				<key>InputUUID</key>
-				<string>AD49D923-B6DF-4581-9C3A-2836F474A3CE</string>
+				<string>081CE84C-C75D-4ADB-B6E4-0D99640C0D15</string>
 				<key>Keywords</key>
 				<array>
 					<string>Shell</string>
@@ -103,9 +102,9 @@ done</string>
 					<string>Unix</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>6F0A5739-24D0-41C7-9250-92704FF3BDEA</string>
+				<string>B4730AEB-394A-4479-BCCC-9EFE09486567</string>
 				<key>UUID</key>
-				<string>29A92B98-38CC-4E6C-BA76-89840C2D16BE</string>
+				<string>CE662E48-9707-4619-8A19-DDF3928EB1C1</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -178,6 +177,8 @@ done</string>
 						<string>4</string>
 					</dict>
 				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>

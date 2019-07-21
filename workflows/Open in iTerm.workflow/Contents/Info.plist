@@ -12,7 +12,7 @@
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>jpegoptim</string>
+				<string>Open in iTerm</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>runWorkflowAsService</string>
@@ -21,10 +21,6 @@
 				<key>NSApplicationIdentifier</key>
 				<string>com.apple.finder</string>
 			</dict>
-			<key>NSSendFileTypes</key>
-			<array>
-				<string>public.item</string>
-			</array>
 		</dict>
 	</array>
 </dict>
