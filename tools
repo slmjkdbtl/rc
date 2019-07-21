@@ -132,9 +132,6 @@ tools, apps and games
 	- gifify
 		https://github.com/vvo/gifify/
 
-	- imageoptim-cli
-		http://jamiemason.github.io/ImageOptim-CLI/
-
 	- catimg
 		https://github.com/posva/catimg/
 
@@ -159,8 +156,17 @@ tools, apps and games
 	- jpegoptim
 		https://github.com/tjko/jpegoptim/
 
+	- optipng
+		https://optipng.sourceforge.io/
+
+	- pngquant
+		https://pngquant.org/
+
 	- hex
 		https://github.com/sitkevij/hex/
+
+	- hexyl
+		https://github.com/sharkdp/hexyl/
 
 	- pax
 		https://pax.js.org/
@@ -347,9 +353,6 @@ tools, apps and games
 
 	- xACT
 		http://xact.scottcbrown.org/
-
-	- Impromptu
-		http://impromptu.moso.com.au/
 
 	- Handbrake
 		https://handbrake.fr/

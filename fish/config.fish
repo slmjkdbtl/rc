@@ -1,11 +1,12 @@
 # wengwengweng
 
 # alias
+alias o "open"
 alias f "open ."
 alias t "touch"
 alias c "set_color"
 alias j "just"
-alias size "du -h -d 1 . | sort -h"
+alias size "du -sh -- * | sort -h"
 alias disk "df -h ."
 alias v "nvim"
 alias yg "you-get"

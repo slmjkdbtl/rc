@@ -12,7 +12,7 @@
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>wav2ogg</string>
+				<string>pngquant</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>runWorkflowAsService</string>

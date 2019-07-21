@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>444.38</string>
+	<string>444.42</string>
 	<key>AMApplicationVersion</key>
 	<string>2.9</string>
 	<key>AMDocumentVersion</key>
@@ -92,7 +92,7 @@ done</string>
 				<key>Class Name</key>
 				<string>RunShellScriptAction</string>
 				<key>InputUUID</key>
-				<string>28A8B06A-73D4-4A4D-BD7E-60C2DAC13BC3</string>
+				<string>6C03A57A-B2CF-4FFD-84FE-B200BC232DF4</string>
 				<key>Keywords</key>
 				<array>
 					<string>Shell</string>
@@ -102,9 +102,9 @@ done</string>
 					<string>Unix</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>C9905771-7E5D-43D2-A505-822B764C25FB</string>
+				<string>4F0E6343-5359-4761-90D0-1E1D8E1E501E</string>
 				<key>UUID</key>
-				<string>997BFED5-9848-4B95-ADBF-553C8199C5CC</string>
+				<string>57573BD0-B70F-43D2-BBB2-A76214B2DFE5</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -182,7 +182,7 @@ done</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>332.750000:357.000000</string>
+				<string>309.000000:305.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
