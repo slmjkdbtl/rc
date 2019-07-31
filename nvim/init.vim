@@ -25,6 +25,7 @@ call plug#remote('w0rp/ale')
 call plug#remote('mhinz/vim-signify')
 
 " ft
+call ft#detect('*.bf', 'brainfuck')
 call ft#detect('*.toml', 'toml')
 call ft#detect('*.carp', 'carp')
 call ft#detect('*.metal', 'c')
@@ -242,7 +243,7 @@ set guicursor=n-v-c-sm-ci-ve-r-cr-o:block,i:ver25
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
 set wildignore=.git,.svn,.cache,.tmp,node_modules,.tup
 set wildignore+=.DS_Store
-set wildignore+=.tags,*.min.*,*.map
+set wildignore+=.tags,*.map
 set wildignore+=*.so,*.o,*.out,*.swp,*.exe,*.elf,*.hex,*.dll,*~
 exec 'set listchars=tab:\|\ '
 colorscheme super

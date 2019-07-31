@@ -18,6 +18,8 @@ alias toix "curl -F 'f:1=<-' ix.io"
 alias fzf "fzf --color=bg+:4,info:3,spinner:5,pointer:2"
 alias dockerclean "docker rmi (docker images -qa -f 'dangling=true'); docker rm (docker ps -a -q)"
 alias ip "ifconfig | grep 'inet.*broadcast' | awk '{print \$2}'"
+alias bf "brainfuck"
+alias ydl "youtube-dl"
 
 type -q neomutt; and \
 	alias mutt "neomutt"
