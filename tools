@@ -84,6 +84,9 @@ tools, apps and games
 	- ncdu
 		https://dev.yorhel.nl/ncdu/
 
+	- croc
+		https://github.com/schollz/croc/
+
 	- tectonic
 		https://tectonic-typesetting.github.io/
 
@@ -264,8 +267,8 @@ tools, apps and games
 	- cmatrix
 		https://www.asty.org/cmatrix/
 
-	- annie
-		https://github.com/iawia002/annie/
+	- youtube-dl
+		https://youtube-dl.org/
 
 	- m-cli
 		https://github.com/rgcr/m-cli/
@@ -408,11 +411,17 @@ tools, apps and games
 	- Rack
 		https://vcvrack.com/
 
+	- REXPaint
+		https://www.gridsagegames.com/rexpaint/
+
 	- OBS
 		https://obsproject.com/
 
 	- Monodraw
 		https://monodraw.helftone.com/
+
+	- Playscii
+		http://vectorpoem.com/playscii/
 
 	- MilkyTracker
 		https://milkytracker.titandemo.org/

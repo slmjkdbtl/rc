@@ -9,8 +9,8 @@ alias j "just"
 alias size "du -sh -- * | sort -h"
 alias disk "df -h ."
 alias v "nvim"
-alias yg "you-get"
 alias dl "aria2c"
+alias ydl "youtube-dl --format mp4 -o '%(title)s.%(ext)s' -i"
 alias ase "/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias vps "ssh t@wengwengweng"
 alias dsclean "sudo fd -H -I -t f '.DS_Store' -x 'rm'; killall Finder"
@@ -19,7 +19,6 @@ alias fzf "fzf --color=bg+:4,info:3,spinner:5,pointer:2"
 alias dockerclean "docker rmi (docker images -qa -f 'dangling=true'); docker rm (docker ps -a -q)"
 alias ip "ifconfig | grep 'inet.*broadcast' | awk '{print \$2}'"
 alias bf "brainfuck"
-alias ydl "youtube-dl"
 
 type -q neomutt; and \
 	alias mutt "neomutt"
@@ -44,7 +43,9 @@ abbr ga git add .
 abbr gc git commit -m
 abbr gp git push
 abbr gd git diff
-abbr gb git browse
+abbr gb git branch
+abbr gr git remote
+abbr gch git checkout
 
 # env
 set -x BROWSER open

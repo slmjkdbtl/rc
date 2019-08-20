@@ -49,8 +49,9 @@ syn match       objComment      "^#.*"
 syn match       objVertex       "^v\s"
 syn match       objFace         "^f\s"
 syn match       objVertice      "^vt\s"
-syn match       objNormale      "^vn\s"
+syn match       objNormal      "^vn\s"
 syn match       objGroup        "^g\s.*"
+syn match       objName         "^o\s"
 syn match       objMaterial     "^usemtl\s.*"
 syn match       objInclude      "^mtllib\s.*"
 
@@ -71,12 +72,11 @@ hi def link objIndex           Constant
 hi def link objMaterial        Label
 
 hi def link objVertex          Keyword
-hi def link objNormale         Keyword
+hi def link objNormal          Keyword
 hi def link objVertice         Keyword
 hi def link objFace            Keyword
+hi def link objName            Keyword
 hi def link objKeywords        Keyword
-
-
 
 let b:current_syntax = "obj"
 

@@ -2,6 +2,7 @@
 
 == DOING
 - load remote syntax & indent
+- async grep & find
 
 == TODO
 - fix space error

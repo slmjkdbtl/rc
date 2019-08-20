@@ -322,6 +322,8 @@ func! browser#bulk_rename()
 		call setline(i + 1, fnamemodify(marked[i], ':t'))
 	endfor
 
+	set nomodified
+
 	call cursor(1, 1)
 
 	augroup BrowserBulkRename
@@ -340,9 +342,10 @@ func! s:bulk_rename_apply()
 	let files = b:marked
 
 	for i in range(len(names))
-		call s:job('mv ' . fnamemodify(files[i], ':t') . ' ' . names[i], { 'on_exit': function('browser#refresh') })
+		call s:job('mv "' . fnamemodify(files[i], ':t') . '" "' . names[i] . '"', { 'on_exit': function('browser#refresh') })
 	endfor
 
+	bw!
 	call browser#start()
 
 endfunc
@@ -469,7 +472,7 @@ func! browser#enter()
 
 		let ext = fnamemodify(item, ':e')
 
-		if index([ 'jpg', 'png', 'pdf', 'ico', 'icns', 'ase', 'gif', 'mp4', 'mkv', 'mov', 'avi', 'mp3', 'wav', 'ogg', 'obj', ], ext) >= 0
+		if index([ 'jpg', 'png', 'pdf', 'ico', 'icns', 'ase', 'gif', 'mp4', 'mkv', 'mov', 'avi', 'mp3', 'wav', 'ogg', ], ext) >= 0
 
 			call system('open ' . escape(item, ' '))
 

@@ -6,8 +6,8 @@ else
 	CONFIG := $(XDG_CONFIG_HOME)
 endif
 
-.PHONY: install
-install:
+.PHONY: conf
+conf:
 
 	echo "+ linking"
 
@@ -25,4 +25,15 @@ install:
 
 	echo "+ ticcing terminfos"
 	tic $(realpath super.terminfo)
+
+.PHONY: setup
+setup:
+
+	sudo -v
+	xcode-select --install
+	echo "+ installing homebrew"
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	brew install fish
+	brew install neovim
+	sudo chsh -s /usr/local/bin/fish
 
