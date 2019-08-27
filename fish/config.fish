@@ -11,6 +11,7 @@ alias disk "df -h ."
 alias v "nvim"
 alias dl "aria2c"
 alias ydl "youtube-dl --format mp4 -o '%(title)s.%(ext)s' -i"
+alias ydlm "youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s' -i"
 alias ase "/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias vps "ssh t@wengwengweng"
 alias dsclean "sudo fd -H -I -t f '.DS_Store' -x 'rm'; killall Finder"
@@ -137,5 +138,72 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 # ruby
 if test -d /usr/local/opt/ruby/bin
 	set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
+end
+
+# looks
+function fish_greeting
+	echo ""
+	echo " yo"
+end
+
+function fish_prompt
+
+	function show_usr
+
+		set_color white --dim
+		echo -n (whoami)
+		echo -n "@"
+		echo -n (hostname)
+		set_color normal
+
+	end
+
+	function show_cwd
+
+		set_color -o green
+		set -g fish_prompt_pwd_dir_length 0
+		echo -n (prompt_pwd)
+		set_color normal
+
+	end
+
+	function show_git
+
+		command git rev-parse --is-inside-work-tree >/dev/null 2>&1; or return 1
+		set_color -d $fish_color_git
+		echo -n (__fish_git_prompt | string trim | string replace '(' '' | string replace ')' '')
+		git diff-index --quiet HEAD -- >/dev/null 2>&1; or echo -n "*"
+		set_color normal
+
+	end
+
+	function show_prompt
+
+		set_color normal
+		echo -n "> "
+
+	end
+
+# 	echo ""
+# 	echo -n " "
+# 	show_usr
+	echo ""
+	echo -n " "
+	show_cwd
+	echo -n " "
+	show_git
+	echo ""
+	echo -n " "
+	show_prompt
+
+	functions -e show_cwd
+	functions -e show_git
+	functions -e show_prompt
+
+end
+
+function fish_title
+	set -g fish_prompt_pwd_dir_length 0
+	echo (prompt_pwd)
 end
 

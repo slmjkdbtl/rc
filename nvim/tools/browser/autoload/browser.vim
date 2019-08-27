@@ -473,14 +473,10 @@ func! browser#enter()
 		let ext = fnamemodify(item, ':e')
 
 		if index([ 'jpg', 'png', 'pdf', 'ico', 'icns', 'ase', 'gif', 'mp4', 'mkv', 'mov', 'avi', 'mp3', 'wav', 'ogg', ], ext) >= 0
-
-			call system('open ' . escape(item, ' '))
-
+			call system('open ' . escape(item, " '&()"))
 		else
-
 			call browser#close()
 			exec 'edit ' . item
-
 		endif
 
 	endif

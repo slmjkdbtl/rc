@@ -69,12 +69,6 @@ tools, apps and games
 	- just
 		https://github.com/casey/just/
 
-	- ctags
-		https://ctags.io/
-
-	- sl
-		https://github.com/mtoyoda/sl/
-
 	- lazygit
 		https://github.com/jesseduffield/lazygit/
 
@@ -264,11 +258,11 @@ tools, apps and games
 	- duck
 		https://duck.sh/
 
-	- cmatrix
-		https://www.asty.org/cmatrix/
-
 	- youtube-dl
 		https://youtube-dl.org/
+
+	- monolith
+		https://github.com/Y2Z/monolith/
 
 	- m-cli
 		https://github.com/rgcr/m-cli/
@@ -276,11 +270,14 @@ tools, apps and games
 	- i2p
 		https://geti2p.net/
 
+	- pageres
+		https://github.com/sindresorhus/pageres-cli/
+
 	- Amulet
 		http://www.amulet.xyz/
 
 	- O.H.R.RPG.C.E
-		http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page/
+		http://rpg.hamsterrepublic.com/ohrrpgce/
 
 	- Aseprite
 		https://www.aseprite.org/
@@ -360,6 +357,9 @@ tools, apps and games
 	- xACT
 		http://xact.scottcbrown.org/
 
+	- rx
+		https://github.com/cloudhead/rx/
+
 	- Handbrake
 		https://handbrake.fr/
 
@@ -378,11 +378,17 @@ tools, apps and games
 	- Keybase
 		http://keybase.io/
 
+	- Gifski
+		https://sindresorhus.com/gifski/
+
 	- Trello
 		https://trello.com/
 
 	- HexFiend
 		http://ridiculousfish.com/hexfiend/
+
+	- MacDown
+		https://macdown.uranusjr.com/
 
 	- Monitor
 		https://conduitlabs.com/
@@ -401,6 +407,9 @@ tools, apps and games
 
 	- AppCleaner
 		http://freemacsoft.net/appcleaner/
+
+	- Disk Drill
+		https://www.cleverfiles.com/
 
 	- Gifox
 		https://gifox.io/
