@@ -1,5 +1,7 @@
 " wengwengweng
 
+" TODO: syntax highlighting fails after reopening a buffer
+
 " local plugins
 call plug#load('bookmark')
 call plug#load('find')

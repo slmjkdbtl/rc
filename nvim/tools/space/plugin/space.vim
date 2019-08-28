@@ -1,7 +1,7 @@
 " wengwengweng
 
 command! -nargs=* -range Space
-			\ call space#shine()
+			\ call space#start()
 
 augroup Space
 
@@ -11,6 +11,9 @@ augroup Space
 				\ call space#start()
 
 	autocmd BufLeave space
+				\ call space#stop()
+
+	autocmd VimLeavePre *
 				\ call space#stop()
 
 augroup END

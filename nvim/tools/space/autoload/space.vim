@@ -41,25 +41,15 @@ func! space#draw(timer)
 
 endfunc
 
-func! space#start()
+func! space#stop()
 
 	if get(g:, 'space_timer')
 		call timer_stop(g:space_timer)
 	endif
 
-	let g:space_timer = timer_start(96, 'space#draw', {
-				\ 'repeat': -1
-				\ })
-
 endfunc
 
-func! space#stop()
-
-	call timer_stop(g:space_timer)
-
-endfunc
-
-func! space#shine()
+func! space#start()
 
 	noautocmd enew
 	setlocal buftype=nofile
@@ -83,7 +73,12 @@ func! space#shine()
 	setlocal statusline=\ space
 	setfiletype space
 	call space#draw(0)
-	call space#start()
+
+	call space#stop()
+
+	let g:space_timer = timer_start(96, 'space#draw', {
+				\ 'repeat': -1
+				\ })
 
 endfunc
 
