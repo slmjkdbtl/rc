@@ -47,6 +47,7 @@ abbr gd git diff
 abbr gb git branch
 abbr gr git remote
 abbr gch git checkout
+abbr gcl git clone
 
 # env
 set -x BROWSER open

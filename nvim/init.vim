@@ -271,7 +271,9 @@ let g:ale_rust_cargo_check_examples = 1
 let g:ale_rust_cargo_check_tests = 1
 
 let g:ale_linters = {
-	\ 'cs': []
+	\ 'cs': [],
+	\ 'c': [],
+	\ 'cpp': [],
 \ }
 
 " tommywiseau
@@ -288,12 +290,16 @@ augroup Explore
 
 		let name = expand('%:p')
 
-		if isdirectory(name)
-			exec 'lcd ' . name
-			bwipe
-			Browser
-		elseif filereadable(name)
-			exec 'lcd ' . expand('%:p:h')
+		if empty(name)
+			Space
+		else
+			if isdirectory(name)
+				exec 'lcd ' . name
+				bwipe
+				Browser
+			elseif filereadable(name)
+				exec 'lcd ' . expand('%:p:h')
+			endif
 		endif
 
 		silent! CleanBuf

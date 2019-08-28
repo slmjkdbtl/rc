@@ -43,6 +43,10 @@ endfunc
 
 func! space#start()
 
+	if get(g:, 'space_timer')
+		call timer_stop(g:space_timer)
+	endif
+
 	let g:space_timer = timer_start(96, 'space#draw', {
 				\ 'repeat': -1
 				\ })

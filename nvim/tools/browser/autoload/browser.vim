@@ -506,9 +506,17 @@ endfunc
 func! browser#toggle()
 
 	if browser#is_active()
+
 		call browser#close()
+
+		if empty(bufname('%'))
+			call browser#start()
+		endif
+
 	else
+
 		call browser#start()
+
 	endif
 
 endfunc
