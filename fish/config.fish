@@ -19,18 +19,18 @@ alias toix "curl -F 'f:1=<-' ix.io"
 alias fzf "fzf --color=bg+:4,info:3,spinner:5,pointer:2"
 alias dockerclean "docker rmi (docker images -qa -f 'dangling=true'); docker rm (docker ps -a -q)"
 alias ip "ifconfig | grep 'inet.*broadcast' | awk '{print \$2}'"
+alias ipv6 "ifconfig | grep 'inet6.*%en' | awk '{print \$2}' | sed 's/%en0//'"
+alias extip "curl -4 -s -m 5 https://ifconfig.co"
+alias extipv6 "curl -6 -s -m 5 https://ifconfig.co"
 alias bf "brainfuck"
+alias lg "lazygit"
 
-type -q neomutt; and \
-	alias mutt "neomutt"
 type -q hub; and \
 	alias git "hub"
 type -q bat; and \
 	alias cat "env PAGER='' bat --theme=TwoDark --style=plain"
 type -q exa; and \
 	alias ls exa
-type -q lazygit; and \
-	alias lg lazygit
 
 # nav
 function ..    ; cd .. ; end
@@ -48,6 +48,7 @@ abbr gb git branch
 abbr gr git remote
 abbr gch git checkout
 abbr gcl git clone
+abbr gbr git browse
 
 # env
 set -x BROWSER open
@@ -67,21 +68,6 @@ end
 if test -d $HOME/.bin
 	set -x BIN $HOME/.bin
 	set -x PATH $BIN $PATH
-end
-
-function tobin -d "move executable to bin" -a "file"
-	switch "$file"
-		case ""
-			c red; echo "no file provided"; c normal
-			return 1
-		case "*"
-			if not test -e "$file"
-				c red; echo "file not exist"; c normal
-				return 1
-			end
-			chmod +x $file
-			install -v $file $BIN
-	end
 end
 
 # fzf

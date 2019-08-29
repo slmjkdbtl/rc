@@ -36,11 +36,11 @@ tools, apps and games
 	- bat
 		https://github.com/sharkdp/bat/
 
-	- chunkwm
-		https://koekeishiya.github.io/chunkwm/
+	- yabai
+		https://github.com/koekeishiya/yabai/
 
 	- skhd
-		https://github.com/koekeishiya/skhd
+		https://github.com/koekeishiya/skhd/
 
 	- sox
 		http://sox.sourceforge.net/
@@ -54,12 +54,6 @@ tools, apps and games
 	- watchexec
 		https://github.com/mattgreen/watchexec/
 
-	- groff
-		https://www.gnu.org/software/groff/
-
-	- hey
-		https://github.com/rakyll/hey/
-
 	- fzf
 		https://github.com/junegunn/fzf
 
@@ -72,56 +66,14 @@ tools, apps and games
 	- lazygit
 		https://github.com/jesseduffield/lazygit/
 
-	- cliclick
-		https://www.bluem.net/en/projects/cliclick/
-
-	- ncdu
-		https://dev.yorhel.nl/ncdu/
-
 	- croc
 		https://github.com/schollz/croc/
-
-	- tectonic
-		https://tectonic-typesetting.github.io/
 
 	- aria2
 		https://aria2.github.io/
 
-	- brainfuck
-		https://github.com/fabianishere/brainfuck/
-
-	- clac
-		https://github.com/soveran/clac/
-
-	- msmtp
-		https://marlam.de/msmtp/
-
-	- isync
-		https://isync.sourceforge.io/
-
-	- figlet
-		http://www.figlet.org/
-
-	- toilet
-		http://caca.zoy.org/wiki/toilet/
-
-	- fonttools
-		https://github.com/fonttools/fonttools/
-
-	- irssi
-		https://irssi.org/
-
 	- sd
 		https://github.com/chmln/sd/
-
-	- wtf
-		http://cvsweb.netbsd.org/bsdweb.cgi/src/games/wtf/
-
-	- fat
-		https://github.com/drummyfish/fat/
-
-	- entr
-		http://eradman.com/entrproject/
 
 	- ffmpeg
 		https://ffmpeg.org/
@@ -132,17 +84,14 @@ tools, apps and games
 	- gifify
 		https://github.com/vvo/gifify/
 
+	- tectonic
+		https://tectonic-typesetting.github.io/
+
 	- catimg
 		https://github.com/posva/catimg/
 
 	- tesseract
 		https://github.com/tesseract-ocr/tesseract/
-
-	- pass
-		https://www.passwordstore.org/
-
-	- gotop
-		https://github.com/cjbassi/gotop/
 
 	- ix
 		http://ix.io
@@ -156,14 +105,8 @@ tools, apps and games
 	- jpegoptim
 		https://github.com/tjko/jpegoptim/
 
-	- optipng
-		https://optipng.sourceforge.io/
-
 	- pngquant
 		https://pngquant.org/
-
-	- hex
-		https://github.com/sitkevij/hex/
 
 	- hexyl
 		https://github.com/sharkdp/hexyl/
@@ -184,10 +127,10 @@ tools, apps and games
 		https://github.com/variadico/noti/
 
 	- gource
-		https://github.com/acaudwell/Gource/
+		https://gource.io/
 
-	- nms
-		https://github.com/bartobri/no-more-secrets/
+	- logstalgia
+		https://logstalgia.io/
 
 	- genact
 		https://github.com/svenstaro/genact/
@@ -195,17 +138,11 @@ tools, apps and games
 	- potrace
 		http://potrace.sourceforge.net/
 
-	- cowsay
-		https://github.com/tnalpgge/rank-amateur-cowsay/
-
 	- fastlane
 		https://fastlane.tools/
 
 	- pandoc
 		https://pandoc.org/
-
-	- zopfli
-		https://github.com/google/zopfli/
 
 	- upx
 		https://github.com/upx/upx/
@@ -228,14 +165,8 @@ tools, apps and games
 	- tree
 		http://mama.indstate.edu/users/ice/tree/
 
-	- slugify
-		https://github.com/benlinton/slugify/
-
 	- texpack
 		https://github.com/urraka/texpack/
-
-	- rgbds
-		https://github.com/rednex/rgbds/
 
 	- espeak
 		https://espeak.sourceforge.io/
@@ -245,6 +176,18 @@ tools, apps and games
 
 	- tldr
 		http://tldr.sh/
+
+	- brainfuck
+		https://github.com/fabianishere/brainfuck/
+
+	- figlet
+		http://www.figlet.org/
+
+	- toilet
+		http://caca.zoy.org/wiki/toilet/
+
+	- fonttools
+		https://github.com/fonttools/fonttools/
 
 	- wine
 		https://www.winehq.org/
@@ -327,9 +270,6 @@ tools, apps and games
 	- Dash
 		https://kapeli.com/dash/
 
-	- Zwoptex
-		https://zwopple.com/zwoptex/
-
 	- OpenEmu
 		http://openemu.org/
 
@@ -365,9 +305,6 @@ tools, apps and games
 
 	- JazzUp
 		http://www.irradiatedsoftware.com/labs/
-
-	- Crocotile3D
-		http://crocotile3d.com/
 
 	- Blender
 		https://www.blender.org/
@@ -417,41 +354,11 @@ tools, apps and games
 	- Patterns
 		https://krillapps.com/patterns/
 
-	- Rack
-		https://vcvrack.com/
-
-	- REXPaint
-		https://www.gridsagegames.com/rexpaint/
-
 	- OBS
 		https://obsproject.com/
 
-	- Monodraw
-		https://monodraw.helftone.com/
-
-	- Playscii
-		http://vectorpoem.com/playscii/
-
-	- MilkyTracker
-		https://milkytracker.titandemo.org/
-
-	- MakeHuman
-		http://www.makehuman.org/
-
-	- LICECap
-		https://www.cockos.com/licecap/
-
-	- Mixxx
-		https://www.mixxx.org/
-
 	- Etcher
 		https://balena.io/etcher
-
-	- Cyberduck
-		https://cyberduck.io/
-
-	- Golly
-		https://golly.sourceforge.io/
 
 	- Pokemon Showdown
 		https://pokemonshowdown.com/
@@ -482,28 +389,4 @@ tools, apps and games
 
 	- dwarf-fortress
 		http://bay12games.com/dwarves/
-
-	- dungeon
-		https://github.com/GOFAI/dungeon/
-
-	- nethack
-		https://www.nethack.org/
-
-	- angband
-		http://rephial.org/
-
-	- cataclysm
-		https://cataclysmdda.org/
-
-	- brogue
-		https://sites.google.com/site/broguegame/
-
-	- rogue
-		https://sourceforge.net/projects/roguelike/
-
-	- ski
-		http://catb.org/~esr/ski/
-
-	- wumpus
-		http://www.catb.org/~esr/wumpus/
 
