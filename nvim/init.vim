@@ -118,6 +118,7 @@ call ft#detect('*.ini', 'ini')
 call ft#detect('*.service', 'ini')
 call ft#detect('.gitconfig', 'ini')
 call ft#detect('*.bat', 'batch')
+call ft#detect('*.ron', 'ron')
 call ft#detect('*.apib', 'apiblueprint')
 call ft#detect('Dockerfile', 'docker')
 call ft#detect('Vagrantfile', 'ruby')
@@ -130,11 +131,13 @@ call ft#detect('Tupfile', 'tup')
 call ft#detect('*.tup', 'tup')
 call ft#detect('LICENSE', 'license')
 call ft#detect('README', 'readme')
-call ft#detect('TODO', 'TODO')
 call ft#detect('*.cmake', 'cmake')
 call ft#detect('CMakeLists.txt', 'cmake')
-call ft#detect('*.dirt', 'dirt')
 call ft#detect('/etc/hosts', 'conf')
+
+call ft#detect('*.ttx', 'ttx')
+call ft#detect('*.dirt', 'dirt')
+call ft#detect('TODO', 'TODO')
 
 call ft#comment('rust', '//', ['//!'])
 call ft#comment('cs', '//', [])
@@ -158,6 +161,7 @@ call ft#comment('haml', '//', [])
 call ft#comment('json', '//', [])
 call ft#comment('chuck', '//', [])
 call ft#comment('supercollider', '//', [])
+call ft#comment('ron', '//', [])
 call ft#comment('elm', '--', [])
 call ft#comment('lua', '--', [])
 call ft#comment('haskell', '--', [])
@@ -186,6 +190,9 @@ call ft#comment('ketos', ';', [])
 call ft#comment('vim', '\"', [])
 call ft#comment('tex', '%', [])
 call ft#comment('nroff', "'''", [])
+
+call ft#comment('ttx', "--", [])
+call ft#comment('dirt', "#", [])
 call ft#comment('TODO', "#", ['-'])
 
 " options
@@ -293,7 +300,9 @@ augroup Explore
 		let name = expand('%:p')
 
 		if empty(name)
-			Space
+			if len(getbufinfo({ 'buflisted': 1 })) == 1
+				Space
+			endif
 		else
 			if isdirectory(name)
 				exec 'lcd ' . name

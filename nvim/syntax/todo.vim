@@ -5,7 +5,22 @@ syntax match TODOComment
 
 syntax match TODOItem
 			\ '^\s*-.*$'
-			\ contains=TODOItemHyphen
+			\ contains=TODOItemHyphen,TODOItemMark,TODOItemQuestion,TODOItemImportant
+
+syntax match TODOItemMark
+			\ '\[.*\]'
+			\ contained
+			\ containedin=TODOItem
+
+syntax match TODOItemQuestion
+			\ '(?)$'
+			\ contained
+			\ containedin=TODOItem
+
+syntax match TODOItemImportant
+			\ '(!)$'
+			\ contained
+			\ containedin=TODOItem
 
 syntax match TODOItemHyphen
 			\ '^\s*-'
@@ -20,6 +35,15 @@ highlight def link TODOComment
 
 highlight def link TODOItemHyphen
 			\ Special
+
+highlight def link TODOItemMark
+			\ Comment
+
+highlight def link TODOItemQuestion
+			\ Comment
+
+highlight def link TODOItemImportant
+			\ Keyword
 
 highlight def link TODOTitle
 			\ Type

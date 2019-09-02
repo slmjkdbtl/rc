@@ -97,8 +97,10 @@ if test -d $HOME/.cargo
 end
 
 # flutter
-if test -d $HOME/.flutter
-	set -x PATH $HOME/.flutter/bin $PATH
+set -x FLUTTER_PATH $HOME/Documents/flutter
+
+if test -d $FLUTTER_PATH
+	set -x PATH $FLUTTER_PATH/bin $PATH
 end
 
 # fastlane
@@ -113,6 +115,13 @@ set -x CARP_DIR $HOME/.carp
 type -q sccache; and \
 	set -x RUSTC_WRAPPER sccache
 
+# wasmer
+set -x WASMER_DIR "$HOME/.wasmer"
+
+if test -d $WASM_DIR
+	[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+end
+
 # homebrew
 set -x HOMEBREW_NO_AUTO_UPDATE 1
 
@@ -122,12 +131,6 @@ set -x LLVM_ROOT /usr/local/opt/emscripten/libexec/llvm/bin
 # sbin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
-# ruby
-if test -d /usr/local/opt/ruby/bin
-	set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
-end
-
-# looks
 function fish_greeting
 	echo ""
 	echo " yo"

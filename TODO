@@ -1,20 +1,19 @@
 # wengwengweng
 
 == DOING
-- load remote syntax & indent
-- async grep & find
 
 == TODO
-- fix space error
-- browser tree view
-- browser show git changed files
-- more customizable statusline
-- redesign search
+- [nvim] refactor browser
+- [nvim] browser tree view
+- [nvim] browser show git changed files
+- [nvim] more customizable statusline
+- [nvim] redesign search
+- [nvim] async grep & find
 
 == DONE
-- sonic pi syntax detection
-- mode plugin
-- seperate plug#install and plug#update
-- smooth scroll in visual mode
-- tidy up ft
+- [nvim] sonic pi syntax detection
+- [nvim] mode plugin
+- [nvim] seperate plug#install and plug#update
+- [nvim] smooth scroll in visual mode
+- [nvim] tidy up ft
 

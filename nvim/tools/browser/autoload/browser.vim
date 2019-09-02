@@ -310,7 +310,7 @@ func! browser#bulk_rename()
 		return
 	end
 
-	enew
+	noautocmd enew
 
 	let b:marked = marked
 	setfiletype rename
