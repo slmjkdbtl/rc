@@ -7,7 +7,7 @@
 " Remarks:      Vim 6 or greater
 " Last Update:  2014 Aug 29 (see Issue 240)
 " Limitations:
-" 
+"
 " - Nested quoted text formatting is highlighted according to the outer
 "   format.
 " - If a closing Example Block delimiter may be mistaken for a title

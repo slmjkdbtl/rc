@@ -16,7 +16,7 @@ func! pair#pair(ch1, ch2)
 	let pos = col('.') - 1
 
 	if a:ch1 ==# "'"
-		if line[pos - 1] =~# '\w'
+		if line[pos - 1] =~# '\w' || line[pos - 1] ==# "'"
 			return a:ch1
 		endif
 	endif

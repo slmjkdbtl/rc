@@ -64,10 +64,7 @@ do
 	dir=$(dirname $f)
 	ext=${f##*.}
 	name=$(basename $f .$ext)
-	if [ "$ext" = "png" ]; then
-		mkdir -p $dir/compressed
-		/usr/local/bin/pngquant $f -o $dir/compressed/$name.png
-	fi
+	/usr/local/bin/convert $f $dir/$name.png
 done</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
@@ -93,7 +90,7 @@ done</string>
 				<key>Class Name</key>
 				<string>RunShellScriptAction</string>
 				<key>InputUUID</key>
-				<string>AEB036A2-BB38-49DE-A468-85B03F8E8C24</string>
+				<string>1BC87E69-BBE6-4A9C-ADD8-28C037BDD2CB</string>
 				<key>Keywords</key>
 				<array>
 					<string>Shell</string>
@@ -103,9 +100,9 @@ done</string>
 					<string>Unix</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>9EB792C3-CD41-414E-9304-5A3005474AA6</string>
+				<string>CED2E8C5-E5D0-441D-A0BE-3F78595800C6</string>
 				<key>UUID</key>
-				<string>01FD9A4F-BEB3-4DDD-B829-687118392EF1</string>
+				<string>AC31E4E2-E3E1-4C44-8D41-840463EE1585</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -178,6 +175,8 @@ done</string>
 						<string>4</string>
 					</dict>
 				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>

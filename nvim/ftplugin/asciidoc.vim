@@ -1,0 +1,5 @@
+" wengwengweng
+
+setlocal formatoptions+=ro
+
+

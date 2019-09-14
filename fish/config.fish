@@ -10,13 +10,15 @@ alias size "du -sh -- * | sort -h"
 alias disk "df -h ."
 alias v "nvim"
 alias dl "aria2c"
-alias ydl "youtube-dl --format mp4 -o '%(title)s.%(ext)s' -i"
+alias ydl "youtube-dl --format mp4 -o '%(title)s.%(ext)s' -i --no-playlist"
+alias ydll "youtube-dl --format mp4 -o '%(title)s.%(ext)s' -i --yes-playlist"
 alias ydlm "youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s' -i"
 alias ase "/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias vps "ssh t@wengwengweng"
-alias dsclean "sudo fd -H -I -t f '.DS_Store' -x 'rm'; killall Finder"
 alias toix "curl -F 'f:1=<-' ix.io"
 alias fzf "fzf --color=bg+:4,info:3,spinner:5,pointer:2"
+alias dsclean "sudo fd -H -I -t f '.DS_Store' -x 'rm'; killall Finder"
+alias dockerstart "open --background -a Docker"
 alias dockerclean "docker rmi (docker images -qa -f 'dangling=true'); docker rm (docker ps -a -q)"
 alias ip "ifconfig | grep 'inet.*broadcast' | awk '{print \$2}'"
 alias ipv6 "ifconfig | grep 'inet6.*%en' | awk '{print \$2}' | sed 's/%en0//'"
@@ -48,6 +50,7 @@ abbr gb git branch
 abbr gr git remote
 abbr gch git checkout
 abbr gcl git clone
+abbr gpl git pull
 abbr gbr git browse
 
 # env
@@ -174,9 +177,9 @@ function fish_prompt
 
 	end
 
-# 	echo ""
-# 	echo -n " "
-# 	show_usr
+	echo ""
+	echo -n " "
+	show_usr
 	echo ""
 	echo -n " "
 	show_cwd

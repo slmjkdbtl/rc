@@ -33,7 +33,11 @@ setup:
 	xcode-select --install
 	echo "+ installing homebrew"
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	echo "+ installing fish"
 	brew install fish
+	echo "+ installing neovim"
 	brew install neovim
+	echo "+ changing default shell to fish"
 	sudo chsh -s /usr/local/bin/fish
+	make
 
