@@ -1,6 +1,16 @@
 " The clipboard provider uses shell commands to communicate with the clipboard.
 " The provider function will only be registered if a supported command is
 " available.
+
+if exists('g:loaded_clipboard_provider')
+  finish
+endif
+" Default to 1.  provider#clipboard#Executable() may set 2.
+" To force a reload:
+"   :unlet g:loaded_clipboard_provider
+"   :runtime autoload/provider/clipboard.vim
+let g:loaded_clipboard_provider = 1
+
 let s:copy = {}
 let s:paste = {}
 let s:clipboard = {}
@@ -65,7 +75,7 @@ function! provider#clipboard#Executable() abort
     let s:paste = get(g:clipboard, 'paste', { '+': v:null, '*': v:null })
     let s:cache_enabled = get(g:clipboard, 'cache_enabled', 0)
     return get(g:clipboard, 'name', 'g:clipboard')
-  elseif has('mac') && executable('pbpaste') && s:cmd_ok('pbpaste')
+  elseif has('mac')
     let s:copy['+'] = 'pbcopy'
     let s:paste['+'] = 'pbpaste'
     let s:copy['*'] = s:copy['+']
@@ -73,9 +83,9 @@ function! provider#clipboard#Executable() abort
     let s:cache_enabled = 0
     return 'pbcopy'
   elseif exists('$WAYLAND_DISPLAY') && executable('wl-copy') && executable('wl-paste')
-    let s:copy['+'] = 'wl-copy --foreground'
+    let s:copy['+'] = 'wl-copy --foreground --type text/plain'
     let s:paste['+'] = 'wl-paste --no-newline'
-    let s:copy['*'] = 'wl-copy --foreground --primary'
+    let s:copy['*'] = 'wl-copy --foreground --primary --type text/plain'
     let s:paste['*'] = 'wl-paste --no-newline --primary'
     return 'wl-copy'
   elseif exists('$DISPLAY') && executable('xclip')
@@ -120,13 +130,6 @@ function! provider#clipboard#Executable() abort
   return ''
 endfunction
 
-if empty(provider#clipboard#Executable())
-  " provider#clipboard#Call() *must not* be defined if the provider is broken.
-  " Otherwise eval_has_provider() thinks the clipboard provider is
-  " functioning, and eval_call_provider() will happily call it.
-  finish
-endif
-
 function! s:clipboard.get(reg) abort
   if type(s:paste[a:reg]) == v:t_func
     return s:paste[a:reg]()
@@ -156,9 +159,7 @@ function! s:clipboard.set(lines, regtype, reg) abort
   end
 
   if s:selections[a:reg].owner > 0
-    " The previous provider instance should exit when the new one takes
-    " ownership, but kill it to be sure we don't fill up the job table.
-    call jobstop(s:selections[a:reg].owner)
+    let prev_job = s:selections[a:reg].owner
   end
   let s:selections[a:reg] = copy(s:selection)
   let selection = s:selections[a:reg]
@@ -172,13 +173,23 @@ function! s:clipboard.set(lines, regtype, reg) abort
     call jobsend(jobid, a:lines)
     call jobclose(jobid, 'stdin')
     let selection.owner = jobid
+    let ret = 1
   else
     echohl WarningMsg
     echomsg 'clipboard: failed to execute: '.(s:copy[a:reg])
     echohl None
-    return 0
+    let ret = 1
   endif
-  return 1
+
+  " The previous provider instance should exit when the new one takes
+  " ownership, but kill it to be sure we don't fill up the job table.
+  if exists('prev_job')
+    call timer_start(1000, {... ->
+          \ jobwait([prev_job], 0)[0] == -1
+          \ && jobstop(prev_job)})
+  endif
+
+  return ret
 endfunction
 
 function! provider#clipboard#Call(method, args) abort
@@ -192,3 +203,6 @@ function! provider#clipboard#Call(method, args) abort
     let s:here = v:false
   endtry
 endfunction
+
+" eval_has_provider() decides based on this variable.
+let g:loaded_clipboard_provider = empty(provider#clipboard#Executable()) ? 1 : 2
