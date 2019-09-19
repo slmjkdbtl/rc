@@ -47,9 +47,7 @@ func! s:write(bookmarks)
 endfunc
 
 func! s:format(proj)
-
 	return a:proj.sign . ' [' . a:proj.name . '](' . a:proj.path . ')'
-
 endfunc
 
 func! s:search(bookmarks, key)
@@ -340,11 +338,8 @@ func! bookmark#jump(pattern)
 	let bookmarks = s:get()
 
 	if empty(bookmarks)
-
 		echo 'no bookmarks found'
-
 		return 0
-
 	endif
 
 	if a:pattern ==# '' || !exists('a:pattern')
