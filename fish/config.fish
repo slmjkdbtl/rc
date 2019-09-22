@@ -24,7 +24,7 @@ alias ip "ifconfig | grep 'inet.*broadcast' | awk '{print \$2}'"
 alias ipv6 "ifconfig | grep 'inet6.*%en' | awk '{print \$2}' | sed 's/%en0//'"
 alias extip "curl -4 -s -m 5 https://ifconfig.co"
 alias extipv6 "curl -6 -s -m 5 https://ifconfig.co"
-alias bf "brainfuck"
+alias dnsclear "sudo killall -HUP mDNSResponder"
 alias lg "lazygit"
 
 type -q hub; and \
