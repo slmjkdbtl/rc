@@ -1,20 +1,20 @@
 # wengwengweng
 
-function breaksong
+function breaksong -d "break whole album into songs"
 
-	set in $argv[1]
-	set pts $argv[2..-1]
-	set start "0:00"
+	set -l in $argv[1]
+	set -l pts $argv[2..-1]
+	set -l start "0:00"
 
 	for i in (seq (count $pts))
 
-		set out (basename $in .mp3)"_"$i".mp3"
-		set end $pts[$i]
+		set -l out (basename $in .mp3)"_"$i".mp3"
+		set -l end $pts[$i]
 
 		echo $start"-"$end" -> "$out
 		ffmpeg -i $in -ss $start -to $end -c copy -loglevel panic $out
 
-		set start $end
+		set -l start $end
 
 	end
 

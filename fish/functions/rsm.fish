@@ -1,6 +1,6 @@
 # wengwengweng
 
-function rsm -d "remove git submodule" -a "path"
+function rmgsm -d "remove git submodule" -a "path"
 
 	git config -f .git/config --remove-section submodule.$path
 	git config -f .gitmodules --remove-section submodule.$path
@@ -10,3 +10,4 @@ function rsm -d "remove git submodule" -a "path"
 	rm -rf $path
 
 end
+
