@@ -8,5 +8,3 @@ setlocal nolisp
 setlocal indentexpr=
 setlocal formatoptions+=ro
 
-inoremap <buffer> : :<space>
-

@@ -11,7 +11,7 @@ function tobin -d "move executable to bin" -a "file"
 				return 1
 			end
 			chmod +x $file
-			install -v $file $BIN
+			install -v $file $HOME/.local/bin
 	end
 end
 

@@ -8,12 +8,13 @@ alias c "set_color"
 alias j "just"
 alias size "du -sh -- * | sort -h"
 alias disk "df -h ."
+alias wget "wget -q --show-progress"
 alias v "nvim"
 alias dl "aria2c"
 alias ydl "youtube-dl --format mp4 -o '%(title)s.%(ext)s' -i --no-playlist"
 alias ydll "youtube-dl --format mp4 -o '%(title)s.%(ext)s' -i --yes-playlist"
 alias ydlm "youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --no-playlist"
-alias ydllm "youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --yes-playlist"
+alias ydlml "youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --yes-playlist"
 alias ase "/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias vps "ssh tga@bastardstickweed"
 alias toix "curl -F 'f:1=<-' ix.io"
@@ -59,8 +60,7 @@ set -x BROWSER open
 set -x TERM xterm-super
 set -x PAGER less
 set -x LANG en_US.UTF-8
-set -x XDG_CONFIG_HOME $HOME/.config
-set -x VIMRUNTIME $XDG_CONFIG_HOME/nvim
+set -x VIMRUNTIME ~/.config/nvim
 
 if type -q nvim
 	set -x EDITOR nvim
@@ -68,16 +68,16 @@ else
 	set -x EDITOR vim
 end
 
-# personal bin
-if test -d $HOME/.bin
-	set -x BIN $HOME/.bin
-	set -x PATH $BIN $PATH
-end
+# local bin
+set -x PATH $HOME/.local/bin $PATH
+
+# less
+set -x LESS "-R"
 
 # fzf
 if type -q fzf
 	if type -q fd
-		set -x FZF_DEFAULT_COMMAND "fd --type f"
+		set -x FZF_DEFAULT_COMMAND "fd"
 	end
 end
 
@@ -121,10 +121,7 @@ type -q sccache; and \
 
 # wasmer
 set -x WASMER_DIR "$HOME/.wasmer"
-
-if test -d $WASM_DIR
-	[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
-end
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
 # homebrew
 set -x HOMEBREW_NO_AUTO_UPDATE 1
