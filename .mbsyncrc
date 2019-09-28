@@ -1,17 +1,21 @@
-IMAPStore outlook-remote
-Host imap-mail.outlook.com
+# wengwengweng
+
+IMAPStore tga-remote
+Host imap.mail.yahoo.com
 Port 993
-User voygagaga@outlook.com
+User slmjkdbtl@yahoo.com
 SSLType IMAPS
+AuthMechs LOGIN
 CertificateFile /usr/local/etc/openssl/cert.pem
 
-MaildirStore outlook-local
-Path ~/.mail/outlook/
+MaildirStore tga-local
+Path ~/.mail/
+Inbox ~/.mail/INBOX
 Subfolders Verbatim
 
-Channel outlook
-Master :outlook-remote:
-Slave :outlook-local:
+Channel tga
+Master :tga-remote:
+Slave :tga-local:
 Create Both
 Expunge Both
 Patterns *

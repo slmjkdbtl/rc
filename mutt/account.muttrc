@@ -1,10 +1,10 @@
 # wengwengweng
 
-set realname = "Tiga Wu"
-set from = "voygagaga@outlook.com"
-set folder = "~/.mail/outlook"
+set realname = "tga"
+set from = "tga@wengwengweng.me"
+set folder = "~/.mail/tga"
 set mbox_type = Maildir
 set spoolfile = "+inbox"
 set record = "+sent"
 set postponed = "+drafts"
-set header_cache = ~/.mail/outlook/cache/headers
+set header_cache = ~/.mail/tga/cache/headers

@@ -6,3 +6,4 @@ set sort = 'reverse-date'
 
 source colors.muttrc
 source account.muttrc
+

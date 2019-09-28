@@ -1,0 +1,4 @@
+" wengwengweng
+
+set expandtab
+

@@ -9,25 +9,25 @@ endif
 .PHONY: conf
 conf:
 
-	echo "+ linking"
+	@echo "+ linking"
 
-	mkdir -p $(CONFIG)
+	@mkdir -p $(CONFIG)
 
 	$(foreach f, nvim fish alacritty mpv mutt, \
 		echo "  - $(f) -> $(CONFIG)/$(f)"; \
 		ln -sf $(realpath $(f)) $(CONFIG); \
 	)
 
-	$(foreach f, .yabairc .skhdrc .tmux.conf .procs.toml .tigrc .mbsyncrc .mpdconf, \
+	$(foreach f, .yabairc .skhdrc .tmux.conf .procs.toml .tigrc .msmtprc .mbsyncrc .mpdconf, \
 		echo "  - $(f) -> $(HOME)/$(f)"; \
 		ln -sf $(realpath $(f)) $(HOME); \
 	)
 
-	echo "+ ticcing terminfos"
-	tic $(realpath super.terminfo)
+	@echo "+ ticcing terminfos"
+	@tic $(realpath super.terminfo)
 
 .PHONY: setup-macos
-setup-macos:
+@setup-macos:
 
 	sudo -v
 

@@ -15,6 +15,8 @@
 - [yabai](https://github.com/koekeishiya/yabai/)
 - [watchexec](https://github.com/mattgreen/watchexec/)
 - [miniserve](https://github.com/svenstaro/miniserve/)
+- [isync](https://isync.sourceforge.io/)
+- [msmtp](https://marlam.de/msmtp/)
 - [httpie](https://httpie.org/)
 - [aria2](https://aria2.github.io/)
 - [dfc](https://projects.gw-computing.net/projects/dfc/)
@@ -72,8 +74,8 @@
 - [Amulet](http://www.amulet.xyz/)
 
 # GUI Tools
-- [Aseprite](https://www.aseprite.org/)
 - [Blender](https://www.blender.org/)
+- [Aseprite](https://www.aseprite.org/)
 - [Sunvox](http://warmplace.ru/soft/sunvox/)
 - [Grafx2](http://grafx2.chez.com/)
 - [Pd](https://puredata.info/)
