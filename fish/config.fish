@@ -74,6 +74,9 @@ set -x PATH $HOME/.local/bin $PATH
 # less
 set -x LESS "-R"
 
+# bat
+set -x BAT_PAGER "less -R"
+
 # fzf
 if type -q fzf
 	if type -q fd
