@@ -71,6 +71,7 @@ func! s:get_status_path(bufn) abort
 		endif
 
 		let text = substitute(text, $HOME, '~', '')
+		let text = substitute(text, $TMPDIR, '/$TMPDIR/', '')
 
 	end
 

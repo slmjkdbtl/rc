@@ -1,6 +1,6 @@
 " wengwengweng
 
-let g:scroll_duration = get(g:, 'scroll_duration', 12)
+let g:scroll_duration = get(g:, 'scroll_duration', 9)
 
 command! -nargs=1 Scroll
 			\ call scroll#scroll(<q-args>)

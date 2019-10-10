@@ -9,6 +9,7 @@
 - [nvim] more customizable statusline
 - [nvim] redesign search
 - [nvim] async grep & find
+- [nvim] use trash dir
 
 == DONE
 - [nvim] sonic pi syntax detection

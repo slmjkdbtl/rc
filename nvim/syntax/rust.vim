@@ -15,7 +15,13 @@ endif
 " Syntax definitions {{{1
 " Basic keywords {{{2
 syn keyword   rustConditional match if else
-syn keyword   rustRepeat for loop while
+syn keyword   rustRepeat loop while
+" `:syn match` must be used to prioritize highlighting `for` keyword.
+syn match     rustRepeat /\<for\>/
+" Highlight `for` keyword in `impl ... for ... {}` statement. This line must
+" be put after previous `syn match` line to overwrite it.
+syn match     rustKeyword /\%(\<impl\>.\+\)\@<=\<for\>/
+syn keyword   rustRepeat in
 syn keyword   rustTypedef type nextgroup=rustIdentifier skipwhite skipempty
 syn keyword   rustStructure struct enum nextgroup=rustIdentifier skipwhite skipempty
 syn keyword   rustUnion union nextgroup=rustIdentifier skipwhite skipempty contained
@@ -33,7 +39,7 @@ syn keyword   rustKeyword     continue
 syn keyword   rustKeyword     crate
 syn keyword   rustKeyword     extern nextgroup=rustExternCrate,rustObsoleteExternMod skipwhite skipempty
 syn keyword   rustKeyword     fn nextgroup=rustFuncName skipwhite skipempty
-syn keyword   rustKeyword     in impl let
+syn keyword   rustKeyword     impl let
 syn keyword   rustKeyword     macro
 syn keyword   rustKeyword     pub nextgroup=rustPubScope skipwhite skipempty
 syn keyword   rustKeyword     return
@@ -200,6 +206,7 @@ syn region rustGenericLifetimeCandidate display start=/\%(<\|,\s*\)\@<='/ end=/[
 "rustLifetime must appear before rustCharacter, or chars will get the lifetime highlighting
 syn match     rustLifetime    display "\'\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*"
 syn match     rustLabel       display "\'\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*:"
+syn match     rustLabel       display "\%(\<\%(break\|continue\)\s*\)\@<=\'\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*"
 syn match   rustCharacterInvalid   display contained /b\?'\zs[\n\r\t']\ze'/
 " The groups negated here add up to 0-255 but nothing else (they do not seem to go beyond ASCII).
 syn match   rustCharacterInvalidUnicode   display contained /b'\zs[^[:cntrl:][:graph:][:alnum:][:space:]]\ze'/
@@ -361,3 +368,4 @@ syn sync maxlines=500
 let b:current_syntax = "rust"
 
 " vim: set et sw=4 sts=4 ts=8:
+

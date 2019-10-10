@@ -24,6 +24,7 @@ func! utils#rename(name)
 
 endfunc
 
+" TODO: use trash
 func! utils#delete()
 
 	let name = expand('%:t')

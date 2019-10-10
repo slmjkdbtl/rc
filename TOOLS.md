@@ -39,6 +39,7 @@
 - [imagemagick](https://www.imagemagick.org/)
 - [jpegoptim](https://github.com/tjko/jpegoptim/)
 - [pngquant](https://pngquant.org/)
+- [oxipng](https://github.com/shssoichiro/oxipng/)
 - [hexyl](https://github.com/sharkdp/hexyl/)
 - [emojify](https://github.com/mrowa44/emojify/)
 - [gifski](https://gif.ski/)

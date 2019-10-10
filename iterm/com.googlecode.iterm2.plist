@@ -513,7 +513,7 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>42 142 1068 656 0 0 1440 877 </string>
+	<string>62 80 1090 676 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>111 146 1068 676 0 0 1440 877 </string>
 	<key>NeverWarnAboutShortLivedSessions_7B0162E7-F8FA-4933-A562-6AD010864E0A</key>
@@ -1127,6 +1127,7 @@
 		<string>3.3.0beta7</string>
 		<string>3.3.0</string>
 		<string>3.3.3</string>
+		<string>3.3.4</string>
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
@@ -1142,7 +1143,7 @@
 		<key>screenFrame</key>
 		<string>{{0, 0}, {1440, 900}}</string>
 		<key>topLeft</key>
-		<string>{480, 877}</string>
+		<string>{425, 877}</string>
 	</dict>
 	<key>NoSyncHaveRequestedFullDiskAccess</key>
 	<true/>
@@ -1153,7 +1154,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>74FBE34B-2C3C-41D8-91BB-AB4A405CCA1C</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>109</integer>
+	<integer>113</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1913,11 +1914,13 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-09-16T21:20:26Z</date>
+	<date>2019-09-29T16:52:36Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
-	<true/>
+	<false/>
+	<key>SavePasteHistory</key>
+	<false/>
 	<key>ShowFullScreenTabBar</key>
 	<true/>
 	<key>ShowMetalFPSmeter</key>
@@ -1968,7 +1971,7 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.3.3</string>
+	<string>3.3.4</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

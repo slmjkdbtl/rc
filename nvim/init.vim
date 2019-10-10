@@ -27,6 +27,7 @@ call plug#remote('w0rp/ale')
 call plug#remote('mhinz/vim-signify')
 
 " ft
+call ft#detect('*.asm', 'asm')
 call ft#detect('*.bf', 'brainfuck')
 call ft#detect('*.toml', 'toml')
 call ft#detect('*.carp', 'carp')
@@ -272,6 +273,8 @@ set wildignore+=.tags,*.map
 set wildignore+=*.so,*.o,*.out,*.swp,*.exe,*.elf,*.hex,*.dll,*~
 exec 'set listchars=tab:\|\ '
 colorscheme super
+
+let g:trash_dir = expand('$HOME/.Trash')
 
 " signify
 let g:signify_vcs_list = [ 'git' ]
