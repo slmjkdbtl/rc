@@ -75,6 +75,7 @@
 - [Amulet](http://www.amulet.xyz/)
 
 # GUI Tools
+- [Alfred](https://www.alfredapp.com/)
 - [Blender](https://www.blender.org/)
 - [Aseprite](https://www.aseprite.org/)
 - [Sunvox](http://warmplace.ru/soft/sunvox/)
@@ -108,7 +109,6 @@
 - [Gifski](https://sindresorhus.com/gifski/)
 - [Trello](https://trello.com/)
 - [HexFiend](http://ridiculousfish.com/hexfiend/)
-- [Jumpcut](https://snark.github.io/jumpcut/)
 - [Mini vMac](https://www.gryphel.com/c/minivmac/)
 - [MacDown](https://macdown.uranusjr.com/)
 - [Monitor](https://conduitlabs.com/)
@@ -129,11 +129,13 @@
 - [Ableton Live](https://www.ableton.com/live/)
 
 # Alfred Workflows
-- [loadsaver](https://alienmelon.itch.io/loadsaver-os-x-screensaver/)
 - [dash](https://github.com/Kapeli/Dash-Alfred-Workflow/)
 - [colors](http://www.packal.org/workflow/colors/)
 - [emoji](http://www.packal.org/workflow/emoji/)
 - [kill](https://github.com/ngreenstein/alfred-process-killer/)
+
+# Screensavers
+- [loadsaver](https://alienmelon.itch.io/loadsaver-os-x-screensaver/)
 
 # Games
 - [dwarf-fortress](http://bay12games.com/dwarves/)

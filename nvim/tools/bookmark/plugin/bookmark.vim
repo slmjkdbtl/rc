@@ -11,9 +11,6 @@ command! -nargs=? BookmarkAdd
 command! -nargs=? BookmarkRemove
 			\ call bookmark#remove(<q-args>)
 
-command! -nargs=? BookmarkStar
-			\ call bookmark#star(<q-args>)
-
 command! -nargs=0 BookmarkList
 			\ call bookmark#list()
 

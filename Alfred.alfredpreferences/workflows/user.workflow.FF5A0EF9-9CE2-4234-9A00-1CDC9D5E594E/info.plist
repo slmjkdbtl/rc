@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>connections</key>
+	<dict>
+		<key>06770DDF-FBA2-4F26-AEF6-E6959BBDC374</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B6AB2FFD-B954-4E0C-8C55-4925ED6A83B1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>tga</string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Bookmark</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>z</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string># wengwengweng
+
+def item_xml(item = {})
+	&lt;&lt;-ITEM
+	&lt;item arg="#{item[:path]}"&gt;
+		&lt;title&gt;#{item[:name]}&lt;/title&gt;
+		&lt;subtitle&gt;#{item[:path]}&lt;/subtitle&gt;
+	&lt;/item&gt;
+	ITEM
+end
+
+def get_bookmarks()
+
+	return File.read("#{ENV['HOME']}/.bookmarks").split("\n").map do |line|
+
+		name = line.match(/^\[.*\]/)[0]
+		path = line.match(/\(.*\)$/)[0]
+
+		name = name[1..name.length - 2]
+		path = path[1..path.length - 2]
+
+		{
+			:name =&gt; name,
+			:path =&gt; path,
+		}
+
+	end
+
+end
+
+def get_items(pat = "")
+
+	list = get_bookmarks()
+
+	return list.select do |item|
+
+		if pat.empty?
+			true
+		end
+
+		item[:name].match(/#{pat}/i)
+
+	end
+
+end
+
+items = get_items(ARGV[0] || "").map do |i|
+	item_xml(i)
+end.join
+
+output = "&lt;?xml version='1.0'?&gt;\n&lt;items&gt;\n#{items}&lt;/items&gt;"
+
+puts output
+
+</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>jump to '{query}'</string>
+				<key>type</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>06770DDF-FBA2-4F26-AEF6-E6959BBDC374</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>system("open -a iTerm #{ARGV[0]}")</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>B6AB2FFD-B954-4E0C-8C55-4925ED6A83B1</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>06770DDF-FBA2-4F26-AEF6-E6959BBDC374</key>
+		<dict>
+			<key>xpos</key>
+			<integer>120</integer>
+			<key>ypos</key>
+			<integer>105</integer>
+		</dict>
+		<key>B6AB2FFD-B954-4E0C-8C55-4925ED6A83B1</key>
+		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
+			<key>ypos</key>
+			<integer>105</integer>
+		</dict>
+	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string></string>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>

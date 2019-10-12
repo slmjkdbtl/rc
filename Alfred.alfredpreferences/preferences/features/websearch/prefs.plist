@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>customSites</key>
+	<dict>
+		<key>7F74893E-2892-4B0A-9F16-B46255188BEB</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>github</string>
+			<key>text</key>
+			<string>Search Github for '{query}'</string>
+			<key>url</key>
+			<string>https://github.com/search?q={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>AAC46030-3C48-4824-B077-0DB9BA457325</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>douban</string>
+			<key>text</key>
+			<string>Search Douban for '{query}'</string>
+			<key>url</key>
+			<string>https://www.douban.com/search?q={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>B641F567-337E-4603-A363-5CCA43367AA6</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>crate</string>
+			<key>text</key>
+			<string>Search crates.io for '{query}'</string>
+			<key>url</key>
+			<string>https://crates.io/search?q={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>onlyShowEnabledInPrefs</key>
+	<true/>
+</dict>
+</plist>

@@ -12,14 +12,12 @@ func! s:get()
 
 	for p in readfile(file)
 
-		let sign = p[0:0]
 		let name = matchstr(p, '\[.*\]')
 		let path = matchstr(p, '(.*)')
 		let name = name[1:strlen(name) - 2]
 		let path = path[1:strlen(path) - 2]
 
 		let bookmarks = bookmarks + [{
-			\ 'sign': sign,
 			\ 'name': name,
 			\ 'path': path,
 		\ }]
@@ -47,25 +45,13 @@ func! s:write(bookmarks)
 endfunc
 
 func! s:format(proj)
-	return a:proj.sign . ' [' . a:proj.name . '](' . a:proj.path . ')'
+	return '[' . a:proj.name . '](' . a:proj.path . ')'
 endfunc
 
 func! s:search(bookmarks, key)
 
 	for p in a:bookmarks
 		if match(p.name, '\c' . a:key) != -1
-			return p
-		endif
-	endfor
-
-	return -1
-
-endfunc
-
-func! s:search_starred(bookmarks)
-
-	for p in a:bookmarks
-		if p.sign ==# '*'
 			return p
 		endif
 	endfor
@@ -103,7 +89,6 @@ func! bookmark#add(name)
 	endfor
 
 	let proj = {
-		\ 'sign': '+',
 		\ 'name': name,
 		\ 'path': path,
 	\ }
@@ -207,86 +192,6 @@ func! bookmark#remove(key)
 
 endfunc
 
-func! bookmark#star(key)
-
-	let bookmarks = s:get()
-
-	if empty(bookmarks)
-
-		echo 'no bookmarks found'
-
-		return -1
-
-	endif
-
-	if exists('a:key') && a:key !=# ''
-
-		let proj = s:search(bookmarks, a:key)
-
-		if type(proj) == 0 && proj == -1
-
-			echo 'no bookmark to star'
-
-			return -1
-
-		endif
-
-	else
-
-		if exists('g:bookmark_current')
-
-			let index = index(bookmarks, g:bookmark_current)
-
-			if index != -1
-				let proj = bookmarks[index]
-			endif
-
-		endif
-
-		if !exists('proj')
-
-			echo 'no bookmark to star'
-
-			return -1
-
-		end
-
-	end
-
-	let format = s:format(proj)
-
-	if confirm('> star ' . format . '?', "&yes\n&no") == 1
-
-		for p in bookmarks
-			let p.sign = '+'
-		endfor
-
-		let proj.sign = '*'
-
-		if s:write(bookmarks) != -1
-
-			redraw
-			let format = s:format(proj)
-			echo format . ' starred'
-
-			return 0
-
-		else
-
-			echo 'error starring bookmark'
-
-			return -1
-
-		endif
-
-	else
-
-		return -1
-
-	endif
-
-endfunc
-
 func! bookmark#list()
 
 	let bookmarks = s:get()
@@ -342,23 +247,7 @@ func! bookmark#jump(pattern)
 		return 0
 	endif
 
-	if a:pattern ==# '' || !exists('a:pattern')
-
-		let proj = s:search_starred(bookmarks)
-
-		if type(proj) == 0 && proj == -1
-			let proj = bookmarks[0]
-		endif
-
-	elseif a:pattern ==# '*'
-
-		let proj = s:search_starred(bookmarks)
-
-	else
-
-		let proj = s:search(bookmarks, a:pattern)
-
-	endif
+	let proj = s:search(bookmarks, a:pattern)
 
 	if type(proj) == 4
 
