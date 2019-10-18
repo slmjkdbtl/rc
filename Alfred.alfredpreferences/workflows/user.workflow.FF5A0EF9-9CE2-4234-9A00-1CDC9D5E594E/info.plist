@@ -6,7 +6,33 @@
 	<string></string>
 	<key>connections</key>
 	<dict>
-		<key>06770DDF-FBA2-4F26-AEF6-E6959BBDC374</key>
+		<key>03E43893-D7DB-4A73-928D-4A5F74A0B9BC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B6AB2FFD-B954-4E0C-8C55-4925ED6A83B1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>6AA27CA1-A261-496B-A78F-10B7FE6DDAC6</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E61C97A4-6E08-4C76-9499-CA684F4CE9B7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E61C97A4-6E08-4C76-9499-CA684F4CE9B7</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -61,51 +87,51 @@
 				<string># wengwengweng
 
 def item_xml(item = {})
-	&lt;&lt;-ITEM
-	&lt;item arg="#{item[:path]}"&gt;
-		&lt;title&gt;#{item[:name]}&lt;/title&gt;
-		&lt;subtitle&gt;#{item[:path]}&lt;/subtitle&gt;
-	&lt;/item&gt;
-	ITEM
+    &lt;&lt;-ITEM
+    &lt;item arg="#{item[:path]}"&gt;
+    &lt;title&gt;#{item[:name]}&lt;/title&gt;
+    &lt;subtitle&gt;#{item[:path]}&lt;/subtitle&gt;
+    &lt;/item&gt;
+    ITEM
 end
 
 def get_bookmarks()
-
-	return File.read("#{ENV['HOME']}/.bookmarks").split("\n").map do |line|
-
-		name = line.match(/^\[.*\]/)[0]
-		path = line.match(/\(.*\)$/)[0]
-
-		name = name[1..name.length - 2]
-		path = path[1..path.length - 2]
-
-		{
-			:name =&gt; name,
-			:path =&gt; path,
-		}
-
-	end
-
+    
+    return File.read("#{ENV['HOME']}/.bookmarks").split("\n").map do |line|
+        
+        name = line.match(/^\[.*\]/)[0]
+        path = line.match(/\(.*\)$/)[0]
+        
+        name = name[1..name.length - 2]
+        path = path[1..path.length - 2]
+        
+        {
+            :name =&gt; name,
+            :path =&gt; path,
+        }
+        
+    end
+    
 end
 
 def get_items(pat = "")
-
-	list = get_bookmarks()
-
-	return list.select do |item|
-
-		if pat.empty?
-			true
-		end
-
-		item[:name].match(/#{pat}/i)
-
-	end
-
+    
+    list = get_bookmarks()
+    
+    return list.select do |item|
+        
+        if pat.empty?
+            true
+        end
+        
+        item[:name].match(/#{pat}/i)
+        
+    end
+    
 end
 
 items = get_items(ARGV[0] || "").map do |i|
-	item_xml(i)
+    item_xml(i)
 end.join
 
 output = "&lt;?xml version='1.0'?&gt;\n&lt;items&gt;\n#{items}&lt;/items&gt;"
@@ -129,7 +155,7 @@ puts output
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>06770DDF-FBA2-4F26-AEF6-E6959BBDC374</string>
+			<string>03E43893-D7DB-4A73-928D-4A5F74A0B9BC</string>
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
@@ -156,24 +182,82 @@ puts output
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>zz</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string></string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>6AA27CA1-A261-496B-A78F-10B7FE6DDAC6</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string></string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>bk.rb</string>
+				<key>type</key>
+				<integer>8</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>E61C97A4-6E08-4C76-9499-CA684F4CE9B7</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>06770DDF-FBA2-4F26-AEF6-E6959BBDC374</key>
+		<key>03E43893-D7DB-4A73-928D-4A5F74A0B9BC</key>
 		<dict>
 			<key>xpos</key>
-			<integer>120</integer>
+			<integer>190</integer>
 			<key>ypos</key>
-			<integer>105</integer>
+			<integer>260</integer>
+		</dict>
+		<key>6AA27CA1-A261-496B-A78F-10B7FE6DDAC6</key>
+		<dict>
+			<key>xpos</key>
+			<integer>155</integer>
+			<key>ypos</key>
+			<integer>425</integer>
 		</dict>
 		<key>B6AB2FFD-B954-4E0C-8C55-4925ED6A83B1</key>
 		<dict>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>605</integer>
 			<key>ypos</key>
-			<integer>105</integer>
+			<integer>325</integer>
+		</dict>
+		<key>E61C97A4-6E08-4C76-9499-CA684F4CE9B7</key>
+		<dict>
+			<key>xpos</key>
+			<integer>335</integer>
+			<key>ypos</key>
+			<integer>425</integer>
 		</dict>
 	</dict>
 	<key>variablesdontexport</key>

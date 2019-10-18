@@ -72,6 +72,7 @@
 - [monolith](https://github.com/Y2Z/monolith/)
 - [i2p](https://geti2p.net/)
 - [pageres](https://github.com/sindresorhus/pageres-cli/)
+- [tmate](https://tmate.io)
 - [Amulet](http://www.amulet.xyz/)
 
 # GUI Tools

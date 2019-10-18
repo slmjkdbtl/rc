@@ -9,7 +9,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyword</key>
-			<string>github</string>
+			<string>gh</string>
 			<key>text</key>
 			<string>Search Github for '{query}'</string>
 			<key>url</key>
@@ -22,7 +22,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyword</key>
-			<string>douban</string>
+			<string>db</string>
 			<key>text</key>
 			<string>Search Douban for '{query}'</string>
 			<key>url</key>
@@ -35,7 +35,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyword</key>
-			<string>crate</string>
+			<string>cr</string>
 			<key>text</key>
 			<string>Search crates.io for '{query}'</string>
 			<key>url</key>
