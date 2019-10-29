@@ -476,7 +476,15 @@ func! browser#enter()
 			call system('open ' . escape(item, " '&()"))
 		else
 			call browser#close()
-			exec 'edit ' . item
+
+			let nr = bufnr(item)
+
+			if nr == -1
+				exec 'edit ' . item
+			else
+				exec 'buffer ' . nr
+			endif
+
 		endif
 
 	endif
