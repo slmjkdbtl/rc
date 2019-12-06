@@ -1,0 +1,66 @@
+# wengwengweng
+
+page:
+  layout: portrait
+  margin: [1.2in, 1.2in, 1.2in, 1.2in]
+  size: Letter
+
+font:
+  catalog:
+    Menlo:
+      normal: Menlo-Normal.ttf
+      italic: Menlo-Italic.ttf
+      bold: Menlo-Bold.ttf
+      bold_italic: Menlo-BoldItalic.ttf
+    SourceHansSerif:
+      normal: SourceHanSerifSC-Regular.ttf
+      italic: SourceHanSerifSC-Regular.ttf
+      bold: SourceHanSerifSC-Bold.ttf
+      bold_italic: SourceHanSerifSC-Bold.ttf
+  fallbacks:
+    - SourceHansSerif
+
+base:
+  font-family: Menlo
+  font-color: #000000
+  font-size: 10
+  line-height: 2.0
+
+prose:
+  margin-bottom: 16
+
+vertical-spacing: 24
+
+heading:
+  font-color: #ff9400
+  font-style: bold
+  h1:
+    align: left
+    font-size: 32
+    margin-bottom: 64
+  h2:
+    font-size: 20
+    margin-top: 24
+    margin-bottom: 24
+
+lead:
+  font-size: 12
+
+link:
+  font-color: #0000ff
+  text-decoration: underline
+  font-style: bold
+
+caption:
+  font-color: #666666
+
+image:
+#   border-color: #000000
+#   border-width: 1
+
+footer:
+  height: 0
+
+thematic-break:
+  border-color: #dddddd
+

@@ -18,6 +18,7 @@ call plug#load('space')
 call plug#load('mode')
 call plug#load('trim')
 call plug#load('mru')
+call plug#load('adoc')
 call plug#load('pi')
 call plug#load('utils')
 call plug#load('tommywiseau')
@@ -305,6 +306,10 @@ let g:ale_linters = {
 
 " tommywiseau
 let g:is_human_bean = 0
+
+" adoc
+let g:adoc_theme_file = '$CONF/asciidoc/super/theme.yml'
+let g:adoc_font_dir = '$CONF/asciidoc/super/fonts'
 
 augroup Explore
 

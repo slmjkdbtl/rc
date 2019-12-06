@@ -57,11 +57,12 @@ abbr gpl git pull
 abbr gbr git browse
 
 # env
+set -x CONF $HOME/.conf
 set -x BROWSER open
 set -x TERM xterm-super
 set -x PAGER less
 set -x LANG en_US.UTF-8
-set -x VIMRUNTIME ~/.config/nvim
+set -x VIMRUNTIME $CONF/nvim
 
 if type -q nvim
 	set -x EDITOR nvim
