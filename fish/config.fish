@@ -44,17 +44,17 @@ function ....  ; cd ../../.. ; end
 function ..... ; cd ../../../.. ; end
 
 # abbr
-abbr gs git status
-abbr ga git add .
-abbr gc git commit -m
-abbr gp git push
-abbr gd git diff
-abbr gb git branch
-abbr gr git remote
-abbr gch git checkout
-abbr gcl git clone
-abbr gpl git pull
-abbr gbr git browse
+abbr gs "git status"
+abbr ga "git add ."
+abbr gc "git commit -m"
+abbr gp "git push"
+abbr gd "git diff"
+abbr gb "git branch"
+abbr gr "git remote"
+abbr gch "git checkout"
+abbr gcl "git clone"
+abbr gpl "git pull"
+abbr gbr "git browse"
 
 # env
 set -x CONF $HOME/.conf

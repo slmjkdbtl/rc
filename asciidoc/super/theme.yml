@@ -12,13 +12,13 @@ font:
       italic: Menlo-Italic.ttf
       bold: Menlo-Bold.ttf
       bold_italic: Menlo-BoldItalic.ttf
-    SourceHansSerif:
-      normal: SourceHanSerifSC-Regular.ttf
-      italic: SourceHanSerifSC-Regular.ttf
-      bold: SourceHanSerifSC-Bold.ttf
-      bold_italic: SourceHanSerifSC-Bold.ttf
+    SourceHanSans:
+      normal: SourceHanSansSC-Regular.ttf
+      italic: SourceHanSansSC-Regular.ttf
+      bold: SourceHanSansSC-Bold.ttf
+      bold_italic: SourceHanSansSC-Bold.ttf
   fallbacks:
-    - SourceHansSerif
+    - SourceHanSans
 
 base:
   font-family: Menlo
@@ -53,10 +53,7 @@ link:
 
 caption:
   font-color: #666666
-
-image:
-#   border-color: #000000
-#   border-width: 1
+  align: center
 
 footer:
   height: 0

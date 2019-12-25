@@ -66,6 +66,7 @@
 - [figlet](http://www.figlet.org/)
 - [toilet](http://caca.zoy.org/wiki/toilet/)
 - [fonttools](https://github.com/fonttools/fonttools/)
+- [cmark](https://commonmark.org/)
 - [wine](https://www.winehq.org/)
 - [mame](http://mamedev.org/)
 - [twiggy](https://rustwasm.github.io/twiggy/)
