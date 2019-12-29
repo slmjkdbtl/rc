@@ -1,4 +1,4 @@
-# CLI tools
+# CLI
 - [brew](https://brew.sh/)
 - [fd](https://github.com/sharkdp/fd/)
 - [jump](https://github.com/gsamokovarov/jump/)
@@ -69,6 +69,7 @@
 - [cmark](https://commonmark.org/)
 - [wine](https://www.winehq.org/)
 - [mame](http://mamedev.org/)
+- [sampler](https://sampler.dev)
 - [twiggy](https://rustwasm.github.io/twiggy/)
 - [duck](https://duck.sh/)
 - [monolith](https://github.com/Y2Z/monolith/)
@@ -76,16 +77,16 @@
 - [i2p](https://geti2p.net/)
 - [pageres](https://github.com/sindresorhus/pageres-cli/)
 - [tmate](https://tmate.io)
+- [apply-user-defaults](https://github.com/zero-sh/apply-user-defaults)
 - [Amulet](http://www.amulet.xyz/)
 - [ix](http://ix.io)
 - [paste.gg](https://paste.gg)
 
-# GUI Tools
+# GUI
 - [Alfred](https://www.alfredapp.com/)
 - [Blender](https://www.blender.org/)
 - [Aseprite](https://www.aseprite.org/)
 - [Sunvox](http://warmplace.ru/soft/sunvox/)
-- [Grafx2](http://grafx2.chez.com/)
 - [Pd](https://puredata.info/)
 - [Adium](https://adium.im/)
 - [Keka](https://www.keka.io/)
@@ -114,6 +115,7 @@
 - [ImageOptim](https://imageoptim.com/mac/)
 - [Gifski](https://sindresorhus.com/gifski/)
 - [Trello](https://trello.com/)
+- [Grafx2](http://grafx2.chez.com/)
 - [HexFiend](http://ridiculousfish.com/hexfiend/)
 - [Mini vMac](https://www.gryphel.com/c/minivmac/)
 - [MacDown](https://macdown.uranusjr.com/)
@@ -127,7 +129,6 @@
 - [Gifox](https://gifox.io/)
 - [Patterns](https://krillapps.com/patterns/)
 - [OBS](https://obsproject.com/)
-- [Sloth](https://sveinbjorn.org/sloth/)
 - [Sweet Home 3D](http://www.sweethome3d.com)
 - [Etcher](https://balena.io/etcher)
 - [Pokemon Showdown](https://pokemonshowdown.com/)
@@ -135,7 +136,12 @@
 - [Acorn](https://flyingmeat.com/acorn/)
 - [Ableton Live](https://www.ableton.com/live/)
 
-# Alfred Workflows
+# Audio
+- [SQ8ROM](https://www.samplescience.ca/2019/09/sq8rom.html)
+- [Room Piano](https://www.samplescience.ca/2017/11/room-piano.html)
+- [Izotope Vinyl](https://www.izotope.com/en/products/vinyl.html)
+
+# Alfred
 - [dash](https://github.com/Kapeli/Dash-Alfred-Workflow/)
 - [colors](http://www.packal.org/workflow/colors/)
 - [emoji](http://www.packal.org/workflow/emoji/)
@@ -146,4 +152,10 @@
 
 # Games
 - [dwarf-fortress](http://bay12games.com/dwarves/)
+
+# Misc
+- [BlackHole](https://github.com/ExistentialAudio/BlackHole)
+- [BackgroundMusic](https://github.com/kyleneideck/BackgroundMusic)
+- [Xbox 360 Driver](https://github.com/360Controller/360Controller)
+- [Soundflower](https://github.com/mattingalls/Soundflower)
 
