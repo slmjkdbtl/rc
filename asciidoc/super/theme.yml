@@ -61,3 +61,49 @@ footer:
 thematic-break:
   border-color: #dddddd
 
+table:
+  border-width: 1
+  head:
+    background-color: #e8e8e8
+    border-bottom-width: 1
+  cell:
+    padding: 12
+
+outline-list:
+  indent: 12
+  item-spacing: 0
+
+role:
+  purple:
+    font-color: #8000ff
+  green:
+    font-color: #00ff80
+  red:
+    font-color: #ff0180
+  cyan:
+    font-color: #02feff
+  yellow:
+    font-color: #ffff02
+  blue:
+    font-color: #0000ff
+  pink:
+    font-color: #ff7fff
+  orange:
+    font-color: #ff8001
+  purple-bg:
+    background-color: #8000ff
+  green-bg:
+    background-color: #00ff80
+  red-bg:
+    background-color: #ff0180
+  cyan-bg:
+    background-color: #02feff
+  yellow-bg:
+    background-color: #ffff02
+  blue-bg:
+    background-color: #0000ff
+  pink-bg:
+    background-color: #ff7fff
+  orange-bg:
+    background-color: #ff8001
+

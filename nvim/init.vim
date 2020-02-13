@@ -118,6 +118,8 @@ call ft#detect('*.nim', 'nim')
 call ft#detect('*.nimble', 'nim')
 call ft#detect('*.py', 'python')
 call ft#detect('*.scpt', 'applescript')
+call ft#detect('*.as', 'actionscript')
+call ft#detect('*.shader', 'shaderlab')
 call ft#detect('.gitignore', 'conf')
 call ft#detect('.cfg', 'conf')
 call ft#detect('*conf', 'conf')
@@ -137,6 +139,7 @@ call ft#detect('Vagrantfile', 'ruby')
 call ft#detect('Brewfile', 'brew')
 call ft#detect('[Jj]ustfile', 'make')
 call ft#detect('Makefile', 'make')
+call ft#detect('makefile', 'make')
 call ft#detect('Makefile*', 'make')
 call ft#detect('*.mk', 'make')
 call ft#detect('Tupfile', 'tup')
@@ -169,6 +172,8 @@ call ft#comment('java', '//', [])
 call ft#comment('kotlin', '//', [])
 call ft#comment('dart', '//', [])
 call ft#comment('haxe', '//', [])
+call ft#comment('actionscript', '//', [])
+call ft#comment('shaderlab', '//', [])
 call ft#comment('pug', '//', [])
 call ft#comment('haml', '//', [])
 call ft#comment('json', '//', [])
@@ -252,6 +257,7 @@ set cursorline
 set hlsearch
 set cpoptions=aABceFs
 set showtabline=2
+set guifont=ProggyCleanTT:h24
 set guioptions+=!
 set path+=**
 set scroll=8

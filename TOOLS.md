@@ -135,6 +135,7 @@
 - [Affinity Designer](https://affinity.serif.com/designer/)
 - [Acorn](https://flyingmeat.com/acorn/)
 - [Ableton Live](https://www.ableton.com/live/)
+- [THR Editor](https://usa.yamaha.com/support/updates/57649_en.html)
 
 # Audio
 - [SQ8ROM](https://www.samplescience.ca/2019/09/sq8rom.html)

@@ -88,7 +88,7 @@ end
 
 # jump
 if type -q jump
-	status --is-interactive; and . (jump shell --bind=z | psub)
+	status --is-interactive; and source (jump shell --bind=z fish | psub)
 end
 
 # go
