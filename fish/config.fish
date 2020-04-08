@@ -17,7 +17,6 @@ alias ydll "youtube-dl --format mp4 -o '%(title)s.%(ext)s' -i --yes-playlist"
 alias ydlm "youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --no-playlist"
 alias ydlml "youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --yes-playlist"
 alias ase "/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
-alias vps "ssh tga@pineapple"
 alias toix "curl -F 'f:1=<-' ix.io"
 alias fzf "fzf --color=bg+:4,info:3,spinner:5,pointer:2"
 alias dsclean "sudo fd -H -I -t f '.DS_Store' -x 'rm'; killall Finder"
@@ -28,7 +27,6 @@ alias ipv6 "ifconfig | grep 'inet6.*%en' | awk '{print \$2}' | sed 's/%en0//'"
 alias extip "curl -4 -s -m 5 https://ifconfig.co"
 alias extipv6 "curl -6 -s -m 5 https://ifconfig.co"
 alias dnsclear "sudo killall -HUP mDNSResponder"
-alias lg "lazygit"
 
 type -q hub; and \
 	alias git "hub"
@@ -55,6 +53,8 @@ abbr gch "git checkout"
 abbr gcl "git clone"
 abbr gpl "git pull"
 abbr gbr "git browse"
+abbr lg "lazygit"
+abbr vps "ssh tga@pineapple"
 
 # env
 set -x CONF $HOME/.conf
@@ -123,10 +123,6 @@ set -x CARP_DIR $HOME/.carp
 # sccache
 type -q sccache; and \
 	set -x RUSTC_WRAPPER sccache
-
-# wasmer
-set -x WASMER_DIR "$HOME/.wasmer"
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
 # homebrew
 set -x HOMEBREW_NO_AUTO_UPDATE 1
