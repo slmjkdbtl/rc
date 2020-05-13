@@ -68,6 +68,8 @@
 - [Alfred](https://www.alfredapp.com/)
 - [Blender](https://www.blender.org/)
 - [Aseprite](https://www.aseprite.org/)
+- [Discord](https://discordapp.com)
+- [iTerm](https://www.iterm2.com)
 - [Sunvox](http://warmplace.ru/soft/sunvox/)
 - [Pd](https://puredata.info/)
 - [Adium](https://adium.im/)

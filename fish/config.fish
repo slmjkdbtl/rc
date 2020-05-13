@@ -54,7 +54,6 @@ abbr gcl "git clone"
 abbr gpl "git pull"
 abbr gbr "git browse"
 abbr lg "lazygit"
-abbr vps "ssh tga@pineapple"
 
 # env
 set -x CONF $HOME/.conf

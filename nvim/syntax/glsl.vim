@@ -118,6 +118,7 @@ syn keyword glslType mat4
 syn keyword glslType mat4x2
 syn keyword glslType mat4x3
 syn keyword glslType mat4x4
+syn keyword glslType sampler
 syn keyword glslType sampler1D
 syn keyword glslType sampler1DArray
 syn keyword glslType sampler1DArrayShadow
@@ -261,6 +262,7 @@ syn keyword glslQualifier rgba8i
 syn keyword glslQualifier rgba8ui
 syn keyword glslQualifier row_major
 syn keyword glslQualifier sample
+syn keyword glslQualifier set
 syn keyword glslQualifier shared
 syn keyword glslQualifier smooth
 syn keyword glslQualifier std140
