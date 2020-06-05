@@ -2,13 +2,13 @@
 
 func! s:get()
 
-	let file = expand(g:bookmark_file)
+	let file = expand(g:proj_file)
 
 	if !filereadable(file)
 		return []
 	endif
 
-	let bookmarks = []
+	let projs = []
 
 	for p in readfile(file)
 
@@ -17,26 +17,26 @@ func! s:get()
 		let name = name[1:strlen(name) - 2]
 		let path = path[1:strlen(path) - 2]
 
-		let bookmarks = bookmarks + [{
+		let projs = projs + [{
 			\ 'name': name,
 			\ 'path': path,
 		\ }]
 
 	endfor
 
-	return bookmarks
+	return projs
 
 endfunc
 
-func! s:write(bookmarks)
+func! s:write(projs)
 
 	let list = []
 
-	for p in a:bookmarks
+	for p in a:projs
 		let list = list + [ s:format(p) ]
 	endfor
 
-	if writefile(list, expand(g:bookmark_file)) == -1
+	if writefile(list, expand(g:proj_file)) == -1
 		return -1
 	endif
 
@@ -48,9 +48,9 @@ func! s:format(proj)
 	return '[' . a:proj.name . '](' . a:proj.path . ')'
 endfunc
 
-func! s:search(bookmarks, key)
+func! s:search(projs, key)
 
-	for p in a:bookmarks
+	for p in a:projs
 		if match(p.name, '\c' . a:key) != -1
 			return p
 		endif
@@ -60,9 +60,9 @@ func! s:search(bookmarks, key)
 
 endfunc
 
-func! bookmark#add(name)
+func! proj#add(name)
 
-	let bookmarks = s:get()
+	let projs = s:get()
 
 	if exists('a:name') && a:name !=# ''
 
@@ -81,9 +81,9 @@ func! bookmark#add(name)
 
 	endif
 
-	for p in bookmarks
+	for p in projs
 		if p.name == name || p.path == path
-			echo 'bookmark already exists'
+			echo 'project already exists'
 			return -1
 		endif
 	endfor
@@ -97,7 +97,7 @@ func! bookmark#add(name)
 
 	if confirm('> add ' . format . '?', "&yes\n&no") == 1
 
-		if s:write(bookmarks + [ proj ]) != -1
+		if s:write(projs + [ proj ]) != -1
 
 			redraw
 			echo format . ' added'
@@ -106,7 +106,7 @@ func! bookmark#add(name)
 
 		else
 
-			echo 'error adding bookmark'
+			echo 'error adding project'
 
 			return -1
 
@@ -116,13 +116,13 @@ func! bookmark#add(name)
 
 endfunc
 
-func! bookmark#remove(key)
+func! proj#remove(key)
 
-	let bookmarks = s:get()
+	let projs = s:get()
 
-	if empty(bookmarks)
+	if empty(projs)
 
-		echo 'no bookmarks found'
+		echo 'no project found'
 
 		return -1
 
@@ -130,11 +130,11 @@ func! bookmark#remove(key)
 
 	if exists('a:key') && a:key !=# ''
 
-		let proj = s:search(bookmarks, a:key)
+		let proj = s:search(projs, a:key)
 
 		if type(proj) == 0 && proj == -1
 
-			echo 'no bookmark to remove'
+			echo 'nothing to remove'
 
 			return -1
 
@@ -142,19 +142,19 @@ func! bookmark#remove(key)
 
 	else
 
-		if exists('g:bookmark_current')
+		if exists('g:proj_current')
 
-			let index = index(bookmarks, g:bookmark_current)
+			let index = index(projs, g:proj_current)
 
 			if index != -1
-				let proj = bookmarks[index]
+				let proj = projs[index]
 			endif
 
 		endif
 
 		if !exists('proj')
 
-			echo 'no bookmark to remove'
+			echo 'no proj to remove'
 
 			return -1
 
@@ -166,9 +166,9 @@ func! bookmark#remove(key)
 
 	if confirm('> remove ' . format . '?', "&yes\n&no") == 1
 
-		let bookmarks = filter(bookmarks, 'v:val != proj')
+		let projs = filter(projs, 'v:val != proj')
 
-		if s:write(bookmarks) != -1
+		if s:write(projs) != -1
 
 			redraw
 			let format = s:format(proj)
@@ -178,7 +178,7 @@ func! bookmark#remove(key)
 
 		else
 
-			echo 'error removing bookmark'
+			echo 'error removing project'
 
 			return -1
 
@@ -192,25 +192,25 @@ func! bookmark#remove(key)
 
 endfunc
 
-func! bookmark#list()
+func! proj#list()
 
-	let bookmarks = s:get()
+	let projs = s:get()
 
-	if empty(bookmarks)
+	if empty(projs)
 
-		echo 'no bookmarks found'
+		echo 'no project found'
 
 		return 0
 
 	endif
 
-	for p in bookmarks
+	for p in projs
 		echo s:format(p)
 	endfor
 
 endfunc
 
-func! bookmark#switch(proj)
+func! proj#switch(proj)
 
 	if !exists('a:proj.path')
 		return -1
@@ -220,12 +220,12 @@ func! bookmark#switch(proj)
 
 		silent! exec 'lcd ' . expand(a:proj.path)
 		silent! exec 'edit ' . expand(a:proj.path)
-		let g:bookmark_current = a:proj
+		let g:proj_current = a:proj
 
 	elseif (filereadable(a:proj.path))
 
 		silent! exec 'edit ' . expand(a:proj.path)
-		let g:bookmark_current = a:proj
+		let g:proj_current = a:proj
 
 	else
 
@@ -238,25 +238,25 @@ func! bookmark#switch(proj)
 
 endfunc
 
-func! bookmark#jump(pattern)
+func! proj#jump(pattern)
 
-	let bookmarks = s:get()
+	let projs = s:get()
 
-	if empty(bookmarks)
-		echo 'no bookmarks found'
+	if empty(projs)
+		echo 'no projects found'
 		return 0
 	endif
 
-	let proj = s:search(bookmarks, a:pattern)
+	let proj = s:search(projs, a:pattern)
 
 	if type(proj) == 4
 
-		return bookmark#switch(proj)
+		return proj#switch(proj)
 
 	else
 
 		redraw
-		echo 'bookmark not found'
+		echo 'project not found'
 
 		return -1
 

@@ -13,12 +13,12 @@ conf:
 
 	@mkdir -p $(CONFIG)
 
-	$(foreach f, nvim fish alacritty mpv mutt, \
+	$(foreach f, nvim fish alacritty mpv mutt kak, \
 		echo "  - $(f) -> $(CONFIG)/$(f)"; \
 		ln -sf $(realpath $(f)) $(CONFIG); \
 	)
 
-	$(foreach f, .yabairc .skhdrc .tmux.conf .procs.toml .tigrc .msmtprc .mbsyncrc .mpdconf, \
+	$(foreach f, .yabairc .skhdrc .tmux.conf .procs.toml .tigrc, \
 		echo "  - $(f) -> $(HOME)/$(f)"; \
 		ln -sf $(realpath $(f)) $(HOME); \
 	)

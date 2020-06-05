@@ -23,13 +23,10 @@ alias dsclean "sudo fd -H -I -t f '.DS_Store' -x 'rm'; killall Finder"
 alias dockerstart "open --background -a Docker"
 alias dockerclean "docker rmi (docker images -qa -f 'dangling=true'); docker rm (docker ps -a -q)"
 alias ip "ifconfig | grep 'inet.*broadcast' | awk '{print \$2}'"
-alias ipv6 "ifconfig | grep 'inet6.*%en' | awk '{print \$2}' | sed 's/%en0//'"
-alias extip "curl -4 -s -m 5 https://ifconfig.co"
-alias extipv6 "curl -6 -s -m 5 https://ifconfig.co"
+alias extip "curl ifconfig.co"
+alias weather "curl wttr.in"
 alias dnsclear "sudo killall -HUP mDNSResponder"
 
-type -q hub; and \
-	alias git "hub"
 type -q bat; and \
 	alias cat "env PAGER='' bat --theme=TwoDark --style=plain"
 type -q exa; and \
@@ -52,7 +49,6 @@ abbr gr "git remote"
 abbr gch "git checkout"
 abbr gcl "git clone"
 abbr gpl "git pull"
-abbr gbr "git browse"
 abbr lg "lazygit"
 
 # env
@@ -120,11 +116,14 @@ end
 set -x CARP_DIR $HOME/.carp
 
 # sccache
-type -q sccache; and \
-	set -x RUSTC_WRAPPER sccache
+# type -q sccache; and \
+# 	set -x RUSTC_WRAPPER sccache
 
 # homebrew
 set -x HOMEBREW_NO_AUTO_UPDATE 1
+
+# android
+set -x ANDROID_NDK_HOME "/usr/local/share/android-ndk"
 
 # emcc
 set -x LLVM_ROOT /usr/local/opt/emscripten/libexec/llvm/bin

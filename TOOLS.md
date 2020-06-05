@@ -21,6 +21,7 @@
 - [miniserve](https://github.com/svenstaro/miniserve/)
 - [httpie](https://httpie.org/)
 - [aria2](https://aria2.github.io/)
+- [lynx](https://invisible-island.net/lynx/)
 - [dfc](https://projects.gw-computing.net/projects/dfc/)
 - [m-cli](https://github.com/rgcr/m-cli/)
 - [lazygit](https://github.com/jesseduffield/lazygit/)

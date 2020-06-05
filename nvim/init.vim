@@ -3,7 +3,7 @@
 " TODO: syntax highlighting fails after reopening a buffer
 
 " local plugins
-call plug#load('bookmark')
+call plug#load('proj')
 call plug#load('find')
 call plug#load('browser')
 call plug#load('term')
@@ -474,6 +474,6 @@ nnoremap <silent> <f5> :ModeToggle paste<cr>
 nnoremap <silent> <f6> :ModeToggle expandtab<cr>
 nnoremap <m-f> :Find<cr>
 nnoremap <m-g> :Grep<cr>
-nnoremap z :Bookmark<space>
+nnoremap z :Proj<space>
 nnoremap m :!just<space>
 
