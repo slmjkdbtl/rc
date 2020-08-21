@@ -1,1 +1,33 @@
 # wengwengweng
+
+# color
+colorscheme super
+
+# settings
+set global tabstop     4
+set global indentwidth 0
+set global aligntab true
+set global autocomplete prompt
+
+# edit
+map global normal <ret> a
+map global normal > A
+map global normal < I
+map global normal d x<a-d>
+
+# movement
+map global normal <a-h> b
+map global normal <a-l> w
+map global normal <a-k> k
+map global normal <a-j> j
+map global normal <space> w
+
+# search
+map global normal ? /
+map global normal <a-\;> <a-/><ret>
+map global normal <a-'> n
+
+# unmap
+map global normal / <space>
+map global normal a <space>
+

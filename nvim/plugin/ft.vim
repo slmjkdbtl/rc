@@ -2,11 +2,8 @@
 
 augroup FTLoad
 
-	autocmd FileType *
-				\ call s:load_ft()
-
-	autocmd Syntax *
-				\ syntax clear
+	autocmd FileType * call s:load_ft()
+	autocmd Syntax * syntax clear
 
 	func! s:load_ft()
 

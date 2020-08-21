@@ -7,8 +7,7 @@ func! ft#detect(pat, ft)
 	let g:ft_registry[a:ft] = a:pat
 
 	augroup FTDetect
-		exec 'autocmd BufNewFile,BufRead ' . a:pat . ' '
-					\ . 'setlocal filetype=' . a:ft
+		exec 'autocmd BufNewFile,BufRead ' . a:pat . ' ' . 'setlocal filetype=' . a:ft
 	augroup END
 
 endfunc
@@ -22,10 +21,7 @@ func! ft#comment(ft, comment, alt)
 	endfor
 
 	augroup FTComment
-		exec 'autocmd FileType ' . a:ft . ' '
-					\ . 'setlocal commentstring=' . a:comment . '%s'
-					\ . ' | '
-					\ . 'setlocal comments=b:' . a:comment . comments
+		exec 'autocmd FileType ' . a:ft . ' ' . 'setlocal commentstring=' . a:comment . '%s' . ' | ' . 'setlocal comments=b:' . a:comment . comments
 	augroup END
 
 endfunc

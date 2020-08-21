@@ -33,10 +33,7 @@ func! plug#remote(repo)
 
 	let name = split(a:repo, '/')[1]
 	let dir = s:dir . '/' . name
-
-	let s:plugins[name] = {
-		\ 'url': 'https://github.com/' . a:repo . '.git'
-		\ }
+	let s:plugins[name] = { 'url': 'https://github.com/' . a:repo . '.git' }
 
 	call plug#load(dir)
 

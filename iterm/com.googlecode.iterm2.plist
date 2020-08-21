@@ -848,7 +848,7 @@
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>520 579 400 129 0 0 1440 877 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>410 381 620 392 0 0 1440 877 </string>
+	<string>410 383 620 392 0 0 1440 877 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 152 606 469 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
@@ -856,7 +856,7 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>289 151 1068 676 0 0 1440 877 </string>
+	<string>218 147 1068 676 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>111 146 1068 676 0 0 1440 877 </string>
 	<key>NeverWarnAboutShortLivedSessions_7B0162E7-F8FA-4933-A562-6AD010864E0A</key>
@@ -1428,7 +1428,7 @@
 			<key>Tags</key>
 			<array/>
 			<key>Terminal Type</key>
-			<string>xterm-super</string>
+			<string>xterm-256color</string>
 			<key>Thin Strokes</key>
 			<integer>0</integer>
 			<key>Transparency</key>
@@ -1465,17 +1465,19 @@
 	</array>
 	<key>NoSyncAllAppVersions</key>
 	<array>
-		<string>3.3.6</string>
-		<string>3.3.8</string>
 		<string>3.3.0beta7</string>
-		<string>3.3.1</string>
-		<string>3.3.3</string>
 		<string>3.3.5</string>
-		<string>3.3.7</string>
+		<string>3.3.3</string>
+		<string>3.3.1</string>
+		<string>3.3.8</string>
+		<string>3.3.12</string>
+		<string>3.3.6</string>
+		<string>3.3.11</string>
+		<string>3.3.4</string>
+		<string>3.3.2</string>
 		<string>3.3.9</string>
 		<string>3.3.0</string>
-		<string>3.3.2</string>
-		<string>3.3.4</string>
+		<string>3.3.7</string>
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
@@ -1491,7 +1493,7 @@
 		<key>screenFrame</key>
 		<string>{{0, 0}, {1440, 900}}</string>
 		<key>topLeft</key>
-		<string>{30, 660}</string>
+		<string>{362, 774}</string>
 	</dict>
 	<key>NoSyncHaveRequestedFullDiskAccess</key>
 	<true/>
@@ -1502,7 +1504,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>74FBE34B-2C3C-41D8-91BB-AB4A405CCA1C</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>144</integer>
+	<integer>246</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1856,6 +1858,14 @@
 				<true/>
 				<key>name</key>
 				<string>style</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
+				<string>currentTab.currentSession.jobPid</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -2276,9 +2286,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-02-26T00:18:03Z</date>
+	<date>2020-08-21T04:53:11Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
+	<key>SUUpdateGroupIdentifier</key>
+	<integer>646558811</integer>
 	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -2337,7 +2349,7 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.3.9</string>
+	<string>3.3.12</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

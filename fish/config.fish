@@ -1,12 +1,16 @@
 # wengwengweng
 
 # alias
+alias .. "cd .."
+alias ... "cd ../.."
+alias .... "cd ../../.."
+alias ..... "cd ../../../.."
 alias o "open"
 alias f "open ."
 alias t "touch"
 alias c "set_color"
 alias j "just"
-alias size "du -sh -- * | sort -h"
+alias size "du -sh * | sort -h"
 alias disk "df -h ."
 alias sudo "sudo -E"
 alias wget "wget -q --show-progress"
@@ -28,22 +32,16 @@ alias weather "curl wttr.in"
 alias dnsclear "sudo killall -HUP mDNSResponder"
 
 type -q bat; and \
-	alias cat "env PAGER='' bat --theme=TwoDark --style=plain"
+	alias cat "bat --theme=Dracula --style=plain"
 type -q exa; and \
 	alias ls exa
 
-# nav
-function ..    ; cd .. ; end
-function ...   ; cd ../.. ; end
-function ....  ; cd ../../.. ; end
-function ..... ; cd ../../../.. ; end
-
 # abbr
 abbr gs "git status"
-abbr ga "git add ."
+abbr ga "git add -A"
 abbr gc "git commit -m"
 abbr gp "git push"
-abbr gd "git diff"
+abbr gd "git diff | delta --theme Dracula"
 abbr gb "git branch"
 abbr gr "git remote"
 abbr gch "git checkout"
@@ -52,9 +50,9 @@ abbr gpl "git pull"
 abbr lg "lazygit"
 
 # env
-set -x CONF $HOME/.conf
+set -x CONF $HOME/.config
 set -x BROWSER open
-set -x TERM xterm-super
+set -x TERM xterm-256color
 set -x PAGER less
 set -x LANG en_US.UTF-8
 set -x VIMRUNTIME $CONF/nvim
@@ -67,6 +65,12 @@ end
 
 # local bin
 set -x PATH $HOME/.local/bin $PATH
+
+# sbin
+set -x PATH /usr/local/sbin $PATH
+
+# llvm
+set -x PATH /usr/local/opt/llvm/bin $PATH
 
 # less
 set -x LESS "-R"
@@ -107,11 +111,6 @@ if test -d $FLUTTER_PATH
 	set -x PATH $FLUTTER_PATH/bin $PATH
 end
 
-# fastlane
-if test -d $HOME/.fastlane
-	set -x PATH $HOME/.fastlane/bin $PATH
-end
-
 # carp
 set -x CARP_DIR $HOME/.carp
 
@@ -124,12 +123,6 @@ set -x HOMEBREW_NO_AUTO_UPDATE 1
 
 # android
 set -x ANDROID_NDK_HOME "/usr/local/share/android-ndk"
-
-# emcc
-set -x LLVM_ROOT /usr/local/opt/emscripten/libexec/llvm/bin
-
-# sbin
-set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 function fish_greeting
 	echo ""

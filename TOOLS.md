@@ -20,6 +20,7 @@
 - [watchexec](https://github.com/mattgreen/watchexec/)
 - [miniserve](https://github.com/svenstaro/miniserve/)
 - [httpie](https://httpie.org/)
+- [delta](https://github.com/dandavison/delta)
 - [aria2](https://aria2.github.io/)
 - [lynx](https://invisible-island.net/lynx/)
 - [dfc](https://projects.gw-computing.net/projects/dfc/)
@@ -39,6 +40,7 @@
 - [oxipng](https://github.com/shssoichiro/oxipng/)
 - [hexyl](https://github.com/sharkdp/hexyl/)
 - [gifski](https://gif.ski/)
+- [tunnelto](https://tunnelto.dev)
 - [gource](https://gource.io/)
 - [genact](https://github.com/svenstaro/genact/)
 - [potrace](http://potrace.sourceforge.net/)
@@ -52,6 +54,7 @@
 - [ios-deploy](https://github.com/ios-control/ios-deploy/)
 - [tree](http://mama.indstate.edu/users/ice/tree/)
 - [texpack](https://github.com/urraka/texpack/)
+- [entr](http://entrproject.org/)
 - [espeak](https://espeak.sourceforge.io/)
 - [qrencode](https://fukuchi.org/works/qrencode/index.html.en)
 - [tldr](http://tldr.sh/)
@@ -60,8 +63,10 @@
 - [fonttools](https://github.com/fonttools/fonttools/)
 - [cmark](https://commonmark.org/)
 - [wine](https://www.winehq.org/)
+- [diskonaut](https://github.com/imsnif/diskonaut)
 - [mame](http://mamedev.org/)
 - [monolith](https://github.com/Y2Z/monolith/)
+- [suckit](https://github.com/skallwar/suckit/)
 - [wiki](https://github.com/walle/wiki/)
 - [pageres](https://github.com/sindresorhus/pageres-cli/)
 
@@ -92,6 +97,7 @@
 - [Folx](https://mac.eltima.com/download-manager.html/)
 - [AppCleaner](http://freemacsoft.net/appcleaner/)
 - [OBS](https://obsproject.com/)
+- [Stellarium](https://stellarium.org)
 - [Etcher](https://balena.io/etcher)
 - [Pokemon Showdown](https://pokemonshowdown.com/)
 - [Affinity Designer](https://affinity.serif.com/designer/)
@@ -116,13 +122,20 @@
 # Games
 - [dwarf-fortress](http://bay12games.com/dwarves/)
 
-# Drivers
+# System
 - [BlackHole](https://github.com/ExistentialAudio/BlackHole)
-- [BackgroundMusic](https://github.com/kyleneideck/BackgroundMusic)
 - [Xbox 360 Driver](https://github.com/360Controller/360Controller)
-- [Soundflower](https://github.com/mattingalls/Soundflower)
+- [HapticKey](https://github.com/niw/HapticKey)
+
+# Fonts
+- [proggy](https://proggyfonts.net/)
+- [Unscii](http://pelulamu.net/unscii/)
+- [APL386](https://abrudz.github.io/APL386/)
+- [Oldschool PC Fonts](https://int10h.org/oldschool-pc-fonts/)
+- [Zpix](https://github.com/SolidZORO/zpix-pixel-font)
 
 # Misc
 - [ix](http://ix.io)
-- [paste.gg](https://paste.gg)
+- [0x0](https://0x0.st/)
+- [jsonbin](https://jsonbin.org)
 

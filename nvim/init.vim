@@ -28,6 +28,10 @@ call plug#remote('w0rp/ale')
 call plug#remote('mhinz/vim-signify')
 
 " ft
+call ft#detect('*.conf', 'conf')
+call ft#detect('.cfg', 'conf')
+call ft#detect('*conf', 'conf')
+call ft#detect('*rc', 'conf')
 call ft#detect('*.asm', 'asm')
 call ft#detect('*.bf', 'brainfuck')
 call ft#detect('*.toml', 'toml')
@@ -88,6 +92,7 @@ call ft#detect('*.glsl', 'glsl')
 call ft#detect('*.gql', 'graphql')
 call ft#detect('*.graphql', 'graphql')
 call ft#detect('*.vim', 'vim')
+call ft#detect('vimrc', 'vim')
 call ft#detect('*.fish', 'fish')
 call ft#detect('*.md', 'markdown')
 call ft#detect('*.cs', 'cs')
@@ -113,7 +118,6 @@ call ft#detect('*.java', 'java')
 call ft#detect('*.kt', 'kotlin')
 call ft#detect('*.dart', 'dart')
 call ft#detect('*.terminfo', 'terminfo')
-call ft#detect('*.conf', 'conf')
 call ft#detect('*.txt', 'text')
 call ft#detect('*.pest', 'pest')
 call ft#detect('*.nim', 'nim')
@@ -123,9 +127,6 @@ call ft#detect('*.scpt', 'applescript')
 call ft#detect('*.as', 'actionscript')
 call ft#detect('*.shader', 'shaderlab')
 call ft#detect('.gitignore', 'conf')
-call ft#detect('.cfg', 'conf')
-call ft#detect('*conf', 'conf')
-call ft#detect('*rc', 'conf')
 call ft#detect('.tmux.conf', 'tmux')
 call ft#detect('*/nginx/*.conf', 'nginx')
 call ft#detect('*.ini', 'ini')
@@ -174,6 +175,8 @@ call ft#comment('scala', '//', [])
 call ft#comment('java', '//', [])
 call ft#comment('kotlin', '//', [])
 call ft#comment('dart', '//', [])
+call ft#comment('objc', '//', [])
+call ft#comment('objcpp', '//', [])
 call ft#comment('haxe', '//', [])
 call ft#comment('actionscript', '//', [])
 call ft#comment('shaderlab', '//', [])
@@ -255,6 +258,7 @@ set lazyredraw
 set wildmenu
 set list
 set wildignorecase
+set nofoldenable
 set ignorecase
 set cursorline
 set hlsearch

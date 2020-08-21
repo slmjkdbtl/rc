@@ -1,0 +1,19 @@
+# wengwengweng
+
+[core]
+	excludesfile = ~/.gitignore_global
+
+[user]
+	email = tga@enemyspy.xyz
+	name = tga
+
+[alias]
+	conflicts = diff --name-only --diff-filter=U
+	root = rev-parse --show-toplevel
+
+[credential]
+	helper = store
+
+[pull]
+	rebase = false
+

@@ -1,5 +1,6 @@
 # wengwengweng
 
+# TODO: don't use GNU Make
 ifeq ($(XDG_CONFIG_HOME),)
 	CONFIG := $(HOME)/.config
 else
@@ -18,7 +19,7 @@ conf:
 		ln -sf $(realpath $(f)) $(CONFIG); \
 	)
 
-	$(foreach f, .yabairc .skhdrc .tmux.conf .procs.toml .tigrc, \
+	$(foreach f, .yabairc .skhdrc .tmux.conf .procs.toml .tigrc .gitconfig .gitignore_global .eslintrc.yml, \
 		echo "  - $(f) -> $(HOME)/$(f)"; \
 		ln -sf $(realpath $(f)) $(HOME); \
 	)
