@@ -4,7 +4,6 @@
 - [ripgrep](https://github.com/BurntSushi/ripgrep/)
 - [jump](https://github.com/gsamokovarov/jump/)
 - [exa](https://the.exa.website/)
-- [now](https://zeit.co/download)
 - [tig](https://jonas.github.io/tig/)
 - [just](https://github.com/casey/just/)
 - [loc](https://github.com/cgag/loc/)

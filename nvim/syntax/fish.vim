@@ -35,4 +35,3 @@ highlight default link fishStatement Statement
 highlight default link fishCommandSub fishStatement
 
 let b:current_syntax = 'fish'
-

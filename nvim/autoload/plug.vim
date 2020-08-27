@@ -1,7 +1,7 @@
 " wengwengweng
 
-let s:dir = $VIMRUNTIME . '/remote'
-let s:custom_dir = $VIMRUNTIME . '/tools'
+let s:remote_dir = fnamemodify($MYVIMRC, ':h') . '/remote'
+let s:custom_dir = fnamemodify($MYVIMRC, ':h') . '/tools'
 let s:plugins = {}
 
 func! plug#dir(dir)
@@ -32,7 +32,7 @@ endfunc
 func! plug#remote(repo)
 
 	let name = split(a:repo, '/')[1]
-	let dir = s:dir . '/' . name
+	let dir = s:remote_dir . '/' . name
 	let s:plugins[name] = { 'url': 'https://github.com/' . a:repo . '.git' }
 
 	call plug#load(dir)
@@ -44,7 +44,7 @@ func! plug#install()
 	for name in keys(s:plugins)
 
 		let url = s:plugins[name].url
-		let dir = s:dir . '/' . name
+		let dir = s:remote_dir . '/' . name
 
 		if !isdirectory(dir)
 
@@ -62,7 +62,7 @@ endfunc
 
 func! plug#clean()
 
-	for name in glob(s:dir . '/*', 0, 1)
+	for name in glob(s:remote_dir . '/*', 0, 1)
 
 		let p = fnamemodify(name, ':t')
 
@@ -82,7 +82,7 @@ endfunc
 
 func! plug#update()
 
-	for path in glob(s:dir . '/*', 0, 1)
+	for path in glob(s:remote_dir . '/*', 0, 1)
 
 		let name = fnamemodify(path, ':t')
 
