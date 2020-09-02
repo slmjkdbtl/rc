@@ -1,7 +1,7 @@
 " wengwengweng
 
-let s:remote_dir = fnamemodify($MYVIMRC, ':h') . '/remote'
-let s:custom_dir = fnamemodify($MYVIMRC, ':h') . '/tools'
+let s:remote_dir = $VIMRUNTIME . '/remote'
+let s:custom_dir = $VIMRUNTIME . '/tools'
 let s:plugins = {}
 
 func! plug#dir(dir)

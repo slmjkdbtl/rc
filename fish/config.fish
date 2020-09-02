@@ -55,7 +55,7 @@ set -x BROWSER open
 set -x TERM xterm-256color
 set -x PAGER less
 set -x LANG en_US.UTF-8
-# set -x VIMRUNTIME $CONF/nvim
+set -x VIMRUNTIME $CONF/nvim
 
 if type -q nvim
 	set -x EDITOR nvim
