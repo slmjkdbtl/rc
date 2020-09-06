@@ -1,5 +1,5 @@
 " wengwengweng
 
-setlocal formatoptions+=ro
+setl formatoptions+=ro
 
 

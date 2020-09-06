@@ -1,9 +1,0 @@
-# wengwengweng
-
-set editor = $EDITOR
-set sendmail = "msmtp"
-set sort = 'reverse-date'
-
-source colors.muttrc
-source account.muttrc
-

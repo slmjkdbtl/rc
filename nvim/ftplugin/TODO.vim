@@ -1,8 +1,8 @@
 " wengwengweng
 
-setlocal expandtab
-setlocal nocindent
-setlocal nolisp
-setlocal indentexpr=
-setlocal formatoptions+=ro
+setl expandtab
+setl nocindent
+setl nolisp
+setl indentexpr=
+setl formatoptions+=ro
 

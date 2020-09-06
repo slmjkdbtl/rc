@@ -1,8 +1,8 @@
 " wengwengweng
 
-setlocal expandtab
-setlocal tabstop=4
-setlocal shiftwidth=4
-setlocal nocindent
-setlocal nolisp
+setl expandtab
+setl tabstop=4
+setl shiftwidth=4
+setl nocindent
+setl nolisp
 

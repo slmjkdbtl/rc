@@ -1,5 +1,5 @@
 " wengwengweng
 
-setlocal nobackup
-setlocal nowritebackup
+setl nobackup
+setl nowritebackup
 

@@ -43,7 +43,6 @@
 - [gource](https://gource.io/)
 - [genact](https://github.com/svenstaro/genact/)
 - [potrace](http://potrace.sourceforge.net/)
-- [fastlane](https://fastlane.tools/)
 - [pandoc](https://pandoc.org/)
 - [upx](https://github.com/upx/upx/)
 - [hyperfine](https://github.com/sharkdp/hyperfine/)
