@@ -42,6 +42,7 @@ abbr gr "git remote"
 abbr gch "git checkout"
 abbr gcl "git clone"
 abbr gpl "git pull"
+abbr grv "gh repo view --web"
 abbr lg "lazygit"
 
 # env

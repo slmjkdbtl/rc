@@ -120,6 +120,9 @@ CLI
   ios-deploy
     https://github.com/ios-control/ios-deploy/
 
+  catimg
+    https://github.com/posva/catimg/
+
   tree
     http://mama.indstate.edu/users/ice/tree/
 
@@ -140,9 +143,6 @@ CLI
 
   toilet
     http://caca.zoy.org/wiki/toilet/
-
-  fonttools
-    https://github.com/fonttools/fonttools/
 
   cmark
     https://commonmark.org/
