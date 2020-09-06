@@ -1,0 +1,323 @@
+CLI
+
+  neovim
+    https://neovim.io/
+
+  brew
+    https://brew.sh/
+
+  fd
+    https://github.com/sharkdp/fd/
+
+  ripgrep
+    https://github.com/BurntSushi/ripgrep/
+
+  jump
+    https://github.com/gsamokovarov/jump/
+
+  tig
+    https://jonas.github.io/tig/
+
+  just
+    https://github.com/casey/just/
+
+  loc
+    https://github.com/cgag/loc/
+
+  htop
+    https://htop.dev/
+
+  gh
+    https://github.com/cli/cli/
+
+  sox
+    http://sox.sourceforge.net/
+
+  youtube-dl
+    https://youtube-dl.org/
+
+  fzy
+    https://github.com/jhawthorn/fzy/
+
+  skhd
+    https://github.com/koekeishiya/skhd/
+
+  yabai
+    https://github.com/koekeishiya/yabai/
+
+  rclone
+    https://github.com/rclone/rclone
+
+  httpie
+    https://httpie.org/
+
+  delta
+    https://github.com/dandavison/delta/
+
+  aria2
+    https://aria2.github.io/
+
+  lynx
+    https://invisible-island.net/lynx/
+
+  m-cli
+    https://github.com/rgcr/m-cli/
+
+  lazygit
+    https://github.com/jesseduffield/lazygit/
+
+  sd
+    https://github.com/chmln/sd/
+
+  ffmpeg
+    https://ffmpeg.org/
+
+  gifsicle
+    http://www.lcdf.org/gifsicle/
+
+  tesseract
+    https://github.com/tesseract-ocr/tesseract/
+
+  imagemagick
+    https://www.imagemagick.org/
+
+  jpegoptim
+    https://github.com/tjko/jpegoptim/
+
+  pngquant
+    https://pngquant.org/
+
+  oxipng
+    https://github.com/shssoichiro/oxipng/
+
+  hexyl
+    https://github.com/sharkdp/hexyl/
+
+  gifski
+    https://gif.ski/
+
+  tunnelto
+    https://tunnelto.dev
+
+  gource
+    https://gource.io/
+
+  genact
+    https://github.com/svenstaro/genact/
+
+  potrace
+    http://potrace.sourceforge.net/
+
+  pandoc
+    https://pandoc.org/
+
+  upx
+    https://github.com/upx/upx/
+
+  rig
+    http://rig.sourceforge.net/
+
+  ios-deploy
+    https://github.com/ios-control/ios-deploy/
+
+  tree
+    http://mama.indstate.edu/users/ice/tree/
+
+  entr
+    http://entrproject.org/
+
+  espeak
+    https://espeak.sourceforge.io/
+
+  qrencode
+    https://fukuchi.org/works/qrencode/index.html.en
+
+  tldr
+    http://tldr.sh/
+
+  figlet
+    http://www.figlet.org/
+
+  toilet
+    http://caca.zoy.org/wiki/toilet/
+
+  fonttools
+    https://github.com/fonttools/fonttools/
+
+  cmark
+    https://commonmark.org/
+
+  wine
+    https://www.winehq.org/
+
+  diskonaut
+    https://github.com/imsnif/diskonaut/
+
+  mame
+    http://mamedev.org/
+
+  monolith
+    https://github.com/Y2Z/monolith/
+
+  pageres
+    https://github.com/sindresorhus/pageres-cli/
+
+
+GUI
+
+  Alfred
+    https://www.alfredapp.com/
+
+  Blender
+    https://www.blender.org/
+
+  Aseprite
+    https://www.aseprite.org/
+
+  Discord
+    https://discordapp.com
+
+  iTerm
+    https://www.iterm2.com
+
+  Sunvox
+    http://warmplace.ru/soft/sunvox/
+
+  Pd
+    https://puredata.info/
+
+  Adium
+    https://adium.im/
+
+  Keka
+    https://www.keka.io/
+
+  VirtualBox
+    https://www.virtualbox.org/
+
+  Sip
+    http://sipapp.io/
+
+  Simplenote
+    https://simplenote.com/
+
+  DaisyDisk
+    https://daisydiskapp.com/
+
+  Dash
+    https://kapeli.com/dash/
+
+  OpenEmu
+    http://openemu.org/
+
+  ocenaudio
+    http://www.ocenaudio.com/
+
+  Bfxr
+    https://www.bfxr.net/
+
+  KeyCastr
+    https://github.com/keycastr/keycastr/
+
+  O.H.R.RPG.C.E
+    http://rpg.hamsterrepublic.com/ohrrpgce/
+
+  HexFiend
+    http://ridiculousfish.com/hexfiend/
+
+  Spotify
+    https://www.spotify.com/
+
+  AppCleaner
+    http://freemacsoft.net/appcleaner/
+
+  OBS
+    https://obsproject.com/
+
+  Stellarium
+    https://stellarium.org
+
+  Etcher
+    https://balena.io/etcher
+
+  Pokemon Showdown
+    https://pokemonshowdown.com/
+
+  Affinity Designer
+    https://affinity.serif.com/designer/
+
+  Acorn
+    https://flyingmeat.com/acorn/
+
+  Ableton
+    ive](https://www.ableton.com/live/
+
+  THR Editor
+    https://usa.yamaha.com/support/updates/57649_en.html
+
+
+ALFRED
+
+  dash
+    https://github.com/Kapeli/Dash-Alfred-Workflow/
+
+  colors
+    http://www.packal.org/workflow/colors/
+
+  emoji
+    http://www.packal.org/workflow/emoji/
+
+  kill
+    https://github.com/ngreenstein/alfred-process-killer/
+
+
+SCREENSAVERS
+
+  loadsaver
+    https://alienmelon.itch.io/loadsaver-os-x-screensaver/
+
+
+GAMES
+
+  dwarf-fortress
+    http://bay12games.com/dwarves/
+
+
+SYSTEM
+
+  BlackHole
+    https://github.com/ExistentialAudio/BlackHole
+
+  Xbox 360 Driver
+    https://github.com/360Controller/360Controller
+
+`
+FONTS
+
+  proggy
+    https://proggyfonts.net/
+
+  Unscii
+    http://pelulamu.net/unscii/
+
+  APL386
+    https://abrudz.github.io/APL386/
+
+  Zpix
+    https://github.com/SolidZORO/zpix-pixel-font
+
+  Oldschool PC Fonts
+    https://int10h.org/oldschool-pc-fonts/
+
+
+MISC
+
+  ix
+    http://ix.io
+
+  0x0
+    https://0x0.st/
+
+  jsonbin
+    https://jsonbin.org
+

@@ -31,11 +31,6 @@ alias extip "curl ifconfig.co"
 alias weather "curl wttr.in"
 alias dnsclear "sudo killall -HUP mDNSResponder"
 
-type -q bat; and \
-	alias cat "bat --theme=Dracula --style=plain"
-type -q exa; and \
-	alias ls exa
-
 # abbr
 abbr gs "git status"
 abbr ga "git add -A"

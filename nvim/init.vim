@@ -362,6 +362,9 @@ augroup Hello
 
 augroup END
 
+autocmd BufEnter *
+			\ if &filetype == "" | setl ft=text | endif
+
 " unmap
 call unmap#clear()
 call unmap#disable_defaults()
