@@ -9,17 +9,17 @@ endif
 .PHONY: conf
 conf:
 
-	mkdir -p $(CONFIG)
+	@mkdir -p $(CONFIG)
 
-	$(foreach f, nvim fish alacritty mpv mutt kak, \
-		echo "  - $(f) -> $(CONFIG)/$(f)"; \
-		ln -sf $(realpath $(f)) $(CONFIG); \
-	)
+	@for f in nvim fish mpv; do \
+		echo "  - $$f -> $(CONFIG)/$$f"; \
+		ln -sf $$(realpath $$f) $(CONFIG); \
+	done
 
-	$(foreach f, .yabairc .skhdrc .tmux.conf .procs.toml .tigrc .gitconfig .gitignore_global .eslintrc.yml, \
-		echo "  - $(f) -> $(HOME)/$(f)"; \
-		ln -sf $(realpath $(f)) $(HOME); \
-	)
+	@for f in .zshrc .skhdrc .tmux.conf .tigrc .gitconfig .gitignore_global .eslintrc.yml; do \
+		echo "  - $$f -> $(HOME)/$$f"; \
+		ln -sf $$(realpath $$f) $(HOME); \
+	done
 
 	tic $(realpath super.terminfo)
 

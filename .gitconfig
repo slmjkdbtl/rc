@@ -10,6 +10,7 @@
 [alias]
 	conflicts = diff --name-only --diff-filter=U
 	root = rev-parse --show-toplevel
+	file = log --follow -p --
 
 [credential]
 	helper = store

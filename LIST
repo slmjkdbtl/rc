@@ -51,9 +51,6 @@ CLI
   httpie
     https://httpie.org/
 
-  delta
-    https://github.com/dandavison/delta/
-
   aria2
     https://aria2.github.io/
 
@@ -65,6 +62,9 @@ CLI
 
   lazygit
     https://github.com/jesseduffield/lazygit/
+
+  lazydocker
+    https://github.com/jesseduffield/lazydocker/
 
   sd
     https://github.com/chmln/sd/
@@ -86,9 +86,6 @@ CLI
 
   pngquant
     https://pngquant.org/
-
-  oxipng
-    https://github.com/shssoichiro/oxipng/
 
   hexyl
     https://github.com/sharkdp/hexyl/
@@ -137,6 +134,9 @@ CLI
 
   tldr
     http://tldr.sh/
+
+  fluidsynth
+    http://www.fluidsynth.org/
 
   figlet
     http://www.figlet.org/
@@ -291,7 +291,7 @@ SYSTEM
   Xbox 360 Driver
     https://github.com/360Controller/360Controller
 
-`
+
 FONTS
 
   proggy
