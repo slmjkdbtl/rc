@@ -1,5 +1,0 @@
-# wengwengweng
-
-xterm-super|xterm with dim and italic,
-  dim=\E[2m, sitm=\E[3m, ritm=\E[23m,
-  use=xterm-256color,

@@ -11,7 +11,7 @@ conf:
 
 	@mkdir -p $(CONFIG)
 
-	@for f in nvim fish mpv; do \
+	@for f in nvim mpv zsh; do \
 		echo "  - $$f -> $(CONFIG)/$$f"; \
 		ln -sf $$(realpath $$f) $(CONFIG); \
 	done
@@ -20,6 +20,4 @@ conf:
 		echo "  - $$f -> $(HOME)/$$f"; \
 		ln -sf $$(realpath $$f) $(HOME); \
 	done
-
-	tic $(realpath super.terminfo)
 
