@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [[ ! -d "$1" ]]; then
+	exit 1
+fi
+
+fname=$(basename $1)
+tpath=$TMPDIR$fname
+git show $1 > $tpath && $EDITOR $tpath
+rm $tpath
+

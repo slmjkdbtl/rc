@@ -16,7 +16,7 @@ conf:
 		ln -sf $$(realpath $$f) $(CONFIG); \
 	done
 
-	@for f in .zshrc .skhdrc .tmux.conf .tigrc .gitconfig .gitignore_global .eslintrc.yml; do \
+	@for f in .scripts .zshrc .skhdrc .tmux.conf .tigrc .gitconfig .gitignore_global .eslintrc.yml; do \
 		echo "  - $$f -> $(HOME)/$$f"; \
 		ln -sf $$(realpath $$f) $(HOME); \
 	done
