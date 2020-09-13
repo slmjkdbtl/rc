@@ -1,30 +1,42 @@
 # wengwengweng
 
+autoload -Uz compinit && compinit
+
 # prompt
 setopt PROMPT_SUBST
 
-git_prompt() {
+function git-prompt() {
+	# if git
 	git rev-parse --is-inside-work-tree &> /dev/null || return 0
+	# branch
 	echo -n $(git symbolic-ref --short HEAD 2> /dev/null)
+	# modified
 	git diff-index --quiet HEAD -- &> /dev/null || echo -n "*"
 }
 
-PROMPT=$'\n'
+RPROMPT=""
+PROMPT=""
+PROMPT+=$'\n'
+# user@host
 PROMPT+="%F{black}%n@%m%f"
 PROMPT+=$'\n'
+# path
 PROMPT+="%F{yellow}%B%~%b%f"
-PROMPT+=' %F{black}$(git_prompt)%f'
+# git
+PROMPT+=' %F{black}$(git-prompt)%f'
 PROMPT+=$'\n'
+# %
 PROMPT+="%F{white}%# %f"
 
 # plugins
 ZSH_PATH=~/.config/zsh
 
 source $ZSH_PATH/highlight/zsh-syntax-highlighting.zsh
-source $ZSH_PATH/autosuggestions/zsh-autosuggestions.zsh
 source $ZSH_PATH/history-substring-search/zsh-history-substring-search.zsh
 
 # alias
+alias ..="cd .."
+alias ....="cd ../.."
 alias v="nvim"
 alias o="open"
 alias f="open ."
@@ -59,10 +71,38 @@ export PATH=/usr/local/opt/llvm/bin:$PATH
 # brew
 export HOMEBREW_NO_AUTO_UPDATE=1
 
+# show a file in history in editor
 function gshow() {
 	local fname=$(basename $1)
 	local tpath=$TMPDIR$fname
-	git show $1 > $tpath && nvim $tpath
+	git show $1 > $tpath && $EDITOR $tpath
 	rm $tpath
 }
+
+# abbr
+abbrs=()
+
+function abbr() {
+	alias $1
+	abbrs+=($1)
+}
+
+function expand-abbr() {
+	if [[ " ${abbrs[*]}" == *"$LBUFFER"* ]]; then
+		zle _expand_alias
+		zle expand-word
+	fi
+	zle magic-space
+}
+
+zle -N expand-abbr
+
+bindkey ' ' expand-abbr
+bindkey '^ ' magic-space
+bindkey -M isearch " " magic-space
+
+abbr ga='git add -A'
+abbr gs='git status'
+abbr gc='git commit -m'
+abbr gp='git push'
 
