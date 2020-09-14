@@ -10,7 +10,7 @@ for f in $ZSHPATH/*.zsh; do
 done
 
 # prompt
-setopt prompt_subst
+setopt promptsubst
 
 RPROMPT=
 PROMPT=
@@ -35,6 +35,8 @@ setopt appendhistory
 setopt sharehistory
 setopt incappendhistory
 
+WORDCHARS=
+
 # alias
 alias ..="cd .."
 alias ....="cd ../.."
@@ -58,8 +60,7 @@ abbr gs="git status"
 abbr gc="git commit -m"
 abbr gp="git push"
 abbr gcl="git clone"
-
-# echo $abbrs
+abbr gpl="git pull"
 
 # env
 export BROWSER=open
@@ -71,11 +72,27 @@ export VIMRUNTIME=$HOME/.conf/nvim
 export PATH=$HOME/.scripts:$PATH
 export PATH=$HOME/.bin:$PATH
 
+# cargo
+export PATH=$HOME/.cargo/bin:$PATH
+
 # git
 export FILTER_BRANCH_SQUELCH_WARNING=1
 
 # z
-. /usr/local/etc/profile.d/z.sh
+case $(uname) in
+"Darwin")
+	. /usr/local/etc/profile.d/z.sh
+	;;
+"Linux")
+	. /usr/local/share/z/z.sh
+	;;
+"FreeBSD")
+	. /usr/local/share/z/z.sh
+	;;
+esac
+
+# emscripten
+export PATH=$HOME/.emsdk/upstream/emscripten/:$PATH
 
 # llvm
 export PATH=/usr/local/opt/llvm/bin:$PATH
