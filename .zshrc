@@ -5,16 +5,12 @@ autoload -Uz compinit && compinit
 # plugins
 ZSHPATH=$HOME/.config/zsh
 
-for file in $ZSHPATH/*.zsh; do
-	source "$file"
+for f in $ZSHPATH/*.zsh; do
+	source $f
 done
 
-# local
-export PATH=$HOME/.scripts:$PATH
-export PATH=$HOME/.bin:$PATH
-
 # prompt
-setopt PROMPT_SUBST
+setopt prompt_subst
 
 RPROMPT=
 PROMPT=
@@ -31,9 +27,9 @@ PROMPT+=$'\n'
 PROMPT+="%F{yellow}%# %f"
 
 # history
-HISTSIZE=1024
-SAVEHIST=1024
-HISTFILE=$HOME/.zsh_history
+HISTSIZE=2048
+SAVEHIST=2048
+HISTFILE=$HOME/.zhistory
 
 setopt appendhistory
 setopt sharehistory
@@ -47,7 +43,8 @@ alias o="open"
 alias f="open ."
 alias dl="aria2c"
 alias lg="lazygit"
-alias size="du -sch"
+alias la='ls -lah | grep "^d"&& ls -lah | grep "^-" && ls -lah | grep "^l"'
+alias lsize="du -chs * .* | sort -h"
 alias ydl="youtube-dl --format mp4 -o '%(title)s.%(ext)s' -i --no-playlist"
 alias ydll="youtube-dl --format mp4 -o '%(title)s.%(ext)s' -i --yes-playlist"
 alias ydlm="youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --no-playlist"
@@ -60,12 +57,19 @@ abbr ga="git add -A"
 abbr gs="git status"
 abbr gc="git commit -m"
 abbr gp="git push"
+abbr gcl="git clone"
+
+# echo $abbrs
 
 # env
 export BROWSER=open
 export PAGER=less
 export EDITOR=nvim
 export VIMRUNTIME=$HOME/.conf/nvim
+
+# local
+export PATH=$HOME/.scripts:$PATH
+export PATH=$HOME/.bin:$PATH
 
 # git
 export FILTER_BRANCH_SQUELCH_WARNING=1

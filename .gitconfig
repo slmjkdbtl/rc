@@ -1,7 +1,7 @@
 # wengwengweng
 
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = ~/.gitignore_g
 	pager = less -+FX
 
 [user]
@@ -12,6 +12,7 @@
 	conflicts = diff --name-only --diff-filter=U
 	root = rev-parse --show-toplevel
 	file = log --follow -p --
+	slog = log --oneline
 
 [credential]
 	helper = store

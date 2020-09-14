@@ -6,17 +6,14 @@ CLI
   brew
     https://brew.sh/
 
+  z
+    https://github.com/rupa/z/
+
   fd
     https://github.com/sharkdp/fd/
 
   ripgrep
     https://github.com/BurntSushi/ripgrep/
-
-  z
-    https://github.com/rupa/z/
-
-  tig
-    https://jonas.github.io/tig/
 
   just
     https://github.com/casey/just/
@@ -46,7 +43,7 @@ CLI
     https://github.com/koekeishiya/yabai/
 
   rclone
-    https://github.com/rclone/rclone
+    https://github.com/rclone/rclone/
 
   httpie
     https://httpie.org/
