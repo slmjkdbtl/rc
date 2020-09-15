@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:	C
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last Change:	2018 Sep 21
+" Last Change:	2019 Apr 23
 
 " Quit when a (custom) syntax file was already loaded
 if exists("b:current_syntax")
@@ -289,6 +289,22 @@ if !exists("c_no_c11")
   syn keyword	cOperator	_Static_assert static_assert
   syn keyword	cStorageClass	_Thread_local thread_local
   syn keyword   cType		char16_t char32_t
+  " C11 atomics (take down the shield wall!)
+  syn keyword	cType		atomic_bool atomic_char atomic_schar atomic_uchar
+  syn keyword	Ctype		atomic_short atomic_ushort atomic_int atomic_uint
+  syn keyword	cType		atomic_long atomic_ulong atomic_llong atomic_ullong
+  syn keyword	cType		atomic_char16_t atomic_char32_t atomic_wchar_t
+  syn keyword	cType		atomic_int_least8_t atomic_uint_least8_t
+  syn keyword	cType		atomic_int_least16_t atomic_uint_least16_t
+  syn keyword	cType		atomic_int_least32_t atomic_uint_least32_t
+  syn keyword	cType		atomic_int_least64_t atomic_uint_least64_t
+  syn keyword	cType		atomic_int_fast8_t atomic_uint_fast8_t
+  syn keyword	cType		atomic_int_fast16_t atomic_uint_fast16_t
+  syn keyword	cType		atomic_int_fast32_t atomic_uint_fast32_t
+  syn keyword	cType		atomic_int_fast64_t atomic_uint_fast64_t
+  syn keyword	cType		atomic_intptr_t atomic_uintptr_t
+  syn keyword	cType		atomic_size_t atomic_ptrdiff_t
+  syn keyword	cType		atomic_intmax_t atomic_uintmax_t
 endif
 
 if !exists("c_no_ansi") || exists("c_ansi_constants") || exists("c_gnu")
@@ -342,7 +358,7 @@ if !exists("c_no_ansi") || exists("c_ansi_constants") || exists("c_gnu")
   syn keyword cConstant EINPROGRESS EINTR EINVAL EIO EISCONN EISDIR ELOOP EMFILE EMLINK EMSGSIZE
   syn keyword cConstant EMULTIHOP ENAMETOOLONG ENETDOWN ENETRESET ENETUNREACH ENFILE ENOBUFS ENODATA
   syn keyword cConstant ENODEV ENOENT ENOEXEC ENOLCK ENOLINK ENOMEM ENOMSG ENOPROTOOPT ENOSPC ENOSR
-  syn keyword cConstant ENOSTR ENOSYS ENOTCONN ENOTDIR ENOTEMPTY ENOTRECOVERABLE ENOTSOCK ENOTSUP
+  syn keyword cConstant ENOSTR ENOSYS ENOTBLK ENOTCONN ENOTDIR ENOTEMPTY ENOTRECOVERABLE ENOTSOCK ENOTSUP
   syn keyword cConstant ENOTTY ENXIO EOPNOTSUPP EOVERFLOW EOWNERDEAD EPERM EPIPE EPROTO
   syn keyword cConstant EPROTONOSUPPORT EPROTOTYPE ERANGE EROFS ESPIPE ESRCH ESTALE ETIME ETIMEDOUT
   syn keyword cConstant ETXTBSY EWOULDBLOCK EXDEV
@@ -464,7 +480,6 @@ hi def link cInclude		Include
 hi def link cPreProc		PreProc
 hi def link cDefine		Macro
 hi def link cIncluded		cString
-" hi def link cError		Error
 hi def link cStatement		Statement
 hi def link cCppInWrapper	cCppOutWrapper
 hi def link cCppOutWrapper	cPreCondit
@@ -479,7 +494,6 @@ hi def link cString		String
 hi def link cComment		Comment
 hi def link cSpecial		SpecialChar
 hi def link cTodo		Todo
-hi def link cBadContinuation	Error
 hi def link cCppOutSkip		cCppOutIf2
 hi def link cCppInElse2		cCppOutIf2
 hi def link cCppOutIf2		cCppOut

@@ -81,13 +81,10 @@ export FILTER_BRANCH_SQUELCH_WARNING=1
 # z
 case $(uname) in
 "Darwin")
-	. /usr/local/etc/profile.d/z.sh
+	source /usr/local/etc/profile.d/z.sh
 	;;
-"Linux")
-	. /usr/local/share/z/z.sh
-	;;
-"FreeBSD")
-	. /usr/local/share/z/z.sh
+*)
+	source /usr/local/share/z/z.sh
 	;;
 esac
 
