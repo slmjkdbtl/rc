@@ -1,21 +1,21 @@
 #!/bin/sh
 
 help() {
-	echo "Convert Directories of Resource Files Into Embeddable C Headers"
+	echo "Recursively convert resource files into embeddable C headers"
 	echo ""
 	echo "USAGE"
 	echo "  $ cres <src> <dest>"
 }
 
-if [ -z "$1" ]
+if [ -z "$1" ] || [ -z "$2" ]
 then
 	help
 	exit 1
 fi
 
-if [ -z "$2" ]
+if [ ! -d "$1" ]
 then
-	help
+	echo "$1 not found"
 	exit 1
 fi
 

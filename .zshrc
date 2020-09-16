@@ -34,6 +34,7 @@ HISTFILE=$HOME/.zhistory
 setopt appendhistory
 setopt sharehistory
 setopt incappendhistory
+setopt nullglob
 
 WORDCHARS=
 
@@ -71,9 +72,6 @@ export VIMRUNTIME=$HOME/.conf/nvim
 # local
 export PATH=$HOME/.scripts:$PATH
 export PATH=$HOME/.bin:$PATH
-
-# cargo
-export PATH=$HOME/.cargo/bin:$PATH
 
 # git
 export FILTER_BRANCH_SQUELCH_WARNING=1

@@ -13,6 +13,7 @@
 	root = rev-parse --show-toplevel
 	file = log --follow -p --
 	slog = log --oneline
+	commitf = commit --amend --no-edit
 
 [credential]
 	helper = store

@@ -858,7 +858,7 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>212 125 1068 676 0 0 1440 877 </string>
+	<string>83 167 1080 696 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>360 83 1080 696 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -1849,6 +1849,8 @@
 			<string>xterm</string>
 			<key>Thin Strokes</key>
 			<integer>0</integer>
+			<key>Title Components</key>
+			<integer>1</integer>
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Triggers</key>
@@ -1911,7 +1913,7 @@
 		<key>screenFrame</key>
 		<string>{{0, 0}, {1440, 900}}</string>
 		<key>topLeft</key>
-		<string>{125, 824}</string>
+		<string>{155, 811}</string>
 	</dict>
 	<key>NoSyncHaveRequestedFullDiskAccess</key>
 	<true/>
@@ -2704,7 +2706,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-09-14T09:18:47Z</date>
+	<date>2020-09-15T09:18:48Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateGroupIdentifier</key>
