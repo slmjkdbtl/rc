@@ -210,7 +210,7 @@ if version >= 508 || !exists("did_lua_syn_inits")
   HiLink luaDocTag           Underlined
   HiLink luaEllipsis         Special
   HiLink luaElse             Conditional
-  HiLink luaError            Error
+"   HiLink luaError            Error
   HiLink luaFloat            Float
   HiLink luaFuncArgName      Noise
   HiLink luaFuncCall         PreProc
