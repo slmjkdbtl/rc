@@ -64,6 +64,10 @@ case $(uname) in
 	;;
 esac
 
+# lua
+export LUA_PATH="$HOME/.lua/?.lua"
+export LUA_CPATH="$HOME/.lua/?.so"
+
 # cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
