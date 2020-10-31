@@ -31,10 +31,10 @@ HISTSIZE=2048
 SAVEHIST=2048
 HISTFILE=$HOME/.zhistory
 
-setopt appendhistory
-setopt sharehistory
-setopt incappendhistory
-setopt nullglob
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
+setopt NULL_GLOB
+setopt HIST_IGNORE_ALL_DUPS
 
 WORDCHARS=
 
@@ -97,6 +97,7 @@ alias ydlm="youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --no-play
 alias ydlml="youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --yes-playlist"
 alias ip="ifconfig | grep 'inet.*broadcast' | awk '{print \$2}'"
 alias extip="curl ifconfig.co"
+alias playraw="ffplay -ar 8000 -ac 1 -f u8 -nodisp -"
 alias zshrc="$EDITOR ${(%):-%N}"
 alias zshrcs="source ${(%):-%N}"
 

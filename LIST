@@ -87,11 +87,14 @@ CLI
   hexyl
     https://github.com/sharkdp/hexyl/
 
+  cmark
+    https://github.com/commonmark/cmark
+
   gifski
     https://gif.ski/
 
   tunnelto
-    https://tunnelto.dev
+    https://tunnelto.dev/
 
   gource
     https://gource.io/
@@ -206,6 +209,12 @@ GUI
 
   OpenEmu
     http://openemu.org/
+
+  Mini vMac
+    https://www.gryphel.com/c/minivmac/
+
+  SheepShaver
+    https://sheepshaver.cebix.net/
 
   ocenaudio
     http://www.ocenaudio.com/
