@@ -5,7 +5,7 @@
 	pager = less -+FX
 
 [user]
-	email = tga@enemyspy.xyz
+	email = tga@space55.xyz
 	name = tga
 
 [alias]
@@ -13,7 +13,9 @@
 	root = rev-parse --show-toplevel
 	file = log --follow -p --
 	slog = log --oneline
+	flog = log --pretty=fuller
 	commitf = commit --amend --no-edit
+	change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch -f --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f"
 
 [credential]
 	helper = store

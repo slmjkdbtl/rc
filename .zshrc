@@ -9,8 +9,12 @@ for f in $ZSHPATH/*.zsh; do
 	source $f
 done
 
-# prompt
-setopt promptsubst
+# settings
+setopt PROMPT_SUBST
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
+setopt NULL_GLOB
+setopt HIST_IGNORE_ALL_DUPS
 
 RPROMPT=
 PROMPT=
@@ -26,16 +30,9 @@ PROMPT+=$'\n'
 # %/#
 PROMPT+="%F{yellow}%# %f"
 
-# history
-HISTSIZE=2048
-SAVEHIST=2048
+HISTSIZE=65536
+SAVEHIST=65536
 HISTFILE=$HOME/.zhistory
-
-setopt SHARE_HISTORY
-setopt INC_APPEND_HISTORY
-setopt NULL_GLOB
-setopt HIST_IGNORE_ALL_DUPS
-
 WORDCHARS=
 
 # env
@@ -89,7 +86,7 @@ alias o="open"
 alias f="open ."
 alias dl="aria2c"
 alias lg="lazygit"
-alias la='ls -lah | grep "^d"&& ls -lah | grep "^-" && ls -lah | grep "^l"'
+alias la='ls -lah'
 alias lsize="du -chs * .* | sort -h"
 alias ydl="youtube-dl --format mp4 -o '%(title)s.%(ext)s' -i --no-playlist"
 alias ydll="youtube-dl --format mp4 -o '%(title)s.%(ext)s' -i --yes-playlist"
