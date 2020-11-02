@@ -62,8 +62,8 @@ case $(uname) in
 esac
 
 # lua
-export LUA_PATH="$HOME/.lua/?.lua"
-export LUA_CPATH="$HOME/.lua/?.so"
+export LUA_PATH="?.lua;$HOME/.lua/?.lua"
+export LUA_CPATH="?.so;$HOME/.lua/?.so"
 
 # cargo
 export PATH="$HOME/.cargo/bin:$PATH"
