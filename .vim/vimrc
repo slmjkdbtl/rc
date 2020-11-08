@@ -1,0 +1,73 @@
+" wengwengweng
+
+" local plugins
+call plug#load('proj')
+call plug#load('find')
+call plug#load('browser')
+call plug#load('comment')
+call plug#load('mark')
+call plug#load('pair')
+call plug#load('scroll')
+call plug#load('search')
+call plug#load('space')
+call plug#load('trim')
+
+" external plugins
+call plug#remote('w0rp/ale')
+call plug#remote('mhinz/vim-signify')
+
+set nonumber
+set wrap
+set showbreak=..
+set spelllang=en
+set nofoldenable
+set mouse=a
+set encoding=utf-8
+set termencoding=utf-8
+set fileencodings=utf-8,gbk
+set scroll=8
+set scrolloff=3
+set cursorline
+set noexpandtab
+set shiftwidth=4
+set tabstop=4
+set ttimeoutlen=0
+set hlsearch
+set incsearch
+set ignorecase
+set nowrapscan
+set list
+set autoindent
+set laststatus=2
+set showtabline=2
+set signcolumn=yes
+set noshowmode
+" set signcolumn=yes
+set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
+set wildignore=.git,.svn,.cache,.tmp,node_modules,.tup
+set wildignore+=.DS_Store
+set wildignore+=.tags,*.map
+set wildignore+=*.so,*.o,*.out,*.swp,*.exe,*.elf,*.hex,*.dll,*~
+exec 'set listchars=tab:\|\ '
+syntax on
+colorscheme super
+
+call pair#bind()
+
+noremap <silent> k gk
+noremap <silent> j gj
+noremap <silent> <up> gk
+noremap <silent> <down> gj
+noremap <silent> <m-h> b
+noremap <silent> <m-l> e
+inoremap <silent> <up> <c-x><c-y>
+inoremap <silent> <down> <c-x><c-e>
+" nnoremap <silent> <esc> <esc>:noh<cr>
+nnoremap <silent> <space> viw
+
+nnoremap <silent> - :silent! bprev<cr>
+nnoremap <silent> = :silent! bnext<cr>
+
+nnoremap <silent> <tab> :BrowserToggle<cr>
+noremap <silent> / :CommentToggle<cr>
+

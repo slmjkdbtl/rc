@@ -1,0 +1,4 @@
+" wengwengweng
+
+setl commentstring=//%s
+

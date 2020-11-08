@@ -39,7 +39,6 @@ WORDCHARS=
 export BROWSER=open
 export PAGER=less
 export EDITOR=nvim
-export VIMRUNTIME="$HOME/.conf/nvim"
 
 # local
 export PATH="$HOME/.scripts:$PATH"
@@ -81,7 +80,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias v="nvim"
+alias e="$EDITOR"
 alias o="open"
 alias f="open ."
 alias dl="aria2c"

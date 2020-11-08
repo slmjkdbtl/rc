@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ -z "$1" ]
+then
+	exit 1
+fi
+
+name=$(basename "$1" .c)
+clang "$name.c" -o "$name" && ./"$name"
+

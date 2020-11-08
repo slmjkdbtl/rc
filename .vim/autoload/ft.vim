@@ -20,7 +20,6 @@ func! ft#comment(ft, comment, alt)
 		let comments .= ',b:' . c
 	endfor
 
-	" can't override?
 	augroup FTComment
 		exec 'autocmd FileType ' . a:ft . ' ' . 'setlocal commentstring=' . a:comment . '%s' . ' | ' . 'setlocal comments=b:' . a:comment . comments
 	augroup END

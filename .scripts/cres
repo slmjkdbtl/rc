@@ -26,7 +26,7 @@ dest_path="$2"
 mkdir -p "$dest_path"
 
 convert() {
-	for entry in $1/*
+	for entry in "$1"/*
 	do
 		dest=$dest_path${entry##$src_path}
 		if [ -d "$entry" ]
@@ -35,9 +35,9 @@ convert() {
 			convert "$entry"
 		else
 			echo "$entry -> $dest.h"
-			cd "$1"
-			xxd -i ${entry##$1/} > "$base_path/$dest.h"
-			cd "$base_path"
+			cd "$1" || exit
+			xxd -i "${entry##$1/}" > "$base_path/$dest.h"
+			cd "$base_path" || exit
 		fi
 	done
 }

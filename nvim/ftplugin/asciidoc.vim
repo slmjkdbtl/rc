@@ -1,5 +1,0 @@
-" wengwengweng
-
-setl formatoptions+=ro
-
-
