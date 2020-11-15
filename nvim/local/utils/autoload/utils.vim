@@ -31,10 +31,8 @@ func! utils#delete()
 	let file = expand('%')
 
 	if confirm('> delete ' . name . '?', "&yes\n&no") == 1
-
 		call delete(file)
-		bdelete!
-
+		bwipe!
 	end
 
 endfunc
@@ -79,18 +77,12 @@ func! utils#clean_buf()
 	let n = 0
 
 	for b in getbufinfo()
-
 		if !b.listed
-
 			if !b.changed
-
 				silent! bw b.bufnr
 				let n += 1
-
 			endif
-
 		endif
-
 	endfor
 
 	echo 'Cleared ' . n . ' buffers'
@@ -121,11 +113,9 @@ func! utils#make(target)
 	let mdir = utils#recfind(cwd, 'Makefile')
 
 	if isdirectory(mdir)
-
 		exec 'lcd ' . mdir
 		exec '!make ' . a:target
 		exec 'lcd ' . cwd
-
 	endif
 
 endfunc

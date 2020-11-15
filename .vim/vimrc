@@ -17,7 +17,7 @@ call plug#remote('w0rp/ale')
 call plug#remote('mhinz/vim-signify')
 
 set nonumber
-set wrap
+set nowrap
 set showbreak=..
 set spelllang=en
 set nofoldenable

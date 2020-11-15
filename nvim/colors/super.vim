@@ -41,38 +41,32 @@ let s:none = [ 'NONE', 'NONE' ]
 func! s:hi(group, fg, bg, attr, attrsp)
 
 	if !empty(a:fg)
-
 		exec 'hi ' . a:group . ' guifg=' .  a:fg[0]
 		exec 'hi ' . a:group . ' ctermfg=' . a:fg[1]
-
 	endif
 
 	if !empty(a:bg)
-
 		exec 'hi ' . a:group . ' guibg=' .  a:bg[0]
 		exec 'hi ' . a:group . ' ctermbg=' . a:bg[1]
-
 	endif
 
 	if !empty(a:attr)
-
 		exec 'hi ' . a:group . ' gui=' .   a:attr
 		exec 'hi ' . a:group . ' cterm=' . a:attr
-
 	endif
 
 	if !empty(a:attrsp)
-
 		exec 'hi ' . a:group . ' guisp=' . a:attrsp[0]
-
 	endif
 
 endfunc
 
+hi Error NONE
+
 call s:hi('Bold',                       '',       '',       s:bold,      '')
 call s:hi('Debug',                      s:base08, '',       '',          '')
 call s:hi('Directory',                  s:base0D, '',       '',          '')
-call s:hi('Error',                      s:base10, s:base08, '',          '')
+" call s:hi('Error',                      s:base10, s:base08, '',          '')
 call s:hi('ErrorMsg',                   s:base08, s:base00, '',          '')
 call s:hi('Exception',                  s:base08, '',       '',          '')
 call s:hi('FoldColumn',                 s:base0D, s:base00, '',          '')
@@ -131,7 +125,7 @@ call s:hi('Include',                    s:base0D, '',       '',          '')
 call s:hi('Keyword',                    s:base0E, '',       '',          '')
 call s:hi('Label',                      s:base0A, '',       '',          '')
 call s:hi('Number',                     s:base09, '',       '',          '')
-call s:hi('Operator',                   s:base05, '',       '',          '')
+call s:hi('Operator',                   s:base0C, '',       '',          '')
 call s:hi('PreProc',                    s:base0A, '',       '',          '')
 call s:hi('Repeat',                     s:base0A, '',       '',          '')
 call s:hi('Special',                    s:base0C, '',       '',          '')

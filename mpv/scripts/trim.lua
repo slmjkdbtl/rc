@@ -1,6 +1,6 @@
 -- wengwengweng
 
-local cmd_template = [[ffmpeg -i "$in" -ss $start -to $end -c copy "$out"]]
+local cmd_template = [[ ffmpeg -i "$in" -ss $start -to $end -c copy "$out" ]]
 local start_pos = nil
 
 local function timestamp(duration)

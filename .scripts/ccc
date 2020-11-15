@@ -6,5 +6,5 @@ then
 fi
 
 name=$(basename "$1" .c)
-clang "$name.c" -o "$name" && ./"$name"
+clang "$name.c" -o "$name" && ./"$name" "${@:2}"
 

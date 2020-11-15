@@ -14,13 +14,15 @@ call plug#load('search')
 call plug#load('space')
 call plug#load('mode')
 call plug#load('trim')
-call plug#load('mru')
 call plug#load('utils')
-call plug#load('tommywiseau')
 
 " external plugins
 call plug#remote('w0rp/ale')
 call plug#remote('mhinz/vim-signify')
+
+call ft#detect('Justfile', 'make')
+call ft#detect('*.vert', 'glsl')
+call ft#detect('*.frag', 'glsl')
 
 " options
 set magic
@@ -90,7 +92,7 @@ set wildignore+=*.so,*.o,*.out,*.swp,*.exe,*.elf,*.hex,*.dll,*~
 exec 'set listchars=tab:\|\ '
 colorscheme super
 
-let g:trash_dir = expand('$HOME/.Trash')
+let loaded_netrwPlugin = 1
 
 " signify
 let g:signify_vcs_list = [ 'git' ]
@@ -167,9 +169,6 @@ augroup END
 
 autocmd BufEnter *
 			\ if &filetype == "" | setl ft=text | endif
-
-let loaded_netrwPlugin = 1
-let g:sh_no_error = 1
 
 " unmap
 call unmap#clear()
@@ -254,7 +253,6 @@ nnoremap * *
 " plugins
 call pair#bind()
 call search#bind()
-call mru#start()
 noremap <silent> <m-k> <cmd>ScrollUp<cr>
 noremap <silent> <m-j> <cmd>ScrollDown<cr>
 nnoremap <silent> <tab> :BrowserToggle<cr>
