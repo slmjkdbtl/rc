@@ -13,6 +13,10 @@ local function timestamp(duration)
 
 end
 
+local function escape(str)
+	return str:gsub("([^%w])", "%%%1")
+end
+
 local function cut(p1, p2)
 
 	local fname = mp.get_property("filename")
@@ -20,7 +24,7 @@ local function cut(p1, p2)
 	local path = mp.get_property("path")
 	local t1 = timestamp(p1)
 	local t2 = timestamp(p2)
-	local out_path = path:gsub(fname, string.format("%s (%s-%s).mp4", basename, t1, t2))
+	local out_path = path:gsub(escape(fname), string.format("%s (%s-%s).mp4", basename, t1, t2))
 
 	local cmd = cmd_template:gsub("$in", path)
 	local cmd = cmd:gsub("$out", out_path)
@@ -28,8 +32,12 @@ local function cut(p1, p2)
 	local cmd = cmd:gsub("$end", t2)
 
 	mp.osd_message("Trimming...")
-	os.execute(cmd)
-	mp.osd_message("Trimmed: " .. out_path)
+
+	if os.execute(cmd) then
+		mp.osd_message("Trimmed: " .. out_path)
+	else
+		mp.osd_message("Error Trimming Video")
+	end
 
 end
 
