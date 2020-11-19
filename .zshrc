@@ -59,11 +59,6 @@ case $(uname) in
 	;;
 esac
 
-if [ $(uname) = "FreeBSD" ]; then
-	export CFLAGS="-I/usr/local/include"
-	export LDFLAGS="-I/usr/local/lib"
-fi
-
 # lua
 export LUA_PATH="?.lua;$HOME/.lua/?.lua"
 export LUA_CPATH="?.so;$HOME/.lua/?.so"
