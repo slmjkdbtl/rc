@@ -1,4 +1,28 @@
 # wengwengweng
 
-.DS_Store
+# compiled
+*.o
+*.class
+*.dll
+*.exe
+
+# tmp
+*.swp
+*~
+
+# os
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# archive
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
 

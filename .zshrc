@@ -42,7 +42,6 @@ export EDITOR=nvim
 
 # local
 export PATH="$HOME/.scripts:$PATH"
-export PATH="$HOME/.bin:$PATH"
 
 # sbin
 export PATH="/usr/local/sbin:$PATH"
@@ -59,6 +58,11 @@ case $(uname) in
 	source /usr/local/share/z/z.sh
 	;;
 esac
+
+if [ $(uname) = "FreeBSD" ]; then
+	export CFLAGS="-I/usr/local/include"
+	export LDFLAGS="-I/usr/local/lib"
+fi
 
 # lua
 export LUA_PATH="?.lua;$HOME/.lua/?.lua"

@@ -23,6 +23,7 @@ call plug#remote('mhinz/vim-signify')
 call ft#detect('Justfile', 'make')
 call ft#detect('*.vert', 'glsl')
 call ft#detect('*.frag', 'glsl')
+call ft#detect('*.toml', 'toml')
 
 " options
 set magic
