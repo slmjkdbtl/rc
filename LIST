@@ -162,6 +162,9 @@ CLI
   monolith
     https://github.com/Y2Z/monolith/
 
+  wrk
+    https://github.com/wg/wrk/
+
   pageres
     https://github.com/sindresorhus/pageres-cli/
 
