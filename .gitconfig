@@ -14,6 +14,7 @@
 	file = log --follow -p --
 	slog = log --oneline
 	flog = log --pretty=fuller
+	logf = log -p
 	commitf = commit --amend --no-edit
 	fpull = "!f() { git fetch origin && git reset --hard FETCH_HEAD && git clean -df; }; f"
 	rewrite = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch -f --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f"

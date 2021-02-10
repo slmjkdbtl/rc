@@ -1,7 +1,5 @@
 " wengwengweng
 
-" TODO: syntax highlighting fails after reopening a buffer
-
 " local plugins
 call plug#load('proj')
 call plug#load('find')
@@ -14,6 +12,7 @@ call plug#load('search')
 call plug#load('space')
 call plug#load('mode')
 call plug#load('trim')
+call plug#load('mru')
 call plug#load('utils')
 
 " external plugins
@@ -24,6 +23,7 @@ call ft#detect('Justfile', 'make')
 call ft#detect('*.vert', 'glsl')
 call ft#detect('*.frag', 'glsl')
 call ft#detect('*.toml', 'toml')
+call ft#detect('*.graphql', 'graphql')
 
 " options
 set magic
@@ -134,7 +134,7 @@ augroup Explore
 
 		if empty(name)
 			if len(getbufinfo({ 'buflisted': 1 })) == 1
-				Space
+" 				Space
 			endif
 		else
 			if isdirectory(name)
@@ -167,10 +167,13 @@ augroup Hello
 
 	endfunc
 
+	autocmd BufEnter *
+				\ if &filetype == "" | setl ft=text | endif
+
 augroup END
 
-autocmd BufEnter *
-			\ if &filetype == "" | setl ft=text | endif
+
+call mru#start()
 
 " unmap
 call unmap#clear()
@@ -275,6 +278,7 @@ nnoremap <silent> <f5> :ModeToggle paste<cr>
 nnoremap <silent> <f6> :ModeToggle expandtab<cr>
 nnoremap <m-f> :Find<cr>
 nnoremap <m-g> :Grep<cr>
+nnoremap <m-d> :MRU<cr>
 nnoremap z :Proj<space>
 nnoremap m :!just<space>
 

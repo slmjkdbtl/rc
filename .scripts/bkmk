@@ -6,7 +6,7 @@ end
 
 local file = io.open(arg[1], "r")
 local cur_entry = nil
-local map = {}
+local bookmarks = {}
 
 for l in file:lines() do
 
@@ -14,20 +14,20 @@ for l in file:lines() do
 
 	if (a and b) then
 		cur_entry = l:sub(a + 1, b - 5)
-		map[cur_entry] = {}
+		bookmarks[cur_entry] = {}
 	end
 
 	if (cur_entry) then
 		local c, d = l:find("HREF=\"[^\"]+")
 		if (c and d) then
-			table.insert(map[cur_entry], l:sub(c + 6, d))
+			table.insert(bookmarks[cur_entry], l:sub(c + 6, d))
 		end
 	end
 
 end
 
 if (arg[2]) then
-	local entries = map[arg[2]]
+	local entries = bookmarks[arg[2]]
 	if (entries) then
 		for _, p in ipairs(entries) do
 			print(p)
@@ -36,7 +36,7 @@ if (arg[2]) then
 		print("no such tag")
 	end
 else
-	for k, v in pairs(map) do
+	for k, v in pairs(bookmarks) do
 		print(k .. ":")
 		for _, p in ipairs(v) do
 			print("  " .. p)
