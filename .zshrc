@@ -40,11 +40,14 @@ export BROWSER=open
 export PAGER=less
 export EDITOR=nvim
 
+# brew
+export PATH="/opt/homebrew/bin/:$PATH"
+
 # local
 export PATH="$HOME/.scripts:$PATH"
 
 # sbin
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
 
 # git
 export FILTER_BRANCH_SQUELCH_WARNING=1
@@ -52,16 +55,12 @@ export FILTER_BRANCH_SQUELCH_WARNING=1
 # z
 case $(uname) in
 "Darwin")
-	source /usr/local/etc/profile.d/z.sh
+	source /opt/homebrew/etc/profile.d/z.sh
 	;;
 *)
 	source /usr/local/share/z/z.sh
 	;;
 esac
-
-# lua
-export LUA_PATH="?.lua;$HOME/.lua/?.lua"
-export LUA_CPATH="?.so;$HOME/.lua/?.so"
 
 # cargo
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -83,7 +82,6 @@ alias e="$EDITOR"
 alias o="open"
 alias f="open ."
 alias dl="aria2c"
-alias lg="lazygit"
 alias la='ls -lah'
 alias lsize="du -chs * .* | sort -h"
 alias ydl="youtube-dl --format mp4 -o '%(title)s.%(ext)s' -i --no-playlist"
