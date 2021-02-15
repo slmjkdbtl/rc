@@ -52,6 +52,9 @@ export PATH="/opt/homebrew/sbin:$PATH"
 # git
 export FILTER_BRANCH_SQUELCH_WARNING=1
 
+# broot
+source ~/.config/broot/launcher/bash/br
+
 # z
 case $(uname) in
 "Darwin")
@@ -65,11 +68,10 @@ esac
 # cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# emscripten
-export PATH="$HOME/.emsdk/upstream/emscripten/:$PATH"
-
 # llvm
-export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 # brew
 export HOMEBREW_NO_AUTO_UPDATE=1
@@ -78,6 +80,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias .....="cd ../../../.."
 alias e="$EDITOR"
 alias o="open"
 alias f="open ."

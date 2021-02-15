@@ -7,7 +7,7 @@ conf:
 
 	@mkdir -p $(CONFIG)
 
-	@for f in nvim mpv zsh; do \
+	@for f in nvim mpv zsh alacritty.yml; do \
 		echo "  - $$f -> $(CONFIG)/$$f"; \
 		ln -sf $$(realpath $$f) $(CONFIG); \
 	done
