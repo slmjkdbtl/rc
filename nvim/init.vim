@@ -33,7 +33,6 @@ set noexpandtab
 set smarttab
 set termguicolors
 set noshowmode
-set title
 set showcmd
 set noerrorbells
 set novisualbell

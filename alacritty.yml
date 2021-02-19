@@ -15,6 +15,7 @@ font:
     style: Bold
   italic:
     family: APL386 Unicode
+    style: Italic
   size: 20.0
 
 draw_bold_text_with_bright_colors: true

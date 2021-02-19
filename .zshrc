@@ -1,5 +1,9 @@
 # wengwengweng
 
+precmd () {
+	print -Pn "\e]0;%n@%m: %~\a"
+}
+
 autoload -Uz compinit && compinit
 
 # plugins
@@ -70,8 +74,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # llvm
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 # brew
 export HOMEBREW_NO_AUTO_UPDATE=1
