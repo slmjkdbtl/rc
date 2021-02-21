@@ -2,8 +2,8 @@
 
 window:
   dimensions:
-    columns: 108
-    lines: 36
+    columns: 96
+    lines: 32
 
 tabspaces: 4
 

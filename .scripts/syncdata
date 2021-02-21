@@ -1,0 +1,10 @@
+#!/bin/sh
+
+rsync -av --delete --exclude '.DS_Store' \
+	/Users/tga/Music/Music/Media.localized/Music/ \
+	/Volumes/EXTDISK/music
+
+rsync -av --delete --exclude '.DS_Store' \
+	/Users/tga/files/film/ \
+	/Volumes/EXTDISK/film
+

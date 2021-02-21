@@ -56,16 +56,21 @@ export PATH="/opt/homebrew/sbin:$PATH"
 # git
 export FILTER_BRANCH_SQUELCH_WARNING=1
 
+# source if exists
+fsource() {
+	[ -f $1 ] && source $1
+}
+
 # broot
-source ~/.config/broot/launcher/bash/br
+fsource ~/.config/broot/launcher/bash/br
 
 # z
 case $(uname) in
 "Darwin")
-	source /opt/homebrew/etc/profile.d/z.sh
+	fsource /opt/homebrew/etc/profile.d/z.sh
 	;;
 *)
-	source /usr/local/share/z/z.sh
+	fsource /usr/local/share/z/z.sh
 	;;
 esac
 
@@ -79,6 +84,7 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 # alias
+alias ~="cd $HOME"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -89,6 +95,7 @@ alias f="open ."
 alias dl="aria2c"
 alias la='ls -lah'
 alias lsize="du -chs * .* | sort -h"
+alias dsclean="find . -name '.DS_Store' -print -delete"
 alias ydl="youtube-dl --format mp4 -o '%(title)s.%(ext)s' -i --no-playlist"
 alias ydll="youtube-dl --format mp4 -o '%(title)s.%(ext)s' -i --yes-playlist"
 alias ydlm="youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --no-playlist"
