@@ -1,0 +1,19 @@
+#!/bin/sh
+
+help() {
+	echo "Download music from youtube playlist"
+	echo ""
+	echo "USAGE"
+	echo "  $ dalbum <name> <url>"
+}
+
+if [ -z "$1" ] || [ -z "$2" ]
+then
+	help
+	exit 1
+fi
+
+DIR="$HOME/todo/listen/$1"
+mkdir "$DIR"
+cd "$DIR" && youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --yes-playlist "$2"
+

@@ -1,10 +1,18 @@
 #!/bin/sh
 
+help() {
+	echo "Quickly build and run a c file"
+	echo ""
+	echo "USAGE"
+	echo "  $ ccc <file>"
+}
+
 if [ -z "$1" ]
 then
+	help
 	exit 1
 fi
 
 name=$(basename "$1" .c)
-clang "$name.c" -o "$name" && ./"$name" "${@:2}"
+cc "$name.c" $CFLAGS $LDFLAGS -o "$name" && ./"$name" "${@:2}"
 

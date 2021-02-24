@@ -1,8 +1,12 @@
 #!/bin/sh
 
+echo "syncing music..."
+
 rsync -av --delete --exclude '.DS_Store' \
 	/Users/tga/Music/Music/Media.localized/Music/ \
 	/Volumes/EXTDISK/music
+
+echo "syncing films..."
 
 rsync -av --delete --exclude '.DS_Store' \
 	/Users/tga/files/film/ \

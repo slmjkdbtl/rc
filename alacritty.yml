@@ -62,6 +62,10 @@ colors:
 
 live_config_reload: true
 
+scrolling:
+  multiplier: 1
+  faux_multiplier: 1
+
 key_bindings:
   - { key: A,         mods: Alt,       chars: "\x1ba"                       }
   - { key: B,         mods: Alt,       chars: "\x1bb"                       }
