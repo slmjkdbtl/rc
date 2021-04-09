@@ -16,7 +16,7 @@
 	flog = log --pretty=fuller
 	logf = log -p
 	commitf = commit --amend --no-edit
-	new = checkout -b
+	co = checkout
 
 [credential]
 	helper = store

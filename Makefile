@@ -12,7 +12,7 @@ conf:
 		ln -sf $$(realpath $$f) $(CONFIG); \
 	done
 
-	@for f in .vim .scripts .zshrc .skhdrc .tmux.conf .gitconfig .gitignore_g .eslintrc.yml; do \
+	@for f in .vim .scripts .zshrc .skhdrc .tmux.conf .gitconfig .gitignore_g .eslintrc.yml .wezterm.lua; do \
 		echo "  - $$f -> $(HOME)/$$f"; \
 		ln -sf $$(realpath $$f) $(HOME); \
 	done

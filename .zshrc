@@ -83,6 +83,9 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 # brew
 export HOMEBREW_NO_AUTO_UPDATE=1
 
+export CFLAGS="-I/opt/homebrew/include"
+export LDFLAGS="-L/opt/homebrew/lib"
+
 # alias
 alias ~="cd $HOME"
 alias ..="cd .."
