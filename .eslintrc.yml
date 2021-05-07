@@ -7,4 +7,4 @@ parserOptions:
 rules:
   semi: warn
   quotes: warn
-
+  no-implicit-globals: warn

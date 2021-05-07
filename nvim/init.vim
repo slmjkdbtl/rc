@@ -20,8 +20,7 @@ call plug#remote('w0rp/ale')
 call plug#remote('mhinz/vim-signify')
 
 call ft#detect('Justfile', 'make')
-call ft#detect('*.vert', 'glsl')
-call ft#detect('*.frag', 'glsl')
+call ft#detect('*.glsl', 'glsl')
 call ft#detect('*.toml', 'toml')
 call ft#detect('*.graphql', 'graphql')
 
@@ -62,6 +61,7 @@ set nofoldenable
 set ignorecase
 set cursorline
 set hlsearch
+set colorcolumn=72
 set ttimeoutlen=0
 set cpoptions=aABceFs
 set showtabline=2
@@ -118,6 +118,7 @@ let g:ale_linters = {
 	\ 'cs': [],
 	\ 'c': [],
 	\ 'cpp': [],
+	\ 'typescript': ['tsserver'],
 \ }
 
 augroup Explore

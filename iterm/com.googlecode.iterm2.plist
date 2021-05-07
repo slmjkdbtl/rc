@@ -1818,6 +1818,8 @@
 	<true/>
 	<key>SavePasteHistory</key>
 	<false/>
+	<key>SensitiveScrollWheel</key>
+	<false/>
 	<key>ShowFullScreenTabBar</key>
 	<true/>
 	<key>ShowMetalFPSmeter</key>
