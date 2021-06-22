@@ -86,6 +86,9 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export CFLAGS="-I/opt/homebrew/include"
 export LDFLAGS="-L/opt/homebrew/lib"
 
+#  export CFLAGS="-I/opt/homebrew/opt/libressl/include"
+#  export LDFLAGS="-L/opt/homebrew/opt/libressl/lib"
+
 # alias
 alias ~="cd $HOME"
 alias ..="cd .."
@@ -95,7 +98,6 @@ alias .....="cd ../../../.."
 alias e="$EDITOR"
 alias o="open"
 alias f="open ."
-alias dl="aria2c"
 alias la='ls -lah'
 alias lsize="du -chs * .* | sort -h"
 alias dsclean="find . -name '.DS_Store' -print -delete"

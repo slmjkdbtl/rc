@@ -1,7 +1,6 @@
 # wengwengweng
 
 [core]
-	excludesfile = ~/.gitignore_g
 	pager = less -+FX
 
 [user]

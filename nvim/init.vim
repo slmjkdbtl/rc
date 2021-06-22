@@ -23,6 +23,8 @@ call ft#detect('Justfile', 'make')
 call ft#detect('*.glsl', 'glsl')
 call ft#detect('*.toml', 'toml')
 call ft#detect('*.graphql', 'graphql')
+call ft#detect('*.h', 'c')
+call ft#detect('*.dt', 'dirty')
 
 " options
 set magic
@@ -61,7 +63,7 @@ set nofoldenable
 set ignorecase
 set cursorline
 set hlsearch
-set colorcolumn=72
+set colorcolumn=80
 set ttimeoutlen=0
 set cpoptions=aABceFs
 set showtabline=2
@@ -85,7 +87,7 @@ set termencoding=utf-8
 set fileencodings=utf-8
 set guicursor=n-v-c-sm-ci-ve-r-cr-o:block,i:ver25
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
-set wildignore=.git,.svn,.cache,.tmp,node_modules,.tup
+set wildignore=.git,.svn,.cache,.tmp,.tup
 set wildignore+=.DS_Store
 set wildignore+=.tags,*.map
 set wildignore+=*.so,*.o,*.out,*.swp,*.exe,*.elf,*.hex,*.dll,*~
