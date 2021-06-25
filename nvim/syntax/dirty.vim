@@ -2,7 +2,14 @@
 
 syntax match DirtyComment
 			\ '--.*$'
-			\ contains=BrowserDir,BrowserMarked
+
+syntax region DirtyCommentBlock
+			\ start=+---+
+			\ end=+---+
 
 highlight def link DirtyComment
 			\ Comment
+
+highlight def link DirtyCommentBlock
+			\ Comment
+
