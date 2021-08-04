@@ -25,6 +25,7 @@ call ft#detect('*.toml', 'toml')
 call ft#detect('*.graphql', 'graphql')
 call ft#detect('*.h', 'c')
 call ft#detect('*.dt', 'dirty')
+call ft#detect('*.fish', 'fish')
 
 " options
 set magic

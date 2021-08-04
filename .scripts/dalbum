@@ -15,5 +15,5 @@ fi
 
 DIR="$HOME/todo/listen/$1"
 mkdir "$DIR"
-cd "$DIR" && youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --yes-playlist "$2"
+cd "$DIR" && youtube-dl --cookies /Users/tga/todo/listen/cookies.txt -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --yes-playlist "$2"
 
