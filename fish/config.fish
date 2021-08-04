@@ -8,32 +8,32 @@ set -x PATH /opt/homebrew/opt/llvm/bin $PATH
 set -x HOMEBREW_NO_AUTO_UPDATE 1
 set fish_greeting
 
-set -U fish_color_autosuggestion      brblack
-set -U fish_color_cancel              -r
-set -U fish_color_command             brgreen
-set -U fish_color_comment             brmagenta
-set -U fish_color_cwd                 green
-set -U fish_color_cwd_root            red
-set -U fish_color_end                 brmagenta
-set -U fish_color_error               brred
-set -U fish_color_escape              brcyan
-set -U fish_color_history_current     --bold
-set -U fish_color_host                normal
-set -U fish_color_match               --background=brblue
-set -U fish_color_normal              normal
+set -U fish_color_autosuggestion      black
+set -U fish_color_cancel
+set -U fish_color_command             green --bold
+set -U fish_color_comment             magenta
+set -U fish_color_cwd
+set -U fish_color_cwd_root
+set -U fish_color_end
+set -U fish_color_error               red -- bold
+set -U fish_color_escape
+set -U fish_color_history_current
+set -U fish_color_host
+set -U fish_color_match
+set -U fish_color_normal
 set -U fish_color_operator            cyan
-set -U fish_color_param               brblue
-set -U fish_color_quote               yellow
-set -U fish_color_redirection         bryellow
-set -U fish_color_search_match        'bryellow' '--background=brblack'
-set -U fish_color_selection           'white' '--bold' '--background=brblack'
-set -U fish_color_status              red
-set -U fish_color_user                brgreen
-set -U fish_color_valid_path          --underline
-set -U fish_pager_color_completion    normal
-set -U fish_pager_color_description   yellow
-set -U fish_pager_color_prefix        'white' '--bold' '--underline'
-set -U fish_pager_color_progress      'brwhite' '--background=cyan'
+set -U fish_color_param
+set -U fish_color_quote
+set -U fish_color_redirection
+set -U fish_color_search_match        --bold --background=blue
+set -U fish_color_selection
+set -U fish_color_status
+set -U fish_color_user
+set -U fish_color_valid_path
+set -U fish_pager_color_completion
+set -U fish_pager_color_description
+set -U fish_pager_color_prefix
+set -U fish_pager_color_progress
 
 alias .. "cd .."
 alias ... "cd ../.."
@@ -82,7 +82,7 @@ function fish_prompt
 	end
 
 	function show_cwd
-		set_color -o green
+		set_color -o cyan
 		set -g fish_prompt_pwd_dir_length 0
 		echo -n (prompt_pwd)
 		set_color normal
