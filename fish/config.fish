@@ -3,6 +3,7 @@ set -x BROWSER open
 set -x PAGER less
 set -x PATH /opt/homebrew/bin $PATH
 set -x PATH $HOME/.local/bin $PATH
+set -x PATH $HOME/.scripts $PATH
 set -x PATH /opt/homebrew/sbin $PATH
 set -x PATH /opt/homebrew/opt/llvm/bin $PATH
 set -x HOMEBREW_NO_AUTO_UPDATE 1
@@ -42,7 +43,7 @@ alias ..... "cd ../../../.."
 alias e "$EDITOR"
 alias o "open"
 alias f "open ."
-alias lsize="du -chs * .* | sort -h"
+alias lsize "du -chs * .* | sort -h"
 alias disk "df -h ."
 alias sudo "sudo -E"
 alias ydl "youtube-dl --format mp4 -o '%(title)s.%(ext)s' -i --no-playlist"
@@ -64,7 +65,7 @@ abbr gc "git commit -m"
 abbr gp "git push"
 abbr gb "git branch"
 abbr gr "git remote"
-abbr gch "git checkout"
+abbr gsw "git switch"
 abbr gcl "git clone"
 abbr gpl "git pull"
 abbr grv "gh repo view --web"
