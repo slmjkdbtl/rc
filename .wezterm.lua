@@ -24,7 +24,7 @@ return {
 			-- red
 			"#ec7580",
 			-- green
-			"#98d892",
+			"#9ae0a0",
 			-- yellow
 			"#ffca72",
 			-- blue
