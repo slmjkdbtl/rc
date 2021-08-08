@@ -16,4 +16,3 @@ conf:
 		echo "- $$f -> $(HOME)/$$f"; \
 		ln -sf $$(realpath $$f) $(HOME); \
 	done
-
