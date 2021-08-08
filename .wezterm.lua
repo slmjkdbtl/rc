@@ -12,7 +12,7 @@ return {
 	bold_brightens_ansi_colors = false,
 -- 	color_scheme = "Dracula",
 	colors = {
-		foreground = "#eeeeee",
+		foreground = "#dadada",
 		background = "#000000",
 		cursor_bg = "#eeeeee",
 		cursor_border = "#eeeeee",
@@ -22,9 +22,9 @@ return {
 			-- black
 			"#666666",
 			-- red
-			"#fc7580",
+			"#ec7580",
 			-- green
-			"#9bf598",
+			"#9be598",
 			-- yellow
 			"#ffca72",
 			-- blue
@@ -32,7 +32,7 @@ return {
 			-- magenta
 			"#f7aad7",
 			-- cyan
-			"#7cf7f4",
+			"#7ce9df",
 			-- white
 			"#eeeeee",
 		},

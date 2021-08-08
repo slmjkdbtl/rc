@@ -37,7 +37,7 @@ func! s:get_status_mode(bufn) abort
 
 	elseif mode ==# 't'
 
-		let text .= '%#StatusModeTerminal#'
+		let text .= '%#StatusModeTerm#'
 		let text .= ' TERMINAL '
 	else
 
