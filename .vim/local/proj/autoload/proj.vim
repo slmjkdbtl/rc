@@ -98,18 +98,12 @@ func! proj#add(name)
 	if confirm('> add ' . format . '?', "&yes\n&no") == 1
 
 		if s:write(projs + [ proj ]) != -1
-
 			redraw
 			echo format . ' added'
-
 			return 0
-
 		else
-
 			echo 'error adding project'
-
 			return -1
-
 		endif
 
 	endif
@@ -121,11 +115,8 @@ func! proj#remove(key)
 	let projs = s:get()
 
 	if empty(projs)
-
 		echo 'no project found'
-
 		return -1
-
 	endif
 
 	if exists('a:key') && a:key !=# ''
@@ -133,31 +124,22 @@ func! proj#remove(key)
 		let proj = s:search(projs, a:key)
 
 		if type(proj) == 0 && proj == -1
-
 			echo 'nothing to remove'
-
 			return -1
-
 		endif
 
 	else
 
 		if exists('g:proj_current')
-
 			let index = index(projs, g:proj_current)
-
 			if index != -1
 				let proj = projs[index]
 			endif
-
 		endif
 
 		if !exists('proj')
-
 			echo 'no proj to remove'
-
 			return -1
-
 		end
 
 	end
@@ -165,29 +147,18 @@ func! proj#remove(key)
 	let format = s:format(proj)
 
 	if confirm('> remove ' . format . '?', "&yes\n&no") == 1
-
 		let projs = filter(projs, 'v:val != proj')
-
 		if s:write(projs) != -1
-
 			redraw
 			let format = s:format(proj)
 			echo format . ' removed'
-
 			return 0
-
 		else
-
 			echo 'error removing project'
-
 			return -1
-
 		endif
-
 	else
-
 		return -1
-
 	endif
 
 endfunc
@@ -197,11 +168,8 @@ func! proj#list()
 	let projs = s:get()
 
 	if empty(projs)
-
 		echo 'no project found'
-
 		return 0
-
 	endif
 
 	for p in projs
@@ -217,21 +185,15 @@ func! proj#switch(proj)
 	endif
 
 	if (isdirectory(a:proj.path))
-
 		silent! exec 'lcd ' . expand(a:proj.path)
 		silent! exec 'edit ' . expand(a:proj.path)
 		let g:proj_current = a:proj
-
 	elseif (filereadable(a:proj.path))
-
 		silent! exec 'edit ' . expand(a:proj.path)
 		let g:proj_current = a:proj
-
 	else
-
 		echo 'not found'
 		return -1
-
 	end
 
 	return 0
@@ -250,17 +212,11 @@ func! proj#jump(pattern)
 	let proj = s:search(projs, a:pattern)
 
 	if type(proj) == 4
-
 		return proj#switch(proj)
-
 	else
-
 		redraw
 		echo 'project not found'
-
 		return -1
-
 	endif
 
 endfunc
-

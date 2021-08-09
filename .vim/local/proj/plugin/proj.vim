@@ -8,7 +8,7 @@ command! -nargs=? Proj
 command! -nargs=? ProjAdd
 			\ call proj#add(<q-args>)
 
-command! -nargs=? ProjRemove
+command! -nargs=? ProjRm
 			\ call proj#remove(<q-args>)
 
 command! -nargs=0 ProjList

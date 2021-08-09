@@ -1,5 +1,3 @@
-" wengwengweng
-
 " local plugins
 call plug#load('proj')
 call plug#load('find')
@@ -10,12 +8,25 @@ call plug#load('pair')
 call plug#load('scroll')
 call plug#load('search')
 call plug#load('space')
+call plug#load('mode')
 call plug#load('trim')
+call plug#load('mru')
+call plug#load('utils')
 
 " external plugins
 call plug#remote('w0rp/ale')
 call plug#remote('mhinz/vim-signify')
 
+call ft#detect('Justfile', 'make')
+call ft#detect('*.glsl', 'glsl')
+call ft#detect('*.toml', 'toml')
+call ft#detect('*.graphql', 'graphql')
+call ft#detect('*.h', 'c')
+call ft#detect('*.dt', 'dirty')
+call ft#detect('*.fish', 'fish')
+
+" options
+set magic
 set nonumber
 set nowrap
 set showbreak=..
@@ -36,13 +47,16 @@ set hlsearch
 set incsearch
 set ignorecase
 set nowrapscan
+set whichwrap=h,l,<,>
 set list
 set autoindent
+set noswapfile
 set laststatus=2
 set showtabline=2
+set backspace=2
 set signcolumn=yes
 set noshowmode
-" set signcolumn=yes
+set signcolumn=yes
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
 set wildignore=.git,.svn,.cache,.tmp,node_modules,.tup
 set wildignore+=.DS_Store
@@ -52,22 +66,91 @@ exec 'set listchars=tab:\|\ '
 syntax on
 colorscheme super
 
-call pair#bind()
-
+" movement
 noremap <silent> k gk
 noremap <silent> j gj
 noremap <silent> <up> gk
 noremap <silent> <down> gj
+noremap <silent> h h
+noremap <silent> l l
 noremap <silent> <m-h> b
 noremap <silent> <m-l> e
 inoremap <silent> <up> <c-x><c-y>
 inoremap <silent> <down> <c-x><c-e>
-" nnoremap <silent> <esc> <esc>:noh<cr>
+noremap <silent> % %
+noremap <silent> ^ gg
+noremap <silent> $ G
+
+" buffer
+nnoremap <silent> ` <c-^>
+tnoremap <silent> ` <c-\><c-n><c-^>
+nnoremap <silent> - <cmd>silent! bprev<cr>
+nnoremap <silent> = <cmd>silent! bnext<cr>
+nnoremap <silent> <M-q> <cmd>silent! bprev<cr>
+tnoremap <silent> <M-q> <cmd>silent! bprev<cr>
+nnoremap <silent> <M-e> <cmd>silent! bnext<cr>
+tnoremap <silent> <M-e> <cmd>silent! bnext<cr>
+
+" edit
+nnoremap <silent> > A
+nnoremap <silent> < I
+vnoremap <silent> > <esc>`>a
+vnoremap <silent> < <esc>`<i
+nnoremap <silent> <return> a
+vnoremap <silent> <return> s
+" nnoremap <silent> <m-return> A<return>yo<bs><bs><esc>
+inoremap <silent> <return> <return>yo<bs><bs>
+inoremap <silent> <m-return> <esc>mqa<return><esc>`qa<return>
+nnoremap <silent> c ci
+" cnoremap <m-bs> <c-w>
+
+" undo & redo
+nnoremap <silent> u u
+nnoremap <silent> o <c-r>
+
+" cut & copy & paste
+noremap <silent> p "*P
+nnoremap <silent> y "*yy
+vnoremap <silent> y mq"*y`>`q
+nnoremap <silent> x "*dd
+vnoremap <silent> x "*d
+noremap <silent> d "_dd<esc>
+inoremap <silent> <m-p> <esc>"*pa
+
+" selection
+nnoremap <silent> v V
 nnoremap <silent> <space> viw
+vnoremap <silent> <space> <esc>
+vnoremap <silent> v <esc>
+nnoremap <silent> <m-v> v
 
-nnoremap <silent> - :silent! bprev<cr>
-nnoremap <silent> = :silent! bnext<cr>
+" indent
+vnoremap <silent> <tab> >
+vnoremap <silent> <bs> <
 
+" misc
+nnoremap <silent> w :w<cr>
+
+" plugins
+call pair#bind()
+call search#bind()
+noremap <silent> <m-k> <cmd>ScrollUp<cr>
+noremap <silent> <m-j> <cmd>ScrollDown<cr>
 nnoremap <silent> <tab> :BrowserToggle<cr>
+nnoremap <silent> <m--> :OpenTerm<cr>
+nnoremap <silent> <m-=> :OpenFinder<cr>
 noremap <silent> / :CommentToggle<cr>
-
+nnoremap <silent> <m-w> :Close<cr>
+nnoremap <silent> <m-n> :ALEPrevious<cr>
+nnoremap <silent> <m-m> :ALENext<cr>
+nnoremap <silent> <f1> :ModeToggle comment<cr>
+nnoremap <silent> <f2> :ModeToggle spell<cr>
+nnoremap <silent> <f3> :ModeToggle number<cr>
+nnoremap <silent> <f4> :ModeToggle wrap<cr>
+nnoremap <silent> <f5> :ModeToggle paste<cr>
+nnoremap <silent> <f6> :ModeToggle expandtab<cr>
+nnoremap <m-f> :Find<cr>
+nnoremap <m-g> :Grep<cr>
+nnoremap <m-d> :MRU<cr>
+nnoremap z :Proj<space>
+nnoremap m :!just<space>

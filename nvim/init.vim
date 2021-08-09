@@ -1,5 +1,3 @@
-" wengwengweng
-
 " local plugins
 call plug#load('proj')
 call plug#load('find')
@@ -284,4 +282,3 @@ nnoremap <m-g> :Grep<cr>
 nnoremap <m-d> :MRU<cr>
 nnoremap z :Proj<space>
 nnoremap m :!just<space>
-

@@ -1,5 +1,7 @@
 " wengwengweng
 
+" TODO: generic UI for search interface
+
 func! find#start(mode)
 
 	if s:is_active()
@@ -40,7 +42,8 @@ func! s:open(mode)
 	exec 'setlocal statusline=\ ' . b:mode
 	redraw
 
-	call s:refresh_cmd()
+	call s:render_cmd()
+	call s:update()
 
 endfunc
 
@@ -49,9 +52,8 @@ func! s:poll()
 	while 1
 
 		let nr = getchar()
-		let ch = nr2char(nr)
 
-		if nr == 27
+		if nr == 0x1b
 			call s:close()
 			break
 		elseif nr == "\<bs>"
@@ -61,10 +63,10 @@ func! s:poll()
 			call s:up()
 		elseif nr == "\<down>"
 			call s:down()
-		elseif nr == 13
+		elseif nr == 0x0d
 			call s:enter()
-		elseif nr >= 0x20 && type(ch) == 1
-			call s:input(ch)
+		elseif nr >= 0x20 && nr <= 0x7e
+			call s:input(nr2char(nr))
 			call s:update()
 		endif
 
@@ -72,14 +74,14 @@ func! s:poll()
 			break
 		endif
 
-		call s:refresh_cmd()
+		call s:render_cmd()
 
 	endwhile
 
 endfunc
 
 func! s:is_active()
-	return &ft == 'find' || &ft == 'grep'
+	return &ft ==# 'find' || &ft ==# 'grep' || &ft ==# 'mru'
 endfunc
 
 func! s:close()
@@ -102,16 +104,16 @@ func! s:del()
 		let b:input = b:input[0:len - 2]
 	endif
 
-	call s:refresh_cmd()
+	call s:render_cmd()
 
 endfunc
 
 func! s:input(ch)
 	let b:input .= a:ch
-	call s:refresh_cmd()
+	call s:render_cmd()
 endfunc
 
-func! s:refresh_cmd()
+func! s:render_cmd()
 	redraw
 	echo '> ' . b:input
 endfunc
@@ -152,6 +154,33 @@ endfunc
 
 func! s:enter()
 	call function('s:enter_' . b:mode)()
+endfunc
+
+func! s:update_mru(pat)
+
+	call clearmatches()
+
+	let b:find_results = mru#get()
+	let num = len(b:find_results)
+
+	if !g:find_win_top
+		let b:find_results = reverse(b:find_results)
+	endif
+
+	setlocal modifiable
+	silent! %delete
+
+	for i in range(num)
+		call setline(i + 1, substitute(b:find_results[i], $HOME, '~', ''))
+	endfor
+
+	setlocal nomodifiable
+	setlocal nomodified
+
+	call s:set_height(num)
+
+	call matchadd('MRUKeyword', a:pat)
+
 endfunc
 
 func! s:update_find(pat)
@@ -197,6 +226,7 @@ func! s:update_grep(pat)
 
 	call clearmatches()
 
+	" TODO: using grepprg or getqflist makes it the whole app slow
 	let prev_grepprg = &grepprg
 	let prev_grepformat = &grepformat
 	let &grepprg = g:grep_cmd
@@ -243,15 +273,24 @@ func! s:update_grep(pat)
 
 endfunc
 
+func! s:enter_mru()
+
+	let item = b:find_results[line('.') - 1]
+
+	if exists('item')
+		call s:close()
+		exec 'edit ' . item
+	endif
+
+endfunc
+
 func! s:enter_find()
 
 	let item = b:find_results[line('.') - 1]
 
 	if exists('item')
-
 		call s:close()
 		exec 'edit ' . item
-
 	endif
 
 endfunc
@@ -261,11 +300,9 @@ func! s:enter_grep()
 	let item = b:grep_results[line('.') - 1]
 
 	if exists('item') && has_key(item, 'file')
-
 		call s:close()
 		exec 'edit ' . item.file
 		call cursor(item.line, item.col)
-
 	endif
 
 endfunc

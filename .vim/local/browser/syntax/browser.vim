@@ -39,4 +39,3 @@ highlight def link BrowserParent
 
 highlight def link BrowserMarked
 			\ String
-
