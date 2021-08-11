@@ -77,7 +77,7 @@ call s:hi('Macro',             s:red,     '',        '',          )
 call s:hi('MatchParen',        s:normal,  s:bg5,     '',          )
 call s:hi('ModeMsg',           s:green,   '',        '',          )
 call s:hi('MoreMsg',           s:green,   '',        '',          )
-call s:hi('NonText',           s:bg3,     'NONE',    '',          )
+call s:hi('NonText',           s:bg3,     '',        '',          )
 call s:hi('Normal',            s:normal,  s:bg,      '',          )
 call s:hi('Number',            s:orange,  '',        '',          )
 call s:hi('Operator',          s:cyan,    '',        '',          )
@@ -112,23 +112,19 @@ call s:hi('Typedef',           s:yellow,  '',        '',          )
 call s:hi('Underlined',        s:normal,  '',        '',          )
 call s:hi('Union',             s:normal,  '',        '',          )
 call s:hi('VertSplit',         s:normal,  '',        '',          )
-call s:hi('Visual',            s:yellow,  s:bg,      '',          )
+call s:hi('Visual',            s:bg,      s:yellow,  '',          )
 call s:hi('VisualNOS',         s:bg,      s:yellow,  '',          )
 call s:hi('WarningMsg',        s:red,     '',        '',          )
 call s:hi('WildMenu',          s:normal,  s:blue,    s:bold,      )
 
 call s:hi('StatusModeNormal',  s:normal,  s:bg4,     '',          )
-call s:hi('StatusModeVisual',  s:bg,      s:yellow,  '',          )
-call s:hi('StatusModeInsert',  s:bg,      s:magenta, '',          )
-call s:hi('StatusModeCommand', s:bg,      s:orange,  '',          )
-call s:hi('StatusModeTerm',    s:bg,      s:blue,    '',          )
+call s:hi('StatusModeVisual',  s:normal,  s:bg4,     '',          )
+call s:hi('StatusModeInsert',  s:normal,  s:bg4,     '',          )
+call s:hi('StatusModeCommand', s:normal,  s:bg4,     '',          )
+call s:hi('StatusModeTerm',    s:normal,  s:bg4,     '',          )
 
 call s:hi('ALEErrorSign',      s:red,     s:bg,      '',          )
 call s:hi('ALEWarningSign',    s:yellow,  s:bg,      '',          )
 call s:hi('ALEInfoSign',       s:bg5,     s:bg,      '',          )
 
 hi Error NONE
-hi TabLine cterm=NONE
-hi TabLineFill cterm=NONE
-hi CursorLine cterm=NONE
-hi CursorLineNr cterm=NONE
