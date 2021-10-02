@@ -10,7 +10,7 @@ install:
 		ln -sf $$(realpath $$f) $(CONFIG); \
 	done
 
-	@for f in vim scripts skhdrc tmux.conf gitconfig gitignore wezterm.lua; do \
+	@for f in vim scripts skhdrc tmux.conf gitconfig wezterm.lua; do \
 		echo "$$f -> $(HOME)/.$$f"; \
 		ln -sf $$(realpath $$f) $(HOME)/.$$f; \
 	done
