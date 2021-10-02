@@ -94,6 +94,7 @@ vnoremap x "*d
 
 " select cur line
 nnoremap v V
+nnoremap <m-v> v
 vnoremap <space> <esc>
 vnoremap v <esc>
 
@@ -200,9 +201,11 @@ let g:ale_linters = {
 
 call ft#detect('*.h', 'c')
 call ft#detect('*.dt', 'dirty')
+
 call ft#comment('c', '//%s')
 call ft#comment('dirty', '--%s')
 call ft#comment('vim', '\"%s')
+call ft#comment('sh', '#%s')
 call ft#comment('typescriptreact', '//%s')
 
 call plug#load('ext/ale')

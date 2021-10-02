@@ -1,20 +1,16 @@
-" wengwengweng
-
 set termguicolors
 set background=dark
 hi clear
 syntax reset
 
-let g:colors_name = 'super'
-
 let s:italic  = 'italic'
 let s:bold    = 'bold'
 let s:bg      = '#000000'
-let s:bg2     = '#111111'
-let s:bg3     = '#222222'
-let s:bg4     = '#333333'
-let s:bg5     = '#444444'
-let s:bg6     = '#555555'
+let s:bg2     = '#0d0d0d'
+let s:bg3     = '#1a1a1a'
+let s:bg4     = '#272727'
+let s:bg5     = '#343434'
+let s:bg6     = '#474747'
 
 let s:black   = '#666666'
 let s:normal  = '#dadada'
@@ -49,7 +45,7 @@ call s:hi('Conditional',       s:magenta, '',        '',          )
 call s:hi('Constant',          s:orange,  '',        '',          )
 call s:hi('Cursor',            s:bg,      s:normal,  '',          )
 call s:hi('CursorColumn',      '',        s:bg2,     '',          )
-call s:hi('CursorLine',        '',        s:bg2,     s:bold,      )
+call s:hi('CursorLine',        '',        s:bg2,     '',          )
 call s:hi('CursorLineNr',      s:bg5,     s:bg2,     s:bold,      )
 call s:hi('Debug',             s:red,     '',        '',          )
 call s:hi('Define',            s:magenta, '',        '',          )
@@ -129,3 +125,9 @@ call s:hi('ALEWarningSign',    s:yellow,  s:bg,      '',          )
 call s:hi('ALEInfoSign',       s:bg5,     s:bg,      '',          )
 
 hi Error NONE
+
+autocmd InsertEnter *
+	\ call s:hi('CursorLine',        '',        '#111111', s:bold,      )
+
+autocmd InsertLeave *
+	\ call s:hi('CursorLine',        '',        s:bg2,     '',      )
