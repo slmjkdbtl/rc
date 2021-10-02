@@ -69,4 +69,3 @@ noremap <silent> <plug>(comment_on)
 
 noremap <silent> <plug>(comment_off)
 			\ :call comment#off()<cr>
-

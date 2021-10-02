@@ -8,4 +8,3 @@ command! -range CommentOn
 
 command! -range CommentOff
 			\ <line1>,<line2>call comment#off()
-

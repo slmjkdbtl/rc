@@ -1,5 +1,3 @@
-" wengwengweng
-
 let g:pairs = get(g:, 'pairs', [
 	\ ['(', ')'],
 	\ ["'", "'"],
@@ -7,8 +5,6 @@ let g:pairs = get(g:, 'pairs', [
 	\ ['{', '}'],
 	\ ['[', ']'],
 \ ])
-
-let g:pairs_special = get(g:, 'pairs_special', {})
 
 func! pair#pair(ch1, ch2)
 
@@ -61,4 +57,3 @@ func! pair#bind()
 	inoremap <silent> <backspace> <c-r>=pair#del()<cr>
 
 endfunc
-

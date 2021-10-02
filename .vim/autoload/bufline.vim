@@ -1,5 +1,5 @@
 " show buffers in tab line
-func! bufline#get_tabline()
+func! bufline#get()
 
 	let line = ''
 
@@ -28,4 +28,6 @@ func! bufline#get_tabline()
 
 endfunc
 
-set tabline=%!bufline#get_tabline()
+func! bufline#set()
+	set tabline=%!bufline#get()
+endfunc

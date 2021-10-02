@@ -1,6 +1,7 @@
 set noexpandtab
 set shiftwidth=4
 set tabstop=4
+set smarttab
 set autoindent
 set mouse=a
 set backspace=2
@@ -11,7 +12,9 @@ set nowrapscan
 set incsearch
 set hlsearch
 set signcolumn=yes
+set laststatus=2
 set showtabline=2
+set noshowmode
 set cursorline
 set nofoldenable
 set wrap
@@ -162,3 +165,9 @@ let g:ale_linters = {
 call plug#load('remote/ale')
 call plug#load('remote/vim-signify')
 call trim#trim_on_save()
+call bufline#set()
+call statline#set()
+call comment#bind()
+call pair#bind()
+call ft#detect('*.h', 'c')
+call ft#comment('c', '//%s')
