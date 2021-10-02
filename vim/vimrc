@@ -20,6 +20,7 @@ set nofoldenable
 set noswapfile
 set wrap
 set autoread
+set hidden
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
 set wildignore=.git,.svn,.cache,.tmp,.tup
 set wildignore+=.DS_Store
