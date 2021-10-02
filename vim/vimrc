@@ -105,14 +105,6 @@ nnoremap z <nop>
 nnoremap [ N
 nnoremap ] n
 
-" ale
-nnoremap <silent> <m-n> :ALEPrevious<cr>
-nnoremap <silent> <m-m> :ALENext<cr>
-nnorema  <silent> <m-b> :ALEDetail<cr>
-nnorema  <silent> <m-h> :ALEHover<cr>
-nnoremap <silent> <m-o> :ALEGoToDefinition<cr>
-nnoremap <silent> <m-p> :ALEFindReferences<cr>
-
 " move to line or selection start / end and enter insert mode
 nnoremap > A
 nnoremap < I
@@ -131,7 +123,6 @@ nnoremap : :
 
 " search
 nnoremap ? /
-vnoremap ? y/\V<c-r>=escape(@",'/\')<cr><cr>
 
 " clear
 nnoremap <silent> r :noh<cr>:echo ''<cr>
@@ -145,7 +136,7 @@ nnoremap <silent> <m-w> :bwipe<cr>
 
 " record
 nnoremap \ qz
-nnoremap . @z
+nnoremap . .
 
 " interact outside
 nnoremap <silent> <m--> :call open#iterm()<cr>
@@ -171,9 +162,18 @@ vnoremap <return> s
 " tab in insert mode tabs the whole line
 nnoremap <silent> <tab> :call fbrowse#toggle()<cr>
 inoremap <tab> <C-o>I<tab>
+
 " indent
 vnoremap <tab> >
 vnoremap <bs> <
+
+" ale
+nnoremap <silent> <m-n> :ALEPrevious<cr>
+nnoremap <silent> <m-m> :ALENext<cr>
+nnorema  <silent> <m-b> :ALEDetail<cr>
+nnorema  <silent> <m-h> :ALEHover<cr>
+nnoremap <silent> <m-o> :ALEGoToDefinition<cr>
+nnoremap <silent> <m-p> :ALEFindReferences<cr>
 
 " signify
 let g:signify_vcs_list = [ 'git' ]
@@ -217,4 +217,5 @@ call bufline#set()
 call statline#set()
 call comment#bind()
 call pair#bind()
+call search#bind()
 call fbrowse#onempty()

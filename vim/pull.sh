@@ -3,8 +3,10 @@
 pull() {
 	dir=$(pwd)
 	if [ -d ext/$1 ]; then
+		echo "pulling $1"
 		cd ext/$1 && git pull
 	else
+		echo "cloning $1"
 		mkdir -p ext
 		cd ext && git clone $2
 	fi
