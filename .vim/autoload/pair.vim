@@ -34,11 +34,11 @@ func! pair#del()
 
 	for w in g:pairs
 		if line[pos - 1 : pos] == w[0] . w[1]
-			return "\<backspace>\<del>"
+			return "\<bs>\<del>"
 		endif
 	endfor
 
-	return "\<backspace>"
+	return "\<bs>"
 
 endfunc
 
@@ -54,6 +54,6 @@ func! pair#bind()
 
 	endfor
 
-	inoremap <silent> <backspace> <c-r>=pair#del()<cr>
+	inoremap <silent> <bs> <c-r>=pair#del()<cr>
 
 endfunc

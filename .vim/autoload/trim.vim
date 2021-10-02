@@ -4,7 +4,7 @@ func! trim#trim()
 	call winrestview(save)
 endfunc
 
-func! trim#trim_on_save()
+func! trim#onsave()
 	augroup Trim
 		autocmd!
 		autocmd BufWritePre *

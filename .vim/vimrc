@@ -18,6 +18,11 @@ set noshowmode
 set cursorline
 set nofoldenable
 set wrap
+set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
+set wildignore=.git,.svn,.cache,.tmp,.tup
+set wildignore+=.DS_Store
+set wildignore+=.tags,*.map
+set wildignore+=*.so,*.o,*.out,*.swp,*.exe,*.elf,*.hex,*.dll,*~
 set list
 exec 'set listchars=tab:\|\ '
 
@@ -116,6 +121,10 @@ nnoremap ? /
 nnoremap - :bprev<cr>
 nnoremap = :bnext<cr>
 
+" interact outside
+nnoremap <m--> :call open#iterm()<cr>
+nnoremap <m-=> :call open#finder()<cr>
+
 " select cur word
 nnoremap <space> viw
 
@@ -130,7 +139,11 @@ nnoremap <return> a
 vnoremap <return> s
 
 " tab in insert mode tabs the whole line
+nnoremap <silent> <tab> :call browser#toggle()<cr>
 inoremap <tab> <C-o>I<tab>
+" indent
+vnoremap <tab> >
+vnoremap <bs> <
 
 " turn off search highlight
 nnoremap / <esc>:noh<cr>
@@ -162,12 +175,15 @@ let g:ale_linters = {
 	\ 'typescript': ['tsserver'],
 \ }
 
+call ft#detect('*.h', 'c')
+call ft#comment('c', '//%s')
+
+call plug#load('local/browser')
 call plug#load('remote/ale')
 call plug#load('remote/vim-signify')
-call trim#trim_on_save()
+call trim#onsave()
 call bufline#set()
 call statline#set()
 call comment#bind()
 call pair#bind()
-call ft#detect('*.h', 'c')
-call ft#comment('c', '//%s')
+" call browser#bind()
