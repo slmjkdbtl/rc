@@ -208,9 +208,17 @@ call ft#comment('vim', '\"%s')
 call ft#comment('sh', '#%s')
 call ft#comment('typescriptreact', '//%s')
 
-call plug#load('ext/ale')
-call plug#load('ext/vim-signify')
-call plug#load('ext/ctrlp.vim')
+call plug#begin(fnamemodify($MYVIMRC, ':h') . '/ext')
+Plug 'https://github.com/dense-analysis/ale'
+Plug 'https://github.com/ctrlpvim/ctrlp.vim'
+Plug 'https://github.com/mhinz/vim-signify'
+Plug 'https://github.com/pangloss/vim-javascript'
+Plug 'https://github.com/tbastos/vim-lua'
+Plug 'https://github.com/plasticboy/vim-markdown'
+Plug 'https://github.com/rust-lang/rust.vim'
+Plug 'https://github.com/cespare/vim-toml'
+Plug 'https://github.com/leafgarland/typescript-vim'
+call plug#end()
 
 call trim#onsave()
 call bufline#set()
