@@ -1,7 +1,7 @@
 CLI
 
-  neovim
-    https://neovim.io/
+  vim
+    https://www.vim.org/
 
   brew
     https://brew.sh/
@@ -15,9 +15,6 @@ CLI
   ripgrep
     https://github.com/BurntSushi/ripgrep/
 
-  just
-    https://github.com/casey/just/
-
   loc
     https://github.com/cgag/loc/
 
@@ -30,17 +27,14 @@ CLI
   youtube-dl
     https://youtube-dl.org/
 
-  fzy
-    https://github.com/jhawthorn/fzy/
-
   skhd
     https://github.com/koekeishiya/skhd/
 
+  fzy
+    https://github.com/jhawthorn/fzy/
+
   yabai
     https://github.com/koekeishiya/yabai/
-
-  rclone
-    https://github.com/rclone/rclone/
 
   httpie
     https://httpie.org/
@@ -48,20 +42,8 @@ CLI
   aria2
     https://aria2.github.io/
 
-  lynx
-    https://invisible-island.net/lynx/
-
   m-cli
     https://github.com/rgcr/m-cli/
-
-  lazygit
-    https://github.com/jesseduffield/lazygit/
-
-  lazydocker
-    https://github.com/jesseduffield/lazydocker/
-
-  sd
-    https://github.com/chmln/sd/
 
   ffmpeg
     https://ffmpeg.org/
@@ -77,6 +59,9 @@ CLI
 
   jpegoptim
     https://github.com/tjko/jpegoptim/
+
+  optipng
+    http://optipng.sourceforge.net/
 
   pngquant
     https://pngquant.org/

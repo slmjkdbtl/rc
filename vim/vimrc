@@ -49,6 +49,9 @@ for k in split('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890`-
 	exec "set <m-" . k . ">=\e" . k
 endfor
 
+exec "set <m-[>=\e["
+" exec "set <m-]>=\e]"
+exec "set <m-return>=\e<return>"
 map <bs> <nop>
 map [ <nop>
 map ] <nop>
@@ -114,6 +117,8 @@ nnoremap > A
 nnoremap < I
 vnoremap > <esc>`>a
 vnoremap < <esc>`<i
+
+nnoremap <m-return> o<esc>
 
 " go to document top / bot
 noremap ^ gg
@@ -187,20 +192,23 @@ let g:ale_rust_cargo_check_examples = 1
 let g:ale_rust_cargo_check_tests = 1
 
 let g:ale_linters = {
-	\ 'cs': [],
 	\ 'c': [],
 	\ 'cpp': [],
+	\ 'cs': [],
 	\ 'typescript': ['tsserver'],
 \ }
 
 call ft#detect('*.h', 'c')
+call ft#detect('*.dt', 'dirty')
 call ft#comment('c', '//%s')
+call ft#comment('dirty', '--%s')
 call ft#comment('vim', '\"%s')
 call ft#comment('typescriptreact', '//%s')
 
 call plug#load('ext/ale')
 call plug#load('ext/vim-signify')
 call plug#load('ext/ctrlp.vim')
+
 call trim#onsave()
 call bufline#set()
 call statline#set()
