@@ -1,5 +1,3 @@
-# wengwengweng
-
 cmd + shift - 2 : screencapture -wd $HOME/Desktop/(date +%s).png
 cmd + shift - 3 : screencapture -d $HOME/Desktop/(date +%s).png
 cmd + shift - 4 : screencapture -id $HOME/Desktop/(date +%s).png
