@@ -178,9 +178,8 @@ let g:ale_linters = {
 call ft#detect('*.h', 'c')
 call ft#comment('c', '//%s')
 
-call plug#load('local/browser')
-call plug#load('remote/ale')
-call plug#load('remote/vim-signify')
+call plug#load('ext/ale')
+call plug#load('ext/vim-signify')
 call trim#onsave()
 call bufline#set()
 call statline#set()
