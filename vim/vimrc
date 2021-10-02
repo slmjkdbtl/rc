@@ -60,7 +60,9 @@ map < <nop>
 map > <nop>
 map ? <nop>
 map <cr> <nop>
+exec "set <m-'>=\e'"
 exec "set <m-return>=\e\<cr>"
+" TODO
 " exec "set <m-bs>=\e\<bs>"
 
 " save
@@ -102,10 +104,6 @@ vnoremap v <esc>
 " jump to proj
 nnoremap z <nop>
 
-" prev / next search result
-nnoremap [ N
-nnoremap ] n
-
 " move to line or selection start / end and enter insert mode
 nnoremap > A
 nnoremap < I
@@ -127,6 +125,8 @@ nnoremap ? /
 
 " clear
 nnoremap <silent> r :noh<cr>:echo ''<cr>
+" TODO
+" nnoremap <silent> <esc> :noh<cr>:echo ''<cr>
 
 " buffer nav
 nnoremap <silent> - :bprev<cr>
