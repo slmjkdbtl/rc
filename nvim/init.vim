@@ -271,6 +271,10 @@ nnoremap <silent> <m-w> :Close<cr>
 " nnoremap <silent> <m-]> :NextMark<cr>
 nnoremap <silent> <m-n> :ALEPrevious<cr>
 nnoremap <silent> <m-m> :ALENext<cr>
+nnoremap <silent> <m-b> :ALEDetail<cr>
+nnoremap <silent> <m-i> :ALEHover<cr>
+nnoremap <silent> <m-o> :ALEGoToDefinition<cr>
+nnoremap <silent> <m-p> :ALEFindReferences<cr>
 nnoremap <silent> <f1> :ModeToggle comment<cr>
 nnoremap <silent> <f2> :ModeToggle spell<cr>
 nnoremap <silent> <f3> :ModeToggle number<cr>

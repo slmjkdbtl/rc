@@ -1,10 +1,10 @@
 syn region dirtyStr start=/"/ end=/"/ skip=/\\"/ contains=dirtyEscape
-syn match dirtyNum /\<-\=\d\+\(.\d\+\)\=\>/
+syn match dirtyNum /\<-\?\d\+\(.\d\+\)\?\>/
 syn match dirtyBool /\<[TF]\>/
 syn match dirtySym /[@$?|~%]/
 syn match dirtySym /:)/
 syn match dirtyErr /:(/
-syn match dirtyOp /[=+<>\#!]/
+syn match dirtyOp /[=+<>\#!-]/
 syn match dirtyOp /+=/
 syn match dirtyOp /-=/
 syn match dirtyOp /@>/

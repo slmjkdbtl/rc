@@ -1,11 +1,12 @@
 set -x EDITOR nvim
 set -x BROWSER open
 set -x PAGER less
-set -x PATH /opt/homebrew/bin $PATH
 set -x PATH $HOME/.local/bin $PATH
 set -x PATH $HOME/.scripts $PATH
+set -x PATH /opt/homebrew/bin $PATH
 set -x PATH /opt/homebrew/sbin $PATH
 set -x PATH /opt/homebrew/opt/llvm/bin $PATH
+set -x PATH /opt/homebrew/opt/openjdk/bin $PATH
 set -x HOMEBREW_NO_AUTO_UPDATE 1
 set fish_greeting
 
@@ -52,7 +53,7 @@ alias ydlm "youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --no-play
 alias ydlml "youtube-dl -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --yes-playlist"
 alias ase "/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias toix "curl -F 'f:1=<-' ix.io"
-alias ip "ifconfig | grep 'inet.*broadcast' | awk '{print \$2}'"
+alias ip "ipconfig getifaddr en0"
 alias extip "curl ifconfig.co"
 alias playraw "ffplay -ar 8000 -ac 1 -f u8 -nodisp -"
 alias weather "curl wttr.in"

@@ -7,31 +7,37 @@ syntax reset
 
 let g:colors_name = 'super'
 
+" TODO: add cterm color
+
 let s:italic  = 'italic'
 let s:bold    = 'bold'
-let s:bg      = '#000000'
-let s:bg2     = '#111111'
-let s:bg3     = '#222222'
-let s:bg4     = '#333333'
-let s:bg5     = '#444444'
-let s:bg6     = '#555555'
+let s:bg      = [ '#000000', '0' ]
+let s:bg2     = [ '#111111', '0' ]
+let s:bg3     = [ '#222222', '0' ]
+let s:bg4     = [ '#333333', '0' ]
+let s:bg5     = [ '#444444', '0' ]
+let s:bg6     = [ '#555555', '0' ]
 
-let s:black   = '#666666'
-let s:normal  = '#dadada'
-let s:red     = '#ec7580'
-let s:orange  = '#f99157'
-let s:yellow  = '#ffca72'
-let s:green   = '#9ae0a0'
-let s:cyan    = '#7ce9df'
-let s:blue    = '#8abbff'
-let s:magenta = '#f7aad7'
+let s:black   = [ '#666666', '0' ]
+let s:normal  = [ '#dadada', '0' ]
+let s:red     = [ '#ec7580', '0' ]
+let s:orange  = [ '#f99157', '0' ]
+let s:yellow  = [ '#ffca72', '0' ]
+let s:green   = [ '#9ae0a0', '0' ]
+let s:cyan    = [ '#7ce9df', '0' ]
+let s:blue    = [ '#8abbff', '0' ]
+let s:magenta = [ '#f7aad7', '0' ]
+
+let s:none = [ 'NONE', 'NONE' ]
 
 func! s:hi(group, fg, bg, attr)
 	if !empty(a:fg)
-		exec 'hi ' . a:group . ' guifg=' .  a:fg
+		exec 'hi ' . a:group . ' guifg=' .  a:fg[0]
+		exec 'hi ' . a:group . ' ctermfg=' .  a:fg[1]
 	endif
 	if !empty(a:bg)
-		exec 'hi ' . a:group . ' guibg=' .  a:bg
+		exec 'hi ' . a:group . ' guibg=' .  a:bg[0]
+		exec 'hi ' . a:group . ' ctermbg=' .  a:bg[1]
 	endif
 	if !empty(a:attr)
 		exec 'hi ' . a:group . ' gui=' .   a:attr
@@ -72,7 +78,7 @@ call s:hi('Include',           s:blue,    '',        '',          )
 call s:hi('Italic',            '',        '',        s:italic,    )
 call s:hi('Keyword',           s:magenta, '',        '',          )
 call s:hi('Label',             s:yellow,  '',        '',          )
-call s:hi('LineNr',            s:bg3,     'NONE',    '',          )
+call s:hi('LineNr',            s:bg3,     s:none,    '',          )
 call s:hi('Macro',             s:red,     '',        '',          )
 call s:hi('MatchParen',        s:normal,  s:bg5,     '',          )
 call s:hi('ModeMsg',           s:green,   '',        '',          )
@@ -86,7 +92,7 @@ call s:hi('PreProc',           s:yellow,  '',        '',          )
 call s:hi('Question',          s:blue,    '',        '',          )
 call s:hi('Repeat',            s:yellow,  '',        '',          )
 call s:hi('Search',            s:bg3,     s:magenta, '',          )
-call s:hi('SignColumn',        'NONE',    s:bg,      '',          )
+call s:hi('SignColumn',        s:none,    s:bg,      '',          )
 call s:hi('Special',           s:cyan,    '',        '',          )
 call s:hi('SpecialChar',       s:cyan,    '',        '',          )
 call s:hi('SpecialComment',    s:cyan,    '',        '',          )
@@ -106,7 +112,7 @@ call s:hi('TabLineFill',       s:bg,      s:bg,      '',          )
 call s:hi('TabLineSel',        s:green,   s:bg,      s:bold,      )
 call s:hi('Tag',               s:yellow,  '',        '',          )
 call s:hi('Title',             s:blue,    '',        '',          )
-call s:hi('Todo',              s:yellow,  'NONE',    '',          )
+call s:hi('Todo',              s:yellow,  s:none,    '',          )
 call s:hi('Type',              s:yellow,  '',        '',          )
 call s:hi('Typedef',           s:yellow,  '',        '',          )
 call s:hi('Underlined',        s:normal,  '',        '',          )

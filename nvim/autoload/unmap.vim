@@ -1,12 +1,10 @@
 " wengwengweng
 
 func! unmap#clear()
-
 	mapclear
 	imapclear
 	cmapclear
 	tmapclear
-
 endfunc
 
 func! unmap#disable_defaults()

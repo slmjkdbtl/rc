@@ -30,4 +30,3 @@ func! bufline#get_tabline() abort
 endfunc
 
 set tabline=%!bufline#get_tabline()
-

@@ -1,4 +1,0 @@
-" wengwengweng
-
-setl commentstring=//%s
-

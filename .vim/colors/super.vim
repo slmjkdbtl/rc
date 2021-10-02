@@ -36,6 +36,7 @@ func! s:hi(group, fg, bg, attr)
 	if !empty(a:attr)
 		exec 'hi ' . a:group . ' gui=' .   a:attr
 	endif
+	exec 'hi ' . a:group . ' term=NONE cterm=NONE'
 endfunc
 
 call s:hi('Bold',              '',        '',        s:bold,      )
@@ -112,7 +113,7 @@ call s:hi('Typedef',           s:yellow,  '',        '',          )
 call s:hi('Underlined',        s:normal,  '',        '',          )
 call s:hi('Union',             s:normal,  '',        '',          )
 call s:hi('VertSplit',         s:normal,  '',        '',          )
-call s:hi('Visual',            s:bg,      s:yellow,  '',          )
+call s:hi('Visual',            s:yellow,  s:bg,  '',          )
 call s:hi('VisualNOS',         s:bg,      s:yellow,  '',          )
 call s:hi('WarningMsg',        s:red,     '',        '',          )
 call s:hi('WildMenu',          s:normal,  s:blue,    s:bold,      )
