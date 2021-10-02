@@ -134,8 +134,7 @@ nnoremap <silent> <m-q> :bprev<cr>
 nnoremap <silent> <m-e> :bnext<cr>
 nnoremap <silent> <m-w> :bwipe<cr>
 
-" record
-nnoremap \ qz
+" repeat last action
 nnoremap . .
 
 " interact outside
@@ -171,7 +170,7 @@ vnoremap <bs> <
 nnoremap <silent> <m-n> :ALEPrevious<cr>
 nnoremap <silent> <m-m> :ALENext<cr>
 nnorema  <silent> <m-b> :ALEDetail<cr>
-nnorema  <silent> <m-h> :ALEHover<cr>
+nnorema  <silent> <m-i> :ALEHover<cr>
 nnoremap <silent> <m-o> :ALEGoToDefinition<cr>
 nnoremap <silent> <m-p> :ALEFindReferences<cr>
 
@@ -219,3 +218,4 @@ call comment#bind()
 call pair#bind()
 call search#bind()
 call fbrowse#onempty()
+call autocd#enable()

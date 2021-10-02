@@ -42,20 +42,14 @@ func! search#next()
 endfunc
 
 func! search#edit_start()
-
 	noh
-
 	if s:is_focused()
-
 		let b:recording = 1
 		let g:record_mode = 1
 		let g:record_startkeys = ''
-
 		call s:normal('gn')
 		call s:normal('qq')
-
 	endif
-
 endfunc
 
 func! search#edit_start_selected()
@@ -71,27 +65,19 @@ func! search#record_toggle()
 	let g:record_mode = get(g:, 'record_mode', 0)
 
 	if b:recording && g:record_mode ==# 1
-
 		call s:normal('q')
 		let @q = @q[0:(len(@q) - 2)]
 		let b:recording = 0
-
 	else
-
 		if b:recording && g:record_mode ==# 2
-
 			call s:normal('q')
 			let @q = @q[0:(len(@q) - 2)]
 			let b:recording = 0
-
 		else
-
 			call s:normal('qq')
 			let g:record_mode = 2
 			let b:recording = 1
-
 		endif
-
 	endif
 
 endfunc
@@ -107,33 +93,23 @@ func! search#record_apply()
 	endif
 
 	if g:record_mode ==# 1
-
 		if s:is_focused()
-
 			call s:normal('gn')
 			call feedkeys(get(g:, 'record_startkeys', ''), 'n')
 			call feedkeys(@q)
-
 		else
-
 			if exists('b:search_dir') && b:search_dir ==# -1
 				let flag = 'b'
 			else
 				let flag = ''
 			endif
-
 			let line = search(@/, 'w' . flag)
-
 			if line
 				call search#record_apply()
 			endif
-
 		endif
-
 	elseif g:record_mode ==# 2
-
 		call feedkeys(@q)
-
 	endif
 
 endfunc
