@@ -35,6 +35,24 @@ func! fbrowse#active()
 	return &filetype == 'fbrowse'
 endfunc
 
+" TODO: not working when closing the last listed buffer, it's still in buflist for some reason
+func! fbrowse#openifempty()
+	let bufs = getbufinfo({ 'buflisted': 1 })
+" 	echom "start"
+" 	for b in bufs
+" 		echom "name" b.name
+" 	endfor
+	if len(bufs) == 1 && bufs[0].name ==# ''
+		call fbrowse#open()
+	endif
+" 	echom "end"
+endfunc
+
+func! fbrowse#onempty()
+	au BufEnter *
+		\ call fbrowse#openifempty()
+endfunc
+
 func! fbrowse#close()
 	if fbrowse#active()
 		bwipe
@@ -143,6 +161,8 @@ func! fbrowse#refresh(...)
 	else
 		call s:toline(2)
 	endif
+
+	call feedkeys(":noh | echo ''\<cr>")
 
 endfunc
 

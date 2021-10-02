@@ -10,7 +10,6 @@ return {
 		bottom = 8,
 	},
 	bold_brightens_ansi_colors = false,
--- 	color_scheme = "Dracula",
 	colors = {
 		foreground = "#dadada",
 		background = "#000000",

@@ -49,9 +49,6 @@ for k in split('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890`-
 	exec "set <m-" . k . ">=\e" . k
 endfor
 
-exec "set <m-[>=\e["
-" exec "set <m-]>=\e]"
-exec "set <m-return>=\e<return>"
 map <bs> <nop>
 map [ <nop>
 map ] <nop>
@@ -62,6 +59,8 @@ map < <nop>
 map > <nop>
 map ? <nop>
 map <cr> <nop>
+exec "set <m-return>=\e\<cr>"
+" exec "set <m-bs>=\e\<bs>"
 
 " save
 nnoremap <silent> w :silent! w<cr>
@@ -106,9 +105,10 @@ nnoremap [ N
 nnoremap ] n
 
 " ale
-nnoremap <silent> <m-[> :ALEPrevious<cr>
-nnoremap <silent> <m-]> :ALENext<cr>
+nnoremap <silent> <m-n> :ALEPrevious<cr>
+nnoremap <silent> <m-m> :ALENext<cr>
 nnorema  <silent> <m-b> :ALEDetail<cr>
+nnorema  <silent> <m-h> :ALEHover<cr>
 nnoremap <silent> <m-o> :ALEGoToDefinition<cr>
 nnoremap <silent> <m-p> :ALEFindReferences<cr>
 
@@ -118,6 +118,7 @@ nnoremap < I
 vnoremap > <esc>`>a
 vnoremap < <esc>`<i
 
+" insert line in normal mode
 nnoremap <m-return> o<esc>
 
 " go to document top / bot
@@ -130,7 +131,9 @@ nnoremap : :
 " search
 nnoremap ? /
 vnoremap ? y/\V<c-r>=escape(@",'/\')<cr><cr>
-nnoremap <silent> r :noh<cr>
+
+" clear
+nnoremap <silent> r :noh<cr>:echo ''<cr>
 
 " buffer nav
 nnoremap <silent> - :bprev<cr>
@@ -192,9 +195,6 @@ let g:ale_rust_cargo_check_examples = 1
 let g:ale_rust_cargo_check_tests = 1
 
 let g:ale_linters = {
-	\ 'c': [],
-	\ 'cpp': [],
-	\ 'cs': [],
 	\ 'typescript': ['tsserver'],
 \ }
 
@@ -214,3 +214,4 @@ call bufline#set()
 call statline#set()
 call comment#bind()
 call pair#bind()
+call fbrowse#onempty()
