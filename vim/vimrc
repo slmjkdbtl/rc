@@ -19,6 +19,7 @@ set cursorline
 set nofoldenable
 set noswapfile
 set wrap
+set autoread
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
 set wildignore=.git,.svn,.cache,.tmp,.tup
 set wildignore+=.DS_Store
@@ -138,8 +139,8 @@ nnoremap \ qz
 nnoremap . @z
 
 " interact outside
-nnoremap <m--> :call open#iterm()<cr>
-nnoremap <m-=> :call open#finder()<cr>
+nnoremap <silent> <m--> :call open#iterm()<cr>
+nnoremap <silent> <m-=> :call open#finder()<cr>
 
 " select cur word
 nnoremap <space> viw
