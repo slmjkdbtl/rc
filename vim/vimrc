@@ -86,9 +86,6 @@ noremap <m-l> e
 noremap <m-j> 5j
 noremap <m-k> 5k
 
-" jump to proj
-nnoremap z <nop>
-
 " cut
 nnoremap x "*dd
 vnoremap x "*d
@@ -97,6 +94,9 @@ vnoremap x "*d
 nnoremap v V
 vnoremap <space> <esc>
 vnoremap v <esc>
+
+" jump to proj
+nnoremap z <nop>
 
 " prev / next search result
 nnoremap [ N
@@ -160,7 +160,7 @@ nnoremap <return> a
 vnoremap <return> s
 
 " tab in insert mode tabs the whole line
-nnoremap <silent> <tab> :call browser#toggle()<cr>
+nnoremap <silent> <tab> :call fbrowse#toggle()<cr>
 inoremap <tab> <C-o>I<tab>
 " indent
 vnoremap <tab> >

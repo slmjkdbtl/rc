@@ -18,6 +18,7 @@ func! comment#comment(line)
 	endif
 
 	if comment#is_wrap()
+		" TODO
 		return a:line
 	else
 		return substitute(&cms, '%s$', '', '') . ' ' . a:line
@@ -32,6 +33,7 @@ func! comment#uncomment(line)
 	endif
 
 	if comment#is_wrap()
+		" TODO
 		return a:line
 	else
 		return substitute(a:line, '^' . substitute(&cms, '%s$', '', '') . ' ', '', '')

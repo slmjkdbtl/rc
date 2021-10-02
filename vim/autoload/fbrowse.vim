@@ -1,4 +1,8 @@
-func! browser#open()
+func! fbrowse#open()
+
+	if &mod
+		return
+	endif
 
 	let curbuf = expand('%:p')
 
@@ -19,29 +23,29 @@ func! browser#open()
 	setl nowrap
 	setl nomodifiable
 	setl nomodified
-	setfiletype browser
+	setfiletype fbrowse
 
-	call browser#refresh()
+	call fbrowse#refresh()
 	call s:toitem(curbuf)
 	call s:bind()
 
 endfunc
 
-func! browser#active()
-	return &filetype == 'browser'
+func! fbrowse#active()
+	return &filetype == 'fbrowse'
 endfunc
 
-func! browser#close()
-	if browser#active()
+func! fbrowse#close()
+	if fbrowse#active()
 		bwipe
 	endif
 endfunc
 
-func! browser#toggle()
-	if browser#active()
-		call browser#close()
+func! fbrowse#toggle()
+	if fbrowse#active()
+		call fbrowse#close()
 	else
-		call browser#open()
+		call fbrowse#open()
 	endif
 endfunc
 
@@ -123,9 +127,9 @@ func! s:toline(ln)
 	call cursor(a:ln, 3)
 endfunc
 
-func! browser#refresh(...)
+func! fbrowse#refresh(...)
 
-	if &filetype !=# 'browser'
+	if &filetype !=# 'fbrowse'
 		return
 	endif
 
@@ -160,21 +164,21 @@ func! s:getcur()
 	return item
 endfunc
 
-func! browser#back()
+func! fbrowse#back()
 	let prev_dir = getcwd()
 	lcd ..
-	call browser#refresh()
+	call fbrowse#refresh()
 	call s:toitem(prev_dir)
 endfunc
 
-func! browser#enter()
+func! fbrowse#enter()
 
 	let item = s:getcur()
 
 	if isdirectory(item)
 
 		silent! exec 'lcd ' . escape(item, '# ')
-		call browser#refresh()
+		call fbrowse#refresh()
 
 	elseif filereadable(item)
 
@@ -183,7 +187,7 @@ func! browser#enter()
 		if index([ 'jpg', 'png', 'pdf', 'ico', 'icns', 'ase', 'gif', 'mp4', 'mkv', 'mov', 'avi', 'mp3', 'wav', 'ogg', ], ext) >= 0
 			call system('open ' . escape(item, " '&()"))
 		else
-			call browser#close()
+			call fbrowse#close()
 			exec 'edit ' . item
 		endif
 
@@ -191,15 +195,15 @@ func! browser#enter()
 
 endfunc
 
-func! browser#copypath()
+func! fbrowse#copypath()
 	let item = s:getcur()
 	let @* = item
 	echo item
 endfunc
 
 func! s:bind()
-	map <buffer><silent> <return> :call browser#enter()<cr>
-	map <buffer><silent> <bs> :call browser#back()<cr>
-	map <buffer><silent> y :call browser#copypath()<cr>
-	map <buffer><silent> r :call browser#refresh()<cr>
+	map <buffer><silent> <return> :call fbrowse#enter()<cr>
+	map <buffer><silent> <bs> :call fbrowse#back()<cr>
+	map <buffer><silent> y :call fbrowse#copypath()<cr>
+	map <buffer><silent> r :call fbrowse#refresh()<cr>
 endfunc

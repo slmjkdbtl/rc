@@ -45,13 +45,10 @@ endfunc
 func! pair#bind()
 
 	for p in g:pairs
-
 		let ech1 = substitute(p[0], "'", "''", 'g')
 		let ech2 = substitute(p[1], "'", "''", 'g')
-
 		exec 'inoremap <silent> ' . p[0] . " <c-r>=pair#pair('" . ech1 . "', '" . ech2 . "')<cr>"
 		exec 'vnoremap <silent> ' . p[0] . ' <esc>`<i' . p[0] . '<esc>`>a<right>' . p[1] . '<esc>'
-
 	endfor
 
 	inoremap <silent> <bs> <c-r>=pair#del()<cr>
