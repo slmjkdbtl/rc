@@ -200,6 +200,6 @@ endfunc
 func! s:bind()
 	map <buffer><silent> <return> :call browser#enter()<cr>
 	map <buffer><silent> <bs> :call browser#back()<cr>
-	map <buffer><silent> o :call browser#copypath()<cr>
+	map <buffer><silent> y :call browser#copypath()<cr>
 	map <buffer><silent> r :call browser#refresh()<cr>
 endfunc

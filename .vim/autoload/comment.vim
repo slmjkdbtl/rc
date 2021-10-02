@@ -1,6 +1,7 @@
 func! comment#is_commented(line)
 	if comment#is_wrap()
 		" TODO
+		return 0
 	else
 		return a:line =~# '^' . substitute(&cms, '%s$', '', '')
 	endif
@@ -13,11 +14,11 @@ endfunc
 func! comment#comment(line)
 
 	if empty(a:line) || comment#is_commented(a:line)
-		return
+		return a:line
 	endif
 
 	if comment#is_wrap()
-		" TODO
+		return a:line
 	else
 		return substitute(&cms, '%s$', '', '') . ' ' . a:line
 	endif
@@ -27,11 +28,11 @@ endfunc
 func! comment#uncomment(line)
 
 	if empty(a:line) || !comment#is_commented(a:line)
-		return
+		return a:line
 	endif
 
 	if comment#is_wrap()
-		" TODO
+		return a:line
 	else
 		return substitute(a:line, '^' . substitute(&cms, '%s$', '', '') . ' ', '', '')
 	endif
@@ -47,5 +48,5 @@ func! comment#toggle()
 endfunc
 
 func! comment#bind()
-	noremap / :call comment#toggle()<cr>
+	noremap <silent> / :call comment#toggle()<cr>
 endfunc

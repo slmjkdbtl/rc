@@ -1,4 +1,4 @@
-set -x EDITOR nvim
+set -x EDITOR vim
 set -x BROWSER open
 set -x PAGER less
 set -x PATH $HOME/.local/bin $PATH

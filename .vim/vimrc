@@ -17,6 +17,7 @@ set showtabline=2
 set noshowmode
 set cursorline
 set nofoldenable
+set noswapfile
 set wrap
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
 set wildignore=.git,.svn,.cache,.tmp,.tup
@@ -39,31 +40,36 @@ imapclear
 cmapclear
 tmapclear
 
-for k in split('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890`-=];,./~!@#$%^&*()_+{}:"<>?)', '\zs')
+for k in split('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890`-=;,./~!@#$%^&*()_+{}:)', '\zs')
 	exec 'map ' . k . ' <nop>'
 	exec 'map <m-' . k . '> <nop>'
 	exec 'map <c-' . k . '> <nop>'
-	exec 'imap <m-' . k . '> <nop>'
+	" enable esc+ as meta
+	exec "set <m-" . k . ">=\e" . k
 endfor
 
-map <tab> <tab>
 map <bs> <nop>
 map [ <nop>
+map ] <nop>
 map \ <nop>
 map ' <nop>
+map " <nop>
+map < <nop>
+map > <nop>
+map ? <nop>
 map <cr> <nop>
 
 " save
-nnoremap w :w<cr>
+nnoremap <silent> w :silent! w<cr>
 
 " undo / redo
-nnoremap u u
-nnoremap i <c-r>
+nnoremap <silent> u u
+nnoremap <silent> o <c-r>
 
 " copy / paste
-nnoremap o "*yy
-vnoremap o ma"*y`a
-noremap p P
+nnoremap y "*yy
+vnoremap y ma"*y`a
+noremap p "*P
 
 " delete cur line
 nnoremap d "_dd
@@ -88,18 +94,19 @@ vnoremap x "*d
 
 " select cur line
 nnoremap v V
+vnoremap <space> <esc>
+vnoremap v <esc>
 
 " prev / next search result
 nnoremap [ N
 nnoremap ] n
 
 " ale
-nnoremap <m-[> :ALEPrevious<cr>
-nnoremap <m-]> :ALENext<cr>
-nnoremap <m-b> :ALEDetail<cr>
-nnoremap <m-i> :ALEHover<cr>
-nnoremap <m-o> :ALEGoToDefinition<cr>
-nnoremap <m-p> :ALEFindReferences<cr>
+nnoremap <silent> <m-[> :ALEPrevious<cr>
+nnoremap <silent> <m-]> :ALENext<cr>
+nnorema  <silent> <m-b> :ALEDetail<cr>
+nnoremap <silent> <m-o> :ALEGoToDefinition<cr>
+nnoremap <silent> <m-p> :ALEFindReferences<cr>
 
 " move to line or selection start / end and enter insert mode
 nnoremap > A
@@ -116,10 +123,19 @@ nnoremap : :
 
 " search
 nnoremap ? /
+vnoremap ? y/\V<c-r>=escape(@",'/\')<cr><cr>
+nnoremap <silent> r :noh<cr>
 
-" prev / next buffer
-nnoremap - :bprev<cr>
-nnoremap = :bnext<cr>
+" buffer nav
+nnoremap <silent> - :bprev<cr>
+nnoremap <silent> = :bnext<cr>
+nnoremap <silent> <m-q> :bprev<cr>
+nnoremap <silent> <m-e> :bnext<cr>
+nnoremap <silent> <m-w> :bwipe<cr>
+
+" record
+nnoremap \ qz
+nnoremap . @z
 
 " interact outside
 nnoremap <m--> :call open#iterm()<cr>
@@ -131,6 +147,10 @@ nnoremap <space> viw
 " del word in insert / command mode
 inoremap <m-bs> <c-w>
 cnoremap <m-bs> <c-w>
+
+" lock verti cursor in insert mode
+inoremap <silent> <up> <c-x><c-y>
+inoremap <silent> <down> <c-x><c-e>
 
 " enter insert mode
 nnoremap <return> a
@@ -144,9 +164,6 @@ inoremap <tab> <C-o>I<tab>
 " indent
 vnoremap <tab> >
 vnoremap <bs> <
-
-" turn off search highlight
-nnoremap / <esc>:noh<cr>
 
 " signify
 let g:signify_vcs_list = [ 'git' ]
@@ -177,12 +194,14 @@ let g:ale_linters = {
 
 call ft#detect('*.h', 'c')
 call ft#comment('c', '//%s')
+call ft#comment('vim', '\"%s')
+call ft#comment('typescriptreact', '//%s')
 
 call plug#load('ext/ale')
 call plug#load('ext/vim-signify')
+call plug#load('ext/ctrlp.vim')
 call trim#onsave()
 call bufline#set()
 call statline#set()
 call comment#bind()
 call pair#bind()
-" call browser#bind()
