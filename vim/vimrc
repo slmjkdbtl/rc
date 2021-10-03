@@ -87,19 +87,20 @@ let g:ale_linters = {
 let g:fzf_layout = { 'down': '60%' }
 
 let g:fzf_colors = {
-	\ 'fg':      ['fg', 'Comment'],
-	\ 'bg':      ['bg', 'SuperBG'],
-	\ 'hl':      ['fg', 'Comment'],
-	\ 'fg+':     ['fg', 'Normal'],
-	\ 'bg+':     ['bg', 'SuperBG'],
-	\ 'hl+':     ['fg', 'SuperFGYellow'],
-	\ 'info':    ['fg', 'SuperHide'],
-	\ 'border':  ['bg', 'SuperBG'],
-	\ 'prompt':  ['fg', 'SuperFGBlue'],
-	\ 'pointer': ['fg', 'Comment'],
-	\ 'marker':  ['fg', 'Keyword'],
-	\ 'spinner': ['fg', 'SuperFGMagenta'],
-	\ 'header':  ['bg', 'SuperBG'],
+	\ 'fg':         ['bg', 'SuperBG5'],
+	\ 'bg':         ['bg', 'SuperBG'],
+	\ 'hl':         ['fg', 'Comment'],
+	\ 'fg+':        ['fg', 'Normal'],
+	\ 'bg+':        ['bg', 'SuperBG'],
+	\ 'hl+':        ['fg', 'SuperFGYellow'],
+	\ 'info':       ['fg', 'SuperHide'],
+	\ 'border':     ['bg', 'SuperBG'],
+	\ 'prompt':     ['fg', 'SuperFGBlue'],
+	\ 'pointer':    ['fg', 'Comment'],
+	\ 'marker':     ['fg', 'Keyword'],
+	\ 'spinner':    ['fg', 'SuperFGMagenta'],
+	\ 'header':     ['bg', 'SuperBG'],
+	\ 'preview-fg': ['fg', 'SuperHide4'],
 \ }
 
 call ft#detect('*.h', 'c')
