@@ -36,7 +36,7 @@ func! comment#uncomment(line)
 		" TODO
 		return a:line
 	else
-		return substitute(a:line, '^' . substitute(&cms, '%s$', '', '') . ' ', '', '')
+		return substitute(a:line, '^' . substitute(escape(&cms, '\'), '%s$', '', '') . ' ', '', '')
 	endif
 endfunc
 

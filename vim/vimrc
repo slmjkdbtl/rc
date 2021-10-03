@@ -100,17 +100,24 @@ let g:fzf_colors = {
 	\ 'marker':     ['fg', 'Keyword'],
 	\ 'spinner':    ['fg', 'SuperFGMagenta'],
 	\ 'header':     ['bg', 'SuperBG'],
-	\ 'preview-fg': ['fg', 'SuperHide4'],
+	\ 'preview-fg': ['bg', 'SuperBG5'],
 \ }
 
 call ft#detect('*.h', 'c')
 call ft#detect('*.dt', 'dirty')
 
 call ft#comment('c', '//%s')
-call ft#comment('dirty', '--%s')
-call ft#comment('vim', '\"%s')
-call ft#comment('sh', '#%s')
+call ft#comment('rust', '//%s')
+call ft#comment('glsl', '//%s')
+call ft#comment('javascript', '//%s')
+call ft#comment('typescript', '//%s')
 call ft#comment('typescriptreact', '//%s')
+call ft#comment('sh', '#%s')
+call ft#comment('toml', '#%s')
+call ft#comment('dirty', '--%s')
+call ft#comment('lua', '--%s')
+call ft#comment('vim', '\"%s')
+call ft#comment('forth', '\\%s')
 
 " disable defaults
 mapclear
@@ -120,13 +127,11 @@ tmapclear
 
 for k in split('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890`-=;,./~!@#$%^&*()_+{}:)', '\zs')
 	exec 'map ' . k . ' <nop>'
-	exec 'map <m-' . k . '> <nop>'
-	exec 'map <c-' . k . '> <nop>'
+" 	exec 'map <c-' . k . '> <nop>'
 	" enable esc+ as meta
 	exec "set <m-" . k . ">=\e" . k
 endfor
 
-map <bs> <nop>
 map [ <nop>
 map ] <nop>
 map \ <nop>
@@ -135,6 +140,7 @@ map " <nop>
 map < <nop>
 map > <nop>
 map ? <nop>
+map <bs> <nop>
 map <cr> <nop>
 exec "set <m-'>=\e'"
 exec "set <m-return>=\e\<cr>"
@@ -188,6 +194,7 @@ vnoremap < <esc>`<i
 
 " insert line in normal mode
 nnoremap <m-return> o<esc>
+inoremap <m-return> <esc>mqa<cr><esc>`qa<cr>
 
 " go to document top / bot
 noremap ^ gg
@@ -202,7 +209,6 @@ nnoremap ? /
 " clear
 nnoremap <silent> r :noh<cr>:echo ''<cr>
 " TODO
-" nnoremap <silent> <esc> :noh<cr>:echo ''<cr>
 
 " buffer nav
 nnoremap <silent> - :bprev<cr>
@@ -223,7 +229,9 @@ nnoremap <space> viw
 
 " del word in insert / command mode
 inoremap <m-bs> <c-w>
+inoremap <c-bs> <c-w>
 cnoremap <m-bs> <c-w>
+cnoremap <c-bs> <c-w>
 
 " lock verti cursor in insert mode
 inoremap <silent> <up> <c-x><c-y>
