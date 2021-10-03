@@ -49,6 +49,11 @@ func! comment#toggle()
 	endif
 endfunc
 
-func! comment#bind()
-	noremap <silent> / :call comment#toggle()<cr>
+func! comment#init()
+	command! -range CommentToggle
+		\ <line1>,<line2>call comment#toggle()
+	command! -range Comment
+		\ <line1>,<line2>call comment#comment()
+	command! -range Uncomment
+		\ <line1>,<line2>call comment#uncomment()
 endfunc

@@ -22,7 +22,6 @@ set comments=
 set nofoldenable
 set noswapfile
 set nospell
-set showmatch
 set wrap
 set showbreak=..
 set breakindent
@@ -36,10 +35,9 @@ set wildignore+=.tags,*.map
 set wildignore+=*.so,*.o,*.out,*.swp,*.exe,*.elf,*.hex,*.dll,*~
 set list
 exec 'set listchars=tab:\|\ '
-filetype indent on
-filetype plugin on
+filetype plugin indent on
 syntax on
-colorscheme super
+colorscheme dirty
 let loaded_netrwPlugin = 1
 
 " local plugins
@@ -47,34 +45,10 @@ call plug#init()
 call proj#init()
 call browse#init()
 call trim#init()
+call comment#init()
+call open#init()
 call bufline#init()
 call statline#init()
-
-call ft#detect('*.h', 'c')
-call ft#detect('*.dt', 'dirty')
-call ft#detect('*.glsl', 'glsl')
-call ft#detect('.gitignore', 'gitignore')
-
-call ft#comment('c', '//%s')
-call ft#comment('cpp', '//%s')
-call ft#comment('rust', '//%s')
-call ft#comment('go', '//%s')
-call ft#comment('glsl', '//%s')
-call ft#comment('javascript', '//%s')
-call ft#comment('typescript', '//%s')
-call ft#comment('typescriptreact', '//%s')
-call ft#comment('sh', '#%s')
-call ft#comment('toml', '#%s')
-call ft#comment('make', '#%s')
-call ft#comment('python', '#%s')
-call ft#comment('ruby', '#%s')
-call ft#comment('gitignore', '#%s')
-call ft#comment('dirty', '--%s')
-call ft#comment('lua', '--%s')
-call ft#comment('vim', '\"%s')
-call ft#comment('forth', '\\%s')
-call ft#comment('html', '<!--%s-->')
-call ft#comment('css', '/*%s*/')
 
 " ext plugins
 Plug 'junegunn/fzf'
@@ -116,20 +90,20 @@ let g:ale_linters = {
 let g:fzf_layout = { 'down': '60%' }
 
 let g:fzf_colors = {
-	\ 'fg':         ['bg', 'SuperBG5'],
-	\ 'bg':         ['bg', 'SuperBG'],
+	\ 'fg':         ['bg', 'DirtyBG5'],
+	\ 'bg':         ['bg', 'DirtyBG'],
 	\ 'hl':         ['fg', 'Comment'],
 	\ 'fg+':        ['fg', 'Normal'],
-	\ 'bg+':        ['bg', 'SuperBG'],
-	\ 'hl+':        ['fg', 'SuperFGYellow'],
-	\ 'info':       ['fg', 'SuperHide'],
-	\ 'border':     ['bg', 'SuperBG'],
-	\ 'prompt':     ['fg', 'SuperFGBlue'],
+	\ 'bg+':        ['bg', 'DirtyBG'],
+	\ 'hl+':        ['fg', 'DirtyFGYellow'],
+	\ 'info':       ['fg', 'DirtyHide'],
+	\ 'border':     ['bg', 'DirtyBG'],
+	\ 'prompt':     ['fg', 'DirtyFGBlue'],
 	\ 'pointer':    ['fg', 'Comment'],
 	\ 'marker':     ['fg', 'Keyword'],
-	\ 'spinner':    ['fg', 'SuperFGMagenta'],
-	\ 'header':     ['bg', 'SuperBG'],
-	\ 'preview-fg': ['bg', 'SuperBG5'],
+	\ 'spinner':    ['fg', 'DirtyFGMagenta'],
+	\ 'header':     ['bg', 'DirtyBG'],
+	\ 'preview-fg': ['bg', 'DirtyBG5'],
 \ }
 
 " disable defaults
@@ -161,23 +135,6 @@ exec "set <m-return>=\e\<cr>"
 " TODO
 " exec "set <m-bs>=\e\<bs>"
 
-" save
-nnoremap <silent> w :silent! w<cr>
-
-" undo / redo
-nnoremap <silent> u u
-nnoremap <silent> o <c-r>
-
-" copy / paste
-nnoremap y "*yy
-vnoremap y ma"*y`a
-noremap p "*P
-inoremap <m-p> <c-o>"*p
-
-" delete cur line
-nnoremap d "_dd
-vnoremap d "_d
-
 " movement
 noremap h h
 noremap j gj
@@ -187,36 +144,52 @@ noremap <m-h> b
 noremap <m-l> e
 noremap <m-j> 5j
 noremap <m-k> 5k
+noremap ^ gg
+noremap $ G
+inoremap <silent> <up> <c-x><c-y>
+inoremap <silent> <down> <c-x><c-e>
 
-" cut
-nnoremap x "*dd
-vnoremap x "*d
-
-" select cur line
-nnoremap v V
-nnoremap <m-v> v
-vnoremap <space> <esc>
-vnoremap v <esc>
-
-" jump to proj
-nnoremap z :Proj<space>
-
-" move to line or selection start / end and enter insert mode
+" enter insert
+nnoremap <return> a
+vnoremap <return> s
 nnoremap > A
 nnoremap < I
 vnoremap > <esc>`>a
 vnoremap < <esc>`<i
 
+" select
+nnoremap v V
+nnoremap <m-v> v
+vnoremap <space> <esc>
+vnoremap v <esc>
+nnoremap <space> viw
+
 " insert line in normal mode
 nnoremap <m-return> o<esc>
 inoremap <m-return> <esc>mqa<cr><esc>`qa<cr>
 
-" go to document top / bot
-noremap ^ gg
-noremap $ G
+" save
+nnoremap <silent> w :silent! w<cr>
 
-" command mode
-nnoremap : :
+" undo & redo
+nnoremap <silent> u u
+nnoremap <silent> o <c-r>
+
+" copy, cut & paste
+nnoremap y "*yy
+vnoremap y ma"*y`a
+nnoremap x "*dd
+vnoremap x "*d
+noremap p "*P
+inoremap <m-p> <c-o>"*p
+
+" delete
+nnoremap d "_dd
+vnoremap d "_d
+inoremap <m-bs> <c-w>
+inoremap <c-bs> <c-w>
+cnoremap <m-bs> <c-w>
+cnoremap <c-bs> <c-w>
 
 " search
 nnoremap ? /
@@ -224,7 +197,7 @@ vnoremap <silent> ? ""y:let @/=escape(@",'/\')<cr>:set hlsearch<cr>
 nnoremap <silent> ; N
 nnoremap <silent> ' n
 
-" recording
+" record & playback
 nnoremap <silent> @{ :nmap \ @}<cr>qq
 nnoremap <silent> @} q:nmap \ @{<cr>
 nnoremap <silent> @v q:let @q='c'.@q<cr>:nmap \ @{<cr>
@@ -236,6 +209,17 @@ nnoremap c gns
 " clear
 nnoremap <silent> r :noh<cr>:echo ''<cr>
 
+" command mode
+nnoremap : :
+" repeat last action
+nnoremap . .
+" jump to matching paren
+noremap % %
+
+" indent
+vnoremap <tab> >
+vnoremap <bs> <
+
 " buffer nav
 nnoremap <silent> - :bprev<cr>
 nnoremap <silent> = :bnext<cr>
@@ -243,40 +227,18 @@ nnoremap <silent> <m-q> :bprev<cr>
 nnoremap <silent> <m-e> :bnext<cr>
 nnoremap <silent> <m-w> :bwipe<cr>
 
-" repeat last action
-nnoremap . .
+" open outside
+nnoremap <silent> <m--> :OpenIterm<cr>
+nnoremap <silent> <m-=> :OpenFinder<cr>
 
-" interact outside
-nnoremap <silent> <m--> :call open#iterm()<cr>
-nnoremap <silent> <m-=> :call open#finder()<cr>
-
-" select cur word
-nnoremap <space> viw
-
-" del word in insert / command mode
-inoremap <m-bs> <c-w>
-inoremap <c-bs> <c-w>
-cnoremap <m-bs> <c-w>
-cnoremap <c-bs> <c-w>
-
-" lock verti cursor in insert mode
-inoremap <silent> <up> <c-x><c-y>
-inoremap <silent> <down> <c-x><c-e>
-
-" enter insert mode
-nnoremap <return> a
-
-" delete cur selection and enter insert mode
-vnoremap <return> s
-
-" indent
-vnoremap <tab> >
-vnoremap <bs> <
-
-noremap % %
+" jump to proj
+nnoremap z :Proj<space>
 
 " browse
 nnoremap <silent> <tab> :BrowseToggle<cr>
+
+" comment
+noremap <silent> / :CommentToggle<cr>
 
 " ale
 nnoremap <silent> <m-n> :ALEPrevious<cr>
@@ -290,5 +252,34 @@ nnoremap <silent> <m-p> :ALEFindReferences<cr>
 nnoremap <silent> <m-g> :Rg<cr>
 nnoremap <silent> <m-f> :Files<cr>
 
-call comment#bind()
+" bind all pair keys
 call pair#bind()
+
+" file type detection
+call ft#detect('*.h', 'c')
+call ft#detect('*.dt', 'dirty')
+call ft#detect('*.glsl', 'glsl')
+call ft#detect('.gitignore', 'gitignore')
+
+" file type comments
+call ft#comment('c', '//%s')
+call ft#comment('cpp', '//%s')
+call ft#comment('rust', '//%s')
+call ft#comment('go', '//%s')
+call ft#comment('glsl', '//%s')
+call ft#comment('javascript', '//%s')
+call ft#comment('typescript', '//%s')
+call ft#comment('typescriptreact', '//%s')
+call ft#comment('sh', '#%s')
+call ft#comment('toml', '#%s')
+call ft#comment('make', '#%s')
+call ft#comment('python', '#%s')
+call ft#comment('ruby', '#%s')
+call ft#comment('gitignore', '#%s')
+call ft#comment('dirty', '--%s')
+call ft#comment('lua', '--%s')
+call ft#comment('vim', '\"%s')
+call ft#comment('forth', '\\%s')
+call ft#comment('html', '<!--%s-->')
+call ft#comment('css', '/*%s*/')
+
