@@ -88,18 +88,18 @@ let g:fzf_layout = { 'down': '60%' }
 
 let g:fzf_colors = {
 	\ 'fg':      ['fg', 'Comment'],
-	\ 'bg':      ['bg', 'SuperBG2'],
+	\ 'bg':      ['bg', 'SuperBG'],
 	\ 'hl':      ['fg', 'Comment'],
 	\ 'fg+':     ['fg', 'Normal'],
-	\ 'bg+':     ['bg', 'SuperBG2'],
+	\ 'bg+':     ['bg', 'SuperBG'],
 	\ 'hl+':     ['fg', 'SuperFGYellow'],
-	\ 'info':    ['fg', 'SuperHide2'],
-	\ 'border':  ['bg', 'SuperBG3'],
+	\ 'info':    ['fg', 'SuperHide'],
+	\ 'border':  ['bg', 'SuperBG'],
 	\ 'prompt':  ['fg', 'SuperFGBlue'],
 	\ 'pointer': ['fg', 'Comment'],
 	\ 'marker':  ['fg', 'Keyword'],
 	\ 'spinner': ['fg', 'SuperFGMagenta'],
-	\ 'header':  ['fg', 'SuperFGRed'],
+	\ 'header':  ['bg', 'SuperBG'],
 \ }
 
 call ft#detect('*.h', 'c')

@@ -229,7 +229,7 @@ func! browse#refresh(...)
 		call s:toline(2)
 	endif
 
-	call feedkeys(":noh | echo ''\<cr>")
+" 	call feedkeys(":noh | echo ''\<cr>")
 
 endfunc
 
