@@ -7,6 +7,7 @@ set -x PATH /opt/homebrew/bin $PATH
 set -x PATH /opt/homebrew/sbin $PATH
 set -x PATH /opt/homebrew/opt/llvm/bin $PATH
 set -x PATH /opt/homebrew/opt/openjdk/bin $PATH
+set -x PATH $HOME/.cargo/bin $PATH
 set -x HOMEBREW_NO_AUTO_UPDATE 1
 set fish_greeting
 

@@ -28,6 +28,7 @@ set showbreak=..
 set breakindent
 set autoread
 set hidden
+set belloff=all
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
 set wildignore=.git,.svn,.cache,.tmp,.tup
 set wildignore+=.DS_Store
@@ -57,6 +58,7 @@ call ft#detect('.gitignore', 'gitignore')
 call ft#comment('c', '//%s')
 call ft#comment('cpp', '//%s')
 call ft#comment('rust', '//%s')
+call ft#comment('go', '//%s')
 call ft#comment('glsl', '//%s')
 call ft#comment('javascript', '//%s')
 call ft#comment('typescript', '//%s')
@@ -85,6 +87,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'leafgarland/typescript-vim'
+Plug 'dag/vim-fish'
 
 " signify
 let g:signify_vcs_list = [ 'git' ]
@@ -103,11 +106,10 @@ let g:ale_sign_error = '>'
 let g:ale_sign_warning = '*'
 let g:ale_sign_info = '?'
 let g:ale_set_highlights = 0
-let g:ale_rust_cargo_check_examples = 1
-let g:ale_rust_cargo_check_tests = 1
 
 let g:ale_linters = {
-	\ 'typescript': ['tsserver'],
+	\ 'typescript': [ 'tsserver' ],
+	\ 'rust': [ 'analyzer' ],
 \ }
 
 " fzf
@@ -170,6 +172,7 @@ nnoremap <silent> o <c-r>
 nnoremap y "*yy
 vnoremap y ma"*y`a
 noremap p "*P
+inoremap <m-p> <c-o>"*p
 
 " delete cur line
 nnoremap d "_dd
@@ -218,8 +221,8 @@ nnoremap : :
 " search
 nnoremap ? /
 vnoremap <silent> ? ""y:let @/=escape(@",'/\')<cr>:set hlsearch<cr>
-nnoremap <silent> [ N
-nnoremap <silent> ] n
+nnoremap <silent> ; N
+nnoremap <silent> ' n
 
 " recording
 nnoremap <silent> @{ :nmap \ @}<cr>qq

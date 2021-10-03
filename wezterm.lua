@@ -10,6 +10,8 @@ return {
 		bottom = 8,
 	},
 	bold_brightens_ansi_colors = false,
+	alternate_buffer_wheel_scroll_speed = 2,
+	alternate_wheel_to_arrow_keys = true,
 	colors = {
 		foreground = "#dadada",
 		background = "#000000",
