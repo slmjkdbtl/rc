@@ -51,7 +51,6 @@ Plug 'plasticboy/vim-markdown'
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'leafgarland/typescript-vim'
-Plug 'tpope/vim-fugitive'
 
 call proj#init()
 call browse#init()
