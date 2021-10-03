@@ -205,10 +205,19 @@ nnoremap : :
 
 " search
 nnoremap ? /
+vnoremap <silent> ? ""y:let @/=escape(@",'/\')<cr>:set hlsearch<cr>
+nnoremap <silent> [ N
+nnoremap <silent> ] n
+vnoremap <silent> <m-return> ""y:let @/=escape(@", '/\')<cr>qqgns
+
+" recording
+nnoremap <silent> @{ :nmap \ @}<cr>qq
+nnoremap <silent> @} q:nmap \ @{<cr>
+nmap <silent> \ @{
+nnoremap <silent> , @q
 
 " clear
 nnoremap <silent> r :noh<cr>:echo ''<cr>
-" TODO
 
 " buffer nav
 nnoremap <silent> - :bprev<cr>
@@ -266,4 +275,3 @@ nnoremap <silent> <m-f> :Files<cr>
 
 call comment#bind()
 call pair#bind()
-call search#bind()
