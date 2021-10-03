@@ -51,6 +51,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'leafgarland/typescript-vim'
+Plug 'tpope/vim-fugitive'
 
 call proj#init()
 call browse#init()
@@ -208,13 +209,14 @@ nnoremap ? /
 vnoremap <silent> ? ""y:let @/=escape(@",'/\')<cr>:set hlsearch<cr>
 nnoremap <silent> [ N
 nnoremap <silent> ] n
-vnoremap <silent> <m-return> ""y:let @/=escape(@", '/\')<cr>qqgns
 
 " recording
 nnoremap <silent> @{ :nmap \ @}<cr>qq
 nnoremap <silent> @} q:nmap \ @{<cr>
+nnoremap <silent> @v q:let @q=':normal! gns'.@q<cr>:nmap \ @{<cr>
 nmap <silent> \ @{
 nnoremap <silent> , @q
+vnoremap <silent> <m-return> ""y:let @/=escape(@", '/\')<cr>:nmap \ @v<cr>qqgns
 
 " clear
 nnoremap <silent> r :noh<cr>:echo ''<cr>
