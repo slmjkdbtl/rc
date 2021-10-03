@@ -7,20 +7,27 @@ func! plug#add(repo)
 endfunc
 
 func! plug#install()
+	redraw | echo 'checking for plugins to install...'
+	let l:count = 0
 	for name in keys(s:plugins)
 		let dir = s:plugdir . '/' . name
 		if !isdirectory(dir)
-			echo 'installing ' . name
+			redraw | echom 'installing ' . name
 			call mkdir(s:plugdir, 'p')
 			call system('git clone ' . 'https://github.com/' . s:plugins[name] . ' ' . dir)
-			redraw
+			let l:count += 1
 		endif
 	endfor
-	echo 'done'
+	if l:count == 0
+		redraw | echo 'all packages installed'
+	else
+		redraw | echo 'installed ' . l:count . ' plugins'
+	endif
 endfunc
 
 func! plug#update()
-	echo 'checking for updates...'
+	redraw | echo 'checking for updates...'
+	let l:count = 0
 	for name in keys(s:plugins)
 		let dir = s:plugdir . '/' . name
 		if isdirectory(dir)
@@ -28,25 +35,36 @@ func! plug#update()
 			let cur = system('cd ' . dir . ' && git rev-parse HEAD ')
 			let remote = system('cd ' . dir . ' && git rev-parse @{u} ')
 			if cur !=# remote
-				echo 'updating ' . name
+				redraw | echom 'updating ' . name
 				call system('cd ' . dir . ' && git pull')
+				let l:count += 1
 			endif
-			redraw
 		endif
 	endfor
-	echo 'done'
+	if l:count == 0
+		redraw | echo 'all plugins up to date'
+	else
+		redraw | echo 'updated ' . l:count . ' plugins'
+	endif
 endfunc
 
 func! plug#clean()
+	redraw | echo 'checking for unused plugins...'
+	let l:count = 0
 	let entries = glob(s:plugdir . '/*', 0, 1)
 	for path in entries
 		let name = split(path, '/')[-1]
 		if !has_key(s:plugins, name)
-			echo 'removing ' . name
+			redraw | echom 'removing ' . name
 			call system('rm -rf ' . path)
-			redraw
+			let l:count += 1
 		endif
 	endfor
+	if l:count == 0
+		redraw | echo 'no plugin needs to be removed'
+	else
+		redraw | echo 'removed ' . l:count . ' stale plugins'
+	endif
 endfunc
 
 func! plug#init()
