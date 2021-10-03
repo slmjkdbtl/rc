@@ -1,12 +1,39 @@
-func! fbrowse#open()
+func! browse#init()
 
-	if &mod
-		return
-	endif
+	command! -nargs=0 Browse
+				\ call browse#open()
+	command! -nargs=0 BrowseExit
+				\ call browse#exit()
+	command! -nargs=0 BrowseToggle
+				\ call browse#toggle()
+
+	noremap <silent> <plug>(browse_open)
+				\ :call browse#open()<cr>
+	noremap <silent> <plug>(browse_exit)
+				\ :call browse#exit()<cr>
+	noremap <silent> <plug>(browse_enter)
+				\ :call browse#enter()<cr>
+	noremap <silent> <plug>(browse_back)
+				\ :call browse#back()<cr>
+	noremap <silent> <plug>(browse_copypath)
+				\ :call browse#copypath()<cr>
+	noremap <silent> <plug>(browse_refresh)
+				\ :call browse#refresh(line('.'))<cr>
+	noremap <silent> <plug>(browse_up)
+				\ k
+	noremap <silent> <plug>(browse_down)
+				\ j
+
+	au BufEnter *
+		\ call browse#onenter()
+
+endfunc
+
+func! browse#open()
 
 	let curbuf = expand('%:p')
 
-	noautocmd enew
+	noa enew
 	setl buftype=nofile
 	setl bufhidden=wipe
 	setl cursorline
@@ -23,47 +50,87 @@ func! fbrowse#open()
 	setl nowrap
 	setl nomodifiable
 	setl nomodified
-	setfiletype fbrowse
+	setf browse
 
-	call fbrowse#refresh()
+	syntax match BrowseParent
+				\ '^..$'
+				\ contained
+				\ containedin=BrowseItem
+
+	syntax match BrowseDirHead
+				\ '^\(+\|-\)'
+				\ contained
+				\ containedin=BrowseDir
+
+	syntax match BrowseMarked
+				\ '>\s'
+				\ contained
+				\ containedin=BrowseItem
+
+	syntax match BrowseDir
+				\ '^\(+\|-\).*'
+				\ contained
+				\ containedin=BrowseItem
+				\ contains=BrowseDirHead,BrowseMarked
+
+	syntax match BrowseItem
+				\ '^.*$'
+				\ contains=BrowseDir,BrowseMarked
+
+	highlight def link BrowseItem
+				\ Cleared
+
+	highlight def link BrowseDir
+				\ Function
+
+	highlight def link BrowseDirHead
+				\ Special
+
+	highlight def link BrowseParent
+				\ PreProc
+
+	highlight def link BrowsBrowse
+				\ String
+
+	call browse#refresh()
 	call s:toitem(curbuf)
 	call s:bind()
 
 endfunc
 
-func! fbrowse#active()
-	return &filetype == 'fbrowse'
+func! browse#active()
+	return &ft == 'browse'
 endfunc
 
 " TODO: not working when closing the last listed buffer, it's still in buflist for some reason
-func! fbrowse#openifempty()
-	let bufs = getbufinfo({ 'buflisted': 1 })
-" 	echom "start"
-" 	for b in bufs
-" 		echom "name" b.name
-" 	endfor
-	if len(bufs) == 1 && bufs[0].name ==# ''
-		call fbrowse#open()
+func! browse#onenter()
+	let name = expand('%:p')
+	if empty(name)
+		if len(getbufinfo({ 'buflisted': 1 })) == 1
+			call browse#open()
+		endif
+	else
+		if isdirectory(name)
+			exec 'lcd ' . name
+			bwipe
+			call browse#open()
+		elseif filereadable(name)
+			exec 'lcd ' . expand('%:p:h')
+		endif
 	endif
-" 	echom "end"
 endfunc
 
-func! fbrowse#onempty()
-	au BufEnter *
-		\ call fbrowse#openifempty()
-endfunc
-
-func! fbrowse#close()
-	if fbrowse#active()
+func! browse#exit()
+	if browse#active()
 		bwipe
 	endif
 endfunc
 
-func! fbrowse#toggle()
-	if fbrowse#active()
-		call fbrowse#close()
+func! browse#toggle()
+	if browse#active()
+		call browse#exit()
 	else
-		call fbrowse#open()
+		call browse#open()
 	endif
 endfunc
 
@@ -145,9 +212,9 @@ func! s:toline(ln)
 	call cursor(a:ln, 3)
 endfunc
 
-func! fbrowse#refresh(...)
+func! browse#refresh(...)
 
-	if &filetype !=# 'fbrowse'
+	if !browse#active()
 		return
 	endif
 
@@ -184,21 +251,21 @@ func! s:getcur()
 	return item
 endfunc
 
-func! fbrowse#back()
+func! browse#back()
 	let prev_dir = getcwd()
 	lcd ..
-	call fbrowse#refresh()
+	call browse#refresh()
 	call s:toitem(prev_dir)
 endfunc
 
-func! fbrowse#enter()
+func! browse#enter()
 
 	let item = s:getcur()
 
 	if isdirectory(item)
 
 		silent! exec 'lcd ' . escape(item, '# ')
-		call fbrowse#refresh()
+		call browse#refresh()
 
 	elseif filereadable(item)
 
@@ -207,7 +274,7 @@ func! fbrowse#enter()
 		if index([ 'jpg', 'png', 'pdf', 'ico', 'icns', 'ase', 'gif', 'mp4', 'mkv', 'mov', 'avi', 'mp3', 'wav', 'ogg', ], ext) >= 0
 			call system('open ' . escape(item, " '&()"))
 		else
-			call fbrowse#close()
+			call browse#exit()
 			exec 'edit ' . item
 		endif
 
@@ -215,15 +282,15 @@ func! fbrowse#enter()
 
 endfunc
 
-func! fbrowse#copypath()
+func! browse#copypath()
 	let item = s:getcur()
 	let @* = item
 	echo item
 endfunc
 
 func! s:bind()
-	map <buffer><silent> <return> :call fbrowse#enter()<cr>
-	map <buffer><silent> <bs> :call fbrowse#back()<cr>
-	map <buffer><silent> y :call fbrowse#copypath()<cr>
-	map <buffer><silent> r :call fbrowse#refresh()<cr>
+	map <buffer><silent> <return> :call browse#enter()<cr>
+	map <buffer><silent> <bs> :call browse#back()<cr>
+	map <buffer><silent> y :call browse#copypath()<cr>
+	map <buffer><silent> r :call browse#refresh(line('.'))<cr>
 endfunc

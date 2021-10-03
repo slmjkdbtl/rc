@@ -3,6 +3,7 @@ set shiftwidth=4
 set tabstop=4
 set smarttab
 set autoindent
+set smartindent
 set mouse=a
 set backspace=2
 set timeoutlen=0
@@ -15,10 +16,17 @@ set signcolumn=yes
 set laststatus=2
 set showtabline=2
 set noshowmode
+set noshowcmd
 set cursorline
+set commentstring=
+set comments=
 set nofoldenable
 set noswapfile
+set nospell
+set showmatch
 set wrap
+set showbreak=..
+set breakindent
 set autoread
 set hidden
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
@@ -35,6 +43,58 @@ let loaded_netrwPlugin = 1
 " color
 syntax on
 colorscheme super
+
+call plug#init()
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'dense-analysis/ale'
+Plug 'mhinz/vim-signify'
+Plug 'pangloss/vim-javascript'
+Plug 'tbastos/vim-lua'
+Plug 'plasticboy/vim-markdown'
+Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
+Plug 'leafgarland/typescript-vim'
+
+call proj#init()
+call browse#init()
+call trim#onsave()
+call autocd#init()
+call bufline#set()
+call statline#set()
+
+" signify
+let g:signify_vcs_list = [ 'git' ]
+let g:signify_sign_show_text = 1
+let g:signify_sign_show_count = 0
+let g:signify_sign_add = '+'
+let g:signify_sign_delete = '-'
+let g:signify_sign_delete_first_line = g:signify_sign_delete
+let g:signify_sign_change = '~'
+let g:signify_sign_changedelete = g:signify_sign_change
+
+" ale
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_sign_error = '>'
+let g:ale_sign_warning = '*'
+let g:ale_sign_info = '?'
+let g:ale_set_highlights = 0
+let g:ale_rust_cargo_check_examples = 1
+let g:ale_rust_cargo_check_tests = 1
+
+let g:ale_linters = {
+	\ 'typescript': ['tsserver'],
+\ }
+
+call ft#detect('*.h', 'c')
+call ft#detect('*.dt', 'dirty')
+
+call ft#comment('c', '//%s')
+call ft#comment('dirty', '--%s')
+call ft#comment('vim', '\"%s')
+call ft#comment('sh', '#%s')
+call ft#comment('typescriptreact', '//%s')
 
 " disable defaults
 mapclear
@@ -102,7 +162,7 @@ vnoremap <space> <esc>
 vnoremap v <esc>
 
 " jump to proj
-nnoremap z <nop>
+nnoremap z :Proj<space>
 
 " move to line or selection start / end and enter insert mode
 nnoremap > A
@@ -112,6 +172,7 @@ vnoremap < <esc>`<i
 
 " insert line in normal mode
 nnoremap <m-return> o<esc>
+inoremap <silent> <m-return> <esc>mqa<return><esc>`qa<return>
 
 " go to document top / bot
 noremap ^ gg
@@ -159,72 +220,27 @@ nnoremap <return> a
 " delete cur selection and enter insert mode
 vnoremap <return> s
 
-" tab in insert mode tabs the whole line
-nnoremap <silent> <tab> :call fbrowse#toggle()<cr>
-inoremap <tab> <C-o>I<tab>
-
 " indent
 vnoremap <tab> >
 vnoremap <bs> <
 
+noremap % %
+
+" browse
+nnoremap <silent> <tab> :BrowseToggle<cr>
+
 " ale
 nnoremap <silent> <m-n> :ALEPrevious<cr>
 nnoremap <silent> <m-m> :ALENext<cr>
-nnorema  <silent> <m-b> :ALEDetail<cr>
-nnorema  <silent> <m-i> :ALEHover<cr>
+nnoremap <silent> <m-b> :ALEDetail<cr>
+nnoremap <silent> <m-i> :ALEHover<cr>
 nnoremap <silent> <m-o> :ALEGoToDefinition<cr>
 nnoremap <silent> <m-p> :ALEFindReferences<cr>
 
-" signify
-let g:signify_vcs_list = [ 'git' ]
-let g:signify_sign_show_text = 1
-let g:signify_sign_show_count = 0
-let g:signify_sign_add = '+'
-let g:signify_sign_delete = '-'
-let g:signify_sign_delete_first_line = g:signify_sign_delete
-let g:signify_sign_change = '~'
-let g:signify_sign_changedelete = g:signify_sign_change
+" fzf
+nnoremap <silent> <m-g> :Rg<cr>
+nnoremap <silent> <m-f> :Files<cr>
 
-" ale
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
-let g:ale_sign_error = '>'
-let g:ale_sign_warning = '*'
-let g:ale_sign_info = '?'
-let g:ale_set_highlights = 0
-let g:ale_rust_cargo_check_examples = 1
-let g:ale_rust_cargo_check_tests = 1
-
-let g:ale_linters = {
-	\ 'typescript': ['tsserver'],
-\ }
-
-call ft#detect('*.h', 'c')
-call ft#detect('*.dt', 'dirty')
-
-call ft#comment('c', '//%s')
-call ft#comment('dirty', '--%s')
-call ft#comment('vim', '\"%s')
-call ft#comment('sh', '#%s')
-call ft#comment('typescriptreact', '//%s')
-
-call plug#begin(fnamemodify($MYVIMRC, ':h') . '/ext')
-Plug 'https://github.com/dense-analysis/ale'
-Plug 'https://github.com/ctrlpvim/ctrlp.vim'
-Plug 'https://github.com/mhinz/vim-signify'
-Plug 'https://github.com/pangloss/vim-javascript'
-Plug 'https://github.com/tbastos/vim-lua'
-Plug 'https://github.com/plasticboy/vim-markdown'
-Plug 'https://github.com/rust-lang/rust.vim'
-Plug 'https://github.com/cespare/vim-toml'
-Plug 'https://github.com/leafgarland/typescript-vim'
-call plug#end()
-
-call trim#onsave()
-call bufline#set()
-call statline#set()
 call comment#bind()
 call pair#bind()
 call search#bind()
-call fbrowse#onempty()
-call autocd#enable()

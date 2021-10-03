@@ -21,12 +21,12 @@ func! s:get_status_mode(bufn)
 	elseif mode ==# 'V'
 
 		let text .= '%#StatusModeVisual#'
-		let text .= ' V-LINE '
+		let text .= ' VISUAL '
 
 	elseif mode ==# "\<C-v>"
 
 		let text .= '%#StatusModeVisual#'
-		let text .= ' V-BLOCK '
+		let text .= ' VISUAL '
 
 	elseif mode ==# 'c'
 

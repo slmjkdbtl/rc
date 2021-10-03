@@ -7,7 +7,7 @@ func! autocd#cd()
 	endif
 endfunc
 
-func! autocd#enable()
+func! autocd#init()
 	au BufEnter *
 		\ call autocd#cd()
 endfunc
