@@ -55,7 +55,6 @@ Plug 'leafgarland/typescript-vim'
 call proj#init()
 call browse#init()
 call trim#onsave()
-call autocd#init()
 call bufline#set()
 call statline#set()
 

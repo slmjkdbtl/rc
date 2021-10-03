@@ -102,13 +102,10 @@ func! browse#active()
 	return &ft == 'browse'
 endfunc
 
-" TODO: not working when closing the last listed buffer, it's still in buflist for some reason
 func! browse#onenter()
 	let name = expand('%:p')
 	if empty(name)
-		if len(getbufinfo({ 'buflisted': 1 })) == 1
-			call browse#open()
-		endif
+		call browse#open()
 	else
 		if isdirectory(name)
 			exec 'lcd ' . name
