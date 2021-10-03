@@ -12,15 +12,15 @@ let s:bg4     = '#272727'
 let s:bg5     = '#343434'
 let s:bg6     = '#474747'
 
-let s:black   = '#666666'
 let s:normal  = '#dadada'
+let s:black   = '#666666'
 let s:red     = '#ec7580'
-let s:orange  = '#f99157'
-let s:yellow  = '#ffca72'
 let s:green   = '#9ae0a0'
-let s:cyan    = '#7ce9df'
+let s:yellow  = '#ffca72'
 let s:blue    = '#8abbff'
 let s:magenta = '#f7aad7'
+let s:cyan    = '#7ce9df'
+let s:orange  = '#f99157'
 
 func! s:hi(group, fg, bg, attr)
 	if !empty(a:fg)
@@ -35,6 +35,25 @@ func! s:hi(group, fg, bg, attr)
 	exec 'hi ' . a:group . ' term=NONE cterm=NONE'
 endfunc
 
+call s:hi('SuperBG',           '',        s:bg,      '',          )
+call s:hi('SuperBG2',          '',        s:bg2,     '',          )
+call s:hi('SuperBG3',          '',        s:bg3,     '',          )
+call s:hi('SuperBG4',          '',        s:bg4,     '',          )
+call s:hi('SuperBG5',          '',        s:bg5,     '',          )
+call s:hi('SuperHide',         s:bg,      s:bg,      '',          )
+call s:hi('SuperHide2',        s:bg2,     s:bg2,     '',          )
+call s:hi('SuperHide3',        s:bg3,     s:bg3,     '',          )
+call s:hi('SuperHide4',        s:bg4,     s:bg4,     '',          )
+call s:hi('SuperHide5',        s:bg5,     s:bg5,     '',          )
+call s:hi('SuperFGNormal',     s:normal,  '',        '',          )
+call s:hi('SuperFGBlack',      s:black,   '',        '',          )
+call s:hi('SuperFGRed',        s:red,     '',        '',          )
+call s:hi('SuperFGBlue',       s:blue,    '',        '',          )
+call s:hi('SuperFGYellow',     s:yellow,  '',        '',          )
+call s:hi('SuperFGGreen',      s:green,   '',        '',          )
+call s:hi('SuperFGCyan',       s:cyan,    '',        '',          )
+call s:hi('SuperFGMagenta',    s:magenta, '',        '',          )
+call s:hi('SuperFGOrange',     s:orange,  '',        '',          )
 call s:hi('Bold',              '',        '',        s:bold,      )
 call s:hi('Boolean',           s:orange,  '',        '',          )
 call s:hi('Character',         s:orange,  '',        '',          )
