@@ -36,11 +36,45 @@ set wildignore+=*.so,*.o,*.out,*.swp,*.exe,*.elf,*.hex,*.dll,*~
 set list
 exec 'set listchars=tab:\|\ '
 filetype indent on
+filetype plugin on
 syntax on
 colorscheme super
 let loaded_netrwPlugin = 1
 
+" local plugins
 call plug#init()
+call proj#init()
+call browse#init()
+call trim#init()
+call bufline#init()
+call statline#init()
+
+call ft#detect('*.h', 'c')
+call ft#detect('*.dt', 'dirty')
+call ft#detect('*.glsl', 'glsl')
+call ft#detect('.gitignore', 'gitignore')
+
+call ft#comment('c', '//%s')
+call ft#comment('cpp', '//%s')
+call ft#comment('rust', '//%s')
+call ft#comment('glsl', '//%s')
+call ft#comment('javascript', '//%s')
+call ft#comment('typescript', '//%s')
+call ft#comment('typescriptreact', '//%s')
+call ft#comment('sh', '#%s')
+call ft#comment('toml', '#%s')
+call ft#comment('make', '#%s')
+call ft#comment('python', '#%s')
+call ft#comment('ruby', '#%s')
+call ft#comment('gitignore', '#%s')
+call ft#comment('dirty', '--%s')
+call ft#comment('lua', '--%s')
+call ft#comment('vim', '\"%s')
+call ft#comment('forth', '\\%s')
+call ft#comment('html', '<!--%s-->')
+call ft#comment('css', '/*%s*/')
+
+" ext plugins
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'dense-analysis/ale'
@@ -51,12 +85,6 @@ Plug 'plasticboy/vim-markdown'
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'leafgarland/typescript-vim'
-
-call proj#init()
-call browse#init()
-call trim#onsave()
-call bufline#set()
-call statline#set()
 
 " signify
 let g:signify_vcs_list = [ 'git' ]
@@ -102,22 +130,6 @@ let g:fzf_colors = {
 	\ 'preview-fg': ['bg', 'SuperBG5'],
 \ }
 
-call ft#detect('*.h', 'c')
-call ft#detect('*.dt', 'dirty')
-
-call ft#comment('c', '//%s')
-call ft#comment('rust', '//%s')
-call ft#comment('glsl', '//%s')
-call ft#comment('javascript', '//%s')
-call ft#comment('typescript', '//%s')
-call ft#comment('typescriptreact', '//%s')
-call ft#comment('sh', '#%s')
-call ft#comment('toml', '#%s')
-call ft#comment('dirty', '--%s')
-call ft#comment('lua', '--%s')
-call ft#comment('vim', '\"%s')
-call ft#comment('forth', '\\%s')
-
 " disable defaults
 mapclear
 imapclear
@@ -126,7 +138,8 @@ tmapclear
 
 for k in split('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890`-=;,./~!@#$%^&*()_+{}:)', '\zs')
 	exec 'map ' . k . ' <nop>'
-" 	exec 'map <c-' . k . '> <nop>'
+	exec 'map <c-' . k . '> <nop>'
+	exec 'map <m-' . k . '> <nop>'
 	" enable esc+ as meta
 	exec "set <m-" . k . ">=\e" . k
 endfor

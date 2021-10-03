@@ -28,6 +28,6 @@ func! bufline#get()
 
 endfunc
 
-func! bufline#set()
+func! bufline#init()
 	set tabline=%!bufline#get()
 endfunc

@@ -8,9 +8,7 @@ func! proj#go(pat)
 	for p in readfile(expand(s:file))
 		let dir = expand(p)
 		if isdirectory(dir) && dir =~ a:pat
-			silent! exec 'lcd ' . dir
 			silent! exec 'edit ' . dir
-			" TODO: should trigger a browse
 			break
 		endif
 	endfor

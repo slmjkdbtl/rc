@@ -24,8 +24,11 @@ func! browse#init()
 	noremap <silent> <plug>(browse_down)
 				\ j
 
-	au BufEnter *
-		\ call browse#onenter()
+	augroup Browse
+		autocmd!
+		autocmd BufEnter *
+			\ call browse#onenter()
+	augroup END
 
 endfunc
 

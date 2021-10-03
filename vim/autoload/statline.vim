@@ -4,43 +4,28 @@ func! s:get_status_mode(bufn)
 	let mode = mode(a:bufn)
 
 	if mode ==# 'n'
-
 		let text .= '%#StatusModeNormal#'
 		let text .= ' NORMAL '
-
 	elseif mode ==# 'i'
-
 		let text .= '%#StatusModeInsert#'
 		let text .= ' INSERT '
-
 	elseif mode ==# 'v'
-
 		let text .= '%#StatusModeVisual#'
 		let text .= ' VISUAL '
-
 	elseif mode ==# 'V'
-
 		let text .= '%#StatusModeVisual#'
 		let text .= ' VISUAL '
-
 	elseif mode ==# "\<C-v>"
-
 		let text .= '%#StatusModeVisual#'
 		let text .= ' VISUAL '
-
 	elseif mode ==# 'c'
-
 		let text .= '%#StatusModeCommand#'
 		let text .= ' COMMAND '
-
 	elseif mode ==# 't'
-
 		let text .= '%#StatusModeTerm#'
 		let text .= ' TERMINAL '
 	else
-
 		let text .= mode
-
 	endif
 
 	let text .= '%#StatusLine#'
@@ -77,13 +62,11 @@ func! s:get_status_path(bufn)
 endfunc
 
 func! s:get_status_modified(bufn)
-
 	if getbufvar(a:bufn, '&modified')
 		return '%#StatusLine#[~]'
 	else
 		return ''
 	endif
-
 endfunc
 
 func! s:get_status_filetype(bufn)
@@ -125,6 +108,6 @@ func! statline#get()
 
 endfunc
 
-func! statline#set()
+func! statline#init()
 	set statusline=%!statline#get()
 endfunc
