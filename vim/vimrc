@@ -3,7 +3,6 @@ set shiftwidth=4
 set tabstop=4
 set smarttab
 set autoindent
-set smartindent
 set mouse=a
 set backspace=2
 set timeoutlen=0
@@ -36,13 +35,10 @@ set wildignore+=.tags,*.map
 set wildignore+=*.so,*.o,*.out,*.swp,*.exe,*.elf,*.hex,*.dll,*~
 set list
 exec 'set listchars=tab:\|\ '
-
-" don't load netrw
-let loaded_netrwPlugin = 1
-
-" color
+filetype indent on
 syntax on
 colorscheme super
+let loaded_netrwPlugin = 1
 
 call plug#init()
 Plug 'junegunn/fzf'
@@ -172,7 +168,6 @@ vnoremap < <esc>`<i
 
 " insert line in normal mode
 nnoremap <m-return> o<esc>
-inoremap <silent> <m-return> <esc>mqa<return><esc>`qa<return>
 
 " go to document top / bot
 noremap ^ gg
