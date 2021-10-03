@@ -40,6 +40,10 @@ syntax on
 colorscheme dirty
 let loaded_netrwPlugin = 1
 
+" enable bar cursor on insert mode
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
 " local plugins
 call plug#init()
 call proj#init()
@@ -80,6 +84,9 @@ let g:ale_sign_error = '>'
 let g:ale_sign_warning = '*'
 let g:ale_sign_info = '?'
 let g:ale_set_highlights = 0
+let g:ale_c_cc_executable = 'clang'
+let g:ale_c_cc_options = '-std=99 -Wall'
+let g:ale_c_parse_makefile = 1
 
 let g:ale_linters = {
 	\ 'typescript': [ 'tsserver' ],
@@ -112,12 +119,15 @@ imapclear
 cmapclear
 tmapclear
 
-for k in split('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890`-=;,./~!@#$%^&*()_+{}:)', '\zs')
+for k in split('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0`-=;,./~!@#$%^&*()_+{}:)', '\zs')
 	exec 'map ' . k . ' <nop>'
 	exec 'map <c-' . k . '> <nop>'
 	exec 'map <m-' . k . '> <nop>'
+	exec 'imap <m-' . k . '> <nop>'
 	" enable esc+ as meta
-	exec "set <m-" . k . ">=\e" . k
+	if !has('nvim')
+		exec "set <m-" . k . ">=\e" . k
+	endif
 endfor
 
 map [ <nop>
@@ -130,16 +140,17 @@ map > <nop>
 map ? <nop>
 map <bs> <nop>
 map <cr> <nop>
-exec "set <m-'>=\e'"
-exec "set <m-return>=\e\<cr>"
-" TODO
-" exec "set <m-bs>=\e\<bs>"
+
+if !has('nvim')
+	exec "set <m-'>=\e'"
+	exec "set <m-return>=\e\<cr>"
+endif
 
 " movement
 noremap h h
+noremap l l
 noremap j gj
 noremap k gk
-noremap l l
 noremap <m-h> b
 noremap <m-l> e
 noremap <m-j> 5j
@@ -187,9 +198,7 @@ inoremap <m-p> <c-o>"*p
 nnoremap d "_dd
 vnoremap d "_d
 inoremap <m-bs> <c-w>
-inoremap <c-bs> <c-w>
 cnoremap <m-bs> <c-w>
-cnoremap <c-bs> <c-w>
 
 " search
 nnoremap ? /
@@ -282,4 +291,3 @@ call ft#comment('vim', '\"%s')
 call ft#comment('forth', '\\%s')
 call ft#comment('html', '<!--%s-->')
 call ft#comment('css', '/*%s*/')
-

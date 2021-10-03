@@ -112,8 +112,13 @@ call s:hi('SpellCap',          '',        '',        'NONE',      )
 call s:hi('SpellLocal',        '',        '',        'NONE',      )
 call s:hi('SpellRare',         '',        '',        'NONE',      )
 call s:hi('Statement',         s:magenta, '',        '',          )
-call s:hi('StatusLine',        s:bg5,     s:bg2,     '',          )
-call s:hi('StatusLineNC',      s:bg2,     s:bg5,     '',          )
+if has('nvim')
+call s:hi('StatusLine',        s:bg2,     s:black,   '',          )
+call s:hi('StatusLineNC',      s:black,   s:bg2,     '',          )
+else
+call s:hi('StatusLine',        s:black,   s:bg2,     '',          )
+call s:hi('StatusLineNC',      s:bg2,     s:black,   '',          )
+endif
 call s:hi('StorageClass',      s:yellow,  '',        '',          )
 call s:hi('String',            s:green,   '',        '',          )
 call s:hi('Structure',         s:magenta, '',        '',          )
@@ -144,9 +149,3 @@ call s:hi('ALEWarningSign',    s:yellow,  s:bg,      '',          )
 call s:hi('ALEInfoSign',       s:bg5,     s:bg,      '',          )
 
 hi Error NONE
-
-autocmd InsertEnter *
-	\ call s:hi('CursorLine',        '',        '#111111', s:bold,      )
-
-autocmd InsertLeave *
-	\ call s:hi('CursorLine',        '',        s:bg2,     '',      )

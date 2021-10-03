@@ -5,7 +5,7 @@ install:
 
 	@mkdir -p $(CONFIG)
 
-	@for f in mpv fish; do \
+	@for f in nvim mpv fish; do \
 		echo "$$f -> $(CONFIG)/$$f"; \
 		ln -sf $$(realpath $$f) $(CONFIG); \
 	done
