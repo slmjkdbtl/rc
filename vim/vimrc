@@ -227,10 +227,11 @@ nnoremap <silent> ' n
 " recording
 nnoremap <silent> @{ :nmap \ @}<cr>qq
 nnoremap <silent> @} q:nmap \ @{<cr>
-nnoremap <silent> @v q:let @q=':normal! gns'.@q<cr>:nmap \ @{<cr>
+nnoremap <silent> @v q:let @q='c'.@q<cr>:nmap \ @{<cr>
 nmap <silent> \ @{
 nnoremap <silent> , @q
 vnoremap <silent> <m-return> ""y:let @/=escape(@", '/\')<cr>:nmap \ @v<cr>qqgns
+nnoremap c gns
 
 " clear
 nnoremap <silent> r :noh<cr>:echo ''<cr>
