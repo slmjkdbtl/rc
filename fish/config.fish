@@ -3,13 +3,11 @@ set -x BROWSER open
 set -x PAGER less
 set -x GOPATH $HOME/.go
 set -x PATH $HOME/.local/bin $PATH
-set -x PATH $HOME/.scripts $PATH
 set -x PATH /opt/homebrew/bin $PATH
 set -x PATH /opt/homebrew/sbin $PATH
 set -x PATH /opt/homebrew/opt/llvm/bin $PATH
-set -x PATH /opt/homebrew/opt/openjdk/bin $PATH
 set -x PATH $HOME/.cargo/bin $PATH
-set -x PATH (go env GOPATH)/bin $PATH
+set -x PATH $GOPATH/bin $PATH
 set -x HOMEBREW_NO_AUTO_UPDATE 1
 set fish_greeting
 
