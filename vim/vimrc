@@ -119,18 +119,24 @@ let g:fzf_colors = {
 
 " disable defaults
 mapc
-imapc
-cmapc
-tmapc
+mapc!
 
-for k in split("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0`-=\\;',./~!@#$%^&*()_+{}:", '\zs')
+for k in split("qwertyuiopasdfghjklzxcvbnm1234567890`-=\\;',./", '\zs')
 	exec 'no ' . k . ' <nop>'
 	exec 'no <c-' . k . '> <nop>'
-	exec 'vno ' . k . ' <nop>'
+	exec 'no! <c-' . k . '> <nop>'
 	" enable esc+ as meta
-	if !has('nvim')
-		exec "set <m-" . k . ">=\e" . k
-	endif
+	exec 'map <esc>' . k . ' <m-' . k . '>'
+	exec 'map! <esc>' . k . ' <m-' . k . '>'
+endfor
+
+for k in split("QWERTYUIOPASDFGHJKLZXCVBNM0~!@#$%^&*()_+{}:\"", '\zs')
+	exec 'no ' . k . ' <nop>'
+endfor
+
+for k in split('cr bs tab')
+	exec 'map <esc><' . k . '> <m-' . k . '>'
+	exec 'map! <esc><' . k . '> <m-' . k . '>'
 endfor
 
 no [ <nop>
@@ -139,12 +145,11 @@ no " <nop>
 no < <nop>
 no > <nop>
 no ? <nop>
-no <cr> <nop>
-no <tab> <nop>
 
-if !has('nvim')
-	exec "set <m-return>=\e\<cr>"
-endif
+" enable num keys for repeeat
+for k in split('123456789', '\zs')
+	exec 'no ' . k . ' ' . k
+endfor
 
 " movement
 no h h
@@ -161,8 +166,8 @@ ino <silent> <up> <c-x><c-y>
 ino <silent> <down> <c-x><c-e>
 
 " enter insert
-nno <return> a
-vno <return> s
+nno <cr> a
+vno <cr> s
 nno > A
 nno < I
 vno > <esc>`>a
@@ -176,8 +181,8 @@ vno v <esc>
 nno <space> viw
 
 " insert line in normal mode
-nno <m-return> o<esc>
-ino <m-return> <esc>mqa<cr><esc>`qa<cr>
+nno <m-cr> o<esc>
+ino <m-cr> <esc>mqa<cr><esc>`qa<cr>
 
 " save
 nno <silent> w :silent! w<cr>
@@ -199,8 +204,6 @@ nno d "_dd
 vno d "_d
 ino <m-bs> <c-w>
 cno <m-bs> <c-w>
-ino <esc><bs> <c-w>
-cno <esc><bs> <c-w>
 
 " search
 nno ? :set hls<cr>/
@@ -214,7 +217,7 @@ nno <silent> @} q:nm \ @{<cr>
 nno <silent> @v q:let @q='c'.@q<cr>:nm \ @{<cr>
 nm <silent> \ @{
 nno <silent> , @q
-vno <silent> <m-return> ""y:let @/=escape(@", '/\')<cr>:nm \ @v<cr>qqgns
+vno <silent> <m-cr> ""y:let @/=escape(@", '/\')<cr>:nm \ @v<cr>qqgns
 nno c gns
 
 " clear
@@ -224,8 +227,10 @@ nno <silent> r :set nohls<cr>:echo ''<cr>
 no : :
 no . .
 no % %
+no! <cr> <cr>
 
 " indent
+ino <tab> <tab>
 vno <tab> >
 vno <bs> <
 
