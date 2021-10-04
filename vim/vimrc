@@ -201,8 +201,8 @@ ino <m-bs> <c-w>
 cno <m-bs> <c-w>
 
 " search
-nno ? /
-vno <silent> ? ""y:let @/=escape(@",'/\')<cr>:set hlsearch<cr>
+nno ? :set hls<cr>/
+vno <silent> ? ""y:let @/=escape(@",'/\')<cr>:set hls<cr>
 nno <silent> ; N
 nno <silent> ' n
 
@@ -216,13 +216,11 @@ vno <silent> <m-return> ""y:let @/=escape(@", '/\')<cr>:nm \ @v<cr>qqgns
 nno c gns
 
 " clear
-nno <silent> r :noh<cr>:echo ''<cr>
+nno <silent> r :set nohls<cr>:echo ''<cr>
 
-" command mode
+" command mode, repeat last, jump to match
 no : :
-" repeat last action
 no . .
-" jump to matching paren
 no % %
 
 " indent

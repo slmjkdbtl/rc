@@ -1,4 +1,4 @@
-let s:plugdir = fnamemodify($MYVIMRC, ':h') . '/pack/ext/start'
+let s:plugdir = get(g:, 'plugdir', fnamemodify($MYVIMRC, ':h') . '/pack/ext/start')
 let s:plugins = {}
 
 func! plug#add(repo)
@@ -61,7 +61,7 @@ func! plug#clean()
 		endif
 	endfor
 	if l:count == 0
-		redraw | echo 'no plugin needs to be removed'
+		redraw | echo 'no plugin needs to be cleaned'
 	else
 		redraw | echo 'removed ' . l:count . ' stale plugins'
 	endif
