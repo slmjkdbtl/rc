@@ -125,6 +125,7 @@ for k in split("qwertyuiopasdfghjklzxcvbnm1234567890`-=\\;',./", '\zs')
 	exec 'no ' . k . ' <nop>'
 	exec 'no <c-' . k . '> <nop>'
 	exec 'no! <c-' . k . '> <nop>'
+	exec 'no! <m-' . k . '> <nop>'
 	" enable esc+ as meta
 	exec 'map <esc>' . k . ' <m-' . k . '>'
 	exec 'map! <esc>' . k . ' <m-' . k . '>'
@@ -134,7 +135,9 @@ for k in split("QWERTYUIOPASDFGHJKLZXCVBNM0~!@#$%^&*()_+{}:\"", '\zs')
 	exec 'no ' . k . ' <nop>'
 endfor
 
-for k in split('cr bs tab')
+for k in split('cr bs tab left right up down')
+	exec 'no <' . k . '> <nop>'
+	exec 'no! <' . k . '> <nop>'
 	exec 'map <esc><' . k . '> <m-' . k . '>'
 	exec 'map! <esc><' . k . '> <m-' . k . '>'
 endfor
@@ -151,6 +154,10 @@ for k in split('123456789', '\zs')
 	exec 'no ' . k . ' ' . k
 endfor
 
+no! <cr> <cr>
+no! <bs> <bs>
+no! <tab> <tab>
+
 " movement
 no h h
 no l l
@@ -160,10 +167,26 @@ no <m-h> b
 no <m-l> e
 no <m-j> 5j
 no <m-k> 5k
+no <left> <left>
+no <right> <right>
+no <up> <up>
+no <down> <down>
+no <m-left> b
+no <m-right> e
+no <m-up> 5k
+no <m-down> 5j
+no! <left> <left>
+no! <right> <right>
+no! <m-h> <c-o>b
+no! <m-l> <c-o>w
+no! <m-left> <c-o>b
+no! <m-right> <c-o>w
+cno <m-left> <s-left>
+cno <m-right> <s-right>
 no ^ gg
 no $ G
-ino <silent> <up> <c-x><c-y>
-ino <silent> <down> <c-x><c-e>
+ino <up> <c-x><c-y>
+ino <down> <c-x><c-e>
 
 " enter insert
 nno <cr> a
@@ -230,7 +253,6 @@ no % %
 no! <cr> <cr>
 
 " indent
-ino <tab> <tab>
 vno <tab> >
 vno <bs> <
 
