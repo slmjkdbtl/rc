@@ -68,12 +68,12 @@ func! pair#bind()
 	for p in g:pairs
 		let ech1 = substitute(p[0], "'", "''", 'g')
 		let ech2 = substitute(p[1], "'", "''", 'g')
-		exec 'inoremap <silent> ' . p[0] . " <c-r>=pair#pair('" . ech1 . "', '" . ech2 . "')<cr>"
-		exec 'vnoremap <silent> ' . p[0] . ' <esc>`<i' . p[0] . '<esc>`>a<right>' . p[1] . '<esc>'
+		exec 'ino <silent> ' . p[0] . " <c-r>=pair#pair('" . ech1 . "', '" . ech2 . "')<cr>"
+		exec 'vno <silent> ' . p[0] . ' <esc>`<i' . p[0] . '<esc>`>a<right>' . p[1] . '<esc>'
 	endfor
 
-	inoremap <silent> <space> <c-r>=pair#space()<cr>
-	inoremap <silent> <return> <c-r>=pair#newline()<cr>
-	inoremap <silent> <bs> <c-r>=pair#del()<cr>
+	ino <silent> <space> <c-r>=pair#space()<cr>
+	ino <silent> <return> <c-r>=pair#newline()<cr>
+	ino <silent> <bs> <c-r>=pair#del()<cr>
 
 endfunc

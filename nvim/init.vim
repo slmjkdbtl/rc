@@ -1,3 +1,3 @@
-set runtimepath^=~/.vim
+set rtp^=~/.vim
 let &packpath=&runtimepath
-source ~/.vim/vimrc
+so ~/.vim/vimrc
