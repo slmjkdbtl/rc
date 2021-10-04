@@ -1,11 +1,11 @@
 func! ft#detect(pat, ft)
-	augroup FileTypeDetect
-		exec 'autocmd BufNewFile,BufRead ' . a:pat . ' ' . 'setl filetype=' . a:ft
-	augroup END
+	aug FileTypeDetect
+		exec 'au BufNewFile,BufRead ' . a:pat . ' ' . 'setl filetype=' . a:ft
+	aug END
 endfunc
 
 func! ft#comment(ft, comment)
-	augroup FileTypeComment
-		exec 'autocmd FileType ' . a:ft . ' ' . 'setl commentstring=' . a:comment
-	augroup END
+	aug FileTypeComment
+		exec 'au FileType ' . a:ft . ' ' . 'setl commentstring=' . a:comment
+	aug END
 endfunc

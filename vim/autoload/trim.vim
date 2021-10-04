@@ -5,9 +5,9 @@ func! trim#trim()
 endfunc
 
 func! trim#init()
-	augroup Trim
-		autocmd!
-		autocmd BufWritePre *
-					\ call trim#trim()
-	augroup END
+	aug Trim
+		au!
+		au BufWritePre *
+			\ call trim#trim()
+	aug END
 endfunc

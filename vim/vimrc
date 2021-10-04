@@ -50,7 +50,7 @@ call proj#init()
 call browse#init()
 call trim#init()
 call comment#init()
-call open#init()
+call utils#init()
 call bufline#init()
 call statline#init()
 
@@ -114,32 +114,32 @@ let g:fzf_colors = {
 \ }
 
 " disable defaults
-mapclear
-imapclear
-cmapclear
-tmapclear
+mapc
+imapc
+cmapc
+tmapc
 
 for k in split('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0`-=;,./~!@#$%^&*()_+{}:)', '\zs')
-	exec 'map ' . k . ' <nop>'
-	exec 'map <c-' . k . '> <nop>'
-	exec 'map <m-' . k . '> <nop>'
-	exec 'imap <m-' . k . '> <nop>'
+	exec 'no ' . k . ' <nop>'
+	exec 'no <c-' . k . '> <nop>'
+	exec 'no <m-' . k . '> <nop>'
+	exec 'ino <m-' . k . '> <nop>'
 	" enable esc+ as meta
 	if !has('nvim')
 		exec "set <m-" . k . ">=\e" . k
 	endif
 endfor
 
-map [ <nop>
-map ] <nop>
-map \ <nop>
-map ' <nop>
-map " <nop>
-map < <nop>
-map > <nop>
-map ? <nop>
-map <bs> <nop>
-map <cr> <nop>
+no [ <nop>
+no ] <nop>
+no \ <nop>
+no ' <nop>
+no " <nop>
+no < <nop>
+no > <nop>
+no ? <nop>
+no <bs> <nop>
+no <cr> <nop>
 
 if !has('nvim')
 	exec "set <m-'>=\e'"
@@ -147,119 +147,119 @@ if !has('nvim')
 endif
 
 " movement
-noremap h h
-noremap l l
-noremap j gj
-noremap k gk
-noremap <m-h> b
-noremap <m-l> e
-noremap <m-j> 5j
-noremap <m-k> 5k
-noremap ^ gg
-noremap $ G
-inoremap <silent> <up> <c-x><c-y>
-inoremap <silent> <down> <c-x><c-e>
+no h h
+no l l
+no j gj
+no k gk
+no <m-h> b
+no <m-l> e
+no <m-j> 5j
+no <m-k> 5k
+no ^ gg
+no $ G
+ino <silent> <up> <c-x><c-y>
+ino <silent> <down> <c-x><c-e>
 
 " enter insert
-nnoremap <return> a
-vnoremap <return> s
-nnoremap > A
-nnoremap < I
-vnoremap > <esc>`>a
-vnoremap < <esc>`<i
+nno <return> a
+vno <return> s
+nno > A
+nno < I
+vno > <esc>`>a
+vno < <esc>`<i
 
 " select
-nnoremap v V
-nnoremap <m-v> v
-vnoremap <space> <esc>
-vnoremap v <esc>
-nnoremap <space> viw
+nno v V
+nno <m-v> v
+vno <space> <esc>
+vno v <esc>
+nno <space> viw
 
 " insert line in normal mode
-nnoremap <m-return> o<esc>
-inoremap <m-return> <esc>mqa<cr><esc>`qa<cr>
+nno <m-return> o<esc>
+ino <m-return> <esc>mqa<cr><esc>`qa<cr>
 
 " save
-nnoremap <silent> w :silent! w<cr>
+nno <silent> w :silent! w<cr>
 
 " undo & redo
-nnoremap <silent> u u
-nnoremap <silent> o <c-r>
+nno <silent> u u
+nno <silent> o <c-r>
 
 " copy, cut & paste
-nnoremap y "*yy
-vnoremap y ma"*y`a
-nnoremap x "*dd
-vnoremap x "*d
-noremap p "*P
-inoremap <m-p> <c-o>"*p
+nno y "*yy
+vno y ma"*y`a
+nno x "*dd
+vno x "*d
+no p "*P
+ino <m-p> <c-o>"*P
 
 " delete
-nnoremap d "_dd
-vnoremap d "_d
-inoremap <m-bs> <c-w>
-cnoremap <m-bs> <c-w>
+nno d "_dd
+vno d "_d
+ino <m-bs> <c-w>
+cno <m-bs> <c-w>
 
 " search
-nnoremap ? /
-vnoremap <silent> ? ""y:let @/=escape(@",'/\')<cr>:set hlsearch<cr>
-nnoremap <silent> ; N
-nnoremap <silent> ' n
+nno ? /
+vno <silent> ? ""y:let @/=escape(@",'/\')<cr>:set hlsearch<cr>
+nno <silent> ; N
+nno <silent> ' n
 
 " record & playback
-nnoremap <silent> @{ :nmap \ @}<cr>qq
-nnoremap <silent> @} q:nmap \ @{<cr>
-nnoremap <silent> @v q:let @q='c'.@q<cr>:nmap \ @{<cr>
-nmap <silent> \ @{
-nnoremap <silent> , @q
-vnoremap <silent> <m-return> ""y:let @/=escape(@", '/\')<cr>:nmap \ @v<cr>qqgns
-nnoremap c gns
+nno <silent> @{ :nm \ @}<cr>qq
+nno <silent> @} q:nm \ @{<cr>
+nno <silent> @v q:let @q='c'.@q<cr>:nm \ @{<cr>
+nm <silent> \ @{
+nno <silent> , @q
+vno <silent> <m-return> ""y:let @/=escape(@", '/\')<cr>:nm \ @v<cr>qqgns
+nno c gns
 
 " clear
-nnoremap <silent> r :noh<cr>:echo ''<cr>
+nno <silent> r :noh<cr>:echo ''<cr>
 
 " command mode
-nnoremap : :
+no : :
 " repeat last action
-nnoremap . .
+no . .
 " jump to matching paren
-noremap % %
+no % %
 
 " indent
-vnoremap <tab> >
-vnoremap <bs> <
+vno <tab> >
+vno <bs> <
 
 " buffer nav
-nnoremap <silent> - :bprev<cr>
-nnoremap <silent> = :bnext<cr>
-nnoremap <silent> <m-q> :bprev<cr>
-nnoremap <silent> <m-e> :bnext<cr>
-nnoremap <silent> <m-w> :bwipe<cr>
+nno <silent> - :bp<cr>
+nno <silent> = :bn<cr>
+nno <silent> <m-q> :bp<cr>
+nno <silent> <m-e> :bn<cr>
+nno <silent> <m-w> :bd<cr>
 
 " open outside
-nnoremap <silent> <m--> :OpenIterm<cr>
-nnoremap <silent> <m-=> :OpenFinder<cr>
+nno <silent> <m--> :OpenIterm<cr>
+nno <silent> <m-=> :OpenFinder<cr>
 
 " jump to proj
-nnoremap z :Proj<space>
+nno z :Proj<space>
 
 " browse
-nnoremap <silent> <tab> :BrowseToggle<cr>
+nno <silent> <tab> :BrowseToggle<cr>
 
 " comment
-noremap <silent> / :CommentToggle<cr>
+no <silent> / :CommentToggle<cr>
 
 " ale
-nnoremap <silent> <m-n> :ALEPrevious<cr>
-nnoremap <silent> <m-m> :ALENext<cr>
-nnoremap <silent> <m-b> :ALEDetail<cr>
-nnoremap <silent> <m-i> :ALEHover<cr>
-nnoremap <silent> <m-o> :ALEGoToDefinition<cr>
-nnoremap <silent> <m-p> :ALEFindReferences<cr>
+nno <silent> <m-n> :ALEPrevious<cr>
+nno <silent> <m-m> :ALENext<cr>
+nno <silent> <m-b> :ALEDetail<cr>
+nno <silent> <m-i> :ALEHover<cr>
+nno <silent> <m-o> :ALEGoToDefinition<cr>
+nno <silent> <m-p> :ALEFindReferences<cr>
 
 " fzf
-nnoremap <silent> <m-g> :Rg<cr>
-nnoremap <silent> <m-f> :Files<cr>
+nno <silent> <m-g> :Rg<cr>
+nno <silent> <m-f> :Files<cr>
 
 " bind all pair keys
 call pair#bind()

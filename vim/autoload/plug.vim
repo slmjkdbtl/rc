@@ -68,12 +68,8 @@ func! plug#clean()
 endfunc
 
 func! plug#init()
-	command! -nargs=1 Plug
-		\ call plug#add(<args>)
-	command! -nargs=0 PlugInstall
-		\ call plug#install()
-	command! -nargs=0 PlugUpdate
-		\ call plug#update()
-	command! -nargs=0 PlugClean
-		\ call plug#clean()
+	com! -nargs=1 Plug call plug#add(<args>)
+	com! -nargs=0 PlugInstall call plug#install()
+	com! -nargs=0 PlugUpdate call plug#update()
+	com! -nargs=0 PlugClean call plug#clean()
 endfunc

@@ -50,10 +50,7 @@ func! comment#toggle()
 endfunc
 
 func! comment#init()
-	command! -range CommentToggle
-		\ <line1>,<line2>call comment#toggle()
-	command! -range Comment
-		\ <line1>,<line2>call comment#comment()
-	command! -range Uncomment
-		\ <line1>,<line2>call comment#uncomment()
+	com! -range CommentToggle <line1>,<line2>call comment#toggle()
+	com! -range Comment <line1>,<line2>call comment#comment()
+	com! -range Uncomment <line1>,<line2>call comment#uncomment()
 endfunc

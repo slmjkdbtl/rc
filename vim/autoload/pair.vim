@@ -6,6 +6,12 @@ let g:pairs = get(g:, 'pairs', [
 	\ ['[', ']'],
 \ ])
 
+let g:listpairs = get(g:, 'listpairs', [
+	\ ['(', ')'],
+	\ ['{', '}'],
+	\ ['[', ']'],
+\ ])
+
 func! pair#pair(ch1, ch2)
 
 	let line = getline('.')
@@ -21,12 +27,12 @@ func! pair#pair(ch1, ch2)
 
 endfunc
 
-func! s:inpair()
+func! s:inpair(list)
 
 	let line = getline('.')
 	let pos = col('.') - 1
 
-	for w in g:pairs
+	for w in a:list
 		if line[pos - 1 : pos] == w[0] . w[1]
 			return 1
 		endif
@@ -37,24 +43,24 @@ func! s:inpair()
 endfunc
 
 func! pair#del()
-	if s:inpair()
+	if s:inpair(g:pairs)
 		return "\<bs>\<del>"
 	endif
 	return "\<bs>"
 endfunc
 
-func! pair#space()
-	if s:inpair()
-		return "\<space>\<space>\<left>"
-	endif
-	return "\<space>"
-endfunc
-
 func! pair#newline()
-	if s:inpair()
+	if s:inpair(g:pairs)
 		return "\<esc>mqa\<return>\<esc>`qa\<return>"
 	endif
 	return "\<return>"
+endfunc
+
+func! pair#space()
+	if s:inpair(g:listpairs)
+		return "\<space>\<space>\<left>"
+	endif
+	return "\<space>"
 endfunc
 
 func! pair#bind()

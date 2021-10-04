@@ -1,34 +1,23 @@
 func! browse#init()
 
-	command! -nargs=0 Browse
-				\ call browse#open()
-	command! -nargs=0 BrowseExit
-				\ call browse#exit()
-	command! -nargs=0 BrowseToggle
-				\ call browse#toggle()
+	com! -nargs=0 Browse call browse#open()
+	com! -nargs=0 BrowseExit call browse#exit()
+	com! -nargs=0 BrowseToggle call browse#toggle()
 
-	noremap <silent> <plug>(browse_open)
-				\ :call browse#open()<cr>
-	noremap <silent> <plug>(browse_exit)
-				\ :call browse#exit()<cr>
-	noremap <silent> <plug>(browse_enter)
-				\ :call browse#enter()<cr>
-	noremap <silent> <plug>(browse_back)
-				\ :call browse#back()<cr>
-	noremap <silent> <plug>(browse_copypath)
-				\ :call browse#copypath()<cr>
-	noremap <silent> <plug>(browse_refresh)
-				\ :call browse#refresh(line('.'))<cr>
-	noremap <silent> <plug>(browse_up)
-				\ k
-	noremap <silent> <plug>(browse_down)
-				\ j
+	no <silent> <plug>(browse_open) :call browse#open()<cr>
+	no <silent> <plug>(browse_exit) :call browse#exit()<cr>
+	no <silent> <plug>(browse_enter) :call browse#enter()<cr>
+	no <silent> <plug>(browse_back) :call browse#back()<cr>
+	no <silent> <plug>(browse_copypath) :call browse#copypath()<cr>
+	no <silent> <plug>(browse_refresh) :call browse#refresh(line('.'))<cr>
+	no <silent> <plug>(browse_up) k
+	no <silent> <plug>(browse_down) j
 
-	augroup Browse
-		autocmd!
-		autocmd BufEnter *
+	aug Browse
+		au!
+		au BufEnter *
 			\ call browse#onenter()
-	augroup END
+	aug END
 
 endfunc
 
@@ -112,7 +101,7 @@ func! browse#onenter()
 	else
 		if isdirectory(name)
 			exec 'lcd ' . name
-			bwipe
+			bd
 			call browse#open()
 		elseif filereadable(name)
 			exec 'lcd ' . expand('%:p:h')
@@ -122,7 +111,7 @@ endfunc
 
 func! browse#exit()
 	if browse#active()
-		bwipe
+		bd
 	endif
 endfunc
 
