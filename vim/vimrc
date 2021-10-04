@@ -123,7 +123,7 @@ imapc
 cmapc
 tmapc
 
-for k in split("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0`-=\\;',./~!@#$%^&*()_+{}:?", '\zs')
+for k in split("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0`-=\\;',./~!@#$%^&*()_+{}:", '\zs')
 	exec 'no ' . k . ' <nop>'
 	exec 'no <c-' . k . '> <nop>'
 	exec 'vno ' . k . ' <nop>'
