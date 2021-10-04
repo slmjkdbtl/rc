@@ -50,6 +50,7 @@ call proj#init()
 call browse#init()
 call trim#init()
 call comment#init()
+call toggle#init()
 call utils#init()
 call bufline#init()
 call statline#init()
@@ -117,42 +118,8 @@ let g:fzf_colors = {
 	\ 'preview-fg': ['bg', 'DirtyBG5'],
 \ }
 
-" unmap normal keys and enable esc as meta
-for k in split("qwertyuiopasdfghjklzxcvbnm1234567890`-=\\;',./", '\zs')
-	exec 'no ' . k . ' <nop>'
-	exec 'no <c-' . k . '> <nop>'
-	exec 'no! <c-' . k . '> <nop>'
-	exec 'no! <m-' . k . '> <nop>'
-	exec 'map <esc>' . k . ' <m-' . k . '>'
-	exec 'map! <esc>' . k . ' <m-' . k . '>'
-endfor
-
-" unmap shift+ keys
-for k in split("QWERTYUIOPASDFGHJKLZXCVBNM0~!@#$%^&*()_+{}:\"", '\zs')
-	exec 'no ' . k . ' <nop>'
-endfor
-
-" unmap f keys
-for k in split('1 2 3 4 5 6 7 8 9 10 11 12')
-	exec 'no <f' . k . '> <nop>'
-	exec 'no! <f' . k . '> <nop>'
-endfor
-
-" unmap special keys and enable esc as meta
-for k in split('cr bs tab left right up down')
-	exec 'no <' . k . '> <nop>'
-	exec 'no! <' . k . '> <nop>'
-	exec 'map <esc><' . k . '> <m-' . k . '>'
-	exec 'map! <esc><' . k . '> <m-' . k . '>'
-endfor
-
-" unmap some remainings
-no [ <nop>
-no ] <nop>
-no " <nop>
-no < <nop>
-no > <nop>
-no ? <nop>
+call keys#unmap()
+call keys#esc2meta()
 
 " enable num keys for repeeat
 for k in split('123456789', '\zs')
@@ -186,6 +153,8 @@ no! <m-h> <c-o>b
 no! <m-l> <c-o>w
 no! <m-left> <c-o>b
 no! <m-right> <c-o>w
+cno <up> <up>
+cno <down> <down>
 cno <m-left> <s-left>
 cno <m-right> <s-right>
 no ^ gg
@@ -261,19 +230,19 @@ no! <cr> <cr>
 vno <tab> >
 vno <bs> <
 
-" toggle settings with f keys
-no <f1> :set invhlsearch<cr>
-no <f2> :set invexpandtab<cr>
-no <f3> :set invwrap<cr>
-no <f4> :set invnumber<cr>
-no <f5> :set invspell<cr>
-
 " buffer nav
 nno <silent> - :bp<cr>
 nno <silent> = :bn<cr>
 nno <silent> <m-q> :bp<cr>
 nno <silent> <m-e> :bn<cr>
 nno <silent> <m-w> :bd<cr>
+
+" toggle settings with f keys
+no <silent> <f1> :Toggle hlsearch<cr>
+no <silent> <f2> :Toggle expandtab<cr>
+no <silent> <f3> :Toggle wrap<cr>
+no <silent> <f4> :Toggle number<cr>
+no <silent> <f5> :Toggle spell<cr>
 
 " open outside
 nno <silent> <m--> :OpenIterm<cr>

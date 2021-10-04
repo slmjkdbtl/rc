@@ -1,7 +1,7 @@
 let g:proj_file = get(g:, 'proj_file', '~/.proj')
 
 func! proj#init()
-	com! -nargs=1 Proj call proj#go(<q-args>)
+	com! -nargs=1 Proj call proj#go(<f-args>)
 	com! -nargs=0 ProjEdit call proj#edit()
 endfunc
 

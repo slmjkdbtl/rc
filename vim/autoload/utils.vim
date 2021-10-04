@@ -13,7 +13,7 @@ if s:trashdir ==# ''
 endif
 
 func! utils#init()
-	com! -nargs=1 Rename call utils#rename(<q-args>)
+	com! -nargs=1 Rename call utils#rename(<f-args>)
 	com! -nargs=0 Trash call utils#trash()
 	com! -nargs=0 OpenIterm call utils#openiterm()
 	com! -nargs=0 OpenFinder call utils#openfinder()

@@ -23,6 +23,10 @@ endfunc
 
 func! browse#open()
 
+	if browse#active()
+		return
+	endif
+
 	let curbuf = expand('%:p')
 
 	noa enew
@@ -279,4 +283,5 @@ func! s:bind()
 	map <buffer><silent> <return> :call browse#enter()<cr>
 	map <buffer><silent> <bs> :call browse#back()<cr>
 	map <buffer><silent> y :call browse#copypath()<cr>
+	map <buffer><silent> r :call browse#refresh(line('.'))<cr>
 endfunc
