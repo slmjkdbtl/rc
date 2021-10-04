@@ -249,7 +249,7 @@ vno <silent> <m-cr> ""y:let @/=escape(@", '/\')<cr>:nm \ @v<cr>qqgns
 nno c gns
 
 " clear
-nno <silent> r :set nohls<cr>:echo ''<cr>
+nno <silent> <esc> :set nohls<cr>:echo ''<cr>
 
 " command mode, repeat last, jump to match
 no : :
