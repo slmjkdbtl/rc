@@ -117,24 +117,28 @@ let g:fzf_colors = {
 	\ 'preview-fg': ['bg', 'DirtyBG5'],
 \ }
 
-" disable defaults
-mapc
-mapc!
-
+" unmap normal keys and enable esc as meta
 for k in split("qwertyuiopasdfghjklzxcvbnm1234567890`-=\\;',./", '\zs')
 	exec 'no ' . k . ' <nop>'
 	exec 'no <c-' . k . '> <nop>'
 	exec 'no! <c-' . k . '> <nop>'
 	exec 'no! <m-' . k . '> <nop>'
-	" enable esc+ as meta
 	exec 'map <esc>' . k . ' <m-' . k . '>'
 	exec 'map! <esc>' . k . ' <m-' . k . '>'
 endfor
 
+" unmap shift+ keys
 for k in split("QWERTYUIOPASDFGHJKLZXCVBNM0~!@#$%^&*()_+{}:\"", '\zs')
 	exec 'no ' . k . ' <nop>'
 endfor
 
+" unmap f keys
+for k in split('1 2 3 4 5 6 7 8 9 10 11 12')
+	exec 'no <f' . k . '> <nop>'
+	exec 'no! <f' . k . '> <nop>'
+endfor
+
+" unmap special keys and enable esc as meta
 for k in split('cr bs tab left right up down')
 	exec 'no <' . k . '> <nop>'
 	exec 'no! <' . k . '> <nop>'
@@ -142,6 +146,7 @@ for k in split('cr bs tab left right up down')
 	exec 'map! <esc><' . k . '> <m-' . k . '>'
 endfor
 
+" unmap some remainings
 no [ <nop>
 no ] <nop>
 no " <nop>
@@ -255,6 +260,13 @@ no! <cr> <cr>
 " indent
 vno <tab> >
 vno <bs> <
+
+" toggle settings with f keys
+no <f1> :set invhlsearch<cr>
+no <f2> :set invexpandtab<cr>
+no <f3> :set invwrap<cr>
+no <f4> :set invnumber<cr>
+no <f5> :set invspell<cr>
 
 " buffer nav
 nno <silent> - :bp<cr>
