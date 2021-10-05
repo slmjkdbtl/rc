@@ -83,22 +83,36 @@ let g:signify_sign_change = '~'
 let g:signify_sign_changedelete = g:signify_sign_change
 
 " ale
-let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_filetype_changed = 1
+let g:ale_echo_msg_format = '%s'
 let g:ale_sign_error = '>'
 let g:ale_sign_warning = '*'
 let g:ale_sign_info = '?'
 let g:ale_set_highlights = 0
-let g:ale_c_cc_executable = 'clang'
-let g:ale_c_cc_options = '-std=99 -Wall'
-let g:ale_c_parse_makefile = 1
 let g:ale_hover_cursor = 0
 let g:ale_floating_preview = 1
+let g:ale_linters_explicit = 1
 let g:ale_floating_window_border = ['|', '-', ' ', ' ', ' ', ' ']
+let g:ale_c_parse_makefile = 1
+
+let g:ale_fixers = {
+	\ 'javascript': [ 'prettier', 'eslint', ],
+	\ 'typescript': [ 'prettier', 'eslint', ],
+	\ 'typescriptreact': [ 'prettier', 'eslint', ],
+\ }
 
 let g:ale_linters = {
-	\ 'typescript': [ 'tsserver' ],
-	\ 'rust': [ 'analyzer' ],
+	\ 'c': [ 'clangd', ],
+	\ 'rust': [ 'analyzer', ],
+	\ 'go': [ 'gopls', ],
+	\ 'vim': [ 'vint', ],
+	\ 'javascript': [ 'eslint', ],
+	\ 'typescript': [ 'tsserver', 'eslint', ],
+	\ 'typescriptreact': [ 'tsserver', 'eslint', ],
 \ }
 
 " fzf
