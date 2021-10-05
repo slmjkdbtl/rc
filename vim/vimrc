@@ -247,7 +247,7 @@ no <silent> <f4> :Toggle number<cr>
 no <silent> <f5> :Toggle spell<cr>
 
 " open outside
-nno <silent> <m--> :OpenIterm<cr>
+nno <silent> <m--> :OpenWezTerm<cr>
 nno <silent> <m-=> :OpenFinder<cr>
 
 " scroll wheel

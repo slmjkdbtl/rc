@@ -15,8 +15,8 @@ endif
 func! utils#init()
 	com! -nargs=1 Rename call utils#rename(<f-args>)
 	com! -nargs=0 Trash call utils#trash()
-	com! -nargs=0 OpenIterm call utils#openiterm()
-	com! -nargs=0 OpenFinder call utils#openfinder()
+	com! -nargs=0 OpenWezTerm call utils#open_wezterm()
+	com! -nargs=0 OpenFinder call utils#open_finder()
 endfunc
 
 func! utils#rename(newname)
@@ -60,10 +60,10 @@ func! utils#trash()
 
 endfunc
 
-func! utils#openfinder()
+func! utils#open_finder()
 	call system('open .')
 endfunc
 
-func! utils#openiterm()
-	call system('wezterm cli --no-auto-start spawn --cwd ' . escape(getcwd(), ' '))
+func! utils#open_wezterm()
+	call system('wezterm cli spawn --cwd ' . escape(getcwd(), ' '))
 endfunc

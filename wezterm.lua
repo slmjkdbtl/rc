@@ -37,7 +37,7 @@ return {
 	},
 	bold_brightens_ansi_colors = false,
 	keys = {
-		{ key = "Enter", mods = "ALT", action = "Nop" },
+		{ key = "Enter", mods = "ALT", action = "DisableDefaultAssignment" },
 		{ key = "Enter", mods = "SUPER", action = "ToggleFullScreen" },
 	}
 }
