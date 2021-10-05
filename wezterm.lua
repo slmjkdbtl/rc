@@ -3,6 +3,8 @@ local wezterm = require("wezterm")
 return {
 	font = wezterm.font("APL386 Unicode"),
 	font_size = 20,
+	initial_cols = 96,
+	initial_rows = 30,
 	window_padding = {
 		left = 16,
 		right = 16,
@@ -36,8 +38,13 @@ return {
 		},
 	},
 	bold_brightens_ansi_colors = false,
+	adjust_window_size_when_changing_font_size = false,
 	keys = {
 		{ key = "Enter", mods = "ALT", action = "DisableDefaultAssignment" },
 		{ key = "Enter", mods = "SUPER", action = "ToggleFullScreen" },
-	}
+		{ key = "LeftArrow", mods = "SUPER", action = wezterm.action { ActivateTabRelative = -1 } },
+		{ key = "RightArrow", mods = "SUPER", action = wezterm.action { ActivateTabRelative = 1 } },
+		{ key = "LeftArrow", mods = "SUPER|SHIFT", action = wezterm.action { MoveTabRelative = -1 } },
+		{ key = "RightArrow", mods = "SUPER|SHIFT", action = wezterm.action { MoveTabRelative = 1 } },
+	},
 }
