@@ -44,7 +44,7 @@ func! keys#esc2meta()
 		exec 'map! <esc>' . k . ' <m-' . k . '>'
 	endfor
 
-	for k in split('cr bs tab left right up down')
+	for k in split('cr bs tab left right up down ScrollWheelUp ScrollWheelDown')
 		exec 'map <esc><' . k . '> <m-' . k . '>'
 		exec 'map! <esc><' . k . '> <m-' . k . '>'
 	endfor

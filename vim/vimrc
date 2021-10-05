@@ -137,18 +137,18 @@ no j gj
 no k gk
 no <m-h> b
 no <m-l> e
-no <m-j> 5j
-no <m-k> 5k
+no <m-j> 5gj
+no <m-k> 5gk
 no <left> <left>
 no <right> <right>
 no <up> <up>
 no <down> <down>
 no <m-left> b
 no <m-right> e
-no <m-up> 5k
-no <m-down> 5j
-no <s-up> 5k
-no <s-down> 5j
+no <m-up> 5gk
+no <m-down> 5gj
+no <s-up> 5gk
+no <s-down> 5gj
 no! <left> <left>
 no! <right> <right>
 no! <m-h> <c-o>b
@@ -253,13 +253,13 @@ no <silent> <f5> :Toggle spell<cr>
 nno <silent> <m--> :OpenWezTerm<cr>
 nno <silent> <m-=> :OpenFinder<cr>
 
-" scroll wheel
-no <ScrollWheelUp> k
-no <ScrollWheelDown> j
-ino <ScrollWheelUp> <c-x><c-y>
-ino <ScrollWheelDown> <c-x><c-e>
-cno <ScrollWheelUp> <up>
-cno <ScrollWheelDown> <down>
+" scroll wheel to arrow
+map <ScrollWheelUp> <up>
+map <ScrollWheelDown> <down>
+map <m-ScrollWheelUp> <m-up>
+map <m-ScrollWheelDown> <m-down>
+map! <ScrollWheelUp> <up>
+map! <ScrollWheelDown> <down>
 
 " jump to proj
 nno z :Proj<space>
