@@ -4,7 +4,7 @@ func! toggle#init()
 endfunc
 
 func! toggle#toggle(prop)
-	exec 'set inv' . a:prop
+	exec 'setl inv' . a:prop
 	exec 'echo "' . a:prop . '" &' . a:prop
 endfunc
 

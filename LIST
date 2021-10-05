@@ -54,6 +54,9 @@ CLI
   gifsicle
     http://www.lcdf.org/gifsicle/
 
+  ocr
+    https://github.com/schappim/macOCR
+
   tesseract
     https://github.com/tesseract-ocr/tesseract/
 

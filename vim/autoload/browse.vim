@@ -105,7 +105,7 @@ func! browse#onenter()
 	else
 		if isdirectory(name)
 			exec 'lcd ' . name
-			bd
+			bw
 			call browse#open()
 		elseif filereadable(name)
 			exec 'lcd ' . expand('%:p:h')
@@ -115,7 +115,7 @@ endfunc
 
 func! browse#exit()
 	if browse#active()
-		bd
+		bw
 	endif
 endfunc
 
