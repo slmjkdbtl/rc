@@ -147,6 +147,8 @@ no <m-left> b
 no <m-right> e
 no <m-up> 5k
 no <m-down> 5j
+no <s-up> 5k
+no <s-down> 5j
 no! <left> <left>
 no! <right> <right>
 no! <m-h> <c-o>b
@@ -247,6 +249,10 @@ no <silent> <f5> :Toggle spell<cr>
 " open outside
 nno <silent> <m--> :OpenIterm<cr>
 nno <silent> <m-=> :OpenFinder<cr>
+
+" scroll wheel
+no <ScrollWheelUp> 5k
+no <ScrollWheelDown> 5j
 
 " jump to proj
 nno z :Proj<space>

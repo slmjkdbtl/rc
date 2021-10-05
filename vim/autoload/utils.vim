@@ -65,5 +65,5 @@ func! utils#openfinder()
 endfunc
 
 func! utils#openiterm()
-	call system('open -a iTerm ' . escape(getcwd(), ' '))
+	call system('wezterm cli --no-auto-start spawn --cwd ' . escape(getcwd(), ' '))
 endfunc
