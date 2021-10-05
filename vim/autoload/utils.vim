@@ -15,6 +15,7 @@ endif
 func! utils#init()
 	com! -nargs=1 Rename call utils#rename(<f-args>)
 	com! -nargs=0 Trash call utils#trash()
+	com! -nargs=1 Retab call utils#retab(<f-args>)
 	com! -nargs=0 OpenWezTerm call utils#open_wezterm()
 	com! -nargs=0 OpenFinder call utils#open_finder()
 endfunc
@@ -58,6 +59,12 @@ func! utils#trash()
 		call system('mv ' . path . ' ' . s:trashdir)
 	endif
 
+endfunc
+
+func! utils#retab(n)
+	let orig_ts = &ts
+	exec 'retab! ' . a:n
+	let &ts = orig_ts
 endfunc
 
 func! utils#open_finder()
