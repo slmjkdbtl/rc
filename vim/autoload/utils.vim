@@ -16,6 +16,7 @@ func! utils#init()
 	com! -nargs=1 Rename call utils#rename(<f-args>)
 	com! -nargs=0 Trash call utils#trash()
 	com! -nargs=1 Retab call utils#retab(<f-args>)
+	com! -nargs=1 GShow call utils#gshow(<f-args>)
 	com! -nargs=0 OpenWezTerm call utils#open_wezterm()
 	com! -nargs=0 OpenFinder call utils#open_finder()
 endfunc
@@ -62,9 +63,21 @@ func! utils#trash()
 endfunc
 
 func! utils#retab(n)
-	let orig_ts = &ts
+	let orig_ts = &tabstop
 	exec 'retab! ' . a:n
-	let &ts = orig_ts
+	let &tabstop = orig_ts
+endfunc
+
+func! utils#gshow(n)
+	let name = expand('%:t')
+	let dir = expand('%:h')
+	let tmpfile = tempname()
+	let ft = &filetype
+	let content = system('cd ' . dir . ' && git show HEAD~' . a:n . ':./' . name . ' > ' . tmpfile)
+	exec 'edit ' . tmpfile
+	exec 'setf ' . ft
+	silent! exec 'file ' . name . '~' . a:n
+	redraw | echo ''
 endfunc
 
 func! utils#open_finder()
