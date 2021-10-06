@@ -63,7 +63,7 @@ endfunc
 
 func! s:get_status_modified(bufn)
 	if getbufvar(a:bufn, '&modified')
-		return '%#StatusLine#[~]'
+		return '%#StatusLine#[*]'
 	else
 		return ''
 	endif

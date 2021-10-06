@@ -15,7 +15,7 @@ func! bufline#get()
 		let line .= fnamemodify(b.name, ':t')
 
 		if b.changed
-			let line .= ' [~]'
+			let line .= ' [*]'
 		endif
 
 		let line .= ' '

@@ -76,7 +76,7 @@ func! utils#gshow(n)
 	let content = system('cd ' . dir . ' && git show HEAD~' . a:n . ':./' . name . ' > ' . tmpfile)
 	exec 'edit ' . tmpfile
 	exec 'setf ' . ft
-	silent! exec 'file ' . name . '~' . a:n
+	exec 'file ' . name . ' [~' . a:n . ']'
 	redraw | echo ''
 endfunc
 
