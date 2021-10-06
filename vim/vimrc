@@ -67,7 +67,6 @@ Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'leafgarland/typescript-vim'
 Plug 'dag/vim-fish'
-Plug 'fatih/vim-go'
 Plug 'LnL7/vim-nix'
 Plug 'tikhomirov/vim-glsl'
 Plug 'jdonaldson/vaxe'
@@ -137,6 +136,7 @@ let g:fzf_colors = {
 
 call keys#unmap()
 call keys#esc2meta()
+call keys#ctrl2meta()
 
 " enable num keys for repeeat
 for k in split('123456789', '\zs')

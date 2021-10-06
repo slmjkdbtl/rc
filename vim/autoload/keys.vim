@@ -50,3 +50,18 @@ func! keys#esc2meta()
 	endfor
 
 endfunc
+
+" translate ctrl keys to meta key
+func! keys#ctrl2meta()
+
+	for k in split("qwertyuiopasdfghjklzxcvbnm1234567890`-=\\;',./", '\zs')
+		exec 'map <c-' . k . '> <m-' . k . '>'
+		exec 'map! <c-' . k . '> <m-' . k . '>'
+	endfor
+
+	for k in split('cr bs tab left right up down ScrollWheelUp ScrollWheelDown')
+		exec 'map <c-' . k . '> <m-' . k . '>'
+		exec 'map! <c-' . k . '> <m-' . k . '>'
+	endfor
+
+endfunc
