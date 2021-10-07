@@ -27,7 +27,7 @@ set showbreak=..
 set breakindent
 set autoread
 set hidden
-set clipboard=unnamed
+set clipboard=unnamed,unnamedplus
 set belloff=all
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
 set wildignore=.git,.svn,.cache,.tmp,.tup
