@@ -72,15 +72,15 @@ func! utils#requote()
 	:s/\'\(.*\)\'/\"\1\"
 endfunc
 
-func! utils#gshow(n)
+func! utils#gshow(tag)
 	let name = expand('%:t')
 	let dir = expand('%:h')
 	let tmpfile = tempname()
 	let ft = &filetype
-	let content = system('cd ' . dir . ' && git show HEAD~' . a:n . ':./' . name . ' > ' . tmpfile)
-	exec 'edit ' . tmpfile
+	let content = system('cd ' . dir . ' && git show ' . a:tag . ':./' . name . ' > ' . tmpfile)
+	exec 'view ' . tmpfile
 	exec 'setf ' . ft
-	exec 'file ' . name . ' [~' . a:n . ']'
+	exec 'file ' . name . ' [' . a:tag . ']'
 	redraw | echo ''
 endfunc
 

@@ -295,6 +295,10 @@ nno <silent> <m-i> :ALEHover<cr>
 nno <silent> <m-o> :ALEGoToDefinition<cr>
 nno <silent> <m-p> :ALEFindReferences<cr>
 
+" signify
+nmap <silent> <m-;> <plug>(signify-prev-hunk)
+nmap <silent> <m-'> <plug>(signify-next-hunk)
+
 " fzf
 nno <silent> <m-g> :Rg<cr>
 nno <silent> <m-f> :Files<cr>
