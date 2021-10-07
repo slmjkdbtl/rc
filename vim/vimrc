@@ -10,7 +10,7 @@ set ttimeoutlen=0
 set scrolloff=3
 set nowrapscan
 set incsearch
-set hlsearch
+set nohlsearch
 set signcolumn=yes
 set laststatus=2
 set showtabline=2
@@ -27,6 +27,7 @@ set showbreak=..
 set breakindent
 set autoread
 set hidden
+set clipboard=unnamed
 set belloff=all
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
 set wildignore=.git,.svn,.cache,.tmp,.tup
@@ -58,6 +59,7 @@ call statline#init()
 " ext plugins
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
 Plug 'dense-analysis/ale'
 Plug 'mhinz/vim-signify'
 Plug 'pangloss/vim-javascript'
@@ -206,12 +208,12 @@ nno <silent> u u
 nno <silent> o <c-r>
 
 " copy, cut & paste
-nno y "*yy
-vno y ma"*y`a
-nno x "*dd
-vno x "*d
-no p "*P
-ino <m-p> <c-o>"*P
+nno y yy
+vno y may`a
+nno x dd
+vno x d
+no p P
+ino <m-p> <c-o>P
 
 " delete
 nno d "_dd
@@ -221,17 +223,17 @@ cno <m-bs> <c-w>
 
 " search
 nno ? :set hls<cr>/
-vno <silent> ? ""y:let @/=escape(@",'/\')<cr>:set hls<cr>
+vno <silent> ? ""y:let @/=escape(@",'/\.*')<cr>:set hls<cr>
 nno <silent> ; N
 nno <silent> ' n
 
 " record & playback
-nno <silent> @{ :nm \ @}<cr>qq
-nno <silent> @} q:nm \ @{<cr>
+nno <silent> @{ :nmap \ @}<cr>qq
+nno <silent> @} q:nmap \ @{<cr>
 nno <silent> @v q:let @q='c?'.@q<cr>:nm \ @{<cr>
 nm <silent> \ @{
 nno <silent> , @q
-vno <silent> <m-cr> ""y:let @/=escape(@", '/\')<cr>:nm \ @v<cr>qqgns
+vno <silent> <m-cr> ""y:let @/=escape(@", '/\.*')<cr>:nmap \ @v<cr>qqgns
 
 " change
 nno c ci

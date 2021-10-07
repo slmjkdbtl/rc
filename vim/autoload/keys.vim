@@ -1,8 +1,12 @@
+let s:normal_keys = split("qwertyuiopasdfghjklzxcvbnm1234567890`-=\\;',./", '\zs')
+let s:shifted_keys = split("QWERTYUIOPASDFGHJKLZXCVBNM0~!@#$%^&*()_+{}:\"", '\zs')
+let s:special_keys = split('cr bs tab left right up down ScrollWheelUp ScrollWheelDown')
+
 " unmap all keys to <nop>
 func! keys#unmap()
 
 	" normal keys
-	for k in split("qwertyuiopasdfghjklzxcvbnm1234567890`-=\\;',./", '\zs')
+	for k in s:normal_keys
 		exec 'no ' . k . ' <nop>'
 		exec 'no <c-' . k . '> <nop>'
 		exec 'no! <c-' . k . '> <nop>'
@@ -10,7 +14,7 @@ func! keys#unmap()
 	endfor
 
 	" shift+ keys
-	for k in split("QWERTYUIOPASDFGHJKLZXCVBNM0~!@#$%^&*()_+{}:\"", '\zs')
+	for k in s:shifted_keys
 		exec 'no ' . k . ' <nop>'
 	endfor
 
@@ -21,7 +25,7 @@ func! keys#unmap()
 	endfor
 
 	" special keys
-	for k in split('cr bs tab left right up down')
+	for k in s:special_keys
 		exec 'no <' . k . '> <nop>'
 		exec 'no! <' . k . '> <nop>'
 	endfor
@@ -39,12 +43,12 @@ endfunc
 " translate esc+ keys to meta key
 func! keys#esc2meta()
 
-	for k in split("qwertyuiopasdfghjklzxcvbnm1234567890`-=\\;',./", '\zs')
+	for k in s:normal_keys
 		exec 'map <esc>' . k . ' <m-' . k . '>'
 		exec 'map! <esc>' . k . ' <m-' . k . '>'
 	endfor
 
-	for k in split('cr bs tab left right up down ScrollWheelUp ScrollWheelDown')
+	for k in s:special_keys
 		exec 'map <esc><' . k . '> <m-' . k . '>'
 		exec 'map! <esc><' . k . '> <m-' . k . '>'
 	endfor
@@ -54,12 +58,12 @@ endfunc
 " translate ctrl keys to meta key
 func! keys#ctrl2meta()
 
-	for k in split("qwertyuiopasdfghjklzxcvbnm1234567890`-=\\;',./", '\zs')
+	for k in s:normal_keys
 		exec 'map <c-' . k . '> <m-' . k . '>'
 		exec 'map! <c-' . k . '> <m-' . k . '>'
 	endfor
 
-	for k in split('cr bs tab left right up down ScrollWheelUp ScrollWheelDown')
+	for k in s:special_keys
 		exec 'map <c-' . k . '> <m-' . k . '>'
 		exec 'map! <c-' . k . '> <m-' . k . '>'
 	endfor

@@ -68,6 +68,10 @@ func! utils#retab(n)
 	let &tabstop = orig_ts
 endfunc
 
+func! utils#requote()
+	:s/\'\(.*\)\'/\"\1\"
+endfunc
+
 func! utils#gshow(n)
 	let name = expand('%:t')
 	let dir = expand('%:h')
