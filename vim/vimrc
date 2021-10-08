@@ -123,20 +123,20 @@ let g:ale_linters = {
 let g:fzf_layout = { 'down': '60%' }
 
 let g:fzf_colors = {
-	\ 'fg':         ['bg', 'DirtyBG5'],
+	\ 'fg':         ['fg', 'DirtyFG4'],
 	\ 'bg':         ['bg', 'DirtyBG'],
 	\ 'hl':         ['fg', 'Comment'],
 	\ 'fg+':        ['fg', 'Normal'],
 	\ 'bg+':        ['bg', 'DirtyBG'],
 	\ 'hl+':        ['fg', 'DirtyFGYellow'],
-	\ 'info':       ['fg', 'DirtyHide'],
+	\ 'info':       ['bg', 'DirtyBG'],
 	\ 'border':     ['bg', 'DirtyBG'],
 	\ 'prompt':     ['fg', 'DirtyFGBlue'],
 	\ 'pointer':    ['fg', 'Comment'],
 	\ 'marker':     ['fg', 'Keyword'],
 	\ 'spinner':    ['fg', 'DirtyFGMagenta'],
 	\ 'header':     ['bg', 'DirtyBG'],
-	\ 'preview-fg': ['bg', 'DirtyBG5'],
+	\ 'preview-fg': ['fg', 'DirtyFG5'],
 \ }
 
 call keys#unmap()

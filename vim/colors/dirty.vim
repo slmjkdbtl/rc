@@ -6,14 +6,16 @@ syntax reset
 let s:italic  = 'italic'
 let s:bold    = 'bold'
 let s:bg      = '#000000'
-let s:bg2     = '#0d0d0d'
-let s:bg3     = '#1a1a1a'
-let s:bg4     = '#272727'
-let s:bg5     = '#343434'
-let s:bg6     = '#474747'
+let s:bg2     = '#101010'
+let s:bg3     = '#202020'
+let s:bg4     = '#303030'
+let s:fg      = '#dadada'
+let s:fg2     = '#aaaaaa'
+let s:fg3     = '#8a8a8a'
+let s:fg4     = '#5a5a5a'
 
 let s:normal  = '#dadada'
-let s:black   = '#666666'
+let s:black   = '#5a5a5a'
 let s:red     = '#ec7580'
 let s:green   = '#9ae0a0'
 let s:yellow  = '#ffca72'
@@ -39,13 +41,10 @@ call s:hi('DirtyBG',           '',        s:bg,      '',          )
 call s:hi('DirtyBG2',          '',        s:bg2,     '',          )
 call s:hi('DirtyBG3',          '',        s:bg3,     '',          )
 call s:hi('DirtyBG4',          '',        s:bg4,     '',          )
-call s:hi('DirtyBG5',          '',        s:bg5,     '',          )
-call s:hi('DirtyHide',         s:bg,      s:bg,      '',          )
-call s:hi('DirtyHide2',        s:bg2,     s:bg2,     '',          )
-call s:hi('DirtyHide3',        s:bg3,     s:bg3,     '',          )
-call s:hi('DirtyHide4',        s:bg4,     s:bg4,     '',          )
-call s:hi('DirtyHide5',        s:bg5,     s:bg5,     '',          )
-call s:hi('DirtyFGNormal',     s:normal,  '',        '',          )
+call s:hi('DirtyFG',           s:fg,      '',        '',          )
+call s:hi('DirtyFG2',          s:fg2,     '',        '',          )
+call s:hi('DirtyFG3',          s:fg3,     '',        '',          )
+call s:hi('DirtyFG4',          s:fg4,     '',        '',          )
 call s:hi('DirtyFGBlack',      s:black,   '',        '',          )
 call s:hi('DirtyFGRed',        s:red,     '',        '',          )
 call s:hi('DirtyFGBlue',       s:blue,    '',        '',          )
@@ -65,7 +64,7 @@ call s:hi('Constant',          s:orange,  '',        '',          )
 call s:hi('Cursor',            s:bg,      s:normal,  '',          )
 call s:hi('CursorColumn',      '',        s:bg2,     '',          )
 call s:hi('CursorLine',        '',        s:bg2,     '',          )
-call s:hi('CursorLineNr',      s:bg5,     s:bg2,     s:bold,      )
+call s:hi('CursorLineNr',      s:bg4,     s:bg2,     s:bold,      )
 call s:hi('Debug',             s:red,     '',        '',          )
 call s:hi('Define',            s:magenta, '',        '',          )
 call s:hi('Delimiter',         s:cyan,    '',        '',          )
@@ -90,7 +89,7 @@ call s:hi('Keyword',           s:magenta, '',        '',          )
 call s:hi('Label',             s:yellow,  '',        '',          )
 call s:hi('LineNr',            s:bg3,     'NONE',    '',          )
 call s:hi('Macro',             s:red,     '',        '',          )
-call s:hi('MatchParen',        s:normal,  s:bg5,     '',          )
+call s:hi('MatchParen',        s:normal,  s:bg4,     '',          )
 call s:hi('ModeMsg',           s:green,   '',        '',          )
 call s:hi('MoreMsg',           s:green,   '',        '',          )
 call s:hi('NonText',           s:bg3,     '',        '',          )
@@ -114,15 +113,13 @@ call s:hi('SpellRare',         '',        '',        'NONE',      )
 call s:hi('Statement',         s:magenta, '',        '',          )
 if has('nvim')
 call s:hi('StatusLine',        s:bg2,     s:black,   '',          )
-call s:hi('StatusLineNC',      s:black,   s:bg2,     '',          )
 else
 call s:hi('StatusLine',        s:black,   s:bg2,     '',          )
-call s:hi('StatusLineNC',      s:bg2,     s:black,   '',          )
 endif
 call s:hi('StorageClass',      s:yellow,  '',        '',          )
 call s:hi('String',            s:green,   '',        '',          )
 call s:hi('Structure',         s:magenta, '',        '',          )
-call s:hi('TabLine',           s:bg5,     s:bg,      'NONE',      )
+call s:hi('TabLine',           s:bg4,     s:bg,      'NONE',      )
 call s:hi('TabLineFill',       s:bg,      s:bg,      '',          )
 call s:hi('TabLineSel',        s:green,   s:bg,      s:bold,      )
 call s:hi('Tag',               s:yellow,  '',        '',          )
@@ -139,7 +136,11 @@ call s:hi('WarningMsg',        s:red,     '',        '',          )
 call s:hi('WildMenu',          s:normal,  s:blue,    s:bold,      )
 call s:hi('Pmenu',             s:black,   s:bg,      s:italic,    )
 
-call s:hi('StatusModeNormal',  s:normal,  s:bg4,     '',          )
+call s:hi('StatusLinePath',    s:fg3,     s:bg2,     '',          )
+call s:hi('StatusLineFT',      s:bg4,     s:bg2,     '',          )
+call s:hi('StatusLineCursor',  s:bg2,     s:bg4,     '',          )
+call s:hi('StatusLineBranch',  s:bg4,     s:bg2,     '',          )
+call s:hi('StatusModeNormal',  s:fg3,     s:bg4,     '',          )
 call s:hi('StatusModeVisual',  s:bg4,     s:yellow,  '',          )
 call s:hi('StatusModeInsert',  s:bg4,     s:blue,    '',          )
 call s:hi('StatusModeCommand', s:bg4,     s:magenta, '',          )
@@ -147,6 +148,6 @@ call s:hi('StatusModeTerm',    s:bg4,     s:green,   '',          )
 
 call s:hi('ALEErrorSign',      s:red,     s:bg,      '',          )
 call s:hi('ALEWarningSign',    s:yellow,  s:bg,      '',          )
-call s:hi('ALEInfoSign',       s:bg5,     s:bg,      '',          )
+call s:hi('ALEInfoSign',       s:bg4,     s:bg,      '',          )
 
 hi Error NONE
