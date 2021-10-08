@@ -48,6 +48,9 @@ func! s:path()
 		let path = fnamemodify(name, ':p')
 
 		if filereadable(path) || isdirectory(path)
+			if path[-1:-1] == '/'
+				let path = path[0:-2]
+			endif
 			let text = path
 		else
 			let text = fnamemodify(path, ':h')
@@ -124,5 +127,5 @@ endfunc
 
 func! statline#init()
 	set statusline=%!statline#get()
-" 	au! BufEnter,BufLeave * call s:update_branch()
+	au! BufEnter * call s:update_branch()
 endfunc

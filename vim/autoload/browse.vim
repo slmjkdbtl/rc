@@ -9,7 +9,7 @@ func! browse#init()
 	no <silent> <plug>(browse_enter) :call browse#enter()<cr>
 	no <silent> <plug>(browse_back) :call browse#back()<cr>
 	no <silent> <plug>(browse_copypath) :call browse#copypath()<cr>
-	no <silent> <plug>(browse_refresh) :call browse#refresh(line('.'))<cr>
+	no <silent> <plug>(browse_refresh) :call browse#refresh(getcwd())<cr>
 	no <silent> <plug>(browse_up) k
 	no <silent> <plug>(browse_down) j
 
@@ -21,13 +21,7 @@ func! browse#init()
 
 endfunc
 
-func! browse#open()
-
-	if browse#active()
-		return
-	endif
-
-	let curbuf = expand('%:p')
+func! browse#open(dir)
 
 	noa enew
 	setl buftype=nofile
@@ -88,8 +82,7 @@ func! browse#open()
 	highlight def link BrowsBrowse
 				\ String
 
-	call browse#refresh()
-	call s:toitem(curbuf)
+	call browse#update(a:dir)
 	call s:bind()
 
 endfunc
@@ -101,14 +94,15 @@ endfunc
 func! browse#onenter()
 	let name = expand('%:p')
 	if empty(name)
-		call browse#open()
+		call browse#open(getcwd())
 	else
 		if isdirectory(name)
-			exec 'lcd ' . name
+			if name[-1:-1] == '/'
+				let name = name[0:-2]
+			endif
 			bw
-			call browse#open()
-		elseif filereadable(name)
-			exec 'lcd ' . expand('%:p:h')
+			exec 'lcd ' . name
+			call browse#open(name)
 		endif
 	endif
 endfunc
@@ -123,7 +117,11 @@ func! browse#toggle()
 	if browse#active()
 		call browse#exit()
 	else
-		call browse#open()
+		let curbuf = expand('%:p')
+		if !isdirectory(curbuf)
+			call browse#open(fnamemodify(curbuf, ':h'))
+			call browse#toitem(curbuf)
+		endif
 	endif
 endfunc
 
@@ -199,26 +197,25 @@ func! s:toline(ln)
 	call cursor(a:ln, 3)
 endfunc
 
-" TODO: something is messing up clipboard
-func! browse#refresh(...)
+func! browse#update(dir)
 
 	if !browse#active()
 		return
 	endif
 
-	let b:listing = s:getlist(getcwd())
+	let b:listing = s:getlist(a:dir)
 
 	call s:render()
 
-	if exists('a:1')
-		call s:toline(a:1)
-	else
+" 	if exists('a:1')
+" 		call s:toline(a:1)
+" 	else
 		call s:toline(2)
-	endif
+" 	endif
 
 endfunc
 
-func! s:toitem(item)
+func! browse#toitem(item)
 	for i in range(len(b:listing))
 		if s:eq(b:listing[i], a:item)
 			call s:toline(i + 1)
@@ -237,10 +234,10 @@ func! s:getcur()
 endfunc
 
 func! browse#back()
-	let prev_dir = getcwd()
-	lcd ..
-	call browse#refresh()
-	call s:toitem(prev_dir)
+	let curdir = getcwd()
+	let todir = fnamemodify(curdir, ':h')
+	exec 'silent! edit ' . todir
+	call browse#toitem(curdir)
 endfunc
 
 func! browse#enter()
@@ -248,10 +245,7 @@ func! browse#enter()
 	let item = s:getcur()
 
 	if isdirectory(item)
-
-		silent! exec 'lcd ' . escape(item, '# ')
-		call browse#refresh()
-
+		exec 'silent! edit ' . escape(item, '# ')
 	elseif filereadable(item)
 
 		let ext = fnamemodify(item, ':e')
@@ -259,8 +253,7 @@ func! browse#enter()
 		if index([ 'jpg', 'png', 'pdf', 'ico', 'icns', 'ase', 'gif', 'mp4', 'mkv', 'mov', 'avi', 'mp3', 'wav', 'ogg', ], ext) >= 0
 			call system('open ' . escape(item, " '&()"))
 		else
-			call browse#exit()
-			exec 'edit ' . item
+			exec 'silent! edit ' . item
 		endif
 
 	endif
@@ -270,6 +263,7 @@ endfunc
 func! browse#copypath()
 	let item = s:getcur()
 	let @* = item
+	let @" = item
 	echo item
 endfunc
 
@@ -277,5 +271,5 @@ func! s:bind()
 	map <buffer><silent> <return> :call browse#enter()<cr>
 	map <buffer><silent> <bs> :call browse#back()<cr>
 	map <buffer><silent> y :call browse#copypath()<cr>
-	map <buffer><silent> r :call browse#refresh(line('.'))<cr>
+	map <buffer><silent> r :call browse#update(getcwd())<cr>
 endfunc
