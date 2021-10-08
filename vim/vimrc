@@ -28,6 +28,7 @@ set breakindent
 set autoread
 set hidden
 set autochdir
+set undofile
 set clipboard=unnamed,unnamedplus
 set belloff=all
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
@@ -260,6 +261,10 @@ nno <silent> = :bn<cr>
 nno <silent> <m-q> :bp<cr>
 nno <silent> <m-e> :bn<cr>
 nno <silent> <m-w> :bw<cr>
+
+for k in split('123456789', '\zs')
+	exec 'nno <silent> <m-' . k . '> :call utils#tobuf(' . (str2nr(k) - 1) . ')<cr>'
+endfor
 
 " toggle settings with f keys
 no <silent> <f1> :Toggle hlsearch<cr>

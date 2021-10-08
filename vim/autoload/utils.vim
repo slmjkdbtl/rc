@@ -93,6 +93,13 @@ func! utils#preview()
 	call system('open ' . tmpfile)
 endfunc
 
+func! utils#tobuf(n)
+	let bufs = getbufinfo({ 'buflisted': 1 })
+	if a:n < len(bufs)
+		exec 'b' . bufs[a:n].bufnr
+	endif
+endfunc
+
 func! utils#open_finder()
 	call system('open .')
 endfunc
