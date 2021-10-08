@@ -1,7 +1,7 @@
-func! s:get_status_mode(bufn)
+func! s:mode()
 
 	let text = ''
-	let mode = mode(a:bufn)
+	let mode = mode('%')
 
 	if mode ==# 'n'
 		let text .= '%#StatusModeNormal#'
@@ -34,10 +34,10 @@ func! s:get_status_mode(bufn)
 
 endfunc
 
-func! s:get_status_path(bufn)
+func! s:path()
 
-	let name = bufname(a:bufn)
-	let ft = getbufvar(a:bufn, '&filetype')
+	let name = bufname('%')
+	let ft = getbufvar('%', '&filetype')
 	let text = ''
 	let text .= '%#StatusLine#'
 
@@ -61,17 +61,29 @@ func! s:get_status_path(bufn)
 
 endfunc
 
-func! s:get_status_modified(bufn)
-	if getbufvar(a:bufn, '&modified')
+func! s:modified()
+	if getbufvar('%', '&modified')
 		return '%#StatusLine#[*]'
 	else
 		return ''
 	endif
 endfunc
 
-func! s:get_status_filetype(bufn)
+let s:branch = ''
 
-	let ft = getbufvar(a:bufn, '&filetype')
+func! s:update_branch()
+	let dir = fnamemodify(expand('%:p'), ':h')
+	let branch = system('cd ' . dir . ' && git rev-parse --abbrev-ref HEAD')
+	if v:shell_error == 0
+		let s:branch = trim(branch)
+	else
+		let s:branch = ''
+	endif
+endfunc
+
+func! s:filetype()
+
+	let ft = getbufvar('%', '&filetype')
 	let text = ''
 
 	if ft ==# ''
@@ -84,25 +96,27 @@ func! s:get_status_filetype(bufn)
 
 endfunc
 
-func! s:get_status_curpos(bufn)
+func! s:curpos()
 	return '%#StatusLineNC# %l:%c %#StatusLine#'
 endfunc
 
 func! statline#get()
 
 	let line = ''
-	let line .= s:get_status_mode('%')
+	let line .= s:mode()
 	let line .= ' '
-	let line .= s:get_status_path('%')
+	let line .= s:path()
 	let line .= ' '
-	let line .= s:get_status_modified('%')
+	let line .= s:modified()
 
 	let line .= '%='
 
 	let line .= ' '
-	let line .= s:get_status_filetype('%')
+	let line .= s:branch
 	let line .= ' '
-	let line .= s:get_status_curpos('%')
+	let line .= s:filetype()
+	let line .= ' '
+	let line .= s:curpos()
 
 	return line
 
@@ -110,4 +124,5 @@ endfunc
 
 func! statline#init()
 	set statusline=%!statline#get()
+" 	au! BufEnter,BufLeave * call s:update_branch()
 endfunc

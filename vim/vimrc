@@ -27,6 +27,7 @@ set showbreak=..
 set breakindent
 set autoread
 set hidden
+set autochdir
 set clipboard=unnamed,unnamedplus
 set belloff=all
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
@@ -72,6 +73,7 @@ Plug 'dag/vim-fish'
 Plug 'LnL7/vim-nix'
 Plug 'tikhomirov/vim-glsl'
 Plug 'jdonaldson/vaxe'
+Plug 'jparise/vim-graphql'
 
 " signify
 let g:signify_vcs_list = [ 'git' ]
@@ -110,12 +112,12 @@ let g:ale_linters = {
 	\ 'c': [ 'clangd', ],
 	\ 'rust': [ 'analyzer', ],
 	\ 'go': [ 'gopls', ],
-	\ 'vim': [ 'vint', ],
 	\ 'javascript': [ 'eslint', ],
 	\ 'typescript': [ 'tsserver', 'eslint', ],
 	\ 'typescriptreact': [ 'tsserver', 'eslint', ],
 \ }
 
+" TODO: git branch
 " fzf
 let g:fzf_layout = { 'down': '60%' }
 
@@ -183,7 +185,7 @@ ino <down> <c-x><c-e>
 
 " enter insert
 nno <cr> a
-vno <cr> s
+vno <cr> "_s
 nno > A
 nno < I
 vno > <esc>`>a
@@ -201,11 +203,11 @@ nno <m-cr> o<esc>
 ino <m-cr> <esc>mqa<cr><esc>`qa<cr>
 
 " save
-nno <silent> w :silent! w<cr>
+nno w :w<cr>
 
 " undo & redo
-nno <silent> u u
-nno <silent> o <c-r>
+nno u u
+nno o <c-r>
 
 " copy, cut & paste
 nno y yy
@@ -224,16 +226,16 @@ cno <m-bs> <c-w>
 " search
 nno ? :set hls<cr>/
 vno <silent> ? ""y:let @/=escape(@",'/\.*')<cr>:set hls<cr>
-nno <silent> ; N
-nno <silent> ' n
+nno ; N
+nno ' n
 
 " record & playback
-nno <silent> @{ :nmap \ @}<cr>qq
-nno <silent> @} q:nmap \ @{<cr>
+nno <silent> @{ :nm \ @}<cr>qq
+nno <silent> @} q:nm \ @{<cr>
 nno <silent> @v q:let @q='c?'.@q<cr>:nm \ @{<cr>
-nm <silent> \ @{
-nno <silent> , @q
-vno <silent> <m-cr> ""y:let @/=escape(@", '/\.*')<cr>:nmap \ @v<cr>qqgns
+nm \ @{
+nno , @q
+vno <silent> <m-cr> ""y:let @/=escape(@", '/\.*')<cr>:nm \ @v<cr>qqgns
 
 " change
 nno c ci
@@ -296,8 +298,8 @@ nno <silent> <m-o> :ALEGoToDefinition<cr>
 nno <silent> <m-p> :ALEFindReferences<cr>
 
 " signify
-nmap <silent> <m-;> <plug>(signify-prev-hunk)
-nmap <silent> <m-'> <plug>(signify-next-hunk)
+nm <m-;> <plug>(signify-prev-hunk)
+nm <m-'> <plug>(signify-next-hunk)
 
 " fzf
 nno <silent> <m-g> :Rg<cr>
@@ -307,27 +309,28 @@ nno <silent> <m-f> :Files<cr>
 call pair#bind()
 
 " file type detection
-call ft#detect('*.h', 'c')
-call ft#detect('*.dt', 'dirty')
+au BufRead,BufNewFile *.h        setf c
+au BufRead,BufNewFile *.dt       setf dirty
 
 " file type comments
-call ft#comment('c', '//%s')
-call ft#comment('cpp', '//%s')
-call ft#comment('rust', '//%s')
-call ft#comment('go', '//%s')
-call ft#comment('glsl', '//%s')
-call ft#comment('javascript', '//%s')
-call ft#comment('typescript', '//%s')
-call ft#comment('typescriptreact', '//%s')
-call ft#comment('sh', '#%s')
-call ft#comment('toml', '#%s')
-call ft#comment('make', '#%s')
-call ft#comment('python', '#%s')
-call ft#comment('ruby', '#%s')
-call ft#comment('gitignore', '#%s')
-call ft#comment('dirty', '--%s')
-call ft#comment('lua', '--%s')
-call ft#comment('vim', '\"%s')
-call ft#comment('forth', '\\%s')
-call ft#comment('html', '<!--%s-->')
-call ft#comment('css', '/*%s*/')
+au FileType c                setl cms=//%s
+au FileType cpp              setl cms=//%s
+au FileType rust             setl cms=//%s
+au FileType go               setl cms=//%s
+au FileType glsl             setl cms=//%s
+au FileType javascript       setl cms=//%s
+au FileType typescript       setl cms=//%s
+au FileType typescriptreact  setl cms=//%s
+au FileType sh               setl cms=#%s
+au FileType toml             setl cms=#%s
+au FileType make             setl cms=#%s
+au FileType python           setl cms=#%s
+au FileType ruby             setl cms=#%s
+au FileType gitignore        setl cms=#%s
+au FileType dirty            setl cms=--%s
+au FileType lua              setl cms=--%s
+au FileType vim              setl cms=\"%s
+au FileType forth            setl cms=\\%s
+au FileType html             setl cms=<!--%s-->
+au FileType css              setl cms=/*%s*/
+au FileType text             setl noet ts=2 sw=2

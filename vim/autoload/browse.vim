@@ -127,12 +127,6 @@ func! browse#toggle()
 	endif
 endfunc
 
-func! s:update_statline()
-	let dir = substitute(getcwd(), $HOME, '~', '')
-	let dir = escape(dir, ' ')
-	exec 'setl statusline=\ ' . dir
-endfunc
-
 func! s:getlist(path)
 
 	let path = escape(a:path, '# ')
@@ -169,7 +163,7 @@ endfunc
 func! s:render()
 
 	setlocal modifiable
-	silent! %delete
+	silent! %delete _
 
 	for i in range(len(b:listing))
 
@@ -205,6 +199,7 @@ func! s:toline(ln)
 	call cursor(a:ln, 3)
 endfunc
 
+" TODO: something is messing up clipboard
 func! browse#refresh(...)
 
 	if !browse#active()
@@ -214,7 +209,6 @@ func! browse#refresh(...)
 	let b:listing = s:getlist(getcwd())
 
 	call s:render()
-	call s:update_statline()
 
 	if exists('a:1')
 		call s:toline(a:1)

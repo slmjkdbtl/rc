@@ -1,3 +1,14 @@
+func! utils#init()
+	com! -nargs=1 Rename        call utils#rename(<f-args>)
+	com! -nargs=0 Trash         call utils#trash()
+	com! -nargs=1 Retab         call utils#retab(<f-args>)
+	com! -nargs=1 GShow         call utils#gshow(<f-args>)
+	com! -nargs=0 Preview       call utils#preview()
+	com! -nargs=0 OpenWezTerm   call utils#open_wezterm()
+	com! -nargs=0 OpenFinder    call utils#open_finder()
+	com! -nargs=0 -range Requote <line1>,<line2>call utils#requote()
+endfunc
+
 let s:trashdir = get(g:, 'trashdir', '')
 
 if s:trashdir ==# ''
@@ -11,15 +22,6 @@ if s:trashdir ==# ''
 		endif
 	endif
 endif
-
-func! utils#init()
-	com! -nargs=1 Rename call utils#rename(<f-args>)
-	com! -nargs=0 Trash call utils#trash()
-	com! -nargs=1 Retab call utils#retab(<f-args>)
-	com! -nargs=1 GShow call utils#gshow(<f-args>)
-	com! -nargs=0 OpenWezTerm call utils#open_wezterm()
-	com! -nargs=0 OpenFinder call utils#open_finder()
-endfunc
 
 func! utils#rename(newname)
 
@@ -69,7 +71,7 @@ func! utils#retab(n)
 endfunc
 
 func! utils#requote()
-	:s/\'\(.*\)\'/\"\1\"
+	:s/'/"/ge
 endfunc
 
 func! utils#gshow(tag)
@@ -82,6 +84,13 @@ func! utils#gshow(tag)
 	exec 'setf ' . ft
 	exec 'file ' . name . ' [' . a:tag . ']'
 	redraw | echo ''
+endfunc
+
+func! utils#preview()
+	let file = expand('%:p')
+	let tmpfile = tempname() . '.html'
+	call system('cmark ' . file . ' > ' . tmpfile)
+	call system('open ' . tmpfile)
 endfunc
 
 func! utils#open_finder()

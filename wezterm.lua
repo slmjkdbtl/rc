@@ -1,5 +1,15 @@
 local wezterm = require("wezterm")
 
+local bg      = "#000000"
+local black   = "#666666"
+local red     = "#ec7580"
+local green   = "#9ae0a0"
+local yellow  = "#ffca72"
+local blue    = "#8abbff"
+local magenta = "#f7aad7"
+local cyan    = "#7ce9df"
+local white   = "#dadada"
+
 return {
 	font = wezterm.font("APL386 Unicode"),
 	font_size = 20,
@@ -12,29 +22,21 @@ return {
 		bottom = 8,
 	},
 	colors = {
-		foreground = "#dadada",
-		background = "#000000",
-		cursor_bg = "#eeeeee",
-		cursor_border = "#eeeeee",
-		selection_bg = "#ffca72",
-		selection_fg = "#000000",
+		foreground = white,
+		background = bg,
+		cursor_bg = white,
+		cursor_border = white,
+		selection_bg = yellow,
+		selection_fg = bg,
 		ansi = {
-			-- black
-			"#666666",
-			-- red
-			"#ec7580",
-			-- green
-			"#9ae0a0",
-			-- yellow
-			"#ffca72",
-			-- blue
-			"#8abbff",
-			-- magenta
-			"#f7aad7",
-			-- cyan
-			"#7ce9df",
-			-- white
-			"#eeeeee",
+			black,
+			red,
+			green,
+			yellow,
+			blue,
+			magenta,
+			cyan,
+			white,
 		},
 	},
 	bold_brightens_ansi_colors = false,
