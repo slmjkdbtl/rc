@@ -75,6 +75,10 @@ func! s:update_branch()
 	let branch = system('cd ' . dir . ' && git rev-parse --abbrev-ref HEAD')
 	if v:shell_error == 0
 		let s:branch = '%#StatusLineBranch#' . trim(branch)
+		let modified = system('cd ' . dir . ' && git diff-index --quiet HEAD -- >/dev/null 2>&1')
+		if v:shell_error != 0
+			let s:branch .= '*'
+		endif
 	else
 		let s:branch = ''
 	endif

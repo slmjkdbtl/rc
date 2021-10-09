@@ -1,9 +1,7 @@
--- wengwengweng
-
 local cmd_template = [[ ffmpeg -i "$in" -ss $start -to $end -c copy "$out" ]]
 local start_pos = nil
 
-local function timestamp(duration)
+function timestamp(duration)
 
 	local hours = duration / 3600
 	local minutes = duration % 3600 / 60
@@ -13,11 +11,11 @@ local function timestamp(duration)
 
 end
 
-local function escape(str)
+function escape(str)
 	return str:gsub("([^%w])", "%%%1")
 end
 
-local function cut(p1, p2)
+function cut(p1, p2)
 
 	local fname = mp.get_property("filename")
 	local basename = mp.get_property("filename/no-ext")
@@ -41,7 +39,7 @@ local function cut(p1, p2)
 
 end
 
-local function mark()
+function mark()
 
 	local pos = mp.get_property_number("time-pos")
 
@@ -56,4 +54,3 @@ local function mark()
 end
 
 mp.add_forced_key_binding("t", "trim", mark)
-

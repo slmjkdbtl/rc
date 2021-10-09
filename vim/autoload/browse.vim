@@ -92,17 +92,19 @@ func! browse#active()
 endfunc
 
 func! browse#onenter()
-	let name = expand('%:p')
-	if empty(name)
+	let path = expand('%:p')
+	if empty(path)
 		call browse#open(getcwd())
 	else
-		if isdirectory(name)
-			if name[-1:-1] == '/'
-				let name = name[0:-2]
+		if isdirectory(path)
+			if path[-1:-1] == '/'
+				let path = path[0:-2]
 			endif
 			bw
-			exec 'lcd ' . name
-			call browse#open(name)
+			exec 'lcd ' . path
+			call browse#open(path)
+		elseif filereadable(path)
+			exec 'lcd ' . fnamemodify(path, ':h')
 		endif
 	endif
 endfunc

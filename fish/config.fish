@@ -77,7 +77,7 @@ type -q jump && status --is-interactive; and source (jump shell fish --bind=z | 
 function fish_prompt
 
 	function show_usr
-		set_color white --dim
+		set_color black
 		echo -n (whoami)
 		echo -n "@"
 		echo -n (hostname)
@@ -93,8 +93,8 @@ function fish_prompt
 
 	function show_git
 		command git rev-parse --is-inside-work-tree >/dev/null 2>&1; or return 1
-		set_color -d $fish_color_git
-		echo -n (__fish_git_prompt | string trim | string replace '(' '' | string replace ')' '')
+		set_color black
+		echo -n (git rev-parse --abbrev-ref HEAD)
 		git diff-index --quiet HEAD -- >/dev/null 2>&1; or echo -n "*"
 		set_color normal
 	end

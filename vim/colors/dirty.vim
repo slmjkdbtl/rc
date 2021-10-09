@@ -13,8 +13,8 @@ let s:fg      = '#dadada'
 let s:fg2     = '#aaaaaa'
 let s:fg3     = '#8a8a8a'
 let s:fg4     = '#5a5a5a'
-
 let s:normal  = '#dadada'
+
 let s:black   = '#5a5a5a'
 let s:red     = '#ec7580'
 let s:green   = '#9ae0a0'
@@ -22,7 +22,27 @@ let s:yellow  = '#ffca72'
 let s:blue    = '#8abbff'
 let s:magenta = '#f7aad7'
 let s:cyan    = '#7ce9df'
+let s:white  = '#dadada'
 let s:orange  = '#f99157'
+
+let g:terminal_ansi_colors = [
+	\ s:black,
+	\ s:red,
+	\ s:green,
+	\ s:yellow,
+	\ s:blue,
+	\ s:magenta,
+	\ s:cyan,
+	\ s:white,
+	\ s:black,
+	\ s:red,
+	\ s:green,
+	\ s:yellow,
+	\ s:blue,
+	\ s:magenta,
+	\ s:cyan,
+	\ s:white,
+\ ]
 
 func! s:hi(group, fg, bg, attr)
 	if !empty(a:fg)

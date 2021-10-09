@@ -1,5 +1,4 @@
 func! trim#init()
-	com! -nargs=0 Trim call trim#trim()
 	aug Trim
 		au!
 		au BufWritePre *

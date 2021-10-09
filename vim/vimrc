@@ -27,10 +27,9 @@ set showbreak=..
 set breakindent
 set autoread
 set hidden
-set autochdir
-set undofile
 set clipboard=unnamed,unnamedplus
 set belloff=all
+set history=1000
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
 set wildignore=.git,.svn,.cache,.tmp,.tup
 set wildignore+=.DS_Store
@@ -60,10 +59,9 @@ call statline#init()
 
 " ext plugins
 Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-fugitive'
 Plug 'dense-analysis/ale'
 Plug 'mhinz/vim-signify'
+
 Plug 'pangloss/vim-javascript'
 Plug 'tbastos/vim-lua'
 Plug 'plasticboy/vim-markdown'
@@ -118,8 +116,53 @@ let g:ale_linters = {
 	\ 'typescriptreact': [ 'tsserver', 'eslint', ],
 \ }
 
-" TODO: git branch
 " fzf
+command! FZFMru call fzf#run(fzf#wrap({
+\ 'source':  v:oldfiles,
+\ 'sink':    'e',
+\ 'options': '-m -x +s',
+\ }))
+
+func! s:tobranch(b)
+	call system('git switch ' . a:b)
+	let curbuf = expand(':p')
+	if filereadable(curbuf)
+		silent! edit
+	else
+		exec 'silent! edit ' . getcwd()
+	endif
+endfunc
+
+command! FZFBranch call fzf#run(fzf#wrap({
+\ 'source':  'git branch',
+\ 'sink':    function('<sid>tobranch'),
+\ }))
+
+func! s:torg(item)
+	let chunks = split(a:item, ':')
+	let file = chunks[0]
+	let line = chunks[1]
+	let col = chunks[2]
+	exec 'edit ' . file
+	call cursor(line, col)
+endfunc
+
+command! FZFRg call fzf#run(fzf#wrap({
+\ 'source':  "rg --column --line-number --no-heading --smart-case -- " . shellescape(<q-args>),
+\ 'sink':    function('<sid>torg'),
+\ }))
+
+func! s:tohist(item)
+	let chunks = split(a:item)
+	let commit = chunks[0]
+	exec 'GShow ' . commit
+endfunc
+
+command! FZFHist call fzf#run(fzf#wrap({
+\ 'source':  'git log --oneline ' . expand('%:p'),
+\ 'sink':    function('<sid>tohist'),
+\ }))
+
 let g:fzf_layout = { 'down': '60%' }
 
 let g:fzf_colors = {
@@ -129,7 +172,7 @@ let g:fzf_colors = {
 	\ 'fg+':        ['fg', 'Normal'],
 	\ 'bg+':        ['bg', 'DirtyBG'],
 	\ 'hl+':        ['fg', 'DirtyFGYellow'],
-	\ 'info':       ['bg', 'DirtyBG'],
+	\ 'info':       ['bg', 'DirtyBG4'],
 	\ 'border':     ['bg', 'DirtyBG'],
 	\ 'prompt':     ['fg', 'DirtyFGBlue'],
 	\ 'pointer':    ['fg', 'Comment'],
@@ -307,8 +350,8 @@ nm <m-;> <plug>(signify-prev-hunk)
 nm <m-'> <plug>(signify-next-hunk)
 
 " fzf
-nno <silent> <m-g> :Rg<cr>
-nno <silent> <m-f> :Files<cr>
+nno <silent> <m-f> :FZF<cr>
+nno <silent> <m-g> :FZFRg<cr>
 
 " bind all pair keys
 call pair#bind()
