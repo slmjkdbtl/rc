@@ -4,6 +4,9 @@ func! utils#init()
 	com! -nargs=1 Retab         call utils#retab(<f-args>)
 	com! -nargs=1 GShow         call utils#gshow(<f-args>)
 	com! -nargs=0 Preview       call utils#preview()
+	com! -nargs=0 Trim          call utils#trim()
+	com! -nargs=1 Toggle        call utils#toggle(<f-args>)
+	com! -nargs=* ToggleVal     call utils#toggleval(<f-args>)
 	com! -nargs=0 OpenWezTerm   call utils#open_wezterm()
 	com! -nargs=0 OpenFinder    call utils#open_finder()
 	com! -nargs=0 -range Requote <line1>,<line2>call utils#requote()
@@ -93,11 +96,32 @@ func! utils#preview()
 	call system('open ' . tmpfile)
 endfunc
 
-func! utils#tobuf(n)
-	let bufs = getbufinfo({ 'buflisted': 1 })
-	if a:n < len(bufs)
-		exec 'b' . bufs[a:n].bufnr
+func! utils#trim()
+	let save = winsaveview()
+	%s/\s\+$//e
+	call winrestview(save)
+endfunc
+
+func! utils#trim_on_save()
+	aug Trim
+		au!
+		au BufWritePre * Trim
+	aug END
+endfunc
+
+func! utils#toggle(prop)
+	exec 'setl inv' . a:prop
+	exec 'echo "' . a:prop . '" &' . a:prop
+endfunc
+
+func! utils#toggleval(prop, v1, v2)
+	let cur = eval('&' . a:prop)
+	if cur === a:v2
+		exec 'setl ' . a:prop . ' ' . a:v1
+	else
+		exec 'setl ' . a:prop . ' ' . a:v1
 	endif
+	exec 'echo "' . a:prop . '" &' . a:prop
 endfunc
 
 func! utils#open_finder()

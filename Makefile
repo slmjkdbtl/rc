@@ -12,7 +12,7 @@ install:
 		ln -sf $$(realpath $$f) $(CONFIG); \
 	done
 
-	@for f in vim skhdrc tmux.conf gitconfig wezterm.lua eslintrc.json; do \
+	@for f in vim dshrc skhdrc tmux.conf gitconfig wezterm.lua eslintrc.json; do \
 		echo "$$f -> $(HOME)/.$$f"; \
 		test -L $(HOME)/.$$f && test -d $(HOME)/.$$f && rm $(HOME)/.$$f; \
 		ln -sf $$(realpath $$f) $(HOME)/.$$f; \

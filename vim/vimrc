@@ -50,12 +50,11 @@ let &t_EI = "\e[2 q"
 call plug#init()
 call proj#init()
 call browse#init()
-call trim#init()
 call comment#init()
-call toggle#init()
 call utils#init()
 call bufline#init()
 call statline#init()
+call utils#trim_on_save()
 
 " ext plugins
 Plug 'junegunn/fzf'
@@ -133,9 +132,13 @@ func! s:tobranch(b)
 	endif
 endfunc
 
-command! FZFBranch call fzf#run(fzf#wrap({
+command! Branch call fzf#run(fzf#wrap({
 \ 'source':  'git branch',
 \ 'sink':    function('<sid>tobranch'),
+\ }))
+
+command! Diff call fzf#run(fzf#wrap({
+\ 'source':  'git diff --name-status',
 \ }))
 
 func! s:torg(item)
@@ -147,7 +150,7 @@ func! s:torg(item)
 	call cursor(line, col)
 endfunc
 
-command! FZFRg call fzf#run(fzf#wrap({
+command! Rg call fzf#run(fzf#wrap({
 \ 'source':  "rg --column --line-number --no-heading --smart-case -- " . shellescape(<q-args>),
 \ 'sink':    function('<sid>torg'),
 \ }))
@@ -155,10 +158,10 @@ command! FZFRg call fzf#run(fzf#wrap({
 func! s:tohist(item)
 	let chunks = split(a:item)
 	let commit = chunks[0]
-	exec 'GShow ' . commit
+	call utils#gshow(commit)
 endfunc
 
-command! FZFHist call fzf#run(fzf#wrap({
+command! Hist call fzf#run(fzf#wrap({
 \ 'source':  'git log --oneline ' . expand('%:p'),
 \ 'sink':    function('<sid>tohist'),
 \ }))
@@ -267,6 +270,7 @@ vno d "_d
 ino <m-bs> <c-w>
 cno <m-bs> <c-w>
 
+" TODO: don't save into @"
 " search
 nno ? :set hls<cr>/
 vno <silent> ? ""y:let @/=escape(@",'/\.*')<cr>:set hls<cr>
@@ -286,7 +290,13 @@ nno c ci
 nno c? gns
 
 " clear
-nno <silent> <esc> :set nohls<cr>:echo ''<cr>
+func! s:clear()
+	set nohls
+	call popup_clear()
+	echo ''
+endfunc
+
+nno <silent> <esc> :call <sid>clear()<cr>
 
 " command mode, repeat last, jump to match
 no : :
@@ -305,8 +315,15 @@ nno <silent> <m-q> :bp<cr>
 nno <silent> <m-e> :bn<cr>
 nno <silent> <m-w> :bw<cr>
 
+func! s:tobuf(n)
+	let bufs = getbufinfo({ 'buflisted': 1 })
+	if a:n < len(bufs)
+		exec 'b' . bufs[a:n].bufnr
+	endif
+endfunc
+
 for k in split('123456789', '\zs')
-	exec 'nno <silent> <m-' . k . '> :call utils#tobuf(' . (str2nr(k) - 1) . ')<cr>'
+	exec 'nno <silent> <m-' . k . '> :call <sid>tobuf(' . (str2nr(k) - 1) . ')<cr>'
 endfor
 
 " toggle settings with f keys
@@ -351,7 +368,7 @@ nm <m-'> <plug>(signify-next-hunk)
 
 " fzf
 nno <silent> <m-f> :FZF<cr>
-nno <silent> <m-g> :FZFRg<cr>
+nno <silent> <m-g> :Rg<cr>
 
 " bind all pair keys
 call pair#bind()
