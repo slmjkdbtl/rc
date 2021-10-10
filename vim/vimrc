@@ -270,7 +270,6 @@ vno d "_d
 ino <m-bs> <c-w>
 cno <m-bs> <c-w>
 
-" TODO: don't save into @"
 " search
 nno ? :set hls<cr>/
 vno <silent> ? ""y:let @/=escape(@",'/\.*')<cr>:set hls<cr>
@@ -283,11 +282,11 @@ nno <silent> @} q:nm \ @{<cr>
 nno <silent> @v q:let @q='c?'.@q<cr>:nm \ @{<cr>
 nm \ @{
 nno , @q
-vno <silent> <m-cr> ""y:let @/=escape(@", '/\.*')<cr>:nm \ @v<cr>qqgns
+vno <silent> <m-cr> ""y:let @/=escape(@", '/\.*')<cr>:nm \ @v<cr>qqgn"_s
 
 " change
-nno c ci
-nno c? gns
+nno c "_ci
+nno c? gn"_s
 
 " clear
 func! s:clear()
