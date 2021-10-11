@@ -1,27 +1,24 @@
+" TODO: bulk rename
+
 func! browse#init()
 
-	com! -nargs=0 Browse call browse#open()
-	com! -nargs=0 BrowseExit call browse#exit()
-	com! -nargs=0 BrowseToggle call browse#toggle()
-
-	no <silent> <plug>(browse_open) :call browse#open()<cr>
-	no <silent> <plug>(browse_exit) :call browse#exit()<cr>
-	no <silent> <plug>(browse_enter) :call browse#enter()<cr>
-	no <silent> <plug>(browse_back) :call browse#back()<cr>
-	no <silent> <plug>(browse_copypath) :call browse#copypath()<cr>
-	no <silent> <plug>(browse_refresh) :call browse#refresh(getcwd())<cr>
-	no <silent> <plug>(browse_up) k
-	no <silent> <plug>(browse_down) j
+	com! -nargs=0 Browse       call <sid>open()
+	com! -nargs=0 BrowseExit   call <sid>exit()
+	com! -nargs=0 BrowseToggle call <sid>toggle()
 
 	aug Browse
 		au!
 		au BufEnter *
-			\ call browse#onenter()
+			\ call <sid>onenter()
 	aug END
 
 endfunc
 
-func! browse#open(dir)
+func! s:open(dir)
+
+	if !isdirectory(a:dir)
+		return
+	endif
 
 	noa enew
 	setl buftype=nofile
@@ -42,59 +39,57 @@ func! browse#open(dir)
 	setl nomodified
 	setf browse
 
-	syntax match BrowseParent
+	syn match BrowseParent
 				\ '^..$'
 				\ contained
 				\ containedin=BrowseItem
 
-	syntax match BrowseDirHead
+	syn match BrowseDirHead
 				\ '^\(+\|-\)'
 				\ contained
 				\ containedin=BrowseDir
 
-	syntax match BrowseMarked
+	syn match BrowseMarked
 				\ '>\s'
 				\ contained
 				\ containedin=BrowseItem
 
-	syntax match BrowseDir
+	syn match BrowseDir
 				\ '^\(+\|-\).*'
 				\ contained
 				\ containedin=BrowseItem
 				\ contains=BrowseDirHead,BrowseMarked
 
-	syntax match BrowseItem
+	syn match BrowseItem
 				\ '^.*$'
 				\ contains=BrowseDir,BrowseMarked
 
-	highlight def link BrowseItem
-				\ Cleared
+	hi def link BrowseItem    Cleared
+	hi def link BrowseDir     Function
+	hi def link BrowseDirHead Special
+	hi def link BrowseParent  PreProc
+	hi def link BrowsBrowse   String
 
-	highlight def link BrowseDir
-				\ Function
+	map <buffer><silent> <return> :call <sid>enter()<cr>
+	map <buffer><silent> <bs>     :call <sid>back()<cr>
+	map <buffer><silent> y        :call <sid>copypath()<cr>
+	map <buffer><silent> r        :call <sid>refresh()<cr>
+	map <buffer><silent> <m-m>    :call <sid>mkdir()<cr>
+	map <buffer><silent> <m-r>    :call <sid>rename()<cr>
+	map <buffer><silent> <m-d>    :call <sid>delete()<cr>
 
-	highlight def link BrowseDirHead
-				\ Special
-
-	highlight def link BrowseParent
-				\ PreProc
-
-	highlight def link BrowsBrowse
-				\ String
-
-	call browse#update(a:dir)
-	call s:bind()
+	call s:update(a:dir)
 
 endfunc
 
-func! browse#active()
+func! s:active()
 	return &ft == 'browse'
 endfunc
 
-func! browse#onenter()
+func! s:onenter()
 	let path = expand('%:p')
 	if empty(path)
-		call browse#open(getcwd())
+		call s:open(getcwd())
 	else
 		if isdirectory(path)
 			if path[-1:-1] == '/'
@@ -102,27 +97,27 @@ func! browse#onenter()
 			endif
 			bw
 			exec 'lcd ' . path
-			call browse#open(path)
+			call s:open(path)
 		elseif filereadable(path)
 			exec 'lcd ' . fnamemodify(path, ':h')
 		endif
 	endif
 endfunc
 
-func! browse#exit()
-	if browse#active()
+func! s:exit()
+	if s:active()
 		bw
 	endif
 endfunc
 
-func! browse#toggle()
-	if browse#active()
-		call browse#exit()
+func! s:toggle()
+	if s:active()
+		call s:exit()
 	else
 		let curbuf = expand('%:p')
 		if !isdirectory(curbuf)
-			call browse#open(fnamemodify(curbuf, ':h'))
-			call browse#toitem(curbuf)
+			call s:open(fnamemodify(curbuf, ':h'))
+			call s:toitem(curbuf)
 		endif
 	endif
 endfunc
@@ -162,8 +157,8 @@ endfunc
 
 func! s:render()
 
-	setlocal modifiable
-	silent! %delete _
+	setl modifiable
+	sil! %delete _
 
 	for i in range(len(b:listing))
 
@@ -190,37 +185,31 @@ func! s:render()
 
 	endfor
 
-	setlocal nomodifiable
-	setlocal nomodified
+	setl nomodifiable
+	setl nomodified
 
 endfunc
 
-func! s:toline(ln)
-	call cursor(a:ln, 3)
+func! s:refresh()
+	call s:update(getcwd())
 endfunc
 
-func! browse#update(dir)
-
-	if !browse#active()
+func! s:update(dir)
+	if !s:active()
 		return
 	endif
-
 	let b:listing = s:getlist(a:dir)
-
 	call s:render()
-
-" 	if exists('a:1')
-" 		call s:toline(a:1)
-" 	else
-		call s:toline(2)
-" 	endif
-
+	call s:toitem(b:listing[1])
 endfunc
 
-func! browse#toitem(item)
+func! s:toitem(item)
+	if !s:active()
+		return
+	endif
 	for i in range(len(b:listing))
 		if s:eq(b:listing[i], a:item)
-			call s:toline(i + 1)
+			call cursor(i + 1, 3)
 		endif
 	endfor
 endfunc
@@ -235,19 +224,19 @@ func! s:getcur()
 	return item
 endfunc
 
-func! browse#back()
+func! s:back()
 	let curdir = getcwd()
 	let todir = fnamemodify(curdir, ':h')
-	exec 'silent! edit ' . todir
-	call browse#toitem(curdir)
+	exec 'sil! edit ' . todir
+	call s:toitem(curdir)
 endfunc
 
-func! browse#enter()
+func! s:enter()
 
 	let item = s:getcur()
 
 	if isdirectory(item)
-		exec 'silent! edit ' . escape(item, '# ')
+		exec 'sil! edit ' . escape(item, '# ')
 	elseif filereadable(item)
 
 		let ext = fnamemodify(item, ':e')
@@ -255,23 +244,48 @@ func! browse#enter()
 		if index([ 'jpg', 'png', 'pdf', 'ico', 'icns', 'ase', 'gif', 'mp4', 'mkv', 'mov', 'avi', 'mp3', 'wav', 'ogg', ], ext) >= 0
 			call system('open ' . escape(item, " '&()"))
 		else
-			exec 'silent! edit ' . item
+			exec 'sil! edit ' . item
 		endif
 
 	endif
 
 endfunc
 
-func! browse#copypath()
+func! s:copypath()
 	let item = s:getcur()
-	let @* = item
+	let @+ = item
 	let @" = item
 	echo item
 endfunc
 
-func! s:bind()
-	map <buffer><silent> <return> :call browse#enter()<cr>
-	map <buffer><silent> <bs> :call browse#back()<cr>
-	map <buffer><silent> y :call browse#copypath()<cr>
-	map <buffer><silent> r :call browse#update(getcwd())<cr>
+func! s:mkdir()
+	let name = input('mkdir: ')
+	call system('mkdir ' . name)
+	call s:refresh()
+	call s:toitem(name)
+endfunc
+
+func! s:rename()
+	let item = s:getcur()
+	let name = input('rename ' . fnamemodify(item, ':t') . ' to: ')
+	let path = fnamemodify(item, ':h') . '/' . name
+	call system('mv ' . item . ' ' . path)
+	call s:refresh()
+	call s:toitem(path)
+endfunc
+
+func! s:delete()
+	let path = s:getcur()
+	let name = fnamemodify(path, ':t')
+	if confirm('delete "' . name . '"?', "&yes\n&no") == 1
+		if g:trashdir ==# ''
+			call system('rm ' . path)
+		else
+			if !isdirectory(g:trashdir)
+				call mkdir(g:trashdir, 'p')
+			endif
+			call system('mv ' . path . ' ' . g:trashdir)
+		endif
+	endif
+	call s:refresh()
 endfunc

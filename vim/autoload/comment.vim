@@ -1,7 +1,7 @@
 func! comment#init()
 	com! -range CommentToggle <line1>,<line2>call comment#toggle()
-	com! -range Comment <line1>,<line2>call comment#comment()
-	com! -range Uncomment <line1>,<line2>call comment#uncomment()
+	com! -range Comment       <line1>,<line2>call comment#comment()
+	com! -range Uncomment     <line1>,<line2>call comment#uncomment()
 endfunc
 
 func! comment#is_commented(line)

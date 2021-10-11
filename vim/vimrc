@@ -46,6 +46,17 @@ let loaded_netrwPlugin = 1
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
+" set trash dir
+if has('macunix')
+	let g:trashdir = expand('$HOME/.Trash')
+elseif has('unix') || has('win32unix')
+	if $XDG_DATA_HOME !=# ''
+		let g:trashdir = expand('$XDG_DATA_HOME/Trash')
+	else
+		let g:trashdir = expand('$HOME/.local/share/Trash')
+	endif
+endif
+
 " local plugins
 call plug#init()
 call proj#init()
@@ -271,8 +282,15 @@ ino <m-bs> <c-w>
 cno <m-bs> <c-w>
 
 " search
+" func! s:search_sel() range
+" 	normal! "sy
+" 	let @/ = escape(@s, '/\.*')
+" 	set hls
+" endfunc
+
 nno ? :set hls<cr>/
-vno <silent> ? ""y:let @/=escape(@",'/\.*')<cr>:set hls<cr>
+vno <silent> ? "sy:let @/=escape(@s,'/\.*')<cr>:set hls<cr>
+" vno <silent> ? :'<,'>call <sid>search_sel()<cr>
 nno ; N
 nno ' n
 
@@ -282,7 +300,7 @@ nno <silent> @} q:nm \ @{<cr>
 nno <silent> @v q:let @q='c?'.@q<cr>:nm \ @{<cr>
 nm \ @{
 nno , @q
-vno <silent> <m-cr> ""y:let @/=escape(@", '/\.*')<cr>:nm \ @v<cr>qqgn"_s
+vno <silent> <m-cr> "sy:let @/=escape(@s, '/\.*')<cr>:nm \ @v<cr>qqgn"_s
 
 " change
 nno c "_ci
