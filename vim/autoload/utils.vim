@@ -23,12 +23,14 @@ func! utils#rename(newname)
 		return
 	end
 
-	if confirm('rename ' . name . ' to ' . a:newname . '?' , "&yes\n&no") == 1
-		let newpath = dir . '/' . a:newname
-		bw
-		call system('mv ' . path . ' ' . newpath)
-		exec 'e ' . newpath
+	if confirm('rename ' . name . ' to ' . a:newname . '?' , "&yes\n&no") != 1
+		return
 	endif
+
+	let newpath = dir . '/' . a:newname
+	bw
+	call system('mv ' . path . ' ' . newpath)
+	exec 'e ' . newpath
 
 endfunc
 
@@ -37,16 +39,19 @@ func! utils#delete()
 	let path = expand('%:p')
 	let name = fnamemodify(path, ':t')
 
-	if confirm('delete "' . name . '"?', "&yes\n&no") == 1
-		bw
-		if g:trashdir ==# ''
-			call system('rm ' . path)
-		else
-			if !isdirectory(g:trashdir)
-				call mkdir(g:trashdir, 'p')
-			endif
-			call system('mv ' . path . ' ' . g:trashdir)
+	if confirm('delete "' . name . '"?', "&yes\n&no") != 1
+		return
+	endif
+
+	bw
+
+	if empty(g:trashdir)
+		call system('rm ' . path)
+	else
+		if !isdirectory(g:trashdir)
+			call mkdir(g:trashdir, 'p')
 		endif
+		call system('mv ' . path . ' ' . g:trashdir)
 	endif
 
 endfunc

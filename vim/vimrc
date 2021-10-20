@@ -119,6 +119,7 @@ let g:ale_fixers = {
 
 let g:ale_linters = {
 	\ 'c': [ 'clangd', ],
+	\ 'cpp': [ 'clangd', ],
 	\ 'rust': [ 'analyzer', ],
 	\ 'go': [ 'gopls', ],
 	\ 'javascript': [ 'eslint', ],
@@ -195,6 +196,11 @@ let g:fzf_colors = {
 	\ 'header':     ['bg', 'DirtyBG'],
 	\ 'preview-fg': ['fg', 'DirtyFG5'],
 \ }
+
+let g:vim_markdown_fenced_languages = [
+	\ 'js=javascript',
+	\ 'ts=typescript',
+\ ]
 
 call keys#unmap()
 call keys#esc2meta()
@@ -289,7 +295,7 @@ cno <m-bs> <c-w>
 " endfunc
 
 nno ? :set hls<cr>/
-vno <silent> ? "sy:let @/=escape(@s,'/\.*')<cr>:set hls<cr>
+vno <silent> ? "sy:let @/=escape(@s,'/\.*~')<cr>:set hls<cr>
 " vno <silent> ? :'<,'>call <sid>search_sel()<cr>
 nno ; N
 nno ' n
@@ -300,7 +306,7 @@ nno <silent> @} q:nm \ @{<cr>
 nno <silent> @v q:let @q='c?'.@q<cr>:nm \ @{<cr>
 nm \ @{
 nno , @q
-vno <silent> <m-cr> "sy:let @/=escape(@s, '/\.*')<cr>:nm \ @v<cr>qqgn"_s
+vno <silent> <m-cr> "sy:let @/=escape(@s, '/\.*~')<cr>:nm \ @v<cr>qqgn"_s
 
 " change
 nno c "_ci
@@ -391,8 +397,8 @@ nno <silent> <m-g> :Rg<cr>
 call pair#bind()
 
 " file type detection
-au BufRead,BufNewFile *.h        setf c
-au BufRead,BufNewFile *.dt       setf dirty
+au BufRead,BufNewFile *.h        set ft=c
+au BufRead,BufNewFile *.dt       set ft=dirty
 
 " file type comments
 au FileType c                setl cms=//%s

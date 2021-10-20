@@ -69,6 +69,7 @@ func! s:open(dir)
 	hi def link BrowseDirHead Special
 	hi def link BrowseParent  PreProc
 	hi def link BrowsBrowse   String
+	hi def link BrowseMarked  String
 
 	map <buffer><silent> <return> :call <sid>enter()<cr>
 	map <buffer><silent> <bs>     :call <sid>back()<cr>
@@ -77,6 +78,10 @@ func! s:open(dir)
 	map <buffer><silent> <m-m>    :call <sid>mkdir()<cr>
 	map <buffer><silent> <m-r>    :call <sid>rename()<cr>
 	map <buffer><silent> <m-d>    :call <sid>delete()<cr>
+	map <buffer><silent> <space>  :call <sid>mark()<cr>
+
+	let b:list = []
+	let b:marked = []
 
 	call s:update(a:dir)
 
@@ -160,9 +165,9 @@ func! s:render()
 	setl modifiable
 	sil! %delete _
 
-	for i in range(len(b:listing))
+	for i in range(len(b:list))
 
-		let item = b:listing[i]
+		let item = b:list[i]
 		let displayline = ''
 
 		if item ==# '..'
@@ -175,6 +180,10 @@ func! s:render()
 				let displayline .= '+ '
 			elseif filereadable(item)
 				let displayline .= '  '
+			endif
+
+			if s:is_marked(item)
+				let displayline .= '> '
 			endif
 
 			let displayline .= fnamemodify(item, ':t')
@@ -191,24 +200,26 @@ func! s:render()
 endfunc
 
 func! s:refresh()
+	let cur = s:getcur()
 	call s:update(getcwd())
+	call s:toitem(cur)
 endfunc
 
 func! s:update(dir)
 	if !s:active()
 		return
 	endif
-	let b:listing = s:getlist(a:dir)
+	let b:list = s:getlist(a:dir)
 	call s:render()
-	call s:toitem(b:listing[1])
+	call s:toitem(b:list[1])
 endfunc
 
 func! s:toitem(item)
 	if !s:active()
 		return
 	endif
-	for i in range(len(b:listing))
-		if s:eq(b:listing[i], a:item)
+	for i in range(len(b:list))
+		if s:eq(b:list[i], a:item)
 			call cursor(i + 1, 3)
 		endif
 	endfor
@@ -220,7 +231,7 @@ endfunc
 
 func! s:getcur()
 	let cl = line('.')
-	let item = b:listing[cl - 1]
+	let item = b:list[cl - 1]
 	return item
 endfunc
 
@@ -268,6 +279,10 @@ endfunc
 func! s:rename()
 	let item = s:getcur()
 	let name = input('rename ' . fnamemodify(item, ':t') . ' to: ')
+	if empty(name)
+		echo 'name no good'
+		return
+	endif
 	let path = fnamemodify(item, ':h') . '/' . name
 	call system('mv ' . item . ' ' . path)
 	call s:refresh()
@@ -277,15 +292,100 @@ endfunc
 func! s:delete()
 	let path = s:getcur()
 	let name = fnamemodify(path, ':t')
-	if confirm('delete "' . name . '"?', "&yes\n&no") == 1
-		if g:trashdir ==# ''
-			call system('rm ' . path)
-		else
-			if !isdirectory(g:trashdir)
-				call mkdir(g:trashdir, 'p')
-			endif
-			call system('mv ' . path . ' ' . g:trashdir)
+	if confirm('delete "' . name . '"?', "&yes\n&no") != 1
+		return
+	endif
+	if empty(g:trashdir)
+		call system('rm ' . path)
+	else
+		if !isdirectory(g:trashdir)
+			call mkdir(g:trashdir, 'p')
 		endif
+		call system('mv ' . path . ' ' . g:trashdir)
 	endif
 	call s:refresh()
+endfunc
+
+func! s:mark()
+
+	if line('.') ==# 1
+		return
+	endif
+
+	let file = s:getcur()
+
+	if s:is_marked(file)
+		call remove(b:marked, index(b:marked, file))
+	else
+		let b:marked += [ file ]
+	endif
+
+	call s:refresh()
+
+endfunc
+
+func! s:is_same(f1, f2)
+	return fnamemodify(a:f1, ':p') ==# fnamemodify(a:f2, ':p')
+endfunc
+
+func! s:is_marked(f)
+
+	if !exists('b:marked')
+		return 0
+	endif
+
+	for m in b:marked
+		if s:is_same(a:f, m)
+			return 1
+		endif
+	endfor
+
+	return 0
+
+endfunc
+
+func! s:bulk_rename()
+
+	if empty(b:marked)
+		return
+	endif
+
+	let marked = b:marked
+
+	if confirm('rename selected files?', "&yes\n&no") != 1
+		return
+	endif
+
+	noa enew
+	setl buftype=acwrite
+	setl bufhidden=wipe
+	setf rename
+	file rename
+
+	for i in range(len(marked))
+		call setline(i + 1, fnamemodify(marked[i], ':t'))
+	endfor
+
+	set nomodified
+	call cursor(1, 1)
+
+	aug BrowseBulkRename
+		au!
+		au BufWriteCmd rename call <sid>bulk_rename_apply()
+	aug END
+
+endfunc
+
+func! s:bulk_rename_apply()
+
+	let names = getline(1,'$')
+	let files = b:marked
+
+	for i in range(len(names))
+		call s:job('mv "' . fnamemodify(files[i], ':t') . '" "' . names[i] . '"', { 'on_exit': function('browser#refresh') })
+	endfor
+
+	bw!
+	call browser#start()
+
 endfunc

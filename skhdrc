@@ -3,4 +3,4 @@ cmd + shift - 3 : screencapture -d $HOME/Desktop/(date +%s).png
 cmd + shift - 4 : screencapture -id $HOME/Desktop/(date +%s).png
 cmd + shift - 5 : screencapture -idU $HOME/Desktop/(date +%s).png
 cmd + shift - 6 : /usr/local/bin/ocr | pbcopy
-cmd + shift - o : osascript -e 'tell application "Finder" to if "Finder" is in (name of first application process whose frontmost is true) then do shell script "/opt/homebrew/bin/wezterm cli spawn --cwd " & (quoted form of POSIX path of (folder of the front window as string) as string)'
+cmd + shift - o : osascript -e 'tell application "Finder" to if "Finder" is in (name of first application process whose frontmost is true) then do shell script "wezterm cli spawn --cwd " & (quoted form of POSIX path of (folder of the front window as string) as string)'
