@@ -280,7 +280,8 @@ nno y yy
 vno y may`a
 nno x dd
 vno x d
-no p "_dP
+nno p P
+vno p "_dP
 ino <m-p> <c-o>P
 
 " delete
