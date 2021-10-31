@@ -30,6 +30,8 @@ set hidden
 set clipboard=unnamed,unnamedplus
 set belloff=all
 set history=1000
+set wildmenu
+set wildmode=longest:list,full
 set wildignore=*/.git/*,*/.svn/*,*/.cache/*,*/.tmp/*,*/node_modules/*,*/.tup/*
 set wildignore=.git,.svn,.cache,.tmp,.tup
 set wildignore+=.DS_Store
@@ -112,9 +114,9 @@ let g:ale_floating_window_border = ['|', '-', ' ', ' ', ' ', ' ']
 let g:ale_c_parse_makefile = 1
 
 let g:ale_fixers = {
-	\ 'javascript': [ 'prettier', 'eslint', ],
-	\ 'typescript': [ 'prettier', 'eslint', ],
-	\ 'typescriptreact': [ 'prettier', 'eslint', ],
+	\ 'javascript': [ 'eslint', 'prettier' ],
+	\ 'typescript': [ 'eslint', 'prettier' ],
+	\ 'typescriptreact': [ 'eslint', 'prettier' ],
 \ }
 
 let g:ale_linters = {
@@ -218,16 +220,16 @@ no! <tab> <tab>
 " movement
 no h h
 no l l
-no j gj
 no k gk
+no j gj
 no <m-h> b
 no <m-l> e
 no <m-j> 5gj
 no <m-k> 5gk
 no <left> <left>
 no <right> <right>
-no <up> <up>
-no <down> <down>
+no <up> gk
+no <down> gj
 no <m-left> b
 no <m-right> e
 no <m-up> 5gk
@@ -278,7 +280,7 @@ nno y yy
 vno y may`a
 nno x dd
 vno x d
-no p P
+no p "_dP
 ino <m-p> <c-o>P
 
 " delete
@@ -295,7 +297,7 @@ cno <m-bs> <c-w>
 " endfunc
 
 nno ? :set hls<cr>/
-vno <silent> ? "sy:let @/=escape(@s,'/\.*~')<cr>:set hls<cr>
+vno <silent> ? "sy:let @/=escape(@s,'/\.*~]')<cr>:set hls<cr>
 " vno <silent> ? :'<,'>call <sid>search_sel()<cr>
 nno ; N
 nno ' n
@@ -306,7 +308,7 @@ nno <silent> @} q:nm \ @{<cr>
 nno <silent> @v q:let @q='c?'.@q<cr>:nm \ @{<cr>
 nm \ @{
 nno , @q
-vno <silent> <m-cr> "sy:let @/=escape(@s, '/\.*~')<cr>:nm \ @v<cr>qqgn"_s
+vno <silent> <m-cr> "sy:let @/=escape(@s, '/\.*~]')<cr>:nm \ @v<cr>qqgn"_s
 
 " change
 nno c "_ci
@@ -421,4 +423,4 @@ au FileType vim              setl cms=\"%s
 au FileType forth            setl cms=\\%s
 au FileType html             setl cms=<!--%s-->
 au FileType css              setl cms=/*%s*/
-au FileType text             setl noet ts=2 sw=2
+au FileType text             setl et ts=2 sw=2
