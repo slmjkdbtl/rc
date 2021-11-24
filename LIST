@@ -81,9 +81,6 @@ CLI
   gifski
     https://gif.ski/
 
-  tunnelto
-    https://tunnelto.dev/
-
   gource
     https://gource.io/
 
@@ -110,6 +107,9 @@ CLI
 
   catimg
     https://github.com/posva/catimg/
+
+  pass
+    https://www.passwordstore.org/
 
   tree
     http://mama.indstate.edu/users/ice/tree/
@@ -166,6 +166,9 @@ CLI
     https://notmuchmail.org/
 
 GUI
+
+  re:AMP
+    https://re-amp.ru/
 
   Alfred
     https://www.alfredapp.com/

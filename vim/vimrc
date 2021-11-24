@@ -124,7 +124,7 @@ let g:ale_linters = {
 	\ 'cpp': [ 'clangd', ],
 	\ 'rust': [ 'analyzer', ],
 	\ 'go': [ 'gopls', ],
-	\ 'javascript': [ 'eslint', ],
+	\ 'javascript': [ 'tsserver', 'eslint', ],
 	\ 'typescript': [ 'tsserver', 'eslint', ],
 	\ 'typescriptreact': [ 'tsserver', 'eslint', ],
 \ }
@@ -424,4 +424,5 @@ au FileType vim              setl cms=\"%s
 au FileType forth            setl cms=\\%s
 au FileType html             setl cms=<!--%s-->
 au FileType css              setl cms=/*%s*/
+au FileType markdown         setl et ts=4 sw=4
 au FileType text             setl et ts=2 sw=2
