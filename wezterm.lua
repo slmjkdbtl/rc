@@ -49,4 +49,6 @@ return {
 		{ key = "LeftArrow", mods = "SUPER|SHIFT", action = wezterm.action { MoveTabRelative = -1 } },
 		{ key = "RightArrow", mods = "SUPER|SHIFT", action = wezterm.action { MoveTabRelative = 1 } },
 	},
+	audible_bell = "Disabled",
+	use_fancy_tab_bar = false,
 }

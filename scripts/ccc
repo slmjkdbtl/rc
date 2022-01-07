@@ -15,4 +15,3 @@ fi
 
 name=$(basename "$1" .c)
 cc "$name.c" $CFLAGS $LDFLAGS -o "$name" && ./"$name" "${@:2}"
-

@@ -280,6 +280,7 @@ nno y yy
 vno y may`a
 nno x dd
 vno x d
+" TODO: doesn't work right when cursor at line end
 nno p P
 vno p "_dP
 ino <m-p> <c-o>P
