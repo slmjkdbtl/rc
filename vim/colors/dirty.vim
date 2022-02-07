@@ -154,7 +154,7 @@ call s:hi('Visual',            s:bg,      s:yellow,  '',          )
 call s:hi('VisualNOS',         s:bg,      s:yellow,  '',          )
 call s:hi('WarningMsg',        s:red,     '',        '',          )
 call s:hi('WildMenu',          s:normal,  s:blue,    s:bold,      )
-call s:hi('Pmenu',             s:black,   s:bg,      s:italic,    )
+call s:hi('Pmenu',             s:black,   s:bg2,     s:italic,    )
 
 call s:hi('StatusLinePath',    s:fg3,     s:bg2,     '',          )
 call s:hi('StatusLineFT',      s:bg4,     s:bg2,     '',          )

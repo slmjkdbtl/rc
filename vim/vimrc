@@ -10,6 +10,8 @@ set ttimeoutlen=0
 set scrolloff=3
 set nowrapscan
 set incsearch
+set ignorecase
+set smartcase
 set nohlsearch
 set signcolumn=yes
 set laststatus=2
@@ -27,6 +29,7 @@ set showbreak=..
 set breakindent
 set autoread
 set hidden
+set completeopt=menu,menuone
 set clipboard=unnamed,unnamedplus
 set belloff=all
 set history=1000
@@ -73,6 +76,8 @@ call utils#trim_on_save()
 Plug 'junegunn/fzf'
 Plug 'dense-analysis/ale'
 Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 Plug 'pangloss/vim-javascript'
 Plug 'tbastos/vim-lua'
@@ -97,6 +102,7 @@ let g:signify_sign_change = '~'
 let g:signify_sign_changedelete = g:signify_sign_change
 
 " ale
+let g:ale_completion_enabled = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_save = 1
@@ -246,8 +252,6 @@ cno <m-left> <s-left>
 cno <m-right> <s-right>
 no ^ gg
 no $ G
-ino <up> <c-x><c-y>
-ino <down> <c-x><c-e>
 
 " enter insert
 nno <cr> a
@@ -290,6 +294,10 @@ nno d "_dd
 vno d "_d
 ino <m-bs> <c-w>
 cno <m-bs> <c-w>
+
+" cycle menu if there's popup, move viewport if not
+ino <silent><expr> <down> pumvisible() ? "\<c-n>" : "\<c-x><c-e>"
+ino <silent><expr> <up> pumvisible() ? "\<c-p>" : "\<c-x><c-y>"
 
 " search
 " func! s:search_sel() range
@@ -399,6 +407,9 @@ nno <silent> <m-g> :Rg<cr>
 
 " bind all pair keys
 call pair#bind()
+ino <silent><expr> <space> pair#space()
+ino <silent><expr> <return> pumvisible() ? "\<c-y>" : pair#newline()
+ino <silent><expr> <bs> pair#del()
 
 " file type detection
 au BufRead,BufNewFile *.h        set ft=c
