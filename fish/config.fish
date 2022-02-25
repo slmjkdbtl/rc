@@ -71,7 +71,11 @@ abbr gcl "git clone"
 abbr gpl "git pull"
 abbr grv "gh repo view --web"
 
+# jump
 type -q jump && status --is-interactive; and source (jump shell fish --bind=z | psub)
+
+# gcloud
+if [ -f '/Users/tga/.local/share/gcloud/path.fish.inc' ]; . '/Users/tga/.local/share/gcloud/path.fish.inc'; end
 
 function fish_prompt
 
