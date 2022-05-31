@@ -11,4 +11,3 @@ echo "syncing films..."
 rsync -av --delete --exclude '.DS_Store' \
 	/Users/tga/files/film/ \
 	/Volumes/EXTDISK/film
-

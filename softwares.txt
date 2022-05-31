@@ -9,11 +9,17 @@ CLI
   z
     https://github.com/rupa/z/
 
-  fd
-    https://github.com/sharkdp/fd/
+  rsync
+    https://rsync.samba.org/
 
   ripgrep
     https://github.com/BurntSushi/ripgrep/
+
+  fd
+    https://github.com/sharkdp/fd/
+
+  ffmpeg
+    https://ffmpeg.org/
 
   loc
     https://github.com/cgag/loc/
@@ -47,9 +53,6 @@ CLI
 
   m-cli
     https://github.com/rgcr/m-cli/
-
-  ffmpeg
-    https://ffmpeg.org/
 
   gifsicle
     http://www.lcdf.org/gifsicle/
