@@ -15,4 +15,4 @@ fi
 
 DIR="$HOME/todo/listen/$1"
 mkdir "$DIR"
-cd "$DIR" && youtube-dl --cookies /Users/tga/todo/listen/cookies.txt -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --yes-playlist --postprocessor-args "-metadata album='$1'" "$2"
+cd "$DIR" && yt-dlp --cookies /Users/tga/todo/listen/cookies.txt -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --yes-playlist --postprocessor-args "-metadata album='$1'" "$2"
