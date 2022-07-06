@@ -1,0 +1,23 @@
+#!/bin/sh
+
+help() {
+	echo "Convert all files in current dir to another format with ffmpeg"
+	echo ""
+	echo "USAGE"
+	echo "  $ convert <srcformat> <destformat>"
+	echo ""
+	echo "EXAMPLE"
+	echo "  $ convert png jpg"
+	echo "  $ convert flac mp3"
+}
+
+if [ -z "$1" ] || [ -z "$2" ]
+then
+	help
+	exit 1
+fi
+
+for file in *."$1"
+do
+	ffmpeg -i "$file" "$(basename "$file" ".$1").$2"
+done
