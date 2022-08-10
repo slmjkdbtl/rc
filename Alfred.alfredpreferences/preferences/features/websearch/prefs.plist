@@ -43,6 +43,19 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>32809E05-33A1-4292-98C3-80D06A8AB0EE</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>bc</string>
+			<key>text</key>
+			<string>Open Bandcamp</string>
+			<key>url</key>
+			<string>https://bandcamp.com/</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
 		<key>361EAC5C-E5C2-41AC-B3C5-4DE17BF46705</key>
 		<dict>
 			<key>enabled</key>
