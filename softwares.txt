@@ -170,6 +170,9 @@ CLI
 
 GUI
 
+  Soulseek
+    http://www.slsknet.org/
+
   re:AMP
     https://re-amp.ru/
 
@@ -217,6 +220,9 @@ GUI
 
   Mini vMac
     https://www.gryphel.com/c/minivmac/
+
+  Folx
+    https://mac.eltima.com/download-manager.html
 
   SheepShaver
     https://sheepshaver.cebix.net/
@@ -280,9 +286,6 @@ ALFRED
 
   colors
     http://www.packal.org/workflow/colors/
-
-  emoji
-    http://www.packal.org/workflow/emoji/
 
   kill
     https://github.com/ngreenstein/alfred-process-killer/

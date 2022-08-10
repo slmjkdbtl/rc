@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>customSites</key>
+	<dict>
+		<key>017023B8-BA4A-44B4-95E1-4353BFF0CAFF</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>gh</string>
+			<key>text</key>
+			<string>Open Github</string>
+			<key>url</key>
+			<string>https://github.com/</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>0D221D18-C7F5-463C-8E68-81769C710AE9</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>it</string>
+			<key>text</key>
+			<string>Open itch.io</string>
+			<key>url</key>
+			<string>https://itch.io/</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>1703E0D7-4221-476C-BFAA-D4ECBBD13AED</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>gh</string>
+			<key>text</key>
+			<string>Search Github for '{query}'</string>
+			<key>url</key>
+			<string>https://github.com/search?q={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>361EAC5C-E5C2-41AC-B3C5-4DE17BF46705</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>it</string>
+			<key>text</key>
+			<string>Search itch.io for '{query}'</string>
+			<key>url</key>
+			<string>https://itch.io/search?q={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>3918EA2A-0D25-4D6F-92A9-AF4BDA52EB9E</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>rd</string>
+			<key>text</key>
+			<string>Open Reddit</string>
+			<key>url</key>
+			<string>https://www.reddit.com/</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>57DBFE73-74FE-493E-80B4-AB8835ECF6DC</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>dc</string>
+			<key>text</key>
+			<string>Search Discogs for '{query}'</string>
+			<key>url</key>
+			<string>https://www.discogs.com/search/?q={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>63BB7EBC-8E30-43EC-AF2C-A028AA2A7A8E</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>db</string>
+			<key>text</key>
+			<string>Search Douban for '{query}'</string>
+			<key>url</key>
+			<string>https://www.douban.com/search?q={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>860891E2-1005-41F5-8C7E-523CDE8B0D05</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>hn</string>
+			<key>text</key>
+			<string>Open Hacker News</string>
+			<key>url</key>
+			<string>https://news.ycombinator.com/</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>A718044C-258B-4DFC-8D84-057BE6C895E8</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>mdn</string>
+			<key>text</key>
+			<string>Search MDN for '{query}'</string>
+			<key>url</key>
+			<string>https://developer.mozilla.org/search?q={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>C9498957-1071-4249-AAC3-83E4F87EBC61</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>hn</string>
+			<key>text</key>
+			<string>Search Hacker News for '{query}'</string>
+			<key>url</key>
+			<string>https://hn.algolia.com?query={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>CB1DBDBB-D7A7-4D46-8951-AE6454AB4C1B</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>db</string>
+			<key>text</key>
+			<string>Open Douban</string>
+			<key>url</key>
+			<string>https://www.douban.com/</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>D6CDD166-2DDC-4C8F-A3F1-19128009E9E0</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>bc</string>
+			<key>text</key>
+			<string>Search Bandcamp for '{query}'</string>
+			<key>url</key>
+			<string>https://bandcamp.com/search?q={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>DF598E2B-F192-40F9-AD41-49812F895B7C</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>rd</string>
+			<key>text</key>
+			<string>Search Reddit for '{query}'</string>
+			<key>url</key>
+			<string>https://www.reddit.com/search/?q={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>onlyShowEnabledInPrefs</key>
+	<true/>
+</dict>
+</plist>
