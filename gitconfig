@@ -1,6 +1,7 @@
 [core]
 	pager = less -+FX
 	ignorecase = false
+	excludesfile = /Users/tga/.gitignore
 
 [user]
 	email = tga@space55.xyz

@@ -330,6 +330,21 @@ FONTS
     https://int10h.org/oldschool-pc-fonts/
 
 
+QUICKLOOK
+
+  QLColorCode
+    https://github.com/anthonygelibert/QLColorCode
+
+  QLStephen
+    https://github.com/whomwah/qlstephen
+
+  QLMarkdown
+    https://github.com/toland/qlmarkdown
+
+  QuickLookJSON
+    http://www.sagtau.com/quicklookjson.html
+
+
 MISC
 
   ix

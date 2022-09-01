@@ -17,6 +17,19 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>03DB85EA-FF3F-41AE-8022-4A358FAFDAD6</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>st</string>
+			<key>text</key>
+			<string>Search Steam for '{query}'</string>
+			<key>url</key>
+			<string>https://store.steampowered.com/search/?term={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
 		<key>0D221D18-C7F5-463C-8E68-81769C710AE9</key>
 		<dict>
 			<key>enabled</key>

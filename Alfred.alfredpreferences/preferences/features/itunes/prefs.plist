@@ -2,7 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>darkthemeuid</key>
-	<string>theme.bundled.moderndark</string>
+	<key>includePodcasts</key>
+	<false/>
+	<key>keyword</key>
+	<string>music</string>
+	<key>largerRandomAlbumsOnly</key>
+	<false/>
+	<key>usePlaylist</key>
+	<false/>
 </dict>
 </plist>

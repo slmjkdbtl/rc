@@ -5,12 +5,7 @@ func! comment#init()
 endfunc
 
 func! comment#is_commented(line)
-	if comment#is_wrap()
-		" TODO
-		return 0
-	else
-		return a:line =~# '^' . substitute(&cms, '%s$', '', '')
-	endif
+	return a:line =~# '^\(\s\|\t\)*' . substitute(&cms, '%s', '.*', '')
 endfunc
 
 func! comment#is_wrap()
@@ -23,11 +18,13 @@ func! comment#comment(line)
 		return a:line
 	endif
 
+	let indent = matchstr(a:line, '^\(\s\|\t\)*')
+	let content = a:line[len(indent):]
+
 	if comment#is_wrap()
-		" TODO
-		return a:line
+		return indent . substitute(&cms, '%s', ' ' . content . ' ', '')
 	else
-		return substitute(&cms, '%s$', '', '') . ' ' . a:line
+		return indent . substitute(&cms, '%s', ' ' . content, '')
 	endif
 
 endfunc
@@ -38,12 +35,11 @@ func! comment#uncomment(line)
 		return a:line
 	endif
 
-	if comment#is_wrap()
-		" TODO
-		return a:line
-	else
-		return substitute(a:line, '^' . substitute(escape(&cms, '\'), '%s$', '', '') . ' ', '', '')
-	endif
+	let indent = matchstr(a:line, '^\(\s\|\t\)*')
+	let content = matchlist(a:line, substitute(escape(&cms, '\'), '%s', '\\s*\\(.*\\)', ''))[1]
+
+	return indent . content
+
 endfunc
 
 func! comment#toggle()

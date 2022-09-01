@@ -104,7 +104,7 @@ function fish_prompt
 
 	function show_prompt
 		set_color yellow
-		echo -n "% "
+		echo -n "> "
 	end
 
 	echo ""

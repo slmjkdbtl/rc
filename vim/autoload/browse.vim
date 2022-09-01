@@ -39,30 +39,11 @@ func! s:open(dir)
 	setl nomodified
 	setf browse
 
-	syn match BrowseParent
-				\ '^..$'
-				\ contained
-				\ containedin=BrowseItem
-
-	syn match BrowseDirHead
-				\ '^\(+\|-\)'
-				\ contained
-				\ containedin=BrowseDir
-
-	syn match BrowseMarked
-				\ '>\s'
-				\ contained
-				\ containedin=BrowseItem
-
-	syn match BrowseDir
-				\ '^\(+\|-\).*'
-				\ contained
-				\ containedin=BrowseItem
-				\ contains=BrowseDirHead,BrowseMarked
-
-	syn match BrowseItem
-				\ '^.*$'
-				\ contains=BrowseDir,BrowseMarked
+	syn match BrowseParent '^..$' containedin=BrowseItem
+	syn match BrowseDirHead '^\(+\|-\)' containedin=BrowseDir
+	syn match BrowseMarked '>\s' containedin=BrowseItem
+	syn match BrowseDir '^\(+\|-\).*' containedin=BrowseItem contains=BrowseDirHead,BrowseMarked
+	syn match BrowseItem '^.*$' contains=BrowseDir,BrowseMarked
 
 	hi def link BrowseItem    Cleared
 	hi def link BrowseDir     Function
