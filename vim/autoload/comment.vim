@@ -8,10 +8,6 @@ func! comment#is_commented(line)
 	return a:line =~# '^\(\s\|\t\)*' . substitute(&cms, '%s', '.*', '')
 endfunc
 
-func! comment#is_wrap()
-	return &cms !~# '%s$'
-endfunc
-
 func! comment#comment(line)
 
 	if empty(a:line) || comment#is_commented(a:line)
@@ -20,12 +16,9 @@ func! comment#comment(line)
 
 	let indent = matchstr(a:line, '^\(\s\|\t\)*')
 	let content = a:line[len(indent):]
+	let commented = indent . substitute(&cms, '%s', ' ' . content . ' ', '')
 
-	if comment#is_wrap()
-		return indent . substitute(&cms, '%s', ' ' . content . ' ', '')
-	else
-		return indent . substitute(&cms, '%s', ' ' . content, '')
-	endif
+	return substitute(commented, '\s*$', '', '')
 
 endfunc
 
@@ -37,8 +30,9 @@ func! comment#uncomment(line)
 
 	let indent = matchstr(a:line, '^\(\s\|\t\)*')
 	let content = matchlist(a:line, substitute(escape(&cms, '\'), '%s', '\\s*\\(.*\\)', ''))[1]
+	let uncommented = indent . content
 
-	return indent . content
+	return substitute(uncommented, '\s*$', '', '')
 
 endfunc
 
