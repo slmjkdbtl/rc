@@ -6,53 +6,55 @@ func! comment#init()
 	com! -range Uncomment     <line1>,<line2>call comment#uncomment()
 endfunc
 
-func! comment#is_commented(line)
-	return a:line =~# '^\(\s\|\t\)*' . substitute(escape(&cms, '\*'), '%s', '.*', '')
+func! comment#is_commented()
+	let line = getline('.')
+	return line =~# '^\(\s\|\t\)*' . substitute(escape(&cms, '\*'), '%s', '.*', '')
 endfunc
 
-func! comment#comment(line)
+func! comment#comment()
 
-	if empty(a:line) || comment#is_commented(a:line)
-		return a:line
+	let line = getline('.')
+
+	" start writing a comment if on empty line
+	if empty(line)
+		call setline('.', substitute(&cms, '%s', '  ', ''))
+		call cursor('.', match(&cms, '%s') + 2)
+		startinsert
+		return
 	endif
 
-	let indent = matchstr(a:line, '^\(\s\|\t\)*')
-	let content = a:line[len(indent):]
+	if comment#is_commented()
+		return
+	endif
+
+	let indent = matchstr(line, '^\(\s\|\t\)*')
+	let content = line[len(indent):]
 	let commented = indent . substitute(&cms, '%s', ' ' . content . ' ', '')
 
-	return substitute(commented, '\s*$', '', '')
+	call setline('.', substitute(commented, '\s*$', '', ''))
 
 endfunc
 
-func! comment#uncomment(line)
+func! comment#uncomment()
 
-	if empty(a:line) || !comment#is_commented(a:line)
-		return a:line
+	let line = getline('.')
+
+	if empty(line) || !comment#is_commented()
+		return
 	endif
 
-	let indent = matchstr(a:line, '^\(\s\|\t\)*')
-	let content = matchlist(a:line, substitute(escape(&cms, '\*'), '%s', '\\s*\\(.*\\)', ''))[1]
+	let indent = matchstr(line, '^\(\s\|\t\)*')
+	let content = matchlist(line, substitute(escape(&cms, '\*'), '%s', '\\s*\\(.*\\)', ''))[1]
 	let uncommented = indent . content
 
-	return substitute(uncommented, '\s*$', '', '')
+	call setline('.', substitute(uncommented, '\s*$', '', ''))
 
-endfunc
-
-func! comment#write_comment()
-	call setline('.', substitute(&cms, '%s', '  ', ''))
-	call cursor('.', match(&cms, '%s') + 2)
-	startinsert
 endfunc
 
 func! comment#toggle()
-	let line = getline('.')
-	if comment#is_commented(line)
-		call setline('.', comment#uncomment(line))
+	if comment#is_commented()
+		call comment#uncomment()
 	else
-		if empty(line)
-			call comment#write_comment()
-		else
-			call setline('.', comment#comment(line))
-		endif
+		call comment#comment()
 	endif
 endfunc

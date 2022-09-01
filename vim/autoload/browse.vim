@@ -1,6 +1,8 @@
 " file browser
 " TODO: bulk rename
 
+let g:browse_open_ext = get(g:, 'browse_open_ext', [ 'jpg', 'png', 'pdf', 'ico', 'icns', 'ase', 'gif', 'mp4', 'mkv', 'mov', 'avi', 'mp3', 'wav', 'ogg', 'flac', 'app' ])
+
 func! browse#init()
 
 	com! -nargs=0 Browse       call <sid>open()
@@ -234,7 +236,7 @@ func! s:enter()
 
 		let ext = fnamemodify(item, ':e')
 
-		if index([ 'jpg', 'png', 'pdf', 'ico', 'icns', 'ase', 'gif', 'mp4', 'mkv', 'mov', 'avi', 'mp3', 'wav', 'ogg', ], ext) >= 0
+		if index(g:browse_open_ext, ext) >= 0
 			call system('open ' . escape(item, " '&()"))
 		else
 			exec 'sil! edit ' . item
@@ -259,10 +261,17 @@ func! s:mkdir()
 endfunc
 
 func! s:rename()
+
+	if len(b:marked) > 0
+		if confirm('rename selected files?', "&yes\n&no") == 1
+			call s:bulk_rename()
+		endif
+		return
+	endif
+
 	let item = s:getcur()
 	let name = input('rename ' . fnamemodify(item, ':t') . ' to: ')
 	if empty(name)
-		echo 'name no good'
 		return
 	endif
 	let path = fnamemodify(item, ':h') . '/' . name
@@ -333,10 +342,6 @@ func! s:bulk_rename()
 	endif
 
 	let marked = b:marked
-
-	if confirm('rename selected files?', "&yes\n&no") != 1
-		return
-	endif
 
 	noa enew
 	setl buftype=acwrite
