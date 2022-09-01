@@ -11,6 +11,14 @@ func! comment#is_commented()
 	return line =~# '^\(\s\|\t\)*' . substitute(escape(&cms, '\*'), '%s', '.*', '')
 endfunc
 
+func! s:getindent(line)
+	return matchstr(a:line, '^\(\s\|\t\)*')
+endfunc
+
+func! s:trim(line)
+	return substitute(a:line, '\s*$', '', '')
+endfunc
+
 func! comment#comment()
 
 	let line = getline('.')
@@ -27,11 +35,14 @@ func! comment#comment()
 		return
 	endif
 
-	let indent = matchstr(line, '^\(\s\|\t\)*')
+	let indent = s:getindent(line)
 	let content = line[len(indent):]
 	let commented = indent . substitute(&cms, '%s', ' ' . content . ' ', '')
+	let commented = s:trim(commented)
 
-	call setline('.', substitute(commented, '\s*$', '', ''))
+	if line !=# commented
+		call setline('.', commented)
+	endif
 
 endfunc
 
@@ -43,11 +54,14 @@ func! comment#uncomment()
 		return
 	endif
 
-	let indent = matchstr(line, '^\(\s\|\t\)*')
+	let indent = s:getindent(line)
 	let content = matchlist(line, substitute(escape(&cms, '\*'), '%s', '\\s*\\(.*\\)', ''))[1]
 	let uncommented = indent . content
+	let uncommented = s:trim(uncommented)
 
-	call setline('.', substitute(uncommented, '\s*$', '', ''))
+	if line !=# uncommented
+		call setline('.', uncommented)
+	endif
 
 endfunc
 
