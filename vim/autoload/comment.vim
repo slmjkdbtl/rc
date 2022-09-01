@@ -5,7 +5,7 @@ func! comment#init()
 endfunc
 
 func! comment#is_commented(line)
-	return a:line =~# '^\(\s\|\t\)*' . substitute(&cms, '%s', '.*', '')
+	return a:line =~# '^\(\s\|\t\)*' . substitute(escape(&cms, '\*'), '%s', '.*', '')
 endfunc
 
 func! comment#comment(line)
@@ -29,7 +29,7 @@ func! comment#uncomment(line)
 	endif
 
 	let indent = matchstr(a:line, '^\(\s\|\t\)*')
-	let content = matchlist(a:line, substitute(escape(&cms, '\'), '%s', '\\s*\\(.*\\)', ''))[1]
+	let content = matchlist(a:line, substitute(escape(&cms, '\*'), '%s', '\\s*\\(.*\\)', ''))[1]
 	let uncommented = indent . content
 
 	return substitute(uncommented, '\s*$', '', '')
