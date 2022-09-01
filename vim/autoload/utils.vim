@@ -1,3 +1,5 @@
+" misc utils
+
 func! utils#init()
 	com! -nargs=1 Rename        call utils#rename(<f-args>)
 	com! -nargs=0 Delete        call utils#delete()

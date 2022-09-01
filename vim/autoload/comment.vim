@@ -1,3 +1,5 @@
+" quickly comment / uncomment lines
+
 func! comment#init()
 	com! -range CommentToggle <line1>,<line2>call comment#toggle()
 	com! -range Comment       <line1>,<line2>call comment#comment()
@@ -36,11 +38,21 @@ func! comment#uncomment(line)
 
 endfunc
 
+func! comment#write_comment()
+	call setline('.', substitute(&cms, '%s', '  ', ''))
+	call cursor('.', match(&cms, '%s') + 2)
+	startinsert
+endfunc
+
 func! comment#toggle()
 	let line = getline('.')
 	if comment#is_commented(line)
 		call setline('.', comment#uncomment(line))
 	else
-		call setline('.', comment#comment(line))
+		if empty(line)
+			call comment#write_comment()
+		else
+			call setline('.', comment#comment(line))
+		endif
 	endif
 endfunc

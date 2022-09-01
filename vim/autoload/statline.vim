@@ -1,3 +1,5 @@
+" custom status line
+
 func! s:mode()
 
 	let text = ''

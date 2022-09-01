@@ -1,3 +1,5 @@
+" plugin manager
+
 let s:plugdir = get(g:, 'plugdir', fnamemodify($MYVIMRC, ':h') . '/pack/ext/start')
 let s:plugins = {}
 

@@ -1,3 +1,4 @@
+" file browser
 " TODO: bulk rename
 
 func! browse#init()

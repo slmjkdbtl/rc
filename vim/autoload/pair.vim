@@ -1,3 +1,5 @@
+" pair parens and friends
+
 let g:pairs = get(g:, 'pairs', [
 	\ ['(', ')'],
 	\ ["'", "'"],

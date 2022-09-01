@@ -1,3 +1,5 @@
+" key mapping utils
+
 let s:normal_keys = split("qwertyuiopasdfghjklzxcvbnm1234567890`-=\\;',./", '\zs')
 let s:shifted_keys = split("QWERTYUIOPASDFGHJKLZXCVBNM0~!@#$%^&*()_+{}:\"", '\zs')
 let s:special_keys = split('cr bs tab left right up down ScrollWheelUp ScrollWheelDown')

@@ -1,3 +1,5 @@
+" jump to dirs
+
 let g:proj_file = get(g:, 'proj_file', '~/.proj')
 
 func! proj#init()

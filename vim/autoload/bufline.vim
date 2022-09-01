@@ -1,4 +1,5 @@
-" show buffers in tab line
+" list buffers in tab line
+
 func! bufline#get()
 
 	let line = ''
