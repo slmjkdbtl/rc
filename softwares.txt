@@ -48,6 +48,9 @@ CLI
   aria2
     https://aria2.github.io/
 
+  rename
+    http://plasmasturm.org/code/rename/
+
   ii
     https://tools.suckless.org/ii
 
@@ -281,6 +284,15 @@ GUI
   JazzUp
     https://www.irradiatedsoftware.com/labs/
 
+  Zeta
+    https://zeta.asie.pl/
+
+  KevEdit
+    https://github.com/cknave/kevedit
+
+  EDOPro
+    https://projectignis.github.io/
+
 
 ALFRED
 
@@ -301,6 +313,15 @@ GAMES
 
   dwarf-fortress
     http://bay12games.com/dwarves/
+
+  angband
+    https://rephial.org/
+
+  brogue
+    https://sites.google.com/site/broguegame
+
+  cataclysm
+    https://cataclysmdda.org/
 
 
 SYSTEM
