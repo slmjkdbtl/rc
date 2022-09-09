@@ -21,6 +21,10 @@ endfunc
 
 func! comment#comment()
 
+	if !&modifiable
+		return
+	endif
+
 	let line = getline('.')
 
 	" start writing a comment if on empty line
@@ -47,6 +51,10 @@ func! comment#comment()
 endfunc
 
 func! comment#uncomment()
+
+	if !&modifiable
+		return
+	endif
 
 	let line = getline('.')
 

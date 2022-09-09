@@ -171,6 +171,9 @@ CLI
   notmuch
     https://notmuchmail.org/
 
+  c
+    https://github.com/ryanmjacobs/c
+
 GUI
 
   Soulseek
