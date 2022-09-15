@@ -236,6 +236,9 @@ GUI
   ocenaudio
     http://www.ocenaudio.com/
 
+  TrenchBroom
+    https://trenchbroom.github.io/
+
   MegaZeux
     https://www.digitalmzx.com/
 

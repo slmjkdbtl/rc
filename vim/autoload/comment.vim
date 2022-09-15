@@ -15,6 +15,10 @@ func! s:getindent(line)
 	return matchstr(a:line, '^\(\s\|\t\)*')
 endfunc
 
+func! s:isempty(line)
+	return a:line =~# '^\(\s\|\t\)*$'
+endfunc
+
 func! s:trim(line)
 	return substitute(a:line, '\s*$', '', '')
 endfunc
@@ -27,15 +31,7 @@ func! comment#comment()
 
 	let line = getline('.')
 
-	" start writing a comment if on empty line
-	if empty(line)
-		call setline('.', substitute(&cms, '%s', '  ', ''))
-		call cursor('.', match(&cms, '%s') + 2)
-		startinsert
-		return
-	endif
-
-	if comment#is_commented()
+	if empty(line) || s:isempty(line) || comment#is_commented()
 		return
 	endif
 
@@ -58,7 +54,7 @@ func! comment#uncomment()
 
 	let line = getline('.')
 
-	if empty(line) || !comment#is_commented()
+	if empty(line) || s:isempty(line) || !comment#is_commented()
 		return
 	endif
 
