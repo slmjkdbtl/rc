@@ -7,12 +7,31 @@ help() {
 	echo "  $ dalbum <name> <url>"
 }
 
-if [ -z "$1" ] || [ -z "$2" ]
+album="$1"
+url="$2"
+
+if [ -z $album ] || [ -z $url ]
 then
 	help
 	exit 1
 fi
 
-DIR="$HOME/todo/listen/$1"
-mkdir "$DIR"
-cd "$DIR" && yt-dlp --cookies /Users/tga/todo/listen/cookies.txt -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --yes-playlist --postprocessor-args "-metadata album='$1'" "$2"
+dir="$HOME/todo/listen/$album"
+mkdir "$dir"
+
+contains() {
+	str="$1"
+	substr="$2"
+	if test "${str#*$substr}" != "$str"
+	then
+		return 0
+	else
+		return 1
+	fi
+}
+
+if contains "$url" "list="; then
+	cd "$dir" && yt-dlp --cookies /Users/tga/todo/listen/cookies.txt -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --yes-playlist --postprocessor-args "-metadata album='$album'" "$url"
+else
+	cd "$dir" && yt-dlp --cookies /Users/tga/todo/listen/cookies.txt -x --audio-format mp3 --split-chapters -o '%(chapter)s.%(ext)s' -i --no-playlist --postprocessor-args "-metadata album='$album'" "$url"
+fi
