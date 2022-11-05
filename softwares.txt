@@ -90,6 +90,9 @@ CLI
   gource
     https://gource.io/
 
+  sile
+    https://sile-typesetter.org/
+
   genact
     https://github.com/svenstaro/genact/
 
@@ -193,6 +196,9 @@ GUI
 
   Aseprite
     https://www.aseprite.org/
+
+  Glyphs
+    https://glyphsapp.com/
 
   Discord
     https://discordapp.com
