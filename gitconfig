@@ -2,11 +2,9 @@
 	pager = less -+FX
 	ignorecase = false
 	excludesfile = /Users/tga/.gitignore
-
 [user]
 	email = tga@space55.xyz
 	name = tga
-
 [alias]
 	conflicts = diff --name-only --diff-filter=U
 	root = rev-parse --show-toplevel
@@ -16,14 +14,13 @@
 	logf = log -p
 	commitf = commit --amend --no-edit
 	co = checkout
-
 [credential]
 	helper = store
-
 [pull]
 	rebase = false
-
 [pager]
 	branch = false
-[safe]
-	directory = /Users/tga/dev/replit/web
+[web]
+    browser = open
+[browser "chrome"]
+    cmd = open -a 'Google Chrome.app'

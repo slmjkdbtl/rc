@@ -91,6 +91,7 @@ Plug 'LnL7/vim-nix'
 Plug 'tikhomirov/vim-glsl'
 Plug 'jdonaldson/vaxe'
 Plug 'jparise/vim-graphql'
+Plug 'karolbelina/uxntal.vim'
 
 " signify
 let g:signify_vcs_list = [ 'git' ]

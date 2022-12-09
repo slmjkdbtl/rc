@@ -1,0 +1,25 @@
+#!/bin/sh
+
+help() {
+	echo "Convert audio to video with image"
+	echo ""
+	echo "USAGE"
+	echo "    $ mp324 <audio> <img> <output>"
+}
+
+audio="$1"
+img="$2"
+out="$3"
+
+if [ -z "$audio" ] || [ -z "$img" ]
+then
+	help
+	exit 1
+fi
+
+if [ -z "$out" ]
+then
+	out="$(basename $audio ${audio##*.})mp4"
+fi
+
+ffmpeg -loop 1 -i "$img" -i "$audio" -c:v libx264 -c:a aac -b:a 192k -preset veryslow -tune stillimage -vf scale=600:600 -shortest -strict experimental -shortest "$out"
