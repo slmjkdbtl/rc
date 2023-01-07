@@ -9,6 +9,7 @@ set -x PATH /opt/homebrew/opt/llvm/bin $PATH
 set -x PATH $HOME/.cargo/bin $PATH
 set -x PATH $GOPATH/bin $PATH
 set -x HOMEBREW_NO_AUTO_UPDATE 1
+set -x JAVA_HOME /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
 set fish_greeting
 
 set -U fish_color_autosuggestion      black
@@ -67,6 +68,7 @@ abbr gc "git commit -m"
 abbr gp "git push"
 abbr gb "git branch"
 abbr gr "git remote"
+abbr gd "git diff"
 abbr gsw "git switch"
 abbr gcl "git clone"
 abbr gpl "git pull"

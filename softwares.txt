@@ -257,6 +257,9 @@ GUI
   Bfxr
     https://www.bfxr.net/
 
+  HandBrake
+    https://handbrake.fr/
+
   KeyCastr
     https://github.com/keycastr/keycastr/
 

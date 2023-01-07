@@ -195,7 +195,9 @@ func! s:update(dir)
 	endif
 	let b:list = s:getlist(a:dir)
 	call s:render()
-	call s:toitem(b:list[1])
+	if len(b:list) > 1
+		call s:toitem(b:list[1])
+	endif
 endfunc
 
 func! s:toitem(item)
