@@ -1,0 +1,9 @@
+#!/bin/sh
+
+for file in "$@"
+do
+	echo file $file.mp4 >> ffconcat.txt
+done
+
+ffmpeg -f concat -i ffconcat.txt -c copy ffconcat.mp4
+rm ffconcat.txt
