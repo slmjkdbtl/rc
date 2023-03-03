@@ -1,0 +1,73 @@
+setting up a vps for simple hosting
+
+# add user
+$ adduser tga
+
+# add sudo priviliedge to user
+$ usermod -aG sudo tga
+
+# change to user
+$ su - tga
+
+# install packages
+$ sudo apt update
+$ sudo apt install -y vim make git nodejs fish
+
+# install caddy
+$ sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
+$ curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+$ curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+$ sudo apt update
+$ sudo apt install -y caddy
+
+# clone this repo
+$ git clone https://github.com/slmjkdbtl/rc
+
+# init config
+$ cd rc && make
+
+# add public ssh key
+$ vim .ssh/authorized_keys
+
+# change default shell
+$ chsh -s /usr/bin/fish
+
+# reload systemd configs files
+$ systemctl daemon-reload
+
+# start a service
+$ systemctl start space55.xyz
+
+# stop a service
+$ systemctl stop space55.xyz
+
+# enable a service to run on startup
+$ systemctl enable space55.xyz
+
+# reload config for a service
+$ systemctl reload caddy
+```
+
+# /etc/systemd/system/space55.xyz.service
+[Unit]
+Description=space55.xyz
+After=network.target
+
+[Service]
+Type=simple
+User=tga
+WorkingDirectory=/tga/home/space55.xyz
+ExecStart=/usr/bin/node main.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+# /etc/caddy/Caddyfile
+space55.xyz {
+        reverse_proxy localhost:4000
+}
+
+davidmurray.xyz {
+        reverse_proxy localhost:4001
+}

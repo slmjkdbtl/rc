@@ -177,6 +177,9 @@ CLI
   notmuch
     https://notmuchmail.org/
 
+  magic-wormhole
+    https://magic-wormhole.readthedocs.io/
+
   c
     https://github.com/ryanmjacobs/c
 
@@ -217,6 +220,9 @@ GUI
 
   VirtualBox
     https://www.virtualbox.org/
+
+  Sloth
+    https://github.com/sveinbjornt/Sloth
 
   Sip
     http://sipapp.io/

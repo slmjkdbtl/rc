@@ -9,6 +9,7 @@ set -x PATH /opt/homebrew/opt/llvm/bin $PATH
 set -x PATH $HOME/.cargo/bin $PATH
 set -x PATH $GOPATH/bin $PATH
 set -x HOMEBREW_NO_AUTO_UPDATE 1
+set -x HOMEBREW_NO_INSTALL_FROM_API 1
 set -x JAVA_HOME /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
 set fish_greeting
 
@@ -59,7 +60,7 @@ alias toix "curl -F 'f:1=<-' ix.io"
 alias ip "ipconfig getifaddr en0"
 alias extip "curl ifconfig.co"
 alias playraw "ffplay -ar 8000 -ac 1 -f u8 -nodisp -"
-alias weather "curl wttr.in"
+alias weather "curl 'wttr.in?m'"
 alias dnsclear "sudo killall -HUP mDNSResponder"
 
 abbr gs "git status"
