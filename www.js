@@ -1,18 +1,23 @@
 // helpers for the world wide web with Bun
 
 function createServer() {
+
 	const handlers = []
-	let handleError = () => {
+
+	let handleError = (e) => {
+		console.error(e)
 		return new Response("Internal server error", {
 			status: 500,
 		})
 	}
+
 	let handleNotFound = () => {
 		return new Response("404", {
 			status: 404,
 		})
 	}
-	const handleMatch = (req, pat, handler) => {
+
+	function handleMatch(req, pat, handler) {
 		const url = new URL(req.url)
 		const match = matchUrl(pat, url.pathname)
 		if (match) return handler(req, match)
@@ -31,13 +36,18 @@ function createServer() {
 		handlers.push(handler)
 	}
 
-	function fetch(req) {
+	async function fetch(req) {
+		// TODO: better async?
 		for (const handle of handlers) {
 			try {
 				const res = handle(req)
-				if (res) return res
+				if (res instanceof Promise) {
+					const awaitedRes = await res
+					if (awaitedRes) return awaitedRes
+				} else {
+					if (res) return res
+				}
 			} catch (e) {
-				console.log(e)
 				return handleError(req, e)
 			}
 		}
@@ -56,12 +66,10 @@ function createServer() {
 				const path = "./" + root + url.pathname.replace(new RegExp(`^${route}`), "")
 				const file = Bun.file(path)
 				if (file.size === 0) return
-				return new Response(file.stream())
+				return new Response(file)
 			})
 		},
-		match: (pat, cb) => {
-			handle((req) => handleMatch(req, pat, handler))
-		},
+		match: (pat, cb) => handle((req) => handleMatch(req, pat, handler)),
 		get: genMethodHandler("GET"),
 		post: genMethodHandler("POST"),
 		put: genMethodHandler("PUT"),
