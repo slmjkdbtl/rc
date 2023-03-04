@@ -11,7 +11,10 @@ $ su - tga
 
 # install packages
 $ sudo apt update
-$ sudo apt install -y vim make git nodejs fish
+$ sudo apt install -y vim make git fish unzip
+
+# install bun
+$ curl -fsSL https://bun.sh/install | bash
 
 # install caddy
 $ sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
@@ -56,8 +59,8 @@ After=network.target
 [Service]
 Type=simple
 User=tga
-WorkingDirectory=/tga/home/space55.xyz
-ExecStart=/usr/bin/node main.js
+WorkingDirectory=/home/tga/space55.xyz
+ExecStart=/home/tga/.bun/bin/bun main.js
 Restart=on-failure
 
 [Install]

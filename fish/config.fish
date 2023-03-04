@@ -11,6 +11,8 @@ set -x PATH $GOPATH/bin $PATH
 set -x HOMEBREW_NO_AUTO_UPDATE 1
 set -x HOMEBREW_NO_INSTALL_FROM_API 1
 set -x JAVA_HOME /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
+set -x BUN_INSTALL "$HOME/.bun"
+set -x PATH $BUN_INSTALL/bin $PATH
 set fish_greeting
 
 set -U fish_color_autosuggestion      black

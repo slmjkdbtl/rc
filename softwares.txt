@@ -24,6 +24,9 @@ CLI
   loc
     https://github.com/cgag/loc/
 
+  bun
+    https://bun.sh/
+
   htop
     https://htop.dev/
 
