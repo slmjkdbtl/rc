@@ -59,9 +59,10 @@ After=network.target
 [Service]
 Type=simple
 User=tga
+Environment="NODE_ENV=production"
 WorkingDirectory=/home/tga/space55.xyz
 ExecStart=/home/tga/.bun/bin/bun main.js
-Restart=on-failure
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
