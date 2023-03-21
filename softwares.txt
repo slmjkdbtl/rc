@@ -42,6 +42,9 @@ CLI
   fzy
     https://github.com/jhawthorn/fzy/
 
+  rclone
+    https://rclone.org/
+
   yabai
     https://github.com/koekeishiya/yabai/
 
