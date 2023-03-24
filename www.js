@@ -1,15 +1,24 @@
 // helpers for the world wide web with Bun
 
-import { statSync, readdirSync } from "fs"
+import { Database } from "bun:sqlite"
+import * as fs from "fs"
 
 export function createServer() {
 
 	const handlers = []
 	const handle = (handler) => handlers.push(handler)
 
-	let handleError = (req, e) => {
-		console.error("Error:", e)
-		return new Response("Internal server error", { status: 500 })
+	let handleError = (req, err) => {
+		if (Bun.env["DEV"]) {
+			throw err
+		} else {
+			const url = new URL(req.url)
+			console.error(`Time: ${new Date()}`)
+			console.error(`Request: ${req.method} ${url.pathname}`)
+			console.error("")
+			console.error(err)
+			return new Response("Internal server error", { status: 500 })
+		}
 	}
 
 	let handleNotFound = () => new Response("404", { status: 404 })
@@ -66,7 +75,8 @@ export function createServer() {
 		get: genMethodHandler("GET"),
 		post: genMethodHandler("POST"),
 		put: genMethodHandler("PUT"),
-		del: genMethodHandler("DEL"),
+		delete: genMethodHandler("DELETE"),
+		patch: genMethodHandler("PATCH"),
 		start: (port, hostname) => {
 			return Bun.serve({
 				port: port,
@@ -76,6 +86,254 @@ export function createServer() {
 		},
 		fetch: fetch,
 	}
+}
+
+export function createDatabase(dbname) {
+
+	const doInit = !fs.existsSync(dbname)
+	const bdb = new Database(dbname)
+	const queries = {}
+	let migrationLock = true
+
+	function compile(sql) {
+		sql = sql.trim()
+		if (!queries[sql]) {
+			queries[sql] = bdb.query(sql)
+		}
+		return queries[sql]
+	}
+
+	// TODO: support OR
+	function where(cond, vars) {
+		for (const k in cond) {
+			vars[`$where_${k}`] = typeof cond[k] === "object" ? cond[k].value : cond[k]
+		}
+		return `WHERE ${Object.keys(cond).map((k) => {
+			if (typeof cond[k] === "object") {
+				return `${k} ${cond[k].op} $where_${k}`
+			} else {
+				return `${k} = $where_${k}`
+			}
+		}).join(" AND ")}`
+	}
+
+	function order(cond) {
+		return `ORDER BY ${cond.columns.join(", ")}${cond.desc ? " DESC" : ""}`
+	}
+
+	function limit(cond, vars) {
+		vars["$limit"] = cond
+		return `LIMIT $limit`
+	}
+
+	function values(data, vars) {
+		for (const key in data) {
+			vars[`$value_${key}`] = data[key]
+		}
+		return `VALUES (${Object.keys(data).map((k) => `$value_${k}`).join(", ")})`
+	}
+
+	function set(data, vars) {
+		for (const key in data) {
+			vars[`$set_${key}`] = data[key]
+		}
+		return `SET ${Object.keys(data).map((k) => `${k} = $set_${k}`).join(", ")}`
+	}
+
+	function column(name, opts) {
+		let code = name + " " + opts.type
+		if (opts.primaryKey) code += " PRIMARY KEY"
+		if (opts.autoIncrement) code += " AUTOINCREMENT"
+		if (!opts.allowNull) code += " NOT NULL"
+		if (opts.unique) code += " UNIQUE"
+		// TODO: interpolate js value
+		if (opts.default !== undefined) code += ` DEFAULT ${opts.default}`
+		return code
+	}
+
+	function columns(cols) {
+		let code = ""
+		let pcode = ""
+		for (const name in cols) {
+			const opts = cols[name]
+			code += column(name, opts)
+			if (opts.reference) {
+				pcode += `FOREIGN KEY(${name}) REFERENCES ${opts.reference.table}(${opts.reference.column}),\n`
+			}
+			code += ",\n"
+		}
+		return (code + pcode).slice(0, -2)
+	}
+
+	// TODO: support immediate / exclusive
+	function transaction(action) {
+		bdb.transaction(action)()
+	}
+
+	function init(action) {
+		if (doInit) {
+			migrationLock = false
+			transaction(action)
+			migrationLock = true
+		}
+	}
+
+	function migration(name, action) {
+		const done = new Set(select("migration").map((mig) => mig.name))
+		if (!done.has(name)) {
+			migrationLock = false
+			transaction(action)
+			migrationLock = true
+		}
+	}
+
+	function select(table, opts = {}) {
+		if (!table) {
+			throw new Error("Cannot SELECT from database without table")
+		}
+		const vars = {}
+		return compile(`
+SELECT${opts.distinct ? " DISTINCT" : ""} ${!opts.columns || opts.columns === "*" ? "*" : opts.columns.join(", ")}
+FROM ${table}
+${opts.where ? where(opts.where, vars) : ""}
+${opts.order ? order(opts.order, vars) : ""}
+${opts.limit ? limit(opts.limit, vars) : ""}
+		`).all(vars) ?? []
+	}
+
+	function insert(table, data) {
+		if (!table || !data) {
+			throw new Error("Cannot INSERT into database without table / data")
+		}
+		const vars = {}
+		compile(`
+INSERT INTO ${table} (${Object.keys(data).join(", ")})
+${values(data, vars)}
+		`).run(vars)
+	}
+
+	function update(table, data, cond) {
+		if (!table || !data || !where) {
+			throw new Error("Cannot UPDATE database without table / data / where")
+		}
+		const vars = {}
+		const keys = Object.keys(data)
+		compile(`
+UPDATE ${table}
+${set(data, vars)}
+${where(cond, vars)}
+		`).run(vars)
+	}
+
+	function remove(table, cond) {
+		if (!table || !cond) {
+			throw new Error("Cannot DELETE from database without table / where")
+		}
+		const vars = {}
+		compile(`
+DELETE FROM ${table}
+${where(cond, vars)}
+		`).run(vars)
+	}
+
+	function create(table, cols) {
+		if (migrationLock)
+			throw new Error("Must only alter tables in init() or migration()")
+		bdb.run(`
+CREATE TABLE ${table} (
+${columns({
+...cols,
+"time_created": { type: "TEXT", notNull: true, default: "CURRENT_TIMESTAMP" },
+"time_updated": { type: "TEXT", notNull: true, default: "CURRENT_TIMESTAMP" },
+})}
+)
+		`)
+		const pks = []
+		for (const name in cols) {
+			const config = cols[name]
+			if (config.primaryKey) {
+				pks.push(name)
+			}
+			if (config.index) {
+				bdb.run(`
+CREATE INDEX idx_${table}_${name} ON ${table}(${name})
+				`)
+			}
+		}
+		// TODO: composite pk?
+		if (pks.length === 1) {
+			const pk = pks[0]
+			bdb.run(`
+CREATE TRIGGER trigger_${table}_time_updated
+AFTER UPDATE ON ${table}
+BEGIN
+UPDATE ${table} SET time_updated = CURRENT_TIMESTAMP WHERE ${pk} = NEW.${pk};
+END
+			`)
+		}
+	}
+
+	function drop(table) {
+		if (migrationLock)
+			throw new Error("Must only alter tables in init() or migration()")
+		bdb.run(`
+DROP TABLE ${table}
+		`)
+	}
+
+	function addColumn(table, name, opts) {
+		if (migrationLock)
+			throw new Error("Must only alter tables in init() or migration()")
+		bdb.run(`
+ALTER TABLE ${table}
+ADD ${column(name, opts)}}
+		`)
+	}
+
+	function dropColumn(table, name) {
+		if (migrationLock)
+			throw new Error("Must only alter tables in init() or migration()")
+		bdb.run(`
+ALTER TABLE ${table}
+DROP COLUMN ${name}}
+		`)
+	}
+
+	function renameColumn(table, from, to) {
+		if (migrationLock)
+			throw new Error("Must only alter tables in init() or migration()")
+		bdb.run(`
+ALTER TABLE ${table}
+RENAME COLUMN ${from} TO ${to}}
+		`)
+	}
+
+	if (doInit) {
+		migrationLock = false
+		create("migration", {
+			"name": { type: "TEXT", primaryKey: true },
+		})
+		migrationLock = true
+	}
+
+	return {
+		init,
+		migration,
+		create,
+		select,
+		insert,
+		update,
+		delete: remove,
+		drop,
+		addColumn,
+		dropColumn,
+		renameColumn,
+		transaction,
+		run: bdb.run,
+		close: bdb.close,
+		serialize: bdb.serialize,
+	}
+
 }
 
 export function matchUrl(pat, url) {
@@ -110,7 +368,7 @@ const trimSlashes = (str) => str.replace(/\/*$/, "").replace(/^\/*/, "")
 
 const isFile = (path) => {
 	try {
-		return statSync(path).isFile()
+		return fs.statSync(path).isFile()
 	} catch {
 		return false
 	}
@@ -118,7 +376,7 @@ const isFile = (path) => {
 
 const isDir = (path) => {
 	try {
-		return statSync(path).isDirectory()
+		return fs.statSync(path).isDirectory()
 	} catch {
 		return false
 	}
@@ -127,33 +385,37 @@ const isDir = (path) => {
 const getExt = (path) => path.split(".").pop()
 
 export const res = {
-	text: (content, status = 200) => new Response(content, {
-		status: status,
+	text: (content, opts = {}) => new Response(content, {
+		status: opts.status ?? 200,
 		headers: {
 			"Content-Type": "text/plain; charset=utf-8",
+			...(opts.headers ?? {}),
 		},
 	}),
-	html: (content, status = 200) => new Response(content, {
-		status: status,
+	html: (content, opts = {}) => new Response(content, {
+		status: opts.status ?? 200,
 		headers: {
 			"Content-Type": "text/html; charset=utf-8",
+			...(opts.headers ?? {}),
 		},
 	}),
-	redirect: (link, status = 307) => new Response(null, {
-		status: status,
+	redirect: (link, opts = {}) => new Response(null, {
+		status: opts.status ?? 302,
 		headers: {
 			"Location": link,
+			...(opts.headers ?? {}),
 		},
 	}),
+	// TODO: accept opts?
 	file: (path) => {
 		if (!isFile(path)) return
 		const file = Bun.file(path)
 		if (file.size === 0) return
 		return new Response(file)
 	},
-	dir: (path) => {
+	dir: (path, opts = {}) => {
 		if (!isDir(path)) return
-		const entries = readdirSync(path)
+		const entries = fs.readdirSync(path)
 			.filter((entry) => !entry.startsWith("."))
 			.sort((a, b) => a > b ? -1 : 1)
 			.sort((a, b) => getExt(a) > getExt(b) ? 1 : -1)
@@ -203,7 +465,7 @@ export const res = {
 					])),
 				]),
 			]),
-		]))
+		]), opts)
 	},
 }
 
@@ -232,17 +494,14 @@ export function h(tagname, attrs, children) {
 				}
 				break
 			case "string":
-				html += ` ${k}="${v}"`
+				html += ` ${k}="${escapeHTML(v)}"`
 				break
 			case "number":
 				html += ` ${k}=${v}`
 				break
 			case "object":
-				if (Array.isArray(v)) {
-					html += ` ${k}="${v.join(" ")}"`
-				} else {
-					html += ` ${k}="${style(v)}"`
-				}
+				const value = Array.isArray(v) ? v.join(" ") : style(v)
+				html += ` ${k}="${escapeHTML(value)}"`
 				break
 		}
 	}
@@ -437,119 +696,5 @@ export function csslib(opt = {}) {
 	}
 
 	return css
-
-}
-
-// TODO: caching
-export function createQueryRunner(db) {
-
-	const queries = {}
-
-	// TODO: support OR
-	function where(cond, vars) {
-		for (const k in cond) {
-			vars[`$where_${k}`] = typeof cond[k] === "object" ? cond[k].value : cond[k]
-		}
-		return `WHERE ${Object.keys(cond).map((k) => {
-			if (typeof cond[k] === "object") {
-				return `${k} ${cond[k].op} $where_${k}`
-			} else {
-				return `${k} = $where_${k}`
-			}
-		}).join(" AND ")}`
-	}
-
-	function order(cond) {
-		return `ORDER BY ${cond.columns.join(", ")}${cond.desc ? " DESC" : ""}`
-	}
-
-	function limit(cond, vars) {
-		vars["$limit"] = cond
-		return `LIMIT $limit`
-	}
-
-	function values(data, vars) {
-		for (const key in data) {
-			vars[`$value_${key}`] = data[key]
-		}
-		return `VALUES (${Object.keys(data).map((k) => `$value_${k}`).join(", ")})`
-	}
-
-	function set(data, vars) {
-		for (const key in data) {
-			vars[`$set_${key}`] = data[key]
-		}
-		return `SET ${Object.keys(data).map((k) => `${k} = $set_${k}`).join(", ")}`
-	}
-
-	return {
-
-		select: (table, opts = {}) => {
-			if (!table) {
-				throw new Error("Cannot SELECT from database without table")
-			}
-			const vars = {}
-			const sql = `
-SELECT${opts.distinct ? " DISTINCT" : ""} ${!opts.columns || opts.columns === "*" ? "*" : opts.columns.join(", ")}
-FROM ${table}
-${opts.where ? where(opts.where, vars) : ""}
-${opts.order ? order(opts.order, vars) : ""}
-${opts.limit ? limit(opts.limit, vars) : ""}
-			`.trim()
-			if (!queries[sql]) {
-				queries[sql] = db.query(sql)
-			}
-			return queries[sql].all(vars) ?? []
-		},
-
-		insert: (table, data) => {
-			if (!table || !data) {
-				throw new Error("Cannot INSERT into database without table / data")
-			}
-			const keys = Object.keys(data)
-			const vars = {}
-			const sql = `
-INSERT INTO ${table} (${keys.join(", ")})
-${values(data, vars)}
-			`.trim()
-			if (!queries[sql]) {
-				queries[sql] = db.query(sql)
-			}
-			queries[sql].run(vars)
-		},
-
-		update: (table, data, cond) => {
-			if (!table || !data || !where) {
-				throw new Error("Cannot UPDATE database without table / data / where")
-			}
-			const vars = {}
-			const keys = Object.keys(data)
-			const sql = `
-UPDATE ${table}
-${set(data, vars)}
-${where(cond, vars)}
-			`.trim()
-			if (!queries[sql]) {
-				queries[sql] = db.query(sql)
-			}
-			queries[sql].run(vars)
-		},
-
-		delete: (table, cond) => {
-			if (!table || !cond) {
-				throw new Error("Cannot DELETE from database without table / where")
-			}
-			const vars = {}
-			const sql = `
-DELETE FROM ${table}
-${where(cond, vars)}
-			`.trim()
-			if (!queries[sql]) {
-				queries[sql] = db.query(sql)
-			}
-			queries[sql].run(vars)
-		},
-
-	}
 
 }

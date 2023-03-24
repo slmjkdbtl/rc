@@ -59,8 +59,9 @@ After=network.target
 [Service]
 Type=simple
 User=tga
-Environment="NODE_ENV=production"
+Environment="PORT=4000"
 WorkingDirectory=/home/tga/space55.xyz
+StandardError=append:/home/tga/space55.xyz/data/err.log
 ExecStart=/home/tga/.bun/bin/bun main.js
 Restart=always
 
@@ -70,8 +71,4 @@ WantedBy=multi-user.target
 # /etc/caddy/Caddyfile
 space55.xyz {
         reverse_proxy localhost:4000
-}
-
-davidmurray.xyz {
-        reverse_proxy localhost:4001
 }
