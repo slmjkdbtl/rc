@@ -396,7 +396,7 @@ no <silent> / :CommentToggle<cr>
 " ale
 nno <silent> <m-n> :ALEPrevious<cr>
 nno <silent> <m-m> :ALENext<cr>
-nno <silent> <m-b> :ALEDetail<cr>
+nno <silent> <m-u> :ALEDetail<cr>
 nno <silent> <m-i> :ALEHover<cr>
 nno <silent> <m-o> :ALEGoToDefinition<cr>
 nno <silent> <m-p> :ALEFindReferences<cr>
@@ -436,9 +436,10 @@ au FileType ruby             setl cms=#%s
 au FileType gitignore        setl cms=#%s
 au FileType dirty            setl cms=--%s
 au FileType lua              setl cms=--%s
+au FileType sql              setl cms=--%s
 au FileType vim              setl cms=\"%s
 au FileType forth            setl cms=\\%s
 au FileType html             setl cms=<!--%s-->
 au FileType css              setl cms=/*%s*/
-au FileType markdown         setl et ts=4 sw=4
+au FileType markdown         setl et ts=2 sw=2
 au FileType text             setl et ts=2 sw=2

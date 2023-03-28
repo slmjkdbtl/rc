@@ -698,3 +698,72 @@ export function csslib(opt = {}) {
 	return css
 
 }
+
+const cmds = {
+	dev: () => {
+		Bun.spawnSync(["bun", "--hot", "main.js"], {
+			env: { ...process.env, "DEV": 1 },
+			stdin: "inherit",
+			stdout: "inherit",
+			stderr: "inherit",
+		})
+	},
+	deploy: (host, dir, job) => {
+		if (!host || !dir || !job) {
+console.error("Missing arguments!")
+			console.log("")
+			console.log(`
+USAGE
+    # Copy project to server and restart systemd job
+    $ deploy <host> <dir> <job>
+			`.trim())
+			return
+		}
+		Bun.spawnSync([
+			"rsync",
+			"-av",
+			"--delete",
+			"--exclude", ".DS_Store",
+			"--exclude", ".git",
+			"--exclude", "data",
+			".",
+			`${host}:${dir}`,
+		], {
+			stdin: "inherit",
+			stdout: "inherit",
+			stderr: "inherit",
+		})
+		Bun.spawnSync([
+			"ssh",
+			"-t",
+			host,
+			"sudo",
+			"systemctl",
+			"restart",
+			job,
+		], {
+			stdin: "inherit",
+			stdout: "inherit",
+			stderr: "inherit",
+		})
+	},
+}
+
+const cmd = process.argv[2]
+
+if (cmd) {
+	if (cmds[cmd]) {
+		cmds[cmd](...process.argv.slice(3))
+	} else {
+		console.error(`Command not found: ${cmd}`)
+		console.log("")
+		console.log(`
+USAGE
+    # Start dev server
+    $ bun www.js dev
+
+    # Copy files to server and restart systemd job
+    $ bun www.js deploy <host> <dir> <job>
+		`.trim())
+	}
+}

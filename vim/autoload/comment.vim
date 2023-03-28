@@ -7,6 +7,9 @@ func! comment#init()
 endfunc
 
 func! comment#is_commented()
+	if empty(&cms)
+		return 0
+	endif
 	let line = getline('.')
 	return line =~# '^\(\s\|\t\)*' . substitute(escape(&cms, '\*'), '%s', '.*', '')
 endfunc
@@ -23,9 +26,10 @@ func! s:trim(line)
 	return substitute(a:line, '\s*$', '', '')
 endfunc
 
+" TODO: when range use least indent
 func! comment#comment()
 
-	if !&modifiable
+	if !&modifiable || empty(&cms)
 		return
 	endif
 
@@ -37,7 +41,7 @@ func! comment#comment()
 
 	let indent = s:getindent(line)
 	let content = line[len(indent):]
-	let commented = indent . substitute(&cms, '%s', ' ' . content . ' ', '')
+	let commented = indent . substitute(&cms, '%s', ' ' . escape(content, '\&') . ' ', '')
 	let commented = s:trim(commented)
 
 	if line !=# commented
@@ -48,7 +52,7 @@ endfunc
 
 func! comment#uncomment()
 
-	if !&modifiable
+	if !&modifiable || empty(&cms)
 		return
 	endif
 
