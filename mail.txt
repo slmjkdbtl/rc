@@ -1,0 +1,5 @@
+set up custom mail server
+
+# install packages
+$ sudo apt update
+$ sudo apt install -y postfix dovecot-imapd spamassassin opendkim

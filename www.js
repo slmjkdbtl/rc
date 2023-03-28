@@ -88,12 +88,11 @@ export function createServer() {
 	}
 }
 
-export function createDatabase(dbname) {
+export function createDatabase(dbname, opts = {}) {
 
-	const doInit = !fs.existsSync(dbname)
+	let uninitialized = !fs.existsSync(dbname)
 	const bdb = new Database(dbname)
 	const queries = {}
-	let migrationLock = true
 
 	function compile(sql) {
 		sql = sql.trim()
@@ -104,7 +103,7 @@ export function createDatabase(dbname) {
 	}
 
 	// TODO: support OR
-	function where(cond, vars) {
+	function genWhereSQL(cond, vars) {
 		for (const k in cond) {
 			vars[`$where_${k}`] = typeof cond[k] === "object" ? cond[k].value : cond[k]
 		}
@@ -117,74 +116,49 @@ export function createDatabase(dbname) {
 		}).join(" AND ")}`
 	}
 
-	function order(cond) {
+	function genOrderSQL(cond) {
 		return `ORDER BY ${cond.columns.join(", ")}${cond.desc ? " DESC" : ""}`
 	}
 
-	function limit(cond, vars) {
+	function genLimitSQL(cond, vars) {
 		vars["$limit"] = cond
 		return `LIMIT $limit`
 	}
 
-	function values(data, vars) {
+	function genValuesSQL(data, vars) {
 		for (const key in data) {
 			vars[`$value_${key}`] = data[key]
 		}
 		return `VALUES (${Object.keys(data).map((k) => `$value_${k}`).join(", ")})`
 	}
 
-	function set(data, vars) {
+	function genSetSQL(data, vars) {
 		for (const key in data) {
 			vars[`$set_${key}`] = data[key]
 		}
 		return `SET ${Object.keys(data).map((k) => `${k} = $set_${k}`).join(", ")}`
 	}
 
-	function column(name, opts) {
+	function genColumnSQL(name, opts) {
 		let code = name + " " + opts.type
 		if (opts.primaryKey) code += " PRIMARY KEY"
 		if (opts.autoIncrement) code += " AUTOINCREMENT"
 		if (!opts.allowNull) code += " NOT NULL"
 		if (opts.unique) code += " UNIQUE"
-		// TODO: interpolate js value
 		if (opts.default !== undefined) code += ` DEFAULT ${opts.default}`
+		if (opts.reference) code += ` REFERENCES ${opts.reference.table}(${opts.reference.column})`
 		return code
 	}
 
-	function columns(cols) {
-		let code = ""
-		let pcode = ""
-		for (const name in cols) {
-			const opts = cols[name]
-			code += column(name, opts)
-			if (opts.reference) {
-				pcode += `FOREIGN KEY(${name}) REFERENCES ${opts.reference.table}(${opts.reference.column}),\n`
-			}
-			code += ",\n"
-		}
-		return (code + pcode).slice(0, -2)
+	function genColumnsSQL(input) {
+		return Object.entries(input)
+			.map(([name, opts]) => "    " + genColumnSQL(name, opts))
+			.join(",\n")
 	}
 
 	// TODO: support immediate / exclusive
 	function transaction(action) {
 		bdb.transaction(action)()
-	}
-
-	function init(action) {
-		if (doInit) {
-			migrationLock = false
-			transaction(action)
-			migrationLock = true
-		}
-	}
-
-	function migration(name, action) {
-		const done = new Set(select("migration").map((mig) => mig.name))
-		if (!done.has(name)) {
-			migrationLock = false
-			transaction(action)
-			migrationLock = true
-		}
 	}
 
 	function select(table, opts = {}) {
@@ -195,9 +169,9 @@ export function createDatabase(dbname) {
 		return compile(`
 SELECT${opts.distinct ? " DISTINCT" : ""} ${!opts.columns || opts.columns === "*" ? "*" : opts.columns.join(", ")}
 FROM ${table}
-${opts.where ? where(opts.where, vars) : ""}
-${opts.order ? order(opts.order, vars) : ""}
-${opts.limit ? limit(opts.limit, vars) : ""}
+${opts.where ? genWhereSQL(opts.where, vars) : ""}
+${opts.order ? genOrderSQL(opts.order, vars) : ""}
+${opts.limit ? genLimitSQL(opts.limit, vars) : ""}
 		`).all(vars) ?? []
 	}
 
@@ -208,7 +182,7 @@ ${opts.limit ? limit(opts.limit, vars) : ""}
 		const vars = {}
 		compile(`
 INSERT INTO ${table} (${Object.keys(data).join(", ")})
-${values(data, vars)}
+${genValuesSQL(data, vars)}
 		`).run(vars)
 	}
 
@@ -220,8 +194,8 @@ ${values(data, vars)}
 		const keys = Object.keys(data)
 		compile(`
 UPDATE ${table}
-${set(data, vars)}
-${where(cond, vars)}
+${genSetSQL(data, vars)}
+${genWhereSQL(cond, vars)}
 		`).run(vars)
 	}
 
@@ -232,19 +206,25 @@ ${where(cond, vars)}
 		const vars = {}
 		compile(`
 DELETE FROM ${table}
-${where(cond, vars)}
+${genWhereSQL(cond, vars)}
 		`).run(vars)
 	}
 
+	function run(sql) {
+		bdb.run(sql.trim())
+	}
+
 	function create(table, cols) {
-		if (migrationLock)
-			throw new Error("Must only alter tables in init() or migration()")
-		bdb.run(`
+		run(`
 CREATE TABLE ${table} (
-${columns({
+${genColumnsSQL({
 ...cols,
-"time_created": { type: "TEXT", notNull: true, default: "CURRENT_TIMESTAMP" },
-"time_updated": { type: "TEXT", notNull: true, default: "CURRENT_TIMESTAMP" },
+...(opts.timeCreated ? {
+	"time_created": { type: "TEXT", notNull: true, default: "CURRENT_TIMESTAMP" },
+} : {}),
+...(opts.timeUpdated ? {
+	"time_updated": { type: "TEXT", notNull: true, default: "CURRENT_TIMESTAMP" },
+} : {}),
 })}
 )
 		`)
@@ -255,81 +235,38 @@ ${columns({
 				pks.push(name)
 			}
 			if (config.index) {
-				bdb.run(`
+				run(`
 CREATE INDEX idx_${table}_${name} ON ${table}(${name})
 				`)
 			}
 		}
-		// TODO: composite pk?
-		if (pks.length === 1) {
-			const pk = pks[0]
-			bdb.run(`
+		if (opts.timeUpdated) {
+			const where = pks.map((pk) => `${pk} = NEW.${pk}`).join(" AND ")
+			run(`
 CREATE TRIGGER trigger_${table}_time_updated
 AFTER UPDATE ON ${table}
 BEGIN
-UPDATE ${table} SET time_updated = CURRENT_TIMESTAMP WHERE ${pk} = NEW.${pk};
+    UPDATE ${table} SET time_updated = CURRENT_TIMESTAMP WHERE ${where};
 END
 			`)
 		}
 	}
 
-	function drop(table) {
-		if (migrationLock)
-			throw new Error("Must only alter tables in init() or migration()")
-		bdb.run(`
-DROP TABLE ${table}
-		`)
-	}
-
-	function addColumn(table, name, opts) {
-		if (migrationLock)
-			throw new Error("Must only alter tables in init() or migration()")
-		bdb.run(`
-ALTER TABLE ${table}
-ADD ${column(name, opts)}}
-		`)
-	}
-
-	function dropColumn(table, name) {
-		if (migrationLock)
-			throw new Error("Must only alter tables in init() or migration()")
-		bdb.run(`
-ALTER TABLE ${table}
-DROP COLUMN ${name}}
-		`)
-	}
-
-	function renameColumn(table, from, to) {
-		if (migrationLock)
-			throw new Error("Must only alter tables in init() or migration()")
-		bdb.run(`
-ALTER TABLE ${table}
-RENAME COLUMN ${from} TO ${to}}
-		`)
-	}
-
-	if (doInit) {
-		migrationLock = false
-		create("migration", {
-			"name": { type: "TEXT", primaryKey: true },
+	// TODO: auto migration?
+	if (uninitialized && opts.tables) {
+		transaction(() => {
+			for (const name in opts.tables) {
+				create(name, opts.tables[name])
+			}
 		})
-		migrationLock = true
 	}
 
 	return {
-		init,
-		migration,
-		create,
 		select,
 		insert,
 		update,
 		delete: remove,
-		drop,
-		addColumn,
-		dropColumn,
-		renameColumn,
 		transaction,
-		run: bdb.run,
 		close: bdb.close,
 		serialize: bdb.serialize,
 	}
@@ -400,18 +337,23 @@ export const res = {
 		},
 	}),
 	redirect: (link, opts = {}) => new Response(null, {
-		status: opts.status ?? 302,
+		status: opts.status ?? 303,
 		headers: {
 			"Location": link,
 			...(opts.headers ?? {}),
 		},
 	}),
-	// TODO: accept opts?
-	file: (path) => {
+	file: (path, opts = {}) => {
 		if (!isFile(path)) return
 		const file = Bun.file(path)
 		if (file.size === 0) return
-		return new Response(file)
+		return new Response(file, {
+			status: opts.status ?? 200,
+			headers: {
+				"Content-Type": file.type,
+				...(opts.headers ?? {}),
+			},
+		})
 	},
 	dir: (path, opts = {}) => {
 		if (!isDir(path)) return
@@ -710,7 +652,7 @@ const cmds = {
 	},
 	deploy: (host, dir, job) => {
 		if (!host || !dir || !job) {
-console.error("Missing arguments!")
+			console.error("Missing arguments!")
 			console.log("")
 			console.log(`
 USAGE
@@ -741,6 +683,10 @@ USAGE
 			"systemctl",
 			"restart",
 			job,
+			"&&",
+			"mkdir",
+			"-p",
+			`${dir}/data`,
 		], {
 			stdin: "inherit",
 			stdout: "inherit",

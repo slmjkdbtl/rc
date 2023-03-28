@@ -1,4 +1,4 @@
-setting up a vps for simple hosting
+set up a vps for simple hosting
 
 # add user
 $ adduser tga
