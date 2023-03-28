@@ -49,6 +49,9 @@ $ systemctl enable space55.xyz
 
 # reload config for a service
 $ systemctl reload caddy
+
+# view log
+journalctl -qu space55.xyz
 ```
 
 # /etc/systemd/system/space55.xyz.service
@@ -64,6 +67,9 @@ WorkingDirectory=/home/tga/space55.xyz
 StandardError=append:/home/tga/space55.xyz/data/err.log
 ExecStart=/home/tga/.bun/bin/bun main.js
 Restart=always
+StandardOutput=journal
+StandardError=journal
+StandardInput=null
 
 [Install]
 WantedBy=multi-user.target

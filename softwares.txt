@@ -84,6 +84,9 @@ CLI
   pngquant
     https://pngquant.org/
 
+  terminal-notifier
+    https://github.com/julienXX/terminal-notifier
+
   hexyl
     https://github.com/sharkdp/hexyl/
 
