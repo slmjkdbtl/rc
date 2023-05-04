@@ -60,7 +60,7 @@ alias ydlmc "yt-dlp -x --audio-format mp3 --split-chapters -o '%(chapter)s.%(ext
 alias ydlml "yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --yes-playlist"
 alias ase "/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias toix "curl -F 'f:1=<-' ix.io"
-alias ip "ipconfig getifaddr en0"
+alias localip "ipconfig getifaddr en0"
 alias extip "curl ifconfig.co"
 alias playraw "ffplay -ar 8000 -ac 1 -f u8 -nodisp -"
 alias weather "curl 'wttr.in?m'"

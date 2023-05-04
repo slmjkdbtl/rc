@@ -15,7 +15,7 @@
 	commitf = commit --amend --no-edit
 	co = checkout
 	prev = checkout HEAD~1
-	conflicts = diff --name-only --diff-filter=U
+	conflicts = ! git --no-pager diff --name-only --diff-filter=U
 	next = ! git log --reverse --pretty=%H master | grep -A 1 $(git rev-parse HEAD) | tail -n1 | xargs git checkout
 [credential]
 	helper = store

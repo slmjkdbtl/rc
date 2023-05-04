@@ -2,6 +2,9 @@
 
 import { Database } from "bun:sqlite"
 import * as fs from "fs"
+import * as path from "path"
+
+export const isDev = Boolean(Bun.env["DEV"])
 
 export function createServer() {
 
@@ -9,7 +12,7 @@ export function createServer() {
 	const handle = (handler) => handlers.push(handler)
 
 	let handleError = (req, err) => {
-		if (Bun.env["DEV"]) {
+		if (isDev) {
 			throw err
 		} else {
 			const url = new URL(req.url)
@@ -104,13 +107,12 @@ export function createDatabase(dbname, opts = {}) {
 
 	// TODO: support OR
 	function genWhereSQL(cond, vars) {
-		for (const k in cond) {
-			vars[`$where_${k}`] = typeof cond[k] === "object" ? cond[k].value : cond[k]
-		}
-		return `WHERE ${Object.keys(cond).map((k) => {
-			if (typeof cond[k] === "object") {
-				return `${k} ${cond[k].op} $where_${k}`
+		return `WHERE ${Object.entries(cond).map(([k, v]) => {
+			if (typeof v === "object") {
+				vars[`$where_${k}`] = v.value
+				return `${k} ${v.op} $where_${k}`
 			} else {
+				vars[`$where_${k}`] = v
 				return `${k} = $where_${k}`
 			}
 		}).join(" AND ")}`
@@ -125,18 +127,19 @@ export function createDatabase(dbname, opts = {}) {
 		return `LIMIT $limit`
 	}
 
+	// TODO: support multiple values
 	function genValuesSQL(data, vars) {
-		for (const key in data) {
-			vars[`$value_${key}`] = data[key]
-		}
-		return `VALUES (${Object.keys(data).map((k) => `$value_${k}`).join(", ")})`
+		return `VALUES (${Object.entries(data).map(([k, v]) => {
+			vars[`$value_${k}`] = v
+			return `$value_${k}`
+		}).join(", ")})`
 	}
 
 	function genSetSQL(data, vars) {
-		for (const key in data) {
-			vars[`$set_${key}`] = data[key]
-		}
-		return `SET ${Object.keys(data).map((k) => `${k} = $set_${k}`).join(", ")}`
+		return `SET ${Object.entries(data).map(([k, v]) => {
+			vars[`$set_${k}`] = v
+			return `${k} = $set_${k}`
+		}).join(", ")}`
 	}
 
 	function genColumnSQL(name, opts) {
@@ -156,9 +159,8 @@ export function createDatabase(dbname, opts = {}) {
 			.join(",\n")
 	}
 
-	// TODO: support immediate / exclusive
 	function transaction(action) {
-		bdb.transaction(action)()
+		return bdb.transaction(action)()
 	}
 
 	function select(table, opts = {}) {
@@ -175,9 +177,21 @@ ${opts.limit ? genLimitSQL(opts.limit, vars) : ""}
 		`).all(vars) ?? []
 	}
 
+	// TODO: join
+	function search(table, text) {
+		return compile(`
+SELECT * FROM ${table}_fts WHERE ${table}_fts MATCH $query ORDER BY rank
+		`).all({
+			"$query": text,
+		}) ?? []
+	}
+
 	function insert(table, data) {
 		if (!table || !data) {
 			throw new Error("Cannot INSERT into database without table / data")
+		}
+		if (table.endsWith("_fts")) {
+			throw new Error("Cannot manually update a fts table")
 		}
 		const vars = {}
 		compile(`
@@ -189,6 +203,9 @@ ${genValuesSQL(data, vars)}
 	function update(table, data, cond) {
 		if (!table || !data || !where) {
 			throw new Error("Cannot UPDATE database without table / data / where")
+		}
+		if (table.endsWith("_fts")) {
+			throw new Error("Cannot manually update a fts table")
 		}
 		const vars = {}
 		const keys = Object.keys(data)
@@ -203,6 +220,9 @@ ${genWhereSQL(cond, vars)}
 		if (!table || !cond) {
 			throw new Error("Cannot DELETE from database without table / where")
 		}
+		if (table.endsWith("_fts")) {
+			throw new Error("Cannot manually update a fts table")
+		}
 		const vars = {}
 		compile(`
 DELETE FROM ${table}
@@ -215,6 +235,15 @@ ${genWhereSQL(cond, vars)}
 	}
 
 	function create(table, cols) {
+		if (table.endsWith("_fts")) {
+			throw new Error("Table name cannot end with _fts")
+		}
+		if (opts.timeCreated && cols["time_created"]) {
+			throw new Error("Column time_created is reserved")
+		}
+		if (opts.timeUpdated && cols["time_updated"]) {
+			throw new Error("Column time_updated is reserved")
+		}
 		run(`
 CREATE TABLE ${table} (
 ${genColumnsSQL({
@@ -229,6 +258,7 @@ ${genColumnsSQL({
 )
 		`)
 		const pks = []
+		const searches = []
 		for (const name in cols) {
 			const config = cols[name]
 			if (config.primaryKey) {
@@ -239,37 +269,80 @@ ${genColumnsSQL({
 CREATE INDEX idx_${table}_${name} ON ${table}(${name})
 				`)
 			}
+			if (config.search) {
+				searches.push(name)
+			}
 		}
 		if (opts.timeUpdated) {
-			const where = pks.map((pk) => `${pk} = NEW.${pk}`).join(" AND ")
 			run(`
 CREATE TRIGGER trigger_${table}_time_updated
 AFTER UPDATE ON ${table}
 BEGIN
-    UPDATE ${table} SET time_updated = CURRENT_TIMESTAMP WHERE ${where};
+    UPDATE ${table}
+    SET time_updated = CURRENT_TIMESTAMP
+    WHERE ${pks.map((pk) => `${pk} = NEW.${pk}`).join(" AND ")};
+END
+			`)
+		}
+		if (searches.length > 0) {
+			// TODO: content / content_rowid?
+			run(`
+CREATE VIRTUAL TABLE ${table}_fts USING fts5 (${[...pks, ...searches].join(", ")})
+			`)
+			run(`
+CREATE TRIGGER trigger_${table}_fts_insert
+AFTER INSERT ON ${table}
+BEGIN
+    INSERT INTO ${table}_fts (${[...pks, ...searches].join(", ")})
+    VALUES (${[...pks, ...searches].map((c) => `NEW.${c}`).join(", ")});
+END
+			`)
+			run(`
+CREATE TRIGGER trigger_${table}_fts_update
+AFTER UPDATE ON ${table}
+BEGIN
+    UPDATE ${table}_fts
+    SET ${searches.map((c) => `${c} = NEW.${c}`).join(", ")}
+    WHERE ${pks.map((pk) => `${pk} = NEW.${pk}`).join(" AND ")};
+END
+			`)
+			run(`
+CREATE TRIGGER trigger_${table}_fts_delete
+AFTER DELETE ON ${table}
+BEGIN
+    DELETE FROM ${table}_fts
+    WHERE ${pks.map((pk) => `${pk} = OLD.${pk}`).join(" AND ")};
 END
 			`)
 		}
 	}
 
-	// TODO: auto migration?
-	if (uninitialized && opts.tables) {
-		transaction(() => {
-			for (const name in opts.tables) {
-				create(name, opts.tables[name])
-			}
-		})
-	}
-
-	return {
+	const db = {
 		select,
 		insert,
 		update,
 		delete: remove,
+		search,
 		transaction,
 		close: bdb.close,
 		serialize: bdb.serialize,
 	}
+
+	if (uninitialized) {
+		// TODO: auto migration?
+		if (opts.tables) {
+			transaction(() => {
+				for (const name in opts.tables) {
+					create(name, opts.tables[name])
+				}
+			})
+		}
+		if (opts.init) {
+			opts.init(db)
+		}
+	}
+
+	return db
 
 }
 
@@ -319,8 +392,6 @@ const isDir = (path) => {
 	}
 }
 
-const getExt = (path) => path.split(".").pop()
-
 export const res = {
 	text: (content, opts = {}) => new Response(content, {
 		status: opts.status ?? 200,
@@ -360,7 +431,7 @@ export const res = {
 		const entries = fs.readdirSync(path)
 			.filter((entry) => !entry.startsWith("."))
 			.sort((a, b) => a > b ? -1 : 1)
-			.sort((a, b) => getExt(a) > getExt(b) ? 1 : -1)
+			.sort((a, b) => path.extname(a) > path.extname(b) ? 1 : -1)
 		const files = []
 		const dirs = []
 		for (const entry of entries) {
@@ -420,6 +491,25 @@ export function getCookies(req) {
 		cookies[k.trim()] = v.trim()
 	}
 	return cookies
+}
+
+export function kvList(props) {
+	return Object.entries(props)
+		.filter(([k, v]) => v)
+		.map(([k, v]) => k === true ? k : `${k}=${v}`)
+		.join("; ")
+}
+
+export async function getReqData(req) {
+	const ty = req.headers.get("Content-Type")
+	if (
+		ty.startsWith("application/x-www-form-urlencoded")
+		|| ty.startsWith("multipart/form-data")
+	) {
+		return (await req.formData()).toJSON()
+	} else {
+		return await req.json()
+	}
 }
 
 // html text builder
@@ -641,57 +731,52 @@ export function csslib(opt = {}) {
 
 }
 
+function exec(cmd, opts) {
+	return Bun.spawnSync(Array.isArray(cmd) ? cmd : cmd.split(" "), {
+		stdin: "inherit",
+		stdout: "inherit",
+		stderr: "inherit",
+		...opts
+	})
+}
+
 const cmds = {
 	dev: () => {
-		Bun.spawnSync(["bun", "--hot", "main.js"], {
+		exec("bun --watch main.js", {
 			env: { ...process.env, "DEV": 1 },
-			stdin: "inherit",
-			stdout: "inherit",
-			stderr: "inherit",
 		})
 	},
-	deploy: (host, dir, job) => {
-		if (!host || !dir || !job) {
-			console.error("Missing arguments!")
+	deploy: (host, dir, service) => {
+		host = host ?? Bun.env["DEPLOY_HOST"]
+		dir = dir ?? Bun.env["DEPLOY_DIR"]
+		service = service ?? Bun.env["DEPLOY_SERVICE"]
+		if (!host || !dir) {
+			console.error("Host and directory required for deployment!")
 			console.log("")
 			console.log(`
 USAGE
-    # Copy project to server and restart systemd job
-    $ deploy <host> <dir> <job>
+
+    # Copy project to server and optionally restart systemd service
+    $ deploy <host> <dir> <service>
+
+    # Use $DEPLOY_HOST, $DEPLOY_DIR and $DEPLOY_SERVICE from env
+    $ deploy
 			`.trim())
 			return
 		}
-		Bun.spawnSync([
+		console.log(`copying project folder to ${host}:${dir}`)
+		exec([
 			"rsync",
-			"-av",
-			"--delete",
+			"-av", "--delete",
 			"--exclude", ".DS_Store",
 			"--exclude", ".git",
 			"--exclude", "data",
-			".",
-			`${host}:${dir}`,
-		], {
-			stdin: "inherit",
-			stdout: "inherit",
-			stderr: "inherit",
-		})
-		Bun.spawnSync([
-			"ssh",
-			"-t",
-			host,
-			"sudo",
-			"systemctl",
-			"restart",
-			job,
-			"&&",
-			"mkdir",
-			"-p",
-			`${dir}/data`,
-		], {
-			stdin: "inherit",
-			stdout: "inherit",
-			stderr: "inherit",
-		})
+			".", `${host}:${dir}`,
+		])
+		if (service) {
+			console.log(`restarting service ${service}`)
+			exec(`ssh -t ${host} sudo systemctl restart ${service}`)
+		}
 	},
 }
 
@@ -705,11 +790,15 @@ if (cmd) {
 		console.log("")
 		console.log(`
 USAGE
+
     # Start dev server
     $ bun www.js dev
 
-    # Copy files to server and restart systemd job
-    $ bun www.js deploy <host> <dir> <job>
+    # Copy project to server and optionally restart systemd service
+    $ bun www.js deploy <host> <dir> <service>
+
+    # Deploy using $DEPLOY_HOST, $DEPLOY_DIR and $DEPLOY_SERVICE from env
+    $ bun www.js deploy
 		`.trim())
 	}
 }

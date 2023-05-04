@@ -93,14 +93,17 @@ CLI
   cmark
     https://github.com/commonmark/cmark
 
+  tectonic
+    https://tectonic-typesetting.github.io/
+
+  caddy
+    https://caddyserver.com/
+
   gifski
     https://gif.ski/
 
   gource
     https://gource.io/
-
-  sile
-    https://sile-typesetter.org/
 
   genact
     https://github.com/svenstaro/genact/
@@ -230,6 +233,9 @@ GUI
   VirtualBox
     https://www.virtualbox.org/
 
+  Meta
+    https://www.nightbirdsevolve.com/meta/
+
   Sloth
     https://github.com/sveinbjornt/Sloth
 
@@ -268,6 +274,12 @@ GUI
 
   LICEcap
     https://www.cockos.com/licecap/
+
+  WireGuard
+    https://www.wireguard.com/
+
+  Wireshark
+    https://www.wireshark.org/
 
   Bfxr
     https://www.bfxr.net/

@@ -4,7 +4,7 @@ help() {
 	echo "Convert all files in current dir to another format with ffmpeg"
 	echo ""
 	echo "USAGE"
-	echo "  $ convert <srcformat> <destformat>"
+	echo "  $ convert <from> <to>"
 	echo ""
 	echo "EXAMPLE"
 	echo "  $ convert png jpg"

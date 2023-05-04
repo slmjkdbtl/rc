@@ -1,4 +1,4 @@
-set up a vps for simple hosting
+set up a vps for hosting websites, mail and vpn
 
 # add user
 $ adduser tga
@@ -76,5 +76,17 @@ WantedBy=multi-user.target
 
 # /etc/caddy/Caddyfile
 space55.xyz {
-        reverse_proxy localhost:4000
+    reverse_proxy localhost:4000
 }
+
+# install wireguard package
+$ sudo apt install wireguard
+
+# generate wireguard keys
+$ wg genkey | sudo tee /etc/wireguard/private.key
+$ sudo chmod 700 /etc/wireguard/private.key
+$ sudo cat /etc/wireguard/private.key | wg pubkey | sudo tee /etc/wireguard/public.key
+
+# install mail server packages
+$ sudo apt update
+$ sudo apt install -y postfix dovecot-imapd spamassassin opendkim
