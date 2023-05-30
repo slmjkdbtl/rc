@@ -83,9 +83,25 @@ space55.xyz {
 $ sudo apt install wireguard
 
 # generate wireguard keys
-$ wg genkey | sudo tee /etc/wireguard/private.key
-$ sudo chmod 700 /etc/wireguard/private.key
-$ sudo cat /etc/wireguard/private.key | wg pubkey | sudo tee /etc/wireguard/public.key
+$ sudo -s
+$ cd /etc/wireguard
+$ wg genkey | private.key | wg pubkey | public.key
+$ sudo chmod 700 private.key
+
+# /etc/wireguard/wg0.conf
+[Interface]
+PrivateKey =
+Address = 10.8.0.1/24
+
+[Peer]
+AllowedIPs = 0.0.0.0/0
+
+# /etc/sysctl.conf
+net.ipv4.ip_forward=1
+net.ipv6.conf.all.forwarding=1
+
+# get tunnel up
+$ sudo wg-quick up wg0
 
 # install mail server packages
 $ sudo apt update
