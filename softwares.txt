@@ -132,6 +132,15 @@ CLI
   pass
     https://www.passwordstore.org/
 
+  frp
+    https://github.com/fatedier/frp/
+
+  cloudflared
+    https://github.com/cloudflare/cloudflared/
+
+  graphviz
+    https://graphviz.org/
+
   trash
     https://hasseg.org/trash/
 
@@ -265,6 +274,9 @@ GUI
 
   ocenaudio
     http://www.ocenaudio.com/
+
+  hiddenbar
+    https://github.com/dwarvesf/hidden
 
   TrenchBroom
     https://trenchbroom.github.io/

@@ -27,3 +27,5 @@
     browser = open
 [browser "chrome"]
     cmd = open -a 'Google Chrome.app'
+[http]
+	postBuffer = 157286400
