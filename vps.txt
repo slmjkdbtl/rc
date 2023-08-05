@@ -9,19 +9,25 @@ $ usermod -aG sudo tga
 # change to user
 $ su - tga
 
+# change to sudo mode
+$ sudo -s
+
 # install packages
-$ sudo apt update
-$ sudo apt install -y vim make git fish unzip sqlite3
+$ apt update
+$ apt install -y vim make git fish unzip sqlite3
 
 # install bun
 $ curl -fsSL https://bun.sh/install | bash
 
 # install caddy
-$ sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
-$ curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
-$ curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
-$ sudo apt update
-$ sudo apt install -y caddy
+$ apt install -y debian-keyring debian-archive-keyring apt-transport-https
+$ curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+$ curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list
+$ apt update
+$ apt install -y caddy
+
+# start caddy
+$ systemctl enable --now caddy
 
 # clone this repo
 $ git clone https://github.com/slmjkdbtl/rc
@@ -47,8 +53,14 @@ $ systemctl stop space55.xyz
 # enable a service to run on startup
 $ systemctl enable space55.xyz
 
+# enable a service and run it now
+$ systemctl enable --now space55.xyz
+
 # reload config for a service
 $ systemctl reload caddy
+
+# check status on a service
+$ systemctl status caddy
 
 # view log
 journalctl -qu space55.xyz
@@ -80,13 +92,12 @@ space55.xyz {
 }
 
 # install wireguard package
-$ sudo apt install wireguard
+$ apt install wireguard
 
 # generate wireguard keys
-$ sudo -s
 $ cd /etc/wireguard
 $ wg genkey | private.key | wg pubkey | public.key
-$ sudo chmod 700 private.key
+$ chmod 700 private.key
 
 # /etc/wireguard/wg0.conf
 [Interface]
@@ -101,8 +112,8 @@ net.ipv4.ip_forward=1
 net.ipv6.conf.all.forwarding=1
 
 # get tunnel up
-$ sudo wg-quick up wg0
+$ wg-quick up wg0
 
 # install mail server packages
-$ sudo apt update
-$ sudo apt install -y postfix dovecot-imapd spamassassin opendkim
+$ apt update
+$ apt install -y postfix dovecot-imapd spamassassin opendkim
