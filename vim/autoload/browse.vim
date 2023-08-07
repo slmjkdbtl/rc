@@ -40,6 +40,7 @@ func! s:open(dir)
 	setl nowrap
 	setl nomodifiable
 	setl nomodified
+	exec 'set titlestring=' . fnamemodify(a:dir, ':~')
 	setf browse
 
 	syn match BrowseParent '^..$' containedin=BrowseItem
@@ -95,6 +96,7 @@ endfunc
 
 func! s:exit()
 	if s:active()
+		set titlestring=
 		bw
 	endif
 endfunc
@@ -241,6 +243,7 @@ func! s:enter()
 		if index(g:browse_open_ext, ext) >= 0
 			call system('open ' . escape(item, " '&()"))
 		else
+			set titlestring=
 			exec 'sil! edit ' . item
 		endif
 

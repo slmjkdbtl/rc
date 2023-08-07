@@ -29,6 +29,7 @@ set breakindent
 set autoread
 set hidden
 set nolangremap
+set title
 set backspace=indent,eol,start
 set completeopt=menu,menuone
 set clipboard=unnamed,unnamedplus

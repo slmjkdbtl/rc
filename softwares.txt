@@ -90,6 +90,9 @@ CLI
   hexyl
     https://github.com/sharkdp/hexyl/
 
+  lilypond
+    http://lilypond.org/
+
   cmark
     https://github.com/commonmark/cmark
 
