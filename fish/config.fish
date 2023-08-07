@@ -105,8 +105,8 @@ function fish_prompt
 	function show_git
 		command git rev-parse --is-inside-work-tree >/dev/null 2>&1; or return 1
 		set_color black
-		echo -n (git rev-parse --abbrev-ref HEAD)
-		git diff-index --quiet HEAD -- >/dev/null 2>&1; or echo -n "*"
+		echo -n (git rev-parse --abbrev-ref HEAD 2> /dev/null)
+		git diff-index --quiet HEAD -- > /dev/null 2>&1; or echo -n "*"
 		set_color normal
 	end
 
