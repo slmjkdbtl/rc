@@ -153,6 +153,9 @@ CLI
   entr
     http://entrproject.org/
 
+  amfora
+    https://github.com/makeworld-the-better-one/amfora/
+
   espeak
     https://espeak.sourceforge.io/
 
@@ -355,6 +358,33 @@ GUI
 
   EDOPro
     https://projectignis.github.io/
+
+
+CHROME EXTENSIONS
+
+  Archive Page
+    https://chrome.google.com/webstore/detail/archive-page/gcaimhkfmliahedmeklebabdgagipbia
+
+  Get cookies.txt LOCALLY
+    https://chrome.google.com/webstore/detail/get-cookiestxt-locally
+
+  Ghostery
+    https://www.ghostery.com/
+
+  Lighthouse
+    https://github.com/GoogleChrome/lighthouse
+
+  Ruffle
+    https://ruffle.rs/
+
+  Wayback Machine
+    https://chrome.google.com/webstore/detail/wayback-machine/fpnmgdkabkmnadcjpehmlllkndpkmiak
+
+  Web Vitals
+    https://chrome.google.com/webstore/detail/web-vitals/ahfhijdlegdabablpippeagghigmibma
+
+  WhatFont
+    https://chrome.google.com/webstore/detail/whatfont/jabopobgcpjmedljpbcaablpmlmfcogm
 
 
 ALFRED

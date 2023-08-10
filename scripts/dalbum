@@ -23,7 +23,7 @@ case "$url" in
 	*"list="*)
 		cd "$dir" && \
 			yt-dlp \
-				--cookies /Users/tga/todo/listen/cookies.txt \
+				--cookies /Users/tga/files/cookies/youtube.txt \
 				-x --audio-format mp3 \
 				-o '%(title)s.%(ext)s' \
 				-i \
@@ -42,3 +42,5 @@ case "$url" in
 				--postprocessor-args "-metadata album='$album'" "$url"
 	;;
 esac
+
+echo "music downloaded to $dir"
