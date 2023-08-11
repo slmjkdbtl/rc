@@ -263,6 +263,9 @@ GUI
   DaisyDisk
     https://daisydiskapp.com/
 
+  MilkyTracker
+    https://milkytracker.org/
+
   Dash
     https://kapeli.com/dash/
 
