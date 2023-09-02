@@ -81,6 +81,7 @@ Plug 'dense-analysis/ale'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'noscript/elevator.vim'
 
 Plug 'pangloss/vim-javascript'
 Plug 'tbastos/vim-lua'
@@ -443,5 +444,5 @@ au FileType vim              setl cms=\"%s
 au FileType forth            setl cms=\\%s
 au FileType html             setl cms=<!--%s-->
 au FileType css              setl cms=/*%s*/
-au FileType markdown         setl et ts=2 sw=2
+au FileType markdown         setl et ts=4 sw=4
 au FileType text             setl et ts=2 sw=2

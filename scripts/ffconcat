@@ -1,9 +1,12 @@
 #!/bin/sh
+# concat videos with ffmpeg
+
+rm ffconcat.txt
 
 for file in "$@"
 do
-	echo file $file.mp4 >> ffconcat.txt
+	echo file \'$file\' >> ffconcat.txt
 done
 
-ffmpeg -f concat -i ffconcat.txt -c copy ffconcat.mp4
+ffmpeg -f concat -safe 0 -i ffconcat.txt -c copy ffconcat.mp4
 rm ffconcat.txt

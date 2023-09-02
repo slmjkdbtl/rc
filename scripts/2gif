@@ -1,4 +1,5 @@
 #!/bin/sh
+# convert images to gif
 
 palette="/tmp/palette.png"
 

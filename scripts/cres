@@ -1,4 +1,5 @@
 #!/bin/sh
+# recursively convert resource files into embeddable C headers
 
 help() {
 	echo "Recursively convert resource files into embeddable C headers"

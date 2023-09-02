@@ -153,6 +153,9 @@ CLI
   entr
     http://entrproject.org/
 
+  rlwrap
+    https://github.com/hanslub42/rlwrap/
+
   amfora
     https://github.com/makeworld-the-better-one/amfora/
 

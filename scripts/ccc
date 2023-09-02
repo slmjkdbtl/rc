@@ -1,4 +1,5 @@
 #!/bin/sh
+# quickly build and run a c file
 
 help() {
 	echo "Quickly build and run a c file"

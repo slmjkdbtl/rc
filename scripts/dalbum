@@ -1,4 +1,5 @@
 #!/bin/sh
+# download music from youtube playlist
 
 help() {
 	echo "Download music from youtube playlist"
@@ -43,4 +44,4 @@ case "$url" in
 	;;
 esac
 
-echo "music downloaded to $dir"
+echo "music downloaded to \"$dir\""

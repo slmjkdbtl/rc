@@ -52,11 +52,4 @@ return {
 	},
 	audible_bell = "Disabled",
 	use_fancy_tab_bar = false,
-	mouse_bindings = {
-		{
-			event = { Up = { streak = 1, button = "Left" } },
-			mods = "NONE",
-			action = wezterm.action.Nop,
-		},
-	},
 }

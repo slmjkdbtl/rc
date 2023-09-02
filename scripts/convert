@@ -1,4 +1,5 @@
 #!/bin/sh
+# convert all files in current dir to another format with ffmpeg
 
 help() {
 	echo "Convert all files in current dir to another format with ffmpeg"
@@ -17,7 +18,14 @@ then
 	exit 1
 fi
 
-for file in *."$1"
+flags=""
+
+if [ "$2" = "mp3" ]
+then
+	flags="$flags -ab 256k"
+fi
+
+for file in "*.$1"
 do
-	ffmpeg -i "$file" "$(basename "$file" ".$1").$2"
+	ffmpeg -i "$file" "$flags" "$(basename "$file" ".$1").$2"
 done
