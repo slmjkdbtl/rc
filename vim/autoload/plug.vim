@@ -39,7 +39,7 @@ func! plug#update()
 	for l:i in range(len(l:pluginnames))
 		let l:name = l:pluginnames[i]
 		let l:dir = s:plugdir . '/' . l:name
-		redraw | echom 'checking ' . l:name . ' (' . (i + 1) . '/' . len(l:pluginnames) . ')'
+		redraw | echo 'checking ' . l:name . ' (' . (i + 1) . '/' . len(l:pluginnames) . ')'
 		if isdirectory(l:dir)
 			call system('cd ' . l:dir . ' && git fetch')
 			let l:cur = system('cd ' . l:dir . ' && git rev-parse HEAD ')

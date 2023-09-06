@@ -230,6 +230,9 @@ GUI
   Aseprite
     https://www.aseprite.org/
 
+  Mullvad VPN
+    https://mullvad.net/
+
   Glyphs
     https://glyphsapp.com/
 
@@ -364,6 +367,66 @@ GUI
 
   EDOPro
     https://projectignis.github.io/
+
+
+IOS
+
+  TE Tuner
+    https://www.tonalenergy.com/
+
+  Dice Tray
+    https://prettyyellowdog.com/apps/dice-tray/
+
+  ProDex
+    https://www.wido.io/
+
+  SimpleNote
+    https://simplenote.com/
+
+  Procreate
+    https://procreate.com/
+
+  Mullvad VPN
+    https://mullvad.net/
+
+  iSH
+    https://ish.app/
+
+  WireGuard
+    https://www.wireguard.com/
+
+  Prompt
+    https://panic.com/prompt/
+
+  iRealPro
+    https://www.irealpro.com/
+
+  nanoloop
+    https://www.nanoloop.com/
+
+  SunVox
+    https://www.warmplace.ru/soft/sunvox/
+
+  Castle
+    https://castle.xyz/
+
+  Goxel
+    https://goxel.xyz/
+
+  PdParty
+    http://danomatika.com/code/pdparty/
+
+  Living Worlds
+    http://pixfabrik.com/livingworlds/
+
+  Ableton Note
+    https://www.ableton.com/note/
+
+  BitWiz
+    http://kymatica.com/apps/bitwiz/
+
+  ACNH Guide
+    https://acnh.guide/
 
 
 CHROME EXTENSIONS
