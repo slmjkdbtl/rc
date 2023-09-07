@@ -12,20 +12,17 @@ help() {
 	echo "  $ convert flac mp3"
 }
 
-if [ -z "$1" ] || [ -z "$2" ]
+from="$1"
+to="$2"
+flags="$3"
+
+if [ -z "$from" ] || [ -z "$to" ]
 then
 	help
 	exit 1
 fi
 
-flags=""
-
-if [ "$2" = "mp3" ]
-then
-	flags="$flags -ab 256k"
-fi
-
-for file in "*.$1"
+for file in *."$from"
 do
-	ffmpeg -i "$file" "$flags" "$(basename "$file" ".$1").$2"
+	ffmpeg -i "$file" "$(basename "$file" ".$from").$to"
 done

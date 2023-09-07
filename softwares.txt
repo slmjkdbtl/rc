@@ -531,7 +531,13 @@ QUICKLOOK
     http://www.sagtau.com/quicklookjson.html
 
 
-MISC
+SITES
+
+  smolsite
+    https://smolsite.zip/
+
+  itty.bitty
+    https://itty.bitty.site/
 
   ix
     http://ix.io
@@ -541,3 +547,15 @@ MISC
 
   jsonbin
     https://jsonbin.org
+
+  tinypng
+    https://tinypng.com/
+
+  porkbun
+    https://porkbun.com/
+
+  digitalocean
+    https://www.digitalocean.com/
+
+  improvmx
+    https://improvmx.com/
