@@ -300,7 +300,6 @@ Beware of Penza Penza
 Beyond
 Big Band Classics
 Big City
-Big Fun
 Big Pop For Chameleon World
 Big Shots
 Big Sun
@@ -519,6 +518,7 @@ Connection
 Conspiracy
 Constelaciones
 Contemporary African Amerikan Music
+Contemporary Jazz Mass / Live at Orchestra Hall & The Paradise Theater
 Conversations
 Conversations With Myself
 Cookie Chips
@@ -668,6 +668,7 @@ Dogon A.D.
 Doin It!!!!
 Doin' Damange
 Dolunay
+Don Blackman
 Don't Call Us We'll Call You
 Don't Say Yes
 Donkey Kong Country 2: Diddy's Kong Quest
@@ -687,6 +688,7 @@ Dragon Quest VIII
 Dragonball Durag
 Drastic Plastic
 Dream Merchant Vol. 1
+Dream Queen
 Dream Sequence
 Dreams
 Dreams Of Impossibilities
@@ -794,7 +796,6 @@ Evening Time
 Evenings at the Village Gate
 Every Nigger Is A Star
 Everyday is a Symphony
-Everyone Loves You When You Were Still A Kid
 Everything Scatter
 Everytime
 Everywhere at the End of Time: Stage 1
@@ -848,6 +849,7 @@ Featuring the Sun Love and the Heavy Metal Thunder
 Feed Me
 Feel Like Makin Love
 Feel the Spirit
+Figure Of Speech
 Film of Life
 Fin
 Fine Furniture, Vol​. 1
@@ -1036,6 +1038,7 @@ Hang
 Happy End
 Happy Girl
 Har-You Percussion Group
+Hard Luck Soul
 Hard Rock Transonic
 Hare Rama Hare Krishna
 Harlan & Alondra
@@ -1233,6 +1236,7 @@ Jaco Pastorius
 Jak bude po smrti
 Jam
 Jan, Jan
+Jani
 Japandorf
 Japanoia
 Jasmine
@@ -1243,11 +1247,13 @@ Jazz Jackrabbit
 Jazz Meets India
 Jazz Mood
 Jazz Samba Encore!
+Jazz Solo Piano
 Jazz in Silhouette
 Jazzmatazz, Vol. 1
 Jefferson Airplane: The Woodstock Experience
 Jelly
 Jelly Belly Dirty Somebody
+Jerusalem
 Jesu
 Jesup Wagon
 Jet Generation
@@ -1287,8 +1293,8 @@ Key To Love (Is Understanding)
 Key To Our Love / Love Don't Change
 Kid, Just Letting You Know We're Doing It Again
 Kikagaku Moyo
-Kind Of Blue
 Kind of Bloop
+Kind of Blue
 King Ghidra
 King Krule
 King of Kings
@@ -1320,9 +1326,9 @@ LOVEPLAYDANCE - 8 Scenes from The Floor
 LUNA
 La Locura de Machuca
 La Lu La Roo
+La Planète Sauvage
 La Ragazza Nella Foresta
 La belle époque, Vol. 3: 1973-1976
-La planète sauvage
 Labcabincalifornia
 Labor Days
 Lagniappe Sessions, Vol. 1
@@ -1576,9 +1582,9 @@ Method of slow motion
 Microcastle
 Midnight Cowboys From Ipanema
 Midnight Express
-Midnight Love
 Midnight Maurauders
 Mighty Baby
+Miles Smiles
 Miles in Antwerp
 Milk
 Milk Time
@@ -1893,6 +1899,7 @@ Plum
 Plumb
 Plume Valley
 Plutonium Blonde
+PoZest
 Poco-A-Poco
 Poem For Malcolm
 Poem of Gratitude
@@ -1963,6 +1970,7 @@ Radioaxiom: A Dub Transmission
 Raft
 Raga Rock
 Rain Dogs
+Raised Pleasure Dot
 Ram's Run
 Raspberries
 Raw Bites
@@ -2187,6 +2195,7 @@ Soundmusication
 Soundnitia
 Soundpieces: Da Antidote
 Sounds Of Sound L.T.D.
+Sounds Of The City Experience
 Soundtracks
 Sour Soul
 Southern Freeway
@@ -2414,6 +2423,7 @@ The Fabulous Echoes
 The Feed-Back
 The Festival Album
 The Final Hour
+The Freedom Book
 The Funeral
 The Further Adventures of Lord Quas
 The Future and the Past
@@ -2613,6 +2623,7 @@ Tokyo Rotation 4 - Day 3
 Tommy Stewart
 Tomorrow Comes The Harvest
 Tomorrow is Now!
+Tongue In Groove
 Top Of The Bill 
 Torture Garden
 Touch
@@ -2804,6 +2815,7 @@ Winter Sweet
 Winter in America
 Wisdom Through Music
 Witchdoctors Son
+Witchi Tai To
 With Strings
 Wo!man
 Wondem

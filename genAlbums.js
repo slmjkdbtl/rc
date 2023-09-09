@@ -1,6 +1,7 @@
 // Parse apple music library export file into a list of album names
 
 // TODO: artist name
+// TODO: playlists
 
 import fs from "fs/promises"
 import * as htmlparser2 from "htmlparser2"
@@ -16,7 +17,7 @@ function transform(node) {
 	}
 }
 
-const musicXML = await fs.readFile("music.xml", "utf8")
+const musicXML = await fs.readFile("Library.xml", "utf8")
 const doc = transform(htmlparser2.parseDocument(musicXML))
 const albumSet = new Set()
 // TODO: better way to find these?

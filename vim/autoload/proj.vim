@@ -12,11 +12,11 @@ func! proj#go(pat)
 		echo 'proj file not found'
 		return
 	endif
-	for l:p in readfile(expand(g:proj_file))
-		let l:dir = expand(l:p)
-		if isdirectory(l:dir) && l:dir =~ a:pat
-			silent! exec 'lcd ' . l:dir
-			silent! exec 'edit ' . l:dir
+	for p in readfile(expand(g:proj_file))
+		let dir = expand(p)
+		if isdirectory(dir) && dir =~ a:pat
+			silent! exec 'lcd ' . dir
+			silent! exec 'edit ' . dir
 			break
 		endif
 	endfor

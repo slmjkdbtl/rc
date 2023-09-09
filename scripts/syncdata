@@ -3,10 +3,10 @@
 
 sync() {
 	echo "syncing $1 -> $2"
-	rsync -avn --delete --exclude '.DS_Store' $1 $2
+	rsync -av --delete --exclude '.DS_Store' $1 $2
 }
 
-sync /Users/tga/Music/Music/Media.localized/Music/ /Volumes/EXTDISK/music
+sync /Users/tga/Music/Media.localized/Music/ /Volumes/EXTDISK/music
 sync /Users/tga/files/film/ /Volumes/EXTDISK/film
 sync /Users/tga/files/img/ /Volumes/EXTDISK/img
 sync /Users/tga/files/books/ /Volumes/EXTDISK/books
