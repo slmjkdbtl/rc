@@ -1,6 +1,5 @@
 // Parse apple music library export file into a list of album names
 
-// TODO: artist name
 // TODO: playlists
 
 import fs from "fs/promises"
@@ -24,18 +23,24 @@ const albumSet = new Set()
 const tracksDoc = doc.children[2].children[0].children[11].children[5]
 const playlistsDoc = doc.children[2].children[0].children[11].children[7]
 
+function getVal(dict, key) {
+	let index = null
+	for (let i = 0; i < dict.children.length; i++) {
+		const item = dict.children[i]
+		if (item.name === "key" && item.children[0].data === key) {
+			index = i + 1
+		}
+	}
+	if (index === null) return
+	return dict.children[index].children[0].data
+}
+
 for (const d of tracksDoc.children) {
 	if (d.name !== "dict") continue
-	let grab = false
-	for (const a of d.children) {
-		if (grab) {
-			grab = false
-			albumSet.add(a.children[0].data)
-			continue
-		}
-		if (a.name === "key" && a.children[0].data === "Album") {
-			grab = true
-		}
+	const artist = getVal(d, "Artist")
+	const album = getVal(d, "Album")
+	if (album) {
+		albumSet.add(`${artist} - ${album}`)
 	}
 }
 
