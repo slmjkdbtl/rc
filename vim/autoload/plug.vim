@@ -1,11 +1,12 @@
 " plugin manager
 
-let s:plugdir = get(g:, 'plugdir', fnamemodify($MYVIMRC, ':h') . '/pack/ext/start')
+let s:plugdir = get(g:, 'plugdir', fnamemodify($MYVIMRC, ':h') . '/pack/ext/opt')
 let s:plugins = {}
 
 func! plug#add(repo)
 	let name = split(a:repo, '/')[-1]
 	let s:plugins[name] = a:repo
+	exec 'packadd ' . name
 endfunc
 
 func! plug#install()
