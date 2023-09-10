@@ -1,12 +1,10 @@
 // Parse apple music library export file into a list of album names
 
-// TODO: playlists
-
 import fs from "fs/promises"
 import * as htmlparser2 from "htmlparser2"
 
 function transform(node) {
-	if (node.type === "text" && node.data.startsWith("\n")) return
+	if (node.type === "text" && node.data.match(/^\s*$/)) return
 	return {
 		name: node.name,
 		type: node.type,
@@ -21,7 +19,6 @@ const doc = transform(htmlparser2.parseDocument(musicXML))
 const albumSet = new Set()
 // TODO: better way to find these?
 const tracksDoc = doc.children[2].children[0].children[11].children[5]
-const playlistsDoc = doc.children[2].children[0].children[11].children[7]
 
 function getVal(dict, key) {
 	for (let i = 0; i < dict.children.length; i++) {

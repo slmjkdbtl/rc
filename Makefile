@@ -18,5 +18,5 @@ $(HOME)/.%: %
 $(USERBIN)/%: scripts/%
 	ln -sf $(realpath $<) $@
 
-albums.txt: Library.xml
+albums.txt: Library.xml genAlbums.js
 	bun genAlbums.js
