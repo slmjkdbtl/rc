@@ -551,11 +551,20 @@ SITES
   tinypng
     https://tinypng.com/
 
+  ezgif
+    https://ezgif.com/
+
   porkbun
     https://porkbun.com/
 
   digitalocean
     https://www.digitalocean.com/
 
+  fastmail
+    https://fastmail.com/
+
   improvmx
     https://improvmx.com/
+
+  iTunes Artwork Finder
+    https://bendodson.com/projects/itunes-artwork-finder/

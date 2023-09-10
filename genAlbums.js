@@ -24,22 +24,19 @@ const tracksDoc = doc.children[2].children[0].children[11].children[5]
 const playlistsDoc = doc.children[2].children[0].children[11].children[7]
 
 function getVal(dict, key) {
-	let index = null
 	for (let i = 0; i < dict.children.length; i++) {
 		const item = dict.children[i]
 		if (item.name === "key" && item.children[0].data === key) {
-			index = i + 1
+			return dict.children[i + 1].children[0].data
 		}
 	}
-	if (index === null) return
-	return dict.children[index].children[0].data
 }
 
 for (const d of tracksDoc.children) {
 	if (d.name !== "dict") continue
 	const artist = getVal(d, "Artist")
 	const album = getVal(d, "Album")
-	if (album) {
+	if (album && artist) {
 		albumSet.add(`${artist} - ${album}`)
 	}
 }
