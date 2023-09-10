@@ -64,6 +64,7 @@ alias extip "curl ifconfig.co"
 alias playraw "ffplay -ar 8000 -ac 1 -f u8 -nodisp -"
 alias weather "curl 'wttr.in?m'"
 alias dnsclear "sudo killall -HUP mDNSResponder"
+alias dsclean "find . -name '.DS_Store' -print -delete"
 alias nogatekeep "sudo spctl --master-disable"
 alias dl "curl -OL"
 

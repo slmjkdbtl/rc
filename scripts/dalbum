@@ -29,7 +29,8 @@ case "$url" in
 				-o '%(title)s.%(ext)s' \
 				-i \
 				--yes-playlist \
-				--postprocessor-args "-metadata album='$album'" "$url"
+				--postprocessor-args "-metadata album='$album'" \
+				"$url"
 	;;
 	*)
 		cd "$dir" && \
@@ -40,7 +41,8 @@ case "$url" in
 				-o '%(chapter)s.%(ext)s' \
 				-i \
 				--no-playlist \
-				--postprocessor-args "-metadata album='$album'" "$url"
+				--postprocessor-args "-metadata album='$album'" \
+				"$url"
 	;;
 esac
 

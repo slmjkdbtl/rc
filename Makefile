@@ -1,24 +1,22 @@
-CONFIG := $(HOME)/.config
-USERBIN := $(HOME)/.local/bin
+CONFIG = $(HOME)/.config
+USERBIN = $(HOME)/.local/bin
+TO_CONFIG = nvim mpv fish wezterm
+TO_HOME = vim dshrc skhdrc tmux.conf gitconfig
+CONFIG_TARGETS := $(patsubst %, $(CONFIG)/%, $(TO_CONFIG))
+HOME_TARGETS := $(patsubst %, $(HOME)/.%, $(TO_HOME))
+USERBIN_TARGETS := $(patsubst scripts/%, $(USERBIN)/%, $(wildcard scripts/*))
 
 .PHONY: install
-install:
+install: $(CONFIG_TARGETS) $(HOME_TARGETS) $(USERBIN_TARGETS)
 
-	@mkdir -p $(CONFIG)
-	@mkdir -p $(USERBIN)
+$(CONFIG)/%: %
+	ln -sf $(realpath $<) $@
 
-	@for f in nvim mpv fish; do \
-		echo "$$f -> $(CONFIG)/$$f"; \
-		ln -sf $$(realpath $$f) $(CONFIG); \
-	done
+$(HOME)/.%: %
+	ln -sf $(realpath $<) $@
 
-	@for f in vim dshrc skhdrc tmux.conf gitconfig wezterm.lua; do \
-		echo "$$f -> $(HOME)/.$$f"; \
-		test -L $(HOME)/.$$f && test -d $(HOME)/.$$f && rm $(HOME)/.$$f; \
-		ln -sf $$(realpath $$f) $(HOME)/.$$f; \
-	done
+$(USERBIN)/%: scripts/%
+	ln -sf $(realpath $<) $@
 
-	@for f in $(shell ls scripts); do \
-		echo "$$f -> $(USERBIN)/$$f"; \
-		ln -sf $$(realpath scripts/$$f) $(USERBIN); \
-	done
+albums.txt: Library.xml
+	bun genAlbums.js

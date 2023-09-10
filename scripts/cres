@@ -44,4 +44,3 @@ convert() {
 }
 
 convert "$src_path"
-
