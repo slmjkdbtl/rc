@@ -9,6 +9,10 @@ USERBIN_TARGETS := $(patsubst scripts/%, $(USERBIN)/%, $(wildcard scripts/*))
 .PHONY: install
 install: $(CONFIG_TARGETS) $(HOME_TARGETS) $(USERBIN_TARGETS)
 
+.PHONY: uninstall
+uninstall:
+	rm $(CONFIG_TARGETS) $(HOME_TARGETS) $(USERBIN_TARGETS)
+
 $(CONFIG)/%: %
 	ln -sf $(realpath $<) $@
 
@@ -18,5 +22,12 @@ $(HOME)/.%: %
 $(USERBIN)/%: scripts/%
 	ln -sf $(realpath $<) $@
 
+.PHONY: update
+update: albums.txt Brewfile
+
 albums.txt: Library.xml genAlbums.js
 	bun genAlbums.js
+
+.PHONY: Brewfile
+Brewfile:
+	brew bundle dump -f

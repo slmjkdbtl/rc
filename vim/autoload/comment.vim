@@ -26,6 +26,7 @@ func! s:trim(line)
 	return substitute(a:line, '\s*$', '', '')
 endfunc
 
+" TODO: when empty enter insert and start commenting
 " TODO: when range use least indent
 func! comment#comment()
 

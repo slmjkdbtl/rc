@@ -79,6 +79,7 @@ endfunc
 func! s:onenter()
 	let path = expand('%:p')
 	if empty(path)
+		" TODO: this disables :h
 		call s:open(getcwd())
 	else
 		if isdirectory(path)
@@ -237,16 +238,13 @@ func! s:enter()
 	if isdirectory(item)
 		exec 'sil! edit ' . escape(item, '# ')
 	elseif filereadable(item)
-
 		let ext = fnamemodify(item, ':e')
-
 		if index(g:browse_open_ext, ext) >= 0
 			call system('open ' . escape(item, " '&()"))
 		else
 			set titlestring=
 			exec 'sil! edit ' . item
 		endif
-
 	endif
 
 endfunc

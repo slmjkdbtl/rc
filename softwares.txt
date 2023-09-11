@@ -9,6 +9,9 @@ CLI
   z
     https://github.com/rupa/z/
 
+  jump
+    http://gsamokovarov.com/jump/
+
   rsync
     https://rsync.samba.org/
 
@@ -39,32 +42,29 @@ CLI
   skhd
     https://github.com/koekeishiya/skhd/
 
-  fzy
-    https://github.com/jhawthorn/fzy/
-
   rclone
     https://rclone.org/
-
-  yabai
-    https://github.com/koekeishiya/yabai/
-
-  httpie
-    https://httpie.org/
 
   aria2
     https://aria2.github.io/
 
-  rename
-    http://plasmasturm.org/code/rename/
+  jpegoptim
+    https://github.com/tjko/jpegoptim/
 
-  ii
-    https://tools.suckless.org/ii
+  oxipng
+    https://github.com/shssoichiro/oxipng/
 
-  m-cli
-    https://github.com/rgcr/m-cli/
+  pngquant
+    https://pngquant.org/
 
   gifsicle
     http://www.lcdf.org/gifsicle/
+
+  gifski
+    https://gif.ski/
+
+  m-cli
+    https://github.com/rgcr/m-cli/
 
   ocr
     https://github.com/schappim/macOCR
@@ -72,23 +72,35 @@ CLI
   tesseract
     https://github.com/tesseract-ocr/tesseract/
 
-  imagemagick
-    https://www.imagemagick.org/
+  httpie
+    https://httpie.org/
 
-  jpegoptim
-    https://github.com/tjko/jpegoptim/
+  pandoc
+    https://pandoc.org/
 
-  optipng
-    http://optipng.sourceforge.net/
+  upx
+    https://github.com/upx/upx/
 
-  pngquant
-    https://pngquant.org/
+  entr
+    http://entrproject.org/
+
+  rename
+    http://plasmasturm.org/code/rename/
+
+  ii
+    https://tools.suckless.org/ii
+
+  hexyl
+    https://github.com/sharkdp/hexyl/
 
   terminal-notifier
     https://github.com/julienXX/terminal-notifier
 
-  hexyl
-    https://github.com/sharkdp/hexyl/
+  fzy
+    https://github.com/jhawthorn/fzy/
+
+  yabai
+    https://github.com/koekeishiya/yabai/
 
   lilypond
     http://lilypond.org/
@@ -102,9 +114,6 @@ CLI
   caddy
     https://caddyserver.com/
 
-  gifski
-    https://gif.ski/
-
   gource
     https://gource.io/
 
@@ -113,12 +122,6 @@ CLI
 
   potrace
     http://potrace.sourceforge.net/
-
-  pandoc
-    https://pandoc.org/
-
-  upx
-    https://github.com/upx/upx/
 
   rig
     http://rig.sourceforge.net/
@@ -149,9 +152,6 @@ CLI
 
   tree
     http://mama.indstate.edu/users/ice/tree/
-
-  entr
-    http://entrproject.org/
 
   rlwrap
     https://github.com/hanslub42/rlwrap/
@@ -188,6 +188,9 @@ CLI
 
   diskonaut
     https://github.com/imsnif/diskonaut/
+
+  wireguard-tools
+    https://www.wireguard.com/
 
   wtf
     https://sourceforge.net/projects/bsdwtf/
