@@ -3,6 +3,7 @@
 
 sync() {
 	echo "syncing $1 -> $2"
+	# TODO: rsync is re-copying file names with non ascii character
 	rsync -av --delete --exclude '.DS_Store' $1 $2
 }
 
@@ -10,3 +11,5 @@ sync ~/Music/Media.localized/Music/ /Volumes/EXTDISK/music
 sync ~/files/film/                  /Volumes/EXTDISK/film
 sync ~/files/img/                   /Volumes/EXTDISK/img
 sync ~/files/books/                 /Volumes/EXTDISK/books
+sync ~/files/videos/                /Volumes/EXTDISK/videos
+sync ~/files/tv/                    /Volumes/EXTDISK/tv
