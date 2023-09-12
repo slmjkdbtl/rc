@@ -45,6 +45,9 @@ CLI
   rclone
     https://rclone.org/
 
+  s3cmd
+    https://s3tools.org/s3cmd
+
   aria2
     https://aria2.github.io/
 
