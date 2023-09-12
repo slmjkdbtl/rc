@@ -82,6 +82,17 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>37E40D66-D2E5-4EC4-B748-7F700B9ED432</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>yt</string>
+			<key>text</key>
+			<string>Search YouTube for '{query}'</string>
+			<key>url</key>
+			<string>https://www.youtube.com/results?search_query={query}&amp;sp=CAASAhAB</string>
+		</dict>
 		<key>3918EA2A-0D25-4D6F-92A9-AF4BDA52EB9E</key>
 		<dict>
 			<key>enabled</key>

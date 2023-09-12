@@ -2,9 +2,9 @@ CONFIG = $(HOME)/.config
 USERBIN = $(HOME)/.local/bin
 TO_CONFIG = nvim mpv fish wezterm
 TO_HOME = vim dshrc skhdrc tmux.conf gitconfig
-CONFIG_TARGETS := $(patsubst %, $(CONFIG)/%, $(TO_CONFIG))
-HOME_TARGETS := $(patsubst %, $(HOME)/.%, $(TO_HOME))
-USERBIN_TARGETS := $(patsubst scripts/%, $(USERBIN)/%, $(wildcard scripts/*))
+CONFIG_TARGETS = $(addprefix $(CONFIG)/, $(TO_CONFIG))
+HOME_TARGETS = $(addprefix $(HOME)/., $(TO_HOME))
+USERBIN_TARGETS = $(patsubst scripts/%, $(USERBIN)/%, $(wildcard scripts/*))
 
 .PHONY: install
 install: $(CONFIG_TARGETS) $(HOME_TARGETS) $(USERBIN_TARGETS)
@@ -28,6 +28,7 @@ update: albums.txt Brewfile
 albums.txt: Library.xml genAlbums.js
 	bun genAlbums.js
 
-.PHONY: Brewfile
-Brewfile:
+Brewfile: FORCE
 	brew bundle dump -f
+
+FORCE:
