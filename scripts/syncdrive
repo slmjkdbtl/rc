@@ -4,7 +4,11 @@
 sync() {
 	echo "syncing $1 -> $2"
 	# TODO: rsync is re-copying file names with non ascii character
-	rsync -av --delete --exclude '.DS_Store' "$1" "$2"
+	rsync \
+		-av \
+		--delete \
+		--exclude '.DS_Store' \
+		"$1" "$2"
 }
 
 drive="/Volumes/EXTDISK"

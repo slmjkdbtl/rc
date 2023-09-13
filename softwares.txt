@@ -93,9 +93,6 @@ CLI
   hexyl
     https://github.com/sharkdp/hexyl/
 
-  terminal-notifier
-    https://github.com/julienXX/terminal-notifier
-
   fzy
     https://github.com/jhawthorn/fzy/
 

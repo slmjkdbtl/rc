@@ -3,15 +3,20 @@
 
 sync() {
 	echo "syncing $1 -> $2"
-	rclone sync --progress --exclude '.DS_Store' "$1" "$2"
+	s3cmd sync \
+		-v \
+		--no-check-md5 \
+		--delete-removed \
+		--acl-public \
+		--exclude '.DS_Store' \
+		"$1" "$2"
 }
 
-bucket="do:tga"
+bucket="s3://tga"
 
-sync ~/Music/Media.localized/Music/ $bucket/music
-sync ~/files/film/                  $bucket/film
-sync ~/files/img/                   $bucket/img
-sync ~/files/books/                 $bucket/books
-sync ~/files/videos/                $bucket/videos
-sync ~/files/tv/                    $bucket/tv
-
+sync ~/Music/Media.localized/Music/ $bucket/music/
+sync ~/files/film/                  $bucket/film/
+sync ~/files/img/                   $bucket/img/
+sync ~/files/books/                 $bucket/books/
+sync ~/files/videos/                $bucket/videos/
+sync ~/files/tv/                    $bucket/tv/

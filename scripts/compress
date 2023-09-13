@@ -1,0 +1,24 @@
+#!/bin/sh
+# compress an image
+
+path="$1"
+
+if [ ! -e "$path" ]
+then
+	echo "file not found"
+	exit 1
+fi
+
+ext=$(echo "${path##*.}" | tr '[:upper:]' '[:lower:]')
+
+case "$ext" in
+	"jpg"|"jpeg")
+		jpegoptim -m 60 "$path"
+	;;
+	"png")
+		oxipng "$path"
+	;;
+	*)
+		echo "unsupported file type: \"$ext\""
+	;;
+esac

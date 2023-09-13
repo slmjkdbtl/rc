@@ -1,0 +1,7 @@
+#!/bin/sh
+# send macOS notification
+
+title="$1"
+msg="$2"
+
+osascript -e "display notification \"$msg\" with title \"$title\""
