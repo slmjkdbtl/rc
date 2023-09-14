@@ -60,7 +60,10 @@
 				<dict>
 					<key>COMMAND_STRING</key>
 					<string>export PATH="/Users/tga/.local/bin:/opt/homebrew/bin:${PATH}"
-minimg "$1"</string>
+for file in "$@"
+do
+    minimg "$file"
+done</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>

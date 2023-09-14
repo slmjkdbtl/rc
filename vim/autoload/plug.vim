@@ -6,7 +6,9 @@ let s:plugins = {}
 func! plug#add(repo)
 	let name = split(a:repo, '/')[-1]
 	let s:plugins[name] = a:repo
-	exec 'packadd ' . name
+	if isdirectory(s:plugdir . '/' . name)
+		exec 'packadd ' . name
+	endif
 endfunc
 
 func! plug#install()
