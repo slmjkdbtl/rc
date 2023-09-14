@@ -8,11 +8,11 @@
 			<key>NSBackgroundColorName</key>
 			<string>background</string>
 			<key>NSIconName</key>
-			<string>NSTouchBarDocuments</string>
+			<string>NSTouchBarFolder</string>
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>Compress</string>
+				<string>Terminal</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>runWorkflowAsService</string>
@@ -23,7 +23,7 @@
 			</dict>
 			<key>NSSendFileTypes</key>
 			<array>
-				<string>public.image</string>
+				<string>public.item</string>
 			</array>
 		</dict>
 	</array>

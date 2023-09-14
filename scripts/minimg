@@ -1,6 +1,9 @@
 #!/bin/sh
 # compress an image
 
+# TODO: --loseless
+# TODO: --output
+
 path="$1"
 
 if [ ! -e "$path" ]
@@ -13,10 +16,10 @@ ext=$(echo "${path##*.}" | tr '[:upper:]' '[:lower:]')
 
 case "$ext" in
 	"jpg"|"jpeg")
-		jpegoptim -m 60 "$path"
+		jpegoptim -m 50 "$path"
 	;;
 	"png")
-		oxipng "$path"
+		pngquant --ext .png -f "$path"
 	;;
 	*)
 		echo "unsupported file type: \"$ext\""

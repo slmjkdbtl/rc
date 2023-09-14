@@ -8,8 +8,7 @@ USERBIN_TARGETS = $(patsubst scripts/%, $(USERBIN)/%, $(wildcard scripts/*))
 
 WORKFLOW_SRC_DIR = $(HOME)/Library/Services
 WORKFLOW_DEST_DIR = workflows
-WORKFLOWS = compress
-WORKFLOW_SRC = $(patsubst %, $(WORKFLOW_SRC_DIR)/%.workflow, $(WORKFLOWS))
+WORKFLOWS = Compress Terminal
 WORKFLOW_DEST = $(patsubst %, $(WORKFLOW_DEST_DIR)/%.workflow, $(WORKFLOWS))
 
 .PHONY: install

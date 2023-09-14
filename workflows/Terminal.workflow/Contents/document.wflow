@@ -60,10 +60,7 @@
 				<dict>
 					<key>COMMAND_STRING</key>
 					<string>export PATH="/Users/tga/.local/bin:/opt/homebrew/bin:${PATH}"
-for file in "$@"
-do
-    minimg "$file"
-done</string>
+osascript -e 'tell application "Finder" to if "Finder" is in (name of first application process whose frontmost is true) then do shell script "open -a WezTerm &amp;&amp; wezterm cli spawn --cwd " &amp; (quoted form of POSIX path of (folder of the front window as string) as string)'</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -88,7 +85,7 @@ done</string>
 				<key>Class Name</key>
 				<string>RunShellScriptAction</string>
 				<key>InputUUID</key>
-				<string>5F860D7E-6A09-40A6-B416-6B9BFD12697C</string>
+				<string>CE81E4E6-5D09-4F59-9489-A23662A3BFA3</string>
 				<key>Keywords</key>
 				<array>
 					<string>Shell</string>
@@ -98,9 +95,9 @@ done</string>
 					<string>Unix</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>E04381B5-B725-47D2-AC75-DCE30B96853B</string>
+				<string>DB62B4B6-50B3-4AFE-A334-2E98C90294ED</string>
 				<key>UUID</key>
-				<string>8880A365-F8E2-407B-BC07-D739AB5D9CA3</string>
+				<string>FB99FDCE-CE0C-4BBE-8F3C-F90E815A5572</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -204,7 +201,7 @@ done</string>
 			<string>/System/Library/CoreServices/Finder.app</string>
 		</array>
 		<key>inputTypeIdentifier</key>
-		<string>com.apple.Automator.fileSystemObject.image</string>
+		<string>com.apple.Automator.fileSystemObject</string>
 		<key>outputTypeIdentifier</key>
 		<string>com.apple.Automator.nothing</string>
 		<key>presentationMode</key>
@@ -216,13 +213,13 @@ done</string>
 		<key>serviceApplicationPath</key>
 		<string>/System/Library/CoreServices/Finder.app</string>
 		<key>serviceInputTypeIdentifier</key>
-		<string>com.apple.Automator.fileSystemObject.image</string>
+		<string>com.apple.Automator.fileSystemObject</string>
 		<key>serviceOutputTypeIdentifier</key>
 		<string>com.apple.Automator.nothing</string>
 		<key>serviceProcessesInput</key>
 		<false/>
 		<key>systemImageName</key>
-		<string>NSTouchBarDocuments</string>
+		<string>NSTouchBarFolder</string>
 		<key>useAutomaticInputType</key>
 		<false/>
 		<key>workflowTypeIdentifier</key>
