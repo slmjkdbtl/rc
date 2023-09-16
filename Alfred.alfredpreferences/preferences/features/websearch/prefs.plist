@@ -210,6 +210,17 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>EBB13D26-D762-4E9E-B78D-59F067A57810</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>rv</string>
+			<key>text</key>
+			<string>Search Reverb for '{query}'</string>
+			<key>url</key>
+			<string>https://reverb.com/marketplace?query={query}</string>
+		</dict>
 	</dict>
 </dict>
 </plist>

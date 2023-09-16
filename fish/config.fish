@@ -2,16 +2,14 @@ set -x EDITOR vim
 set -x BROWSER open
 set -x PAGER less
 set -x GOPATH $HOME/.go
+set -x JAVA_HOME /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
+set -x BUN_INSTALL "$HOME/.bun"
 set -x PATH $HOME/.local/bin $PATH
 set -x PATH /opt/homebrew/bin $PATH
 set -x PATH /opt/homebrew/sbin $PATH
 set -x PATH /opt/homebrew/opt/llvm/bin $PATH
 set -x PATH $HOME/.cargo/bin $PATH
 set -x PATH $GOPATH/bin $PATH
-set -x HOMEBREW_NO_AUTO_UPDATE 1
-set -x HOMEBREW_NO_INSTALL_FROM_API 1
-set -x JAVA_HOME /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
-set -x BUN_INSTALL "$HOME/.bun"
 set -x PATH $BUN_INSTALL/bin $PATH
 set fish_greeting
 

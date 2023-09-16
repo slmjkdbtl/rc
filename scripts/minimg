@@ -4,7 +4,24 @@
 # TODO: --loseless
 # TODO: --output
 
+help() {
+	echo "Compress jpeg / png image file"
+	echo ""
+	echo "USAGE"
+	echo "  $ minimg <file>"
+	echo ""
+	echo "EXAMPLE"
+	echo "  $ minimg yoshi.png"
+	echo "  $ minimg fish.jpg"
+}
+
 path="$1"
+
+if [ -z "$path" ]
+then
+	help
+	exit 1
+fi
 
 if [ ! -e "$path" ]
 then

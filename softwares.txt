@@ -51,6 +51,9 @@ CLI
   aria2
     https://aria2.github.io/
 
+  imagemagick
+    https://imagemagick.org/
+
   jpegoptim
     https://github.com/tjko/jpegoptim/
 
