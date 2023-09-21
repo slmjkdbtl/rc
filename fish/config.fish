@@ -64,7 +64,7 @@ alias weather "curl 'wttr.in?m'"
 alias dnsclear "sudo killall -HUP mDNSResponder"
 alias dsclean "find . -name '.DS_Store' -print -delete"
 alias nogatekeep "sudo spctl --master-disable"
-alias dl "curl -OL"
+alias dl "aria2c -x 8 -d $HOME/Downloads"
 
 abbr gs "git status"
 abbr ga "git add -A"

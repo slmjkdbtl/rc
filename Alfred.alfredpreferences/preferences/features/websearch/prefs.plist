@@ -210,6 +210,17 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>E257E32E-F99C-4D20-8FA7-41E7252792A8</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>bilibili</string>
+			<key>text</key>
+			<string>Search bilibili for '{query}'</string>
+			<key>url</key>
+			<string>https://search.bilibili.com/all?keyword={query}</string>
+		</dict>
 		<key>EBB13D26-D762-4E9E-B78D-59F067A57810</key>
 		<dict>
 			<key>enabled</key>

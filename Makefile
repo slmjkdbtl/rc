@@ -1,7 +1,7 @@
 CONFIG = $(HOME)/.config
 USERBIN = $(HOME)/.local/bin
-TO_CONFIG = nvim mpv fish wezterm
-TO_HOME = vim dshrc skhdrc tmux.conf gitconfig
+TO_CONFIG = nvim mpv fish
+TO_HOME = vim dshrc skhdrc tmux.conf gitconfig wezterm.lua
 CONFIG_TARGETS = $(addprefix $(CONFIG)/, $(TO_CONFIG))
 HOME_TARGETS = $(addprefix $(HOME)/., $(TO_HOME))
 USERBIN_TARGETS = $(patsubst scripts/%, $(USERBIN)/%, $(wildcard scripts/*))

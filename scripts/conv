@@ -5,11 +5,11 @@ help() {
 	echo "Convert all files in current dir to another format with ffmpeg"
 	echo ""
 	echo "USAGE"
-	echo "  $ convert <from> <to>"
+	echo "  $ conv <from> <to>"
 	echo ""
 	echo "EXAMPLE"
-	echo "  $ convert png jpg"
-	echo "  $ convert flac mp3"
+	echo "  $ conv png jpg"
+	echo "  $ conv flac mp3"
 }
 
 from="$1"

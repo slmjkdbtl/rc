@@ -194,6 +194,7 @@ Art Ensemble of Chicago - Urban Bushmen
 Art Farmer - Gental Eyes
 Arthur Blythe - Illusions
 Arthur Blythe - Lenox Avenue Breakdown
+Arthur Blythe - The Grip
 Arthur Doyle & Sunny Murray - Dawn of a New Vibration
 Arthur Doyle - Plays More Alabama Feeling
 Arthur Doyle - The Songwriter
@@ -608,7 +609,6 @@ Denzel Curry & Kenny Beats - UNLOCKED
 Depeche Mode - Strangelove
 Deptford Goth - Life After Defo
 Deptford Goth - Songs
-Derek Bailey - Ballads
 Derek Bailey - Carpal Tunnel
 Deulgukhwa - 1st
 Deux - Golden Dreams
@@ -1124,6 +1124,7 @@ Hot and Cold - Sacred Vacation
 How to Count One to Ten - Blue Building Blocks
 How to Count One to Ten - Method of slow motion
 Howie Lee - 木屮山出 Mù Chè Shān Chū
+Hugh Mundell - Africa Must Be Free By 1983
 Hush Moss - Slowly Disappear
 Hye Eun-Yi - Funky Coup: Korean Soul, Funk & Rare Groove Nuggets 1973-1980 Vol.1
 Hypnotic Brass Ensemble - Book of Sound
@@ -1139,6 +1140,7 @@ Ice Cube - AmeriKKKa's Most Wanted
 Ice Cube - Lethal Injection
 Ice-T - Power
 Idaho - Lone Gunman
+Idris Ackamoor & Cultural Odyssey - The Beginning Of The Second Earth
 Idris Ackamoor & The Pyramids - An Angel Fell
 Idris Ackamoor & The Pyramids - Shaman!
 Idris Ackamoor & The Pyramids - Tinoge Ya Taa Ba
@@ -1532,6 +1534,7 @@ Les Rallizes Dénudés - Flightless Bird Needs Water Wings
 Les Rallizes Dénudés - Mars Studio 1980
 Les Rallizes Dénudés - Mizutani
 Les Rallizes Dénudés - The OZ Tapes
+Lester Bowie - African Children
 Lester Bowie - The Great Pretender
 Let Your Hair Down - Waiting Room
 Level 42 - World Machine
@@ -1689,7 +1692,6 @@ Mason Lindroth - Hylics
 Masonna - Beauty, Beast
 Maston - Tulips
 Matching Mole - March
-Material - Memory Serves
 Material - Montreux 1983
 Material - Secret Life
 Mats Gustafsson - Blues
@@ -1700,6 +1702,7 @@ Matthew Shipp - Equilibrium
 Maulawi - Maulawi
 Maulawi - Orotunds
 Max Roach & Archie Shepp - Force - Sweet Mao - Suid Afrika 76
+Max Roach & Clifford Brown - Daahoud
 Max Roach - Its Time
 Max Roach - Members, Don't Git Weary
 Max Roach - We Insist!
@@ -2167,6 +2170,7 @@ Roscoe Mitchell - The Roscoe Mitchell Solo Saxophone Concerts
 Roscoe Mitchell - Wildflowers: The New York Jazz Loft Sessions
 Rosie & the Originals - The Best of Rosie & The Originals
 Roswell Rudd - Blown Bone
+Roswell Rudd - Everywhere
 Roswell Rudd - Roswell Rudd
 Roswell Rudd - The Unheard Herbie Nichols, Vol. 1
 Rotary Connection - Rotary Connection
@@ -2195,6 +2199,7 @@ SUNDAYS & CYBELE - Chaos & Systems
 SUNDAYS & CYBELE - Gypsy House
 SUNDAYS & CYBELE - Heaven
 SYZYGYS - Complete Studio Recordings
+Sade - Love Deluxe
 Sadistic Mika Band - Sadistic Mika Band
 Sadistic Mika Band - 黒船
 Sahib Shihab - Sentiments
@@ -2207,11 +2212,11 @@ Sam Gendel & Sam Wilkes - Music for Saxofone & Bass Guitar
 Sam Gendel & Sam Wilkes - Music for Saxofone & Bass Guitar More Songs
 Sam Gendel - Cicada Lite (Live in Texas)
 Sam Gendel - SUPERSTORE
+Sam Gendel - Satin Doll
 Sam Gendel - blueblue
 Sam Rivers - Black Africa!
 Sam Rivers - Crystals
 Sam Rivers - Emanation
-Sam Rivers - Essense, Vol. 1
 Sam Rivers - Hues
 Sam Rivers - Portrait
 Sam Rivers - Sizzle
@@ -2427,6 +2432,7 @@ Sun Ra & His Astro Infinity Arkestra - My Brother the Wind Vol. 2
 Sun Ra & His Astro Infinity Arkestra - Sound Sun Pleasure!!
 Sun Ra & His Astro Intergalactic Infinity Arkestra - Dark Myth Equation Visitation
 Sun Ra & His Blue Universe Arkestra - Universe in Blue
+Sun Ra & His Ethnic Structural Cosmo Arkestra - Live At Red Creek, Rochester, NY
 Sun Ra & His Intergalactic Arkestra - Second Star to the Right: Salute to Walt Disney
 Sun Ra & His Intergalactic Infinity Arkestra - Discipline 27​-II
 Sun Ra & His Intergalactic Infinity Arkestra - The Night Of The Purple Moon
@@ -2641,6 +2647,7 @@ The Libertines - The Libertines
 The Lloyd McNeill Quartet - Freedom Rhythm & Sound
 The London Experimental Jazz Quartet - Invisible Roots
 The Lounge Lizards - The Lounge Lizards
+The Lyman Woodard Organization - Saturday Night Special
 The Maghreban - Connection
 The Mamas & The Papas - If You Can Believe Your Eyes and Ears
 The Marshmallow Kisses - Ciao! Baby
@@ -2712,6 +2719,11 @@ The Surf Coasters - SURF PANIC’95
 The Sweet Enoughs - Marshmallow
 The The - Burning Blue Soul
 The The - Infected
+The Tuba Trio & James Newton - Flutes!
+The Tuba Trio - Essence, Vol. 1
+The Tuba Trio - Essence, Vol. 2
+The Tuba Trio - Essence, Vol. 3
+The Tuba Trio - Jazz of the Seventies / Una Muy Bonita
 The Unexplained - Ataraxia
 The Upsetters - Super Ape
 The Vandermark 5 - Elements Of Style, Exercises In Surprise
@@ -3297,6 +3309,7 @@ zzkillme - ( ^ω^ )
 新裤子 - 野人也有爱
 新裤子 - 龙虎人丹
 日比野則彦 - Metal Gear Solid 3
+日野皓正 - Live In Concert
 日野皓正 - Taro's Mood
 日野皓正 - Vibrations
 早坂紗知 - Minga

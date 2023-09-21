@@ -1,6 +1,5 @@
 tap "cloudflare/cloudflare"
 tap "homebrew/bundle"
-tap "homebrew/cask-versions"
 tap "homebrew/services"
 tap "koekeishiya/formulae"
 tap "ruffle-rs/ruffle"
