@@ -444,6 +444,7 @@ Charles Manson - Lie: The Love and Terror Cult
 Charles Mingus - Blues and Roots
 Charles Mingus - Changes One
 Charles Mingus - Cornell 1964
+Charles Mingus - Mingus Moves
 Charles Mingus - The Black Saint and the Sinner Lady
 Charles Mingus - The Clown
 Charles Sullivan - Genesis
@@ -745,6 +746,7 @@ Eberhard Weber - The Colours of Chloë
 Ebi - Zen
 Ebi Soda - Bedroom Tapes
 Ebi Soda - Ebi Soda
+Ebi Soda - Honk If You're Sad
 Ebi Soda - Ugh
 Ebo Taylor - Conflict
 Ebo Taylor - Ebo Taylor
@@ -850,6 +852,8 @@ Fimber Bravo - Lunar Tredd
 Fire-Toolz - Bag of Toys
 Fishmans - 98.12.28 男達の別れ
 Fishmans - Aloha Polydor
+Fishmans - 宇宙 日本 世田谷
+Fishmans - 空中キャンプ
 Fitz Gore & The Talismen - Fitz Gore & The Talismen
 Fitz Gore & The Talismen - Soundnitia
 Fitz Gore - Soundmusication
@@ -1189,6 +1193,8 @@ Itadi - Itadi
 J Dilla - Donuts
 J Rocc - Chrome Children Vol. 2
 JAGATARA - 南蛮渡来
+JAGATARA - 君と踊りあかそう日の出を見るまで
+JAGATARA - 裸の王様
 JAPPERS - Imaginary Friend
 JINTANA & EMERALDS - DESTINY
 JINTANA & EMERALDS - MIRAGE
@@ -1784,6 +1790,7 @@ Miyoko Takaoka / Masanori Hikichi - Terranigma
 Mobb Deep - The Infamous
 Moha - Norwegianism
 Moha - One Way Ticket to Candyland
+Mombasa - Shango over Devil's Moor: Live at Stagge's Hotel 1976
 Monk Hughes & The Outer Realm - A Tribute to Brother Weldon
 Mononeon - Jelly Belly Dirty Somebody
 Monsta Island Czars - Escape from Monsta Island
@@ -2009,7 +2016,7 @@ Parquet Courts - Human Performance
 Parquet Courts - Monastic Living
 Parquet Courts - Sunbathing Animal
 Parquet Courts - Wide Awake!
-Pasteboard - glitter
+Pasteboard - Glitter
 Pat Van Dyke - Hello, Summer
 Patrice Rushen - Straight from the Heart
 Patti Smith - Horses
@@ -2183,6 +2190,8 @@ Roland Young - Isophonic Boogie Woogie
 Rollo - Guruguru Brain Wash
 Roly Poly Rag Bear - straw, water, pinstripe
 Ron Everett - The Glitter of the City
+Ronin Arkestra - First Meeting
+Ronin Arkestra - Sonkai
 Ronnie Boykins - The Will Come, Is Now
 Ronnie Foster - The Two Headed Freap
 Ronnie Laws - Friends & Strangers
@@ -2200,6 +2209,7 @@ Roy Ayers Ubiquity - Mystic Voyage
 Roy Ayers Ubiquity - Vibrations
 Roy Brooks & The Artistic Truth - Ethnic Expressions
 Roy Brooks & The Artistic Truth - Freedom Rhythm & Sound
+Roy Brooks - Duet in Detroit
 Roy Brooks - Understanding
 Roy Haynes - Senyah
 Rozewood - The Ghost Of Radio Raheem
@@ -2236,7 +2246,6 @@ Sam Gendel - SUPERSTORE
 Sam Gendel - Satin Doll
 Sam Gendel - blueblue
 Sam Rivers - Black Africa!
-Sam Rivers - Crystals
 Sam Rivers - Emanation
 Sam Rivers - Hues
 Sam Rivers - Portrait
@@ -2381,6 +2390,9 @@ Sports - People Can't Stop Chillin
 Squarepusher - Selection Sixteen
 Stan Getz & João Gilberto - Getz / Gilberto
 Stan Getz & Luiz Bonfá - Jazz Samba Encore!
+Standing On The Corner - G-E-T-O-U-T!! The Ghetto
+Standing On The Corner - RED BURNS
+Standing On The Corner - Standing On The Corner
 Stanley Cowell - Musa: Ancestral Streams
 Stanton Davis' Ghetto Mysticism - Brighter Days
 Stanton Davis' Ghetto/Mysticism - Freedom Rhythm & Sound
@@ -2559,6 +2571,7 @@ The Babe Rainbow - The Babe Rainbow - EP
 The Babe Rainbow - Today
 The Bar-Kays - Coldblooded
 The Big Black Foot Band feat. The Black Spirits - Madlib Medicine Show #7: High Jazz
+The Blassics - Odd Jazz, Vol. 1
 The Bobby Hamilton Quintet - Dream Queen
 The Braz Gonsalves 7 - Raga Rock
 The Brief Encounter - Introducing The Brief Encounter
@@ -2914,7 +2927,6 @@ Westside Gunn - Fourth Rope
 Wha-ha-ha - 死ぬ時は別
 White  - WHITE
 White Lies - Big TV
-White Lies - To Lose My Life...
 White Noise - An Electric Storm
 White Noise - White Noise 2
 Whitefield Brothers - Earthology
@@ -3441,6 +3453,8 @@ zzkillme - ( ^ω^ )
 渋さ知らズ - Dettaramen
 渋さ知らズ - 渋全
 渋さ知らズ - 渋夜旅
+渋さ知らズ - 渋旗
+渋さ知らズ - 渋星
 渋さ知らズ - 渋響
 渡边香津美 - Village in Bubbles
 渡辺大知 - 火花
@@ -3617,6 +3631,7 @@ zzkillme - ( ^ω^ )
 陳淑樺 - 淑樺的台灣歌
 陳淑樺 - 青蛇
 陳瓊美 - 探巴林進行曲
+陳綺貞 - After 17
 陳綺貞 - 吉他手
 陳綺貞 - 太陽
 陳綺貞 - 還是會寂寞
