@@ -5,6 +5,7 @@ set -x GOPATH $HOME/.go
 set -x JAVA_HOME /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
 set -x BUN_INSTALL "$HOME/.bun"
 set -x HOMEBREW_NO_AUTO_UPDATE 1
+set -x TLDR_AUTO_UPDATE_DISABLED 1
 set -x PATH $HOME/.local/bin $PATH
 set -x PATH /opt/homebrew/bin $PATH
 set -x PATH /opt/homebrew/sbin $PATH

@@ -242,6 +242,9 @@ GUI
   Mullvad VPN
     https://mullvad.net/
 
+  Transmit
+    https://panic.com/transmit/
+
   Glyphs
     https://glyphsapp.com/
 
@@ -580,3 +583,9 @@ SITES
 
   Nunu
     https://nnyy.in/
+
+  ncm converter
+    https://magic-akari.github.io/ncmc-web/
+
+  ezgif
+    https://ezgif.com/
