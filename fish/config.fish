@@ -1,19 +1,24 @@
 set -x EDITOR vim
 set -x BROWSER open
 set -x PAGER less
-set -x GOPATH $HOME/.go
 set -x JAVA_HOME /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
-set -x BUN_INSTALL "$HOME/.bun"
-set -x HOMEBREW_NO_AUTO_UPDATE 1
 set -x TLDR_AUTO_UPDATE_DISABLED 1
 set -x PATH $HOME/.local/bin $PATH
-set -x PATH /opt/homebrew/bin $PATH
-set -x PATH /opt/homebrew/sbin $PATH
-set -x PATH /opt/homebrew/opt/llvm/bin $PATH
 set -x PATH $HOME/.cargo/bin $PATH
-set -x PATH $GOPATH/bin $PATH
-set -x PATH $BUN_INSTALL/bin $PATH
 set fish_greeting
+
+# brew
+set -x HOMEBREW_NO_AUTO_UPDATE 1
+set -x HOMEBREW_HOME /opt/homebrew
+set -x PATH $HOMEBREW_HOME/bin $PATH
+set -x PATH $HOMEBREW_HOME/sbin $PATH
+set -x PATH $HOMEBREW_HOME/opt/llvm/bin $PATH
+set -x LDFLAGS -L$HOMEBREW_HOME/lib $LDFLAGS
+set -x CFLAGS -I$HOMEBREW_HOME/include $CFLAGS
+
+# go
+set -x GOPATH $HOME/.go
+set -x PATH $GOPATH/bin $PATH
 
 set -U fish_color_autosuggestion      black
 set -U fish_color_cancel

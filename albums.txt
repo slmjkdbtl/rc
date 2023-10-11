@@ -24,7 +24,6 @@ A Tribe Called Quest - People's Instinctive Travels and the Paths of Rhythm
 A Tribe Called Quest - The Low End Theory
 AEON MEMBER - BATHHOUSE
 AKAI SOLO - Like Hajime
-AROMA VIRTUAL - PARFUM
 ART SQOOL - ART SQOOL O.S.T.
 ARTHUR - Woof Woof
 AV大久保 - 一品国际
@@ -81,6 +80,7 @@ Albert Ayler - Live in Greenwich Village
 Albert Ayler - Love Cry
 Albert Ayler - Music is the Healing Force of the Universe
 Albert Ayler - My Name Is Albert Ayler
+Albert Ayler - New York Eye & Ear Control
 Albert Ayler - Nuits de la Fondation Maeght 1970
 Albert Ayler - Prophecy
 Albert Ayler - Something Different!!!!!
@@ -180,7 +180,6 @@ Ari Brown - Venus
 Arpeggio Jazz Ensemble - Le Le
 Arrangement - Coconut Mango
 Arrested Development - 3 Years 5 Months & 2 Days in the Life of....
-Art Blakey & The Jazz Messengers - Art Blakey & The Jazz Messengers
 Art Blakey & The Jazz Messengers - Drum Suite
 Art Blakey & The Jazz Messengers - Moanin'
 Art Ensemble Of Chicago - A Jackson In Your House
@@ -216,7 +215,6 @@ Assif Tsahar / Cooper Moore / Hamid Drake - Lost Brother
 Asthma Writers Union - Free Sleep
 Astrud Gilberto - The Astrud Gilberto Album
 At17 - Meow Meow Meow
-Atlantis - Top Of The Bill 
 Aunt Sally - Aunt Sally
 Aura - Purple Snow: Forecasting The Minneapolis Sound
 Auracle - Glider
@@ -438,6 +436,7 @@ Charizma & Peanut Butter Wolf - Big Shots
 Charles Brackeen - Rhythm X
 Charles Gayle - Jazz Solo Piano
 Charles Gayle - Look Up
+Charles Gayle - More Live At The Knitting Factory
 Charles Gayle - Repent
 Charles Gayle - Solo in Japan
 Charles Gayle - Touchin' on Trane
@@ -460,6 +459,7 @@ Charles Tyler - Eastern Man Alone
 Charles Tyler - Folk & Mystery Stories
 Charles Tyler - Voyage From Jericho
 Charlie Electric Guitar Band's Sound Of Japan - Singapore A-Go-Go
+Charlie Haden - Liberation Music Orchestra
 Charlie Parker - Bird & Diz
 Chassol - Big Sun
 Chelsea Carmichael - The River Doesn’t Like Strangers
@@ -728,6 +728,7 @@ Dudu Pukwana, Han Bennink, Misha Mengelberg - Yi Yole
 Dufresne - Sunny Side Up
 Duke Ellington & John Coltrane - Duke Ellington & John Coltrane
 Dum Dum Girls - I Will Be
+Dungen - Lagniappe Sessions, Vol. 1
 Durand Jones & The Indications - American Love Call
 Durand Jones & The Indications - Durand Jones & The Indications
 Dutch Uncles - O Shudder
@@ -856,7 +857,6 @@ Fela Kuti - Shakara
 Fela Kuti - Yellow Fever
 Felt - Crumbling the Antiseptic Beauty
 Femi Kuti - Shoki Shoki
-Fflaps - Malltod
 Fimber Bravo - Lunar Tredd
 Fire-Toolz - Bag of Toys
 Fishdoll - Moonsense
@@ -952,7 +952,6 @@ GZA - Liquid Swords
 Gabriel Afro-Peruvian Sextet Alegria - Pucusana
 Gal Go Grey - Gal Go Grey
 Galaxie 500 - On Fire
-Galaxie 500 - Today
 Garoad - VA​-​11 HALL​-​A - Second Round
 Gary Bartz NTU Troop - Freedom Rhythm & Sound
 Gary Bartz Ntu Troop - Harlem Bush Music - Uhuru
@@ -980,7 +979,6 @@ George Benson - Benson Burner
 George Clinton - Computer Games
 George Coleman - Amsterdam After Dark
 Georgia Anne Muldrow - Chrome Children Vol. 1
-Geraldo Pino - Let's Have a Party
 Gerardo Frisina - Moving Ahead
 Geri Allen, David "Fathead" Newman, Mark Whitfield - Kansas City 
 Gerycz / Powers / Rolin - Beacon
@@ -993,7 +991,6 @@ Ghost - Ghost
 Ghost - Lama Rabi Rabi
 Ghost Funk Orchestra - A New Kind Of Love
 Ghost Funk Orchestra - An Ode To Escapism
-Ghostface Killah - Apollo Kids
 Giancarlo Nicolai Trio & John Tchicai - Giancarlo Nicolai Trio & John Tchicai
 Giant Claw - Bag of Toys
 Giant Claw - Deep Thoughts
@@ -1003,9 +1000,6 @@ Gil Scott-Heron & Makaya McCraven - We're Here Again
 Gil Scott-Heron - Free Will
 Gil Scott-Heron - Pieces of a Man
 Gil Scott-Heron - Small Talk at 125th and Lenox
-Gila - Gila
-Gila - Night Works
-Gilgamesh - Gilgamesh
 Ginger Root - City Slicker
 Giorgio Morode - Midnight Express
 Giuseppi Logan - More
@@ -1020,23 +1014,20 @@ Godspeed You! Black Emperor - Lift Your Skinny Fists Like Antennas to Heaven
 Gold Midas - Dog Days
 Goldbloom - Peaked In High School
 Golden Mean - Through Walls
-Gontiti - humble music
 Gontiti - 映画「歩いても 歩いても」サウンドトラック
 Goodbye Honey Boy - Daydreaming Days
 Goodbye Honey Boy - Speechless
-Gordon Koang - Unity
 Grace Jones - Inside Story
 Grace Jones - Nightclubbing
+Grace Jones - Warm Leatherette
 Grace Lee & The Stylers - Singapore A-Go-Go
 Grachan Moncur III - New Africa
-Grandmaster Flash & The Furious Five - The Message
+Grandmaster Flash & the Furious Five - The Message
 Grant Green - Visions
 Gravediggaz - 6 Feet Deep
 Green-House - Six Songs for Invisible Gardens
-Grimes - Art Angels
 Griot Galaxy - Kins
 Griot Galaxy - Opus Krampus
-Grooveman Spot - Change Situations
 Ground Zero - Null And Void
 Grover Washington, Jr. - Mister Magic
 Grupo Bola Roja - La Locura de Machuca
@@ -1052,7 +1043,6 @@ Gétatchèw Kassa - Ethiopiques, Vol. 1: Golden Years of Modern Ethiopian Music 
 HERBARIUM - Bag of Toys
 HONZI - One
 HONZI - Two
-HOWHY号外乐团 - 镭射跳跳糖
 Haazz & Company - Unlawful Noise
 Hailu Mergia & The Walias - Tche Belew
 Hailu Mergia - Lala Belu
@@ -1096,7 +1086,6 @@ Hawd Gankstuh Rappuh MC's Wid Ghatz - 2 Hype 2 Wype
 Hawd Gankstuh Rappuh MC's Wid Ghatz - The ILL Saint Presents: Subterranean Hitz, Vol. 2
 Hawd Gankstuh Rappuh MC's Wid Ghatz - The ILL Saint Presents: Subterranean Hitz, Vol. 3
 Haze - Purple Snow: Forecasting The Minneapolis Sound
-Helen - The Original Faces
 Henry Franklin - The Skipper
 Henry Franklin - The Skipper at Home
 Henry Franklin - Traibal Dance
@@ -1125,14 +1114,9 @@ Hikashu - Hikashu History
 Hikashu - 虹から虹へ
 Hirut Bèqèlè - Ethiopiques, Vol. 3: Golden Years 1969-1975
 Hitoshi Kojo - 満潮鏡
-Homecomings - I Want You Back
-Homeshake - Fresh Air
 Honeydip - Portable Audio Science
-Honeyslide - Drippin' / Deep Architecture
 Honoré Avolonto - Legends Of Benin
 Hoodna Orchestra - Alem
-Hoops - Hoops
-Hoops - Routines
 Horace Tapscott & The Pan Afrikan Peoples Arkestra - Flight 17
 Horace Tapscott & The Pan Afrikan Peoples Arkestra - Freedom Rhythm & Sound
 Horace Tapscott & The Pan Afrikan Peoples Arkestra - Live At Century City Playhouse 9/9/79
@@ -1143,8 +1127,6 @@ Horace Tapscott - The Giant Is Awakened
 Hot and Cold - Any Monkey Is Dangerous
 Hot and Cold - Conclusion / Introduction
 Hot and Cold - Sacred Vacation
-How to Count One to Ten - Blue Building Blocks
-How to Count One to Ten - Method of slow motion
 Howie Lee - 木屮山出 Mù Chè Shān Chū
 Hugh Mundell - Africa Must Be Free By 1983
 Hush Moss - Slowly Disappear
@@ -1197,6 +1179,7 @@ Isaac Hayes - Shaft
 Isaiah Rashad - Free Lunch
 Ish - The ILL Saint Presents: Subterranean Hitz, Vol. 3
 Itadi - Itadi
+Ivo Perelman, Matthew Shipp & William Parker - Cama de Terra
 J Dilla - Donuts
 J Rocc - Chrome Children Vol. 2
 JAGATARA - それから
@@ -1270,6 +1253,7 @@ Jeff Parker - Suite for Max Brown
 Jefferson Airplane - Surrealistic Pillow
 Jefre Cantu-Ledesma - A Year With 13 Moons
 Jemeel Moondoc, William Parker, Hamid Drake - New World Pygmies
+Jennifer Castle - Lagniappe Sessions, Vol. 1
 Jeremy Soule - The Elder Scrolls IV: Oblivion
 Jesse Davis, Clark Gayton, Geri Allen - Kansas City 
 Jesse Davis, James Carter - Kansas City 
@@ -1461,6 +1445,7 @@ Kenny Barron - Soft Spoken Here
 Kenny G - Duotones
 Keshavan Maslak & Paul Bley - Not To Be A Star
 Keshavan Maslak - Loved by Millions
+Kevin Morby - Lagniappe Sessions, Vol. 1
 Khan Jamal - Infinity
 Khruangbin - Con Todo El Mundo
 Khruangbin - Mordechai
@@ -1932,7 +1917,6 @@ Nu Guinea - NUOVA NAPOLI
 Nu Guinea - The Tony Allen Experiments
 Nu Jazz - Vol. I
 Nu'Rons - Hurry Up Tomorrow
-Nubian Twist - Freedom Fables
 Nubya Garcia - Nubyas 5ive
 Nujabes - Samurai Champloo Music Record: Departure
 Number Girl - Num Heavymetallic
@@ -1955,7 +1939,7 @@ Oddisee - Mental Liberation
 Oddisee - Rock Creek Park
 Oddisee - The Odd Tape
 Oendxopen - (Midi) Split Tape
-Oh Sees - Panther Rotate
+Of Montreal - Lagniappe Sessions, Vol. 1
 Ohio Penitentiary 511 Ensemble - Hard Luck Soul
 Oiro Pena & Jooklo Sextet - oiro pena / jooklo sextet split 7''
 Oiro Pena - IMA
@@ -1994,6 +1978,7 @@ Orville Shannon - Purple Snow: Forecasting The Minneapolis Sound
 Oscar Jerome - Do You Really
 Oscar Peterson Trio - Nigerian Marketplace
 Oscar Peterson Trio - Walking the Line
+Osees - Panther Rotate
 Osibisa - Woyaya
 Osmond - Mulan
 Otis Sandsjö - Y-OTIS 2
@@ -2236,6 +2221,7 @@ Rudolph Johnson - The Second Coming
 Rupa - Disco Jazz
 Rush - Fly By Night
 Russell Jenkins Jazz Express - Madlib Medicine Show #7: High Jazz
+Ryley Walker - Lagniappe Sessions, Vol. 1
 S.C.U.M - Again Into Eyes
 S.O.L.A.R - Faith For My Mind
 SAULT - 5
@@ -2243,7 +2229,6 @@ SIANspheric - RGB
 SKIP SKIP BEN BEN - Sacrifice Mountain Hills
 SKIP SKIP BEN BEN - 镜中镜
 SPAZA - SPAZA
-SUNDAYS & CYBELE - Chaos & Systems
 SUNDAYS & CYBELE - Gypsy House
 SUNDAYS & CYBELE - Heaven
 SYZYGYS - Complete Studio Recordings
@@ -2341,6 +2326,7 @@ Sonic Youth - Dirty
 Sonic Youth - EVOL
 Sonic Youth - Murray Street
 Sonic Youth - Washing Machine
+Sonny & The Sunsets - Lagniappe Sessions, Vol. 1
 Sonny Rollins - A Night At The "Village Vanguard"
 Sonny Rollins - Saxophone Colossus
 Sonny Rollins - Sonny Rollins With The Modern Jazz Quartet
@@ -2418,11 +2404,11 @@ Sue Ann - Purple Snow: Forecasting The Minneapolis Sound
 Sugai Ken - 京極流箏曲「新春譜」
 Summer Salt - Driving to Hawaii
 Sun Araw - Ancient Romans
-Sun Araw - FRKWYS, Vol. 9: Sun Araw & M. Geddes Gengras Meet the Congos
 Sun Araw - On Patrol
 Sun Araw - Rock Sutra
 Sun Araw - The Inner Treaty
 Sun Araw - The Saddle of the Increate
+Sun Araw, M. Geddes Gengras & The Congos - FRKWYS Vol. 9: Icon Give Thank
 Sun City Girls - 330,003 Crossdressers from Beyond the Rig Veda
 Sun City Girls - Bright Surroundings Dark Beginnings
 Sun City Girls - Carnival Folklore Resurrection 14: Static From The Outside Set
@@ -2493,10 +2479,10 @@ Sun Ra Arkestra - Live at Babylon
 Sun Ra Arkestra - Living Sky
 Sun Ra Arkestra - Swirling
 Sungazer - Sungazer, Vol. 1
-Sunny Day Real Estate - Diary
 Sunny Murray & The Untouchable Factor - Wildflowers: The New York Jazz Loft Sessions
 Sunny Murray - An Even Break (Never Give a Sucker)
 Sunny Murray - Homage to Africa
+Sunny Murray - Sonny's Time Now
 Sunny Murray - Sunny Murray
 Sunny Murray - Sunshine
 Sunset Rollercoaster - 小薇
@@ -2526,33 +2512,24 @@ TOLCHOCK - Guruguru Brain Wash
 TOSHIKI HAYASHI (%C) - Synchronizing
 TOW - If I Am in Love with You
 Tadèlè Bèqèlè - Ethiopiques, Vol. 3: Golden Years 1969-1975
-Taiko Super Kicks - 霊感
 Talk Talk - Laughing Stock
-Talking Heads - The Best Of Talking Heads
-Tame Impala - Currents
+Talking Heads - Talking Heads 77
 Tarika Blue - Tarika Blue
 Tashaki Miyaki - Lagniappe Sessions, Vol. 1
 Team Ghost - We All Shine
 Ted Curson - Pop Wine
-Teen Suicide - Waste Yrself
-Teen Suicide - rarities, unreleased stuff, and cool things
 Teenage Jesus And The Jerks - No New York
 Teenage Riot - The Revenge
 Television - Marquee Moon
 Television - Television
 Tempalay - from JAPAN
-Tempalay - from JAPAN 2
-Temples - Strange or Be Forgotten
 Tera Melos - Tera Melos
-Tera Melos - X'ed Out
 Terminal Passage - Stargazer 7-28
 Tete Mbambisa - Did You Tell Your Mother
-Tha God Fahim - Lost Kingz
 The 9th Creation - Bubble Gum
 The 9th Creation - Love Crime
 The After Hours - I Don't Wanna Cry
 The Aggrolites - Dirty Reggae
-The Aqua Velvets - El Morocco
 The Avalanches - Since I Left You
 The Avalanches - We Will Always Love You
 The Avalanches - We Will Always Love You (ft. Blood Orange)
@@ -2621,7 +2598,6 @@ The Funkees - Now I'm A Man
 The Funkees - Point Of No Return
 The Ganelin Trio - Non Troppo
 The Ganelin Trio - Poco-A-Poco
-The Gerogerigegege - Saturday Night Big Cock Salaryman
 The Girls - Purple Snow: Forecasting The Minneapolis Sound
 The Golden Palominos - The Golden Palominos
 The Gondwana Orchestra - Colors
@@ -2631,11 +2607,11 @@ The Grooms - I Deserve A Little Bit More
 The Group - Live
 The Hastings Street Jazz Experience - Freedom Rhythm & Sound
 The Heath Brothers - Marchin' On!
+The Heliocentrics & Mulatu Astatqé - Inspiration Information
+The Heliocentrics & Orlando Julius - Jaiyede Afro
 The Heliocentrics - Fallen Angels
-The Heliocentrics - From The Deep
-The Heliocentrics - Infinity of Now
+The Heliocentrics - From the Deep
 The Heliocentrics - Out There
-The Heliocentrics - Telemetric Sounds
 The Human Arts Ensemble - Poem of Gratitude
 The Icecreams - Guruguru Brain Wash
 The J.B.'s - Food for Thought
@@ -2851,6 +2827,7 @@ Tèfèri Fèllèqè - Ethiopiques, Vol. 3: Golden Years 1969-1975
 Tèsfa-Maryam Kidané - Ethiopian Modern Instrumentals Hits = ሙዚቃ ሕይወቴ
 Tèshomè Meteku - Ethiopiques, Vol. 1: Golden Years of Modern Ethiopian Music 1969-1975
 Ugly Duckling - Bang for The Buck
+Ultimate Painting - Lagniappe Sessions, Vol. 1
 Uncle Funkenstein - Together Again
 Unipod Particles - The ILL Saint Presents: Subterranean Hitz, Vol. 2
 Unipod Particles - The ILL Saint Presents: Subterranean Hitz, Vol. 3
@@ -2912,6 +2889,7 @@ Weste - Espiral
 Westside Gunn - Fourth Rope
 Wha-ha-ha - 死ぬ時は別
 White  - WHITE
+White Fence - Lagniappe Sessions, Vol. 1
 White Lies - Big TV
 White Noise - An Electric Storm
 White Noise - White Noise 2
@@ -2925,6 +2903,7 @@ Will Smith - Big Willie Style
 William Hooker - ... Is Eternal Life
 William Parker - Mayan Space Station
 William Parker - Universal Tonality
+William Tyler - Lagniappe Sessions, Vol. 1
 Willie Hutch - Havin' a House Party
 Wim Dehaen - Bag of Toys
 Windows96 - Plume Valley
@@ -3041,7 +3020,6 @@ seaketa - S.D.S =零= (Subscription Double Suicide =Zero=)
 silént phil - Bag of Toys
 slowerpace 音楽 - Barbershop Simulator™
 slugabed - we have the window open at night
-tfvsjs - Equal Unequals to Equal
 toby fox - UNDERTALE Soundtrack
 unitedstatesof - Bag of Toys
 valknee + ANTIC - S.D.S =零= (Subscription Double Suicide =Zero=)
@@ -3109,7 +3087,7 @@ zzkillme - ( ^ω^ )
 下山 - 狂
 下田逸郎 - あ・そ・び・な
 下田逸郎 - 泣くかもしれない
-下田逸郎 - 遺言歌 ”誰にも知られずに消えるしかないさ”
+下田逸郎 - 遺言歌 "誰にも知られずに消えるしかないさ"
 下田逸郎 - 飛べない鳥、飛ばない鳥
 不在话下 - 不在话下
 不失者 - Gold Blood
