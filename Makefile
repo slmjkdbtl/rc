@@ -40,4 +40,5 @@ $(WORKFLOW_DEST_DIR)/%: $(WORKFLOW_SRC_DIR)/%
 	rm -rf $@
 	cp -R $< $@
 
+.PHONY: FORCE
 FORCE:
