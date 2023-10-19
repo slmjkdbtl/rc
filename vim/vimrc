@@ -65,37 +65,6 @@ elseif has('unix') || has('win32unix')
 	endif
 endif
 
-" local plugins
-call plug#init()
-call proj#init()
-call browse#init()
-call comment#init()
-call utils#init()
-call bufline#init()
-call statline#init()
-call utils#trim_on_save()
-
-" ext plugins
-Plug 'junegunn/fzf'
-Plug 'dense-analysis/ale'
-Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'noscript/elevator.vim'
-
-Plug 'pangloss/vim-javascript'
-Plug 'tbastos/vim-lua'
-Plug 'plasticboy/vim-markdown'
-Plug 'rust-lang/rust.vim'
-Plug 'cespare/vim-toml'
-Plug 'leafgarland/typescript-vim'
-Plug 'dag/vim-fish'
-Plug 'LnL7/vim-nix'
-Plug 'tikhomirov/vim-glsl'
-Plug 'jdonaldson/vaxe'
-Plug 'jparise/vim-graphql'
-Plug 'karolbelina/uxntal.vim'
-
 " signify
 let g:signify_vcs_list = [ 'git' ]
 let g:signify_sign_show_text = 1
@@ -216,6 +185,37 @@ let g:vim_markdown_fenced_languages = [
 	\ 'js=javascript',
 	\ 'ts=typescript',
 \ ]
+
+" local plugins
+call plug#init()
+call proj#init()
+call browse#init()
+call comment#init()
+call utils#init()
+call bufline#init()
+call statline#init()
+call utils#trim_on_save()
+
+" ext plugins
+Plug 'junegunn/fzf'
+Plug 'dense-analysis/ale'
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'noscript/elevator.vim'
+
+Plug 'pangloss/vim-javascript'
+Plug 'tbastos/vim-lua'
+Plug 'plasticboy/vim-markdown'
+Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
+Plug 'leafgarland/typescript-vim'
+Plug 'dag/vim-fish'
+Plug 'LnL7/vim-nix'
+Plug 'tikhomirov/vim-glsl'
+Plug 'jdonaldson/vaxe'
+Plug 'jparise/vim-graphql'
+Plug 'karolbelina/uxntal.vim'
 
 call keys#unmap()
 call keys#esc2meta()

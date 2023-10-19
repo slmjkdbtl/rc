@@ -141,6 +141,9 @@ CLI
   catimg
     https://github.com/posva/catimg/
 
+  croc
+    https://schollz.com/software/croc6/
+
   pass
     https://www.passwordstore.org/
 
@@ -176,6 +179,9 @@ CLI
 
   dog
     https://dns.lookup.dog/
+
+  tup
+    http://gittup.org/tup/
 
   fluidsynth
     http://www.fluidsynth.org/
@@ -245,6 +251,9 @@ GUI
   Transmit
     https://panic.com/transmit/
 
+  Transmission
+    https://www.transmissionbt.com/
+
   Glyphs
     https://glyphsapp.com/
 
@@ -305,12 +314,6 @@ GUI
   hiddenbar
     https://github.com/dwarvesf/hidden
 
-  TrenchBroom
-    https://trenchbroom.github.io/
-
-  MegaZeux
-    https://www.digitalmzx.com/
-
   LICEcap
     https://www.cockos.com/licecap/
 
@@ -356,8 +359,8 @@ GUI
   Pokemon Showdown
     https://pokemonshowdown.com/
 
-  Affinity Designer
-    https://affinity.serif.com/designer/
+  Affinity
+    https://affinity.serif.com/
 
   Acorn
     https://flyingmeat.com/acorn/
@@ -365,8 +368,8 @@ GUI
   Ableton Live
     https://www.ableton.com/live/
 
-  THR Editor
-    https://usa.yamaha.com/support/updates/57649_en.html
+  REXPaint
+    http://gridsagegames.com/rexpaint/
 
   JazzUp
     https://www.irradiatedsoftware.com/labs/
@@ -379,6 +382,12 @@ GUI
 
   EDOPro
     https://projectignis.github.io/
+
+  TrenchBroom
+    https://trenchbroom.github.io/
+
+  MegaZeux
+    https://www.digitalmzx.com/
 
 
 IOS
@@ -494,6 +503,18 @@ GAMES
   dwarf-fortress
     http://bay12games.com/dwarves/
 
+  openrct2
+    https://openrct2.io/
+
+  openra
+    https://www.openra.net/
+
+  openttd
+    https://www.openttd.org/
+
+  nethack
+    https://www.nethack.org/
+
   angband
     https://rephial.org/
 
@@ -505,6 +526,12 @@ GAMES
 
   frotz
     https://661.org/proj/if/frotz/
+
+  dungeon-crawl-stone-soup
+    https://crawl.develz.org/
+
+  zork
+    https://github.com/devshane/zork/
 
 
 SYSTEM
@@ -521,11 +548,20 @@ FONTS
   proggy
     https://proggyfonts.net/
 
+  collletttivo
+    https://www.collletttivo.it/
+
+  tom7
+    http://fonts.tom7.com/fonts98.html
+    http://fonts.tom7.com/fonts93.html
+
+  abrudz
+    https://abrudz.github.io/APL386/
+    https://abrudz.github.io/SAX2/
+    https://abrudz.github.io/APL2741/
+
   Unscii
     http://pelulamu.net/unscii/
-
-  APL386
-    https://abrudz.github.io/APL386/
 
   Zpix
     https://github.com/SolidZORO/zpix-pixel-font
@@ -551,8 +587,11 @@ QUICKLOOK
 
 SITES
 
-  smolsite
-    https://smolsite.zip/
+  wormhole
+    https://wormhole.app/
+
+  snapdrop
+    https://snapdrop.net/
 
   itty.bitty
     https://itty.bitty.site/
@@ -565,6 +604,9 @@ SITES
 
   jsonbin
     https://jsonbin.org
+
+  smolsite
+    https://smolsite.zip/
 
   porkbun
     https://porkbun.com/
