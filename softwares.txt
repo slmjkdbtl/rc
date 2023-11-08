@@ -338,6 +338,9 @@ GUI
   HexFiend
     http://ridiculousfish.com/hexfiend/
 
+  NetEase Music
+    https://music.163.com/
+
   Spotify
     https://www.spotify.com/
 
@@ -462,7 +465,7 @@ CHROME EXTENSIONS
     https://chrome.google.com/webstore/detail/archive-page/gcaimhkfmliahedmeklebabdgagipbia
 
   Get cookies.txt LOCALLY
-    https://chrome.google.com/webstore/detail/get-cookiestxt-locally
+    https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc
 
   Ghostery
     https://www.ghostery.com/
@@ -481,6 +484,9 @@ CHROME EXTENSIONS
 
   WhatFont
     https://chrome.google.com/webstore/detail/whatfont/jabopobgcpjmedljpbcaablpmlmfcogm
+
+  Bypass Paywalls
+    https://github.com/iamadamdev/bypass-paywalls-chrome
 
 
 ALFRED
@@ -555,7 +561,7 @@ FONTS
     http://fonts.tom7.com/fonts98.html
     http://fonts.tom7.com/fonts93.html
 
-  abrudz
+  APL
     https://abrudz.github.io/APL386/
     https://abrudz.github.io/SAX2/
     https://abrudz.github.io/APL2741/
@@ -569,6 +575,14 @@ FONTS
   Oldschool PC Fonts
     https://int10h.org/oldschool-pc-fonts/
 
+  Noto
+    https://fonts.google.com/noto/
+
+  IBM Plex
+    https://www.ibm.com/plex/
+
+  Inter
+    https://rsms.me/inter/
 
 QUICKLOOK
 
@@ -587,10 +601,10 @@ QUICKLOOK
 
 SITES
 
-  wormhole
+  Wormhole
     https://wormhole.app/
 
-  snapdrop
+  Snapdrop
     https://snapdrop.net/
 
   itty.bitty
@@ -608,16 +622,19 @@ SITES
   smolsite
     https://smolsite.zip/
 
-  porkbun
+  1ft
+    https://1ft.io/
+
+  Porkbun
     https://porkbun.com/
 
-  digitalocean
+  DigitalOcean
     https://www.digitalocean.com/
 
-  fastmail
+  Fastmail
     https://fastmail.com/
 
-  whosampled
+  WhoSampled
     https://www.whosampled.com/
 
   iTunes Artwork Finder
@@ -626,8 +643,8 @@ SITES
   Nunu
     https://nnyy.in/
 
-  ncm converter
-    https://magic-akari.github.io/ncmc-web/
+  NCM Converter
+    https://ncm.worthsee.com/
 
   ezgif
     https://ezgif.com/
