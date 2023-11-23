@@ -539,6 +539,9 @@ GAMES
   zork
     https://github.com/devshane/zork/
 
+  0ad
+    https://play0ad.com/media/videos/
+
 
 SYSTEM
 
@@ -648,3 +651,21 @@ SITES
 
   ezgif
     https://ezgif.com/
+
+
+Self Host
+
+  Discourse
+    https://www.discourse.org/
+
+  Outline
+    https://getoutline.org/
+
+  Isso
+    https://isso-comments.de/
+
+  sish
+    https://ssi.sh/
+
+  Gitea
+    https://gitea.com/
