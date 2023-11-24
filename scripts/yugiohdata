@@ -1,0 +1,158 @@
+#!/usr/bin/env bun
+
+import os from "os"
+import fs from "fs"
+import cp from "child_process"
+import path from "path"
+import https from "https"
+
+const DIR = path.join(os.homedir(), "files/yugioh")
+const IMG_DIR = path.join(DIR, "img")
+const DATA_FILE = path.join(DIR, "data.json")
+const API_URL = "https://db.ygoprodeck.com/api/v7/cardinfo.php"
+
+function fetch(url) {
+	return new Promise((resolve, reject) => {
+		https.get(url, (res) => {
+			const data = []
+			res.on("data", (chunk) => data.push(chunk))
+			res.on("end", () => resolve(Buffer.concat(data)))
+		}).on("error", (err) => reject(err))
+	})
+}
+
+async function update() {
+	console.log("fetching card info...")
+	const content = await fetch(API_URL)
+	fs.mkdirSync(DIR, { recursive: true })
+	fs.writeFileSync(DATA_FILE, content.toString())
+}
+
+async function getCards() {
+	if (!fs.existsSync(DATA_FILE)) {
+		await update()
+	}
+	const data = JSON.parse(fs.readFileSync(DATA_FILE))
+	return data.data
+}
+
+function toMap(cards) {
+	const map = {}
+	for (const card of cards) {
+		map[card.id] = card
+	}
+	return map
+}
+
+async function exec(cmd, args, opts) {
+	return new Promise((resolve, reject) => {
+		const proc = cp.spawn(cmd, args, {
+			stdin: "inherit",
+			stdout: "inherit",
+			stderr: "inherit",
+			...opts
+		})
+		proc.on("exit", resolve)
+		proc.on("error", reject)
+	})
+}
+
+const program = "yugiohdata"
+
+var STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
+var ARGUMENT_NAMES = /([^\s,]+)/g;
+function getParamNames(func) {
+	const fnStr = func.toString().replace(STRIP_COMMENTS, '')
+	var result = fnStr.slice(fnStr.indexOf('(')+1, fnStr.indexOf(')')).match(ARGUMENT_NAMES)
+	if(result === null)
+	 result = []
+	return result
+}
+
+const cmds = {
+
+	update: {
+		desc: "Fetch newest card data from server and download card images",
+		// TODO: remove unused images
+		action: async () => {
+			await update()
+			fs.mkdirSync(IMG_DIR, { recursive: true })
+			const cards = await getCards()
+			const existing = new Set(fs
+				.readdirSync(IMG_DIR)
+				.map((img) => path.basename(img, path.extname(img)))
+			)
+			for (const card of cards) {
+				if (existing.has(card.id + "")) continue
+				console.log(card.name)
+				const img = await fetch(card.card_images[0].image_url)
+				fs.writeFileSync(path.join(IMG_DIR, `${card.id}.png`), img)
+			}
+		},
+		help: () => {
+			console.log(`${program} update`)
+		},
+	},
+
+	search: {
+		desc: "Search a card",
+		action: async (query) => {
+			const cards = await getCards()
+			const results = cards.filter((card) => {
+				const target = card.name + card.desc
+				return target.toLowerCase().includes(query.toLowerCase())
+			})
+			for (const card of results) {
+				console.log(`${card.name} (${card.id})`)
+			}
+		},
+		help: () => {
+			console.log(`${program} search <query>`)
+		},
+	},
+
+	view: {
+		desc: "View a card image",
+		action: async (id) => {
+			const cards = await getCards()
+			const map = toMap(cards)
+			const card = map[id]
+			if (!card) return
+			exec("open", [ path.join(IMG_DIR, `${card.id}.png`) ])
+		},
+		help: () => {
+			console.log(`${program} view <id>`)
+		},
+	},
+
+}
+
+const cmd = process.argv[2]
+
+function help() {
+	console.log("Usage")
+	console.log(`  ${program} <command> [flags] [args]`)
+	console.log("")
+	console.log("Commands")
+	const len = Math.max(...Object.keys(cmds).map((c) => c.length))
+	for (const c in cmds) {
+		console.log("  " + c + " ".repeat(len - c.length + 4) + cmds[c].desc)
+	}
+}
+
+if (cmd) {
+	if (cmds[cmd]) {
+		const func = cmds[cmd].action
+		const args = process.argv.slice(3)
+		if (args.length < func.length) {
+			// TODO
+			cmds[cmd].help()
+			process.exit(1)
+		}
+		func(...args)
+	} else {
+		console.error(`Command not found: ${cmd}`)
+	}
+} else {
+	help()
+}

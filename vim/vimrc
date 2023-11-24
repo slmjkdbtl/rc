@@ -422,6 +422,26 @@ ino <silent><expr> <return> pumvisible() ? "\<c-y>" : pair#newline()
 au BufRead,BufNewFile *.h        set ft=c
 au BufRead,BufNewFile *.dt       set ft=dirty
 
+" shebangs
+let g:shebangs = [
+	\ ['bun', 'javascript'],
+\ ]
+
+au BufRead * call s:shebang_syntax()
+
+func s:shebang_syntax()
+	let line = getline(1)
+	if line[0:2] ==# '#!/'
+		let prog = line[2:len(line)-1]
+		for s in g:shebangs
+			if prog =~# s[0]
+				exec 'set syntax=' . s[1]
+				break
+			endif
+		endfor
+	endif
+endfunc
+
 " file type comments
 au FileType c                setl cms=//%s
 au FileType cpp              setl cms=//%s

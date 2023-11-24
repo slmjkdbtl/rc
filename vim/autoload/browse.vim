@@ -368,7 +368,7 @@ endfunc
 
 func! s:bulk_rename_apply()
 
-	let names = getline(1,'$')
+	let names = getline(1, '$')
 	let files = b:marked
 
 	for i in range(len(names))
