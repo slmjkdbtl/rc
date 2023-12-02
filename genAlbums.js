@@ -1,5 +1,7 @@
 // Parse apple music library export file into a list of album names
 
+// TODO: playlists
+
 import fs from "fs/promises"
 import * as htmlparser2 from "htmlparser2"
 
@@ -38,4 +40,4 @@ for (const d of tracksDoc.children) {
 	}
 }
 
-fs.writeFile("albums.txt", Array.from(albumSet).sort().join("\n"))
+await fs.writeFile("albums.txt", Array.from(albumSet).sort().join("\n"))

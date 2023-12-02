@@ -275,6 +275,9 @@ GUI
   VirtualBox
     https://www.virtualbox.org/
 
+  Hammerspoon
+    https://www.hammerspoon.org/
+
   Meta
     https://www.nightbirdsevolve.com/meta/
 
@@ -292,6 +295,9 @@ GUI
 
   MilkyTracker
     https://milkytracker.org/
+
+  Helm
+    https://tytel.org/helm/
 
   Dash
     https://kapeli.com/dash/

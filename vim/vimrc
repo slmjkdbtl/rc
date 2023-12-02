@@ -186,6 +186,27 @@ let g:vim_markdown_fenced_languages = [
 	\ 'ts=typescript',
 \ ]
 
+" Boilerplats
+let g:boilerplates = {
+	\ 'html': [
+		\ '<html>',
+		\ '<head>',
+		\ '  <title>hi</title>',
+		\ '</head>',
+		\ '<body>',
+		\ '</body>',
+		\ '</html>',
+	\ ],
+	\ 'c': [
+		\ '#include <stdio.h>;',
+		\ '',
+		\ 'int main() {',
+		\ '  printf("hi");',
+		\ '  return 0;',
+		\ '}',
+	\ ],
+\ }
+
 " local plugins
 call plug#init()
 call proj#init()
@@ -194,6 +215,7 @@ call comment#init()
 call utils#init()
 call bufline#init()
 call statline#init()
+call helloworld#init()
 call utils#trim_on_save()
 
 " ext plugins
@@ -435,7 +457,7 @@ func s:shebang_syntax()
 		let prog = line[2:len(line)-1]
 		for s in g:shebangs
 			if prog =~# s[0]
-				exec 'set syntax=' . s[1]
+				exec 'setf ' . s[1]
 				break
 			endif
 		endfor
