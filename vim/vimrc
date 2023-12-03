@@ -191,18 +191,32 @@ let g:boilerplates = {
 	\ 'html': [
 		\ '<html>',
 		\ '<head>',
-		\ '  <title>hi</title>',
+		\ '  <title>oh hi!</title>',
 		\ '</head>',
 		\ '<body>',
 		\ '</body>',
 		\ '</html>',
 	\ ],
 	\ 'c': [
-		\ '#include <stdio.h>;',
+		\ '#include <stdio.h>',
 		\ '',
 		\ 'int main() {',
-		\ '  printf("hi");',
+		\ '  printf("oh hi!");',
 		\ '  return 0;',
+		\ '}',
+	\ ],
+	\ 'go': [
+		\ 'package main',
+		\ '',
+		\ 'import "fmt"',
+		\ '',
+		\ 'func main() {',
+		\ '  fmt.Println("oh hi!")',
+		\ '}',
+	\ ],
+	\ 'rust': [
+		\ 'fn main() {',
+		\ '  println!("oh hi!");',
 		\ '}',
 	\ ],
 \ }
@@ -231,6 +245,7 @@ Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'noscript/elevator.vim'
+Plug 'valloric/MatchTagAlways'
 
 Plug 'pangloss/vim-javascript'
 Plug 'tbastos/vim-lua'

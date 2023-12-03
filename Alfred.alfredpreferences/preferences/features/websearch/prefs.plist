@@ -145,6 +145,17 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>9DB048B1-0CDD-4D1A-850F-C20B1102A577</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>cani</string>
+			<key>text</key>
+			<string>Search CanIUse for '{query}'</string>
+			<key>url</key>
+			<string>https://caniuse.com/?search={query}</string>
+		</dict>
 		<key>A718044C-258B-4DFC-8D84-057BE6C895E8</key>
 		<dict>
 			<key>enabled</key>
