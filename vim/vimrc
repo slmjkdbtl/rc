@@ -207,6 +207,11 @@ let g:boilerplates = {
 	\ ],
 \ }
 
+" shebangs
+let g:shebangs = [
+	\ ['bun', 'javascript'],
+\ ]
+
 " local plugins
 call plug#init()
 call proj#init()
@@ -215,7 +220,8 @@ call comment#init()
 call utils#init()
 call bufline#init()
 call statline#init()
-call helloworld#init()
+call hi#init()
+call shebang#init()
 call utils#trim_on_save()
 
 " ext plugins
@@ -239,6 +245,7 @@ Plug 'jdonaldson/vaxe'
 Plug 'jparise/vim-graphql'
 Plug 'karolbelina/uxntal.vim'
 
+" keybinds
 call keys#unmap()
 call keys#esc2meta()
 call keys#ctrl2meta()
@@ -443,26 +450,6 @@ ino <silent><expr> <return> pumvisible() ? "\<c-y>" : pair#newline()
 " file type detection
 au BufRead,BufNewFile *.h        set ft=c
 au BufRead,BufNewFile *.dt       set ft=dirty
-
-" shebangs
-let g:shebangs = [
-	\ ['bun', 'javascript'],
-\ ]
-
-au BufRead * call s:shebang_syntax()
-
-func s:shebang_syntax()
-	let line = getline(1)
-	if line[0:2] ==# '#!/'
-		let prog = line[2:len(line)-1]
-		for s in g:shebangs
-			if prog =~# s[0]
-				exec 'setf ' . s[1]
-				break
-			endif
-		endfor
-	endif
-endfunc
 
 " file type comments
 au FileType c                setl cms=//%s

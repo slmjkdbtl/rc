@@ -2,11 +2,12 @@
 
 let g:boilerplates = get(g:, 'boilerplates', {})
 
-func! helloworld#init()
-	com! -nargs=0 Hello call <sid>init()
+func! hi#init()
+	com! -nargs=0 Hi call <sid>hi()
 endfunc
 
-func! s:init()
+" TODO: deal with tabs / spaces
+func! s:hi()
 	if !has_key(g:boilerplates, &ft)
 		return
 	endif

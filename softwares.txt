@@ -198,9 +198,6 @@ CLI
   wine
     https://www.winehq.org/
 
-  diskonaut
-    https://github.com/imsnif/diskonaut/
-
   wireguard-tools
     https://www.wireguard.com/
 
