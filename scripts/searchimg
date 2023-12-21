@@ -1,0 +1,7 @@
+#!/bin/sh
+# search image with google lens
+
+file="$1"
+
+url=$(curl -s -F "file=@$file" https://space55.xyz/tmpfile)
+echo "https://lens.google.com/uploadbyurl?url=$url"

@@ -62,7 +62,8 @@
 					<string>export PATH="/Users/tga/.local/bin:/opt/homebrew/bin:${PATH}"
 for file in "$@"
 do
-    minimg "$file"
+    url=$(searchimg $file)
+	open $url
 done</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
@@ -220,7 +221,7 @@ done</string>
 		<key>serviceProcessesInput</key>
 		<false/>
 		<key>systemImageName</key>
-		<string>NSTouchBarDocuments</string>
+		<string>NSTouchBarControlStripSpotlight</string>
 		<key>useAutomaticInputType</key>
 		<false/>
 		<key>workflowTypeIdentifier</key>

@@ -24,24 +24,28 @@ case "$url" in
 	*"list="*)
 		cd "$dir" && \
 			yt-dlp \
-				--cookies /Users/tga/files/cookies/youtube.txt \
-				-x --audio-format mp3 \
 				-o '%(title)s.%(ext)s' \
 				-i \
 				--yes-playlist \
+				--cookies ~/files/cookies.txt \
+				-x --audio-format mp3 \
 				--postprocessor-args "-metadata album='$album'" \
+				--external-downloader aria2c \
+				--external-downloader-args '-x 16 -s 16 -k 1M' \
 				"$url"
 	;;
 	*)
 		cd "$dir" && \
 			yt-dlp \
-				--cookies /Users/tga/todo/listen/cookies.txt \
-				-x --audio-format mp3 \
 				--split-chapters \
 				-o '%(chapter)s.%(ext)s' \
 				-i \
 				--no-playlist \
+				--cookies ~/files/cookies.txt \
+				-x --audio-format mp3 \
 				--postprocessor-args "-metadata album='$album'" \
+				--external-downloader aria2c \
+				--external-downloader-args '-x 16 -s 16 -k 1M' \
 				"$url"
 	;;
 esac

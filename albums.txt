@@ -283,7 +283,7 @@ Beek/Ast0r - Kind of Bloop
 Beenzino - 12
 Beenzino - Break
 Bembeya Jazz National - Discothèque 76
-Ben Prunty - FTL
+Ben Prunty - FTL Original Soundtrack
 Ben Webster & Don Byas - Ben Webster Meets Don Byas
 Benjamin Herman - Bughouse
 Benny the Butcher - The Plugs I Met
@@ -369,7 +369,6 @@ Boys Age - Froth / Crowd
 Boys Age - New World Pregnancy​
 Boys Age - Purple Sparkle
 Brahja - Brahja
-Brand Nubian - One for All
 Brave New World Trio - Seriana Promethea
 Brent Cordero & Peter Kerlin - A Sublime Madness
 Brigitte Fontaine & Art Ensemble of Chicago - Comme à la radio
@@ -504,6 +503,7 @@ Chino XL - God's Interest (So Fresh)
 Chocolate Star - Chrome Children Vol. 2
 Choi Heon - Funky Coup: Korean Soul, Funk & Rare Groove Nuggets 1973-1980 Vol.1
 Chris McGregor & The Castle Lager Big Band - African Sound
+Chris Scudds - Aironauts Original Soundtrack
 Christina Aguilera - Mulan: An Original Walt Disney Records Soundtrack
 Christine Lewin - For The Love Of You
 Chrome - Alien Soundtracks
@@ -528,6 +528,7 @@ Clint Jackson III, Byard Lancaster - Mother Africa
 Cobweaver - Bag of Toys
 Cohesio'n - Purple Snow: Forecasting The Minneapolis Sound
 Coldcut - Let Us Play
+Coldcut - Whats That Noise?
 Coleman Mummery - Bag of Toys
 Commitment - Commitment
 Common - Like Water For Chocolate
@@ -577,7 +578,7 @@ DJ Muggs & Tha God Fahim - Dump Assassins
 DJ Spooky - Songs Of A Dead Dreamer
 DJ舔琵琶鼠的JAW - Volume 01：舔琵琶鼠得救Lick Hypostomus And Be Saved.
 DOB - La Lu La Roo
-DOB - Planet Dob OST
+DOB - Planet Dob
 Dadisi Komolafe - Hassan's Walk
 Dagmar Krause - Lost In The Stars: The Music Of Kurt Weill
 Damo Suzuki & Spiritczualic Enhancement Center - Arkaoda
@@ -625,7 +626,7 @@ David S. Ware - Live In Vilnius
 David S. Ware - Surrendered
 David S. Ware - Third Ear Recitation
 David T. Walker - On Love
-David Wise - DK Jamz
+David Wise - DK Jamz: The Original Donkey Kong Country Soundtrack
 David Wise - Donkey Kong Country 2: Diddy's Kong Quest
 Dawan Muhammad - Deep Stream
 De La Soul - 3 Feet High and Rising
@@ -703,6 +704,7 @@ Dollar Brand - Good News from Africa
 Dollar Brand - The Journey
 Dolphy Kick Bebop - Briefvisit
 Dolphy Kick Bebop - Smoke a Haiku Cigarette
+Don Ayler - In Florence 1981
 Don Blackman - Don Blackman
 Don Byas - Laura
 Don Byas - Midnight at Minton's
@@ -764,6 +766,7 @@ EABS & Jaubi - In Search of a Better Tomorrow
 EABS - Discipline of Sun Ra
 EABS - Repetitions (Letters to Krzysztof Komeda)
 EP-4 - 昭和大赦 - リンガ・フランカ1
+EZ Rollers - TOCA 2 Touring Cars OST
 Earl Craig - Greasy Mike's Chinese Takeaway
 Earthless - Sonic Prayer
 East India Youth - Culture of Volume
@@ -840,6 +843,7 @@ Euphon - Euphonics
 Evan Parker & Matthew Shipp - Abbey Road Duos
 Evan Parker - The Snake Decides
 Evan Parker, Derek Bailey, Han Bennink - The Topography Of The Lungs
+Eveline Fischer - DK Jamz: The Original Donkey Kong Country Soundtrack
 Evelyn Evelyn - Elephant Elephant
 Evelyn Evelyn - Evelyn Evelyn
 Everything is Everything - Witchi Tai To
@@ -975,7 +979,7 @@ GZA - Liquid Swords
 Gabriel Afro-Peruvian Sextet Alegria - Pucusana
 Gal Go Grey - Gal Go Grey
 Galaxie 500 - On Fire
-Garoad - VA​-​11 HALL​-​A - Second Round
+Garoad - VA-11 HALL-A - Second Round
 Gary Bartz NTU Troop - Freedom Rhythm & Sound
 Gary Bartz Ntu Troop - Harlem Bush Music - Uhuru
 Gary Numan - The Pleasure Principle
@@ -1058,6 +1062,7 @@ Green-House - Six Songs for Invisible Gardens
 Griot Galaxy - Kins
 Griot Galaxy - Opus Krampus
 Ground-Zero - Null & Void
+Ground-Zero - 革命京劇
 Grupo Bola Roja - La Locura de Machuca
 Gruppo di Improvvisazione Nuova Consonanza - The Feed-Back
 Guernica - 改造への躍動
@@ -1270,6 +1275,7 @@ Jay Electronica - Exhibit A
 Jay Electronica - Exhibit C
 Jay Tholen - Celestial Archive
 Jay Tholen - Hypnospace Enforcer OST
+Jay Tholen - Soundscapes for HypnOS
 Jay-Z - Kingdom Come
 Jazz Contemporaries - Reasons In Tonality
 Jazz Jackrabbit - Jazz Jackrabbit
@@ -1299,7 +1305,9 @@ Jimi Hendrix - Electric Ladyland
 Jimmy Heath - Picture of Heath
 Jimmy Heath - The Gap Sealer
 Jimmy Lyons - Wildflowers: The New York Jazz Loft Sessions
+Jimmy Maslaki - HAPPY WORLD Soundtrack
 Jimmy Maslaki - ZONE OST
+Jimmy Maslaki - bubble
 Jinsfake - Chuka Bito
 Jinxtengu - Paradiso Beach
 Jocy de Oliveira - A Música Século XX De Jocy
@@ -1485,6 +1493,7 @@ Kendrick Lamar - untitled unmastered.
 Kenny G - Duotones
 Keshavan Maslak & Paul Bley - Not To Be A Star
 Keshavan Maslak - Loved by Millions
+Keshavan Maslak - Weapon
 Kevin Morby - Lagniappe Sessions, Vol. 1
 Khan Jamal - Infinity
 Khan Jamal Creative Art Ensemble - Drum Dance To The Motherland
@@ -1528,6 +1537,7 @@ Kraftwerk - Electric Café
 Kraftwerk - Kraftwerk
 Kruton - Knight Lore
 Krzysztof Komeda - Astigmatic
+Krzysztof Komeda Quintet - Live in Praha 1964
 Kurtis Blow - Kurtis Blow
 Kuthi Jin & Reptilian Expo - Bag of Toys
 Kuumba-Toudie Heath - Kawaida
@@ -1614,6 +1624,7 @@ Lords of the Underground - Here Come The Lords
 Los Retros - Looking Back
 Los Viajeros Siderales - La Locura de Machuca
 Los Yoyi - Los Yoyi
+Lotte Anker, Craig Taborn, Gerald Cleaver - Floating Islands
 Lou Reed - Lost In The Stars: The Music Of Kurt Weill
 Love Live Life + One - Love Will Make A Better You
 Love Theme - Love Theme
@@ -1727,6 +1738,7 @@ Marshall Allen with Lou Grassi's PoBand - PoZest
 Marshall Allen, Hamid Drake, Kidd Jordan, William Parker, Alan Silva - The All-Star Game
 Martin Denny - Exotica
 Martin Denny - Exotica Volumn II
+Martin Dutasta - F1 Racing Championship OST
 Martin L. Dumas, Jr. - Attitude, Belief and Determination
 Marvin Gaye - Let's Get It On
 Marvin Gaye - What's Going On
@@ -1887,8 +1899,8 @@ NAOITO - ☆.A
 NEMU - Guruguru Brain Wash
 Najib Al Housh - Habibi Funk 015: An Eclectic Selection From the Arab World, Pt. 2
 Nala Sinephro - Space 1.8
-Namco - Tekken 4
-Namco Sound Team - R4: Ridge Racer Type 4 OST
+Namco Sounds - NOBY NOBY BOY 0---0
+Namco Sounds - NobiTunes 0-----0 Noby Noby Boy Sound Track 2
 Nas - Illmatic
 Nas - King's Disease
 NastraDOOMus - NastraDOOMus
@@ -1958,6 +1970,7 @@ Oasis - Stop The Clocks
 Oasis - The Masterplan
 Oasis Studio Session Players - Funky Coup: Korean Soul, Funk & Rare Groove Nuggets 1973-1980 Vol.1
 Oblique Occasions - 危険な心痛
+Odd Church - The Odd Awed God Laud, Vol. 1
 Oddisee - Rock Creek Park
 Oendxopen - (Midi) Split Tape
 Of Montreal - Lagniappe Sessions, Vol. 1
@@ -2138,6 +2151,7 @@ Prince Charming - Fantastic Voyage
 Prince Charming - Psychotropical Heatwave
 Prince Jammy vs. King Tubbys - His Majestys Dub
 Prince Lasha & Sonny Simmons - Firebirds
+Prince Lasha & The Odean Pope Trio - The Mystery Of Prince Lasha
 Prince Lasha Quintet - The Cry!
 Prince Paul - Prince Among Thieves
 Prince Paul/Dee Are Strange - Subterranean Hitz, Vol. 1
@@ -2204,6 +2218,7 @@ Rob Swift - Subterranean Hitz, Vol. 1
 Rob Swift - Subterranean Hitz, Vol. 2
 Robert Glasper - Black Radio
 Roberta Flack - Feel Like Makin' Love
+Robin Beanland - DK Jamz: The Original Donkey Kong Country Soundtrack
 Roc 'C' - Chrome Children Vol. 2
 Rockie Robbins - Purple Snow: Forecasting The Minneapolis Sound
 Rodrigo Brandão & Sun Ra Arkestra - Outros Espaço​
@@ -2309,6 +2324,7 @@ Serge Gainsbourg - L'étonnant Serge Gainsbourg
 Serge Gainsbourg - You're Under Arrest
 Sergeeo - Kind of Bloop
 Sergey Kuryokhin - Introduction in Pop Mechanics
+Sergey Kuryokhin - The Ways of Freedom
 Señor Service - Bag of Toys
 Shamek Farrah & Sonelius Smith - The World Of The Children
 Shamek Farrah - First Impressions
@@ -2509,6 +2525,7 @@ Sun Ra Arkestra - In the Orbit of Ra
 Sun Ra Arkestra - Live at Babylon
 Sun Ra Arkestra - Living Sky
 Sun Ra Arkestra - Swirling
+Sun Ship - Live at "Porsche"
 Sungazer - Sungazer, Vol. 1
 Sunny Murray & The Untouchable Factor - Wildflowers: The New York Jazz Loft Sessions
 Sunny Murray - An Even Break (Never Give a Sucker)
@@ -2528,6 +2545,7 @@ Survival Unit III - Game Theory
 Swallow - Blow
 Sweet Trip - Velocity : Design : Comfort
 Swing - 武当
+Sylvie Courvoisier, Ikue Mori, Lotte Anker - Alien Huddle
 Sèyfu Yohannès - Ethiopiques, Vol. 1: Golden Years of Modern Ethiopian Music 1969-1975
 Síol WIllowen - Bag of Toys
 S亜TOH - S.D.S =零= (Subscription Double Suicide =Zero=)
@@ -2649,6 +2667,7 @@ The Heliocentrics - Fallen Angels
 The Heliocentrics - From the Deep
 The Heliocentrics - Out There
 The Human Arts Ensemble - Poem of Gratitude
+The Human Arts Ensemble - Whisper of Dharma
 The Icecreams - Guruguru Brain Wash
 The J.B.'s - Food for Thought
 The Jackson 5 - Third Album
@@ -2960,6 +2979,7 @@ Yapoos - 裏玉姫
 Yazmin Lacey - When The Sun Dips 90 Degrees 
 Yellow Magic Orchestra - BGM
 Yellow Magic Orchestra - 浮気なぼくら
+Yen Town Band - Montage
 Yes - Tales From Topographic Oceans
 Yesterdays New Quintet - Madlib Medicine Show #7: High Jazz
 Yma Sumac - Recital
@@ -3078,6 +3098,7 @@ zzkillme - ( ^ω^ )
 三上寛 - ひらく夢などあるじゃなし 三上寛怨歌集
 三上寛 - 三上寛の世界
 三宅優 - Katamari wa Damacy
+三宅優 - Tekken 4 Original Sound Tracks
 三宅優 - 塊フォルテッシモ魂
 三宅優 - 塊魂トリビュート
 三宅純 - Glam Exotica!
@@ -3096,9 +3117,12 @@ zzkillme - ( ^ω^ )
 下田逸郎 - 飛べない鳥、飛ばない鳥
 不在话下 - 不在话下
 不失者 - 永遠の方が　先に手を出したのさ
+不破大輔, 片山広明, 石渡明廣, 豊住芳三郎 - Fiktion
 中川浩二 - Ace Combat 3 Electrosphere Direct Audio
+中川浩二 - Ridge Racer Type 4: Direct Audio 
 中澤秀一郎, 高木正彦, 中西宗博, 河本圭代 - Gamera 2000 OST
 中西哲一 - Ace Combat 3 Electrosphere Direct Audio
+中西哲一 - Ridge Racer Type 4: Direct Audio 
 久米大作 - その男、凶暴につき
 五井野 正 グループ - 七次元よりの使者
 五月天 - 后青春期的诗
@@ -3106,6 +3130,7 @@ zzkillme - ( ^ω^ )
 五月天 - 第二人生 (末日版)
 井上敬三 - Boys, Be Ambitious!
 亜蘭知子 - 浮遊空間
+仁志田竜司 - Zeus: Carnage Heart Second OST
 今田勝 - Green Caterpillar
 仲野順也 - Threads of Fate OST
 伊藤泰久 - Soul of the Samurai OST
@@ -3192,14 +3217,19 @@ zzkillme - ( ^ω^ )
 坂本慎太郎 - 幻とのつきあい方
 坂本龍一 - Merry Christmas, Mr. Lawrence
 坂本龍一 - The Last Emperor
+坂田明 & Jim O'Rourke - およばれ Tetrodotoxin
+坂田明 & Jim O'Rourke - ハ行 Hagyou
 坂田明 & 森山威男 - Mitochondria
 坂田明 - Fisherman's.com
 坂田明 - Tacology
 坂田明 - 平家物語
+境亜寿香 - Ridge Racer Type 4: Direct Audio 
 夜猫组 - 健康歌曲
 夢東 - (Midi) Split Tape
 夢東 - Mystery 秘神
 大久保博 - Ace Combat 3 Electrosphere Direct Audio
+大久保博 - Ridge Racer Type 4: Direct Audio 
+大久保博 - Tekken 4 Original Sound Tracks
 大友良英 - Plays The Music Of Takeo Yamashita
 大友良英 - Sora
 大友良英 - The Night Before the Death of the Sampling Virus
@@ -3208,6 +3238,7 @@ zzkillme - ( ^ω^ )
 大森靖子 - 放課後秘めごと
 大瀧詠一 - A LONG VACATION
 大象体操 - 平衡
+大貫妙子 - Sunshower
 大貫妙子 - 東京日和
 大野れい - Phantom Dust: Original Sound Tracks
 大野雄二 - Original Soundtrack From Lupin III
@@ -3241,9 +3272,11 @@ zzkillme - ( ^ω^ )
 富樫雅彦 - 風の遺した物語
 寺内タケシとバニーズ - 正調寺内節
 寺内タケシとバニーズ - 羅生門
+寺川秀保クァルテット - Introducing Hideyasu Terakawa Quartet Live
 寺田創一 - Sumo Jungle Grandeur
 小何何 - 小何何的五彩斑斓
 小天使 - demo
+小林啓樹 - Tekken 4 Original Sound Tracks
 小田切一巳・トリオ - 突撃神風特攻隊
 小红与小小红 - 小红与小小红
 少女人形 - 少女人形
@@ -3259,7 +3292,9 @@ zzkillme - ( ^ω^ )
 山崎ハコ - ハコのお箱
 山崎ハコ - ライブII 歌在りて
 山崎ハコ - 飛・び・ま・す
+山崎憲司 - Kyoro-chan no Purikura Daisakusen OST
 山梨鐐平 - 獣兵衛忍風帖
+岡村静良 - Ling Rise Original Soundtrack
 岩田匡治 - 朧村正 音楽集
 崎元仁 - 朧村正 音楽集
 嶺川貴子 - アスレチカ
@@ -3292,6 +3327,7 @@ zzkillme - ( ^ω^ )
 戸川純 - 好き好き大好き
 戸川純 - 玉姫様
 戸張大輔 - Guitar
+戸高一生 - Nintendo Wii Music Collection
 抓家 - 3.10
 折坂悠太 - 平成
 斉藤和義  - 空に星が綺麗
@@ -3335,6 +3371,7 @@ zzkillme - ( ^ω^ )
 松風紘一 - Earth Mother
 松風紘一 - Good Nature
 板橋文夫 - Toh
+板橋文夫トリオ - Rise and Shine - Live at the Aketa's
 枕头人 - 小女孩说
 林强 - 娱乐世界
 林憶蓮 - 野花
@@ -3420,6 +3457,8 @@ zzkillme - ( ^ω^ )
 灰野敬二 - 黑的意义 The Meaning of Blackness 礼节先于义务 比一切都要快 未曾诞生于光中的微笑
 灰野敬二, 羽野昌二, Peter Brötzmann - Shadows
 無高潮 - QSR×BP 2016~17 SAMPLER
+片山広明 - Instant Groove
+片山広明 - Ninety-Nine 99
 片山広明 - So-Kana
 狠毒男孩 - 2010s
 狠毒男孩 - 聊骚妹儿 3016
@@ -3446,6 +3485,7 @@ zzkillme - ( ^ω^ )
 石野卓球 - Memories
 码头组 - 水势渐大
 破地獄 - 稗海遗考
+神前暁 - Tekken 4 Original Sound Tracks
 神田正輝 - Sunset Story
 神罗天征007 - 寻找神仙水
 神聖かまってちゃん - つまんね
@@ -3554,11 +3594,12 @@ zzkillme - ( ^ω^ )
 辰田朋子 - Ace Combat 3 Electrosphere Direct Audio
 达明一派 - 不一样的记忆
 达明一派 - 我等着你回来
-近藤浩治 - Super Mario 64
+近藤浩治 - Super Mario 64 Original Soundtrack
 近藤等則 & IMA - 大変 Taihen
 透明雜誌 - 我們的靈魂樂
 透明雜誌 - 透明雜誌 Forever
 造访者Q - demo
+遠山明孝 - Tekken 4 Original Sound Tracks
 邓丽君 - 漫步人生路
 邓丽君 - 甜蜜蜜
 郭富城 - 对你爱不完
@@ -3633,6 +3674,7 @@ zzkillme - ( ^ω^ )
 高柳昌行 & 阿部薰 - 漸次投射 Gradually Projection
 高柳昌行 - April Is The Cruellest Month
 高橋幸宏 - 音楽殺人
+高橋弘太 - Ridge Racer Type 4: Direct Audio 
 高橋竹山 - Iwaki Impromptu 岩木即興曲
 高田渡 - ヴァーボン・?ストリート・ブルース
 鬼冢猫 Great John's Cat - Cig Break

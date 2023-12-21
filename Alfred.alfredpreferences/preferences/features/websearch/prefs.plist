@@ -169,6 +169,17 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>A8F6F0A6-CD3D-45F2-B784-1FFFC4328240</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>ar</string>
+			<key>text</key>
+			<string>Search Internet Archive for '{query}'</string>
+			<key>url</key>
+			<string>https://archive.org/search?query={query}</string>
+		</dict>
 		<key>C9498957-1071-4249-AAC3-83E4F87EBC61</key>
 		<dict>
 			<key>enabled</key>

@@ -15,6 +15,7 @@ drive="/Volumes/EXTDISK"
 
 sync ~/Music/Media.localized/Music/ $drive/music
 sync ~/files/img/                   $drive/img
+sync ~/files/games/                 $drive/games
 sync ~/files/videos/                $drive/videos
 sync ~/files/fonts/                 $drive/fonts
 sync ~/files/film/                  $drive/film

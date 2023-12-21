@@ -3,6 +3,9 @@ CLI
   vim
     https://www.vim.org/
 
+  git
+    https://git-scm.com/
+
   brew
     https://brew.sh/
 
@@ -29,6 +32,9 @@ CLI
 
   bun
     https://bun.sh/
+
+  emscripten
+    https://emscripten.org/
 
   htop
     https://htop.dev/
@@ -69,6 +75,9 @@ CLI
   gifski
     https://gif.ski/
 
+  ImageOptim-CLI
+    https://jamiemason.github.io/ImageOptim-CLI/
+
   m-cli
     https://github.com/rgcr/m-cli/
 
@@ -80,6 +89,15 @@ CLI
 
   httpie
     https://httpie.org/
+
+  wayback
+    https://github.com/wabarc/wayback/
+
+  stagit
+    https://git.codemadness.org/stagit/
+
+  git2html
+    http://www.chriswarbo.net/git/git2html/git/
 
   upx
     https://github.com/upx/upx/
@@ -245,6 +263,9 @@ GUI
   Mullvad VPN
     https://mullvad.net/
 
+  ImageOptim
+    https://imageoptim.com/mac/
+
   Transmit
     https://panic.com/transmit/
 
@@ -255,13 +276,19 @@ GUI
     https://glyphsapp.com/
 
   Discord
-    https://discordapp.com
+    https://discordapp.com/
 
   Sunvox
     http://warmplace.ru/soft/sunvox/
 
+  Decker
+    https://beyondloom.com/decker/
+
   Pd
     https://puredata.info/
+
+  Cockatrice
+    https://cockatrice.github.io/
 
   Adium
     https://adium.im/
@@ -302,6 +329,9 @@ GUI
   OpenEmu
     http://openemu.org/
 
+  Dolphin
+    https://dolphin-emu.org/
+
   Mini vMac
     https://www.gryphel.com/c/minivmac/
 
@@ -331,6 +361,9 @@ GUI
 
   HandBrake
     https://handbrake.fr/
+
+  FreeCAD
+    https://www.freecad.org/
 
   KeyCastr
     https://github.com/keycastr/keycastr/
@@ -464,17 +497,23 @@ IOS
 
 CHROME EXTENSIONS
 
+  uBlock Origin
+    https://ublockorigin.com/
+
+  Ad Speedup
+    https://chromewebstore.google.com/detail/ad-speedup-skip-video-ads/pcjlckhhhmlefmobnnoolakplfppdchi
+
   Archive Page
     https://chrome.google.com/webstore/detail/archive-page/gcaimhkfmliahedmeklebabdgagipbia
 
   Get cookies.txt LOCALLY
     https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc
 
-  Ghostery
-    https://www.ghostery.com/
-
   Lighthouse
     https://github.com/GoogleChrome/lighthouse
+
+  WARCreate
+    https://warcreate.com/
 
   Ruffle
     https://ruffle.rs/
@@ -607,6 +646,15 @@ QUICKLOOK
 
 SITES
 
+  Internet Archive
+    http://archive.org/
+
+  Discogs
+    https://www.discogs.com/
+
+  VGCollect
+    https://vgcollect.com/
+
   Wormhole
     https://wormhole.app/
 
@@ -628,8 +676,26 @@ SITES
   smolsite
     https://smolsite.zip/
 
+  devdocs
+    https://devdocs.io/
+
   1ft
     https://1ft.io/
+
+  Video Game Music
+    https://downloads.khinsider.com/
+
+  Vimm's Lair
+    https://vimm.net/
+
+  My Abandonware
+    https://www.myabandonware.com/
+
+  WhoSampled
+    https://www.whosampled.com/
+
+  iTunes Artwork Finder
+    https://bendodson.com/projects/itunes-artwork-finder/
 
   Porkbun
     https://porkbun.com/
@@ -640,14 +706,11 @@ SITES
   Fastmail
     https://fastmail.com/
 
-  WhoSampled
-    https://www.whosampled.com/
+  Supabase
+    https://supabase.com/
 
-  iTunes Artwork Finder
-    https://bendodson.com/projects/itunes-artwork-finder/
-
-  Nunu
-    https://nnyy.in/
+  Slant
+    https://slant.co/
 
   NCM Converter
     https://ncm.worthsee.com/
@@ -670,5 +733,5 @@ Self Host
   sish
     https://ssi.sh/
 
-  Gitea
-    https://gitea.com/
+  cgit
+    https://git.zx2c4.com/cgit/

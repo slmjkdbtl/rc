@@ -33,7 +33,7 @@ ext=$(echo "${path##*.}" | tr '[:upper:]' '[:lower:]')
 
 case "$ext" in
 	"jpg"|"jpeg")
-		jpegoptim -m 50 "$path"
+		jpegoptim -m 60 "$path"
 	;;
 	"png")
 		pngquant --ext .png -f "$path"

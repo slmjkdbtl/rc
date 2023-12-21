@@ -43,6 +43,8 @@ set wildignore=.git,.svn,.cache,.tmp,.tup
 set wildignore+=.DS_Store
 set wildignore+=.tags,*.map
 set wildignore+=*.so,*.o,*.out,*.swp,*.exe,*.elf,*.hex,*.dll,*~
+set undofile
+set undodir=~/.vimundo
 set list
 exec 'set listchars=tab:\|\ '
 filetype plugin indent on
@@ -53,6 +55,10 @@ let loaded_netrwPlugin = 1
 " enable bar cursor on insert mode
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
+
+if !isdirectory($HOME . "/.vimundo")
+	call mkdir($HOME . "/.vimundo", "p")
+endif
 
 " set trash dir
 if has('macunix')

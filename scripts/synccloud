@@ -16,6 +16,7 @@ bucket="s3://tga"
 
 sync ~/Music/Media.localized/Music/ $bucket/music/
 sync ~/files/img/                   $bucket/img/
+sync ~/files/games/                 $bucket/games/
 sync ~/files/videos/                $bucket/videos/
 sync ~/files/fonts/                 $bucket/fonts/
 sync ~/files/film/                  $bucket/film/
