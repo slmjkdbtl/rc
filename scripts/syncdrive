@@ -7,6 +7,7 @@ sync() {
 	rsync \
 		-av \
 		--delete \
+		--iconv=utf-8,utf-8-mac \
 		--exclude '.DS_Store' \
 		"$1" "$2"
 }

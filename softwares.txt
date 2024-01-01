@@ -332,8 +332,26 @@ GUI
   Dolphin
     https://dolphin-emu.org/
 
+  Play!
+    https://purei.org/
+
+  RPCS3
+    https://rpcs3.net/
+
+  Xemu
+    https://xemu.app/
+
+  Vita3K
+    https://vita3k.org/
+
+  DOSBox
+    https://www.dosbox.com/
+
   Mini vMac
     https://www.gryphel.com/c/minivmac/
+
+  MultiPatch
+    https://projects.sappharad.com/multipatch/
 
   Folx
     https://mac.eltima.com/download-manager.html
@@ -649,12 +667,6 @@ SITES
   Internet Archive
     http://archive.org/
 
-  Discogs
-    https://www.discogs.com/
-
-  VGCollect
-    https://vgcollect.com/
-
   Wormhole
     https://wormhole.app/
 
@@ -688,8 +700,20 @@ SITES
   Vimm's Lair
     https://vimm.net/
 
+  CD Romance
+    https://cdromance.com/psx
+
   My Abandonware
     https://www.myabandonware.com/
+
+  Discogs
+    https://www.discogs.com/
+
+  VGCollect
+    https://vgcollect.com/
+
+  VG Resource
+    https://www.vg-resource.com/
 
   WhoSampled
     https://www.whosampled.com/
@@ -717,6 +741,9 @@ SITES
 
   ezgif
     https://ezgif.com/
+
+  movie-web
+    https://movie-web.app/
 
 
 Self Host
