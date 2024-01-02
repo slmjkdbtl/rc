@@ -68,7 +68,6 @@ Air - Air Mail
 Air - Air Song
 Ait Meslayene - Habibi Funk 015: An Eclectic Selection From the Arab World, Pt. 2
 Akalé Wubé - Akalé Wubé
-Akalé Wubé - Sost
 Akeybo - Circulation The Sounds Of The Moss
 Akosh S. - Aki
 Akosh S. Trio - Idekint / Out Here
@@ -103,7 +102,6 @@ Alemayehu Eshete; Hirut Bekele - Taitu: Soul​-​fuelled Stompers from 1960s -
 Alex Ward - Cremated Thoughts
 Alex Ward, Roger Turner - Treader Duos
 Alex Zhang Hungtai - August At Akiko's
-Alfred Beach Sandal - Unknown Moments
 Algernon Cadwallader - Fun
 Algernon Cadwallader - Parrot Flies
 Alice Coltrane - Eternity
@@ -280,12 +278,10 @@ Beach Fossils - This Year
 Beat Vince - Tokyo 42
 Beauty Girls - Funky Coup: Korean Soul, Funk & Rare Groove Nuggets 1973-1980 Vol.1
 Beek/Ast0r - Kind of Bloop
-Beenzino - 12
 Beenzino - Break
 Bembeya Jazz National - Discothèque 76
 Ben Prunty - FTL Original Soundtrack
 Ben Webster & Don Byas - Ben Webster Meets Don Byas
-Benjamin Herman - Bughouse
 Benny the Butcher - The Plugs I Met
 Bernt Rosengren - First Moves
 Bezunesh Bekele - Taitu: Soul​-​fuelled Stompers from 1960s - 1970s Ethiopia
@@ -333,6 +329,7 @@ Black Saint Quartet - Live in Berlin
 Black Star - No Fear of Time
 Black Sugar - Black Sugar
 Black Unity Trio - Al-Fatihah
+BlackSheep - Blacksheep
 Blksmiith - A MESSAGE FROM MY DIGITAL TWIN
 Blksmiith - DIGITAL TWIN
 Blonde Redhead - 23
@@ -535,6 +532,7 @@ Common - Like Water For Chocolate
 Common - When We Move
 Company Flow - Funcrusher Plus
 Compostela - Wadachi
+Compostela - 歩く人
 Con Funk Shun - Spirit Of Love
 Con Funk Shun - Touch
 Conjunto Barbacoa - La Locura de Machuca
@@ -1099,6 +1097,7 @@ Hamiet Bluiett - Resolution
 Hamiet Bluiett - The Clarinet Family
 Hamiet Bluiett - Wildflowers: The New York Jazz Loft Sessions
 Handsome Boy Modeling School - So... How's Your Girl
+Hannes Wader - Der Rebell
 Hannibal Marvin Peterson - Children of the Fire
 Hannibal Marvin Peterson - In Antibes
 Hannibal Marvin Peterson - In Berlin
@@ -1278,7 +1277,6 @@ Jay Tholen - Hypnospace Enforcer OST
 Jay Tholen - Soundscapes for HypnOS
 Jay-Z - Kingdom Come
 Jazz Contemporaries - Reasons In Tonality
-Jazz Jackrabbit - Jazz Jackrabbit
 Jazzanova - Strata Records - the Sound of Detroit - Reimagined by Jazzanova
 Jeanne Lee & TTT - Don't Freeze Yourself to Death Over There in Those Mountains
 Jeanne Lee - Conspiracy
@@ -1414,7 +1412,7 @@ John Zorn - Lost In The Stars: The Music Of Kurt Weill
 John Zorn - New Masada Quartet
 John Zorn - New Traditions in East Asian Bar Bands
 Johnny Dyani - Mbizo
-Johnny Dyani - Witchdoctors Son
+Johnny Dyani - Witchdoctor's Son
 Jon Hassell - Earthquake Island
 Jon Hassell - Vernal Equinox
 Joni Haastrup - Wake Up Your Mind
@@ -1563,6 +1561,7 @@ Lamp - 恋人へ
 Lard Free - Lard Free
 Larry Douglas Alltet - Dedications
 Larry Young - Lawrence Of Newark
+Last Exit - Headfirst into the Flames: Live in Europe
 Last Exit - Last Exit
 Last Exit - The Noise of Trouble: Live in Tokyo
 Laurene LaVallis - Key To Our Love / Love Don't Change
@@ -2216,6 +2215,7 @@ Rob - Make It Fast, Make It Slow
 Rob - Rob (Funky Rob Way)
 Rob Swift - Subterranean Hitz, Vol. 1
 Rob Swift - Subterranean Hitz, Vol. 2
+Robert Allen - Jazz Jackrabbit Original Sound Version
 Robert Glasper - Black Radio
 Roberta Flack - Feel Like Makin' Love
 Robin Beanland - DK Jamz: The Original Donkey Kong Country Soundtrack
@@ -2252,7 +2252,7 @@ Roy Haynes - Senyah
 Rozewood - The Ghost Of Radio Raheem
 Ruby Rushton - Eleven Grapes
 Rudolph Johnson - The Second Coming
-Ruins & 梅津和时 - Ruins + 梅津和時
+Ruins & 梅津和時 - Ruins + 梅津和時
 Rupa - Disco Jazz
 Russell Jenkins Jazz Express - Madlib Medicine Show #7: High Jazz
 Ryley Walker - Lagniappe Sessions, Vol. 1
@@ -2570,6 +2570,7 @@ Teenage Riot - The Revenge
 Television - Marquee Moon
 Television - Television
 Tempalay - from JAPAN
+Tenko - Slope - ゆるやかな消失
 Tera Melos - Tera Melos
 Terminal Passage - Stargazer 7-28
 Test - Live
@@ -2827,6 +2828,7 @@ Tired Horse - Mechanical
 Tlahoun Gèssèssè - Ethiopiques, Vol. 3: Golden Years 1969-1975
 Todd Rundgren - Something / Anything?
 Todd Rundgren, Gary Windo - Lost In The Stars: The Music Of Kurt Weill
+Tokyo Ska Paradise Orchestra - Tondemo Crisis! Original Sound Track
 Tom Skinner - Voices of Bishara
 Tom Waits - Lost In The Stars: The Music Of Kurt Weill
 Tom Waits - Rain Dogs
@@ -2846,6 +2848,7 @@ Tony Allen - N.E.P.A.
 Tony Allen - The Source
 Tony Benn Feghaly - Habibi Funk 015: An Eclectic Selection From the Arab World, Pt. 2
 Tony Bevan, Chris Corsano, Dominic Lash - Monster Club
+Tony Oxley - Ichnos
 Tony or Tony - W.E.A.R. Tony
 Toro y Moi - Anything in Return
 Torture - Subterranean Hitz, Vol. 1
@@ -2997,9 +3000,11 @@ Your Old Droog - The Return Of Sasquatch
 Yuji Imamura & Air - Air
 Yung Lean - Kyoto
 Yung Lean - Unknown Death 2002
+Yusef Lateef - 1984
 Yusef Lateef - Eastern Sound
 Yusef Lateef - Jazz Mood
 Yusef Lateef - The Blue Yusef Lateef
+Yusef Lateef - Yusef at Cranbrook
 Yussef Dayes & Alfa Mist - Love Is The Message
 Yussef Dayes - Duality
 Yussef Kamaal - Black Focus
@@ -3120,8 +3125,9 @@ zzkillme - ( ^ω^ )
 不破大輔, 片山広明, 石渡明廣, 豊住芳三郎 - Fiktion
 中川浩二 - Ace Combat 3 Electrosphere Direct Audio
 中川浩二 - Ridge Racer Type 4: Direct Audio 
-中澤秀一郎, 高木正彦, 中西宗博, 河本圭代 - Gamera 2000 OST
+中澤秀一郎, 高木正彦, 中西宗博, 河本圭代 - Gamera 2000 Original Sound Tracks
 中西哲一 - Ace Combat 3 Electrosphere Direct Audio
+中西哲一 - Rage Racer
 中西哲一 - Ridge Racer Type 4: Direct Audio 
 久米大作 - その男、凶暴につき
 五井野 正 グループ - 七次元よりの使者
@@ -3173,6 +3179,7 @@ zzkillme - ( ^ω^ )
 卢凯彤 - 掀起
 卧轨的火车 - 余波
 卧轨的火车 - 大陆 Continent
+原将人 - 20世紀ノスタルジア
 口口口 - Everyday is a Symphony
 古巨基 - 我还是你的情歌王
 古澤良治郎 - Once In A While
@@ -3228,6 +3235,7 @@ zzkillme - ( ^ω^ )
 夢東 - (Midi) Split Tape
 夢東 - Mystery 秘神
 大久保博 - Ace Combat 3 Electrosphere Direct Audio
+大久保博 - Rage Racer
 大久保博 - Ridge Racer Type 4: Direct Audio 
 大久保博 - Tekken 4 Original Sound Tracks
 大友良英 - Plays The Music Of Takeo Yamashita
@@ -3244,8 +3252,8 @@ zzkillme - ( ^ω^ )
 大野雄二 - Original Soundtrack From Lupin III
 大陸男対山脈女 - Viva Young Florida
 大陸男対山脈女 - 完全地獄
+天井桟敷 & 東京キッドブラザース - 書を捨てよ町へ出よう
 天井桟敷 - 国境巡礼歌
-天井桟敷 - 書を捨てよ町へ出よう
 夹子电动大乐队 - 不会说台语
 奔波儿灞与灞波儿奔 BBB & BBB - 互念暗语 Hu Nian An Yu
 姚志汉 - 一生爱你
@@ -3298,6 +3306,7 @@ zzkillme - ( ^ω^ )
 岩田匡治 - 朧村正 音楽集
 崎元仁 - 朧村正 音楽集
 嶺川貴子 - アスレチカ
+川下直広トリオ2 - 猫の時節
 川井憲次 - 「めぞん一刻」コンプリート・ミュージック・ボックス
 工工工 - Phantom Rhythm 幽靈節奏
 工藤吉三 - 朧村正 音楽集
@@ -3375,6 +3384,8 @@ zzkillme - ( ^ω^ )
 枕头人 - 小女孩说
 林强 - 娱乐世界
 林憶蓮 - 野花
+林栄一 - 音の粒
+林栄一, 中尾勘二, 関島岳郎 - Photon
 林海峰 - 的士够格
 林生祥 - 大佛普拉斯
 柳叶鱼 - Home
@@ -3388,7 +3399,10 @@ zzkillme - ( ^ω^ )
 柳田博義 - UFOとの遭遇
 柿埜嘉奈子 - Ace Combat 3 Electrosphere Direct Audio
 柿埜嘉奈子 - Klonoa: Door to Phantomile OST
-梅津和时 & Mal Waldron - Another Step
+梅津和時 & Mal Waldron - Another Step
+梅津和時 - Bamboo Village
+梅津和時 - First Deserter
+梅津和時 - 梅津和時、演歌を吹く。木管無伴奏ソロ。
 梅艷芳 - 戲劇人生
 森山威男 - East Plants
 森山威男 - Flush Up
@@ -3424,6 +3438,7 @@ zzkillme - ( ^ω^ )
 沖至 - Live at Jazz Spot Combo 1975
 沖至 - しらさぎ
 沖至 - 殺人教室
+沖至6 - 夜の眼 Les Yeux de La Nuit
 河豚子 - 你不是人
 法老 - 生于未来
 泥滩地浪人 - 宝岛卖药秀
@@ -3498,6 +3513,7 @@ zzkillme - ( ^ω^ )
 稻坦贵士 - 悪魔の回路図
 竹内まりや - Variety
 管啸天 - 标清23'42''
+篠田昌已 & 西村卓也 - Duo
 篠田昌巳 - Compostela
 糯米团 - 青春鳥王
 細野晴臣 - Pacific
@@ -3516,6 +3532,7 @@ zzkillme - ( ^ω^ )
 美玉 - 枕霞
 美玉 - 阿娇
 美玉 - 青春1988
+羽野昌二 - 48
 羽野昌二 - 太平 Nipon
 翠川敬基 - 緑色革命
 老丹 & 邓博宇 - TUTU Duo
@@ -3586,6 +3603,7 @@ zzkillme - ( ^ω^ )
 赤痢 - Push Push Baby
 赤痢 - 赤痢
 赤痢 - 赤痢初期音源集
+足立賢明 - Xi Sai Original Soundtrack
 路新配 - 三幕话剧配乐
 踽 踽 - demo
 車谷浩司 - Usual tone of voice
@@ -3647,7 +3665,7 @@ zzkillme - ( ^ω^ )
 雨田光平 - 京極流箏曲「新春譜」
 雷安娜 - 太阳留住我
 雷有山 - 爱情
-青蝕器 - 1975-1977
+青蝕器 - Organs Of Blue Eclipse: 1975-1977
 非常階段 - 蔵六の奇病
 韩雷 - 挠挠
 頭士奈生樹 - III
