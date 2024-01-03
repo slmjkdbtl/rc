@@ -18,7 +18,7 @@ $ sudo -s
 
 # install packages
 $ apt update
-$ apt install -y vim make git fish unzip sqlite3
+$ apt install -y vim make git unzip sqlite3
 
 # install bun
 $ curl -fsSL https://bun.sh/install | bash
@@ -43,7 +43,7 @@ $ cd rc && make
 $ vim .ssh/authorized_keys
 
 # change default shell
-$ chsh -s /usr/bin/fish
+$ chsh -s /usr/sh
 
 # reload systemd configs files
 $ systemctl daemon-reload
