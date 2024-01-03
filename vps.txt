@@ -6,6 +6,10 @@ $ adduser tga
 # add sudo priviliedge to user
 $ usermod -aG sudo tga
 
+# gen & send key on client
+$ ssh-keygen -t rsa
+$ ssh-copy-id -i ~/.ssh/id_rsa.pub tga@host
+
 # change to user
 $ su - tga
 
