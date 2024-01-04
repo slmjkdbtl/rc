@@ -15,7 +15,7 @@ return {
 	font_size = 20,
 	initial_cols = 96,
 	initial_rows = 30,
-	tab_max_width = 20,
+	tab_max_width = 24,
 	window_padding = {
 		left = 16,
 		right = 16,

@@ -1,12 +1,29 @@
 . ~/.profile
 
-autoload -Uz vcs_info
-precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats '%b '
-setopt PROMPT_SUBST
-PROMPT=$'\n%F{black}%n@%M%f\n%B%F{blue}%~%f%b %F{black}${vcs_info_msg_0_}%f\n$ '
+precmd() {
+	# set title to pwd
+	echo -n "\e]0;${PWD/#$HOME/~}\a"
+	vcs_info_msg=""
+	if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+		vcs_info_msg="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
+		if ! git diff-index --quiet HEAD -- > /dev/null 2>&1; then
+			vcs_info_msg="$vcs_info_msg*"
+		fi
+	fi
+}
 
-export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+preexec() {
+	# set title to current cmd
+	echo -n "\e]0;${(z)1}\a"
+}
+
+testp() {
+	git remote -v | head -n 1
+}
+
+setopt PROMPT_SUBST
+PROMPT=$'\n%F{black}%n@%M%f\n%B%F{blue}%~%f%b %F{black}${vcs_info_msg}%f\n$ '
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 include() {
 	test -f "$1" && . $1
