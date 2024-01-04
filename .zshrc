@@ -3,11 +3,11 @@
 precmd() {
 	# set title to pwd
 	echo -n "\e]0;${PWD/#$HOME/~}\a"
-	vcs_info_msg=""
+	git_info=""
 	if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-		vcs_info_msg="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
+		git_info="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
 		if ! git diff-index --quiet HEAD -- > /dev/null 2>&1; then
-			vcs_info_msg="$vcs_info_msg*"
+			git_info="$git_info*"
 		fi
 	fi
 }
@@ -17,12 +17,8 @@ preexec() {
 	echo -n "\e]0;${(z)1}\a"
 }
 
-testp() {
-	git remote -v | head -n 1
-}
-
 setopt PROMPT_SUBST
-PROMPT=$'\n%F{black}%n@%M%f\n%B%F{blue}%~%f%b %F{black}${vcs_info_msg}%f\n$ '
+PROMPT=$'\n%F{black}%n@%M%f\n%B%F{blue}%~%f%b %F{black}${git_info}%f\n$ '
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 include() {
