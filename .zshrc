@@ -29,11 +29,74 @@ include() {
 
 include /opt/homebrew/etc/profile.d/z.sh
 
-. ~/.local/bin/plug
-plug add "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
-plug add "zsh-users/zsh-history-substring-search" "zsh-history-substring-search.zsh"
-plug add "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
-plug add "hlissner/zsh-autopair" "autopair.zsh"
+ZSH_PLUGIN_DIR="$HOME/.zsh_plugins"
+
+zsh_plugins=""
+zsh_plugins_delim=":"
+
+split() {
+	echo "$1" | tr "$2" " "
+}
+
+getsplit() {
+	echo "$1" | cut -d"$2" -f"$3"
+}
+
+arrpush() {
+	if [ -z "$1" ]; then
+		echo "$2"
+	else
+		echo "$1$3$2"
+	fi
+}
+
+zplug() {
+	case "$1" in
+		"add")
+			if [ -z "$2" ]; then
+				echo "plug add <repo> <file>"
+				return
+			fi
+			zsh_plugins=$(arrpush "$zsh_plugins" "$2" "$zsh_plugins_delim")
+			if [ -n "$3" ]; then
+				name=$(getsplit "$2" "/" 2)
+				include "$ZSH_PLUGIN_DIR/$name/$3"
+			fi
+			unset name
+		;;
+		"install")
+			mkdir -p "$ZSH_PLUGIN_DIR"
+			for plug in $(split "$zsh_plugins" "$zsh_plugins_delim"); do
+				name=$(getsplit "$plug" "/" 2)
+				dir="$ZSH_PLUGIN_DIR/$name"
+				if [ -d "$dir" ]; then
+					( cd "$dir" && git pull origin HEAD )
+				else
+					( cd "$ZSH_PLUGIN_DIR" && git clone "https://github.com/$plug" )
+				fi
+			done
+			unset plug
+			unset name
+			unset dir
+		;;
+		"ls")
+			for plug in $(split "$zsh_plugins" "$zsh_plugins_delim"); do
+				echo "$plug"
+			done
+			unset plug
+		;;
+		*)
+			echo "plug add <repo> <file>"
+			echo "plug install"
+			echo "plug ls"
+		;;
+	esac
+}
+
+zplug add "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
+zplug add "zsh-users/zsh-history-substring-search" "zsh-history-substring-search.zsh"
+zplug add "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
+zplug add "hlissner/zsh-autopair" "autopair.zsh"
 
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
