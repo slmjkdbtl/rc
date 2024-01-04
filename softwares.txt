@@ -12,9 +12,6 @@ CLI
   z
     https://github.com/rupa/z/
 
-  jump
-    http://gsamokovarov.com/jump/
-
   rsync
     https://rsync.samba.org/
 

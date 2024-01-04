@@ -8,12 +8,21 @@ PROMPT=$'\n%F{black}%n@%M%f\n%B%F{blue}%~%f%b %F{black}${vcs_info_msg_0_}%f\n$ '
 
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
+include() {
+	test -f "$1" && . $1
+}
+
+include /opt/homebrew/etc/profile.d/z.sh
+
 PLUGINS=""
 PLUGIN_DIR="$HOME/.zsh_plugins"
 
 plug() {
 	case "$1" in
 	   "add")
+			if [ -z "$2" ] || [ -z "$3" ]; then
+				echo "plug add expects 2 arguments"
+			fi
 			if [ -z "$PLUGINS" ]; then
 				PLUGINS="$2"
 			else
@@ -21,13 +30,11 @@ plug() {
 			fi
 			NAME="$(echo "$2" | cut -d'/' -f2)"
 			FILE="$PLUGIN_DIR/$NAME/$3"
-			if [ -f "$FILE" ]; then
-				. "$FILE"
-			fi
+			include $FILE
 			unset NAME
 			unset FILE
-	   ;;
-	   "install")
+		;;
+		"install")
 			mkdir -p "$PLUGIN_DIR"
 			for PLUG in $(echo "$PLUGINS" | tr ":" " "); do
 				NAME="$(echo "$PLUG" | cut -d'/' -f2)"
@@ -41,7 +48,16 @@ plug() {
 			unset PLUG
 			unset NAME
 			unset DIR
-	   ;;
+		;;
+		"ls")
+			for PLUG in $(echo "$PLUGINS" | tr ":" " "); do
+				echo "$PLUG"
+			done
+			unset PLUG
+		;;
+		*)
+			echo "nope"
+		;;
 	esac
 }
 

@@ -16,11 +16,6 @@ export EDITOR="vim"
 export BROWSER="open"
 export PAGER="less"
 
-if command -v jump > /dev/null 2>&1
-then
-	eval "$(jump shell --bind=z)"
-fi
-
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -33,7 +28,7 @@ alias disk="df -h ."
 alias sudo="sudo -E"
 YTDPL_ARGS="--external-downloader aria2c --external-downloader-args '-x 16 -s 16 -k 1M' --cookies ~/files/cookies.txt"
 alias ydl="yt-dlp --format mp4 -o '%(title)s.%(ext)s' -i --no-playlist $YTDPL_ARGS"
-alias ydll="yt-dlp --format mp4 -o '%(title)s.%(ext)s' -i --yes-playlist --playlist-reverse $YTDPL_ARGS"
+alias ydll="yt-dlp --format mp4 -o '%(title)s.%(ext)s' -i --yes-playlist $YTDPL_ARGS"
 alias ydlm="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --no-playlist $YTDPL_ARGS"
 alias ydlmc="yt-dlp -x --audio-format mp3 --split-chapters -o '%(chapter)s.%(ext)s' -i --no-playlist $YTDPL_ARGS"
 alias ydlml="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --yes-playlist $YTDPL_ARGS"
