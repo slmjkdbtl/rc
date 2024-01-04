@@ -4,13 +4,13 @@
 SITES="https://space55.xyz,https://davidmurray.xyz"
 
 for SITE in $(echo $SITES | tr "," " "); do
-	if [ ! -z "${SITE}" ]; then
-		RESPONSE=$(curl -sIL -X GET $SITE)
-		if echo $RESPONSE | head -n 1 | grep "200" > /dev/null; then
+	if [ -n "${SITE}" ]; then
+		RESPONSE=$(curl -sIL -X GET "$SITE")
+		if echo "$RESPONSE" | head -n 1 | grep "200" > /dev/null; then
 			echo "${SITE} is up!"
 		else
 			MESSAGE="${SITE} is down!"
-			echo $MESSAGE
+			echo "$MESSAGE"
 			terminal-notifier -title "oh no!" -message "$MESSAGE" -sound default
 		fi
 	fi

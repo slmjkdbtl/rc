@@ -9,11 +9,53 @@ PROMPT=$'\n%F{black}%n@%M%f\n%B%F{blue}%~%f%b %F{black}${vcs_info_msg_0_}%f\n$ '
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
-use() { test -e $1 && source $1 }
-use /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-use /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-use /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-use /opt/homebrew/share/zsh-autopair/autopair.zsh
-unset -f use
+PLUGINS=""
+PLUGIN_DIR="$HOME/.zsh_plugins"
+
+plug() {
+	case "$1" in
+	   "add")
+			if [ -z "$PLUGINS" ]; then
+				PLUGINS="$2"
+			else
+				PLUGINS="$PLUGINS:$2"
+			fi
+			NAME="$(echo "$2" | cut -d'/' -f2)"
+			FILE="$PLUGIN_DIR/$NAME/$3"
+			if [ -f "$FILE" ]; then
+				source "$FILE"
+			fi
+			unset NAME
+			unset FILE
+	   ;;
+	   "install")
+			pushd
+			mkdir -p $PLUGIN_DIR
+			for PLUG in $(echo $PLUGINS | tr ":" " "); do
+				NAME="$(echo "$PLUG" | cut -d'/' -f2)"
+				DIR="$PLUGIN_DIR/$NAME"
+				if [ -d "$DIR" ]; then
+					cd $DIR
+					git pull origin HEAD
+				else
+					cd $PLUGIN_DIR
+					git clone "https://github.com/$PLUG"
+				fi
+			done
+			unset PLUG
+			unset NAME
+			unset DIR
+			popd
+	   ;;
+	esac
+}
+
+plug add "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
+plug add "zsh-users/zsh-history-substring-search" "zsh-history-substring-search.zsh"
+plug add "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
+plug add "hlissner/zsh-autopair" "autopair.zsh"
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down

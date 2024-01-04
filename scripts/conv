@@ -14,7 +14,6 @@ help() {
 
 from="$1"
 to="$2"
-flags="$3"
 
 if [ -z "$from" ] || [ -z "$to" ]
 then

@@ -78,6 +78,9 @@ CLI
   ImageOptim-CLI
     https://jamiemason.github.io/ImageOptim-CLI/
 
+  shellcheck
+    https://www.shellcheck.net/
+
   m-cli
     https://github.com/rgcr/m-cli/
 

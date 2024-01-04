@@ -115,6 +115,7 @@ let g:ale_linters = {
 	\ 'typescript': [ 'tsserver', 'eslint', ],
 	\ 'typescriptreact': [ 'tsserver', 'eslint', ],
 	\ 'json': [ 'jq', ],
+	\ 'sh': [ 'shellcheck', ],
 \ }
 
 " fzf
@@ -482,6 +483,7 @@ au FileType javascript       setl cms=//%s
 au FileType typescript       setl cms=//%s
 au FileType typescriptreact  setl cms=//%s
 au FileType sh               setl cms=#%s
+au FileType zsh              setl cms=#%s
 au FileType toml             setl cms=#%s
 au FileType make             setl cms=#%s
 au FileType python           setl cms=#%s
