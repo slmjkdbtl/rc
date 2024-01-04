@@ -16,7 +16,10 @@ export EDITOR="vim"
 export BROWSER="open"
 export PAGER="less"
 
-eval "$(jump shell --bind=z)"
+if command -v jump > /dev/null 2>&1
+then
+	eval "$(jump shell --bind=z)"
+fi
 
 alias e="$EDITOR"
 alias o="open"
@@ -52,4 +55,4 @@ alias gcl="git clone"
 alias gpl="git pull"
 alias grv="gh repo view --web"
 
-PS1='\n\u@\h\n\w\n$ '
+PS1='\n\u@\H\n\w\n$ '
