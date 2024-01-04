@@ -1,5 +1,6 @@
 #!/bin/sh
 # convert all files in current dir to another format with ffmpeg
+# TODO: ffmpeg duration bug when converting to mp3, should add -b:a 256k
 
 help() {
 	echo "Convert all files in current dir to another format with ffmpeg"

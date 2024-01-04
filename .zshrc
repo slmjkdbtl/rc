@@ -1,24 +1,26 @@
 . ~/.profile
 
 precmd() {
+	# TODO: support non xterm
 	# set title to pwd
-	echo -n "\e]0;${PWD/#$HOME/~}\a"
-	git_info=""
+	printf "\e]0;%s\a" "$(pwd | sed "s|^$HOME|~|")"
+	# set prompt git info
+	prompt_git_info=""
 	if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-		git_info="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
+		prompt_git_info="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
 		if ! git diff-index --quiet HEAD -- > /dev/null 2>&1; then
-			git_info="$git_info*"
+			prompt_git_info="$prompt_git_info*"
 		fi
 	fi
 }
 
 preexec() {
 	# set title to current cmd
-	echo -n "\e]0;${(z)1}\a"
+	printf "\e]0;%s\a" "${(z)1}"
 }
 
 setopt PROMPT_SUBST
-PROMPT=$'\n%F{black}%n@%M%f\n%B%F{blue}%~%f%b %F{black}${git_info}%f\n$ '
+PROMPT=$'\n%F{black}%n@%M%f\n%B%F{blue}%~%f%b %F{black}${prompt_git_info}%f\n$ '
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 include() {
