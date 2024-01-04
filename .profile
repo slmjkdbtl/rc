@@ -16,6 +16,7 @@ export EDITOR="vim"
 export BROWSER="open"
 export PAGER="less"
 
+alias ~="cd ~"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."

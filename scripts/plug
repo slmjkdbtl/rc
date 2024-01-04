@@ -1,0 +1,67 @@
+#!/bin/sh
+# zsh plugin manager
+
+PLUGINS=""
+PLUGINS_DELIM=":"
+PLUGIN_DIR="$HOME/.zsh_plugins"
+
+split() {
+	echo "$1" | tr "$2" " "
+}
+
+getsplit() {
+	echo "$1" | cut -d"$2" -f"$3"
+}
+
+arrpush() {
+	if [ -z "$1" ]; then
+		echo "$2"
+	else
+		echo "$1$3$2"
+	fi
+}
+
+plug() {
+	case "$1" in
+		"add")
+			if [ -z "$2" ]; then
+				echo "plug add <repo> <file>"
+				return
+			fi
+			PLUGINS=$(arrpush "$PLUGINS" "$2" "$PLUGINS_DELIM")
+			if [ -n "$3" ]; then
+				NAME=$(getsplit "$2" "/" 2)
+				FILE="$PLUGIN_DIR/$NAME/$3"
+				include "$FILE"
+			fi
+			unset NAME
+			unset FILE
+		;;
+		"install")
+			mkdir -p "$PLUGIN_DIR"
+			for PLUG in $(split "$PLUGINS" "$PLUGINS_DELIM"); do
+				NAME=$(getsplit "$PLUG" "/" 2)
+				DIR="$PLUGIN_DIR/$NAME"
+				if [ -d "$DIR" ]; then
+					( cd "$DIR" && git pull origin HEAD )
+				else
+					( cd "$PLUGIN_DIR" && git clone "https://github.com/$PLUG" )
+				fi
+			done
+			unset PLUG
+			unset NAME
+			unset DIR
+		;;
+		"ls")
+			for PLUG in $(split "$PLUGINS" "$PLUGINS_DELIM"); do
+				echo "$PLUG"
+			done
+			unset PLUG
+		;;
+		*)
+			echo "plug add <repo> <file>"
+			echo "plug install"
+			echo "plug ls"
+		;;
+	esac
+}
