@@ -21,6 +21,10 @@ then
 	eval "$(jump shell --bind=z)"
 fi
 
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 alias e="$EDITOR"
 alias o="open"
 alias f="open ."
