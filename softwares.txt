@@ -24,8 +24,8 @@ CLI
   ffmpeg
     https://ffmpeg.org/
 
-  loc
-    https://github.com/cgag/loc/
+  scc
+    https://github.com/boyter/scc/
 
   bun
     https://bun.sh/
@@ -80,6 +80,9 @@ CLI
 
   m-cli
     https://github.com/rgcr/m-cli/
+
+  didder
+    https://github.com/makew0rld/didder/
 
   ocr
     https://github.com/schappim/macOCR
@@ -281,6 +284,9 @@ GUI
   Sunvox
     http://warmplace.ru/soft/sunvox/
 
+  UTM
+    https://getutm.app/
+
   Decker
     https://beyondloom.com/decker/
 
@@ -352,9 +358,6 @@ GUI
 
   MultiPatch
     https://projects.sappharad.com/multipatch/
-
-  Folx
-    https://mac.eltima.com/download-manager.html
 
   SheepShaver
     https://sheepshaver.cebix.net/

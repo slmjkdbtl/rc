@@ -44,8 +44,6 @@ set wildignore=.git,.svn,.cache,.tmp,.tup
 set wildignore+=.DS_Store
 set wildignore+=.tags,*.map
 set wildignore+=*.so,*.o,*.out,*.swp,*.exe,*.elf,*.hex,*.dll,*~
-set undofile
-set undodir=~/.vimundo
 set list
 exec 'set listchars=tab:\|\ '
 filetype plugin indent on

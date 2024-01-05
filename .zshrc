@@ -16,31 +16,16 @@ precmd() {
 
 preexec() {
 	# set title to current cmd
-	printf "\e]0;%s\a" "${(z)1}"
+	echo -n "\e]0;${(z)1}\a"
 }
 
 setopt PROMPT_SUBST
 PROMPT=$'\n%F{black}%n@%M%f\n%B%F{blue}%~%f%b %F{black}${prompt_git_info}%f\n$ '
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
-include() {
-	test -f "$1" && . $1
-}
-
-include /opt/homebrew/etc/profile.d/z.sh
-
-ZSH_PLUGIN_DIR="$HOME/.zsh_plugins"
-
-zsh_plugins=""
-zsh_plugins_delim=":"
-
-split() {
-	echo "$1" | tr "$2" " "
-}
-
-getsplit() {
-	echo "$1" | cut -d"$2" -f"$3"
-}
+include() { test -f "$1" && . $1; }
+split() { echo "$1" | tr "$2" " "; }
+getn() { echo "$1" | cut -d"$2" -f"$3"; }
 
 arrpush() {
 	if [ -z "$1" ]; then
@@ -50,16 +35,23 @@ arrpush() {
 	fi
 }
 
+include /opt/homebrew/etc/profile.d/z.sh
+
+ZSH_PLUGIN_DIR="$HOME/.zsh_plugins"
+
+zsh_plugins=""
+zsh_plugins_delim=":"
+
 zplug() {
 	case "$1" in
 		"add")
 			if [ -z "$2" ]; then
-				echo "plug add <repo> <file>"
+				echo "zplug add <repo> <file>"
 				return
 			fi
 			zsh_plugins=$(arrpush "$zsh_plugins" "$2" "$zsh_plugins_delim")
 			if [ -n "$3" ]; then
-				name=$(getsplit "$2" "/" 2)
+				name=$(getn "$2" "/" 2)
 				include "$ZSH_PLUGIN_DIR/$name/$3"
 			fi
 			unset name
@@ -67,7 +59,7 @@ zplug() {
 		"install")
 			mkdir -p "$ZSH_PLUGIN_DIR"
 			for plug in $(split "$zsh_plugins" "$zsh_plugins_delim"); do
-				name=$(getsplit "$plug" "/" 2)
+				name=$(getn "$plug" "/" 2)
 				dir="$ZSH_PLUGIN_DIR/$name"
 				if [ -d "$dir" ]; then
 					( cd "$dir" && git pull origin HEAD )
@@ -86,9 +78,9 @@ zplug() {
 			unset plug
 		;;
 		*)
-			echo "plug add <repo> <file>"
-			echo "plug install"
-			echo "plug ls"
+			echo "zplug add <repo> <file>"
+			echo "zplug install"
+			echo "zplug ls"
 		;;
 	esac
 }
