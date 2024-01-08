@@ -24,6 +24,14 @@ PROMPT=$'\n%F{black}%n@%M%f\n%B%F{blue}%~%f%b %F{black}${prompt_git_info}%f\n$ '
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 include() { test -f "$1" && . $1; }
+
+if command -v brew > /dev/null 2>&1; then
+	FPATH="$(brew --prefix)/share/zsh/site-functions:$FPATH"
+	autoload -Uz compinit
+	compinit
+	include /opt/homebrew/etc/profile.d/z.sh
+fi
+
 split() { echo "$1" | tr "$2" " "; }
 getn() { echo "$1" | cut -d"$2" -f"$3"; }
 
@@ -34,8 +42,6 @@ arrpush() {
 		echo "$1$3$2"
 	fi
 }
-
-include /opt/homebrew/etc/profile.d/z.sh
 
 ZSH_PLUGIN_DIR="$HOME/.zsh_plugins"
 

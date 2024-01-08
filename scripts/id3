@@ -1,0 +1,4 @@
+#!/bin/sh
+# get / set id3tags with ffmpeg
+
+ffprobe -i "$1" -hide_banner 2>&1 | grep -E "^\s*$2\s*\:\s.*$" | awk -F ': ' '{print $2}'

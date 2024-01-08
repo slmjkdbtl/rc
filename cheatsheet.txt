@@ -10,13 +10,37 @@ ffmpeg resize video
   $ ffmpeg -i input.mp4 -vf scale=640:480 -c:a copy output.mp4
   $ ffmpeg -i input.mp4 -vf scale=640:-1 -c:a copy output.mp4
 
+ffmpeg crop video
+
+  $ ffmpeg -i input.mp4 -vf crop=480:640:0:0 -c:a copy output.mp4
+
 ffmpeg trim video
 
   $ ffmpeg -i input.mp4 -ss 00:00:00.000 -t 00:05:00.000 -c copy output.mp4
 
-ffmpeg convert video to audio
+ffmpeg change video framerate
+
+  $ ffmpeg -i input.mp4 -vf fps=30 output.mp4
+
+ffmpeg change video speed
+
+  $ ffmpeg -i input.mp4 -vf setpts=0.5*PTS -af atempo=2 output.mp4
+
+ffmpeg reverse video
+
+  $ ffmpeg -i input.mp4 -vf reverse -af areverse output.mp4
+
+ffmpeg embed soft subtitle
+
+  $ ffmpeg -i input.mp4 -i sub.srt -c copy -c:s mov_text output.mp4
+
+ffmpeg extract audio from video
 
   $ ffmpeg -i input.mp4 -vn output.mp3
+
+ffmpeg strip audio from video
+
+  $ ffmpeg -i input.mp4 -c:v copy -an output.mp4
 
 ffmpeg resize image
 
@@ -26,3 +50,58 @@ ffmpeg resize image
 ffmpeg audio bitrate
 
   $ ffmpeg -i input.flac -b:a 256k output.mp3
+
+ffmpeg add audio to video
+
+  $ ffmpeg -i input.mp4 -i input.mp3 -c copy -map 0:v:0 -map 1:a:0 output.mp4
+
+ffmpeg add audio to image generate video
+
+  $ ffmpeg -loop 1 -i input.jpg -i input.mp3 -c:v libx264 -c:a aac -b:a 256k -preset veryslow -tune stillimage -vf scale=600:600 -shortest -strict experimental -shortest "$out"
+
+ffmpeg set id3tag
+
+  $ ffmpeg -i input.mp3
+      \ -metadata title="The Will Come, Is Now"
+      \ -metadata album="The Will Come, Is Now"
+      \ -metadata artist="Ronnie Boykins"
+      \ -metadata date="1975"
+      \ -metadata track="1"
+      \ -metadata disc=""
+      \ -metadata TRACKTOTAL=""
+      \ -metadata album_artist=""
+      \ -metadata comment=""
+      \ -metadata genre=""
+      \ -metadata grouping=""
+      \ -metadata composer=""
+      \ -metadata producer=""
+      \ -metadata copyright=""
+      \ -metadata publisher=""
+      \ -metadata encoder=""
+      \ output.mp3
+
+flush dns cache
+
+  $ sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+
+set names
+
+  $ sudo scutil --set HostName tga-macbook
+  $ sudo scutil --set LocalHostName tga-macbook
+  $ sudo scutil --set ComputerName tga-macbook
+
+disable gatekeeper
+
+  $ sudo spctl --master-disable
+
+clean ds store
+
+  $ find . -name '.DS_Store' -print -delete
+
+get local ip
+
+  $ ipconfig getifaddr en0
+
+list files by size
+
+  $ du -chs * .* | sort -h

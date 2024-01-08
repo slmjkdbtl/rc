@@ -1,16 +1,16 @@
-HOMEBREW_HOME=/opt/homebrew
-export HOMEBREW_NO_AUTO_UPDATE=1
-export PATH="$HOMEBREW_HOME/bin:$PATH"
-export PATH="$HOMEBREW_HOME/sbin:$PATH"
-export PATH="$HOMEBREW_HOME/opt/llvm/bin:$PATH"
 export TLDR_AUTO_UPDATE_DISABLED=1
-export PATH="$HOME/.cargo/bin:$PATH"
-export GOPATH="$HOME/.go"
-export PATH="$GOPATH/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
+export HOMEBREW_NO_AUTO_UPDATE=1
 
-export CFLAGS="-I$HOMEBREW_HOME/include:$CFLAGS"
-export LDFLAGS="-L$HOMEBREW_HOME/lib:$LDFLAGS"
+if command -v /opt/homebrew/bin/brew > /dev/null 2>&1; then
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+	export CFLAGS="-I$HOMEBREW_PREFIX/include:$CFLAGS"
+	export LDFLAGS="-L$HOMEBREW_PREFIX/lib:$LDFLAGS"
+fi
+
+addpath() { export PATH="$1:$PATH"; }
+
+addpath "$HOME/.cargo/bin"
+addpath "$HOME/.local/bin"
 
 export EDITOR="vim"
 export BROWSER="open"
@@ -26,14 +26,13 @@ alias o="open"
 alias f="open ."
 alias lsize="du -chs * .* | sort -h"
 alias disk="df -h ."
-alias sudo="sudo -E"
 alias ase="/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias toix="curl -F 'f:1=<-' ix.io"
 alias localip="ipconfig getifaddr en0"
 alias extip="curl ifconfig.co"
 alias playraw="ffplay -ar 8000 -ac 1 -f u8 -nodisp -"
 alias weather="curl 'wttr.in?m'"
-alias dnsclear="sudo killall -HUP mDNSResponder"
+alias dnsflush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 alias dsclean="find . -name '.DS_Store' -print -delete"
 alias opengate="sudo spctl --master-disable"
 alias dl="aria2c -x 16 -s 16 -k 1M"
