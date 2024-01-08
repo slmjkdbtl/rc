@@ -28,7 +28,6 @@ alias lsize="du -chs * .* | sort -h"
 alias disk="df -h ."
 alias ase="/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias toix="curl -F 'f:1=<-' ix.io"
-alias localip="ipconfig getifaddr en0"
 alias extip="curl ifconfig.co"
 alias playraw="ffplay -ar 8000 -ac 1 -f u8 -nodisp -"
 alias weather="curl 'wttr.in?m'"
@@ -57,5 +56,15 @@ alias ydlm="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --no-playlist
 alias ydlmc="yt-dlp -x --audio-format mp3 --split-chapters -o '%(chapter)s.%(ext)s' -i --no-playlist $ytdlp_args"
 alias ydlml="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --yes-playlist $ytdlp_args"
 unset ytdlp_args
+
+exists() { command -v "$1" > /dev/null 2>&1; }
+
+localip() {
+	if exists ipconfig; then
+		ipconfig getifaddr en0
+	elif exists hostname; then
+		hostname -I
+	fi
+}
 
 PS1='\n\u@\H\n\w\n$ '
