@@ -25,10 +25,12 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 include() { test -f "$1" && . $1; }
 
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' menu select
+
 if command -v brew > /dev/null 2>&1; then
 	FPATH="$(brew --prefix)/share/zsh/site-functions:$FPATH"
-	autoload -Uz compinit
-	compinit
 	include /opt/homebrew/etc/profile.d/z.sh
 fi
 
@@ -58,7 +60,7 @@ zplug() {
 			zsh_plugins=$(arrpush "$zsh_plugins" "$2" "$zsh_plugins_delim")
 			if [ -n "$3" ]; then
 				name=$(getn "$2" "/" 2)
-				include "$ZSH_PLUGIN_DIR/$name/$3"
+				. "$ZSH_PLUGIN_DIR/$name/$3"
 			fi
 			unset name
 		;;
@@ -93,6 +95,7 @@ zplug() {
 
 zplug add "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
 zplug add "zsh-users/zsh-history-substring-search" "zsh-history-substring-search.zsh"
+zplug add "zsh-users/zsh-completions" "zsh-completions.plugin.zsh"
 zplug add "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
 zplug add "hlissner/zsh-autopair" "autopair.zsh"
 
