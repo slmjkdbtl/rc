@@ -105,3 +105,11 @@ get local ip
 list files by size
 
   $ du -chs * .* | sort -h
+
+notify
+
+  $ osascript -e 'display notification "msg" with title "title"'
+
+edit crontab
+
+  $ crontab -e

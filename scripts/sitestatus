@@ -1,17 +1,15 @@
 #!/bin/sh
 # monitor website status
 
-SITES="https://space55.xyz,https://davidmurray.xyz"
+sites="https://space55.xyz,https://davidmurray.xyz"
 
-for SITE in $(echo $SITES | tr "," " "); do
-	if [ -n "$SITE" ]; then
-		RESPONSE=$(curl -sIL -X GET "$SITE")
-		if echo "$RESPONSE" | head -n 1 | grep "200" > /dev/null; then
-			echo "$SITE is up!"
+for site in $(echo $sites | tr "," " "); do
+	if [ -n "$site" ]; then
+		response=$(curl -sIL -X GET "$site")
+		if echo "$response" | head -n 1 | grep "200" > /dev/null; then
+			echo "$site is up!"
 		else
-			MESSAGE="$SITE is down!"
-			echo "$MESSAGE"
-			terminal-notifier -title "oh no!" -message "$MESSAGE" -sound default
+			echo "$site is down!"
 		fi
 	fi
 done

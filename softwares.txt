@@ -180,6 +180,12 @@ CLI
   trash
     https://hasseg.org/trash/
 
+  jq
+    https://jqlang.github.io/jq/
+
+  gron
+    https://github.com/tomnomnom/gron/
+
   tree
     http://mama.indstate.edu/users/ice/tree/
 

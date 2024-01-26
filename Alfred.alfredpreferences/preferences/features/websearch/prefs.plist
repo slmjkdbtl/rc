@@ -56,6 +56,17 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>2BC33016-8414-4E89-BBD4-D59D82A4138D</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>gist</string>
+			<key>text</key>
+			<string>Search Github Gist for '{query}'</string>
+			<key>url</key>
+			<string>https://gist.github.com/search?q={query}</string>
+		</dict>
 		<key>32809E05-33A1-4292-98C3-80D06A8AB0EE</key>
 		<dict>
 			<key>enabled</key>
