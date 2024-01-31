@@ -11,7 +11,10 @@ local cyan    = "#7ce9df"
 local white   = "#dadada"
 
 return {
-	font = wezterm.font("APL386 Unicode"),
+	font = wezterm.font_with_fallback({
+		"APL386 Unicode",
+		"Noto Sans SC",
+	}),
 	font_size = 20,
 	initial_cols = 96,
 	initial_rows = 30,

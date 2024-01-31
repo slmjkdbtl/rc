@@ -697,14 +697,14 @@ SITES
   Snapdrop
     https://snapdrop.net/
 
-  itty.bitty
-    https://itty.bitty.site/
-
-  ix
-    http://ix.io
-
   0x0
     https://0x0.st/
+
+  ix
+    http://ix.io/
+
+  itty.bitty
+    https://itty.bitty.site/
 
   jsonbin
     https://jsonbin.org
@@ -725,7 +725,7 @@ SITES
     https://vimm.net/
 
   CD Romance
-    https://cdromance.com/psx
+    https://cdromance.com/
 
   My Abandonware
     https://www.myabandonware.com/

@@ -8,12 +8,11 @@
 	root = rev-parse --show-toplevel
 	file = log --follow -p --
 	slog = log --oneline
-	flog = log --pretty=fuller
-	logf = log -p
+	dlog = log -p
 	commitf = commit --amend --no-edit
-	co = checkout
 	uncommit = reset --soft HEAD~1
 	conflicts = ! git --no-pager diff --name-only --diff-filter=U
+	bdiff = ! git --no-pager diff --name-only
 	prev = checkout HEAD~1
 	next = ! git log --reverse --pretty=%H master | grep -A 1 $(git rev-parse HEAD) | tail -n1 | xargs git checkout
 [credential]

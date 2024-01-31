@@ -165,7 +165,7 @@ Antibalas - Where the Gods Are in Peace
 Antonio Carlos Jobim - Wave
 Antonio Carlos Jobim, Luiz Bonfá - Black Orpheus
 Aphex Twin - Windowlicker
-Ara Tokatlian / Enrique Villegas / Guillermo Bordarampé - Inspiración
+Ara Tokatlian, Enrique Villegas, Guillermo Bordarampé - Inspiración
 Arabian Prince - Chrome Children Vol. 2
 Archie Shepp & Bill Dixon - Quartet
 Archie Shepp & Dollar Brand - Duet
@@ -454,6 +454,7 @@ Cass Elliot - Mamas Big Ones
 Cassiano - Cuban Soul - 18 Kilates
 Cassiber - Beauty and the Beast
 Cassiber - Man Or Monkey
+Cato Salsa Experience, The Thing, Joe McPhee - Two Bands and a Legend
 Cecil McBee - Alternate Spaces
 Cecil McBee - Mutima
 Cecil Payne - Zodiac
@@ -807,6 +808,7 @@ El Rego - Legends Of Benin
 El-P - Fantastic Damage
 Electronic System  - Tchip.Tchip
 Eleni Karaindrou - Eternity And A Day
+Ellery Eskelin & Andrea Parkins - Green Bermudas
 Ellery Eskelin & Han Bennink - Dissonant Characters
 Ellery Eskelin - Figure Of Speech
 Elliott Sharp - Lost In The Stars: The Music Of Kurt Weill
@@ -1297,6 +1299,7 @@ Jay-Z - Kingdom Come
 Jazz Contemporaries - Reasons In Tonality
 Jazz Liberatorz - Clin D'oeil
 Jazzanova - Strata Records - the Sound of Detroit - Reimagined by Jazzanova
+Jean-Charles Capon, Philippe Maté, Lawrence "Butch" Morris, Serge Rahoerson, - Jean-Charles Capon, Philippe Maté, Lawrence "Butch" Morris, Serge Rahoerson,
 Jeanne Lee & TTT - Don't Freeze Yourself to Death Over There in Those Mountains
 Jeanne Lee - Conspiracy
 Jeanne Lee / Billy Bang / Frank Lowe / William Parker / Denis Charles / A.R. Penck - Going Through
@@ -1592,7 +1595,6 @@ Last Exit - The Noise of Trouble: Live in Tokyo
 Laurene LaVallis - Key To Our Love / Love Don't Change
 Laurie Anderson - Bright Red
 Laurie Spiegel - The Expanding Universe
-Lawrence D. "Butch" Morris, Jean-Charles Capon, Philippe Maté, Serge Rahoerson - Untitled
 Le Banda Africana - La Locura de Machuca
 Lea Salonga - Mulan: An Original Walt Disney Records Soundtrack
 Lea Salonga, Marni Nixon & Beth Fowler - Mulan: An Original Walt Disney Records Soundtrack
@@ -1662,6 +1664,7 @@ Luke Stewart & Jarvis Earnshaw Quartet - Luke Stewart & Jarvis Earnshaw Quartet
 Luke Stewart - Works for Upright Bass and Amplifier
 Luke Stewart Exposure Quintet - Luke Stewart Exposure Quintet
 Lumumba - Lumumba
+Luther Thomas - 11th Street Fire Suite
 Lydia Pense & Cold Blood - Lydia Pense & Cold Blood
 M'Boom - M'Boom
 M'Boom - Re: Percussion
@@ -2286,6 +2289,7 @@ Roy Ayers Ubiquity - Vibrations
 Roy Brooks & The Artistic Truth - Black Survival - "The Sahel Concert" At Town Hall
 Roy Brooks & The Artistic Truth - Ethnic Expressions
 Roy Brooks & The Artistic Truth - Freedom Rhythm & Sound
+Roy Brooks & The Artistic Truth - Live At The Montreaux / Detroit Jazz Festival
 Roy Brooks - Duet in Detroit
 Roy Brooks - Understanding
 Roy Haynes - Senyah
@@ -2412,6 +2416,7 @@ Soil & "Pimp" Sessions - Summer Goddess
 Soil & "Pimp" Sessions - ふたがしら SOUNDTRACK
 Soil & "Pimp" Sessions - 初恋の悪魔
 Solange - A Seat at the Table
+Solidarity Unit, Inc. - Red, Black and Green
 Sonic Youth - A Thousand Leaves
 Sonic Youth - Daydream Nation
 Sonic Youth - Dirty
@@ -2717,6 +2722,7 @@ The Heliocentrics & Orlando Julius - Jaiyede Afro
 The Heliocentrics - Fallen Angels
 The Heliocentrics - From the Deep
 The Heliocentrics - Out There
+The Human Arts Ensemble - Funky Donkey Vols. I & II
 The Human Arts Ensemble - Poem of Gratitude
 The Human Arts Ensemble - Whisper of Dharma
 The Icecreams - Guruguru Brain Wash
@@ -2825,6 +2831,8 @@ The Sweet Enoughs - Marshmallow
 The The - Burning Blue Soul
 The The - Infected
 The Thing - Mono
+The Thing - Now and Forever
+The Thing - Shake
 The Tuba Trio & James Newton - Flutes!
 The Tuba Trio - Essence, Vol. 1
 The Tuba Trio - Essence, Vol. 2
@@ -2959,7 +2967,7 @@ Vulfpeck - My First Car
 Vulfpeck - The Beautiful Game
 WANDS - Piece Of My Soul
 Wadada Leo Smith & 豊住芳三郎 - Burning Meditation
-Waldir Calmon - E Seus Multisons Multisons
+Waldir Calmon - Waldir Calmon E Seus Multisons
 Walkin' Charlie Aldrich - Greasy Mike's Chinese Takeaway
 Walkin' Large - Riverside Pictures
 Wallace Petty - Leon Gardner's Igloo Records
@@ -3237,6 +3245,7 @@ zzkillme - ( ^ω^ )
 光田康典 - Chrono Trigger Original Sound Version
 八十八ヶ所巡礼 - ○△□
 具島直子 - miss.G
+内山修作 - Mega Man 8 Original Soundtrack
 初音ミク - 初音阶段
 劉美君 - 赤裸感覺
 劉若英 - 我等你
@@ -3268,7 +3277,7 @@ zzkillme - ( ^ω^ )
 吉沢元治 - Outfit: Bass Solo 2½
 吉沢元治 - Play Unlimited
 吉沢元治 - 割れた鏡または化石の鳥
-吉野繁Trio - First Stage
+吉野繁 Trio - First Stage
 向井千惠 & 宮岡永樹 - 木々の歌
 吹万 - Chui Wan
 吹万 - 白夜
