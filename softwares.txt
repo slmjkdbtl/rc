@@ -36,6 +36,9 @@ CLI
   htop
     https://htop.dev/
 
+  mosh
+    https://mosh.org/
+
   gh
     https://cli.github.com/
 
@@ -110,6 +113,9 @@ CLI
 
   rename
     http://plasmasturm.org/code/rename/
+
+  cmus
+    https://cmus.github.io/
 
   ii
     https://tools.suckless.org/ii
@@ -343,6 +349,9 @@ GUI
 
   Dolphin
     https://dolphin-emu.org/
+
+  Flycast
+    https://github.com/flyinghead/flycast/
 
   Play!
     https://purei.org/
