@@ -92,6 +92,7 @@ WantedBy=multi-user.target
 
 # /etc/caddy/Caddyfile
 space55.xyz {
+    encode gzip
     reverse_proxy localhost:4000
 }
 

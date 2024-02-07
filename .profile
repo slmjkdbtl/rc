@@ -1,16 +1,21 @@
 export TLDR_AUTO_UPDATE_DISABLED=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-if command -v /opt/homebrew/bin/brew > /dev/null 2>&1; then
+exists() { command -v "$1" > /dev/null 2>&1; }
+addpath() { export PATH="$1:$PATH"; }
+
+addpath "$HOME/.cargo/bin"
+addpath "$HOME/.local/bin"
+
+if exists /opt/homebrew/bin/brew; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 	export CFLAGS="-I$HOMEBREW_PREFIX/include:$CFLAGS"
 	export LDFLAGS="-L$HOMEBREW_PREFIX/lib:$LDFLAGS"
 fi
 
-addpath() { export PATH="$1:$PATH"; }
-
-addpath "$HOME/.cargo/bin"
-addpath "$HOME/.local/bin"
+if exists python3; then
+	addpath "$(python3 -m site --user-base)/bin"
+fi
 
 export EDITOR="vim"
 export BROWSER="open"
@@ -27,7 +32,7 @@ alias f="open ."
 alias lsize="du -chs * .* | sort -h"
 alias disk="df -h ."
 alias ase="/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
-alias toix="curl -F 'f:1=<-' ix.io"
+alias uptext="curl -F 'f:1=<-' ix.io"
 alias extip="curl ifconfig.co"
 alias playraw="ffplay -ar 8000 -ac 1 -f u8 -nodisp -"
 alias weather="curl 'wttr.in?m'"
@@ -57,8 +62,6 @@ alias ydlmc="yt-dlp -x --audio-format mp3 --split-chapters -o '%(chapter)s.%(ext
 alias ydlml="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --yes-playlist $ytdlp_args"
 unset ytdlp_args
 
-exists() { command -v "$1" > /dev/null 2>&1; }
-
 localip() {
 	if exists ipconfig; then
 		ipconfig getifaddr en0
@@ -66,5 +69,7 @@ localip() {
 		hostname -I
 	fi
 }
+
+upfile() { curl -F "file=@$1" https://0x0.st; }
 
 PS1='\n\u@\H\n\w\n$ '

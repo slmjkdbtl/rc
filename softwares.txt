@@ -27,6 +27,9 @@ CLI
   scc
     https://github.com/boyter/scc/
 
+  sqlite
+    https://sqlite.org/
+
   bun
     https://bun.sh/
 
@@ -44,6 +47,9 @@ CLI
 
   yt-dlp
     https://github.com/yt-dlp/yt-dlp/
+
+  instaloader
+    https://instaloader.github.io/
 
   skhd
     https://github.com/koekeishiya/skhd/
@@ -257,6 +263,9 @@ CLI
 
   c
     https://github.com/ryanmjacobs/c
+
+  certbot
+    https://certbot.eff.org/
 
 GUI
 
@@ -738,6 +747,9 @@ SITES
 
   My Abandonware
     https://www.myabandonware.com/
+
+  Raindrop.io
+    https://raindrop.io/
 
   Discogs
     https://www.discogs.com/
