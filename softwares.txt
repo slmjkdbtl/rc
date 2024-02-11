@@ -90,6 +90,9 @@ CLI
   m-cli
     https://github.com/rgcr/m-cli/
 
+  datasette
+    https://datasette.io/
+
   didder
     https://github.com/makew0rld/didder/
 
@@ -454,6 +457,9 @@ GUI
 
   REXPaint
     http://gridsagegames.com/rexpaint/
+
+  SQLiteManager
+    https://www.sqlabs.com/sqlitemanager.php
 
   JazzUp
     https://www.irradiatedsoftware.com/labs/

@@ -20,7 +20,7 @@ preexec() {
 }
 
 setopt PROMPT_SUBST
-PROMPT=$'\n%F{black}%n@%M%f\n%B%F{blue}%~%f%b %F{black}${prompt_git_info}%f\n$ '
+PROMPT=$'\n\x1b[2m%n@%M\x1b[0m\n%B\x1b[34m%~\x1b[0m%b \x1b[2m${prompt_git_info}\x1b[0m\n$ '
 WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
 include() { test -f "$1" && . $1; }
