@@ -90,6 +90,9 @@ CLI
   m-cli
     https://github.com/rgcr/m-cli/
 
+  browsh
+    https://www.brow.sh/
+
   datasette
     https://datasette.io/
 
@@ -261,9 +264,6 @@ CLI
   notmuch
     https://notmuchmail.org/
 
-  magic-wormhole
-    https://magic-wormhole.readthedocs.io/
-
   c
     https://github.com/ryanmjacobs/c
 
@@ -391,6 +391,9 @@ GUI
 
   ocenaudio
     http://www.ocenaudio.com/
+
+  Zed
+    https://zed.dev/
 
   hiddenbar
     https://github.com/dwarvesf/hidden

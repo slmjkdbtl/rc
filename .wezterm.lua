@@ -46,8 +46,8 @@ return {
 	bold_brightens_ansi_colors = false,
 	adjust_window_size_when_changing_font_size = false,
 	keys = {
-		{ key = "Enter", mods = "ALT", action = "DisableDefaultAssignment" },
-		{ key = "Enter", mods = "SUPER", action = "ToggleFullScreen" },
+		{ key = "Enter", mods = "ALT", action = wezterm.action.DisableDefaultAssignment },
+		{ key = "Enter", mods = "SUPER", action = wezterm.action.ToggleFullScreen },
 		{ key = "LeftArrow", mods = "SUPER", action = wezterm.action { ActivateTabRelative = -1 } },
 		{ key = "RightArrow", mods = "SUPER", action = wezterm.action { ActivateTabRelative = 1 } },
 		{ key = "LeftArrow", mods = "SUPER|SHIFT", action = wezterm.action { MoveTabRelative = -1 } },
@@ -55,4 +55,5 @@ return {
 	},
 	audible_bell = "Disabled",
 	use_fancy_tab_bar = false,
+	native_macos_fullscreen_mode = true,
 }

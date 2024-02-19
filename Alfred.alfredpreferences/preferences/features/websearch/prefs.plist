@@ -30,6 +30,17 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>088D0D6A-140A-4312-BF1E-92234B949BD2</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>cover</string>
+			<key>text</key>
+			<string>Search iTunes album cover for '{query}'</string>
+			<key>url</key>
+			<string>https://bendodson.com/projects/itunes-artwork-finder/?entity=album&amp;query={query}</string>
+		</dict>
 		<key>0D221D18-C7F5-463C-8E68-81769C710AE9</key>
 		<dict>
 			<key>enabled</key>

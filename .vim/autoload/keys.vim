@@ -40,6 +40,11 @@ func! keys#unmap()
 	no > <nop>
 	no ? <nop>
 
+	no <ScrollWheelUp> <nop>
+	no <ScrollWheelDown> <nop>
+	no <ScrollWheelRight> <nop>
+	no <ScrollWheelLeft> <nop>
+
 endfunc
 
 " translate esc+ keys to meta key

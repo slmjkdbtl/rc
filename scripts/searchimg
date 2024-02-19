@@ -3,5 +3,4 @@
 
 file="$1"
 url=$(curl -sF "file=@$file" https://0x0.st)
-sleep 1
 echo "https://lens.google.com/uploadbyurl?url=$url"

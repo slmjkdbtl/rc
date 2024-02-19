@@ -113,3 +113,7 @@ notify
 edit crontab
 
   $ crontab -e
+
+ssh auto login
+
+  $ ssh-add
