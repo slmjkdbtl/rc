@@ -5,15 +5,19 @@ TO_HOME = .vim .skhdrc .tmux.conf .gitconfig .wezterm.lua .zshrc .profile .input
 CONFIG_TARGETS = $(addprefix $(CONFIG)/, $(TO_CONFIG))
 HOME_TARGETS = $(addprefix $(HOME)/, $(TO_HOME))
 LOCAL_BIN_TARGETS = $(patsubst scripts/%, $(LOCAL_BIN)/%, $(wildcard scripts/*))
+CMUS_TARGETS = $(patsubst cmus/%, $(CONFIG)/cmus/%, $(wildcard cmus/*))
 
 .PHONY: install
-install: $(CONFIG_TARGETS) $(HOME_TARGETS) $(LOCAL_BIN_TARGETS)
+install: $(CONFIG_TARGETS) $(HOME_TARGETS) $(LOCAL_BIN_TARGETS) $(CMUS_TARGETS)
 
 .PHONY: uninstall
 uninstall:
 	rm $(CONFIG_TARGETS) $(HOME_TARGETS) $(LOCAL_BIN_TARGETS)
 
 $(CONFIG)/%: %
+	ln -sf $(realpath $<) $@
+
+$(CONFIG)/cmus/%: cmus/%
 	ln -sf $(realpath $<) $@
 
 $(HOME)/%: %

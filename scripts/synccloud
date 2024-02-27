@@ -3,19 +3,13 @@
 
 sync() {
 	echo "syncing $1 -> $2"
-	s3cmd sync \
-		-v \
-		--no-check-md5 \
-		--delete-removed \
-		--acl-public \
-		--exclude '.DS_Store' \
-		"$1" "$2"
+	rclone sync "$1" "$2" --exclude .DS_Store -P
 }
 
-bucket="s3://tga"
+bucket="dropbox"
 
-sync ~/Music/Media.localized/Music/ $bucket/music/
-sync ~/files/img/                   $bucket/img/
-sync ~/files/videos/                $bucket/videos/
-sync ~/files/fonts/                 $bucket/fonts/
-sync ~/files/film/                  $bucket/film/
+sync ~/Music/Media.localized/Music/ $bucket:music/
+sync ~/files/img/                   $bucket:img/
+sync ~/files/videos/                $bucket:videos/
+sync ~/files/fonts/                 $bucket:fonts/
+sync ~/files/film/                  $bucket:film/
