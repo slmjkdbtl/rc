@@ -1,0 +1,6 @@
+#!/bin/sh
+
+file="$1"
+echo "#!/bin/sh" > "$file"
+chmod +x "$file"
+$EDITOR "$file"

@@ -154,6 +154,17 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>6BF8F6F7-4CC9-44BF-9144-F759DE53773E</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>wayback</string>
+			<key>text</key>
+			<string>Check Wayback Machine for '{query}'</string>
+			<key>url</key>
+			<string>https://web.archive.org/web/{query}</string>
+		</dict>
 		<key>860891E2-1005-41F5-8C7E-523CDE8B0D05</key>
 		<dict>
 			<key>enabled</key>
@@ -201,6 +212,17 @@
 			<string>Search Internet Archive for '{query}'</string>
 			<key>url</key>
 			<string>https://archive.org/search?query={query}</string>
+		</dict>
+		<key>BA0DEB11-80C2-4765-BED8-078C61DE3ABF</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>steamdb</string>
+			<key>text</key>
+			<string>Search SteamDB for '{query}'</string>
+			<key>url</key>
+			<string>https://steamdb.info/search/?a=all&amp;q={query}</string>
 		</dict>
 		<key>C9498957-1071-4249-AAC3-83E4F87EBC61</key>
 		<dict>

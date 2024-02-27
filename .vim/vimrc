@@ -107,13 +107,18 @@ let g:ale_fixers = {
 
 let g:ale_linters = {
 	\ 'c': [ 'clangd', ],
+	\ 'objc': [ 'clangd', ],
 	\ 'cpp': [ 'clangd', ],
 	\ 'rust': [ 'analyzer', ],
 	\ 'go': [ 'gopls', ],
 	\ 'javascript': [ 'tsserver', 'eslint', ],
 	\ 'typescript': [ 'tsserver', 'eslint', ],
 	\ 'typescriptreact': [ 'tsserver', 'eslint', ],
-	\ 'json': [ 'jq', ],
+	\ 'lua': [ 'lua_language_server' ],
+	\ 'python': [ 'pyright', ],
+	\ 'swift': [ 'sourcekitlsp' ],
+	\ 'kotlin': [ 'kotlinc' ],
+	\ 'json': [ 'jsonlint', ],
 	\ 'sh': [ 'shellcheck', ],
 \ }
 

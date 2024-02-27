@@ -775,6 +775,9 @@ SITES
   iTunes Artwork Finder
     https://bendodson.com/projects/itunes-artwork-finder/
 
+  cobalt
+    https://cobalt.tools/
+
   Porkbun
     https://porkbun.com/
 

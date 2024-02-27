@@ -23,4 +23,4 @@ then
 	out="$(basename "$audio" "${audio##*.}")mp4"
 fi
 
-ffmpeg -loop 1 -i "$img" -i "$audio" -c:v libx264 -c:a aac -b:a 192k -preset veryslow -tune stillimage -vf scale=600:600 -shortest -strict experimental -shortest "$out"
+ffmpeg -loop 1 -i "$img" -i "$audio" -c:v libx264 -c:a aac -b:a 256k -preset veryslow -tune stillimage -vf scale=600:600 -shortest -strict experimental -shortest "$out"
