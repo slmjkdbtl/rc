@@ -80,6 +80,32 @@ ffmpeg set id3tag
       \ -metadata encoder=""
       \ output.mp3
 
+curl use header
+
+  $ curl -H "Authorization: Bearer c35c1bea-eb03-2e10-ec33-acb230b6cb85" https://api.example.com
+
+curl print header
+
+  $ curl -i http://example.com
+
+curl POST request with data
+
+  $ curl -X POST -d '{"key1":"value1", "key2":"value2"}' -H "Content-Type: application/json" http://example.com
+  $ curl -X POST -d "@data.json" http://example.com
+  $ curl -X POST -d "param1=value1&param2=value2" http://example.com
+
+curl follow redirect
+
+  $ curl -L http://example.com
+
+curl don't print progress and error
+
+  $ curl -s http://example.com
+
+curl send data as multipart/form-data
+
+  $ curl -F "file=@$test.png" https://0x0.st)
+
 flush dns cache
 
   $ sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
