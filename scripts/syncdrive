@@ -1,23 +1,23 @@
 #!/bin/sh
-# sync stuff to external hard drive
+# sync stuff to external harddrive
 
 sync() {
 	echo "syncing $1 -> $2"
-	rsync \
-		-av \
-		--delete \
-		--iconv=utf-8,utf-8-mac \
-		--exclude '.DS_Store' \
-		"$1" "$2"
+	rclone sync "$1" "$2" \
+		--exclude .DS_Store \
+		--progress \
+		--verbose \
+		--delete-during \
+		--track-renames \
+		--human-readable \
+		--modify-window 2s
 }
 
-drive="/Volumes/EXTDISK"
+dest="/Volumes/EXTDISK"
 
-sync ~/Music/Media.localized/Music/ $drive/music
-sync ~/files/img/                   $drive/img
-sync ~/files/games/                 $drive/games
-sync ~/files/videos/                $drive/videos
-sync ~/files/fonts/                 $drive/fonts
-sync ~/files/film/                  $drive/film
-sync ~/files/books/                 $drive/books
-sync ~/files/tv/                    $drive/tv
+sync ~/Music/Media.localized/Music/ $dest/music/
+sync ~/files/img/                   $dest/img/
+sync ~/files/videos/                $dest/videos/
+sync ~/files/.important/            $dest/porn/
+sync ~/files/fonts/                 $dest/fonts/
+sync ~/files/film/                  $dest/film/

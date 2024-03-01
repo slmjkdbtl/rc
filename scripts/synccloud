@@ -5,18 +5,20 @@ sync() {
 	echo "syncing $1 -> $2"
 	rclone sync "$1" "$2" \
 		--exclude .DS_Store \
-		-Pv \
-		--tpslimit 12 \
-		--tpslimit-burst 0 \
+		--progress \
+		--verbose \
 		--delete-during \
-		--human-readable
+		--track-renames \
+		--human-readable \
+		--tpslimit 12 \
+		--tpslimit-burst 0
 }
 
-remote="dropbox"
+dest="dropbox"
 
-sync ~/Music/Media.localized/Music/ $remote:music/
-sync ~/files/img/                   $remote:img/
-sync ~/files/videos/                $remote:videos/
-sync ~/files/.important/            $remote:porn/
-sync ~/files/fonts/                 $remote:fonts/
-sync ~/files/film/                  $remote:film/
+sync ~/Music/Media.localized/Music/ $dest:music/
+sync ~/files/img/                   $dest:img/
+sync ~/files/videos/                $dest:videos/
+sync ~/files/.important/            $dest:porn/
+sync ~/files/fonts/                 $dest:fonts/
+sync ~/files/film/                  $dest:film/

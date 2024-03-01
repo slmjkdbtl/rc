@@ -32,15 +32,21 @@ ffmpeg reverse video
 
 ffmpeg embed soft subtitle
 
-  $ ffmpeg -i input.mp4 -i sub.srt -c copy -c:s mov_text output.mp4
+  $ ffmpeg -i input.mp4 -i sub.srt -c copy -c:s mov_text -metadata:s:s:0 language=eng output.mp4
+  $ ffmpeg -i input.mp4 -i eng.srt -i chi.srt -map 0 -map 1 -map 2 -c copy -c:s mov_text -metadata:s:s:0 language=eng -metadata:s:s:1 language=chi output.mp4
+  $ ffmpeg -i input_eng.mp4 -i chi.srt -map 0 -map 1 -c copy -c:s mov_text -metadata:s:s:1 language=chi output_eng_chi.mp4
 
-ffmpeg extract audio from video
+ffmpeg extract subtitle from video
+
+  $ ffmpeg -i input.mp4 -map 0:s:0 sub.srt
+  $ ffmpeg -i input.mp4 -map 0:s:1 sub2.srt
+
+
+ffmpeg strip video / audio / subtitle from video
 
   $ ffmpeg -i input.mp4 -vn output.mp3
-
-ffmpeg strip audio from video
-
   $ ffmpeg -i input.mp4 -c:v copy -an output.mp4
+  $ ffmpeg -i input.mp4 -c copy -sn output.mp4
 
 ffmpeg resize image
 

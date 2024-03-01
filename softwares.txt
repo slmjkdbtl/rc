@@ -386,6 +386,9 @@ GUI
   MultiPatch
     https://projects.sappharad.com/multipatch/
 
+  Aegisub
+    https://aegisub.org/
+
   SheepShaver
     https://sheepshaver.cebix.net/
 
