@@ -63,6 +63,9 @@ CLI
   aria2
     https://aria2.github.io/
 
+  darkhttpd
+    https://unix4lyfe.org/darkhttpd/
+
   imagemagick
     https://imagemagick.org/
 
@@ -83,6 +86,9 @@ CLI
 
   ImageOptim-CLI
     https://jamiemason.github.io/ImageOptim-CLI/
+
+  stagit
+    https://git.codemadness.org/stagit/
 
   shellcheck
     https://www.shellcheck.net/
@@ -110,9 +116,6 @@ CLI
 
   wayback
     https://github.com/wabarc/wayback/
-
-  stagit
-    https://git.codemadness.org/stagit/
 
   git2html
     http://www.chriswarbo.net/git/git2html/git/

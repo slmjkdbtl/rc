@@ -41,7 +41,6 @@ ffmpeg extract subtitle from video
   $ ffmpeg -i input.mp4 -map 0:s:0 sub.srt
   $ ffmpeg -i input.mp4 -map 0:s:1 sub2.srt
 
-
 ffmpeg strip video / audio / subtitle from video
 
   $ ffmpeg -i input.mp4 -vn output.mp3
@@ -60,6 +59,18 @@ ffmpeg audio bitrate
 ffmpeg add audio to video
 
   $ ffmpeg -i input.mp4 -i input.mp3 -c copy -map 0:v:0 -map 1:a:0 output.mp4
+
+ffmpeg only keep audio and video
+
+  $ ffmpeg -i input.mp4 -map 0:v -map 0:a -c copy output.mp4
+
+ffmpeg remove all subtitle, data and attachments
+
+  $ ffmpeg -i input.mp4 -map 0 -map -0:s -map -0:d -map -0:t -c copy output.mp4
+
+ffmpeg remove the second audio track
+
+  $ ffmpeg -i input.mp4 -map 0 -map -0:a:1 -c copy output.mp4
 
 ffmpeg add audio to image generate video
 
@@ -146,6 +157,27 @@ edit crontab
 
   $ crontab -e
 
+generate ssh key
+
+  $ ssh-keygen -t rsa
+
 ssh auto login
 
   $ ssh-add
+
+get character encoding
+
+  $ file -I file.txt
+
+convert character encoding
+
+  $ iconv -f ISO-8859-1 -t UTF-8 src.txt > dest.txt
+
+run TemplOS with qemu
+
+  $ qemu-img create -f qcow2 temple 2G
+  $ qemu-system-x86_64 \
+      -m 512M \
+      -drive file=temple \
+      -cdrom TempleOS.ISO \
+      -boot order=d

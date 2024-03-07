@@ -1,3 +1,6 @@
+-- trim video without re-encoding
+-- press t to set start point, press t again at end point to trim
+
 local start_pos = nil
 
 local function print(s)
@@ -38,6 +41,7 @@ function cut(p1, p2)
 			"-ss", t1,
 			"-to", t2,
 			"-c", "copy",
+			"-y",
 			out_path
 		},
 		playback_only = false,

@@ -7,9 +7,9 @@ sync() {
 		--exclude .DS_Store \
 		--progress \
 		--verbose \
-		--delete-during \
 		--track-renames \
 		--human-readable \
+		--delete-during \
 		--modify-window 2s
 }
 
@@ -21,3 +21,7 @@ sync ~/files/videos/                $dest/videos/
 sync ~/files/.important/            $dest/porn/
 sync ~/files/fonts/                 $dest/fonts/
 sync ~/files/film/                  $dest/film/
+sync ~/files/tv/                    $dest/tv/
+sync ~/files/games/                 $dest/games/
+sync ~/files/license/               $dest/license/
+sync ~/files/os/                    $dest/os/
