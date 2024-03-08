@@ -24,5 +24,6 @@ sync ~/files/fonts/                 $dest:fonts/
 sync ~/files/film/                  $dest:film/
 sync ~/files/tv/                    $dest:tv/
 sync ~/files/games/                 $dest:games/
+sync ~/files/links/                 $dest:link/
 sync ~/files/license/               $dest:license/
 sync ~/files/os/                    $dest:os/

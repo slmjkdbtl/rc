@@ -1,0 +1,64 @@
+#!/usr/bin/env bun
+
+// https://developer.raindrop.io/v1/
+
+function patchEnv(path) {
+	const file = await Bun.file(path).text()
+	for (const line of file.split("\n")) {
+		const [k, v] = line.split("=")
+		if (!k || !v) continue
+		Bun.env[k.trim()] = v.trim()
+	}
+}
+
+const homeDir = Bun.env["HOME"]
+patchEnv(`${homeDir}/.env`)
+const API_ROOT = "https://api.raindrop.io/rest/v1"
+const PER_PAGE = 50
+const token = Bun.env["RAINDROP_TOKEN"]
+if (!token) {
+	console.error("RAINDROP_TOKEN not found in env!")
+	process.exit(1)
+}
+const headers = {
+	"Authorization": `Bearer ${token}`,
+}
+
+async function getCollections() {
+	const res = await fetch(`${API_ROOT}/collections`, {
+		method: "GET",
+		headers: headers,
+	})
+	const json = await res.json()
+	return json.items
+}
+
+async function getRaindrops(collection) {
+	async function getPage(p) {
+		const params = new URLSearchParams({
+			perpage: PER_PAGE,
+			page: p,
+		})
+		const res = await fetch(`${API_ROOT}/raindrops/${collection._id}?${params}`, {
+			method: "GET",
+			headers: headers,
+		})
+		const json = await res.json()
+		return json.items
+	}
+	const raindrops = []
+	const pages = Math.ceil(collection.count / PER_PAGE)
+	for (let i = 0; i < pages; i++) {
+		raindrops.push(...(await getPage(i)))
+	}
+	return raindrops
+}
+
+const collections = await getCollections()
+
+for (const collection of collections) {
+	console.log(`fetching "${collection.title}"`)
+	const raindrops = await getRaindrops(collection)
+	const content = raindrops.map((r) => r.link).join("\n")
+	Bun.write(`${homeDir}/files/links/${collection.title}.txt`, content)
+}

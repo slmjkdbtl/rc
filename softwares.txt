@@ -293,6 +293,12 @@ GUI
   Mullvad VPN
     https://mullvad.net/
 
+  Arc
+    https://arc.net/
+
+  Tor
+    https://www.torproject.org/
+
   ImageOptim
     https://imageoptim.com/mac/
 
@@ -563,6 +569,9 @@ CHROME EXTENSIONS
   Ad Speedup
     https://chromewebstore.google.com/detail/ad-speedup-skip-video-ads/pcjlckhhhmlefmobnnoolakplfppdchi
 
+  Control Panel for YouTube
+    https://jbscript.dev/control-panel-for-youtube
+
   Archive Page
     https://chrome.google.com/webstore/detail/archive-page/gcaimhkfmliahedmeklebabdgagipbia
 
@@ -807,6 +816,9 @@ SITES
 
   movie-web
     https://movie-web.app/
+
+  Translate Subtitle
+    https://translate-subtitles.com/
 
 
 Self Host
