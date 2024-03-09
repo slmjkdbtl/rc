@@ -63,6 +63,9 @@ CLI
   aria2
     https://aria2.github.io/
 
+  uni
+    https://github.com/arp242/uni/
+
   darkhttpd
     https://unix4lyfe.org/darkhttpd/
 

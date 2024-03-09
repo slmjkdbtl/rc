@@ -8,6 +8,5 @@ then
 	exit 1
 fi
 
-echo "#!/bin/sh" > "$file"
-chmod +x "$file"
-$EDITOR "$file"
+charset=$(file -b --mime-encoding "$file")
+iconv -f "$charset" -t UTF-8 "$file"
