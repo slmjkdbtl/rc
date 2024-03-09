@@ -2,7 +2,7 @@
 
 // https://developer.raindrop.io/v1/
 
-function patchEnv(path) {
+async function patchEnv(path) {
 	const file = await Bun.file(path).text()
 	for (const line of file.split("\n")) {
 		const [k, v] = line.split("=")
@@ -12,7 +12,7 @@ function patchEnv(path) {
 }
 
 const homeDir = Bun.env["HOME"]
-patchEnv(`${homeDir}/.env`)
+await patchEnv(`${homeDir}/.env`)
 const API_ROOT = "https://api.raindrop.io/rest/v1"
 const PER_PAGE = 50
 const token = Bun.env["RAINDROP_TOKEN"]

@@ -314,8 +314,11 @@ GUI
   Glyphs
     https://glyphsapp.com/
 
-  Discord
-    https://discordapp.com/
+  PICO-8
+    https://www.lexaloffle.com/pico-8.php
+
+  TIC-80
+    https://tic80.com/
 
   Sunvox
     http://warmplace.ru/soft/sunvox/
@@ -394,6 +397,12 @@ GUI
 
   Mini vMac
     https://www.gryphel.com/c/minivmac/
+
+  MuseScore
+    https://musescore.org/
+
+  Google Earth
+    https://www.google.com/earth/
 
   MultiPatch
     https://projects.sappharad.com/multipatch/
@@ -478,6 +487,9 @@ GUI
 
   SQLiteManager
     https://www.sqlabs.com/sqlitemanager.php
+
+  OpenTabletDriver
+    https://opentabletdriver.net/
 
   JazzUp
     https://www.irradiatedsoftware.com/labs/
