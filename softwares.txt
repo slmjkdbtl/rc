@@ -341,8 +341,8 @@ GUI
   Keka
     https://www.keka.io/
 
-  VirtualBox
-    https://www.virtualbox.org/
+  Monodraw
+    https://monodraw.helftone.com/
 
   Hammerspoon
     https://www.hammerspoon.org/

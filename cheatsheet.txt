@@ -173,7 +173,7 @@ convert character encoding
 
   $ iconv -f ISO-8859-1 -t UTF-8 src.txt > dest.txt
 
-run TemplOS with qemu
+run TempleOS with qemu
 
   $ qemu-img create -f qcow2 temple 2G
   $ qemu-system-x86_64 \

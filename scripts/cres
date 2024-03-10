@@ -8,14 +8,12 @@ help() {
 	echo "  $ cres <src> <dest>"
 }
 
-if [ -z "$1" ] || [ -z "$2" ]
-then
+if [ -z "$1" ] || [ -z "$2" ]; then
 	help
 	exit 1
 fi
 
-if [ ! -d "$1" ]
-then
+if [ ! -d "$1" ]; then
 	echo "$1 not found"
 	exit 1
 fi

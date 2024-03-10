@@ -1,7 +1,7 @@
 CONFIG = $(HOME)/.config
 LOCAL_BIN = $(HOME)/.local/bin
 TO_CONFIG = nvim mpv
-TO_HOME = .vim .skhdrc .tmux.conf .gitconfig .wezterm.lua .zshrc .profile .inputrc .sqliterc
+TO_HOME = .vim .skhdrc .tmux.conf .gitconfig .wezterm.lua .zshrc .zshenv .profile .inputrc .sqliterc
 CONFIG_TARGETS = $(addprefix $(CONFIG)/, $(TO_CONFIG))
 HOME_TARGETS = $(addprefix $(HOME)/, $(TO_HOME))
 LOCAL_BIN_TARGETS = $(patsubst scripts/%, $(LOCAL_BIN)/%, $(wildcard scripts/*))

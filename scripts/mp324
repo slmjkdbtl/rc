@@ -12,14 +12,12 @@ audio="$1"
 img="$2"
 out="$3"
 
-if [ -z "$audio" ] || [ -z "$img" ]
-then
+if [ -z "$audio" ] || [ -z "$img" ]; then
 	help
 	exit 1
 fi
 
-if [ -z "$out" ]
-then
+if [ -z "$out" ]; then
 	out="$(basename "$audio" "${audio##*.}")mp4"
 fi
 

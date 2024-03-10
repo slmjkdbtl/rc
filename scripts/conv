@@ -16,13 +16,11 @@ help() {
 from="$1"
 to="$2"
 
-if [ -z "$from" ] || [ -z "$to" ]
-then
+if [ -z "$from" ] || [ -z "$to" ]; then
 	help
 	exit 1
 fi
 
-for file in *."$from"
-do
+for file in *."$from"; do
 	ffmpeg -i "$file" "$(basename "$file" ".$from").$to"
 done

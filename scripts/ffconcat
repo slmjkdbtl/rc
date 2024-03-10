@@ -3,8 +3,7 @@
 
 echo > .ffconcat.txt
 
-for file in "$@"
-do
+for file in "$@"; do
 	ext=${file##*.}
 	echo file \'$file\' >> .ffconcat.txt
 done

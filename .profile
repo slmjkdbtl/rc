@@ -2,10 +2,9 @@ export TLDR_AUTO_UPDATE_DISABLED=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 exists() { command -v "$1" > /dev/null 2>&1; }
-addpath() { export PATH="$1:$PATH"; }
 
-addpath "$HOME/.cargo/bin"
-addpath "$HOME/.local/bin"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 if exists /opt/homebrew/bin/brew; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -14,7 +13,7 @@ if exists /opt/homebrew/bin/brew; then
 fi
 
 if exists python3; then
-	addpath "$(python3 -m site --user-base)/bin"
+	export PATH="$(python3 -m site --user-base)/bin:$PATH"
 fi
 
 export EDITOR="vim"

@@ -2,8 +2,7 @@
 
 file="$1"
 
-if [ -z "$file" ]
-then
+if [ -z "$file" ]; then
 	echo "please specify file name"
 	exit 1
 fi

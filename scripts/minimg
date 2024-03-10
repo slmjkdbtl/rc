@@ -17,14 +17,12 @@ help() {
 
 path="$1"
 
-if [ -z "$path" ]
-then
+if [ -z "$path" ]; then
 	help
 	exit 1
 fi
 
-if [ ! -e "$path" ]
-then
+if [ ! -e "$path" ]; then
 	echo "file not found"
 	exit 1
 fi

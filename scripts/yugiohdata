@@ -36,10 +36,18 @@ async function getCards() {
 	return data.data
 }
 
-function toMap(cards) {
+function toIDMap(cards) {
 	const map = {}
 	for (const card of cards) {
 		map[card.id] = card
+	}
+	return map
+}
+
+function toNameMap(cards) {
+	const map = {}
+	for (const card of cards) {
+		map[card.name] = card
 	}
 	return map
 }
@@ -113,7 +121,7 @@ const cmds = {
 		desc: "View a card image",
 		action: async (id) => {
 			const cards = await getCards()
-			const map = toMap(cards)
+			const map = Number(id).toString() === id ? toIDMap(cards) : toNameMap(cards)
 			const card = map[id]
 			if (!card) return
 			exec("open", [ path.join(IMG_DIR, `${card.id}.png`) ])
