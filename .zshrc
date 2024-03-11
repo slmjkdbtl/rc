@@ -1,3 +1,5 @@
+. ~/.profile
+
 precmd() {
 	# TODO: support non xterm
 	# set title to pwd
@@ -100,6 +102,7 @@ zplug add "zsh-users/zsh-completions" "zsh-completions.plugin.zsh"
 zplug add "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
 zplug add "hlissner/zsh-autopair" "autopair.zsh"
 
+bindkey -e
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 bindkey '^[[A' history-substring-search-up

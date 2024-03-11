@@ -1,4 +1,5 @@
 #!/usr/bin/env bun
+// manage yugioh card assets
 
 import * as os from "os"
 import * as fs from "fs"

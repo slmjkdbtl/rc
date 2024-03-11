@@ -323,6 +323,9 @@ GUI
   Sunvox
     http://warmplace.ru/soft/sunvox/
 
+  Little Snitch Mini
+    https://www.obdev.at/products/littlesnitch-mini/
+
   UTM
     https://getutm.app/
 
@@ -852,3 +855,6 @@ Self Host
 
   cgit
     https://git.zx2c4.com/cgit/
+
+  netdata
+    https://github.com/netdata/netdata/

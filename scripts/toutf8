@@ -1,4 +1,5 @@
 #!/bin/sh
+# convert text file to utf8
 
 file="$1"
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bun
-
+// backup bookmarks from raindrop.io
 // https://developer.raindrop.io/v1/
 
 async function patchEnv(path) {

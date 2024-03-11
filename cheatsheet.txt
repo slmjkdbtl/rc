@@ -50,7 +50,7 @@ ffmpeg strip video / audio / subtitle from video
 ffmpeg resize image
 
   $ ffmpeg -i input.jpg -vf scale=640:480 output.jpg
-  $ ffmpeg -i input.jpg -vf scale=640:480:flags=neighbor output.jpg
+  $ ffmpeg -i input.jpg -vf scale=640:480:flags=neighbor -q:v 2 output.jpg
 
 ffmpeg audio bitrate
 

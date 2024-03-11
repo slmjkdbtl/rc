@@ -1,4 +1,5 @@
 #!/bin/sh
+# create new shell script
 
 file="$1"
 
