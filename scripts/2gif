@@ -1,8 +1,67 @@
 #!/bin/sh
-# convert images to gif
+# convert images or video to gif
 
-palette="/tmp/palette.png"
-filters="fps=$4,scale=$3:-1:flags=lanczos"
+help() {
+	echo "Convert images or video to gif with ffmpeg"
+	echo ""
+	echo "USAGE"
+	echo "  $ 2gif [options] <src>"
+	echo ""
+	echo "OPTIONS"
+	echo "  -f, --fps      fps"
+	echo "  -s, --size     gif dimension"
+	echo "  -o, --output   output file name"
+	echo "  -h, --help     height"
+}
 
-ffmpeg -v warning -i "$1" -vf "$filters,palettegen" -y "$palette"
-ffmpeg -v warning -i "$1" -i $palette -lavfi "$filters [x]; [x][1:v] paletteuse" -y "$2"
+if [ -z "$1" ]; then
+	help
+	exit 0
+fi
+
+for arg in "$@"; do
+	shift
+	case "$arg" in
+		'--size')   set -- "$@" '-s'   ;;
+		'--fps')    set -- "$@" '-f'   ;;
+		'--output') set -- "$@" '-o'   ;;
+		'--help')   set -- "$@" '-h'   ;;
+		*)          set -- "$@" "$arg" ;;
+	esac
+done
+
+ntharg() {
+	shift "$1"
+	printf '%s\n' "$1"
+}
+
+src=$(ntharg $# "$@")
+size="320:-1"
+fps=30
+ext=$(echo "${src##*.}" | tr '[:upper:]' '[:lower:]')
+name=$(basename "$src" ".$ext")
+dest="$name.gif"
+
+while getopts "f:s:o:h" opt; do
+	case "$opt" in
+		f)
+			fps=$OPTARG
+		;;
+		s)
+			size=$OPTARG
+		;;
+		o)
+			dest=$OPTARG
+		;;
+		?|h)
+			help
+			exit 0
+		;;
+	esac
+done
+
+ffmpeg \
+	-i "$src" \
+	-vf "fps=$fps,scale=$size:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+	-loop 0 \
+	"$dest"

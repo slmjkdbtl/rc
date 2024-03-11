@@ -114,9 +114,6 @@ CLI
   tesseract
     https://github.com/tesseract-ocr/tesseract/
 
-  httpie
-    https://httpie.org/
-
   wayback
     https://github.com/wabarc/wayback/
 

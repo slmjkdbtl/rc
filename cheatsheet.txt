@@ -97,6 +97,11 @@ ffmpeg set id3tag
       \ -metadata encoder=""
       \ output.mp3
 
+ffprobe get video / image dimension
+
+  $ ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0:s=x "test.png"
+  $ ffprobe -v error -select_streams v:0 -show_entries stream=height -of csv=p=0:s=x "test.mp4"
+
 curl use header
 
   $ curl -H "Authorization: Bearer c35c1bea-eb03-2e10-ec33-acb230b6cb85" https://api.example.com
