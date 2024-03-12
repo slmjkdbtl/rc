@@ -1,4 +1,60 @@
 #!/bin/sh
-# get / set id3tags with ffmpeg
+# get id3tags with ffmpeg
 
-ffprobe -i "$1" -hide_banner 2>&1 | grep -E "^\s*$2\s*\:\s.*$" | awk -F ': ' '{print $2}'
+# https://gist.github.com/eyecatchup/0757b3d8b989fe433979db2ea7d95a01
+# https://askubuntu.com/a/1284775/1543361
+ffinfo=$(ffprobe -hide_banner -i "$1" 2>&1 | sed -n '/Duration:/q;p')
+
+gettag() {
+	echo "$ffinfo" \
+		| grep -E "^\s*$1\s*\:\s.*$" \
+		| awk -F ': ' '{print $2}'
+}
+
+title=$(gettag "title")
+artist=$(gettag "artist")
+album_artist=$(gettag "album_artist")
+composer=$(gettag "composer")
+album=$(gettag "album")
+track=$(gettag "track")
+date=$(gettag "date")
+disc=$(gettag "disc")
+compilation=$(gettag "compilation")
+genre=$(gettag "genre")
+grouping=$(gettag "grouping")
+comment=$(gettag "comment")
+
+printall() {
+	test -n "$title" && echo "title: $title"
+	test -n "$artist" && echo "artist: $artist"
+	test -n "$album_artist" && echo "album_artist: $album_artist"
+	test -n "$composer" && echo "composer: $composer"
+	test -n "$album" && echo "album: $album"
+	test -n "$date" && echo "date: $date"
+	test -n "$track" && echo "track: $track"
+	test -n "$disc" && echo "disc: $disc"
+	test -n "$compilation" && echo "compilation: $compilation"
+	test -n "$genre" && echo "genre: $genre"
+	test -n "$grouping" && echo "grouping: $grouping"
+	test -n "$comment" && echo "comment: $comment"
+}
+
+if [ -z "$2" ]; then
+	printall
+	exit
+fi
+
+case $2 in
+	title)        echo "$title" ;;
+	album)        echo "$album" ;;
+	artist)       echo "$artist" ;;
+	album_artist) echo "$album_artist" ;;
+	composer)     echo "$composer" ;;
+	date)         echo "$date" ;;
+	track)        echo "$track" ;;
+	disc)         echo "$disc" ;;
+	genre)        echo "$genre" ;;
+	grouping)     echo "$grouping" ;;
+	comment)      echo "$comment" ;;
+	compilation)  echo "$compilation" ;;
+esac

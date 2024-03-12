@@ -31,7 +31,7 @@ sync() {
 	echo "syncing $1 -> $2"
 	rclone sync "$1" "$2" \
 		--exclude .DS_Store \
-		--exclude .git \
+		--exclude .git/ \
 		--progress \
 		--verbose \
 		--track-renames \

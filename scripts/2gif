@@ -13,25 +13,20 @@ help() {
 	echo "  -o, --output   output file name"
 }
 
-if [ -z "$1" ]; then
-	help
-	exit 0
-fi
-
-for arg in "$@"; do
-	shift
-	case "$arg" in
-		"--size")   set -- "$@" "-s"   ;;
-		"--fps")    set -- "$@" "-f"   ;;
-		"--output") set -- "$@" "-o"   ;;
-		*)          set -- "$@" "$arg" ;;
-	esac
-done
+die() {
+	echo "$1" >&2
+	exit 1
+}
 
 ntharg() {
 	shift "$1"
 	echo "$1"
 }
+
+if [ -z "$1" ]; then
+	help
+	exit 0
+fi
 
 src=$(ntharg $# "$@")
 size="320:-1"
@@ -40,21 +35,41 @@ ext=$(echo "${src##*.}" | tr '[:upper:]' '[:lower:]')
 name=$(basename "$src" ".$ext")
 dest="$name.gif"
 
-while getopts "f:s:o:" opt; do
-	case "$opt" in
-		f)
-			fps=$OPTARG
+while [ -n "$1" ]; do
+	case $1 in
+		-s|--size)
+			if [ -n "$2" ]; then
+				size=$2
+				shift
+			else
+				die "-s / --size requires argument"
+			fi
 		;;
-		s)
-			size=$OPTARG
+		-f|--fps)
+			if [ -n "$2" ]; then
+				fps=$2
+				shift
+			else
+				die "-f / --fps requires argument"
+			fi
 		;;
-		o)
-			dest=$OPTARG
+		-o|--output)
+			if [ -n "$2" ]; then
+				dest=$2
+				shift
+			else
+				die "-o / --output requires argument"
+			fi
 		;;
-		*)
-			exit 1
+		--)
+			shift
+			break
+		;;
+		-?*)
+			die "unknown option: $1"
 		;;
 	esac
+	shift
 done
 
 ffmpeg \
