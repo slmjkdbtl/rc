@@ -3,7 +3,7 @@
 
 for f in *; do
 	if ! [ -e "$f" ]; then
-		echo "$f"
+		echo "rm \"$f\""
 		rm "$f"
 	fi
 done

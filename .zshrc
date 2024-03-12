@@ -32,6 +32,10 @@ autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
 
+# autoload -Uz history-search-end
+# zle -N history-beginning-search-backward-end history-search-end
+# zle -N history-beginning-search-forward-end history-search-end
+
 if command -v brew > /dev/null 2>&1; then
 	FPATH="$(brew --prefix)/share/zsh/site-functions:$FPATH"
 	include /opt/homebrew/etc/profile.d/z.sh
@@ -97,7 +101,6 @@ zplug() {
 }
 
 zplug add "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
-zplug add "zsh-users/zsh-history-substring-search" "zsh-history-substring-search.zsh"
 zplug add "zsh-users/zsh-completions" "zsh-completions.plugin.zsh"
 zplug add "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
 zplug add "hlissner/zsh-autopair" "autopair.zsh"
@@ -105,5 +108,12 @@ zplug add "hlissner/zsh-autopair" "autopair.zsh"
 bindkey -e
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+
+# https://unix.stackexchange.com/a/691482/368625
+for dir (up down) {
+	autoload $dir-line-or-beginning-search
+	zle -N $dir-line-or-beginning-search
+	key=$terminfo[kcu$dir[1]1]
+	for key ($key ${key/O/[})
+	bindkey $key $dir-line-or-beginning-search
+}

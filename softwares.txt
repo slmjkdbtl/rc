@@ -126,9 +126,6 @@ CLI
   entr
     http://entrproject.org/
 
-  rename
-    http://plasmasturm.org/code/rename/
-
   cmus
     https://cmus.github.io/
 

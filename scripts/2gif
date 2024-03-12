@@ -11,7 +11,6 @@ help() {
 	echo "  -f, --fps      fps"
 	echo "  -s, --size     gif dimension"
 	echo "  -o, --output   output file name"
-	echo "  -h, --help     height"
 }
 
 if [ -z "$1" ]; then
@@ -22,17 +21,16 @@ fi
 for arg in "$@"; do
 	shift
 	case "$arg" in
-		'--size')   set -- "$@" '-s'   ;;
-		'--fps')    set -- "$@" '-f'   ;;
-		'--output') set -- "$@" '-o'   ;;
-		'--help')   set -- "$@" '-h'   ;;
+		"--size")   set -- "$@" "-s"   ;;
+		"--fps")    set -- "$@" "-f"   ;;
+		"--output") set -- "$@" "-o"   ;;
 		*)          set -- "$@" "$arg" ;;
 	esac
 done
 
 ntharg() {
 	shift "$1"
-	printf '%s\n' "$1"
+	echo "$1"
 }
 
 src=$(ntharg $# "$@")
@@ -42,7 +40,7 @@ ext=$(echo "${src##*.}" | tr '[:upper:]' '[:lower:]')
 name=$(basename "$src" ".$ext")
 dest="$name.gif"
 
-while getopts "f:s:o:h" opt; do
+while getopts "f:s:o:" opt; do
 	case "$opt" in
 		f)
 			fps=$OPTARG
@@ -53,9 +51,8 @@ while getopts "f:s:o:h" opt; do
 		o)
 			dest=$OPTARG
 		;;
-		?|h)
-			help
-			exit 0
+		*)
+			exit 1
 		;;
 	esac
 done

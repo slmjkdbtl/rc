@@ -27,10 +27,7 @@ $(LOCAL_BIN)/%: scripts/%
 	ln -sf $(realpath $<) $@
 
 .PHONY: update
-update: albums.txt Brewfile $(WORKFLOW_DEST)
-
-albums.txt: Library.xml genAlbums.js
-	bun genAlbums.js
+update: Brewfile
 
 Brewfile: FORCE
 	brew bundle dump -f

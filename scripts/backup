@@ -1,0 +1,53 @@
+#!/bin/sh
+
+help() {
+	echo "Backup stuff"
+	echo ""
+	echo "USAGE"
+	echo "  $ backup cloud"
+	echo "  $ backup drive"
+}
+
+case "$1" in
+	"cloud")
+		dest="dropbox:"
+		flags="--tpslimit 12 --tpslimit-burst 0"
+	;;
+	"drive")
+		dest="/Volumes/EXTDISK/"
+		flags="--modify-window 2s"
+	;;
+	*)
+		echo "unsupported dest: \"$1\""
+	;;
+esac
+
+if [ -z "$dest" ]; then
+	help
+	exit 1
+fi
+
+sync() {
+	echo "syncing $1 -> $2"
+	rclone sync "$1" "$2" \
+		--exclude .DS_Store \
+		--exclude .git \
+		--progress \
+		--verbose \
+		--track-renames \
+		--human-readable \
+		--delete-during \
+		$flags
+}
+
+sync ~/Music/Media.localized/Music/ "${dest}music/"
+sync ~/files/img/                   "${dest}img/"
+sync ~/files/videos/                "${dest}videos/"
+sync ~/files/.important/            "${dest}porn/"
+sync ~/files/fonts/                 "${dest}fonts/"
+sync ~/files/film/                  "${dest}film/"
+sync ~/files/tv/                    "${dest}tv/"
+sync ~/files/games/                 "${dest}games/"
+sync ~/files/lists/                 "${dest}lists/"
+sync ~/files/license/               "${dest}license/"
+sync ~/files/os/                    "${dest}os/"
