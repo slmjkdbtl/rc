@@ -25,11 +25,9 @@ dest_path="$2"
 mkdir -p "$dest_path"
 
 convert() {
-	for entry in "$1"/*
-	do
+	for entry in "$1"/*; do
 		dest=$dest_path${entry##$src_path}
-		if [ -d "$entry" ]
-		then
+		if [ -d "$entry" ]; then
 			mkdir -p "$dest"
 			convert "$entry"
 		else

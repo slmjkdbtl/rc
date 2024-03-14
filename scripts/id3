@@ -25,18 +25,18 @@ grouping=$(gettag "grouping")
 comment=$(gettag "comment")
 
 printall() {
-	test -n "$title" && echo "title: $title"
-	test -n "$artist" && echo "artist: $artist"
-	test -n "$album_artist" && echo "album_artist: $album_artist"
-	test -n "$composer" && echo "composer: $composer"
-	test -n "$album" && echo "album: $album"
-	test -n "$date" && echo "date: $date"
-	test -n "$track" && echo "track: $track"
-	test -n "$disc" && echo "disc: $disc"
-	test -n "$compilation" && echo "compilation: $compilation"
-	test -n "$genre" && echo "genre: $genre"
-	test -n "$grouping" && echo "grouping: $grouping"
-	test -n "$comment" && echo "comment: $comment"
+	[ -n "$title" ] && echo "title: $title"
+	[ -n "$artist" ] && echo "artist: $artist"
+	[ -n "$album_artist" ] && echo "album_artist: $album_artist"
+	[ -n "$composer" ] && echo "composer: $composer"
+	[ -n "$album" ] && echo "album: $album"
+	[ -n "$date" ] && echo "date: $date"
+	[ -n "$track" ] && echo "track: $track"
+	[ -n "$disc" ] && echo "disc: $disc"
+	[ -n "$compilation" ] && echo "compilation: $compilation"
+	[ -n "$genre" ] && echo "genre: $genre"
+	[ -n "$grouping" ] && echo "grouping: $grouping"
+	[ -n "$comment" ] && echo "comment: $comment"
 }
 
 if [ -z "$2" ]; then

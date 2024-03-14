@@ -5,13 +5,8 @@ url=$1
 time=$2
 out=$3
 
-if [ -z "$time" ]; then
-	time="00:00:00"
-fi
-
-if [ -z "$out" ]; then
-	out="frame.jpg"
-fi
+[ -z "$time" ] && time="00:00:00"
+[ -z "$out" ] && out="frame.jpg"
 
 ffmpeg \
 	-i "$(yt-dlp --get-url "$url")" \

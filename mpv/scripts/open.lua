@@ -11,9 +11,7 @@ function open_finder()
 		name = "subprocess",
 		args = { "open", dir },
 		playback_only = false,
-	}, function()
-		mp.osd_message(dir)
-	end)
+	})
 end
 
 function open_wezterm()
@@ -23,9 +21,7 @@ function open_wezterm()
 		name = "subprocess",
 		args = { "/opt/homebrew/bin/wezterm", "cli", "spawn", "--cwd", dir },
 		playback_only = false,
-	}, function()
-		mp.osd_message(dir)
-	end)
+	})
 end
 
 mp.add_key_binding("alt+=", "openinfinder", open_finder)

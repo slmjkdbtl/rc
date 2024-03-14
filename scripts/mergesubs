@@ -1,0 +1,34 @@
+#!/bin/sh
+# merge subtitles into video
+
+src="$1"
+
+if [ -z "$src" ]; then
+	echo "please specify file name"
+	exit 1
+fi
+
+ext="${src##*.}"
+name=$(basename "$src" ".$ext")
+dest="$name.subbed.$ext"
+i=0
+
+set --
+
+for f in "$name".*.srt; do
+	set -- "$@" "-i" "$f"
+done
+
+for f in "$name".*.srt; do
+	lang=$(echo "$f" | sed "s/$name.\([^\.]*\).srt/\1/")
+	set -- "$@" "-map" "$((i + 1))" "-metadata:s:s:$i" "language=$lang"
+	i=$((i + 1))
+done
+
+ffmpeg \
+	-i "$src" \
+	"$@" \
+	-map 0 \
+	-c copy \
+	-c:s mov_text \
+	"$dest"

@@ -101,7 +101,6 @@ zplug() {
 }
 
 zplug add "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
-zplug add "zsh-users/zsh-completions" "zsh-completions.plugin.zsh"
 zplug add "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
 zplug add "hlissner/zsh-autopair" "autopair.zsh"
 
