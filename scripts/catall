@@ -1,0 +1,15 @@
+#!/bin/sh
+# cat multiple files
+
+files="*"
+
+if [ -n "$1" ]; then
+	files="$*"
+fi
+
+for f in $files; do
+	echo "$f"
+	echo "-------"
+	cat "$f"
+	echo ""
+done
