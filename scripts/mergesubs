@@ -8,6 +8,13 @@ if [ -z "$src" ]; then
 	exit 1
 fi
 
+if [ ! -f "$src" ]; then
+	echo "file doesn't exist"
+	exit 1
+fi
+
+dir=$(dirname "$src")
+cd "$dir" || exit
 ext="${src##*.}"
 name=$(basename "$src" ".$ext")
 dest="$name.subbed.$ext"
@@ -26,6 +33,7 @@ for f in "$name".*.srt; do
 done
 
 ffmpeg \
+	-hide_banner \
 	-i "$src" \
 	"$@" \
 	-map 0 \

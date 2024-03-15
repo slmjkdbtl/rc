@@ -73,6 +73,7 @@ while [ -n "$1" ]; do
 done
 
 ffmpeg \
+	-hide_banner \
 	-i "$src" \
 	-vf "fps=$fps,scale=$size:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
 	-loop 0 \

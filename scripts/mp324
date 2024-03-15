@@ -22,6 +22,7 @@ if [ -z "$out" ]; then
 fi
 
 ffmpeg \
+	-hide_banner \
 	-loop 1 \
 	-i "$img" \
 	-i "$audio" \

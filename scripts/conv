@@ -22,5 +22,5 @@ if [ -z "$from" ] || [ -z "$to" ]; then
 fi
 
 for file in *."$from"; do
-	ffmpeg -i "$file" "$(basename "$file" ".$from").$to"
+	ffmpeg -hide_banner -i "$file" "$(basename "$file" ".$from").$to"
 done

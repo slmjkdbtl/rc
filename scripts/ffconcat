@@ -8,5 +8,11 @@ for file in "$@"; do
 	echo file \'$file\' >> .ffconcat.txt
 done
 
-ffmpeg -f concat -safe 0 -i .ffconcat.txt -c copy "ffconcat.$ext"
+ffmpeg \
+	-hide_banner \
+	-i .ffconcat.txt \
+	-f concat \
+	-safe 0 \
+	-c copy \
+	"ffconcat.$ext"
 rm .ffconcat.txt

@@ -1,4 +1,5 @@
 #!/bin/sh
+# backup stuff
 
 help() {
 	echo "Backup stuff"
@@ -43,11 +44,12 @@ sync() {
 sync ~/Music/Media.localized/Music/ "${dest}music/"
 sync ~/files/img/                   "${dest}img/"
 sync ~/files/videos/                "${dest}videos/"
-sync ~/files/.important/            "${dest}porn/"
+sync ~/files/.porn/                 "${dest}porn/"
 sync ~/files/fonts/                 "${dest}fonts/"
 sync ~/files/film/                  "${dest}film/"
 sync ~/files/tv/                    "${dest}tv/"
 sync ~/files/games/                 "${dest}games/"
 sync ~/files/lists/                 "${dest}lists/"
+sync ~/files/journal/               "${dest}journal/"
 sync ~/files/license/               "${dest}license/"
 sync ~/files/os/                    "${dest}os/"

@@ -9,6 +9,7 @@ out=$3
 [ -z "$out" ] && out="frame.jpg"
 
 ffmpeg \
+	-hide_banner \
 	-i "$(yt-dlp --get-url "$url")" \
 	-ss "$time" \
 	-vframes 1 \
