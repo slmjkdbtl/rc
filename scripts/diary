@@ -1,0 +1,8 @@
+#!/bin/sh
+# write diary
+
+year=$(date +%Y)
+month=$(date +%m)
+date=$(date +%d)
+
+$EDITOR "$HOME/files/diary/$year/$month/$date.txt"

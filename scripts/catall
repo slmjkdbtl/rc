@@ -1,15 +1,24 @@
 #!/bin/sh
-# cat multiple files
+# recursively cat all files
 
-files="*"
+catdir() {
+	for f in *; do
+		name="$f"
+		if [ -n "$1" ]; then
+			name="$1/$f"
+		fi
+		if [ -d "$f" ]; then
+			(
+				cd "$f" || exit
+				catdir "$name"
+			)
+		elif [ -f "$f" ]; then
+			echo "$name"
+			echo "-------"
+			cat "$f"
+			echo ""
+		fi
+	done
+}
 
-if [ -n "$1" ]; then
-	files="$*"
-fi
-
-for f in $files; do
-	echo "$f"
-	echo "-------"
-	cat "$f"
-	echo ""
-done
+catdir

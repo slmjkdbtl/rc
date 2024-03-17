@@ -471,9 +471,6 @@ nno <silent> <m-g> :Rg<cr>
 
 " bind all pair keys
 call pair#bind()
-ino <silent><expr> <space> pair#space()
-ino <silent><expr> <bs> pair#del()
-ino <silent><expr> <return> pumvisible() ? "\<c-y>" : pair#newline()
 
 " file type detection
 au BufRead,BufNewFile *.h        set ft=c

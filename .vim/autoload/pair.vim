@@ -19,8 +19,8 @@ func! pair#pair(ch1, ch2)
 	let line = getline('.')
 	let pos = col('.') - 1
 
-	if a:ch1 ==# "'"
-		if line[pos - 1] =~# '\w' || line[pos - 1] ==# "'"
+	if a:ch1 ==# "'" || a:ch1 ==# "\""
+		if line[pos - 1] =~# '\w' || line[pos - 1] ==# "'" || line[pos - 1] ==# "\""
 			return a:ch1
 		endif
 	endif
@@ -72,4 +72,7 @@ func! pair#bind()
 		exec 'ino <silent> ' . p[0] . " <c-r>=pair#pair('" . ech1 . "', '" . ech2 . "')<cr>"
 		exec 'vno <silent> ' . p[0] . ' <esc>`<i' . p[0] . '<esc>`>a<right>' . p[1] . '<esc>'
 	endfor
+	ino <silent><expr> <space> pair#space()
+	ino <silent><expr> <bs> pair#del()
+	ino <silent><expr> <return> pumvisible() ? "\<c-y>" : pair#newline()
 endfunc
