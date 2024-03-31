@@ -272,6 +272,7 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'jdonaldson/vaxe'
 Plug 'jparise/vim-graphql'
 Plug 'karolbelina/uxntal.vim'
+Plug 'Raku/vim-raku'
 
 " keybinds
 call keys#unmap()

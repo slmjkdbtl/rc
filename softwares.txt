@@ -9,6 +9,15 @@ CLI
   brew
     https://brew.sh/
 
+  curl
+    https://curl.se/
+
+  trurl
+    https://curl.se/trurl/
+
+  ffmpeg
+    https://ffmpeg.org/
+
   z
     https://github.com/rupa/z/
 
@@ -20,9 +29,6 @@ CLI
 
   fd
     https://github.com/sharkdp/fd/
-
-  ffmpeg
-    https://ffmpeg.org/
 
   scc
     https://github.com/boyter/scc/
@@ -47,9 +53,6 @@ CLI
 
   yt-dlp
     https://github.com/yt-dlp/yt-dlp/
-
-  instaloader
-    https://instaloader.github.io/
 
   skhd
     https://github.com/koekeishiya/skhd/
@@ -120,11 +123,14 @@ CLI
   git2html
     http://www.chriswarbo.net/git/git2html/git/
 
+  fonttools
+    https://github.com/fonttools/fonttools/
+
   upx
     https://github.com/upx/upx/
 
-  entr
-    http://entrproject.org/
+  fswatch
+    https://emcrisostomo.github.io/fswatch/
 
   cmus
     https://cmus.github.io/
@@ -219,6 +225,9 @@ CLI
   qrencode
     https://fukuchi.org/works/qrencode/index.html.en
 
+  zbar
+    https://github.com/mchehab/zbar/
+
   tldr
     http://tldr.sh/
 
@@ -269,6 +278,10 @@ CLI
 
   certbot
     https://certbot.eff.org/
+
+  instaloader
+    https://instaloader.github.io/
+
 
 GUI
 
@@ -584,6 +597,9 @@ CHROME EXTENSIONS
   Control Panel for YouTube
     https://jbscript.dev/control-panel-for-youtube
 
+  SingleFile
+    https://github.com/gildas-lormeau/SingleFile
+
   Archive Page
     https://chrome.google.com/webstore/detail/archive-page/gcaimhkfmliahedmeklebabdgagipbia
 
@@ -852,3 +868,6 @@ Self Host
 
   netdata
     https://github.com/netdata/netdata/
+
+  ArchiveBox
+    https://archivebox.io/

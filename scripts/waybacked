@@ -1,0 +1,14 @@
+#!/bin/sh
+# get closest archived url for a site
+
+url="$1"
+timestamp="$2"
+
+if [ -z "$url" ]; then
+	echo "please specify url"
+	exit 1
+fi
+
+# https://archive.org/help/wayback_api.php
+timestamp=$(curl -s "http://archive.org/wayback/available?url=${url}&timestamp=${timestamp}" | jq -r ".archived_snapshots .closest .timestamp")
+echo "https://web.archive.org/web/${timestamp}if_/${url}"

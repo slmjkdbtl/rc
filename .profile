@@ -1,4 +1,3 @@
-export TLDR_AUTO_UPDATE_DISABLED=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 exists() { command -v "$1" > /dev/null 2>&1; }
@@ -30,9 +29,8 @@ alias o="open"
 alias f="open ."
 alias lsize="du -chs * .* | sort -h"
 alias disk="df -h ."
-alias ase="/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias uptext="curl -F 'f:1=<-' ix.io"
-alias extip="curl ifconfig.co"
+alias ip="curl ifconfig.co"
 alias playraw="ffplay -ar 8000 -ac 1 -f u8 -nodisp -"
 alias weather="curl 'wttr.in?m'"
 alias dnsflush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
@@ -60,6 +58,8 @@ alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume output volume 100'"
 alias reload='exec $SHELL -l'
 alias path='echo -e ${PATH//:/\\n}'
+alias ase="/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
 ytdlp_args="--external-downloader aria2c --external-downloader-args '-x 16 -s 16 -k 1M' --cookies ~/files/cookies.txt"
 alias ydl="yt-dlp --format mp4 -o '%(title)s.%(ext)s' -i --no-playlist $ytdlp_args"
@@ -76,7 +76,5 @@ localip() {
 		hostname -I
 	fi
 }
-
-upfile() { curl -F "file=@$1" https://0x0.st; }
 
 PS1='\n\u@\H\n\w\n$ '

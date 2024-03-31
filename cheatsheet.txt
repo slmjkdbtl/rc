@@ -186,3 +186,7 @@ run TempleOS with qemu
       -drive file=temple \
       -cdrom TempleOS.ISO \
       -boot order=d
+
+watch star wars
+
+  $ telnet towel.blinkenlights.nl
