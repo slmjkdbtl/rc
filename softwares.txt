@@ -39,6 +39,9 @@ CLI
   bun
     https://bun.sh/
 
+  wrangler
+    https://github.com/cloudflare/workers-sdk/
+
   emscripten
     https://emscripten.org/
 
@@ -303,6 +306,9 @@ GUI
   Mullvad VPN
     https://mullvad.net/
 
+  CloudFlare Warp
+    https://cloudflarewarp.com/
+
   Arc
     https://arc.net/
 
@@ -458,6 +464,9 @@ GUI
 
   HexFiend
     http://ridiculousfish.com/hexfiend/
+
+  Fetch
+    https://fetchsoftworks.com/fetch/
 
   NetEase Music
     https://music.163.com/

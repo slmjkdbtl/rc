@@ -19,6 +19,7 @@ preexec() {
 	echo -n "\e]0;${(z)1}\a"
 }
 
+setopt CSH_NULL_GLOB
 setopt PROMPT_SUBST
 PROMPT=$'\n\x1b[2m%n@%M\x1b[0m\n%B\x1b[34m%~\x1b[0m%b \x1b[2m${prompt_git_info}\x1b[0m\n$ '
 WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
