@@ -3,4 +3,6 @@
 
 file="$1"
 url=$(curl -sF "file=@$file" https://0x0.st)
-echo "https://lens.google.com/uploadbyurl?url=$url"
+if [ -n "$url" ]; then
+	echo "https://lens.google.com/uploadbyurl?url=$url"
+fi

@@ -11,4 +11,8 @@ fi
 
 # https://archive.org/help/wayback_api.php
 timestamp=$(curl -s "http://archive.org/wayback/available?url=${url}&timestamp=${timestamp}" | jq -r ".archived_snapshots .closest .timestamp")
+if [ "$timestamp" = "null" ]; then
+	echo "not found"
+	exit 1
+fi
 echo "https://web.archive.org/web/${timestamp}if_/${url}"

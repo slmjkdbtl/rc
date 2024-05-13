@@ -12,7 +12,7 @@ catdir() {
 				cd "$f" || exit
 				catdir "$name"
 			)
-		elif [ -f "$f" ]; then
+		elif [ -s "$f" ]; then
 			echo "$name"
 			echo "-------"
 			cat "$f"

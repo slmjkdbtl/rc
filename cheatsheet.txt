@@ -72,6 +72,10 @@ ffmpeg remove the second audio track
 
   $ ffmpeg -i input.mp4 -map 0 -map -0:a:1 -c copy output.mp4
 
+ffmpeg keep first video track, second audio track and all subtitles
+
+  $ -map 0:v:0 -map 0:a:1 -map 0:s
+
 ffmpeg add audio to image generate video
 
   $ ffmpeg -loop 1 -i input.jpg -i input.mp3 -c:v libx264 -c:a aac -b:a 256k -preset veryslow -tune stillimage -vf scale=600:600 -shortest -strict experimental -shortest "$out"

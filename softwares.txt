@@ -30,6 +30,9 @@ CLI
   fd
     https://github.com/sharkdp/fd/
 
+  procs
+    https://github.com/dalance/procs/
+
   scc
     https://github.com/boyter/scc/
 
@@ -416,6 +419,9 @@ GUI
 
   MuseScore
     https://musescore.org/
+
+  Kiwix
+    https://kiwix.org/
 
   Google Earth
     https://www.google.com/earth/
@@ -880,3 +886,9 @@ Self Host
 
   ArchiveBox
     https://archivebox.io/
+
+  OpenGist
+    https://github.com/thomiceli/opengist
+
+  Strapi
+    https://strapi.io/

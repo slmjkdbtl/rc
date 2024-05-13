@@ -6,32 +6,16 @@ $ adduser tga
 # add sudo priviliedge to user
 $ usermod -aG sudo tga
 
-# gen & send key on client
-$ ssh-keygen -t rsa
-$ ssh-copy-id -i ~/.ssh/id_rsa.pub tga@host
+# copy ssh key to user
+$ rsync --archive --chown=tga:tga ~/.ssh /home/tga
 
 # change to user
 $ su - tga
 
-# change to sudo mode
-$ sudo -s
-
 # install packages
-$ apt update
-$ apt install -y vim make git unzip sqlite3
-
-# install bun
-$ curl -fsSL https://bun.sh/install | bash
-
-# install caddy
-$ apt install -y debian-keyring debian-archive-keyring apt-transport-https
-$ curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
-$ curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list
-$ apt update
-$ apt install -y caddy
-
-# start caddy
-$ systemctl enable --now caddy
+$ sudo apt update
+$ sudo apt upgrade
+$ sudo apt install -y zsh vim make git unzip sqlite3
 
 # clone this repo
 $ git clone https://github.com/slmjkdbtl/rc
@@ -39,11 +23,23 @@ $ git clone https://github.com/slmjkdbtl/rc
 # init config
 $ cd rc && make
 
-# add public ssh key
-$ vim .ssh/authorized_keys
-
 # change default shell
-$ chsh -s /usr/sh
+$ sudo chsh -s /usr/bin/zsh
+$ zsh
+$ zplug install
+
+# install bun
+$ curl -fsSL https://bun.sh/install | bash
+
+# install caddy
+$ sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
+$ curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+$ curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+$ sudo apt update
+$ sudo apt install -y caddy
+
+# start caddy
+$ systemctl enable --now caddy
 
 # reload systemd configs files
 $ systemctl daemon-reload
@@ -68,7 +64,6 @@ $ systemctl status caddy
 
 # view log
 journalctl -qu space55.xyz
-```
 
 # /etc/systemd/system/space55.xyz.service
 [Unit]
@@ -81,7 +76,7 @@ User=tga
 Environment="PORT=4000"
 WorkingDirectory=/home/tga/space55.xyz
 StandardError=append:/home/tga/space55.xyz/data/err.log
-ExecStart=/home/tga/.bun/bin/bun main.js
+ExecStart=/home/tga/.bun/bin/bun main.ts
 Restart=always
 StandardOutput=journal
 StandardError=journal

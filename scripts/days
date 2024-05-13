@@ -5,6 +5,6 @@ year=$(date +%Y)
 month=$(date +%m)
 date=$(date +%d)
 
-dir="$HOME/dev/space55.xyz/public/files/days/$year/$month"
+dir="$HOME/dev/space55.xyz/files/days/$year/$month"
 mkdir -p "$dir"
 $EDITOR "$dir/$date.txt"
