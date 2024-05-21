@@ -16,6 +16,7 @@ if exists python3; then
 fi
 
 export EDITOR="vim"
+export SYSTEMD_EDITOR="vim"
 export BROWSER="open"
 export PAGER="less"
 

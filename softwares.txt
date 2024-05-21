@@ -288,6 +288,9 @@ CLI
   instaloader
     https://instaloader.github.io/
 
+  mednafen
+    https://mednafen.github.io/
+
 
 GUI
 
@@ -320,6 +323,9 @@ GUI
 
   ImageOptim
     https://imageoptim.com/mac/
+
+  Whisky
+    https://getwhisky.app/
 
   Transmit
     https://panic.com/transmit/
@@ -422,6 +428,9 @@ GUI
 
   Kiwix
     https://kiwix.org/
+
+  AutoClicker
+    https://github.com/othyn/macos-auto-clicker
 
   Google Earth
     https://www.google.com/earth/
@@ -887,8 +896,19 @@ Self Host
   ArchiveBox
     https://archivebox.io/
 
+  Ladder
+    https://github.com/everywall/ladder
+
   OpenGist
     https://github.com/thomiceli/opengist
 
-  Strapi
-    https://strapi.io/
+  Directus
+    https://directus.io/
+
+DATA
+
+  Yu-Gi-Oh!
+    https://db.ygoprodeck.com/api-guide-v2/
+
+  Pokemon
+    https://pokeapi.co/
