@@ -130,7 +130,7 @@ curl don't print progress and error
 
 curl send data as multipart/form-data
 
-  $ curl -F "file=@$test.png" https://0x0.st)
+  $ curl -F "file=@$test.png" https://0x0.st
 
 flush dns cache
 

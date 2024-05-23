@@ -101,6 +101,10 @@ func! s:filetype()
 
 endfunc
 
+func! s:wordcount()
+	return '%#StatusLineFT#' . wordcount().words
+endfunc
+
 func! s:curpos()
 	return '%#StatusLineCursor# %l:%c %#StatusLine#'
 endfunc
@@ -118,6 +122,14 @@ func! statline#get()
 
 	let line .= ' '
 	let line .= s:filetype()
+
+	let ft = getbufvar('%', '&filetype')
+
+	if ft ==# 'text'
+		let line .= ' '
+		let line .= s:wordcount()
+	endif
+
 	let line .= ' '
 	let line .= s:curpos()
 
