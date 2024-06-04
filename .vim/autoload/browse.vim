@@ -59,6 +59,7 @@ func! s:open(dir)
 	map <buffer><silent> <return> :call <sid>enter()<cr>
 	map <buffer><silent> <bs>     :call <sid>back()<cr>
 	map <buffer><silent> y        :call <sid>copypath()<cr>
+	map <buffer><silent> <m-c>    :call <sid>copy()<cr>
 	map <buffer><silent> r        :call <sid>refresh()<cr>
 	map <buffer><silent> <m-m>    :call <sid>mkdir()<cr>
 	map <buffer><silent> <m-r>    :call <sid>rename()<cr>
@@ -256,6 +257,10 @@ func! s:copypath()
 	echo item
 endfunc
 
+func! s:copy()
+	" TODO
+endfunc
+
 func! s:mkdir()
 	let name = input('mkdir: ')
 	call system('mkdir ' . name)
@@ -274,13 +279,16 @@ func! s:rename()
 
 	let item = s:getcur()
 	let name = input('rename ' . fnamemodify(item, ':t') . ' to: ')
+
 	if empty(name)
 		return
 	endif
+
 	let path = fnamemodify(item, ':h') . '/' . name
 	call system('mv ' . item . ' ' . path)
 	call s:refresh()
 	call s:toitem(path)
+
 endfunc
 
 func! s:delete()
@@ -341,6 +349,7 @@ endfunc
 func! s:bulk_rename()
 
 	if empty(b:marked)
+		" TODO: edit all file names in buffer like oil.nvim
 		return
 	endif
 

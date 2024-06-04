@@ -830,8 +830,11 @@ SITES
   Discogs
     https://www.discogs.com/
 
-  VGCollect
-    https://vgcollect.com/
+  MusicBrainz
+    https://musicbrainz.org/
+
+  MobyGames
+    https://www.mobygames.com/
 
   VG Resource
     https://www.vg-resource.com/
@@ -904,6 +907,13 @@ Self Host
 
   Directus
     https://directus.io/
+
+
+PLUGINS
+
+  sforzando
+    https://www.plogue.com/products/sforzando.html
+
 
 DATA
 

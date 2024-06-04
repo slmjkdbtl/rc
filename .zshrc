@@ -72,7 +72,7 @@ zplug() {
 			fi
 			unset name
 		;;
-		"install")
+		"install"|"update")
 			mkdir -p "$ZSH_PLUGIN_DIR"
 			for plug in $(split "$zsh_plugins" "$zsh_plugins_delim"); do
 				name=$(getn "$plug" "/" 2)
@@ -94,7 +94,6 @@ zplug() {
 			unset plug
 		;;
 		*)
-			echo "zplug add <repo> <file>"
 			echo "zplug install"
 			echo "zplug ls"
 		;;

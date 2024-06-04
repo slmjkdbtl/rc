@@ -1,0 +1,28 @@
+#!/bin/sh
+
+bin="$1"
+mkdir "$bin.app"
+mkdir -p "$bin.app/Contents/MacOS"
+mkdir -p "$bin.app/Contents/Resources"
+cp "$bin" "$bin.app/Contents/MacOS"
+
+plist="
+<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleName</key>
+	<string>$bin</string>
+	<key>CFBundleIdentifier</key>
+	<string>xyz.space55.$bin</string>
+	<key>CFBundleExecutable</key>
+	<string>$bin</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+</dict>
+</plist>
+"
+
+echo "$plist" > "$bin.app/Contents/Info.plist"

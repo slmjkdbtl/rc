@@ -46,9 +46,7 @@ func! s:path()
 	if mode() ==# 't'
 		let text = ''
 	else
-
 		let path = fnamemodify(name, ':p')
-
 		if filereadable(path) || isdirectory(path)
 			if path[-1:-1] == '/'
 				let path = path[0:-2]
@@ -57,14 +55,14 @@ func! s:path()
 		else
 			let text = fnamemodify(path, ':h')
 		endif
-
 		let text = substitute(text, $HOME, '~', '')
-
 	end
 
 	if getbufvar('%', '&modified')
 		let text .= ' [*]'
 	endif
+
+	let text .= '%#StatusLine#'
 
 	return text
 
@@ -81,6 +79,7 @@ func! s:update_branch()
 		if v:shell_error != 0
 			let s:branch .= '*'
 		endif
+		let s:branch .= '%#StatusLine#'
 	else
 		let s:branch = ''
 	endif
@@ -90,6 +89,7 @@ func! s:filetype()
 
 	let ft = getbufvar('%', '&filetype')
 	let text = ''
+	let text .= '%#StatusLineFT#'
 
 	if ft ==# ''
 		let text .= '[*]'
@@ -97,12 +97,14 @@ func! s:filetype()
 		let text .= '[' . ft . ']'
 	endif
 
-	return '%#StatusLineFT#' . text
+	let text .= '%#StatusLine#'
+
+	return text
 
 endfunc
 
 func! s:wordcount()
-	return '%#StatusLineFT#' . wordcount().words
+	return '%#StatusLineWC#' . wordcount().words . 'w' . '%#StatusLine#'
 endfunc
 
 func! s:curpos()
