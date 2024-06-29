@@ -38,6 +38,7 @@ sync() {
 		--track-renames \
 		--human-readable \
 		--delete-during \
+		--copy-links \
 		$flags
 }
 

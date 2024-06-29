@@ -22,7 +22,7 @@ function fetch(url) {
 	})
 }
 
-async function update() {
+async function updateDB() {
 	console.log("fetching card info...")
 	const content = await fetch(API_URL)
 	fs.mkdirSync(DIR, { recursive: true })
@@ -31,7 +31,7 @@ async function update() {
 
 async function getCards() {
 	if (!fs.existsSync(DATA_FILE)) {
-		await update()
+		await updateDB()
 	}
 	const data = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"))
 	return data.data
@@ -82,7 +82,7 @@ const cmds = {
 		desc: "Fetch newest card data from server and download card images",
 		// TODO: remove unused images
 		action: async () => {
-			await update()
+			await updateDB()
 			fs.mkdirSync(IMG_DIR, { recursive: true })
 			const cards = await getCards()
 			const existing = new Set(fs

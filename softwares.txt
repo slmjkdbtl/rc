@@ -102,6 +102,9 @@ CLI
   stagit
     https://git.codemadness.org/stagit/
 
+  rename
+    http://plasmasturm.org/code/rename/
+
   shellcheck
     https://www.shellcheck.net/
 
@@ -191,6 +194,9 @@ CLI
 
   catimg
     https://github.com/posva/catimg/
+
+  lsix
+    https://github.com/hackerb9/lsix/
 
   croc
     https://schollz.com/software/croc6/
@@ -293,6 +299,9 @@ CLI
 
 
 GUI
+
+  Ball
+    https://github.com/nate-parrott/ball/
 
   Soulseek
     http://www.slsknet.org/
