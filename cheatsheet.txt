@@ -30,6 +30,10 @@ ffmpeg reverse video
 
   $ ffmpeg -i input.mp4 -vf reverse -af areverse output.mp4
 
+ffmpeg make h264 video playable on apple devices
+
+  $ ffmpeg -i input.mp4 -pix_fmt yuv420p output.mp4
+
 ffmpeg embed soft subtitle
 
   $ ffmpeg -i input.mp4 -i sub.srt -c copy -c:s mov_text -metadata:s:s:0 language=eng output.mp4
@@ -79,6 +83,11 @@ ffmpeg keep first video track, second audio track and all subtitles
 ffmpeg add audio to image generate video
 
   $ ffmpeg -loop 1 -i input.jpg -i input.mp3 -c:v libx264 -c:a aac -b:a 256k -preset veryslow -tune stillimage -vf scale=600:600 -shortest -strict experimental -shortest "$out"
+
+ffmpeg image conversion
+
+  $ ffmpeg -i img.png img.webp
+  $ ffmpeg -i img.png -q:v 80 img.webp
 
 ffmpeg set id3tag
 
@@ -194,3 +203,14 @@ run TempleOS with qemu
 watch star wars
 
   $ telnet towel.blinkenlights.nl
+
+rename all files to number
+
+  $ rename -X -e '$_ = "$N"' *
+  $ rename -N ...03 -X -e '$_ = "File-$N"' *
+
+loop over number
+
+  $ for i in $(seq 1 10); do
+      echo $i
+    done

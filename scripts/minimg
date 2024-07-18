@@ -1,7 +1,8 @@
 #!/bin/sh
 # compress an image
 
-# TODO: --loseless
+# TODO: -l --lossy
+# TODO: -r --recursive
 # TODO: --output
 
 help() {
@@ -13,30 +14,96 @@ help() {
 	echo "EXAMPLE"
 	echo "  $ minimg yoshi.png"
 	echo "  $ minimg fish.jpg"
+	echo "  $ minimg --lossy fish.jpg"
+	echo "  $ minimg --recursive ."
 }
 
-path="$1"
+die() {
+	echo "$1" >&2
+	exit 1
+}
 
-if [ -z "$path" ]; then
+ntharg() {
+	shift "$1"
+	echo "$1"
+}
+
+if [ -z "$1" ]; then
 	help
 	exit 1
 fi
 
+path=$(ntharg $# "$@")
+lossy=0
+recursive=0
+quality=80
+
 if [ ! -e "$path" ]; then
-	echo "file not found"
-	exit 1
+	die "file not found"
 fi
 
-ext=$(echo "${path##*.}" | tr '[:upper:]' '[:lower:]')
+while [ -n "$1" ]; do
+	case $1 in
+		-r|--recursive)
+			recursive=1
+		;;
+		-l|--lossy)
+			lossy=1
+		;;
+		-q|--quality)
+			if [ -n "$2" ]; then
+				lossy=1
+				quality=$2
+				shift
+			else
+				die "-q / --quality requires argument"
+			fi
+		;;
+		--)
+			shift
+			break
+		;;
+		-?*)
+			die "unknown option: $1"
+		;;
+	esac
+	shift
+done
 
-case "$ext" in
-	"jpg"|"jpeg")
-		jpegoptim -m 80 "$path"
-	;;
-	"png")
-		pngquant --ext .png -f "$path"
-	;;
-	*)
-		echo "unsupported file type: \"$ext\""
-	;;
-esac
+compress() {
+	ext=$(echo "${1##*.}" | tr '[:upper:]' '[:lower:]')
+	case "$ext" in
+		"jpg"|"jpeg")
+			if [ $lossy = 1 ]; then
+				jpegoptim -m "$quality" "$1"
+			else
+				jpegoptim "$1"
+			fi
+		;;
+		"png")
+			if [ $lossy = 1 ]; then
+				pngquant --quality "$quality" --ext .png -f "$1"
+			else
+				oxipng "$1"
+			fi
+		;;
+		*)
+			echo "unsupported file type: \"$ext\""
+		;;
+	esac
+}
+
+if [ -d "$path" ]; then
+	if [ $recursive = 1 ]; then
+		files=$(find "$path")
+		for f in $files; do
+			compress "$f"
+		done
+	else
+		for f in "$path"/*; do
+			compress "$f"
+		done
+	fi
+elif [ -f "$path" ]; then
+	compress "$path"
+fi

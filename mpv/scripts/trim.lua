@@ -40,6 +40,7 @@ function cut(p1, p2)
 			"-i", src_path,
 			"-ss", t1,
 			"-to", t2,
+			"-avoid_negative_ts", "make_zero",
 			"-c", "copy",
 			"-y",
 			out_path

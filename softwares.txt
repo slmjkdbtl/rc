@@ -252,6 +252,9 @@ CLI
   fluidsynth
     http://www.fluidsynth.org/
 
+  timidity
+    https://timidity.sourceforge.net/
+
   figlet
     http://www.figlet.org/
 
@@ -344,6 +347,9 @@ GUI
 
   Glyphs
     https://glyphsapp.com/
+
+  RoboFont
+    https://robofont.com/
 
   PICO-8
     https://www.lexaloffle.com/pico-8.php
@@ -848,6 +854,9 @@ SITES
   VG Resource
     https://www.vg-resource.com/
 
+  MyAnimeList
+    https://myanimelist.net/
+
   WhoSampled
     https://www.whosampled.com/
 
@@ -923,6 +932,11 @@ PLUGINS
   sforzando
     https://www.plogue.com/products/sforzando.html
 
+
+BLENDER ADDON
+
+  Sprytile
+    https://jeiel.itch.io/sprytile
 
 DATA
 

@@ -159,7 +159,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyword</key>
-			<string>wayback</string>
+			<string>wb</string>
 			<key>text</key>
 			<string>Check Wayback Machine for '{query}'</string>
 			<key>url</key>

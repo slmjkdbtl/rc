@@ -3,44 +3,56 @@
 import * as path from "path"
 import * as readline from "node:readline/promises"
 
-const places = [
+async function update(paths) {
+
+	const contents = {}
+	let newestFile = null
+	const pathsToWrite = []
+
+	for (const p of paths) {
+		const f = Bun.file(p)
+		contents[p] = await f.text()
+		if (!newestFile || (f.lastModified > newestFile.lastModified)) {
+			newestFile = {
+				path: p,
+				lastModified: f.lastModified,
+			}
+		}
+	}
+
+	for (const p of paths) {
+		if (contents[p] !== contents[newestFile]) {
+			pathsToWrite.push(p)
+		}
+	}
+
+	const rl = readline.createInterface({
+		input: process.stdin,
+		output: process.stdout,
+	})
+
+	const answer = await rl.question(`Sync to ${newestFile.path}? (y/N) `)
+
+	rl.close()
+
+	if (answer !== "y") {
+		return
+	}
+
+	const content = contents[newestFile.path]
+
+	for (const p of pathsToWrite) {
+		console.log("updating ", p)
+		Bun.write(p, content)
+	}
+
+}
+
+await update([
 	"/Users/tga/dev/space55.xyz/www.ts",
 	"/Users/tga/dev/coilsprite.com/www.ts",
 	"/Users/tga/dev/davidmurray.xyz/www.ts",
 	"/Users/tga/dev/shrooom.net/www.ts",
 	"/Users/tga/dev/fff/www.ts",
 	"/Users/tga/dev/www/www.ts",
-]
-
-let lastFile = null
-
-for (const p of places) {
-	const f = Bun.file(p)
-	if (lastFile) {
-		if (f.lastModified > lastFile.lastModified) {
-			lastFile = f
-		}
-	} else {
-		lastFile = f
-	}
-}
-
-const rl = readline.createInterface({
-	input: process.stdin,
-	output: process.stdout,
-})
-
-const answer = await rl.question(`Sync to ${lastFile.name}? (y/N) `)
-
-rl.close()
-
-if (answer !== "y") {
-	process.exit()
-}
-
-const content = await lastFile.text()
-
-for (const p of places) {
-	console.log("updating ", p)
-	Bun.write(p, content)
-}
+])
