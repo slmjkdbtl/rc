@@ -1,9 +1,25 @@
 #!/bin/sh
-# get id3tags with ffmpeg
+# get id3 tags with ffmpeg
+
+help() {
+	echo "Get id3 tags"
+	echo ""
+	echo "USAGE"
+	echo "    $ id3 test.mp3"
+	echo "    $ id3 artist test.mp3"
+	echo "    $ id3 year test.mp3"
+}
+
+if [ $# = 1 ]; then
+	file=$1
+elif [ $# = 2 ]; then
+	tag=$1
+	file=$2
+fi
 
 # https://gist.github.com/eyecatchup/0757b3d8b989fe433979db2ea7d95a01
 # https://askubuntu.com/a/1284775/1543361
-ffinfo=$(ffprobe -hide_banner -i "$1" 2>&1 | sed -n '/Duration:/q;p')
+ffinfo=$(ffprobe -hide_banner -i "$file" 2>&1 | sed -n '/Duration:/q;p')
 
 gettag() {
 	echo "$ffinfo" \
@@ -39,12 +55,12 @@ printall() {
 	[ -n "$comment" ] && echo "comment: $comment"
 }
 
-if [ -z "$2" ]; then
+if [ -z "$tag" ]; then
 	printall
 	exit
 fi
 
-case $2 in
+case $tag in
 	title)        echo "$title" ;;
 	album)        echo "$album" ;;
 	artist)       echo "$artist" ;;

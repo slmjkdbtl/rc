@@ -1,20 +1,23 @@
 #!/bin/sh
-# compress an image
-
-# TODO: -l --lossy
-# TODO: -r --recursive
-# TODO: --output
+# compress image
 
 help() {
 	echo "Compress jpeg / png image file"
 	echo ""
 	echo "USAGE"
-	echo "  $ minimg <file>"
+	echo "  $ minimg [options] <file>"
+	echo ""
+	echo "OPTIONS"
+	echo "  -l, --lossy       enable lossy compression (default lossless)"
+	echo "  -q, --quality     define quality of lossy compression"
+	echo "  -r, --recursive   recursively compress all images in directory"
+	echo "  -o, --output      output file name"
 	echo ""
 	echo "EXAMPLE"
 	echo "  $ minimg yoshi.png"
 	echo "  $ minimg fish.jpg"
 	echo "  $ minimg --lossy fish.jpg"
+	echo "  $ minimg --lossy --quality 70 fish.jpg"
 	echo "  $ minimg --recursive ."
 }
 
@@ -37,6 +40,7 @@ path=$(ntharg $# "$@")
 lossy=0
 recursive=0
 quality=80
+output=
 
 if [ ! -e "$path" ]; then
 	die "file not found"
@@ -59,6 +63,14 @@ while [ -n "$1" ]; do
 				die "-q / --quality requires argument"
 			fi
 		;;
+		-o|--output)
+			if [ -n "$2" ]; then
+				output=$2
+				shift
+			else
+				die "-o / --output requires argument"
+			fi
+		;;
 		--)
 			shift
 			break
@@ -70,7 +82,11 @@ while [ -n "$1" ]; do
 	shift
 done
 
+# TODO: deal with --output
 compress() {
+	if [ ! -f "$1" ]; then
+		return
+	fi
 	ext=$(echo "${1##*.}" | tr '[:upper:]' '[:lower:]')
 	case "$ext" in
 		"jpg"|"jpeg")
@@ -94,6 +110,7 @@ compress() {
 }
 
 if [ -d "$path" ]; then
+	output=
 	if [ $recursive = 1 ]; then
 		files=$(find "$path")
 		for f in $files; do

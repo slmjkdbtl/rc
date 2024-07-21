@@ -11,7 +11,7 @@ help() {
 
 case "$1" in
 	"cloud")
-		dest="dropbox:"
+		dest="mega:"
 		flags="--tpslimit 12 --tpslimit-burst 0"
 	;;
 	"drive")
@@ -44,12 +44,13 @@ sync() {
 
 sync ~/Music/Media.localized/Music/ "${dest}music/"
 sync ~/files/img/                   "${dest}img/"
+sync ~/files/film/                  "${dest}film/"
 sync ~/files/videos/                "${dest}videos/"
+sync ~/files/tv/                    "${dest}tv/"
 sync ~/files/.porn/                 "${dest}porn/"
 sync ~/files/fonts/                 "${dest}fonts/"
-sync ~/files/film/                  "${dest}film/"
-sync ~/files/tv/                    "${dest}tv/"
 sync ~/files/games/                 "${dest}games/"
+sync ~/files/books/                 "${dest}books/"
 sync ~/files/lists/                 "${dest}lists/"
 sync ~/files/license/               "${dest}license/"
 sync ~/files/os/                    "${dest}os/"

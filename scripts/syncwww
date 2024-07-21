@@ -3,7 +3,7 @@
 import * as path from "path"
 import * as readline from "node:readline/promises"
 
-async function update(paths) {
+async function syncToLatest(paths) {
 
 	const contents = {}
 	let newestFile = null
@@ -21,9 +21,14 @@ async function update(paths) {
 	}
 
 	for (const p of paths) {
-		if (contents[p] !== contents[newestFile]) {
+		if (contents[p] !== contents[newestFile.path]) {
 			pathsToWrite.push(p)
 		}
+	}
+
+	if (pathsToWrite.length === 0) {
+		console.log("up to date")
+		return
 	}
 
 	const rl = readline.createInterface({
@@ -42,17 +47,18 @@ async function update(paths) {
 	const content = contents[newestFile.path]
 
 	for (const p of pathsToWrite) {
-		console.log("updating ", p)
+		console.log(`updating: ${p}`)
 		Bun.write(p, content)
 	}
 
 }
 
-await update([
+await syncToLatest([
 	"/Users/tga/dev/space55.xyz/www.ts",
 	"/Users/tga/dev/coilsprite.com/www.ts",
 	"/Users/tga/dev/davidmurray.xyz/www.ts",
 	"/Users/tga/dev/shrooom.net/www.ts",
 	"/Users/tga/dev/fff/www.ts",
+	"/Users/tga/dev/triospacedesign.com/www.ts",
 	"/Users/tga/dev/www/www.ts",
 ])

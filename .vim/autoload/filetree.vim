@@ -1,15 +1,15 @@
 " file browser
 " TODO: bulk rename
 
-let g:browse_open_ext = get(g:, 'browse_open_ext', [ 'jpg', 'png', 'pdf', 'ico', 'icns', 'ase', 'gif', 'mp4', 'mkv', 'mov', 'avi', 'mp3', 'wav', 'ogg', 'flac', 'app' ])
+let g:filetree_open_ext = get(g:, 'filetree_open_ext', [ 'jpg', 'png', 'pdf', 'ico', 'icns', 'ase', 'gif', 'mp4', 'mkv', 'mov', 'avi', 'mp3', 'wav', 'ogg', 'flac', 'app' ])
 
-func! browse#init()
+func! filetree#init()
 
-	com! -nargs=0 Browse       call <sid>open()
-	com! -nargs=0 BrowseExit   call <sid>exit()
-	com! -nargs=0 BrowseToggle call <sid>toggle()
+	com! -nargs=0 FileTree       call <sid>open()
+	com! -nargs=0 FileTreeExit   call <sid>exit()
+	com! -nargs=0 FileTreeToggle call <sid>toggle()
 
-	aug Browse
+	aug FileTree
 		au!
 		au BufEnter *
 			\ call <sid>onenter()
@@ -17,7 +17,11 @@ func! browse#init()
 
 endfunc
 
-func! s:open(dir)
+func! s:open()
+	call s:opendir(getcwd())
+endfunc
+
+func! s:opendir(dir)
 
 	if !isdirectory(a:dir)
 		return
@@ -41,20 +45,19 @@ func! s:open(dir)
 	setl nomodifiable
 	setl nomodified
 	exec 'set titlestring=' . fnameescape(fnamemodify(a:dir, ':~'))
-	setf browse
+	setf filetree
 
-	syn match BrowseParent '^..$' containedin=BrowseItem
-	syn match BrowseDirHead '^\(+\|-\)' containedin=BrowseDir
-	syn match BrowseMarked '>\s' containedin=BrowseItem
-	syn match BrowseDir '^\(+\|-\).*' containedin=BrowseItem contains=BrowseDirHead,BrowseMarked
-	syn match BrowseItem '^.*$' contains=BrowseDir,BrowseMarked
+	syn match FileTreeParent '^..$' containedin=FileTreeItem
+	syn match FileTreeDirHead '^\(+\|-\)' containedin=FileTreeDir
+	syn match FileTreeMarked '>\s' containedin=FileTreeItem
+	syn match FileTreeDir '^\(+\|-\).*' containedin=FileTreeItem contains=FileTreeDirHead,FileTreeMarked
+	syn match FileTreeItem '^.*$' contains=FileTreeDir,FileTreeMarked
 
-	hi def link BrowseItem    Cleared
-	hi def link BrowseDir     Function
-	hi def link BrowseDirHead Special
-	hi def link BrowseParent  PreProc
-	hi def link BrowsBrowse   String
-	hi def link BrowseMarked  String
+	hi def link FileTreeItem    Cleared
+	hi def link FileTreeDir     Function
+	hi def link FileTreeDirHead Special
+	hi def link FileTreeParent  PreProc
+	hi def link FileTreeMarked  String
 
 	map <buffer><silent> <return> :call <sid>enter()<cr>
 	map <buffer><silent> <bs>     :call <sid>back()<cr>
@@ -74,14 +77,14 @@ func! s:open(dir)
 endfunc
 
 func! s:active()
-	return &ft == 'browse'
+	return &ft == 'filetree'
 endfunc
 
 func! s:onenter()
 	let path = expand('%:p')
 	if empty(path)
 		" TODO: this disables :h
-		call s:open(getcwd())
+		call s:opendir(getcwd())
 	else
 		if isdirectory(path)
 			if path[-1:-1] == '/'
@@ -89,7 +92,7 @@ func! s:onenter()
 			endif
 			bw
 			exec 'lcd ' . path
-			call s:open(path)
+			call s:opendir(path)
 		elseif filereadable(path)
 			exec 'lcd ' . fnamemodify(path, ':h')
 		endif
@@ -109,7 +112,7 @@ func! s:toggle()
 	else
 		let curbuf = expand('%:p')
 		if !isdirectory(curbuf)
-			call s:open(fnamemodify(curbuf, ':h'))
+			call s:opendir(fnamemodify(curbuf, ':h'))
 			call s:toitem(curbuf)
 		endif
 	endif
@@ -240,7 +243,7 @@ func! s:enter()
 		exec 'sil! edit ' . escape(item, '# ')
 	elseif filereadable(item)
 		let ext = fnamemodify(item, ':e')
-		if index(g:browse_open_ext, ext) >= 0
+		if index(g:filetree_open_ext, ext) >= 0
 			call system('open ' . escape(item, " '&()"))
 		else
 			set titlestring=
@@ -368,7 +371,7 @@ func! s:bulk_rename()
 	set nomodified
 	call cursor(1, 1)
 
-	aug BrowseBulkRename
+	aug FileTreeBulkRename
 		au!
 		au BufWriteCmd rename call <sid>bulk_rename_apply()
 	aug END
@@ -381,10 +384,10 @@ func! s:bulk_rename_apply()
 	let files = b:marked
 
 	for i in range(len(names))
-		call s:job('mv "' . fnamemodify(files[i], ':t') . '" "' . names[i] . '"', { 'on_exit': function('browser#refresh') })
+		call s:job('mv "' . fnamemodify(files[i], ':t') . '" "' . names[i] . '"', { 'on_exit': function('filetree#refresh') })
 	endfor
 
 	bw!
-	call browser#start()
+	call filetree#start()
 
 endfunc

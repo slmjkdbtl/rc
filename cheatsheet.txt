@@ -1,3 +1,19 @@
+redirect stderr to stdout
+
+  $ cmd 2>&1
+
+redirect stderr to a file
+
+  $ cmd 2> err.txt
+
+redirect both stdout and stderr to a file
+
+  $ cmd > out.txt 2>&1
+
+don't output stderr
+
+  $ cmd 2>/dev/null
+
 ffmpeg basics
 
   $ ffmpeg -i input.mov output.mp4

@@ -875,11 +875,8 @@ SITES
   Fastmail
     https://fastmail.com/
 
-  Supabase
-    https://supabase.com/
-
-  Slant
-    https://slant.co/
+  Mega
+    https://mega.io/
 
   NCM Converter
     https://ncm.worthsee.com/

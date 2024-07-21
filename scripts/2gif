@@ -11,6 +11,9 @@ help() {
 	echo "  -f, --fps      fps"
 	echo "  -s, --size     gif dimension"
 	echo "  -o, --output   output file name"
+	echo ""
+	echo "EXAMPLE"
+	echo "  $ 2gif --size -1:320 --fps 60 cat.mov"
 }
 
 die() {

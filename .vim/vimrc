@@ -241,7 +241,7 @@ let g:shebangs = [
 " local plugins
 call plug#init()
 call proj#init()
-call browse#init()
+call filetree#init()
 call comment#init()
 call utils#init()
 call bufline#init()
@@ -448,8 +448,8 @@ map! <ScrollWheelDown> <down>
 " jump to proj
 nno z :Proj<space>
 
-" browse
-nno <silent> <tab> :BrowseToggle<cr>
+" filetree
+nno <silent> <tab> :FileTreeToggle<cr>
 
 " comment
 no <silent> / :CommentToggle<cr>
