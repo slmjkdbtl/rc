@@ -64,6 +64,7 @@ alias ase="/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
 alias dl="aria2c -x 16 -s 16 -k 1M"
+# -S ext:mp4:m4a
 alias dv="yt-dlp -f 'bestvideo[ext=mp4][height<=720]+bestaudio[ext=m4a]/best[ext=mp4][height<=720]/best' -o '%(title)s.%(ext)s' --no-playlist"
 alias dvl="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' -o '%(title)s.%(ext)s' --yes-playlist"
 alias dm="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' --no-playlist"

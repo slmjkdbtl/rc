@@ -225,6 +225,11 @@ rename all files to number
   $ rename -X -e '$_ = "$N"' *
   $ rename -N ...03 -X -e '$_ = "File-$N"' *
 
+remove white background from image
+
+  $ magick input.png -transparent white output.png
+  $ magick input.png -fuzz 5% -transparent white output.png
+
 loop over number
 
   $ for i in $(seq 1 10); do
