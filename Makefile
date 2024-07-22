@@ -1,6 +1,6 @@
 CONFIG = $(HOME)/.config
 LOCAL_BIN = $(HOME)/.local/bin
-TO_CONFIG = nvim mpv
+TO_CONFIG = nvim mpv yt-dlp
 TO_HOME = .vim .skhdrc .tmux.conf .gitconfig .wezterm.lua .zshrc .profile .inputrc .sqliterc
 CONFIG_TARGETS = $(addprefix $(CONFIG)/, $(TO_CONFIG))
 HOME_TARGETS = $(addprefix $(HOME)/, $(TO_HOME))

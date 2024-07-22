@@ -22,7 +22,7 @@ preexec() {
 setopt CSH_NULL_GLOB
 setopt PROMPT_SUBST
 PROMPT=$'\n\x1b[2m%n@%M\x1b[0m\n%B\x1b[34m%~\x1b[0m%b \x1b[2m${prompt_git_info}\x1b[0m\n$ '
-WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
+WORDCHARS='*?_-.~&;!#$%^"[](){}<>'
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000000
 SAVEHIST=$HISTSIZE

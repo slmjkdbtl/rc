@@ -39,7 +39,6 @@ alias weather="curl 'wttr.in?m'"
 alias dnsflush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 alias dsclean="find . -name '.DS_Store' -print -delete"
 alias opengate="sudo spctl --master-disable"
-alias dl="aria2c -x 16 -s 16 -k 1M"
 alias gs="git status"
 alias ga="git add -A"
 alias gc="git commit -m"
@@ -64,13 +63,12 @@ alias path='echo -e ${PATH//:/\\n}'
 alias ase="/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
-ytdlp_args="--external-downloader aria2c --external-downloader-args '-x 8 -s 8 -k 1M'"
-alias ydl="yt-dlp --format mp4 -o '%(title)s.%(ext)s' -i --no-playlist $ytdlp_args"
-alias ydll="yt-dlp --format mp4 -o '%(title)s.%(ext)s' -i --yes-playlist $ytdlp_args"
-alias ydlm="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --no-playlist $ytdlp_args"
-alias ydlmc="yt-dlp -x --audio-format mp3 --split-chapters -o '%(chapter)s.%(ext)s' -i --no-playlist $ytdlp_args"
-alias ydlml="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' -i --yes-playlist $ytdlp_args"
-unset ytdlp_args
+alias dl="aria2c -x 16 -s 16 -k 1M"
+alias dv="yt-dlp -f 'bestvideo[ext=mp4][height<=720]+bestaudio[ext=m4a]/best[ext=mp4][height<=720]/best' -o '%(title)s.%(ext)s' --no-playlist"
+alias dvl="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' -o '%(title)s.%(ext)s' --yes-playlist"
+alias dm="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' --no-playlist"
+alias dml="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' --yes-playlist"
+alias dmc="yt-dlp -x --audio-format mp3 --split-chapters -o '%(chapter)s.%(ext)s' --no-playlist"
 
 localip() {
 	if exists ipconfig; then
