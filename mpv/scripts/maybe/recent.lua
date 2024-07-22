@@ -14,12 +14,12 @@ local o = {
     -- Write watch later for current file when switching
     write_watch_later = true,
     -- Display menu bind
-    display_bind = "`",
+    display_bind = "alt+h",
     -- Middle click: Select; Right click: Exit;
     -- Scroll wheel: Up/Down
     mouse_controls = true,
     -- Reads from config directory or an absolute path
-    log_path = "history.log",
+    log_path = mp.command_native({ "expand-path", "~/Library/Caches/mpv/history.log" }),
     -- Date format in the log (see lua date formatting)
     date_format = "%d/%m/%y %X",
     -- Show file paths instead of media-title
@@ -41,7 +41,6 @@ local o = {
 }
 (require "mp.options").read_options(o, _, function() end)
 local utils = require("mp.utils")
-o.log_path = utils.join_path(mp.find_config_file("."), o.log_path)
 
 local cur_title, cur_path
 local list_drawn = false

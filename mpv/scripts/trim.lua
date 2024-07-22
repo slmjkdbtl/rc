@@ -1,9 +1,14 @@
 -- trim video without re-encoding
 -- press t to set start point, press t again at end point to trim
 
-local start_pos = nil
+-- TODO: add marker to seek bar indicating start pos
 
-local function print(s)
+local ffmpeg_path = "/opt/homebrew/bin/ffmpeg"
+local start_pos = nil
+local trimming = false
+local ov = mp.create_osd_overlay("ass-events")
+
+function print(s)
 	mp.msg.info(s)
 	mp.osd_message(s)
 end
@@ -31,12 +36,13 @@ function cut(p1, p2)
 	local t2 = timestamp(p2)
 	local out_path = src_path:gsub(escape(fname), string.format("%s (%s-%s).mp4", basename, t1, t2))
 
-	print("Trimming...")
+	ov.data = "{\\an1}trimming..."
+	ov:update()
 
-	local res = mp.command_native_async({
+	mp.command_native_async({
 		name = "subprocess",
 		args = {
-			"/opt/homebrew/bin/ffmpeg",
+			ffmpeg_path,
 			"-i", src_path,
 			"-ss", t1,
 			"-to", t2,
@@ -46,19 +52,35 @@ function cut(p1, p2)
 			out_path
 		},
 		playback_only = false,
-	}, function()
-		print("Trimmed: " .. out_path)
+	}, function(success, res, err)
+		-- TODO: not getting error
+		if success then
+			print("trimmed: " .. out_path)
+		else
+			print("trim error: " .. err)
+		end
+		trimming = false
+		ov.data = ""
+		ov:update()
 	end)
 
 end
 
 function mark()
 
+	if trimming then
+		return
+	end
+
 	local pos = mp.get_property_number("time-pos")
 
 	if not start_pos then
-		print("Trim point start: " .. timestamp(pos))
 		start_pos = pos
+		local s = mp.get_property("display-hidpi-scale")
+		local w = mp.get_property("osd-width") / s
+		local h = mp.get_property("osd-height") / s
+		ov.data = "{\\an1}trim start: " .. timestamp(pos)
+		ov:update()
 	else
 		cut(start_pos, pos)
 		start_pos = nil
@@ -66,4 +88,14 @@ function mark()
 
 end
 
-mp.add_forced_key_binding("t", "trim", mark)
+function cancel()
+	if trimming then
+		return
+	end
+	start_pos = nil
+	ov.data = ""
+	ov:update()
+end
+
+mp.add_key_binding("alt+t", "trim", mark)
+mp.add_key_binding("esc", "cancel", cancel)

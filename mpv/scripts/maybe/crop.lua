@@ -250,4 +250,4 @@ mp.add_key_binding("mouse_move", draw_cropper)
 mp.observe_property("osd-width", "native", draw_cropper)
 mp.observe_property("osd-height", "native", draw_cropper)
 
-mp.add_key_binding("c", "easy_crop", easycrop_activate)
+mp.add_key_binding("alt-c", "easy_crop", easycrop_activate)
