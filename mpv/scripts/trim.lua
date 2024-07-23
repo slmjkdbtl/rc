@@ -1,5 +1,6 @@
--- trim video without re-encoding
+-- trim video
 -- press t to set start point, press t again at end point to trim
+-- esc to cancel
 
 -- TODO: add marker to seek bar indicating start pos
 
@@ -76,9 +77,6 @@ function mark()
 
 	if not start_pos then
 		start_pos = pos
-		local s = mp.get_property("display-hidpi-scale")
-		local w = mp.get_property("osd-width") / s
-		local h = mp.get_property("osd-height") / s
 		ov.data = "{\\an1}trim start: " .. timestamp(pos)
 		ov:update()
 	else
