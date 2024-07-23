@@ -7,7 +7,7 @@ local list_init = require("list")
 
 local opts = {
 	log_path = mp.command_native({ "expand-path", "~/Library/Caches/mpv/history.log" }),
-	log_max = 100,
+	log_max = 64,
 }
 
 local l = list_init("file", {})

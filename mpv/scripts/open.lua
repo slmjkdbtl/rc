@@ -1,6 +1,4 @@
 -- open in finder / wezterm
--- alt+= open current directory finder
--- alt+- open current directory in wezterm
 
 local utils = require("mp.utils")
 

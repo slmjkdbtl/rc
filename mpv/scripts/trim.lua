@@ -1,6 +1,4 @@
 -- trim video
--- press t to set start point, press t again at end point to trim
--- esc to cancel
 
 -- TODO: add marker to seek bar indicating start pos
 
