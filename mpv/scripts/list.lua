@@ -1,3 +1,5 @@
+-- library to display a selectable list
+
 local theme = {
 	bg      = "000000",
 	black   = "666666",

@@ -10,7 +10,7 @@ local opts = {
 	log_max = 64,
 }
 
-local l = list_init("file", {})
+local l = list_init("recents", {})
 
 function tidy_path(p)
 	local home = os.getenv("HOME")
