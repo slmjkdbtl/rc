@@ -12,6 +12,13 @@ local theme = {
 	white   = "dadada",
 }
 
+local opts = {
+	padding = 32,
+	font_size = 24,
+	spacing = 2,
+	scroll_off = 3,
+}
+
 function clear(ov)
 	ov.data = ""
 end
@@ -33,11 +40,11 @@ function alpha(ov, a)
 end
 
 function font_size(ov, s)
-	ov.data = ov.data .. "{\\fs" .. s .. "}"
+	ov.data = ov.data .. "{\\fs" .. pt(s) .. "}"
 end
 
 function draw_start(ov)
-	append(ov, "{\\p4}")
+	append(ov, "{\\p1}")
 end
 
 function draw_end(ov)
@@ -56,14 +63,18 @@ function color(ov, r, g, b)
 end
 
 function pos(ov, x, y)
-	ov.data = ov.data .. "{\\pos(" .. x .. "," .. y .. ")}"
+	ov.data = ov.data .. "{\\pos(" .. pt(x) .. "," .. pt(y) .. ")}"
+end
+
+-- TODO: this is a hack to get somewhat true coord
+function pt(n)
+	local s = mp.get_property_number("display-hidpi-scale")
+	local oh = mp.get_property_number("osd-height") / s
+	return math.floor(n * 720 / oh + 0.5)
 end
 
 function coord(ov, x, y)
-	local scale = 2 ^ (4 - 1)
-	local ix = math.ceil(x * scale)
-	local iy = math.ceil(y * scale)
-	append(ov, " " .. ix .. " " .. iy)
+	append(ov, " " .. pt(x) .. " " .. pt(y))
 end
 
 function move_to(ov, x, y)
@@ -93,25 +104,12 @@ function list_init(name, list)
 	local opened = false
 	local bs = function() end
 
-	local opts = {
-		padding = 20,
-		font_size = 24,
-		spacing = 2,
-		scroll_off = 3,
-	}
-
 	local l = {
 		list = list,
 		title = nil,
 		selected = 1,
 		bs = function() end,
 	}
-
-	mp.observe_property("osd-height", "number", function()
-		if opened then
-			l.draw()
-		end
-	end)
 
 	function l.is_opened()
 		return opened
@@ -122,12 +120,10 @@ function list_init(name, list)
 		local s = mp.get_property_number("display-hidpi-scale")
 		local ow = mp.get_property_number("osd-width") / s
 		local oh = mp.get_property_number("osd-height") / s
-		local vh = mp.get_property_number("height")
 		local pd = opts.padding
-		-- TODO: this is a hack to get somewhat true font size
-		local fs = opts.font_size * 700 / oh
+		local fs = opts.font_size
 		local sp = opts.spacing
-		local max_lines = math.floor((oh - pd * 2) / (opts.font_size + sp)) - 1
+		local max_lines = math.floor((oh - pd * 2) / (opts.font_size + sp)) - 2
 		local y = 0
 		y = y + pd
 		clear(ov)
@@ -135,8 +131,7 @@ function list_init(name, list)
 		alpha(ov, 150)
 		pos(ov, 0, 0)
 		color(ov, 0, 0, 0)
-		-- TODO: scale not correct
-		rect(ov, 0, 0, ow * s, oh * s)
+		rect(ov, 0, 0, ow, oh)
 		nl(ov)
 		draw_end(ov)
 		if l.title then
@@ -181,7 +176,7 @@ function list_init(name, list)
 		mp.add_forced_key_binding("wheel_down", name .. "-wheel-down", down)
 		mp.add_forced_key_binding("enter", name .. "-enter", enter)
 		mp.add_forced_key_binding("bs", name .. "-bs", bs)
-		mp.add_forced_key_binding("esc", name .. "-esc", close)
+		mp.add_forced_key_binding("esc", name .. "-esc", l.close)
 	end
 
 	function input_unbind()
@@ -194,8 +189,13 @@ function list_init(name, list)
 		mp.remove_key_binding(name .. "-esc")
 	end
 
+	local on_open = {}
+
 	function l.open()
 		opened = true
+		for _, action in ipairs(on_open) do
+			action()
+		end
 		l.draw()
 		input_bind()
 	end
@@ -240,7 +240,18 @@ function list_init(name, list)
 		end
 	end
 
+	function l.on_open(action)
+		on_open[#on_open + 1] = action
+	end
+
+	mp.observe_property("osd-height", "number", function()
+		if opened then
+			l.draw()
+		end
+	end)
+
 	return l
+
 end
 
 return list_init

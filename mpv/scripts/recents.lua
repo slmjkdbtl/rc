@@ -20,7 +20,7 @@ function tidy_path(p)
 	return p
 end
 
-function open()
+l.on_open(function()
 	local f = io.open(opts.log_path, "r")
 	local list = {}
 	if f then
@@ -36,20 +36,8 @@ function open()
 	end
 	l.list = list
 	l.title = "recent files"
-	l.open()
-end
-
-function close()
-	l.close()
-end
-
-function toggle()
-	if l.is_opened() then
-		close()
-	else
-		open()
-	end
-end
+	l.selected = 1
+end)
 
 function append_log(path)
 	local paths = {}
@@ -76,4 +64,4 @@ mp.add_hook("on_unload", 50, function()
 	append_log(path)
 end)
 
-mp.add_key_binding("alt+r", "toggle_recents", toggle)
+mp.add_key_binding("alt+r", "toggle_recents", l.toggle)

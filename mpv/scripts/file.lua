@@ -65,17 +65,13 @@ function cd(dir)
 		}
 	end
 	for i, name in ipairs(files) do
-		if not has(ignore, name) then
+		local ext = name:match("[^.]+$")
+		if has(media_ext, ext) and not has(ignore, name) then
 			local path = utils.join_path(dir, name)
 			list[#list + 1] = {
 				name = name,
 				on_enter = function()
-					local ext = name:match("[^.]+$")
-					if has(media_ext, ext) then
-						mp.commandv("loadfile", path, "replace")
-					else
-						-- TODO
-					end
+					mp.commandv("loadfile", path, "replace")
 				end,
 			}
 			if path == cur_path then
@@ -87,31 +83,26 @@ function cd(dir)
 	l.selected = selected
 	l.title = tidy_path(dir)
 	l.bs = function()
-		-- TODO: select last dir
 		local i = string.find(dir, "/[^/]*$")
 		local to_dir = string.sub(dir, 1, i - 1)
-		cd(to_dir)
+		if to_dir ~= "" then
+			cd(to_dir)
+			for i, item in ipairs(l.list) do
+				if utils.join_path(to_dir, item.name) == dir .. "/" then
+					l.selected = i
+					l.draw()
+					break
+				end
+			end
+		end
 	end
 	l.draw()
 end
 
-function open()
+l.on_open(function()
 	local path = mp.get_property("path")
 	local dir, filename = utils.split_path(path)
 	cd(string.sub(dir, 1, #dir - 1))
-	l.open()
-end
+end)
 
-function close()
-	l.close()
-end
-
-function toggle()
-	if l.is_opened() then
-		close()
-	else
-		open()
-	end
-end
-
-mp.add_key_binding("tab", "toggle_filetree", toggle)
+mp.add_key_binding("tab", "toggle_filetree", l.toggle)
