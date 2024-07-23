@@ -1,4 +1,5 @@
 -- graphics helper
+-- https://aegisub.org/docs/latest/ass_tags
 
 -- TODO: this is a hack to get somewhat true coord
 function pt(n)
@@ -24,24 +25,40 @@ function gfx_init()
 		ov.data = ov.data .. t
 	end
 
-	function g.nl(t)
+	function g.nl()
 		g.append("\n")
 	end
 
-	function g.bold(t)
+	function g.bold()
 		g.append("{\\b1}")
 	end
 
-	function g.unbold(t)
+	function g.unbold()
 		g.append("{\\b0}")
 	end
 
-	function g.italic(t)
+	function g.italic()
 		g.append("{\\i1}")
 	end
 
-	function g.unitalic(t)
+	function g.unitalic()
 		g.append("{\\i0}")
+	end
+
+	function g.underline()
+		g.append("{\\u1}")
+	end
+
+	function g.ununderline()
+		g.append("{\\u0}")
+	end
+
+	function g.strikeout()
+		g.append("{\\s1}")
+	end
+
+	function g.unstrikeout()
+		g.append("{\\s0}")
 	end
 
 	function g.alpha(a)
@@ -52,12 +69,49 @@ function gfx_init()
 		g.append("{\\fs" .. pt(s) .. "}")
 	end
 
-	function g.draw_start()
-		g.append("{\\p1}")
+	function g.font(f)
+		g.append("{\\fn" .. f .. "}")
 	end
 
-	function g.draw_end()
-		g.append("{\\p0}")
+	function g.font_scale(s)
+		g.append("{\\fscx" .. s .. "}")
+		g.append("{\\fscy" .. s .. "}")
+	end
+
+	function g.letter_spacing(s)
+		g.append("{\\fsp" .. pt(s) .. "}")
+	end
+
+	function g.text_rotate_x(d)
+		g.append("{\\frx" .. d .. "}")
+	end
+
+	function g.text_rotate_y(d)
+		g.append("{\\fry" .. d .. "}")
+	end
+
+	function g.text_rotate(d)
+		g.append("{\\frz" .. d .. "}")
+	end
+
+	function g.text_shear_x(s)
+		g.append("{\\fax" .. s .. "}")
+	end
+
+	function g.text_shear_y(s)
+		g.append("{\\fay" .. s .. "}")
+	end
+
+	function g.border(s)
+		g.append("{\\bord" .. pt(s) .. "}")
+	end
+
+	function g.shadow(d)
+		g.append("{\\shad" .. pt(d) .. "}")
+	end
+
+	function g.blur(s)
+		g.append("{\\be" .. s .. "}")
 	end
 
 	function g.color_hex(hex)
@@ -71,8 +125,36 @@ function gfx_init()
 		g.color_hex(rgb2hex(r, gg, b))
 	end
 
+	function g.no_wrap()
+		g.append("{\\q2}")
+	end
+
+	function g.reset()
+		g.append("{\\r}")
+	end
+
+	function g.karaoke(d)
+		g.append("{\\k" .. d .. "}")
+	end
+
+	function g.fade(a, b)
+		g.append("{\\fad(" .. a .. "," .. b .. ")}")
+	end
+
+	function g.draw_start()
+		g.append("{\\p1}")
+	end
+
+	function g.draw_end()
+		g.append("{\\p0}")
+	end
+
 	function g.pos(x, y)
 		g.append("{\\pos(" .. pt(x) .. "," .. pt(y) .. ")}")
+	end
+
+	function g.align(l)
+		g.append("{\\an(" .. l .. ")}")
 	end
 
 	function g.coord(x, y)
@@ -98,6 +180,22 @@ function gfx_init()
 
 	function g.update()
 		ov:update()
+	end
+
+	function g.remove()
+		ov:remove()
+	end
+
+	function g.width()
+		local s = mp.get_property_number("display-hidpi-scale")
+		local ow = mp.get_property_number("osd-width")
+		return ow / s
+	end
+
+	function g.height()
+		local s = mp.get_property_number("display-hidpi-scale")
+		local oh = mp.get_property_number("osd-height")
+		return oh / s
 	end
 
 	return g

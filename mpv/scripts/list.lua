@@ -19,8 +19,10 @@ local theme = {
 local opts = {
 	padding = 16,
 	font_size = 24,
-	spacing = 2,
+	spacing = 0,
+	border = 4,
 	scroll_off = 3,
+	bg_alpha = 150,
 }
 
 function list_init(name, list)
@@ -42,9 +44,8 @@ function list_init(name, list)
 
 	function l.draw()
 		if not opened then return end
-		local s = mp.get_property_number("display-hidpi-scale")
-		local ow = mp.get_property_number("osd-width") / s
-		local oh = mp.get_property_number("osd-height") / s
+		local ow = gfx.width()
+		local oh = gfx.height()
 		local pd = opts.padding
 		local fs = opts.font_size
 		local sp = opts.spacing
@@ -53,7 +54,7 @@ function list_init(name, list)
 		y = y + pd
 		gfx.clear()
 		gfx.draw_start()
-		gfx.alpha(150)
+		gfx.alpha(opts.bg_alpha)
 		gfx.pos(0, 0)
 		gfx.color(0, 0, 0)
 		gfx.rect(0, 0, ow, oh)
@@ -64,6 +65,8 @@ function list_init(name, list)
 			gfx.color_hex(theme.yellow)
 			gfx.pos(pd, y)
 			gfx.font_size(fs)
+			gfx.border(opts.border)
+			gfx.no_wrap()
 			gfx.append(l.title)
 			gfx.nl()
 			y = y + fs + sp
@@ -75,7 +78,9 @@ function list_init(name, list)
 		for i = start, math.min(start + max_lines, #l.list) do
 			local item = l.list[i]
 			gfx.pos(pd, y)
+			gfx.border(opts.border)
 			gfx.font_size(fs)
+			gfx.no_wrap()
 			if item.color and theme[item.color] then
 				gfx.color_hex(theme[item.color])
 			end

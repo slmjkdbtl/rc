@@ -71,7 +71,7 @@ function cd(dir)
 			list[#list + 1] = {
 				name = name,
 				on_enter = function()
-					mp.commandv("loadfile", path, "replace")
+					mp.commandv("loadfile", path)
 				end,
 			}
 			if path == cur_path then
