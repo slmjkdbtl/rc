@@ -1,6 +1,6 @@
 -- file browser
 
-package.path = package.path .. ';' .. mp.find_config_file("scripts") .. '/?.lua'
+package.path = package.path .. ";" .. mp.find_config_file("scripts") .. "/?.lua"
 
 local utils = require("mp.utils")
 local list_init = require("list")
@@ -82,7 +82,7 @@ function cd(dir)
 	l.list = list
 	l.selected = selected
 	l.title = tidy_path(dir)
-	l.bs = function()
+	l.set_key_binding("bs", function()
 		local i = string.find(dir, "/[^/]*$")
 		local to_dir = string.sub(dir, 1, i - 1)
 		if to_dir ~= "" then
@@ -95,7 +95,7 @@ function cd(dir)
 				end
 			end
 		end
-	end
+	end)
 	l.draw()
 end
 

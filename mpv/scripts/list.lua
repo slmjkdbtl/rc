@@ -1,5 +1,9 @@
 -- library to display a selectable list
 
+package.path = package.path .. ";" .. mp.find_config_file("scripts") .. "/?.lua"
+
+local init_gfx = require("gfx")
+
 local theme = {
 	bg      = "000000",
 	black   = "666666",
@@ -13,102 +17,23 @@ local theme = {
 }
 
 local opts = {
-	padding = 32,
+	padding = 16,
 	font_size = 24,
 	spacing = 2,
 	scroll_off = 3,
 }
 
-function clear(ov)
-	ov.data = ""
-end
-
-function append(ov, t)
-	ov.data = ov.data .. t
-end
-
-function nl(ov, t)
-	ov.data = ov.data .. "\n"
-end
-
-function bold(ov, t)
-	ov.data = ov.data .. "{\\b1}"
-end
-
-function alpha(ov, a)
-	ov.data = ov.data .. "{\\alpha&H" .. string.format("%02x", 255 - a) .. "}"
-end
-
-function font_size(ov, s)
-	ov.data = ov.data .. "{\\fs" .. pt(s) .. "}"
-end
-
-function draw_start(ov)
-	append(ov, "{\\p1}")
-end
-
-function draw_end(ov)
-	append(ov, "{\\p0}")
-end
-
-function color_hex(ov, hex)
-	local r = string.sub(hex, 1, 2)
-	local g = string.sub(hex, 3, 4)
-	local b = string.sub(hex, 5, 6)
-	ov.data = ov.data .. "{\\c&H" .. b .. g .. r .. "&}"
-end
-
-function color(ov, r, g, b)
-	color_hex(ov, rgb2hex(r, g, b))
-end
-
-function pos(ov, x, y)
-	ov.data = ov.data .. "{\\pos(" .. pt(x) .. "," .. pt(y) .. ")}"
-end
-
--- TODO: this is a hack to get somewhat true coord
-function pt(n)
-	local s = mp.get_property_number("display-hidpi-scale")
-	local oh = mp.get_property_number("osd-height") / s
-	return math.floor(n * 720 / oh + 0.5)
-end
-
-function coord(ov, x, y)
-	append(ov, " " .. pt(x) .. " " .. pt(y))
-end
-
-function move_to(ov, x, y)
-	append(ov, " m")
-	coord(ov, x, y)
-end
-
-function line_to(ov, x, y)
-	append(ov, " l")
-	coord(ov, x, y)
-end
-
-function rect(ov, x0, y0, x1, y1)
-	move_to(ov, x0, y0)
-	line_to(ov, x1, y0)
-	line_to(ov, x1, y1)
-	line_to(ov, x0, y1)
-end
-
-function rgb2hex(r, g, b)
-	return string.format("%02x%02x%02x", r, g, b)
-end
-
 function list_init(name, list)
 
-	local ov = mp.create_osd_overlay("ass-events")
+	local gfx = gfx_init()
 	local opened = false
-	local bs = function() end
+	local key_bindings = {}
+	local on_open = {}
 
 	local l = {
 		list = list,
 		title = nil,
 		selected = 1,
-		bs = function() end,
 	}
 
 	function l.is_opened()
@@ -123,24 +48,24 @@ function list_init(name, list)
 		local pd = opts.padding
 		local fs = opts.font_size
 		local sp = opts.spacing
-		local max_lines = math.floor((oh - pd * 2) / (opts.font_size + sp)) - 2
+		local max_lines = math.floor((oh - pd * 2) / (opts.font_size + sp)) - 1
 		local y = 0
 		y = y + pd
-		clear(ov)
-		draw_start(ov)
-		alpha(ov, 150)
-		pos(ov, 0, 0)
-		color(ov, 0, 0, 0)
-		rect(ov, 0, 0, ow, oh)
-		nl(ov)
-		draw_end(ov)
+		gfx.clear()
+		gfx.draw_start()
+		gfx.alpha(150)
+		gfx.pos(0, 0)
+		gfx.color(0, 0, 0)
+		gfx.rect(0, 0, ow, oh)
+		gfx.nl()
+		gfx.draw_end()
 		if l.title then
-			bold(ov)
-			color_hex(ov, theme.yellow)
-			pos(ov, pd, y)
-			font_size(ov, fs)
-			append(ov, l.title)
-			nl(ov)
+			gfx.bold()
+			gfx.color_hex(theme.yellow)
+			gfx.pos(pd, y)
+			gfx.font_size(fs)
+			gfx.append(l.title)
+			gfx.nl()
 			y = y + fs + sp
 		end
 		local start = 1
@@ -149,47 +74,25 @@ function list_init(name, list)
 		end
 		for i = start, math.min(start + max_lines, #l.list) do
 			local item = l.list[i]
-			pos(ov, pd, y)
-			font_size(ov, fs)
+			gfx.pos(pd, y)
+			gfx.font_size(fs)
 			if item.color and theme[item.color] then
-				color_hex(ov, theme[item.color])
+				gfx.color_hex(theme[item.color])
 			end
 			if i == l.selected then
-				bold(ov)
-				append(ov, "> ")
+				gfx.bold()
+				gfx.append("> ")
 			else
-				alpha(ov, 200)
+				gfx.alpha(200)
 				-- TODO: white space not working
-				append(ov, "  ")
+				gfx.append("  ")
 			end
-			append(ov, item.name)
-			nl(ov)
+			gfx.append(item.name)
+			gfx.nl()
 			y = y + fs + sp
 		end
-		ov:update()
+		gfx.update()
 	end
-
-	function input_bind()
-		mp.add_forced_key_binding("up", name .. "-up", up)
-		mp.add_forced_key_binding("down", name .. "-down", down)
-		mp.add_forced_key_binding("wheel_up", name .. "-wheel-up", up)
-		mp.add_forced_key_binding("wheel_down", name .. "-wheel-down", down)
-		mp.add_forced_key_binding("enter", name .. "-enter", enter)
-		mp.add_forced_key_binding("bs", name .. "-bs", bs)
-		mp.add_forced_key_binding("esc", name .. "-esc", l.close)
-	end
-
-	function input_unbind()
-		mp.remove_key_binding(name .. "-up")
-		mp.remove_key_binding(name .. "-down")
-		mp.remove_key_binding(name .. "-wheel-up")
-		mp.remove_key_binding(name .. "-wheel-down")
-		mp.remove_key_binding(name .. "-enter")
-		mp.remove_key_binding(name .. "-bs")
-		mp.remove_key_binding(name .. "-esc")
-	end
-
-	local on_open = {}
 
 	function l.open()
 		opened = true
@@ -197,14 +100,18 @@ function list_init(name, list)
 			action()
 		end
 		l.draw()
-		input_bind()
+		for key, action in pairs(key_bindings) do
+			mp.add_forced_key_binding(key, name .. "-" .. key, action)
+		end
 	end
 
 	function l.close()
 		opened = false
-		clear(ov)
-		ov:update()
-		input_unbind()
+		gfx.clear()
+		gfx.update()
+		for key, action in pairs(key_bindings) do
+			mp.remove_key_binding(name .. "-" .. key)
+		end
 	end
 
 	function l.toggle()
@@ -215,25 +122,24 @@ function list_init(name, list)
 		end
 	end
 
-	function up()
+	function l.up()
+		if not opened then return end
 		if l.selected > 1 then
 			l.selected = l.selected - 1
 			l.draw()
 		end
 	end
 
-	function down()
+	function l.down()
+		if not opened then return end
 		if l.selected < #l.list then
 			l.selected = l.selected + 1
 			l.draw()
 		end
 	end
 
-	function bs()
-		l.bs()
-	end
-
-	function enter()
+	function l.enter()
+		if not opened then return end
 		local item = l.list[l.selected]
 		if item and item.on_enter then
 			item.on_enter()
@@ -243,6 +149,20 @@ function list_init(name, list)
 	function l.on_open(action)
 		on_open[#on_open + 1] = action
 	end
+
+	function l.set_key_binding(k, action)
+		key_bindings[k] = action
+		if opened then
+			mp.add_forced_key_binding(k, name .. "-" .. k, action)
+		end
+	end
+
+	l.set_key_binding("up", l.up)
+	l.set_key_binding("down", l.down)
+	l.set_key_binding("wheel_up", l.up)
+	l.set_key_binding("wheel_down", l.down)
+	l.set_key_binding("enter", l.enter)
+	l.set_key_binding("esc", l.close)
 
 	mp.observe_property("osd-height", "number", function()
 		if opened then

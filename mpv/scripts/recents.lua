@@ -1,8 +1,7 @@
 -- select from a list of recent files
 
-package.path = package.path .. ';' .. mp.find_config_file("scripts") .. '/?.lua'
+package.path = package.path .. ";" .. mp.find_config_file("scripts") .. "/?.lua"
 
-local utils = require("mp.utils")
 local list_init = require("list")
 
 local opts = {
