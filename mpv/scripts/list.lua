@@ -59,7 +59,7 @@ function list_init(name, list)
 		local list = {}
 		for _, item in ipairs(l.list) do
 			if is_searching and #query > 0 then
-				if string.match(string.lower(item.name), string.lower(query)) then
+				if string.find(string.lower(item.name), string.lower(query), 1, true) then
 					list[#list + 1] = item
 				end
 			else
@@ -140,7 +140,7 @@ function list_init(name, list)
 			gfx.pos(mg, y)
 			gfx.color(50, 50, 50)
 			gfx.draw_start()
-			gfx.rect(0, 0, 600, fs + pd * 2)
+			gfx.rect(0, 0, ow - mg * 2, fs + pd * 2)
 			gfx.nl()
 			gfx.draw_end()
 			gfx.pos(mg + pd, y + pd)
@@ -159,6 +159,7 @@ function list_init(name, list)
 
 	function l.open()
 		is_opened = true
+		l.selected = 1
 		for _, action in ipairs(on_open) do
 			action()
 		end
@@ -174,6 +175,7 @@ function list_init(name, list)
 	function l.close()
 		is_opened = false
 		is_searching = false
+		l.selected = 1
 		query = ""
 		gfx.clear()
 		gfx.update()
@@ -235,7 +237,7 @@ function list_init(name, list)
 		end
 	end
 
-	function search()
+	function search_open()
 		is_searching = true
 		query = ""
 		l.draw()
@@ -252,11 +254,18 @@ function list_init(name, list)
 	key_bindings["wheel_up"] = up
 	key_bindings["wheel_down"] = down
 	key_bindings["enter"] = enter
-	key_bindings["alt+f"] = search
+	key_bindings["alt+f"] = function()
+		if is_searching then
+			search_close()
+		else
+			search_open()
+		end
+	end
 
 	key_bindings["bs"] = function()
 		if #query > 0 then
 			query = query:sub(1, #query - 1)
+			l.selected = 1
 			l.draw()
 		end
 	end
@@ -276,7 +285,7 @@ function list_init(name, list)
 		l.draw()
 	end
 
-	local keys = "qwertyuiopasdfghjklzxcvbnm1234567890"
+	local keys = "qwertyuiopasdfghjklzxcvbnm1234567890,./'[]-=`"
 
 	for i = 1, #keys do
 		local c = keys:sub(i, i)
