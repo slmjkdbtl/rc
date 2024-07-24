@@ -3,9 +3,10 @@
 package.path = package.path .. ";" .. mp.find_config_file("scripts") .. "/?.lua"
 
 local utils = require("mp.utils")
+local u = require("utils")
 local list_init = require("list")
 
-local l = list_init("file", {})
+local l = list_init(mp.get_script_name(), {})
 
 local ignore = {
 	".git",
@@ -29,23 +30,6 @@ local media_ext = {
 	"webp",
 }
 
-function has(table, element)
-	for _, value in pairs(table) do
-		if value == element then
-		  return true
-		end
-	end
-	return false
-end
-
-function tidy_path(p)
-	local home = os.getenv("HOME")
-	if (home) then
-		p = p:gsub("^" .. home, "~")
-	end
-	return p
-end
-
 function cd(dir)
 	local cur_path = mp.get_property("path")
 	local dirs = utils.readdir(dir, "dirs")
@@ -66,7 +50,7 @@ function cd(dir)
 	end
 	for i, name in ipairs(files) do
 		local ext = name:match("[^.]+$")
-		if has(media_ext, ext) and not has(ignore, name) then
+		if u.table_has(media_ext, ext) and not u.table_has(ignore, name) then
 			local path = utils.join_path(dir, name)
 			list[#list + 1] = {
 				name = name,
@@ -81,8 +65,9 @@ function cd(dir)
 	end
 	l.list = list
 	l.selected = selected
-	l.title = tidy_path(dir)
+	l.title = u.tidy_path(dir)
 	l.set_key_binding("bs", function()
+		if l.is_searching() then return end
 		local i = string.find(dir, "/[^/]*$")
 		local to_dir = string.sub(dir, 1, i - 1)
 		if to_dir ~= "" then
@@ -105,4 +90,4 @@ l.on_open(function()
 	cd(string.sub(dir, 1, #dir - 1))
 end)
 
-mp.add_key_binding("tab", "toggle_filetree", l.toggle)
+mp.add_key_binding("tab", "file-toggle", l.toggle)

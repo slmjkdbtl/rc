@@ -29,5 +29,5 @@
 	algorithm = histogram
 [web]
     browser = open
-[browser "chrome"]
-    cmd = open -a 'Google Chrome.app'
+[http]
+	postBuffer = 524288000

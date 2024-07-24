@@ -60,6 +60,7 @@ function open()
 	if size then
 		data[#data + 1] = { "Size", readable_size(size) }
 	end
+	-- TODO: not showing all tracks
 	for i = 1, num_tracks do
 		local ty = mp.get_property("track-list/" .. i .. "/type")
 		local codec = mp.get_property("track-list/" .. i .. "/codec")
@@ -93,8 +94,7 @@ function toggle()
 	end
 end
 
--- TODO: doesn't work on full screen
-mp.add_hook("on_before_start_file", 50, function()
+mp.register_event("file-loaded", function()
 	if opened then
 		open()
 	end

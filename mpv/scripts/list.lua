@@ -2,6 +2,9 @@
 
 package.path = package.path .. ";" .. mp.find_config_file("scripts") .. "/?.lua"
 
+-- TODO: only allow one list active at one time
+
+local options = require("mp.options")
 local init_gfx = require("gfx")
 
 local theme = {
@@ -17,19 +20,25 @@ local theme = {
 }
 
 local opts = {
-	padding = 16,
+	margin = 16,
+	padding = 8,
 	font_size = 24,
 	spacing = 0,
 	border = 4,
-	scroll_off = 3,
+	scroll_off = 5,
 	bg_alpha = 150,
 }
+
+options.read_options(opts)
 
 function list_init(name, list)
 
 	local gfx = gfx_init()
-	local opened = false
+	local is_opened = false
+	local is_searching = false
+	local query = ""
 	local key_bindings = {}
+	local custom_key_bindings = {}
 	local on_open = {}
 
 	local l = {
@@ -39,19 +48,44 @@ function list_init(name, list)
 	}
 
 	function l.is_opened()
-		return opened
+		return is_opened
+	end
+
+	function l.is_searching()
+		return is_searching
+	end
+
+	function filtered_list()
+		local list = {}
+		for _, item in ipairs(l.list) do
+			if is_searching and #query > 0 then
+				if string.match(string.lower(item.name), string.lower(query)) then
+					list[#list + 1] = item
+				end
+			else
+				list[#list + 1] = item
+			end
+		end
+		return list
 	end
 
 	function l.draw()
-		if not opened then return end
+		if not is_opened then return end
+		local list = filtered_list()
 		local ow = gfx.width()
 		local oh = gfx.height()
+		local mg = opts.margin
 		local pd = opts.padding
 		local fs = opts.font_size
 		local sp = opts.spacing
-		local max_lines = math.floor((oh - pd * 2) / (opts.font_size + sp)) - 1
+		local scroll_off = opts.scroll_off
+		local max_lines = math.floor((oh - mg * 2) / (opts.font_size + sp)) - 1
+		if is_searching then
+			max_lines = max_lines - 3
+			scroll_off = scroll_off - 3
+		end
 		local y = 0
-		y = y + pd
+		y = y + mg
 		gfx.clear()
 		gfx.draw_start()
 		gfx.alpha(opts.bg_alpha)
@@ -63,21 +97,24 @@ function list_init(name, list)
 		if l.title then
 			gfx.bold()
 			gfx.color_hex(theme.yellow)
-			gfx.pos(pd, y)
+			gfx.pos(mg, y)
 			gfx.font_size(fs)
 			gfx.border(opts.border)
 			gfx.no_wrap()
+			gfx.alpha(0)
+			gfx.append("> ")
+			gfx.alpha(255)
 			gfx.append(l.title)
 			gfx.nl()
 			y = y + fs + sp
 		end
 		local start = 1
-		if l.selected > max_lines - opts.scroll_off then
-			start = l.selected - (max_lines - opts.scroll_off)
+		if l.selected > max_lines - scroll_off then
+			start = l.selected - (max_lines - scroll_off)
 		end
-		for i = start, math.min(start + max_lines, #l.list) do
-			local item = l.list[i]
-			gfx.pos(pd, y)
+		for i = start, math.min(start + max_lines, #list) do
+			local item = list[i]
+			gfx.pos(mg, y)
 			gfx.border(opts.border)
 			gfx.font_size(fs)
 			gfx.no_wrap()
@@ -88,19 +125,40 @@ function list_init(name, list)
 				gfx.bold()
 				gfx.append("> ")
 			else
+				gfx.alpha(0)
+				gfx.bold()
+				gfx.append("> ")
+				gfx.unbold()
 				gfx.alpha(200)
-				-- TODO: white space not working
-				gfx.append("  ")
 			end
 			gfx.append(item.name)
 			gfx.nl()
 			y = y + fs + sp
 		end
+		if is_searching then
+			local y = oh - mg - (fs + pd * 2)
+			gfx.pos(mg, y)
+			gfx.color(50, 50, 50)
+			gfx.draw_start()
+			gfx.rect(0, 0, 600, fs + pd * 2)
+			gfx.nl()
+			gfx.draw_end()
+			gfx.pos(mg + pd, y + pd)
+			gfx.font_size(fs)
+			if query == "" then
+				gfx.alpha(50)
+				gfx.italic()
+				gfx.append("search...")
+			else
+				gfx.append(query)
+			end
+			gfx.nl()
+		end
 		gfx.update()
 	end
 
 	function l.open()
-		opened = true
+		is_opened = true
 		for _, action in ipairs(on_open) do
 			action()
 		end
@@ -108,44 +166,53 @@ function list_init(name, list)
 		for key, action in pairs(key_bindings) do
 			mp.add_forced_key_binding(key, name .. "-" .. key, action)
 		end
+		for key, action in pairs(custom_key_bindings) do
+			mp.add_forced_key_binding(key, name .. "-" .. key, action)
+		end
 	end
 
 	function l.close()
-		opened = false
+		is_opened = false
+		is_searching = false
+		query = ""
 		gfx.clear()
 		gfx.update()
 		for key, action in pairs(key_bindings) do
 			mp.remove_key_binding(name .. "-" .. key)
 		end
+		for key, action in pairs(custom_key_bindings) do
+			mp.remove_key_binding(name .. "-" .. key)
+		end
 	end
 
 	function l.toggle()
-		if opened then
+		if is_opened then
 			l.close()
 		else
 			l.open()
 		end
 	end
 
-	function l.up()
-		if not opened then return end
+	function up()
+		if not is_opened then return end
 		if l.selected > 1 then
 			l.selected = l.selected - 1
 			l.draw()
 		end
 	end
 
-	function l.down()
-		if not opened then return end
+	function down()
+		if not is_opened then return end
 		if l.selected < #l.list then
 			l.selected = l.selected + 1
 			l.draw()
 		end
 	end
 
-	function l.enter()
-		if not opened then return end
-		local item = l.list[l.selected]
+	function enter()
+		if not is_opened then return end
+		local list = filtered_list()
+		local item = list[l.selected]
 		if item and item.on_enter then
 			item.on_enter()
 		end
@@ -156,21 +223,74 @@ function list_init(name, list)
 	end
 
 	function l.set_key_binding(k, action)
-		key_bindings[k] = action
-		if opened then
-			mp.add_forced_key_binding(k, name .. "-" .. k, action)
+		local new_action = function()
+			if key_bindings[k] then
+				key_bindings[k]()
+			end
+			action()
+		end
+		custom_key_bindings[k] = new_action
+		if is_opened then
+			mp.add_forced_key_binding(k, name .. "-" .. k, new_action)
 		end
 	end
 
-	l.set_key_binding("up", l.up)
-	l.set_key_binding("down", l.down)
-	l.set_key_binding("wheel_up", l.up)
-	l.set_key_binding("wheel_down", l.down)
-	l.set_key_binding("enter", l.enter)
-	l.set_key_binding("esc", l.close)
+	function search()
+		is_searching = true
+		query = ""
+		l.draw()
+	end
+
+	function search_close()
+		is_searching = false
+		query = ""
+		l.draw()
+	end
+
+	key_bindings["up"] = up
+	key_bindings["down"] = down
+	key_bindings["wheel_up"] = up
+	key_bindings["wheel_down"] = down
+	key_bindings["enter"] = enter
+	key_bindings["alt+f"] = search
+
+	key_bindings["bs"] = function()
+		if #query > 0 then
+			query = query:sub(1, #query - 1)
+			l.draw()
+		end
+	end
+
+	key_bindings["esc"] = function()
+		if is_searching then
+			search_close()
+		else
+			l.close()
+		end
+	end
+
+	function input_char(c)
+		if not is_searching then return end
+		query = query .. c
+		l.selected = 1
+		l.draw()
+	end
+
+	local keys = "qwertyuiopasdfghjklzxcvbnm1234567890"
+
+	for i = 1, #keys do
+		local c = keys:sub(i, i)
+		key_bindings[c] = function()
+			input_char(c)
+		end
+	end
+
+	key_bindings["space"] = function()
+		input_char(" ")
+	end
 
 	mp.observe_property("osd-height", "number", function()
-		if opened then
+		if is_opened then
 			l.draw()
 		end
 	end)

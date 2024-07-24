@@ -2,6 +2,7 @@
 
 local utils = require("mp.utils")
 
+-- TODO: use applescript to select file in Finder
 function open_finder()
 	local path = mp.get_property("path")
 	local dir, filename = utils.split_path(path)

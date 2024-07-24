@@ -2,32 +2,29 @@
 
 package.path = package.path .. ";" .. mp.find_config_file("scripts") .. "/?.lua"
 
+local options = require("mp.options")
 local list_init = require("list")
+local u = require("utils")
 
 local opts = {
-	log_path = mp.command_native({ "expand-path", "~/Library/Caches/mpv/history.log" }),
+	log_path = "~/Library/Caches/mpv/history.log",
 	log_max = 64,
 }
 
-local l = list_init("recents", {})
+options.read_options(opts)
 
-function tidy_path(p)
-	local home = os.getenv("HOME")
-	if (home) then
-		p = p:gsub("^" .. home, "~")
-	end
-	return p
-end
+local l = list_init(mp.get_script_name(), {})
+local log_path = u.expand(opts.log_path)
 
 l.on_open(function()
-	local f = io.open(opts.log_path, "r")
+	local f = io.open(log_path, "r")
 	local list = {}
 	if f then
 		for line in f:lines() do
 			list[#list + 1] = {
-				name = tidy_path(line),
+				name = u.tidy_path(line),
 				on_enter = function()
-					mp.commandv("loadfile", line, "replace")
+					mp.commandv("loadfile", line)
 				end,
 			}
 		end
@@ -40,10 +37,10 @@ end)
 
 function append_log(path)
 	local paths = {}
-	local f = io.open(opts.log_path, "r")
+	local f = io.open(log_path, "r")
 	if f then
 		for line in f:lines() do
-			if line ~= path then
+			if line ~= path and u.file_exists(line) then
 				paths[#paths + 1] = line
 				if #paths >= opts.log_max - 1 then
 					break
@@ -53,7 +50,7 @@ function append_log(path)
 		f:close()
 	end
 	table.insert(paths, 1, path)
-	f = io.open(opts.log_path, "w")
+	f = io.open(log_path, "w")
 	f:write(table.concat(paths, "\n"))
 	f:close()
 end
@@ -63,4 +60,4 @@ mp.add_hook("on_unload", 50, function()
 	append_log(path)
 end)
 
-mp.add_key_binding("alt+r", "toggle_recents", l.toggle)
+mp.add_key_binding("alt+r", "recents-toggle", l.toggle)

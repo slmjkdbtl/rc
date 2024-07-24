@@ -188,14 +188,14 @@ function gfx_init()
 
 	function g.width()
 		local s = mp.get_property_number("display-hidpi-scale")
-		local ow = mp.get_property_number("osd-width")
-		return ow / s
+		local w, h = mp.get_osd_size()
+		return w / s
 	end
 
 	function g.height()
 		local s = mp.get_property_number("display-hidpi-scale")
-		local oh = mp.get_property_number("osd-height")
-		return oh / s
+		local w, h = mp.get_osd_size()
+		return h / s
 	end
 
 	return g
