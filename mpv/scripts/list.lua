@@ -31,7 +31,11 @@ local opts = {
 
 options.read_options(opts)
 
-function list_init(name, list)
+function list_init(cfg)
+
+	if not cfg.name then
+		error("list requires name")
+	end
 
 	local gfx = gfx_init()
 	local is_opened = false
@@ -42,7 +46,7 @@ function list_init(name, list)
 	local on_open = {}
 
 	local l = {
-		list = list,
+		list = cfg.list or {},
 		title = nil,
 		selected = 1,
 	}
@@ -59,7 +63,7 @@ function list_init(name, list)
 		local list = {}
 		for _, item in ipairs(l.list) do
 			if is_searching and #query > 0 then
-				if string.find(string.lower(item.name), string.lower(query), 1, true) then
+				if string.find(string.lower(item.text), string.lower(query), 1, true) then
 					list[#list + 1] = item
 				end
 			else
@@ -101,9 +105,11 @@ function list_init(name, list)
 			gfx.font_size(fs)
 			gfx.border(opts.border)
 			gfx.no_wrap()
-			gfx.alpha(0)
-			gfx.append("> ")
-			gfx.alpha(255)
+			if cfg.interactive ~= false then
+				gfx.alpha(0)
+				gfx.append("> ")
+				gfx.alpha(255)
+			end
 			gfx.append(l.title)
 			gfx.nl()
 			y = y + fs + sp
@@ -121,17 +127,19 @@ function list_init(name, list)
 			if item.color and theme[item.color] then
 				gfx.color_hex(theme[item.color])
 			end
-			if i == l.selected then
-				gfx.bold()
-				gfx.append("> ")
-			else
-				gfx.alpha(0)
-				gfx.bold()
-				gfx.append("> ")
-				gfx.unbold()
-				gfx.alpha(200)
+			if cfg.interactive ~= false then
+				if i == l.selected then
+					gfx.bold()
+					gfx.append("> ")
+				else
+					gfx.alpha(0)
+					gfx.bold()
+					gfx.append("> ")
+					gfx.unbold()
+					gfx.alpha(200)
+				end
 			end
-			gfx.append(item.name)
+			gfx.append(item.text)
 			gfx.nl()
 			y = y + fs + sp
 		end
@@ -165,10 +173,10 @@ function list_init(name, list)
 		end
 		l.draw()
 		for key, action in pairs(key_bindings) do
-			mp.add_forced_key_binding(key, name .. "-" .. key, action)
+			mp.add_forced_key_binding(key, cfg.name .. "-" .. key, action)
 		end
 		for key, action in pairs(custom_key_bindings) do
-			mp.add_forced_key_binding(key, name .. "-" .. key, action)
+			mp.add_forced_key_binding(key, cfg.name .. "-" .. key, action)
 		end
 	end
 
@@ -180,10 +188,10 @@ function list_init(name, list)
 		gfx.clear()
 		gfx.update()
 		for key, action in pairs(key_bindings) do
-			mp.remove_key_binding(name .. "-" .. key)
+			mp.remove_key_binding(cfg.name .. "-" .. key)
 		end
 		for key, action in pairs(custom_key_bindings) do
-			mp.remove_key_binding(name .. "-" .. key)
+			mp.remove_key_binding(cfg.name .. "-" .. key)
 		end
 	end
 
@@ -233,7 +241,7 @@ function list_init(name, list)
 		end
 		custom_key_bindings[k] = new_action
 		if is_opened then
-			mp.add_forced_key_binding(k, name .. "-" .. k, new_action)
+			mp.add_forced_key_binding(k, cfg.name .. "-" .. k, new_action)
 		end
 	end
 
@@ -243,31 +251,18 @@ function list_init(name, list)
 		l.draw()
 	end
 
+	-- TODO: restore previous selection
 	function search_close()
 		is_searching = false
 		query = ""
 		l.draw()
 	end
 
-	key_bindings["up"] = up
-	key_bindings["down"] = down
-	key_bindings["wheel_up"] = up
-	key_bindings["wheel_down"] = down
-	key_bindings["enter"] = enter
-	key_bindings["alt+f"] = function()
-		if is_searching then
-			search_close()
-		else
-			search_open()
-		end
-	end
-
-	key_bindings["bs"] = function()
-		if #query > 0 then
-			query = query:sub(1, #query - 1)
-			l.selected = 1
-			l.draw()
-		end
+	function input_char(c)
+		if not is_searching then return end
+		query = query .. c
+		l.selected = 1
+		l.draw()
 	end
 
 	key_bindings["esc"] = function()
@@ -278,24 +273,46 @@ function list_init(name, list)
 		end
 	end
 
-	function input_char(c)
-		if not is_searching then return end
-		query = query .. c
-		l.selected = 1
-		l.draw()
-	end
+	if cfg.interactive ~= false then
 
-	local keys = "qwertyuiopasdfghjklzxcvbnm1234567890,./'[]-=`"
+		key_bindings["up"] = up
+		key_bindings["down"] = down
+		key_bindings["wheel_up"] = up
+		key_bindings["wheel_down"] = down
+		key_bindings["enter"] = enter
 
-	for i = 1, #keys do
-		local c = keys:sub(i, i)
-		key_bindings[c] = function()
-			input_char(c)
+		key_bindings["alt+f"] = function()
+			if cfg.interactive == false then return end
+			if is_searching then
+				search_close()
+			else
+				search_open()
+			end
 		end
-	end
 
-	key_bindings["space"] = function()
-		input_char(" ")
+		key_bindings["bs"] = function()
+			if cfg.interactive == false then return end
+			if #query > 0 then
+				query = query:sub(1, #query - 1)
+				l.selected = 1
+				l.draw()
+			end
+		end
+
+		-- TODO: only bind these when searching
+		local keys = "qwertyuiopasdfghjklzxcvbnm1234567890,./'[]-=`"
+
+		for i = 1, #keys do
+			local c = keys:sub(i, i)
+			key_bindings[c] = function()
+				input_char(c)
+			end
+		end
+
+		key_bindings["space"] = function()
+			input_char(" ")
+		end
+
 	end
 
 	mp.observe_property("osd-height", "number", function()

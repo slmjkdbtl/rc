@@ -6,28 +6,13 @@ local utils = require("mp.utils")
 local u = require("utils")
 local list_init = require("list")
 
-local l = list_init(mp.get_script_name(), {})
+local l = list_init({
+	name = mp.get_script_name(),
+})
 
 local ignore = {
 	".git",
 	".DS_Store",
-}
-
-local media_ext = {
-	"mp4",
-	"mpeg",
-	"mkv",
-	"webm",
-	"avi",
-	"mov",
-	"mp3",
-	"wav",
-	"aac",
-	"ogg",
-	"jpg",
-	"jpeg",
-	"png",
-	"webp",
 }
 
 function cd(dir)
@@ -41,7 +26,7 @@ function cd(dir)
 	for i, name in ipairs(dirs) do
 		local path = utils.join_path(dir, name)
 		list[#list + 1] = {
-			name = name .. "/",
+			text = name .. "/",
 			color = "blue",
 			on_enter = function()
 				cd(path)
@@ -49,11 +34,10 @@ function cd(dir)
 		}
 	end
 	for i, name in ipairs(files) do
-		local ext = name:match("[^.]+$")
-		if u.table_has(media_ext, ext) and not u.table_has(ignore, name) then
+		if u.is_media_file(name) and not u.table_has(ignore, name) then
 			local path = utils.join_path(dir, name)
 			list[#list + 1] = {
-				name = name,
+				text = name,
 				on_enter = function()
 					mp.commandv("loadfile", path)
 				end,
@@ -73,7 +57,7 @@ function cd(dir)
 		if to_dir ~= "" then
 			cd(to_dir)
 			for i, item in ipairs(l.list) do
-				if utils.join_path(to_dir, item.name) == dir .. "/" then
+				if utils.join_path(to_dir, item.text) == dir .. "/" then
 					l.selected = i
 					l.draw()
 					break
@@ -90,4 +74,4 @@ l.on_open(function()
 	cd(string.sub(dir, 1, #dir - 1))
 end)
 
-mp.add_key_binding("tab", "file-toggle", l.toggle)
+mp.add_forced_key_binding("tab", "file-toggle", l.toggle)

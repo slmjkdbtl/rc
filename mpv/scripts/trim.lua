@@ -93,5 +93,5 @@ function cancel()
 	ov:update()
 end
 
-mp.add_key_binding("alt+t", "trim-mark", mark)
-mp.add_key_binding("esc", "trim-cancel", cancel)
+mp.add_forced_key_binding("alt+t", "trim-mark", mark)
+mp.add_forced_key_binding("esc", "trim-cancel", cancel)

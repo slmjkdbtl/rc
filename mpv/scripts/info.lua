@@ -74,7 +74,11 @@ function open()
 		local val = d[2]
 		gfx.font_size(24)
 		gfx.border(4)
-		gfx.append(key .. ": " .. val)
+		gfx.color(180, 180, 180)
+		gfx.append(key)
+		gfx.append(" ")
+		gfx.color(255, 255, 255)
+		gfx.append(val)
 		gfx.nl()
 	end
 	gfx.update()
@@ -106,4 +110,4 @@ mp.observe_property("osd-height", "number", function()
 	end
 end)
 
-mp.add_key_binding("i", "toggle_info", toggle)
+mp.add_forced_key_binding("i", "toggle_info", toggle)

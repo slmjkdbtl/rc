@@ -23,5 +23,5 @@ function open_wezterm()
 	})
 end
 
-mp.add_key_binding("alt+=", "openinfinder", open_finder)
-mp.add_key_binding("alt+-", "openinwezterm", open_wezterm)
+mp.add_forced_key_binding("alt+=", "openinfinder", open_finder)
+mp.add_forced_key_binding("alt+-", "openinwezterm", open_wezterm)

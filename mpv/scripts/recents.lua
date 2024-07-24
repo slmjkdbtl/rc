@@ -13,7 +13,10 @@ local opts = {
 
 options.read_options(opts)
 
-local l = list_init(mp.get_script_name(), {})
+local l = list_init({
+	name = mp.get_script_name(),
+})
+
 local log_path = u.expand(opts.log_path)
 
 l.on_open(function()
@@ -22,7 +25,7 @@ l.on_open(function()
 	if f then
 		for line in f:lines() do
 			list[#list + 1] = {
-				name = u.tidy_path(line),
+				text = u.tidy_path(line),
 				on_enter = function()
 					mp.commandv("loadfile", line)
 				end,
@@ -60,4 +63,4 @@ mp.add_hook("on_unload", 50, function()
 	append_log(path)
 end)
 
-mp.add_key_binding("alt+r", "recents-toggle", l.toggle)
+mp.add_forced_key_binding("alt+r", "recents-toggle", l.toggle)
