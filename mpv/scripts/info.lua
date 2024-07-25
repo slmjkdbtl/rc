@@ -3,29 +3,9 @@
 package.path = package.path .. ";" .. mp.find_config_file("scripts") .. "/?.lua"
 
 local init_gfx = require("gfx")
+local u = require("utils")
 local gfx = init_gfx()
 local opened = false
-
-function readable_size(bytes)
-	if bytes >= math.pow(1024, 4) then
-		return string.format("%.2ftb", bytes / 1024 / 1024 / 1024 / 1024)
-	elseif bytes >= math.pow(1024, 3) then
-		return string.format("%.2fgb", bytes / 1024 / 1024 / 1024)
-	elseif (bytes >= math.pow(1024, 2)) then
-		return string.format("%.2fmb", bytes / 1024 / 1024)
-	elseif (bytes >= math.pow(1024, 1)) then
-		return string.format("%.2fkb", bytes / 1024)
-	else
-		return bytes .. "b"
-	end
-end
-
-function readable_time(secs)
-	local hr = math.floor(secs / 60 / 60)
-	local min = math.floor(secs / 60 - hr * 60)
-	local sec = math.floor(secs) % 60
-	return string.format("%02d:%02d:%02d", hr, min, sec)
-end
 
 function open()
 	opened = true
@@ -55,13 +35,12 @@ function open()
 		data[#data + 1] = { "Resolution", width .. "x" .. height }
 	end
 	if duration then
-		data[#data + 1] = { "Duration", readable_time(duration) }
+		data[#data + 1] = { "Duration", u.readable_time(duration) }
 	end
 	if size then
-		data[#data + 1] = { "Size", readable_size(size) }
+		data[#data + 1] = { "Size", u.readable_size(size) }
 	end
-	-- TODO: not showing all tracks
-	for i = 1, num_tracks do
+	for i = 0, num_tracks - 1 do
 		local ty = mp.get_property("track-list/" .. i .. "/type")
 		local codec = mp.get_property("track-list/" .. i .. "/codec")
 		if ty and codec then

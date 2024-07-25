@@ -68,10 +68,41 @@ function cd(dir)
 	l.draw()
 end
 
+function jump(n)
+	local path = mp.get_property("path")
+	local dir, filename = utils.split_path(path)
+	local files = utils.readdir(dir, "files")
+	table.sort(files)
+	files = u.table_filter(files, u.is_media_file)
+	local i = u.table_find(files, filename)
+	if i and files[i + n] then
+		local file = files[i + n]
+		local path = utils.join_path(dir, file)
+		mp.commandv("loadfile", path)
+		mp.osd_message(file)
+	end
+end
+
+function prev()
+	jump(-1)
+end
+
+function nxt()
+	jump(1)
+end
+
 l.on_open(function()
 	local path = mp.get_property("path")
 	local dir, filename = utils.split_path(path)
 	cd(string.sub(dir, 1, #dir - 1))
 end)
 
+mp.register_event("file-loaded", function()
+	if l.is_opened() then
+		-- TODO: change selected
+	end
+end)
+
+mp.add_forced_key_binding("<", "file-prev", prev)
+mp.add_forced_key_binding(">", "file-next", nxt)
 mp.add_forced_key_binding("tab", "file-toggle", l.toggle)

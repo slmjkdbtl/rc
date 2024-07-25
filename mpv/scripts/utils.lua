@@ -110,4 +110,25 @@ function u.table_find(t, item)
 	return nil
 end
 
+function u.readable_size(bytes)
+	if bytes >= math.pow(1024, 4) then
+		return string.format("%.2ftb", bytes / 1024 / 1024 / 1024 / 1024)
+	elseif bytes >= math.pow(1024, 3) then
+		return string.format("%.2fgb", bytes / 1024 / 1024 / 1024)
+	elseif (bytes >= math.pow(1024, 2)) then
+		return string.format("%.2fmb", bytes / 1024 / 1024)
+	elseif (bytes >= math.pow(1024, 1)) then
+		return string.format("%.2fkb", bytes / 1024)
+	else
+		return bytes .. "b"
+	end
+end
+
+function u.readable_time(secs)
+	local hr = math.floor(secs / 60 / 60)
+	local min = math.floor(secs / 60 - hr * 60)
+	local sec = math.floor(secs) % 60
+	return string.format("%02d:%02d:%02d", hr, min, sec)
+end
+
 return u
