@@ -165,6 +165,17 @@
 			<key>url</key>
 			<string>https://web.archive.org/web/{query}</string>
 		</dict>
+		<key>6D35C401-609E-4AC8-A760-310873416256</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>sub</string>
+			<key>text</key>
+			<string>Search OpenSubtitles for '{query}'</string>
+			<key>url</key>
+			<string>https://www.opensubtitles.org/en/search2/sublanguageid-all/moviename-{query}</string>
+		</dict>
 		<key>860891E2-1005-41F5-8C7E-523CDE8B0D05</key>
 		<dict>
 			<key>enabled</key>

@@ -69,6 +69,7 @@ alias dvl="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' 
 alias dm="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' --no-playlist"
 alias dml="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' --yes-playlist"
 alias dmc="yt-dlp -x --audio-format mp3 --split-chapters -o '%(chapter)s.%(ext)s' --no-playlist"
+alias ds="yt-dlp --all-subs --convert-subs srt --skip-download"
 
 localip() {
 	if exists ipconfig; then

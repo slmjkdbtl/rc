@@ -2,8 +2,6 @@
 
 package.path = package.path .. ";" .. mp.find_config_file("scripts") .. "/?.lua"
 
--- TODO: only allow one list active at one time
-
 local options = require("mp.options")
 local init_gfx = require("gfx")
 
@@ -30,6 +28,14 @@ local opts = {
 }
 
 options.read_options(opts)
+
+function get_prop(name)
+	return mp.get_property_native("user-data/list/" .. name)
+end
+
+function set_prop(name, val)
+	return mp.set_property_native("user-data/list/" .. name, val)
+end
 
 function list_init(cfg)
 
@@ -165,7 +171,16 @@ function list_init(cfg)
 		gfx.update()
 	end
 
+	function key_name(k)
+		return cfg.name .. "-list-" .. k
+	end
+
 	function l.open()
+		if get_prop("active") then
+			print(get_prop("active"))
+			return
+		end
+		set_prop("active", cfg.name)
 		is_opened = true
 		l.selected = 1
 		for _, action in ipairs(on_open) do
@@ -173,14 +188,15 @@ function list_init(cfg)
 		end
 		l.draw()
 		for key, action in pairs(key_bindings) do
-			mp.add_forced_key_binding(key, cfg.name .. "-" .. key, action)
+			mp.add_forced_key_binding(key, key_name(key), action)
 		end
 		for key, action in pairs(custom_key_bindings) do
-			mp.add_forced_key_binding(key, cfg.name .. "-" .. key, action)
+			mp.add_forced_key_binding(key, key_name(key), action)
 		end
 	end
 
 	function l.close()
+		set_prop("active", nil)
 		is_opened = false
 		is_searching = false
 		l.selected = 1
@@ -188,10 +204,10 @@ function list_init(cfg)
 		gfx.clear()
 		gfx.update()
 		for key, action in pairs(key_bindings) do
-			mp.remove_key_binding(cfg.name .. "-" .. key)
+			mp.remove_key_binding(key_name(key))
 		end
 		for key, action in pairs(custom_key_bindings) do
-			mp.remove_key_binding(cfg.name .. "-" .. key)
+			mp.remove_key_binding(key_name(key))
 		end
 	end
 
@@ -241,7 +257,7 @@ function list_init(cfg)
 		end
 		custom_key_bindings[k] = new_action
 		if is_opened then
-			mp.add_forced_key_binding(k, cfg.name .. "-" .. k, new_action)
+			mp.add_forced_key_binding(k, key_name(k), new_action)
 		end
 	end
 
@@ -275,6 +291,7 @@ function list_init(cfg)
 
 	if cfg.interactive ~= false then
 
+		-- TODO: these should set to be repeatable
 		key_bindings["up"] = up
 		key_bindings["down"] = down
 		key_bindings["wheel_up"] = up

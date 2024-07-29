@@ -53,6 +53,13 @@ return {
 		{ key = "LeftArrow", mods = "SUPER|SHIFT", action = wezterm.action { MoveTabRelative = -1 } },
 		{ key = "RightArrow", mods = "SUPER|SHIFT", action = wezterm.action { MoveTabRelative = 1 } },
 	},
+	mouse_bindings = {
+		{
+			event = { Up = { streak = 1, button = "Left" } },
+			mods = "NONE",
+			action = wezterm.action.OpenLinkAtMouseCursor,
+		},
+	},
 	audible_bell = "Disabled",
 	use_fancy_tab_bar = false,
 	native_macos_fullscreen_mode = true,

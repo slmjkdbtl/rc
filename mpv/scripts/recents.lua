@@ -5,16 +5,17 @@ package.path = package.path .. ";" .. mp.find_config_file("scripts") .. "/?.lua"
 local options = require("mp.options")
 local list_init = require("list")
 local u = require("utils")
+local script_name = mp.get_script_name()
 
 local opts = {
 	log_path = "~/Library/Caches/mpv/history.log",
-	log_max = 64,
+	log_max = 128,
 }
 
 options.read_options(opts)
 
 local l = list_init({
-	name = mp.get_script_name(),
+	name = script_name,
 })
 
 local log_path = u.expand(opts.log_path)
@@ -23,13 +24,15 @@ l.on_open(function()
 	local f = io.open(log_path, "r")
 	local list = {}
 	if f then
-		for line in f:lines() do
-			list[#list + 1] = {
-				text = u.tidy_path(line),
-				on_enter = function()
-					mp.commandv("loadfile", line)
-				end,
-			}
+		for path in f:lines() do
+			if u.file_exists(path) then
+				list[#list + 1] = {
+					text = u.tidy_path(path),
+					on_enter = function()
+						mp.commandv("loadfile", path)
+					end,
+				}
+			end
 		end
 		f:close()
 	end
@@ -58,9 +61,10 @@ function append_log(path)
 	f:close()
 end
 
+-- TODO: only record when video is opened for X seconds
 mp.add_hook("on_unload", 50, function()
 	local path = mp.get_property("path")
 	append_log(path)
 end)
 
-mp.add_forced_key_binding("alt+r", "recents-toggle", l.toggle)
+mp.add_forced_key_binding("alt+r", script_name .. "-toggle", l.toggle)

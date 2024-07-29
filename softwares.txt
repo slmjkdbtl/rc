@@ -300,6 +300,9 @@ CLI
   mednafen
     https://mednafen.github.io/
 
+  testdisk
+    https://www.cgsecurity.org/
+
 
 GUI
 

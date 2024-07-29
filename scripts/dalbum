@@ -16,7 +16,7 @@ if [ -z "$album" ] || [ -z "$url" ]; then
 	exit 1
 fi
 
-dir="$HOME/todo/listen/$album"
+dir="$HOME/files/todo/listen/$album"
 mkdir "$dir"
 
 case "$url" in

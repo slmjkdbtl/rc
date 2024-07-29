@@ -77,9 +77,11 @@ function mark()
 		start_pos = pos
 		ov.data = "{\\an1}trim start: " .. timestamp(pos)
 		ov:update()
+		mp.add_forced_key_binding("esc", "trim-cancel", cancel)
 	else
 		cut(start_pos, pos)
 		start_pos = nil
+		mp.remove_key_binding("trim-cancel")
 	end
 
 end
@@ -94,4 +96,3 @@ function cancel()
 end
 
 mp.add_forced_key_binding("alt+t", "trim-mark", mark)
-mp.add_forced_key_binding("esc", "trim-cancel", cancel)

@@ -5,9 +5,10 @@ package.path = package.path .. ";" .. mp.find_config_file("scripts") .. "/?.lua"
 local utils = require("mp.utils")
 local u = require("utils")
 local list_init = require("list")
+local script_name = mp.get_script_name()
 
 local l = list_init({
-	name = mp.get_script_name(),
+	name = script_name,
 })
 
 local ignore = {
@@ -91,18 +92,24 @@ function nxt()
 	jump(1)
 end
 
-l.on_open(function()
+function init()
 	local path = mp.get_property("path")
-	local dir, filename = utils.split_path(path)
-	cd(string.sub(dir, 1, #dir - 1))
-end)
+	if path then
+		local dir, filename = utils.split_path(path)
+		cd(string.sub(dir, 1, #dir - 1))
+	else
+		cd(u.expand("~/"))
+	end
+end
+
+l.on_open(init)
 
 mp.register_event("file-loaded", function()
 	if l.is_opened() then
-		-- TODO: change selected
+		init()
 	end
 end)
 
-mp.add_forced_key_binding("<", "file-prev", prev)
-mp.add_forced_key_binding(">", "file-next", nxt)
-mp.add_forced_key_binding("tab", "file-toggle", l.toggle)
+mp.add_forced_key_binding("<", script_name .. "-prev", prev)
+mp.add_forced_key_binding(">", script_name .. "-next", nxt)
+mp.add_forced_key_binding("tab", script_name .. "-toggle", l.toggle)
