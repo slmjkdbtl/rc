@@ -43,8 +43,13 @@ function open()
 	for i = 0, num_tracks - 1 do
 		local ty = mp.get_property("track-list/" .. i .. "/type")
 		local codec = mp.get_property("track-list/" .. i .. "/codec")
+		local default = mp.get_property_native("track-list/" .. i .. "/default")
 		if ty and codec then
-			data[#data + 1] = { "Track " .. i, ty .. "/" .. codec }
+			local text = ty .. "/" .. codec
+			if default then
+				text = text .. " (default)"
+			end
+			data[#data + 1] = { "Track " .. i, text }
 		end
 	end
 	gfx.clear()

@@ -229,7 +229,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyword</key>
-			<string>steamdb</string>
+			<string>st</string>
 			<key>text</key>
 			<string>Search SteamDB for '{query}'</string>
 			<key>url</key>

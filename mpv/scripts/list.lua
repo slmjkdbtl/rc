@@ -29,12 +29,8 @@ local opts = {
 
 options.read_options(opts)
 
-function get_prop(name)
-	return mp.get_property_native("user-data/list/" .. name)
-end
-
-function set_prop(name, val)
-	return mp.set_property_native("user-data/list/" .. name, val)
+function prop(name)
+	return "user-data/list/" .. name
 end
 
 function list_init(cfg)
@@ -48,6 +44,7 @@ function list_init(cfg)
 	local is_searching = false
 	local query = ""
 	local key_bindings = {}
+	local search_key_bindings = {}
 	local custom_key_bindings = {}
 	local on_open = {}
 
@@ -175,28 +172,31 @@ function list_init(cfg)
 		return cfg.name .. "-list-" .. k
 	end
 
-	function l.open()
-		if get_prop("active") then
-			print(get_prop("active"))
-			return
-		end
-		set_prop("active", cfg.name)
+	function search_key_name(k)
+		return cfg.name .. "-list-search-" .. k
+	end
+
+	function open()
 		is_opened = true
 		l.selected = 1
 		for _, action in ipairs(on_open) do
 			action()
 		end
 		l.draw()
-		for key, action in pairs(key_bindings) do
-			mp.add_forced_key_binding(key, key_name(key), action)
+		for key, bind in pairs(key_bindings) do
+			mp.add_forced_key_binding(key, key_name(key), bind.action, { repeatable = bind.repeatable == true })
 		end
-		for key, action in pairs(custom_key_bindings) do
-			mp.add_forced_key_binding(key, key_name(key), action)
+		for key, bind in pairs(custom_key_bindings) do
+			mp.add_forced_key_binding(key, key_name(key), bind.action, { repeatable = bind.repeatable == true })
 		end
 	end
 
-	function l.close()
-		set_prop("active", nil)
+	function l.open()
+		mp.set_property_native(prop("active"), cfg.name)
+		open()
+	end
+
+	function close()
 		is_opened = false
 		is_searching = false
 		l.selected = 1
@@ -209,6 +209,11 @@ function list_init(cfg)
 		for key, action in pairs(custom_key_bindings) do
 			mp.remove_key_binding(key_name(key))
 		end
+	end
+
+	function l.close()
+		mp.set_property_native(prop("active"), nil)
+		close()
 	end
 
 	function l.toggle()
@@ -255,7 +260,9 @@ function list_init(cfg)
 			end
 			action()
 		end
-		custom_key_bindings[k] = new_action
+		custom_key_bindings[k] = {
+			action = new_action,
+		}
 		if is_opened then
 			mp.add_forced_key_binding(k, key_name(k), new_action)
 		end
@@ -265,6 +272,9 @@ function list_init(cfg)
 		is_searching = true
 		query = ""
 		l.draw()
+		for key, bind in pairs(search_key_bindings) do
+			mp.add_forced_key_binding(key, search_key_name(key), bind.action, { repeatable = bind.repeatable == true })
+		end
 	end
 
 	-- TODO: restore previous selection
@@ -272,6 +282,9 @@ function list_init(cfg)
 		is_searching = false
 		query = ""
 		l.draw()
+		for key, action in pairs(search_key_bindings) do
+			mp.remove_key_binding(search_key_name(key))
+		end
 	end
 
 	function input_char(c)
@@ -281,56 +294,72 @@ function list_init(cfg)
 		l.draw()
 	end
 
-	key_bindings["esc"] = function()
+	function search_toggle()
 		if is_searching then
 			search_close()
 		else
-			l.close()
+			search_open()
 		end
 	end
 
-	if cfg.interactive ~= false then
-
-		-- TODO: these should set to be repeatable
-		key_bindings["up"] = up
-		key_bindings["down"] = down
-		key_bindings["wheel_up"] = up
-		key_bindings["wheel_down"] = down
-		key_bindings["enter"] = enter
-
-		key_bindings["alt+f"] = function()
-			if cfg.interactive == false then return end
+	key_bindings["esc"] = {
+		action = function()
 			if is_searching then
 				search_close()
 			else
-				search_open()
+				l.close()
 			end
-		end
+		end,
+	}
 
-		key_bindings["bs"] = function()
-			if cfg.interactive == false then return end
-			if #query > 0 then
-				query = query:sub(1, #query - 1)
-				l.selected = 1
-				l.draw()
-			end
-		end
+	if cfg.interactive ~= false then
 
-		-- TODO: only bind these when searching
+		key_bindings["up"] = { action = up, repeatable = true }
+		key_bindings["down"] = { action = down, repeatable = true }
+		key_bindings["k"] = { action = up, repeatable = true }
+		key_bindings["j"] = { action = down, repeatable = true }
+		key_bindings["wheel_up"] = { action = up, repeatable = true }
+		key_bindings["wheel_down"] = { action = down, repeatable = true }
+		key_bindings["enter"] = { action = enter }
+		key_bindings["alt+f"] = { action = search_toggle }
+
 		local keys = "qwertyuiopasdfghjklzxcvbnm1234567890,./'[]-=`"
 
 		for i = 1, #keys do
 			local c = keys:sub(i, i)
-			key_bindings[c] = function()
-				input_char(c)
-			end
+			search_key_bindings[c] = {
+				action = function()
+					input_char(c)
+				end,
+				repeatable = true,
+			}
 		end
 
-		key_bindings["space"] = function()
-			input_char(" ")
-		end
+		search_key_bindings["space"] = {
+			action = function()
+				input_char(" ")
+			end,
+			repeatable = true,
+		}
+
+		search_key_bindings["bs"] = {
+			action = function()
+				if #query > 0 then
+					query = query:sub(1, #query - 1)
+					l.selected = 1
+					l.draw()
+				end
+			end,
+			repeatable = true,
+		}
 
 	end
+
+	mp.observe_property(prop("active"), "native", function(k, v)
+		if is_opened and v ~= cfg.name then
+			close()
+		end
+	end)
 
 	mp.observe_property("osd-height", "number", function()
 		if is_opened then
