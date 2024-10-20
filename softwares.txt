@@ -153,6 +153,9 @@ CLI
   fzy
     https://github.com/jhawthorn/fzy/
 
+  delta
+    https://github.com/dandavison/delta/
+
   yabai
     https://github.com/koekeishiya/yabai/
 
@@ -282,6 +285,9 @@ CLI
   wrk
     https://github.com/wg/wrk/
 
+  oha
+    https://github.com/hatoo/oha/
+
   pageres
     https://github.com/sindresorhus/pageres-cli/
 
@@ -302,6 +308,18 @@ CLI
 
   testdisk
     https://www.cgsecurity.org/
+
+  aerc
+    https://aerc-mail.org/
+
+  translate-shell
+    https://github.com/soimort/translate-shell/
+
+  auto-subtitle
+    https://github.com/m1guelpf/auto-subtitle/
+
+  scrcpy
+    https://github.com/Genymobile/scrcpy/
 
 
 GUI
@@ -462,11 +480,17 @@ GUI
   SheepShaver
     https://sheepshaver.cebix.net/
 
+  Fission
+    https://rogueamoeba.com/fission/
+
   ocenaudio
     http://www.ocenaudio.com/
 
-  Zed
-    https://zed.dev/
+  Anki
+    https://apps.ankiweb.net/
+
+  ChatGPT
+    https://chatgpt.com/
 
   hiddenbar
     https://github.com/dwarvesf/hidden
@@ -488,6 +512,9 @@ GUI
 
   FreeCAD
     https://www.freecad.org/
+
+  SolveSpace
+    https://solvespace.com/
 
   KeyCastr
     https://github.com/keycastr/keycastr/
@@ -516,6 +543,9 @@ GUI
   OBS
     https://obsproject.com/
 
+  Konty
+    https://konty.app/
+
   Stellarium
     https://stellarium.org
 
@@ -533,6 +563,9 @@ GUI
 
   Ableton Live
     https://www.ableton.com/live/
+
+  DaVinci Resolve
+    https://www.blackmagicdesign.com/products/davinciresolve/
 
   REXPaint
     http://gridsagegames.com/rexpaint/
@@ -561,14 +594,17 @@ GUI
   MegaZeux
     https://www.digitalmzx.com/
 
+  iMazing
+    https://imazing.com/
+
 
 IOS
 
   TE Tuner
     https://www.tonalenergy.com/
 
-  Dice Tray
-    https://prettyyellowdog.com/apps/dice-tray/
+  Delta
+    https://deltaemulator.com/
 
   ProDex
     https://www.wido.io/
@@ -600,6 +636,9 @@ IOS
   SunVox
     https://www.warmplace.ru/soft/sunvox/
 
+  Notion
+    https://legacy.presonus.com/products/Notion
+
   Castle
     https://castle.xyz/
 
@@ -608,6 +647,27 @@ IOS
 
   PdParty
     http://danomatika.com/code/pdparty/
+
+  Queryable
+    https://www.queryable.app/
+
+  Anki
+    https://apps.ankiweb.net/
+
+  Shirabe Jisho
+    https://ricoapps.com/
+
+  ChatGPT
+    https://chatgpt.com/
+
+  forScore
+    https://forscore.co/
+
+  Dice Tray
+    https://prettyyellowdog.com/apps/dice-tray/
+
+  lichess
+    https://lichess.org/
 
   Living Worlds
     http://pixfabrik.com/livingworlds/
@@ -618,14 +678,20 @@ IOS
   BitWiz
     http://kymatica.com/apps/bitwiz/
 
-  ACNH Guide
-    https://acnh.guide/
-
   Nomad
     https://nomadsculpt.com/
 
   Kinopio
     https://kinopio.club/
+
+  Yu-Gi-Oh! Neuron
+    https://www.konami.com/games/eu/en/products/yugioh_neuron/
+
+  ACNH Guide
+    https://acnh.guide/
+
+  Simple Scan
+    https://agiletortoise.com/simple-scan/
 
 
 CHROME EXTENSIONS
@@ -638,6 +704,12 @@ CHROME EXTENSIONS
 
   Control Panel for YouTube
     https://jbscript.dev/control-panel-for-youtube
+
+  Yomitan
+    https://yomitan.wiki/
+
+  Raindrop.io
+    https://help.raindrop.io/install-extension/
 
   SingleFile
     https://github.com/gildas-lormeau/SingleFile
@@ -669,6 +741,15 @@ CHROME EXTENSIONS
   Bypass Paywalls
     https://github.com/iamadamdev/bypass-paywalls-chrome
 
+  Wappalyzer
+    https://www.wappalyzer.com/
+
+  Edit Anything
+    https://chromewebstore.google.com/detail/edit-anything/kgkhambjbahgejgoaefmekdchedkihln?hl=en
+
+  ARIA Devtools
+    https://github.com/ziolko/aria-devtools/
+
 
 ZSH
 
@@ -692,6 +773,21 @@ ALFRED
 
   kill
     https://github.com/ngreenstein/alfred-process-killer/
+
+  ChatGPT / DALL-E
+    https://alfred.app/workflows/alfredapp/openai/
+
+  Wayback When
+    https://alfred.app/workflows/alfredapp/wayback-when/
+
+  Currency Converter
+    https://alfred.app/workflows/alfredapp/currency-converter/
+
+  Shortcuts
+    https://alfred.app/workflows/alfredapp/shortcuts/
+
+  Network Quality
+    https://alfred.app/workflows/alfredapp/network-quality/
 
 
 SCREENSAVERS
@@ -747,6 +843,8 @@ SYSTEM
   Xbox 360 Driver
     https://github.com/360Controller/360Controller
 
+  BackgroundMusic
+    https://github.com/kyleneideck/BackgroundMusic
 
 FONTS
 

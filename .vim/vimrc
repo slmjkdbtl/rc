@@ -98,9 +98,11 @@ let g:ale_hover_cursor = 0
 let g:ale_floating_preview = 1
 let g:ale_linters_explicit = 1
 let g:ale_floating_window_border = ['|', '-', ' ', ' ', ' ', ' ']
+let g:ale_set_balloons = 1
 let g:ale_c_parse_makefile = 1
 
 let g:ale_fixers = {
+	\ 'cs': [ 'OmniSharp', ],
 	\ 'javascript': [ 'eslint', 'prettier' ],
 	\ 'typescript': [ 'eslint', 'prettier' ],
 	\ 'typescriptreact': [ 'eslint', 'prettier' ],
@@ -108,6 +110,7 @@ let g:ale_fixers = {
 
 let g:ale_linters = {
 	\ 'c': [ 'clangd', ],
+	\ 'cs': [ 'OmniSharp', ],
 	\ 'objc': [ 'clangd', ],
 	\ 'cpp': [ 'clangd', ],
 	\ 'rust': [ 'analyzer', ],
@@ -122,6 +125,9 @@ let g:ale_linters = {
 	\ 'json': [ 'jsonlint', ],
 	\ 'sh': [ 'shellcheck', ],
 \ }
+
+" OmniSharp
+let g:OmniSharp_server_use_net6 = 1
 
 " fzf
 command! FZFMru call fzf#run(fzf#wrap({
@@ -258,7 +264,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'noscript/elevator.vim'
 Plug 'valloric/MatchTagAlways'
-
+Plug 'OmniSharp/omnisharp-vim'
 Plug 'lervag/vimtex'
 Plug 'pangloss/vim-javascript'
 Plug 'tbastos/vim-lua'
@@ -463,6 +469,15 @@ nno <silent> <m-i> :ALEHover<cr>
 nno <silent> <m-o> :ALEGoToDefinition<cr>
 nno <silent> <m-p> :ALEFindReferences<cr>
 
+" TODO: can this be handled by ale?
+func! s:omnisharp_init()
+	nno <silent> <m-i> :OmniSharpDocumentation<cr>
+	nno <silent> <m-o> :OmniSharpGotoDefinition<cr>
+	nno <silent> <m-p> :OmniSharpFindImplementations<cr>
+endfunc
+
+au FileType cs call <sid>omnisharp_init()
+
 " signify
 nm <m-;> <plug>(signify-prev-hunk)
 nm <m-'> <plug>(signify-next-hunk)
@@ -480,6 +495,7 @@ au BufRead,BufNewFile *.dt       set ft=dirty
 
 " file type comments
 au FileType c                setl cms=//%s
+au FileType cs               setl cms=//%s
 au FileType cpp              setl cms=//%s
 au FileType rust             setl cms=//%s
 au FileType go               setl cms=//%s

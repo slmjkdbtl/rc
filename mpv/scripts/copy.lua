@@ -1,0 +1,1 @@
+-- TODO: copy path / name to clipboard

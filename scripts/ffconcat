@@ -10,8 +10,8 @@ done
 
 ffmpeg \
 	-hide_banner \
-	-i .ffconcat.txt \
 	-f concat \
+	-i .ffconcat.txt \
 	-safe 0 \
 	-c copy \
 	"ffconcat.$ext"

@@ -1,5 +1,8 @@
 set up a vps for hosting websites, mail and vpn
 
+# access the server
+$ ssh root@ip
+
 # add user
 $ adduser tga
 
@@ -76,7 +79,7 @@ User=tga
 Environment="PORT=4000"
 WorkingDirectory=/home/tga/space55.xyz
 StandardError=append:/home/tga/space55.xyz/data/err.log
-ExecStart=/home/tga/.bun/bin/bun main.ts
+ExecStart=/bin/sh -l start
 Restart=always
 StandardOutput=journal
 StandardError=journal

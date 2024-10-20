@@ -1,6 +1,6 @@
 local u = {}
 
-function u.exec(cmds, opts)
+function u.exec(cmds, action)
 	return mp.command_native_async({
 		name = "subprocess",
 		args = cmds,
@@ -47,8 +47,16 @@ local media_ext = {
 	"webp",
 }
 
+function u.get_ext(p)
+	return p:match("[^.]+$")
+end
+
+function u.cmp_ext(a, b)
+	return u.get_ext(a) > u.get_ext(b)
+end
+
 function u.is_media_file(p)
-	local ext = p:match("[^.]+$")
+	local ext = u.get_ext(p)
 	return u.table_has(media_ext, ext)
 end
 
@@ -93,7 +101,7 @@ end
 
 function u.table_filter(t, fn)
 	local t2 = {}
-	for i, val in ipairs(t) do
+	for _, val in ipairs(t) do
 		if fn(val) then
 			t2[#t2 + 1] = val
 		end
@@ -111,13 +119,13 @@ function u.table_find(t, item)
 end
 
 function u.readable_size(bytes)
-	if bytes >= math.pow(1024, 4) then
+	if (bytes >= 1024 ^ 4) then
 		return string.format("%.2ftb", bytes / 1024 / 1024 / 1024 / 1024)
-	elseif bytes >= math.pow(1024, 3) then
+	elseif (bytes >= 1024 ^ 3) then
 		return string.format("%.2fgb", bytes / 1024 / 1024 / 1024)
-	elseif (bytes >= math.pow(1024, 2)) then
+	elseif (bytes >= 1024 ^ 2) then
 		return string.format("%.2fmb", bytes / 1024 / 1024)
-	elseif (bytes >= math.pow(1024, 1)) then
+	elseif (bytes >= 1024 ^ 1) then
 		return string.format("%.2fkb", bytes / 1024)
 	else
 		return bytes .. "b"

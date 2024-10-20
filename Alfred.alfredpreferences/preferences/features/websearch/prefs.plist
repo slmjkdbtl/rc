@@ -200,6 +200,17 @@
 			<key>url</key>
 			<string>https://caniuse.com/?search={query}</string>
 		</dict>
+		<key>A192154E-F716-48B1-9E26-C7CFF5EECFCE</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>ins</string>
+			<key>text</key>
+			<string>Open Instagram</string>
+			<key>url</key>
+			<string>https://www.instagram.com/</string>
+		</dict>
 		<key>A718044C-258B-4DFC-8D84-057BE6C895E8</key>
 		<dict>
 			<key>enabled</key>
@@ -212,6 +223,17 @@
 			<string>https://developer.mozilla.org/search?q={query}</string>
 			<key>utf8</key>
 			<true/>
+		</dict>
+		<key>A8663D87-C823-4CC8-9A86-B80BBDCFDE3A</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>jp</string>
+			<key>text</key>
+			<string>Search jpdb for '{query}'</string>
+			<key>url</key>
+			<string>https://jpdb.io/search?q={query}</string>
 		</dict>
 		<key>A8F6F0A6-CD3D-45F2-B784-1FFFC4328240</key>
 		<dict>
@@ -273,6 +295,17 @@
 			<string>https://bandcamp.com/search?q={query}</string>
 			<key>utf8</key>
 			<true/>
+		</dict>
+		<key>DCE5874A-7B17-4995-A9ED-030C9B17514F</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>st</string>
+			<key>text</key>
+			<string>Open Steam</string>
+			<key>url</key>
+			<string>https://store.steampowered.com/</string>
 		</dict>
 		<key>DF598E2B-F192-40F9-AD41-49812F895B7C</key>
 		<dict>

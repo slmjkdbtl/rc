@@ -3,7 +3,7 @@
 package.path = package.path .. ";" .. mp.find_config_file("scripts") .. "/?.lua"
 
 local options = require("mp.options")
-local init_gfx = require("gfx")
+local gfx_init = require("gfx")
 
 local theme = {
 	bg      = "000000",
@@ -29,7 +29,7 @@ local opts = {
 
 options.read_options(opts)
 
-function prop(name)
+function userprop(name)
 	return "user-data/list/" .. name
 end
 
@@ -184,15 +184,21 @@ function list_init(cfg)
 		end
 		l.draw()
 		for key, bind in pairs(key_bindings) do
-			mp.add_forced_key_binding(key, key_name(key), bind.action, { repeatable = bind.repeatable == true })
+			mp.add_forced_key_binding(key, key_name(key), bind.action, {
+				repeatable = bind.repeatable == true,
+				complex = bind.complex == true,
+			})
 		end
 		for key, bind in pairs(custom_key_bindings) do
-			mp.add_forced_key_binding(key, key_name(key), bind.action, { repeatable = bind.repeatable == true })
+			mp.add_forced_key_binding(key, key_name(key), bind.action, {
+				repeatable = bind.repeatable == true,
+				complex = bind.complex == true,
+			})
 		end
 	end
 
 	function l.open()
-		mp.set_property_native(prop("active"), cfg.name)
+		mp.set_property_native(userprop("active"), cfg.name)
 		open()
 	end
 
@@ -212,7 +218,7 @@ function list_init(cfg)
 	end
 
 	function l.close()
-		mp.set_property_native(prop("active"), nil)
+		mp.set_property_native(userprop("active"), nil)
 		close()
 	end
 
@@ -273,7 +279,10 @@ function list_init(cfg)
 		query = ""
 		l.draw()
 		for key, bind in pairs(search_key_bindings) do
-			mp.add_forced_key_binding(key, search_key_name(key), bind.action, { repeatable = bind.repeatable == true })
+			mp.add_forced_key_binding(key, search_key_name(key), bind.action, {
+				repeatable = bind.repeatable == true,
+				complex = bind.complex == true,
+			})
 		end
 	end
 
@@ -355,7 +364,7 @@ function list_init(cfg)
 
 	end
 
-	mp.observe_property(prop("active"), "native", function(k, v)
+	mp.observe_property(userprop("active"), "native", function(k, v)
 		if is_opened and v ~= cfg.name then
 			close()
 		end

@@ -2,9 +2,9 @@
 
 package.path = package.path .. ";" .. mp.find_config_file("scripts") .. "/?.lua"
 
-local init_gfx = require("gfx")
+local gfx_init = require("gfx")
 local u = require("utils")
-local gfx = init_gfx()
+local gfx = gfx_init()
 local opened = false
 
 function open()

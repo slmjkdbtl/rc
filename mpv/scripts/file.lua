@@ -16,6 +16,7 @@ local ignore = {
 	".DS_Store",
 }
 
+-- TODO: sort with file type
 function cd(dir)
 	local cur_path = mp.get_property("path")
 	local dirs = utils.readdir(dir, "dirs")
@@ -71,6 +72,7 @@ end
 
 function jump(n)
 	local path = mp.get_property("path")
+	print(path)
 	local dir, filename = utils.split_path(path)
 	local files = utils.readdir(dir, "files")
 	table.sort(files)

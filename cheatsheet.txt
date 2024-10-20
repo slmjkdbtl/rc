@@ -24,7 +24,8 @@ ffmpeg basics
 ffmpeg resize video
 
   $ ffmpeg -i input.mp4 -vf scale=640:480 -c:a copy output.mp4
-  $ ffmpeg -i input.mp4 -vf scale=640:-1 -c:a copy output.mp4
+  $ ffmpeg -i input.mp4 -vf scale=-1:720 -c:a copy output.mp4
+  $ ffmpeg -i input.mp4 -vf scale=-2:720 -c:a copy output.mp4
 
 ffmpeg crop video
 
@@ -99,6 +100,10 @@ ffmpeg keep first video track, second audio track and all subtitles
 ffmpeg add audio to image generate video
 
   $ ffmpeg -loop 1 -i input.jpg -i input.mp3 -c:v libx264 -c:a aac -b:a 256k -preset veryslow -tune stillimage -vf scale=600:600 -shortest -strict experimental -shortest "$out"
+
+ffmpeg concat video
+
+  $ ffmpeg -i 1.mp4 -i 2.mp4 -i 3.mp4 -filter_complex "[0:v] [0:a] [1:v] [1:a] [2:v] [2:a] concat=n=3:v=1:a=1 [v] [a]" -map "[v]" -map "[a]" out.mp4
 
 ffmpeg image conversion
 
@@ -227,6 +232,7 @@ rename all files to number
 
 remove white background from image
 
+  $ ffmpeg -i input.png -vf colorkey=white:0.05:0.0 output.png
   $ magick input.png -transparent white output.png
   $ magick input.png -fuzz 5% -transparent white output.png
 
@@ -235,3 +241,11 @@ loop over number
   $ for i in $(seq 1 10); do
       echo $i
     done
+
+make font subset from file
+
+  $ pyftsubset font.ttf --text-file=file.txt --flavor=woff2 --output-file=font.woff2
+
+convert epub to pdf
+
+  $ pandoc -f epub -t pdf --pdf-engine=tectonic "book.epub" -o "book.pdf"
