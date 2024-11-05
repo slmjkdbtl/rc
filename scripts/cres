@@ -26,14 +26,14 @@ mkdir -p "$dest_path"
 
 convert() {
 	for entry in "$1"/*; do
-		dest=$dest_path${entry##$src_path}
+		dest=$dest_path${entry##"$src_path"}
 		if [ -d "$entry" ]; then
 			mkdir -p "$dest"
 			convert "$entry"
-		else
+		elif [ -f "$entry" ]; then
 			echo "$entry -> $dest.h"
 			cd "$1" || exit
-			xxd -i "${entry##$1/}" > "$base_path/$dest.h"
+			xxd -i "${entry##"$1"/}" > "$base_path/$dest.h"
 			cd "$base_path" || exit
 		fi
 	done

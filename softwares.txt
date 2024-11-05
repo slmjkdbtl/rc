@@ -30,9 +30,6 @@ CLI
   fd
     https://github.com/sharkdp/fd/
 
-  procs
-    https://github.com/dalance/procs/
-
   scc
     https://github.com/boyter/scc/
 
@@ -165,14 +162,14 @@ CLI
   cmark
     https://github.com/commonmark/cmark
 
-  glow
-    https://github.com/charmbracelet/glow/
-
   lilypond
     http://lilypond.org/
 
   tectonic
     https://tectonic-typesetting.github.io/
+
+  exiftool
+    https://exiftool.org/
 
   caddy
     https://caddyserver.com/
@@ -425,9 +422,6 @@ GUI
 
   MilkyTracker
     https://milkytracker.org/
-
-  Helm
-    https://tytel.org/helm/
 
   Dash
     https://kapeli.com/dash/

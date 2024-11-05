@@ -128,6 +128,13 @@ let g:ale_linters = {
 
 " OmniSharp
 let g:OmniSharp_server_use_net6 = 1
+let g:OmniSharp_popup_options = {
+\ 'highlight': 'Normal',
+\ 'padding': [1],
+\ 'border': [1],
+\ 'borderchars': ['-', '|', '-', '|', ' ', ' ', ' ', ' '],
+\ 'borderhighlight': ['Comment']
+\}
 
 " fzf
 command! FZFMru call fzf#run(fzf#wrap({
@@ -469,6 +476,7 @@ nno <silent> <m-i> :ALEHover<cr>
 nno <silent> <m-o> :ALEGoToDefinition<cr>
 nno <silent> <m-p> :ALEFindReferences<cr>
 
+" omnisharp
 " TODO: can this be handled by ale?
 func! s:omnisharp_init()
 	nno <silent> <m-i> :OmniSharpDocumentation<cr>

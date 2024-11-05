@@ -1,0 +1,8 @@
+#!/bin/sh
+# set mp3 titles to file names
+
+for f in *.mp3; do
+	mv "$f" ".b-$f"
+	ffmpeg -hide_banner -i ".b-$f" -c copy -metadata title="$(basename "$f" ".mp3")" "$f"
+	rm ".b-$f"
+done

@@ -1,2 +1,3 @@
 cmd + shift - 6 : shortcuts run "Screenshot OCR"
+cmd + shift - 7 : shortcuts run "Screenshot Translate"
 cmd + shift - o : osascript -e 'tell application "Finder" to if "Finder" is in (name of first application process whose frontmost is true) then do shell script "open -a WezTerm && wezterm cli spawn --cwd " & (quoted form of POSIX path of (folder of the front window as string) as string)'

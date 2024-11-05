@@ -1,4 +1,10 @@
+export EDITOR="vim"
+export SYSTEMD_EDITOR="vim"
+export BROWSER="open"
+export PAGER="less"
+
 export HOMEBREW_NO_AUTO_UPDATE=1
+export TLDR_AUTO_UPDATE_DISABLED=0
 
 exists() { command -v "$1" > /dev/null 2>&1; }
 
@@ -15,12 +21,10 @@ if exists python3; then
 	export PATH="$(python3 -m site --user-base)/bin:$PATH"
 fi
 
-export PATH="/usr/local/share/dotnet:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/usr/local/share/dotnet/x64:$PATH"
 
-export EDITOR="vim"
-export SYSTEMD_EDITOR="vim"
-export BROWSER="open"
-export PAGER="less"
+export MGFXC_WINE_PATH=/Users/tga/.winemonogame
 
 alias ~="cd ~"
 alias ..="cd .."

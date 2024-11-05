@@ -21,6 +21,7 @@
 	helper = store
 [pull]
 	ff = only
+	rebase = true
 [pager]
 	branch = false
 [branch]
