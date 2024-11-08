@@ -12,12 +12,12 @@ local white   = "#dadada"
 
 return {
 	font = wezterm.font_with_fallback({
-		"APL386 Unicode",
-		"Noto Sans SC",
+		"ProggySquareTT",
+		{ family = "Fusion Pixel 10px Monospaced zh_hans", scale = 0.64 },
 	}),
-	font_size = 20,
+	font_size = 24,
 	initial_cols = 96,
-	initial_rows = 30,
+	initial_rows = 36,
 	tab_max_width = 24,
 	window_padding = {
 		left = 16,
