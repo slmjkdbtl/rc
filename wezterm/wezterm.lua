@@ -9,8 +9,9 @@ local blue    = "#8abbff"
 local magenta = "#f7aad7"
 local cyan    = "#7ce9df"
 local white   = "#dadada"
+local titlebar_bg = "#1a1a1a"
 
-local cfg = {}
+local cfg = wezterm.config_builder()
 
 cfg.font = wezterm.font_with_fallback({
 	"ProggySquareTT",
@@ -19,7 +20,7 @@ cfg.font = wezterm.font_with_fallback({
 
 cfg.font_size = 26
 cfg.font_dirs = { "fonts" }
--- cfg.font_locator = "ConfigDirsOnly"
+cfg.font_locator = "ConfigDirsOnly"
 cfg.adjust_window_size_when_changing_font_size = false
 
 cfg.underline_thickness = 3
@@ -28,11 +29,25 @@ cfg.initial_cols = 96
 cfg.initial_rows = 36
 cfg.tab_max_width = 24
 
+cfg.audible_bell = "Disabled"
+cfg.native_macos_fullscreen_mode = true
+cfg.window_decorations = "INTEGRATED_BUTTONS | RESIZE"
+cfg.use_fancy_tab_bar = true
+cfg.tab_bar_at_bottom = false
+cfg.hide_tab_bar_if_only_one_tab = false
+
 cfg.window_padding = {
 	left = 16,
 	right = 16,
 	top = 0,
 	bottom = 8,
+}
+
+cfg.window_frame = {
+	font = cfg.font,
+	font_size = 24,
+	active_titlebar_bg = titlebar_bg,
+	inactive_titlebar_bg = titlebar_bg,
 }
 
 cfg.colors = {
@@ -92,20 +107,6 @@ cfg.mouse_bindings = {
 		mods = "NONE",
 		action = wezterm.action.OpenLinkAtMouseCursor,
 	},
-}
-
-cfg.audible_bell = "Disabled"
-cfg.native_macos_fullscreen_mode = true
-cfg.window_decorations = "INTEGRATED_BUTTONS | RESIZE"
-cfg.use_fancy_tab_bar = true
-cfg.tab_bar_at_bottom = false
-cfg.hide_tab_bar_if_only_one_tab = false
-
-cfg.window_frame = {
-	font = cfg.font,
-	font_size = 24,
-	active_titlebar_bg = "#1a1a1a",
-	inactive_titlebar_bg = "#1a1a1a",
 }
 
 return cfg
