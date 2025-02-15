@@ -27,7 +27,6 @@ case "$url" in
 				-o '%(title)s.%(ext)s' \
 				-i \
 				--yes-playlist \
-				--cookies ~/files/cookies.txt \
 				-x --audio-format mp3 \
 				--postprocessor-args "-metadata album='$album'" \
 				--external-downloader aria2c \
@@ -43,7 +42,6 @@ case "$url" in
 				-o '%(chapter)s.%(ext)s' \
 				-i \
 				--no-playlist \
-				--cookies ~/files/cookies.txt \
 				-x --audio-format mp3 \
 				--postprocessor-args "-metadata album='$album'" \
 				--external-downloader aria2c \

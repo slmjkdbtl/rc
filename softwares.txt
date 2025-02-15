@@ -159,6 +159,12 @@ CLI
   pandoc
     https://pandoc.org/
 
+  qpdf
+    https://qpdf.sourceforge.io/
+
+  ocrmypdf
+    https://ocrmypdf.readthedocs.io/
+
   cmark
     https://github.com/commonmark/cmark
 
@@ -173,6 +179,9 @@ CLI
 
   caddy
     https://caddyserver.com/
+
+  imapsync
+    https://imapsync.lamiral.info/
 
   gource
     https://gource.io/
@@ -318,6 +327,9 @@ CLI
   scrcpy
     https://github.com/Genymobile/scrcpy/
 
+  ncmdump
+    https://github.com/taurusxin/ncmdump/
+
 
 GUI
 
@@ -398,6 +410,12 @@ GUI
 
   Keka
     https://www.keka.io/
+
+  Steam
+    https://store.steampowered.com/about/
+
+  Steam Link
+    https://store.steampowered.com/app/353380/Steam_Link/
 
   Monodraw
     https://monodraw.helftone.com/
@@ -530,6 +548,9 @@ GUI
 
   AppCleaner
     http://freemacsoft.net/appcleaner/
+
+  DevCleaner
+    https://github.com/vashpan/xcode-dev-cleaner/
 
   Twine
     https://twinery.org/

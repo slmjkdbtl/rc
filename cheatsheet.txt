@@ -249,3 +249,7 @@ make font subset from file
 convert epub to pdf
 
   $ pandoc -f epub -t pdf --pdf-engine=tectonic "book.epub" -o "book.pdf"
+
+make unsigned binary runnable
+
+  $ xattr -d com.apple.quarantine bin

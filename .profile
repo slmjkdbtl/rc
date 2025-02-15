@@ -21,10 +21,12 @@ if exists python3; then
 	export PATH="$(python3 -m site --user-base)/bin:$PATH"
 fi
 
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/llvm/bin:$PATH"
 export PATH="/usr/local/share/dotnet/x64:$PATH"
 
-export MGFXC_WINE_PATH=/Users/tga/.winemonogame
+export MGFXC_WINE_PATH="$HOME/.winemonogame"
+export WINEPATH="$HOMEBREW_PREFIX/opt/mingw-w64/toolchain-x86_64/x86_64-w64-mingw32/bin"
+export ANDROID_NDK_HOME="$HOMEBREW_PREFIX/share/android-ndk"
 
 alias ~="cd ~"
 alias ..="cd .."
