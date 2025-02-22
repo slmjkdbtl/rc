@@ -1,4 +1,5 @@
 #!/bin/sh
+# pack a binary to macos .app bundle
 
 bin="$1"
 mkdir "$bin.app"

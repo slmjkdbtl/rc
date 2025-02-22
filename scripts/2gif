@@ -32,7 +32,7 @@ if [ -z "$1" ]; then
 fi
 
 src=$(ntharg $# "$@")
-size="320:-1"
+size="-1:240"
 fps=30
 ext=$(echo "${src##*.}" | tr '[:upper:]' '[:lower:]')
 name=$(basename "$src" ".$ext")

@@ -184,6 +184,10 @@ get local ip
 
   $ ipconfig getifaddr en0
 
+get public ip
+
+  $ curl ifconfig.co
+
 list files by size
 
   $ du -chs * .* | sort -h
@@ -250,6 +254,48 @@ convert epub to pdf
 
   $ pandoc -f epub -t pdf --pdf-engine=tectonic "book.epub" -o "book.pdf"
 
+join pdf
+
+  $ qpdf --empty --pages *.pdf -- output.pdf
+
+extract images from pdf
+
+  $ pdfimages -all input.pdf image
+
+concat images to pdf
+
+  $ img2pdf *.jpg -o images.pdf
+
 make unsigned binary runnable
 
   $ xattr -d com.apple.quarantine bin
+
+prevent macos writing metadata files on USB drives
+
+  $ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+
+screenshot config
+
+  $ defaults write com.apple.screencapture location -string "$HOME/Downloads"
+  $ defaults write com.apple.screencapture type -string "jpg"
+  $ defaults write com.apple.screencapture show-thumbnail -bool false
+  $ killall SystemUIServer
+
+clean all ._ files on external disk
+
+  $ dot_clean /Volumes/EXTDRIVE
+
+archive website
+
+  $ wget --convert-links --adjust-extension --page-requisites --mirror --no-parent https://landsofdream.net/
+
+  $ wget \
+      --convert-links \
+      --adjust-extension \
+      --page-requisites \
+      --mirror \
+      --no-parent \
+      -e robots=off \
+      --warc-file=archive \
+      --reject-regex ".*(login|track).*" \
+      https://landsofdream.net/

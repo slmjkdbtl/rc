@@ -3,8 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>scope</key>
-	<array>
-		<string>~/Applications</string>
-	</array>
+	<array/>
 </dict>
 </plist>

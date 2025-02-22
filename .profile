@@ -13,7 +13,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 if exists /opt/homebrew/bin/brew; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
-	export CFLAGS="-I$HOMEBREW_PREFIX/include"
+	export CPPFLAGS="-I$HOMEBREW_PREFIX/include"
 	export LDFLAGS="-L$HOMEBREW_PREFIX/lib"
 fi
 

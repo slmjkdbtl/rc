@@ -15,6 +15,9 @@ CLI
   trurl
     https://curl.se/trurl/
 
+  wget
+    https://www.gnu.org/software/wget/
+
   ffmpeg
     https://ffmpeg.org/
 
@@ -111,6 +114,9 @@ CLI
   browsh
     https://www.brow.sh/
 
+  w3m
+    https://w3m.sourceforge.net/
+
   datasette
     https://datasette.io/
 
@@ -161,6 +167,9 @@ CLI
 
   qpdf
     https://qpdf.sourceforge.io/
+
+  poppler
+    https://poppler.freedesktop.org/
 
   ocrmypdf
     https://ocrmypdf.readthedocs.io/
@@ -287,6 +296,9 @@ CLI
 
   monolith
     https://github.com/Y2Z/monolith/
+
+  httrack
+    https://www.httrack.com/
 
   wrk
     https://github.com/wg/wrk/
@@ -465,6 +477,9 @@ GUI
   Vita3K
     https://vita3k.org/
 
+  RetroArch
+    https://www.retroarch.com/
+
   DOSBox
     https://www.dosbox.com/
 
@@ -476,6 +491,9 @@ GUI
 
   Kiwix
     https://kiwix.org/
+
+  LinearMouse
+    https://linearmouse.app/
 
   AutoClicker
     https://github.com/othyn/macos-auto-clicker
@@ -507,6 +525,9 @@ GUI
   hiddenbar
     https://github.com/dwarvesf/hidden
 
+  TuxPaint
+    https://tuxpaint.org/
+
   LICEcap
     https://www.cockos.com/licecap/
 
@@ -530,6 +551,9 @@ GUI
 
   KeyCastr
     https://github.com/keycastr/keycastr/
+
+  ReplayWeb.page
+    https://replayweb.page/
 
   O.H.R.RPG.C.E
     http://rpg.hamsterrepublic.com/ohrrpgce/
@@ -621,7 +645,16 @@ IOS
   Delta
     https://deltaemulator.com/
 
+  PPSSPP
+    https://www.ppsspp.org/
+
+  RetroArch
+    https://www.retroarch.com/
+
   ProDex
+    https://www.wido.io/
+
+  ProDex TCG
     https://www.wido.io/
 
   SimpleNote
@@ -691,7 +724,7 @@ IOS
     https://www.ableton.com/note/
 
   BitWiz
-    http://kymatica.com/apps/bitwiz/
+    https://kymatica.com/apps/bitwiz
 
   Nomad
     https://nomadsculpt.com/
@@ -707,6 +740,9 @@ IOS
 
   Simple Scan
     https://agiletortoise.com/simple-scan/
+
+  Knots 3D
+    https://knots3d.com/
 
 
 CHROME EXTENSIONS
@@ -725,9 +761,6 @@ CHROME EXTENSIONS
 
   Raindrop.io
     https://help.raindrop.io/install-extension/
-
-  SingleFile
-    https://github.com/gildas-lormeau/SingleFile
 
   Archive Page
     https://chrome.google.com/webstore/detail/archive-page/gcaimhkfmliahedmeklebabdgagipbia
@@ -849,6 +882,9 @@ GAMES
   0ad
     https://play0ad.com/media/videos/
 
+  SuperTux
+    https://www.supertux.org/
+
 
 SYSTEM
 
@@ -881,8 +917,17 @@ FONTS
   Unscii
     http://pelulamu.net/unscii/
 
+  Kitchen Sink
+    https://polyducks.itch.io/kitchen-sink-textmode-font/
+
+  anna anthropy's World of Fonts
+    https://w.itch.io/world-of-fonts
+
   Zpix
-    https://github.com/SolidZORO/zpix-pixel-font
+    https://github.com/SolidZORO/zpix-pixel-font/
+
+  Ark Pixel Font
+    http://ark-pixel-font.takwolf.com/
 
   Oldschool PC Fonts
     https://int10h.org/oldschool-pc-fonts/
@@ -895,6 +940,16 @@ FONTS
 
   Inter
     https://rsms.me/inter/
+
+  sitelen pona pona
+    https://jackhumbert.github.io/sitelen-pona-pona/
+
+  nasin nanpa
+    https://github.com/etbcor/nasin-nanpa
+
+  sitelen seli kiwen
+    https://www.kreativekorp.com/software/fonts/sitelenselikiwen/
+
 
 QUICKLOOK
 
@@ -993,9 +1048,6 @@ SITES
 
   Mega
     https://mega.io/
-
-  NCM Converter
-    https://ncm.worthsee.com/
 
   ezgif
     https://ezgif.com/

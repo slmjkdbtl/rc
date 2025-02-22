@@ -9,7 +9,8 @@ local blue    = "#8abbff"
 local magenta = "#f7aad7"
 local cyan    = "#7ce9df"
 local white   = "#dadada"
-local titlebar_bg = "#1d1d1d"
+
+local titlebar_bg = "#1b1b1b"
 
 local cfg = wezterm.config_builder()
 
@@ -76,6 +77,10 @@ cfg.colors = {
 		inactive_tab = {
 			bg_color = "none",
 			fg_color = "#666",
+		},
+		inactive_tab_hover = {
+			bg_color = "none",
+			fg_color = "#bbb",
 		},
 		new_tab = {
 			bg_color = "none",
