@@ -31,12 +31,8 @@ if [ -z "$1" ]; then
 	exit 0
 fi
 
-src=$(ntharg $# "$@")
 size="-1:240"
 fps=30
-ext=$(echo "${src##*.}" | tr '[:upper:]' '[:lower:]')
-name=$(basename "$src" ".$ext")
-dest="$name.gif"
 
 while [ -n "$1" ]; do
 	case $1 in
@@ -71,9 +67,17 @@ while [ -n "$1" ]; do
 		-?*)
 			die "unknown option: $1"
 		;;
+		*)
+			break
+		;;
 	esac
 	shift
 done
+
+src=$1
+ext=$(echo "${src##*.}" | tr '[:upper:]' '[:lower:]')
+name=$(basename "$src" ".$ext")
+dest="$name.gif"
 
 ffmpeg \
 	-hide_banner \

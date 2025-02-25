@@ -299,3 +299,22 @@ archive website
       --warc-file=archive \
       --reject-regex ".*(login|track).*" \
       https://landsofdream.net/
+
+take screenshot of website
+
+  $ bunx playwright screenshot https://example.com example.png
+  $ bunx playwright screenshot --full-page https://example.com example.png
+
+open an unauthorized app
+
+  - System Settings
+      > Privacy & Security
+      > Security
+      > Open Anyway
+
+manage quick action menu items
+
+  - System Settings
+      > Privacy & Security
+      > Extensions
+      > Finder

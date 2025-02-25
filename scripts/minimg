@@ -10,15 +10,12 @@ help() {
 	echo "OPTIONS"
 	echo "  -l, --lossy       enable lossy compression (default lossless)"
 	echo "  -q, --quality     define quality of lossy compression"
-	echo "  -r, --recursive   recursively compress all images in directory"
-	echo "  -o, --output      output file name"
 	echo ""
 	echo "EXAMPLE"
 	echo "  $ minimg yoshi.png"
-	echo "  $ minimg fish.jpg"
+	echo "  $ minimg *.jpg"
 	echo "  $ minimg --lossy fish.jpg"
 	echo "  $ minimg --lossy --quality 70 fish.jpg"
-	echo "  $ minimg --recursive ."
 }
 
 die() {
@@ -36,39 +33,28 @@ if [ -z "$1" ]; then
 	exit 1
 fi
 
-path=$(ntharg $# "$@")
 lossy=0
-recursive=0
 quality=80
-output=
-
-if [ ! -e "$path" ]; then
-	die "file not found"
-fi
 
 while [ -n "$1" ]; do
 	case $1 in
-		-r|--recursive)
-			recursive=1
-		;;
 		-l|--lossy)
 			lossy=1
 		;;
 		-q|--quality)
 			if [ -n "$2" ]; then
+				case "$2" in
+				  [0-9]*)
+					;;
+				  *)
+					die "quality must be a number"
+					;;
+				esac
 				lossy=1
 				quality=$2
 				shift
 			else
 				die "-q / --quality requires argument"
-			fi
-		;;
-		-o|--output)
-			if [ -n "$2" ]; then
-				output=$2
-				shift
-			else
-				die "-o / --output requires argument"
 			fi
 		;;
 		--)
@@ -78,11 +64,13 @@ while [ -n "$1" ]; do
 		-?*)
 			die "unknown option: $1"
 		;;
+		*)
+			break
+		;;
 	esac
 	shift
 done
 
-# TODO: deal with --output
 compress() {
 	if [ ! -f "$1" ]; then
 		return
@@ -109,18 +97,8 @@ compress() {
 	esac
 }
 
-if [ -d "$path" ]; then
-	output=
-	if [ $recursive = 1 ]; then
-		files=$(find "$path")
-		for f in $files; do
-			compress "$f"
-		done
-	else
-		for f in "$path"/*; do
-			compress "$f"
-		done
+for f in "$@"; do
+	if [ -f "$f" ]; then
+		compress "$f"
 	fi
-elif [ -f "$path" ]; then
-	compress "$path"
-fi
+done

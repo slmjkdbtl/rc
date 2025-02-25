@@ -1,8 +1,0 @@
-#!/bin/sh
-# resize image to 600x600 for album cover
-
-src=$1
-ext="${src##*.}"
-dest=".600x600.$ext"
-ffmpeg -hide_banner -i "$1" -vf scale=600x600 -q:v 2 "$dest"
-mv "$dest" "$src"

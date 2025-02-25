@@ -42,9 +42,6 @@ CLI
   bun
     https://bun.sh/
 
-  wrangler
-    https://github.com/cloudflare/workers-sdk/
-
   emscripten
     https://emscripten.org/
 
@@ -92,9 +89,6 @@ CLI
 
   gifsicle
     http://www.lcdf.org/gifsicle/
-
-  gifski
-    https://gif.ski/
 
   ImageOptim-CLI
     https://jamiemason.github.io/ImageOptim-CLI/
@@ -228,6 +222,9 @@ CLI
   cloudflared
     https://github.com/cloudflare/cloudflared/
 
+  wrangler
+    https://github.com/cloudflare/workers-sdk/
+
   graphviz
     https://graphviz.org/
 
@@ -236,6 +233,9 @@ CLI
 
   jq
     https://jqlang.github.io/jq/
+
+  fx
+    https://fx.wtf/
 
   gron
     https://github.com/tomnomnom/gron/
@@ -305,9 +305,6 @@ CLI
 
   oha
     https://github.com/hatoo/oha/
-
-  pageres
-    https://github.com/sindresorhus/pageres-cli/
 
   notmuch
     https://notmuchmail.org/
@@ -609,6 +606,9 @@ GUI
   REXPaint
     http://gridsagegames.com/rexpaint/
 
+  JSON Viewer
+    https://jsonviewer.app/
+
   SQLiteManager
     https://www.sqlabs.com/sqlitemanager.php
 
@@ -662,6 +662,9 @@ IOS
 
   Procreate
     https://procreate.com/
+
+  LumaFusion
+    https://luma-touch.com/luma-fusion-for-ios/
 
   Mullvad VPN
     https://mullvad.net/
@@ -751,7 +754,7 @@ CHROME EXTENSIONS
     https://ublockorigin.com/
 
   Ad Speedup
-    https://chromewebstore.google.com/detail/ad-speedup-skip-video-ads/pcjlckhhhmlefmobnnoolakplfppdchi
+    https://www.adspeedup.com/
 
   Control Panel for YouTube
     https://jbscript.dev/control-panel-for-youtube
@@ -768,6 +771,9 @@ CHROME EXTENSIONS
   Get cookies.txt LOCALLY
     https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc
 
+  JSON Viewer
+    https://github.com/tulios/json-viewer
+
   Lighthouse
     https://github.com/GoogleChrome/lighthouse
 
@@ -778,13 +784,10 @@ CHROME EXTENSIONS
     https://ruffle.rs/
 
   Wayback Machine
-    https://chrome.google.com/webstore/detail/wayback-machine/fpnmgdkabkmnadcjpehmlllkndpkmiak
-
-  Web Vitals
-    https://chrome.google.com/webstore/detail/web-vitals/ahfhijdlegdabablpippeagghigmibma
+    https://github.com/internetarchive/wayback-machine-webextension
 
   WhatFont
-    https://chrome.google.com/webstore/detail/whatfont/jabopobgcpjmedljpbcaablpmlmfcogm
+    https://whatfonttool.com/
 
   Bypass Paywalls
     https://github.com/iamadamdev/bypass-paywalls-chrome
@@ -941,6 +944,9 @@ FONTS
   Inter
     https://rsms.me/inter/
 
+  Chevy Ray
+    http://pixel-fonts.com/
+
   sitelen pona pona
     https://jackhumbert.github.io/sitelen-pona-pona/
 
@@ -953,17 +959,11 @@ FONTS
 
 QUICKLOOK
 
-  QLColorCode
-    https://github.com/anthonygelibert/QLColorCode
-
-  QLStephen
-    https://github.com/whomwah/qlstephen
+  SourceCodeSyntaxHighlight
+    https://github.com/sbarex/SourceCodeSyntaxHighlight
 
   QLMarkdown
-    https://github.com/toland/qlmarkdown
-
-  QuickLookJSON
-    http://www.sagtau.com/quicklookjson.html
+    https://github.com/sbarex/QLMarkdown
 
 
 SITES
@@ -1004,12 +1004,6 @@ SITES
   Vimm's Lair
     https://vimm.net/
 
-  CD Romance
-    https://cdromance.com/
-
-  My Abandonware
-    https://www.myabandonware.com/
-
   Raindrop.io
     https://raindrop.io/
 
@@ -1037,11 +1031,11 @@ SITES
   cobalt
     https://cobalt.tools/
 
-  Porkbun
-    https://porkbun.com/
-
   DigitalOcean
     https://www.digitalocean.com/
+
+  CloudFlare
+    https://www.cloudflare.com/
 
   Fastmail
     https://fastmail.com/
@@ -1051,9 +1045,6 @@ SITES
 
   ezgif
     https://ezgif.com/
-
-  movie-web
-    https://movie-web.app/
 
   Translate Subtitle
     https://translate-subtitles.com/

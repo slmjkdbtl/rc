@@ -1,0 +1,13 @@
+#!/bin/sh
+
+file="$1"
+name=$(basename "$file" ".epub")
+
+if [ -z "$file" ]; then
+	exit 1
+fi
+
+pandoc -f epub -t pdf --pdf-engine=tectonic -V geometry:margin=0pt "$file" -o ".tmp.pdf"
+pdfimages -all ".tmp.pdf" .tmp
+img2pdf --pagesize Letter .tmp-*.jpg -o "$name.pdf"
+rm .tmp-*.jpg
