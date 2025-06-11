@@ -110,6 +110,12 @@ ffmpeg image conversion
   $ ffmpeg -i img.png img.webp
   $ ffmpeg -i img.png -q:v 80 img.webp
 
+get video width / height / duration
+
+  $ ffprobe -v error -select_streams v:0 -show_entries stream=width -of csv=p=0 input.mp4
+  $ ffprobe -v error -select_streams v:0 -show_entries stream=height -of csv=p=0 input.mp4
+  $ ffprobe -v error -select_streams v:0 -show_entries format=duration -of csv=p=0 input.mp4
+
 ffmpeg set id3tag
 
   $ ffmpeg -i input.mp3
@@ -304,6 +310,29 @@ take screenshot of website
 
   $ bunx playwright screenshot https://example.com example.png
   $ bunx playwright screenshot --full-page https://example.com example.png
+
+hex dump file to embed in c
+
+  $ hexdump -v -e '1/1 "0x%02X, "' input.bin
+  $ xxd -i input.bin
+
+create universal binary
+
+  $ clang -arch arm64 -arch x86_64 main.c -o bin
+
+list signing identities
+
+  $ security find-identity -p codesigning
+
+list simulators
+
+  $ xcrun simctl list
+  $ xcrun simctl list devices
+
+find all files over 2G
+
+  $ find / -type f -size +2G 2>/dev/null
+  $ find / -type f -size +2G -exec ls -lh {} + 2>/dev/null | awk '{ print $9 ": " $5 }'
 
 open an unauthorized app
 

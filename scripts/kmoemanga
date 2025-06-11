@@ -1,4 +1,5 @@
 #!/bin/sh
+# convert and clean up kmoemanga epub to pdf
 
 file="$1"
 name=$(basename "$file" ".epub")

@@ -96,8 +96,8 @@ CLI
   stagit
     https://git.codemadness.org/stagit/
 
-  rename
-    http://plasmasturm.org/code/rename/
+  f2
+    https://f2.freshman.tech/
 
   shellcheck
     https://www.shellcheck.net/
@@ -291,6 +291,9 @@ CLI
   wtf
     https://sourceforge.net/projects/bsdwtf/
 
+  syncthing
+    https://syncthing.net/
+
   mame
     http://mamedev.org/
 
@@ -339,6 +342,15 @@ CLI
   ncmdump
     https://github.com/taurusxin/ncmdump/
 
+  um
+    https://unlock-music.dev/
+
+  ttyd
+    https://tsl0922.github.io/ttyd/
+
+  rdap
+    https://github.com/icann/icann-rdap/
+
 
 GUI
 
@@ -363,6 +375,9 @@ GUI
   Mullvad VPN
     https://mullvad.net/
 
+  Outline
+    https://getoutline.org/
+
   CloudFlare Warp
     https://cloudflarewarp.com/
 
@@ -374,9 +389,6 @@ GUI
 
   ImageOptim
     https://imageoptim.com/mac/
-
-  Whisky
-    https://getwhisky.app/
 
   Transmit
     https://panic.com/transmit/
@@ -398,6 +410,9 @@ GUI
 
   Sunvox
     http://warmplace.ru/soft/sunvox/
+
+  Bosca Ceoil
+    https://yurisizov.itch.io/boscaceoil-blue
 
   Little Snitch Mini
     https://www.obdev.at/products/littlesnitch-mini/
@@ -428,9 +443,6 @@ GUI
 
   Monodraw
     https://monodraw.helftone.com/
-
-  Hammerspoon
-    https://www.hammerspoon.org/
 
   Meta
     https://www.nightbirdsevolve.com/meta/
@@ -498,6 +510,9 @@ GUI
   Google Earth
     https://www.google.com/earth/
 
+  Keyboard Maestro
+    https://www.keyboardmaestro.com/
+
   MultiPatch
     https://projects.sappharad.com/multipatch/
 
@@ -516,6 +531,9 @@ GUI
   Anki
     https://apps.ankiweb.net/
 
+  Clippy
+    https://felixrieseberg.github.io/clippy/
+
   ChatGPT
     https://chatgpt.com/
 
@@ -527,6 +545,9 @@ GUI
 
   LICEcap
     https://www.cockos.com/licecap/
+
+  CrossOver
+    https://www.codeweavers.com/crossover/
 
   WireGuard
     https://www.wireguard.com/
@@ -748,7 +769,7 @@ IOS
     https://knots3d.com/
 
 
-CHROME EXTENSIONS
+BROWSER EXTENSIONS
 
   uBlock Origin
     https://ublockorigin.com/
@@ -765,8 +786,8 @@ CHROME EXTENSIONS
   Raindrop.io
     https://help.raindrop.io/install-extension/
 
-  Archive Page
-    https://chrome.google.com/webstore/detail/archive-page/gcaimhkfmliahedmeklebabdgagipbia
+  SteamDB
+    https://steamdb.info/extension/
 
   Get cookies.txt LOCALLY
     https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc
@@ -785,6 +806,9 @@ CHROME EXTENSIONS
 
   Wayback Machine
     https://github.com/internetarchive/wayback-machine-webextension
+
+  Archive Page
+    https://chrome.google.com/webstore/detail/archive-page/gcaimhkfmliahedmeklebabdgagipbia
 
   WhatFont
     https://whatfonttool.com/
@@ -839,12 +863,6 @@ ALFRED
 
   Network Quality
     https://alfred.app/workflows/alfredapp/network-quality/
-
-
-SCREENSAVERS
-
-  loadsaver
-    https://alienmelon.itch.io/loadsaver-os-x-screensaver/
 
 
 GAMES
@@ -908,10 +926,6 @@ FONTS
   collletttivo
     https://www.collletttivo.it/
 
-  tom7
-    http://fonts.tom7.com/fonts98.html
-    http://fonts.tom7.com/fonts93.html
-
   APL
     https://abrudz.github.io/APL386/
     https://abrudz.github.io/SAX2/
@@ -920,11 +934,18 @@ FONTS
   Unscii
     http://pelulamu.net/unscii/
 
+  Inconsolata
+    https://levien.com/type/myfonts/inconsolata.html
+
   Kitchen Sink
     https://polyducks.itch.io/kitchen-sink-textmode-font/
 
   anna anthropy's World of Fonts
     https://w.itch.io/world-of-fonts
+
+  tom7
+    http://fonts.tom7.com/fonts98.html
+    http://fonts.tom7.com/fonts93.html
 
   Zpix
     https://github.com/SolidZORO/zpix-pixel-font/
@@ -1049,6 +1070,9 @@ SITES
   Translate Subtitle
     https://translate-subtitles.com/
 
+  TinEye
+    https://tineye.com/
+
 
 Self Host
 
@@ -1082,11 +1106,20 @@ Self Host
   Directus
     https://directus.io/
 
+  Pi-hole
+    https://pi-hole.net/
+
 
 PLUGINS
 
   sforzando
     https://www.plogue.com/products/sforzando.html
+
+  SketchCassette II
+    https://aberrantdsp.com/plugins/sketchcassette/
+
+  Amigo Sampler
+    https://potenzadsp.com/plugins/amigo/
 
 
 BLENDER ADDON

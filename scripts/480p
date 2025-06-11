@@ -1,0 +1,16 @@
+#!/bin/sh
+# convert video to 480p mp4
+
+src=$1
+res=$2
+
+if [ ! -f "$src" ]; then
+	exit
+fi
+
+if [ -z "$res" ]; then
+	res=480
+fi
+
+dest="$(basename "$src" .mp4)-${res}p.mp4"
+ffmpeg -i "$src" -vf scale="-2:$res" -pix_fmt yuv420p "$dest" || exit 1

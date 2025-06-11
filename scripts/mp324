@@ -31,7 +31,7 @@ ffmpeg \
 	-b:a 256k \
 	-preset veryslow \
 	-tune stillimage \
-	-vf scale=600:600 \
+	-vf scale=480:480 \
 	-strict experimental \
 	-shortest \
 	"$out"

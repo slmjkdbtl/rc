@@ -42,8 +42,8 @@ function cut(p1, p2)
 		name = "subprocess",
 		args = {
 			ffmpeg_path,
-			"-i", src_path,
 			"-ss", t1,
+			"-i", src_path,
 			"-to", t2,
 			"-avoid_negative_ts", "make_zero",
 			"-c", "copy",

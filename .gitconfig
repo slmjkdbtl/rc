@@ -17,20 +17,35 @@
 	next = ! git log --reverse --pretty=%H master | grep -A 1 $(git rev-parse HEAD) | tail -n1 | xargs git checkout
 	pushall = ! git remote | xargs -L1 git push --all
 	open = ! git remote get-url origin | xargs open
+[diff]
+	algorithm = histogram
+	mnemonicPrefix = true
+	renames = true
+[push]
+	default = simple
+	autoSetupRemote = true
+	followTags = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
 [credential]
 	helper = store
 [pull]
-	ff = only
 	rebase = true
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
 [pager]
 	branch = false
 [branch]
 	sort = -committerdate
-[diff]
-	algorithm = histogram
 [web]
     browser = open
 [http]
 	postBuffer = 524288000
 [init]
 	defaultBranch = main
+[column]
+	ui = auto

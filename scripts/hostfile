@@ -1,5 +1,5 @@
 #!/bin/sh
-# host a file
+# host a file to a remote file hosting service
 
 file="$1"
 

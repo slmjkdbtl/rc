@@ -28,7 +28,7 @@ export MGFXC_WINE_PATH="$HOME/.winemonogame"
 export WINEPATH="$HOMEBREW_PREFIX/opt/mingw-w64/toolchain-x86_64/x86_64-w64-mingw32/bin"
 export ANDROID_NDK_HOME="$HOMEBREW_PREFIX/share/android-ndk"
 
-alias ~="cd ~"
+alias ~='cd $HOME'
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -64,8 +64,6 @@ alias serve="darkhttpd"
 alias python="python3"
 alias ffmpeg="ffmpeg -hide_banner"
 alias map="xargs -n1"
-alias stfu="osascript -e 'set volume output muted true'"
-alias pumpitup="osascript -e 'set volume output volume 100'"
 alias reload='exec $SHELL -l'
 alias path='echo -e ${PATH//:/\\n}'
 alias ase="/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
@@ -79,6 +77,8 @@ alias dml="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' --yes-playlist"
 alias dmc="yt-dlp -x --audio-format mp3 --split-chapters -o '%(chapter)s.%(ext)s' --no-playlist"
 alias ds="yt-dlp --all-subs --convert-subs srt --skip-download --no-playlist"
 alias dsl="yt-dlp --all-subs --convert-subs srt --skip-download --yes-playlist"
+
+alias winesteam='wine "$HOME/.wine/drive_c/Program Files (x86)/Steam/Steam.exe"'
 
 localip() {
 	if exists ipconfig; then

@@ -246,17 +246,6 @@
 			<key>url</key>
 			<string>https://archive.org/search?query={query}</string>
 		</dict>
-		<key>BA0DEB11-80C2-4765-BED8-078C61DE3ABF</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>st</string>
-			<key>text</key>
-			<string>Search SteamDB for '{query}'</string>
-			<key>url</key>
-			<string>https://steamdb.info/search/?a=all&amp;q={query}</string>
-		</dict>
 		<key>C9498957-1071-4249-AAC3-83E4F87EBC61</key>
 		<dict>
 			<key>enabled</key>

@@ -22,14 +22,18 @@ end
 
 key_bindings["MOUSE_BTN0"] = {
 	action = function()
-		if not state then return
+		if not state then
+			return
+		end
 		print("a")
 	end
 }
 
 key_bindings["MOUSE_MOVE"] = {
 	action = function()
-		if not state then return
+		if not state then
+			return
+		end
 		local x, y = mp.get_mouse_pos()
 		local dim = mp.get_property_native("osd-dimensions")
 		local vop = mp.get_property_native("video-out-params")
