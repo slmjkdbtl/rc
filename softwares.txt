@@ -778,7 +778,7 @@ BROWSER EXTENSIONS
     https://www.adspeedup.com/
 
   Control Panel for YouTube
-    https://jbscript.dev/control-panel-for-youtube
+    https://jbscript.dev/control-panel-for-youtube/
 
   Yomitan
     https://yomitan.wiki/
@@ -792,8 +792,8 @@ BROWSER EXTENSIONS
   Get cookies.txt LOCALLY
     https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc
 
-  JSON Viewer
-    https://github.com/tulios/json-viewer
+  JSON Formatter
+    https://github.com/callumlocke/json-formatter/
 
   Lighthouse
     https://github.com/GoogleChrome/lighthouse
@@ -820,7 +820,7 @@ BROWSER EXTENSIONS
     https://www.wappalyzer.com/
 
   Edit Anything
-    https://chromewebstore.google.com/detail/edit-anything/kgkhambjbahgejgoaefmekdchedkihln?hl=en
+    https://chromewebstore.google.com/detail/edit-anything/kgkhambjbahgejgoaefmekdchedkihln
 
   ARIA Devtools
     https://github.com/ziolko/aria-devtools/
