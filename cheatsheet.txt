@@ -334,6 +334,14 @@ find all files over 2G
   $ find / -type f -size +2G 2>/dev/null
   $ find / -type f -size +2G -exec ls -lh {} + 2>/dev/null | awk '{ print $9 ": " $5 }'
 
+start a systemd service and run on startup
+
+  $ sudo systemctl enable --now space55.xyz
+
+view systemd service log
+
+  $ journalctl -qu space55.xyz
+
 open an unauthorized app
 
   - System Settings

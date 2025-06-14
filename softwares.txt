@@ -375,8 +375,8 @@ GUI
   Mullvad VPN
     https://mullvad.net/
 
-  Outline
-    https://getoutline.org/
+  ShadowsocksX-NG
+    https://github.com/shadowsocks/ShadowsocksX-NG/
 
   CloudFlare Warp
     https://cloudflarewarp.com/
@@ -1076,11 +1076,11 @@ SITES
 
 Self Host
 
+  Shadowsocks
+    https://shadowsocks.org/
+
   Discourse
     https://www.discourse.org/
-
-  Outline
-    https://getoutline.org/
 
   Isso
     https://isso-comments.de/
