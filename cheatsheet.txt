@@ -2,6 +2,10 @@ redirect stderr to stdout
 
   $ cmd 2>&1
 
+redirect stdout to stderr
+
+  $ cmd >&2
+
 redirect stderr to a file
 
   $ cmd 2> err.txt
@@ -172,7 +176,7 @@ flush dns cache
 
   $ sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
 
-set names
+set names on macOS
 
   $ sudo scutil --set HostName tga-macbook
   $ sudo scutil --set LocalHostName tga-macbook
@@ -336,11 +340,20 @@ find all files over 2G
 
 start a systemd service and run on startup
 
-  $ sudo systemctl enable --now space55.xyz
+  $ systemctl enable --now space55.xyz
 
 view systemd service log
 
   $ journalctl -qu space55.xyz
+
+set persistent hostname on Linux
+
+  $ sudo hostnamectl set-hostname space55.xyz
+
+redirect all ports 12000-12010 to port 8388
+
+  $ iptables -t nat -A PREROUTING -p tcp --dport 12000:12010 -j REDIRECT --to-port 8388
+  $ iptables -t nat -A PREROUTING -p udp --dport 12000:12010 -j REDIRECT --to-port 8388
 
 open an unauthorized app
 

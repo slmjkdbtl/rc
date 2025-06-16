@@ -2,7 +2,19 @@
 # search image with google lens
 
 file="$1"
-url=$(curl -sF "file=@$file" https://0x0.st)
+tmpfile=$(mktemp)
+httpcode=$(curl -s -w "%{httpcode}" -o "$tmpfile" -F "file=@$file" https://0x0.st)
+
+if [ "$httpcode" -ne 200 ]; then
+	echo "$httpcode" >&2
+	cat "$tmpfile" >&2
+	rm -f "$tmpfile"
+	exit 1
+fi
+
+url=$(cat "$tmpfile")
+rm "$tmpfile"
+
 if [ -n "$url" ]; then
 	echo "https://lens.google.com/uploadbyurl?url=$url"
 fi

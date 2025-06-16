@@ -4,7 +4,6 @@ export BROWSER="open"
 export PAGER="less"
 
 export HOMEBREW_NO_AUTO_UPDATE=1
-export TLDR_AUTO_UPDATE_DISABLED=0
 
 exists() { command -v "$1" > /dev/null 2>&1; }
 
@@ -13,18 +12,13 @@ export PATH="$HOME/.local/bin:$PATH"
 
 if exists /opt/homebrew/bin/brew; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
-	export CPPFLAGS="-I$HOMEBREW_PREFIX/include"
-	export LDFLAGS="-L$HOMEBREW_PREFIX/lib"
-fi
-
-if exists python3; then
-	export PATH="$(python3 -m site --user-base)/bin:$PATH"
+	export CFLAGS="$CFLAGS -I$HOMEBREW_PREFIX/include"
+	export CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/include"
+	export CXXFLAGS="$CXXFLAGS -I$HOMEBREW_PREFIX/include"
+	export LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/lib"
 fi
 
 export PATH="$HOMEBREW_PREFIX/opt/llvm/bin:$PATH"
-export PATH="/usr/local/share/dotnet/x64:$PATH"
-
-export MGFXC_WINE_PATH="$HOME/.winemonogame"
 export WINEPATH="$HOMEBREW_PREFIX/opt/mingw-w64/toolchain-x86_64/x86_64-w64-mingw32/bin"
 export ANDROID_NDK_HOME="$HOMEBREW_PREFIX/share/android-ndk"
 
@@ -42,6 +36,7 @@ alias lsize="du -chs * .* | sort -h"
 alias disk="df -h ."
 alias uptext="curl -F 'f:1=<-' ix.io"
 alias ip="curl ifconfig.co"
+alias localip="ipconfig getifaddr en0"
 alias playraw="ffplay -ar 8000 -ac 1 -f u8 -nodisp -"
 alias weather="curl 'wttr.in?m'"
 alias dnsflush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
@@ -70,8 +65,8 @@ alias ase="/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
 alias dl="aria2c -x 16 -s 16 -k 1M"
-alias dv="yt-dlp -f 'bestvideo[ext=mp4][height<=720]+bestaudio[ext=m4a]/best[ext=mp4][height<=720]/best' -o '%(title)s.%(ext)s' --no-playlist"
-alias dvl="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' -o '%(title)s.%(ext)s' --yes-playlist"
+alias dv="yt-dlp -f 'bv[ext=mp4][height<=720][vcodec*=avc]+ba[ext=m4a]/b[ext=mp4][height<=720][vcodec*=avc]/b' -o '%(title)s.%(ext)s' --no-playlist"
+alias dvl="yt-dlp -f 'bv[ext=mp4][height<=720][vcodec*=avc]+ba[ext=m4a]/b[ext=mp4][height<=720][vcodec*=avc]/b' --yes-playlist"
 alias dm="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' --no-playlist"
 alias dml="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' --yes-playlist"
 alias dmc="yt-dlp -x --audio-format mp3 --split-chapters -o '%(chapter)s.%(ext)s' --no-playlist"
@@ -79,13 +74,5 @@ alias ds="yt-dlp --all-subs --convert-subs srt --skip-download --no-playlist"
 alias dsl="yt-dlp --all-subs --convert-subs srt --skip-download --yes-playlist"
 
 alias winesteam='wine "$HOME/.wine/drive_c/Program Files (x86)/Steam/Steam.exe"'
-
-localip() {
-	if exists ipconfig; then
-		ipconfig getifaddr en0
-	elif exists hostname; then
-		hostname -I
-	fi
-}
 
 PS1='\n\u@\H\n\w\n$ '

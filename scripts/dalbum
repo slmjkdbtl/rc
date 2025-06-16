@@ -24,14 +24,26 @@ case "$url" in
 		(
 			cd "$dir" || exit
 			yt-dlp \
-				-o '%(title)s.%(ext)s' \
+				-o '%(playlist_index)02d - %(title)s.%(ext)s' \
 				-i \
 				--yes-playlist \
 				-x --audio-format mp3 \
-				--postprocessor-args "-metadata album='$album'" \
-				--external-downloader aria2c \
-				--external-downloader-args '-x 16 -s 16 -k 1M' \
 				"$url"
+			i=1
+			for f in *.mp3; do
+				mv "$f" ".b-$f"
+				title=$(basename "$f" ".mp3" | cut -c6-)
+				ffmpeg \
+					-hide_banner \
+					-i ".b-$f" \
+					-c copy \
+					-metadata track="$i" \
+					-metadata album="$album" \
+					-metadata title="$title" \
+					"$f"
+				rm ".b-$f"
+				i=$((i + 1))
+			done
 		)
 	;;
 	*)
@@ -39,14 +51,26 @@ case "$url" in
 			cd "$dir" || exit
 			yt-dlp \
 				--split-chapters \
-				-o '%(chapter)s.%(ext)s' \
+				-o '%(chapter_number)02d - %(chapter)s.%(ext)s' \
 				-i \
 				--no-playlist \
 				-x --audio-format mp3 \
-				--postprocessor-args "-metadata album='$album'" \
-				--external-downloader aria2c \
-				--external-downloader-args '-x 16 -s 16 -k 1M' \
 				"$url"
+			i=1
+			for f in *.mp3; do
+				mv "$f" ".b-$f"
+				title=$(basename "$f" ".mp3" | cut -c6-)
+				ffmpeg \
+					-hide_banner \
+					-i ".b-$f" \
+					-c copy \
+					-metadata track="$i" \
+					-metadata album="$album" \
+					-metadata title="$title" \
+					"$f"
+				rm ".b-$f"
+				i=$((i + 1))
+			done
 		)
 	;;
 esac

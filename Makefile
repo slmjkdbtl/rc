@@ -13,14 +13,20 @@ install: $(CONFIG_TARGETS) $(HOME_TARGETS) $(LOCAL_BIN_TARGETS)
 uninstall:
 	rm $(CONFIG_TARGETS) $(HOME_TARGETS) $(LOCAL_BIN_TARGETS)
 
-$(CONFIG)/%: %
+$(CONFIG)/%: % | $(CONFIG)
 	ln -sf $(realpath $<) $@
 
 $(HOME)/%: %
 	ln -sf $(realpath $<) $@
 
-$(LOCAL_BIN)/%: scripts/%
+$(LOCAL_BIN)/%: scripts/% | $(LOCAL_BIN)
 	ln -sf $(realpath $<) $@
+
+$(CONFIG):
+	mkdir -p $@
+
+$(LOCAL_BIN):
+	mkdir -p $@
 
 .PHONY: update
 update: Brewfile

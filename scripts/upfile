@@ -1,0 +1,11 @@
+#!/bin/sh
+# host a file to a remote file hosting service
+
+file="$1"
+
+if [ -z "$file" ]; then
+	echo "please specify the file to host"
+	exit 1
+fi
+
+curl -sF "file=@$file" https://0x0.st
