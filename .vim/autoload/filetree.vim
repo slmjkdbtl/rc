@@ -118,6 +118,7 @@ func! s:toggle()
 	endif
 endfunc
 
+" TODO: file names with ~ not showing
 func! s:getlist(path)
 
 	let path = escape(a:path, '# ')

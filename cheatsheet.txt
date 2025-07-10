@@ -72,6 +72,25 @@ ffmpeg strip video / audio / subtitle from video
   $ ffmpeg -i input.mp4 -c:v copy -an output.mp4
   $ ffmpeg -i input.mp4 -c copy -sn output.mp4
 
+ffmpeg convert video to image sequence
+
+  $ ffmpeg -i input.mp4 output_%04d.png
+  $ ffmpeg -i input.mp4 -vf fps=1 output_%04d.png
+
+ffmpeg convert image sequence to video
+
+  $ ffmpeg -framerate 30 -i input_%04d.png -c:v libx264 -pix_fmt yuv420p output.mp4
+  $ ffmpeg -framerate 10 -i input_%04d.png output.gif
+
+ffmpeg convert image sequence to gif with palette
+
+  $ ffmpeg -framerate 10 -i input_%04d.png -vf palettegen palette.png
+  $ ffmpeg -framerate 10 -i input_%04d.png -i palette.png -lavfi "paletteuse" output.gif
+
+ffmpeg create still image video with audio
+
+  $ ffmpeg -loop 1 -i image.jpg -i audio.mp3 -c:v libx264 -tune stillimage -c:a aac -b:a 128k -shortest -pix_fmt yuv420p output.mp4
+
 ffmpeg resize image
 
   $ ffmpeg -i input.jpg -vf scale=640:480 output.jpg
@@ -145,6 +164,10 @@ ffprobe get video / image dimension
 
   $ ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0:s=x "test.png"
   $ ffprobe -v error -select_streams v:0 -show_entries stream=height -of csv=p=0:s=x "test.mp4"
+
+caddy static file server
+
+  $ caddy file-server --browse --listen :2015
 
 curl use header
 

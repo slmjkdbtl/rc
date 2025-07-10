@@ -1,0 +1,8 @@
+#!/bin/sh
+# strip irrelevant id3 tags
+
+# TODO: only keep id3v2 title, artist, album, year, track, disc, compilation
+
+for f in *.mp3; do
+	id3v2 --delete-frames COMM TCOM TCON "$f"
+done

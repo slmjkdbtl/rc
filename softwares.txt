@@ -141,6 +141,15 @@ CLI
   cmus
     https://cmus.github.io/
 
+  mpd
+    https://www.musicpd.org/
+
+  mpc
+    https://www.musicpd.org/
+
+  rmpc
+    https://mierak.github.io/rmpc/
+
   ii
     https://tools.suckless.org/ii
 
@@ -176,6 +185,9 @@ CLI
 
   tectonic
     https://tectonic-typesetting.github.io/
+
+  id3v2
+    https://id3v2.sourceforge.net/
 
   exiftool
     https://exiftool.org/
@@ -233,6 +245,9 @@ CLI
 
   jq
     https://jqlang.github.io/jq/
+
+  yq
+    https://mikefarah.gitbook.io/yq/
 
   fx
     https://fx.wtf/
@@ -350,6 +365,12 @@ CLI
 
   rdap
     https://github.com/icann/icann-rdap/
+
+  durdraw
+    https://durdraw.org/
+
+  astroterm
+    https://github.com/da-luce/astroterm/
 
 
 GUI
@@ -657,6 +678,15 @@ GUI
   iMazing
     https://imazing.com/
 
+  Aquallegro
+    https://andyvn.ath.cx/aquallegro/
+
+  Platypus
+    https://sveinbjorn.org/platypus
+
+  HighC
+    https://highc.org/
+
 
 IOS
 
@@ -689,6 +719,9 @@ IOS
 
   Mullvad VPN
     https://mullvad.net/
+
+  ShadowRocket
+    https://www.shadowrocket.vip/
 
   iSH
     https://ish.app/
@@ -767,6 +800,12 @@ IOS
 
   Knots 3D
     https://knots3d.com/
+
+  Earpeggio
+    https://musicate.app/earpeggio/
+
+  Piano
+    https://www.ensemble-education.com/piano/
 
 
 BROWSER EXTENSIONS

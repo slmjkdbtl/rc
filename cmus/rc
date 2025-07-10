@@ -1,2 +1,32 @@
 update-cache
 add ~/Music/Media.localized/Music
+
+unbind -f common space
+unbind -f common c
+unbind -f common x
+unbind -f common v
+unbind -f common z
+unbind -f common b
+unbind -f common m
+unbind -f common a
+unbind -f common s
+unbind -f common S
+unbind -f common r
+unbind -f common R
+unbind -f common C
+unbind -f common Z
+unbind -f common B
+unbind -f common <
+unbind -f common >
+unbind -f common ,
+unbind -f common .
+unbind -f common ^R
+
+bind common space player-pause
+bind common <     player-prev
+bind common >     player-next
+bind common C     toggle continue
+bind common a     toggle aaa_mode
+bind common S     toggle shuffle
+bind common r     toggle repeat_current
+bind common R     toggle repeat

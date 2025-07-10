@@ -45,7 +45,7 @@ sudo systemctl enable --now caddy
 sudo apt install shadowsocks-libev shadowsocks-v2ray-plugin
 
 # server unit config
-sudo tee /etc/systemd/system/space55.xyz.service > /dev/null <<EOF
+sudo tee /etc/systemd/system/space55.xyz.service > /dev/null << EOF
 [Unit]
 Description=space55.xyz
 After=network.target
@@ -66,7 +66,7 @@ WantedBy=multi-user.target
 EOF
 
 # caddy config
-sudo tee /etc/caddy/Caddyfile > /dev/null <<EOF
+sudo tee /etc/caddy/Caddyfile > /dev/null << EOF
 space55.xyz {
     encode gzip
     reverse_proxy localhost:4000
@@ -74,7 +74,7 @@ space55.xyz {
 EOF
 
 # shadowsocks config
-sudo tee /etc/shadowsocks-libev/config.json > /dev/null <<EOF
+sudo tee /etc/shadowsocks-libev/config.json > /dev/null << EOF
 {
     "server": "0.0.0.0",
     "server_port": 65521,

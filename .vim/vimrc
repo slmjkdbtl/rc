@@ -284,6 +284,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'tikhomirov/vim-glsl'
 Plug 'jdonaldson/vaxe'
 Plug 'karolbelina/uxntal.vim'
+Plug 'vim-scripts/applescript.vim'
 
 " keybinds
 call keys#unmap()
