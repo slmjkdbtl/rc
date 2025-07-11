@@ -1,0 +1,181 @@
+#!/usr/bin/env bun
+
+import * as fs from "fs/promises"
+
+const RPC_URL = "http://space55.xyz:6800/jsonrpc"
+const SECRET = null
+
+async function call(method, params = [], id = method) {
+
+	if (SECRET) {
+		params.unshift(`token:${SECRET}`);
+	}
+
+	const res = await fetch(RPC_URL, {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({
+			jsonrpc: "2.0",
+			method,
+			id,
+			params,
+		}),
+	})
+
+	const json = await res.json()
+
+	if (json.error) {
+		throw new Error(json.error.message)
+	}
+
+	return json.result
+
+}
+
+function prettyBytes(bytes, decimals = 2) {
+	if (bytes === 0) return "0b";
+	const k = 1024;
+	const dm = decimals < 0 ? 0 : decimals
+	const sizes = ["b", "kb", "mb", "gb", "tb", "pb"]
+	const i = Math.floor(Math.log(bytes) / Math.log(k))
+	const size = parseFloat((bytes / Math.pow(k, i)).toFixed(dm))
+	return `${size}${sizes[i]}`
+}
+
+function progressbar(progress, len) {
+	let str = ""
+	for (let i = 0; i < len; i++) {
+		const p = i / len
+		str += p < progress ? "#" : "-"
+	}
+	return str
+}
+
+function printJob(job) {
+	const totalLength = parseInt(job.totalLength || "0", 10)
+	const completedLength = parseInt(job.completedLength || "0", 10)
+	const downloadSpeed = parseInt(job.downloadSpeed || "0", 10)
+	const uploadSpeed = parseInt(job.uploadSpeed || "0", 10)
+	const progress = completedLength / totalLength
+	const percent = totalLength > 0
+	  ? (progress * 100).toFixed(1)
+	  : "0.0"
+	const b = prettyBytes
+	console.log(`- [${job.status}] ${job.gid}`);
+	console.log(`  ${progressbar(progress, 64)}`)
+	console.log(`  ${percent}% ${b(completedLength)} / ${b(totalLength)} down: ${b(downloadSpeed)} up: ${b(uploadSpeed)} seeds: ${job.numSeeders}`);
+	for (const file of job.files) {
+		console.log(`  ${file.path}`)
+	}
+}
+
+function printJobs(title, jobs) {
+	if (!jobs.length) return
+	console.log(`${title}:\n`)
+	for (const job of jobs) {
+		printJob(job)
+		console.log("")
+	}
+};
+
+async function printStatus() {
+	const [active, waiting, stopped] = await Promise.all([
+		call("aria2.tellActive"),
+		call("aria2.tellWaiting", [0, 64]),
+		call("aria2.tellStopped", [0, 64]),
+	])
+	printJobs("Active", active)
+	printJobs("Waiting", waiting)
+	printJobs("Stopped", stopped)
+}
+
+async function remove(gid) {
+	const res = await call("aria2.remove", [gid])
+	console.log("job removed:", res)
+}
+
+async function pause(gid) {
+	const res = await call("aria2.pause", [gid])
+	console.log("job paused:", res)
+}
+
+async function pauseAll() {
+	const res = await call("aria2.pauseAll")
+	console.log(res)
+}
+
+async function resume(gid) {
+	const res = await call("aria2.unpause", [gid])
+	console.log("job resumed:", res)
+}
+
+async function resumeAll() {
+	const res = await call("aria2.unpauseAll")
+	console.log(res)
+}
+
+async function purge() {
+	const res = await call("aria2.purgeDownloadResult")
+	console.log(res)
+}
+
+async function addTorrent(path) {
+	const base64 = await fs.readFile(path, "base64")
+	const gid = await call("aria2.addTorrent", [base64])
+	console.log(`job added: ${gid}`)
+}
+
+async function addURL(url) {
+	const gid = await call("aria2.addUri", [url])
+	console.log(`job added: ${gid}`)
+}
+
+function help() {
+	console.log(`
+Remote download client
+
+USAGE
+  $ rd <cmd> [args]
+
+COMMANDS
+  add <file|url>   add new file / torrent download job
+  pull             pull downloaded file
+  status           check status
+  rm    <gid>      remove job
+  pause <gid>      pause job
+
+EXAMPLE
+  $ rd add titanic.torrent
+	`.trim())
+}
+
+const cmd = process.argv[2]
+
+const cmds = {}
+
+switch (cmd) {
+	case "add":
+		const thing = process.argv[3]
+		if (!thing) {
+			console.error("please specify url or torrent file")
+			process.exit(1)
+		}
+		addTorrent(thing)
+		break
+	case "status":
+		printStatus()
+		break
+	case "purge":
+		purge()
+		break
+	case "rm":
+		const gid = process.argv[3]
+		if (!gid) {
+			console.error("please specify job gid")
+			process.exit(1)
+		}
+		remove(gid)
+		break
+	default:
+		help()
+}

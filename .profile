@@ -70,7 +70,7 @@ alias path='echo -e ${PATH//:/\\n}'
 alias ase="/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
-alias dl="aria2c -x 16 -s 16 -k 1M"
+alias dl="aria2c -x 8 -s 8 -k 1M"
 alias dv="yt-dlp -f 'bv[ext=mp4][height<=720][vcodec*=avc]+ba[ext=m4a]/b[ext=mp4][height<=720][vcodec*=avc]/b' -o '%(title)s.%(ext)s' --no-playlist"
 alias dvl="yt-dlp -f 'bv[ext=mp4][height<=720][vcodec*=avc]+ba[ext=m4a]/b[ext=mp4][height<=720][vcodec*=avc]/b' --yes-playlist"
 alias dm="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' --no-playlist"

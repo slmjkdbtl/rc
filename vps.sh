@@ -51,19 +51,18 @@ Description=space55.xyz
 After=network.target
 
 [Service]
-Type=simple
 User=tga
 Environment="PORT=4000"
 WorkingDirectory=/home/tga/space55.xyz
 ExecStart=/bin/sh -l start
 Restart=always
-StandardOutput=journal
-StandardError=journal
-StandardInput=null
 
 [Install]
 WantedBy=multi-user.target
 EOF
+
+# edit systemd config with cmd
+sudo -E systemctl edit --full space55.xyz
 
 # caddy config
 sudo tee /etc/caddy/Caddyfile > /dev/null << EOF
@@ -89,3 +88,43 @@ EOF
 # reload systemctl unit files
 sudo systemctl daemon-reload
 sudo systemctl reload caddy
+
+# setup aria2c
+sudo apt install aria2c
+mkdir ~/downloads
+mkdir -p ~/.config/aria2
+mkdir -p ~/.local/share/aria2
+touch ~/.local/share/aria2/daemon.session
+
+tee ~/.config/aria2/daemon.conf > /dev/null << EOF
+force-save=true
+continue=true
+log-level=notice
+dir=/home/tga/downloads
+input-file=/home/tga/.local/share/aria2/daemon.session
+save-session=/home/tga/.local/share/aria2/daemon.session
+log=/home/tga/.local/share/aria2/daemon.log
+max-concurrent-downloads=4
+max-connection-per-server=8
+split=8
+min-split-size=1M
+enable-rpc=true
+rpc-listen-all=true
+rpc-allow-origin-all=true
+rpc-listen-port=6800
+rpc-passwd=password
+EOF
+
+sudo tee /etc/systemd/system/aria2.service > /dev/null << EOF
+[Unit]
+Description=aria2 daemon
+After=network.target
+
+[Service]
+User=tga
+ExecStart=/usr/bin/aria2c --conf-path=/home/tga/.config/aria2/daemon.conf
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
