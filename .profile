@@ -9,6 +9,7 @@ exists() { command -v "$1" > /dev/null 2>&1; }
 
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.rc/scripts:$PATH"
 
 if exists /opt/homebrew/bin/brew; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -79,5 +80,9 @@ alias ds="yt-dlp --all-subs --convert-subs srt --skip-download --no-playlist"
 alias dsl="yt-dlp --all-subs --convert-subs srt --skip-download --yes-playlist"
 
 alias winesteam='wine "$HOME/.wine/drive_c/Program Files (x86)/Steam/Steam.exe"'
+
+binsrc() {
+	realpath "$(command -v "$1")"
+}
 
 PS1='\n\u@\H\n\w\n$ '

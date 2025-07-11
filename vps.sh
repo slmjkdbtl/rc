@@ -16,10 +16,10 @@ sudo apt upgrade
 sudo apt install -y zsh vim make git sqlite3 zip
 
 # clone this repo
-git clone https://github.com/slmjkdbtl/rc
+git clone https://github.com/slmjkdbtl/rc .rc
 
 # init config
-cd rc && make
+cd .rc && make
 
 # change default shell
 chsh -s "$(which zsh)"

@@ -1,4 +1,4 @@
--- library to display a selectable list
+-- library to display a interactable list
 
 package.path = package.path .. ";" .. mp.find_config_file("scripts") .. "/?.lua"
 

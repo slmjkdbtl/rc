@@ -9,13 +9,15 @@ help() {
 	echo "  $ backup drive"
 }
 
+drive="/Volumes/EXTDISK"
+
 case "$1" in
 	"cloud")
 		dest="mega:"
 		flags="--tpslimit 12 --tpslimit-burst 0"
 	;;
 	"drive")
-		dest="/Volumes/EXTDISK/"
+		dest="$drive/"
 		flags="--modify-window 2s"
 	;;
 	*)
@@ -48,6 +50,7 @@ sync ~/files/film/                  "${dest}film/"
 sync ~/files/videos/                "${dest}videos/"
 sync ~/files/tv/                    "${dest}tv/"
 sync ~/files/.porn/                 "${dest}porn/"
+sync ~/files/notes/                 "${dest}notes/"
 sync ~/files/fonts/                 "${dest}fonts/"
 sync ~/files/games/                 "${dest}games/"
 sync ~/files/books/                 "${dest}books/"
@@ -57,3 +60,7 @@ sync ~/files/manga/                 "${dest}manga/"
 sync ~/files/lists/                 "${dest}lists/"
 sync ~/files/license/               "${dest}license/"
 sync ~/files/os/                    "${dest}os/"
+
+if [ "$1" = "drive" ]; then
+	find "$drive" -name '._*' -print -delete
+fi
