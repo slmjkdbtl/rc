@@ -31,19 +31,6 @@ curl -fsSL https://bun.sh/install | SHELL="" bash
 echo "export BUN_INSTALL="$HOME/.bun"" >> ~/.profile
 echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> ~/.profile
 
-# install caddy
-sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
-sudo apt update
-sudo apt install -y caddy
-
-# start caddy
-sudo systemctl enable --now caddy
-
-# install shadowsocks
-sudo apt install shadowsocks-libev shadowsocks-v2ray-plugin
-
 # server unit config
 sudo tee /etc/systemd/system/space55.xyz.service > /dev/null << EOF
 [Unit]
@@ -61,8 +48,18 @@ Restart=always
 WantedBy=multi-user.target
 EOF
 
-# edit systemd config with cmd
-sudo -E systemctl edit --full space55.xyz
+# reload unit file configs
+sudo systemctl daemon-reload
+
+# start server
+sudo systemctl enable --now space55.xyz
+
+# install caddy
+sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+sudo apt update
+sudo apt install -y caddy
 
 # caddy config
 sudo tee /etc/caddy/Caddyfile > /dev/null << EOF
@@ -72,48 +69,17 @@ space55.xyz {
 }
 EOF
 
-# shadowsocks config
-sudo tee /etc/shadowsocks-libev/config.json > /dev/null << EOF
-{
-    "server": "0.0.0.0",
-    "server_port": 65521,
-    "mode":"tcp_and_udp",
-    "password": "woyaoshangwang",
-    "method": "chacha20-ietf-poly1305",
-    "plugin": "ss-v2ray-plugin",
-    "plugin_opts": "server"
-}
-EOF
+# start caddy
+sudo systemctl enable --now caddy
 
-# reload systemctl unit files
-sudo systemctl daemon-reload
+# reload caddy config
 sudo systemctl reload caddy
 
 # setup aria2c
 sudo apt install aria2c
 mkdir ~/downloads
-mkdir -p ~/.config/aria2
 mkdir -p ~/.local/share/aria2
 touch ~/.local/share/aria2/daemon.session
-
-tee ~/.config/aria2/daemon.conf > /dev/null << EOF
-force-save=true
-continue=true
-log-level=notice
-dir=/home/tga/downloads
-input-file=/home/tga/.local/share/aria2/daemon.session
-save-session=/home/tga/.local/share/aria2/daemon.session
-log=/home/tga/.local/share/aria2/daemon.log
-max-concurrent-downloads=4
-max-connection-per-server=8
-split=8
-min-split-size=1M
-enable-rpc=true
-rpc-listen-all=true
-rpc-allow-origin-all=true
-rpc-listen-port=6800
-rpc-passwd=password
-EOF
 
 sudo tee /etc/systemd/system/aria2.service > /dev/null << EOF
 [Unit]
@@ -127,4 +93,22 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
+EOF
+
+sudo systemctl enable --now aria2
+
+# install shadowsocks
+sudo apt install shadowsocks-libev shadowsocks-v2ray-plugin
+
+# shadowsocks config
+sudo tee /etc/shadowsocks-libev/config.json > /dev/null << EOF
+{
+    "server": "0.0.0.0",
+    "server_port": 65521,
+    "mode":"tcp_and_udp",
+    "password": "woyaoshangwang",
+    "method": "chacha20-ietf-poly1305",
+    "plugin": "ss-v2ray-plugin",
+    "plugin_opts": "server"
+}
 EOF

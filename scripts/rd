@@ -2,8 +2,11 @@
 
 import * as fs from "fs/promises"
 
-const RPC_URL = "http://space55.xyz:6800/jsonrpc"
-const SECRET = null
+const HOST = "space55.xyz"
+const USER = "tga"
+const RPC_URL = `http://${HOST}:6800/jsonrpc`
+const SSH_HOST = `${USER}@${HOST}`
+const SECRET = "password"
 
 async function call(method, params = [], id = method) {
 
@@ -32,7 +35,7 @@ async function call(method, params = [], id = method) {
 
 }
 
-function prettyBytes(bytes, decimals = 2) {
+function fmtBytes(bytes, decimals = 2) {
 	if (bytes === 0) return "0b";
 	const k = 1024;
 	const dm = decimals < 0 ? 0 : decimals
@@ -60,7 +63,7 @@ function printJob(job) {
 	const percent = totalLength > 0
 	  ? (progress * 100).toFixed(1)
 	  : "0.0"
-	const b = prettyBytes
+	const b = fmtBytes
 	console.log(`- [${job.status}] ${job.gid}`);
 	console.log(`  ${progressbar(progress, 64)}`)
 	console.log(`  ${percent}% ${b(completedLength)} / ${b(totalLength)} down: ${b(downloadSpeed)} up: ${b(uploadSpeed)} seeds: ${job.numSeeders}`);
@@ -78,7 +81,7 @@ function printJobs(title, jobs) {
 	}
 };
 
-async function printStatus() {
+async function ls() {
 	const [active, waiting, stopped] = await Promise.all([
 		call("aria2.tellActive"),
 		call("aria2.tellWaiting", [0, 64]),
@@ -89,34 +92,44 @@ async function printStatus() {
 	printJobs("Stopped", stopped)
 }
 
+async function status(gid) {
+	const job = await call("aria2.tellStatus", [gid])
+	printJob(job)
+}
+
 async function remove(gid) {
 	const res = await call("aria2.remove", [gid])
-	console.log("job removed:", res)
+	console.log(`job removed: ${res}`)
 }
 
 async function pause(gid) {
 	const res = await call("aria2.pause", [gid])
-	console.log("job paused:", res)
+	console.log(`job paused: ${res}`)
 }
 
 async function pauseAll() {
 	const res = await call("aria2.pauseAll")
-	console.log(res)
+	console.log("all jobs paused")
 }
 
 async function resume(gid) {
 	const res = await call("aria2.unpause", [gid])
-	console.log("job resumed:", res)
+	console.log(`job resumed: ${res}`)
 }
 
 async function resumeAll() {
 	const res = await call("aria2.unpauseAll")
-	console.log(res)
+	console.log("all jobs resumed")
 }
 
-async function purge() {
+async function purge(gid) {
+	const res = await call("aria2.removeDownloadResult", [gid])
+	console.log(`job purged: ${res}`)
+}
+
+async function purgeAll() {
 	const res = await call("aria2.purgeDownloadResult")
-	console.log(res)
+	console.log("all inactive jobs purged")
 }
 
 async function addTorrent(path) {
@@ -130,6 +143,29 @@ async function addURL(url) {
 	console.log(`job added: ${gid}`)
 }
 
+async function exec(cmds) {
+	return await Bun.spawn(cmds, {
+		stdout: "inherit",
+		stderr: "inherit",
+		stdin: "inherit",
+	})
+}
+
+async function pull(gid) {
+	const job = await call("aria2.tellStatus", [gid])
+	const zipPath = `${job.dir}/${gid}.zip`
+	const zipCmd = `zip -r "${zipPath}" ${job.files.map((f) => `"${f.path}"`).join(" ")}`
+	await exec(["ssh", "-t", SSH_HOST, zipCmd])
+	await exec(["rsync", "--progress", "-avh", `${SSH_HOST}:"${zipPath}"`, "."])
+}
+
+async function delet(gid) {
+	const job = await call("aria2.tellStatus", [gid])
+	const zipPath = `${job.dir}/${gid}.zip`
+	const rmCmd = `rm "${zipPath}" ${job.files.map((f) => `"${f.path}"`).join(" ")}`
+	await exec(["ssh", "-t", SSH_HOST, rmCmd])
+}
+
 function help() {
 	console.log(`
 Remote download client
@@ -139,43 +175,100 @@ USAGE
 
 COMMANDS
   add <file|url>   add new file / torrent download job
-  pull             pull downloaded file
-  status           check status
+  ls               list all jobs
   rm    <gid>      remove job
   pause <gid>      pause job
-
-EXAMPLE
-  $ rd add titanic.torrent
+  purge            clean finished jobs
+  pull             pull downloaded files
+  delete           delete downloaded files
 	`.trim())
 }
 
-const cmd = process.argv[2]
+async function run() {
 
-const cmds = {}
+	const cmd = process.argv[2]
 
-switch (cmd) {
-	case "add":
-		const thing = process.argv[3]
-		if (!thing) {
-			console.error("please specify url or torrent file")
-			process.exit(1)
+	switch (cmd) {
+		case "add": {
+			const thing = process.argv[3]
+			if (!thing) {
+				throw new Error("please specify url or torrent file")
+			}
+			await addTorrent(thing)
+			break
 		}
-		addTorrent(thing)
-		break
-	case "status":
-		printStatus()
-		break
-	case "purge":
-		purge()
-		break
-	case "rm":
-		const gid = process.argv[3]
-		if (!gid) {
-			console.error("please specify job gid")
-			process.exit(1)
+		case "ls": {
+			await ls()
+			break
 		}
-		remove(gid)
-		break
-	default:
-		help()
+		case "status": {
+			const gid = process.argv[3]
+			if (!gid) {
+				throw new Error("please specify job gid")
+			}
+			await status(gid)
+			break
+		}
+		case "pause": {
+			const gid = process.argv[3]
+			if (gid) {
+				await pause(gid)
+			} else {
+				await pauseAll()
+			}
+			break
+		}
+		case "resume": {
+			const gid = process.argv[3]
+			if (gid) {
+				await resume(gid)
+			} else {
+				await resumeAll()
+			}
+			break
+		}
+		case "purge": {
+			const gid = process.argv[3]
+			if (gid) {
+				await purge(gid)
+			} else {
+				await purgeAll()
+			}
+			break
+		}
+		case "rm": {
+			const gid = process.argv[3]
+			if (!gid) {
+				throw new Error("please specify job gid")
+			}
+			await remove(gid)
+			break
+		}
+		case "pull": {
+			const gid = process.argv[3]
+			if (!gid) {
+				throw new Error("please specify job gid")
+			}
+			await pull(gid)
+			break
+		}
+		case "delete": {
+			const gid = process.argv[3]
+			if (!gid) {
+				throw new Error("please specify job gid")
+			}
+			await delet(gid)
+			break
+		}
+		default: {
+			help()
+		}
+	}
+
+}
+
+try {
+	await run()
+} catch (e) {
+	console.error(e.message)
 }
