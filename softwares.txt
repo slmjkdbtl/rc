@@ -726,6 +726,9 @@ IOS
   LumaFusion
     https://luma-touch.com/luma-fusion-for-ios/
 
+  Pixelmator
+    https://www.pixelmator.com/ios/
+
   Mullvad VPN
     https://mullvad.net/
 

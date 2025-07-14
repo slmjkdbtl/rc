@@ -2,7 +2,7 @@
 // manage yugioh card assets
 
 import * as os from "os"
-import * as fs from "fs"
+import * as fs from "fs/promises"
 import * as cp from "child_process"
 import * as path from "path"
 import * as https from "https"
@@ -26,15 +26,24 @@ function fetch(url) {
 async function updateDB() {
 	console.log("fetching card info...")
 	const content = await fetch(API_URL)
-	fs.mkdirSync(DIR, { recursive: true })
-	fs.writeFileSync(DATA_FILE, content.toString())
+	await fs.mkdir(DIR, { recursive: true })
+	await fs.writeFile(DATA_FILE, content.toString())
+}
+
+async function isFile(path) {
+	try {
+		const stat = await fs.stat(path)
+		return stat.isFile()
+	} catch {
+		return false
+	}
 }
 
 async function getCards() {
-	if (!fs.existsSync(DATA_FILE)) {
+	if (!await isFile(DATA_FILE)) {
 		await updateDB()
 	}
-	const data = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"))
+	const data = JSON.parse(await fs.readFile(DATA_FILE, "utf8"))
 	return data.data
 }
 
@@ -65,8 +74,6 @@ async function exec(cmd, args, opts = {}) {
 	})
 }
 
-const program = "yugiohdata"
-
 var STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
 var ARGUMENT_NAMES = /([^\s,]+)/g;
 function getParamNames(func) {
@@ -77,90 +84,67 @@ function getParamNames(func) {
 	return result
 }
 
-const cmds = {
+const cmds = []
 
-	update: {
-		desc: "Fetch newest card data from server and download card images",
-		// TODO: remove unused images
-		action: async () => {
-			await updateDB()
-			fs.mkdirSync(IMG_DIR, { recursive: true })
-			const cards = await getCards()
-			const existing = new Set(fs
-				.readdirSync(IMG_DIR)
-				.map((img) => path.basename(img, path.extname(img)))
-			)
-			for (const card of cards) {
-				if (existing.has(card.id + "")) continue
-				console.log(card.name)
-				const img = await fetch(card.card_images[0].image_url)
-				fs.writeFileSync(path.join(IMG_DIR, `${card.id}.png`), img)
-			}
-		},
-		help: () => {
-			console.log(`${program} update`)
-		},
-	},
-
-	search: {
-		desc: "Search a card",
-		action: async (query) => {
-			const cards = await getCards()
-			const results = cards.filter((card) => {
-				const target = card.name + card.desc
-				return target.toLowerCase().includes(query.toLowerCase())
-			})
-			for (const card of results) {
-				console.log(`${card.name} (${card.id})`)
-			}
-		},
-		help: () => {
-			console.log(`${program} search <query>`)
-		},
-	},
-
-	view: {
-		desc: "View a card image",
-		action: async (id) => {
-			const cards = await getCards()
-			const map = Number(id).toString() === id ? toIDMap(cards) : toNameMap(cards)
-			const card = map[id]
-			if (!card) return
-			exec("open", [ path.join(IMG_DIR, `${card.id}.png`) ])
-		},
-		help: () => {
-			console.log(`${program} view <id>`)
-		},
-	},
-
-}
-
-const cmd = process.argv[2]
-
-function help() {
-	console.log("Usage")
-	console.log(`  $ ${program} <command> [flags] [args]`)
-	console.log("")
-	console.log("Commands")
-	const len = Math.max(...Object.keys(cmds).map((c) => c.length))
-	for (const c in cmds) {
-		console.log("  " + c + " ".repeat(len - c.length + 4) + cmds[c].desc)
-	}
-}
-
-if (cmd) {
-	if (cmds[cmd]) {
-		const func = cmds[cmd].action
-		const args = process.argv.slice(3)
-		if (args.length < func.length) {
-			// TODO
-			cmds[cmd].help()
-			process.exit(1)
+cmds.push({
+	name: "update",
+	desc: "Fetch newest card data from server and download card images",
+	// TODO: remove unused images
+	action: async () => {
+		await updateDB()
+		await fs.mkdir(IMG_DIR, { recursive: true })
+		const cards = await getCards()
+		const cardFiles = await fs.readdir(IMG_DIR)
+		const existing = new Set(
+			cardFiles.map((img) => path.basename(img, path.extname(img)))
+		)
+		for (const card of cards) {
+			if (existing.has(card.id + "")) continue
+			console.log(`${card.name} (${card.id})`)
+			const img = await fetch(card.card_images[0].image_url)
+			await fs.writeFile(path.join(IMG_DIR, `${card.id}.png`), img)
 		}
-		func(...args)
-	} else {
-		console.error(`Command not found: ${cmd}`)
-	}
-} else {
-	help()
+	},
+})
+
+cmds.push({
+	name: "search",
+	desc: "Search a card",
+	args: [
+		{ name: "query", desc: "Search query" },
+	],
+	action: async ([query]) => {
+		const cards = await getCards()
+		const results = cards.filter((card) => {
+			const target = card.name + card.desc
+			return target.toLowerCase().includes(query.toLowerCase())
+		})
+		for (const card of results) {
+			console.log(`${card.name} (${card.id})`)
+		}
+	},
+})
+
+cmds.push({
+	name: "view",
+	desc: "View a card image",
+	args: [
+		{ name: "id", desc: "Card ID" },
+	],
+	action: async ([id]) => {
+		const cards = await getCards()
+		const map = Number(id).toString() === id ? toIDMap(cards) : toNameMap(cards)
+		const card = map[id]
+		if (!card) return
+		exec("open", [ path.join(IMG_DIR, `${card.id}.png`) ])
+	},
+})
+
+try {
+	await cli({
+		desc: "Manage and query Yu-Gi-Oh! card data",
+		cmds: cmds,
+	})
+} catch (e) {
+	console.error(e.message)
 }

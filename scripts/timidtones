@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 // list all available timidity tones in lilypond compatible names
 
-import fs from "fs/promises"
+import * as fs from "fs/promises"
 
 // https://lilypond.org/doc/Documentation/notation/midi-instruments
 const ins = [

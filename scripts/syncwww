@@ -1,7 +1,22 @@
 #!/usr/bin/env bun
+// sync www.ts server lib file across projects
 
+import * as os from "os"
 import * as path from "path"
+import * as fs from "fs/promises"
 import * as readline from "node:readline/promises"
+
+const home = os.homedir()
+
+const locations = [
+	`${home}/dev/www/www.ts`,
+	`${home}/dev/space55.xyz/www.ts`,
+	`${home}/dev/coilsprite.com/www.ts`,
+	`${home}/dev/davidmurray.xyz/www.ts`,
+	`${home}/dev/shrooom.net/www.ts`,
+	`${home}/dev/fff/www.ts`,
+	`${home}/dev/triospacedesign.com/www.ts`,
+]
 
 async function syncToLatest(paths) {
 
@@ -53,12 +68,4 @@ async function syncToLatest(paths) {
 
 }
 
-await syncToLatest([
-	"/Users/tga/dev/space55.xyz/www.ts",
-	"/Users/tga/dev/coilsprite.com/www.ts",
-	"/Users/tga/dev/davidmurray.xyz/www.ts",
-	"/Users/tga/dev/shrooom.net/www.ts",
-	"/Users/tga/dev/fff/www.ts",
-	"/Users/tga/dev/triospacedesign.com/www.ts",
-	"/Users/tga/dev/www/www.ts",
-])
+await syncToLatest(locations)

@@ -1,5 +1,7 @@
 // cli helper
 
+import * as path from "path"
+
 type Opt = {
 	name: string,
 	desc: string,
@@ -19,14 +21,14 @@ type OptMap = Record<string, string | boolean>
 type Cmd = {
 	name: string,
 	desc: string,
-	args?: string[],
+	args?: Arg[],
 	opts?: Opt[],
 	help?: string,
 	action: (args: string[], opts: OptMap) => void | Promise<void>,
 }
 
 type Desc = {
-	name: string,
+	name?: string,
 	desc: string,
 	opts?: Opt[],
 	cmds: Cmd[],
@@ -87,11 +89,19 @@ function parseArgv(argv: string[], optDesc: Opt[]) {
 	return { args, opts }
 }
 
+function fmtArgs(args: Arg[] = []) {
+	return args
+		.map((a) => a.required === false ? `[${a.name}]` : `<${a.name}>`)
+		.join(" ")
+}
+
 export async function cli(desc: Desc) {
 
 	const argv = process.argv.slice(2)
 	const cmd = (desc.cmds || []).find((c) => c.name && c.name === argv[0])
-	const hasCmd = desc.cmds && desc.cmds.length > 0
+	const hasCmd = desc.cmds?.length > 0
+
+	const binName = desc.name || path.basename(process.argv[1])
 
 	function help() {
 
@@ -102,7 +112,7 @@ export async function cli(desc: Desc) {
 		msg += "USAGE"
 		msg += "\n"
 		msg += "\n"
-		msg += `  $ ${desc.name} ${hasCmd ? "<cmd>" : ""}`
+		msg += `  $ ${binName} ${hasCmd ? "<cmd>" : ""}`
 		msg += "\n"
 
 		if (hasCmd) {
@@ -112,14 +122,8 @@ export async function cli(desc: Desc) {
 			msg += "\n"
 			msg += "\n"
 
-			let maxNameLen = 0
-			let maxArgsLen = 0
-			const fmtArgs = (args) => (args || []).map((a) => `[${a}]`).join(" ")
-
-			for (const cmd of desc.cmds) {
-				maxNameLen = Math.max(maxNameLen, cmd.name.length)
-				maxArgsLen = Math.max(maxArgsLen, fmtArgs(cmd.args).length)
-			}
+			let maxNameLen = Math.max(...desc.cmds.map((c) => c.name.length))
+			let maxArgsLen = Math.max(...desc.cmds.map((c) => fmtArgs(c.args).length))
 
 			for (const cmd of desc.cmds) {
 				msg += "  "
@@ -140,13 +144,9 @@ export async function cli(desc: Desc) {
 			msg += "\n"
 			msg += "\n"
 
-			let maxOptLen = 0
 			const fmtOpt = (opt: Opt) =>
 				`${opt.short ? `-${opt.short}, ` : "    "}--${opt.name}`
-
-			for (const opt of desc.opts) {
-				maxOptLen = Math.max(maxOptLen, fmtOpt(opt).length)
-			}
+			const maxOptLen = Math.max(...desc.opts.map((o) => fmtOpt(o).length))
 
 			for (const opt of desc.opts) {
 				msg += "  "
@@ -169,14 +169,32 @@ export async function cli(desc: Desc) {
 			[ ...(desc.opts || []), ...(cmd.opts || [])
 		])
 
-		const requiredArgs = (cmd.args ?? []).filter((a) => !a.endsWith("?"))
+		const requiredArgs = (cmd.args ?? []).filter((a) => a.required !== false)
 
 		if (args.length < requiredArgs.length) {
+
 			console.error("incorrect number of arguments")
-			console.log()
-			// TODO: nicer cmd help msg with opts
-			console.log(`  $ ${desc.name} ${cmd.name} ${cmd.args.map((a) => `<${a}>`).join(" ")}   ${cmd.desc}`)
+
+			let msg = ""
+
+			msg += cmd.desc
+			msg += "\n\n"
+			msg += "USAGE"
+			msg += "\n"
+			msg += `  $ ${binName} ${cmd.name} ${fmtArgs(cmd.args)}`
+
+			if (cmd.opts?.length > 0) {
+				msg += " [opts]"
+			}
+
+			msg += "\n"
+
+			// TODO: show desc for each arg and opt
+
+			console.log(msg)
+
 			return
+
 		}
 
 		await runMaybeAsync(cmd.action, args, opts)

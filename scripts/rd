@@ -181,7 +181,9 @@ const cmds = []
 cmds.push({
 	name: "add",
 	desc: "add new file / torrent download job",
-	args: [ "file" ],
+	args: [
+		{ name: "url|torrent", desc: "url or torrent file to download" },
+	],
 	action: async ([src]) => {
 		if (await isFile(src)) {
 			await addTorrent(src)
@@ -202,8 +204,9 @@ cmds.push({
 cmds.push({
 	name: "status",
 	desc: "check status of a job",
-	args: [ "id" ],
-	opts: [ { name: "test" } ],
+	args: [
+		{ name: "id", desc: "GID of the download job" },
+	],
 	action: async ([gid], opts) => {
 		await status(gid)
 	},
@@ -212,7 +215,9 @@ cmds.push({
 cmds.push({
 	name: "pause",
 	desc: "pause job",
-	args: [ "id?" ],
+	args: [
+		{ name: "id", desc: "GID of the download job", required: false }
+	],
 	action: async ([gid]) => {
 		if (gid) {
 			await pause(gid)
@@ -225,7 +230,9 @@ cmds.push({
 cmds.push({
 	name: "resume",
 	desc: "resume job",
-	args: [ "id?" ],
+	args: [
+		{ name: "id", desc: "GID of the download job", required: false }
+	],
 	action: async ([gid]) => {
 		if (gid) {
 			await resume(gid)
@@ -238,7 +245,9 @@ cmds.push({
 cmds.push({
 	name: "rm",
 	desc: "remove job",
-	args: [ "id" ],
+	args: [
+		{ name: "id", desc: "GID of the download job" },
+	],
 	action: async ([gid]) => {
 		await remove(gid)
 	},
@@ -247,7 +256,9 @@ cmds.push({
 cmds.push({
 	name: "purge",
 	desc: "clean finished jobs",
-	args: [ "id?" ],
+	args: [
+		{ name: "id", desc: "GID of the download job", required: false },
+	],
 	action: async ([gid]) => {
 		if (gid) {
 			await purge(gid)
@@ -260,7 +271,9 @@ cmds.push({
 cmds.push({
 	name: "pull",
 	desc: "pull downloaded files",
-	args: [ "id" ],
+	args: [
+		{ name: "id", desc: "GID of the download job" },
+	],
 	action: async ([gid]) => {
 		await pull(gid)
 	},
@@ -269,7 +282,9 @@ cmds.push({
 cmds.push({
 	name: "delete",
 	desc: "delete downloaded files",
-	args: [ "id" ],
+	args: [
+		{ name: "id", desc: "GID of the download job" },
+	],
 	action: async ([gid]) => {
 		await delet(gid)
 	},
@@ -277,7 +292,6 @@ cmds.push({
 
 try {
 	await cli({
-		name: "rd",
 		desc: "Remote download client",
 		cmds: cmds,
 	})
