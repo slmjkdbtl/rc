@@ -1,6 +1,7 @@
 #!/usr/bin/env bun
 
 import * as fs from "fs/promises"
+import { cli } from "./cli"
 
 const HOST = "space55.xyz"
 const USER = "tga"
@@ -139,7 +140,7 @@ async function addTorrent(path) {
 }
 
 async function addURL(url) {
-	const gid = await call("aria2.addUri", [url])
+	const gid = await call("aria2.addUri", [[url]])
 	console.log(`job added: ${gid}`)
 }
 
@@ -166,109 +167,120 @@ async function delet(gid) {
 	await exec(["ssh", "-t", SSH_HOST, rmCmd])
 }
 
-function help() {
-	console.log(`
-Remote download client
-
-USAGE
-  $ rd <cmd> [args]
-
-COMMANDS
-  add <file|url>   add new file / torrent download job
-  ls               list all jobs
-  rm    <gid>      remove job
-  pause <gid>      pause job
-  purge            clean finished jobs
-  pull             pull downloaded files
-  delete           delete downloaded files
-	`.trim())
-}
-
-async function run() {
-
-	const cmd = process.argv[2]
-
-	switch (cmd) {
-		case "add": {
-			const thing = process.argv[3]
-			if (!thing) {
-				throw new Error("please specify url or torrent file")
-			}
-			await addTorrent(thing)
-			break
-		}
-		case "ls": {
-			await ls()
-			break
-		}
-		case "status": {
-			const gid = process.argv[3]
-			if (!gid) {
-				throw new Error("please specify job gid")
-			}
-			await status(gid)
-			break
-		}
-		case "pause": {
-			const gid = process.argv[3]
-			if (gid) {
-				await pause(gid)
-			} else {
-				await pauseAll()
-			}
-			break
-		}
-		case "resume": {
-			const gid = process.argv[3]
-			if (gid) {
-				await resume(gid)
-			} else {
-				await resumeAll()
-			}
-			break
-		}
-		case "purge": {
-			const gid = process.argv[3]
-			if (gid) {
-				await purge(gid)
-			} else {
-				await purgeAll()
-			}
-			break
-		}
-		case "rm": {
-			const gid = process.argv[3]
-			if (!gid) {
-				throw new Error("please specify job gid")
-			}
-			await remove(gid)
-			break
-		}
-		case "pull": {
-			const gid = process.argv[3]
-			if (!gid) {
-				throw new Error("please specify job gid")
-			}
-			await pull(gid)
-			break
-		}
-		case "delete": {
-			const gid = process.argv[3]
-			if (!gid) {
-				throw new Error("please specify job gid")
-			}
-			await delet(gid)
-			break
-		}
-		default: {
-			help()
-		}
+async function isFile(path) {
+	try {
+		const stat = await fs.stat(path)
+		return stat.isFile()
+	} catch {
+		return false
 	}
-
 }
+
+const cmds = []
+
+cmds.push({
+	name: "add",
+	desc: "add new file / torrent download job",
+	args: [ "file" ],
+	action: async ([src]) => {
+		if (await isFile(src)) {
+			await addTorrent(src)
+		} else {
+			await addURL(src)
+		}
+	},
+})
+
+cmds.push({
+	name: "ls",
+	desc: "list all jobs",
+	action: async () => {
+		await ls()
+	},
+})
+
+cmds.push({
+	name: "status",
+	desc: "check status of a job",
+	args: [ "id" ],
+	opts: [ { name: "test" } ],
+	action: async ([gid], opts) => {
+		await status(gid)
+	},
+})
+
+cmds.push({
+	name: "pause",
+	desc: "pause job",
+	args: [ "id?" ],
+	action: async ([gid]) => {
+		if (gid) {
+			await pause(gid)
+		} else {
+			await pauseAll()
+		}
+	},
+})
+
+cmds.push({
+	name: "resume",
+	desc: "resume job",
+	args: [ "id?" ],
+	action: async ([gid]) => {
+		if (gid) {
+			await resume(gid)
+		} else {
+			await resumeAll()
+		}
+	},
+})
+
+cmds.push({
+	name: "rm",
+	desc: "remove job",
+	args: [ "id" ],
+	action: async ([gid]) => {
+		await remove(gid)
+	},
+})
+
+cmds.push({
+	name: "purge",
+	desc: "clean finished jobs",
+	args: [ "id?" ],
+	action: async ([gid]) => {
+		if (gid) {
+			await purge(gid)
+		} else {
+			await purgeAll()
+		}
+	},
+})
+
+cmds.push({
+	name: "pull",
+	desc: "pull downloaded files",
+	args: [ "id" ],
+	action: async ([gid]) => {
+		await pull(gid)
+	},
+})
+
+cmds.push({
+	name: "delete",
+	desc: "delete downloaded files",
+	args: [ "id" ],
+	action: async ([gid]) => {
+		await delet(gid)
+	},
+})
 
 try {
-	await run()
+	await cli({
+		name: "rd",
+		desc: "Remote download client",
+		cmds: cmds,
+	})
 } catch (e) {
 	console.error(e.message)
 }

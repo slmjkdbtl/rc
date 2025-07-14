@@ -285,6 +285,8 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'jdonaldson/vaxe'
 Plug 'karolbelina/uxntal.vim'
 Plug 'vim-scripts/applescript.vim'
+" TODO: get from $(brew --prefix lilypond)/share/lilypond/current/vim/
+Plug 'keysmashes/vim-lilypond'
 
 " keybinds
 call keys#unmap()
@@ -523,5 +525,6 @@ au FileType vim              setl cms=\"%s
 au FileType forth            setl cms=\\%s
 au FileType html             setl cms=<!--%s-->
 au FileType css              setl cms=/*%s*/
+au FileType lilypond         setl cms=%%s ts=4 sw=4
 au FileType markdown         setl et ts=4 sw=4
 au FileType text             setl et ts=2 sw=2

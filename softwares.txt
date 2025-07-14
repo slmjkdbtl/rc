@@ -234,9 +234,6 @@ CLI
   frp
     https://github.com/fatedier/frp/
 
-  cloudflared
-    https://github.com/cloudflare/cloudflared/
-
   wrangler
     https://github.com/cloudflare/workers-sdk/
 
@@ -278,9 +275,6 @@ CLI
 
   tldr
     http://tldr.sh/
-
-  dog
-    https://dns.lookup.dog/
 
   tup
     http://gittup.org/tup/
@@ -377,6 +371,9 @@ CLI
 
   uv
     https://docs.astral.sh/uv/
+
+  opencc
+    https://opencc.byvoid.com/
 
 
 GUI

@@ -225,6 +225,10 @@ list files by size
 
   $ du -chs * .* | sort -h
 
+expose a local port
+
+  $ cloudflared tunnel --url localhost:3000
+
 notify
 
   $ osascript -e 'display notification "msg" with title "title"'
@@ -317,6 +321,12 @@ screenshot config
 clean all ._ files on external disk
 
   $ dot_clean /Volumes/EXTDRIVE
+  $ find /Volumes/EXTDRIVE -name '._*' -print -delete
+
+convert simplified Chinese to Traditional
+
+  $ echo "我无所谓" | opencc
+  $ echo "我無所謂" | opencc -c t2s.json
 
 archive website
 
@@ -391,3 +401,10 @@ manage quick action menu items
       > Privacy & Security
       > Extensions
       > Finder
+
+if software like mpv can't display Chinese font
+
+  - Font Book.app
+      > All Fonts
+      > Inactive
+      > Download the fond (like PingFang SC)

@@ -1,0 +1,9 @@
+#!/bin/sh
+# poop
+
+cd "$HOME/dev/space55.xyz/files/poop" || exit
+if [ -n "$1" ]; then
+	$EDITOR "$1"
+else
+	$EDITOR
+fi

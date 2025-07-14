@@ -19,11 +19,6 @@ if exists /opt/homebrew/bin/brew; then
 	export LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/lib"
 fi
 
-# export OPENBLAS="$(brew --prefix openblas)"
-# export CFLAGS="$CFLAGS -I$OPENBLAS/include"
-# export LDFLAGS="$LDFLAGS -L$OPENBLAS/lib"
-# export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$OPENBLAS/lib/pkgconfig"
-
 export PATH="$HOMEBREW_PREFIX/opt/llvm/bin:$PATH"
 export WINEPATH="$HOMEBREW_PREFIX/opt/mingw-w64/toolchain-x86_64/x86_64-w64-mingw32/bin"
 export ANDROID_NDK_HOME="$HOMEBREW_PREFIX/share/android-ndk"

@@ -6,6 +6,7 @@ import * as fs from "fs"
 import * as cp from "child_process"
 import * as path from "path"
 import * as https from "https"
+import { cli } from "./cli"
 
 const DIR = path.join(os.homedir(), "files/yugioh")
 const IMG_DIR = path.join(DIR, "img")
@@ -138,7 +139,7 @@ const cmd = process.argv[2]
 
 function help() {
 	console.log("Usage")
-	console.log(`  ${program} <command> [flags] [args]`)
+	console.log(`  $ ${program} <command> [flags] [args]`)
 	console.log("")
 	console.log("Commands")
 	const len = Math.max(...Object.keys(cmds).map((c) => c.length))
