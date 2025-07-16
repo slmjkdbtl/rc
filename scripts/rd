@@ -1,5 +1,6 @@
 #!/usr/bin/env bun
 
+import { $ } from "bun"
 import * as fs from "fs/promises"
 import { cli } from "./cli"
 
@@ -134,7 +135,8 @@ async function purgeAll() {
 }
 
 async function addTorrent(path) {
-	const base64 = await fs.readFile(path, "base64")
+	const buf = await Bun.file(path).arrayBuffer()
+	const base64 = Buffer.from(buf).toString("base64")
 	const gid = await call("aria2.addTorrent", [base64])
 	console.log(`job added: ${gid}`)
 }
@@ -144,27 +146,27 @@ async function addURL(url) {
 	console.log(`job added: ${gid}`)
 }
 
-async function exec(cmds) {
-	return await Bun.spawn(cmds, {
-		stdout: "inherit",
-		stderr: "inherit",
-		stdin: "inherit",
-	})
+type ExecRemoteOpts = {
+	interactive?: boolean,
+}
+
+async function execRemote(cmd, opts: ExecRemoteOpts = {}) {
+	return await $`ssh ${opts.interactive ? "-t" : ""} ${SSH_HOST} '${cmd}'`
 }
 
 async function pull(gid) {
 	const job = await call("aria2.tellStatus", [gid])
 	const zipPath = `${job.dir}/${gid}.zip`
 	const zipCmd = `zip -r "${zipPath}" ${job.files.map((f) => `"${f.path}"`).join(" ")}`
-	await exec(["ssh", "-t", SSH_HOST, zipCmd])
-	await exec(["rsync", "--progress", "-avh", `${SSH_HOST}:"${zipPath}"`, "."])
+	await execRemote(zipCmd)
+	await $`rsync --progress -avh ${SSH_HOST}:"${zipPath}" .`
 }
 
 async function delet(gid) {
 	const job = await call("aria2.tellStatus", [gid])
 	const zipPath = `${job.dir}/${gid}.zip`
 	const rmCmd = `rm "${zipPath}" ${job.files.map((f) => `"${f.path}"`).join(" ")}`
-	await exec(["ssh", "-t", SSH_HOST, rmCmd])
+	await execRemote(rmCmd)
 }
 
 async function isFile(path) {
@@ -207,7 +209,7 @@ cmds.push({
 	args: [
 		{ name: "id", desc: "GID of the download job" },
 	],
-	action: async ([gid], opts) => {
+	action: async ([gid]) => {
 		await status(gid)
 	},
 })
@@ -287,6 +289,14 @@ cmds.push({
 	],
 	action: async ([gid]) => {
 		await delet(gid)
+	},
+})
+
+cmds.push({
+	name: "daemon-status",
+	desc: "check status of the aria2 daemon",
+	action: async () => {
+		await execRemote(`sudo systemctl status aria2`, { interactive: true })
 	},
 })
 

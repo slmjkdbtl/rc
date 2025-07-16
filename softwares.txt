@@ -285,6 +285,12 @@ CLI
   timidity
     https://timidity.sourceforge.net/
 
+  midicsv
+    https://www.fourmilab.ch/webtools/midicsv/
+
+  rubberband
+    https://breakfastquay.com/rubberband/
+
   figlet
     http://www.figlet.org/
 

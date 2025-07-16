@@ -250,7 +250,7 @@ let g:boilerplates = {
 
 " shebangs
 let g:shebangs = [
-	\ ['bun', 'javascript'],
+	\ ['bun', 'typescript'],
 \ ]
 
 " local plugins

@@ -1,0 +1,14 @@
+#!/usr/bin/env bun
+// convert character to fullwidth unicode version
+
+function toFullWidth(str) {
+	return str
+		.replace(/[!-~]/g, ch => String.fromCharCode(ch.charCodeAt(0) + 0xFEE0))
+		.replace(/ /g, '　')
+}
+
+const ch = process.argv[2]
+
+if (ch) {
+	console.log(toFullWidth(ch))
+}

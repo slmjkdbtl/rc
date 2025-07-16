@@ -73,15 +73,15 @@ function mark()
 
 	local pos = mp.get_property_number("time-pos")
 
-	if not start_pos then
+	if start_pos then
+		cut(start_pos, pos)
+		start_pos = nil
+		mp.remove_key_binding("trim-cancel")
+	else
 		start_pos = pos
 		ov.data = "{\\an1}trim start: " .. timestamp(pos)
 		ov:update()
 		mp.add_forced_key_binding("esc", "trim-cancel", cancel)
-	else
-		cut(start_pos, pos)
-		start_pos = nil
-		mp.remove_key_binding("trim-cancel")
 	end
 
 end

@@ -76,8 +76,8 @@ alias dsl="yt-dlp --all-subs --convert-subs srt --skip-download --yes-playlist"
 
 alias winesteam='wine "$HOME/.wine/drive_c/Program Files (x86)/Steam/Steam.exe"'
 
-binsrc() {
-	realpath "$(command -v "$1")"
+binpath() {
+	[ -n "$1" ] && realpath "$(command -v "$1")"
 }
 
 PS1='\n\u@\H\n\w\n$ '
