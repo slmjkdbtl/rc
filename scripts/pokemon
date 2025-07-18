@@ -1,0 +1,68 @@
+#!/usr/bin/env bun
+// query Pokémon data
+
+import { $ } from "bun"
+import * as os from "os"
+import * as fs from "fs/promises"
+import * as path from "path"
+import { cli } from "./cli"
+
+const DIR = path.join(os.homedir(), "files/pokemon")
+const IMG_DIR = path.join(DIR, "img")
+const DATA_REPO_URL = "https://github.com/PokeAPI/pokeapi"
+const DATA_REPO_PATH = path.join(DIR, "pokeapi")
+
+async function isFile(path) {
+	try {
+		const stat = await fs.stat(path)
+		return stat.isFile()
+	} catch {
+		return false
+	}
+}
+
+async function isDir(path) {
+	try {
+		const stat = await fs.stat(path)
+		return stat.isDirectory()
+	} catch {
+		return false
+	}
+}
+
+const cmds = []
+
+cmds.push({
+	name: "update",
+	desc: "Update local db and images",
+	action: async ([id]) => {
+		if (isDir(path.join(DATA_REPO_PATH, ".git"))) {
+			process.chdir(DATA_REPO_PATH)
+			await $`git pull origin HEAD`
+			await $`git submodule update --remote`
+		} else {
+			process.chdir(DIR)
+			await $`git clone ${DATA_REPO_URL} pokeapi`
+		}
+	},
+})
+
+cmds.push({
+	name: "info",
+	desc: "View pokemon info",
+	args: [
+		{ name: "id", desc: "pokemon ID" },
+	],
+	action: async ([id]) => {
+		// TODO
+	},
+})
+
+try {
+	await cli({
+		desc: "Query Pokémon data",
+		cmds: cmds,
+	})
+} catch (e) {
+	console.error(e.message)
+}

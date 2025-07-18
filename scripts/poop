@@ -3,7 +3,7 @@
 
 cd "$HOME/dev/space55.xyz/files/poop" || exit
 if [ -n "$1" ]; then
-	$EDITOR "$1"
+	$EDITOR "$1".txt
 else
 	$EDITOR
 fi

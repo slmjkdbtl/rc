@@ -132,6 +132,9 @@ CLI
   fonttools
     https://github.com/fonttools/fonttools/
 
+  fontconfig
+    https://wiki.freedesktop.org/www/Software/fontconfig/
+
   upx
     https://github.com/upx/upx/
 
@@ -980,7 +983,7 @@ FONTS
   proggy
     https://proggyfonts.net/
 
-  collletttivo
+  Collletttivo
     https://www.collletttivo.it/
 
   APL

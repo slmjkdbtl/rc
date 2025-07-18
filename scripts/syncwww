@@ -14,6 +14,7 @@ const locations = [
 	`${home}/dev/coilsprite.com/www.ts`,
 	`${home}/dev/davidmurray.xyz/www.ts`,
 	`${home}/dev/shrooom.net/www.ts`,
+	`${home}/dev/zhuazhuazhua.me/www.ts`,
 	`${home}/dev/fff/www.ts`,
 	`${home}/dev/triospacedesign.com/www.ts`,
 ]

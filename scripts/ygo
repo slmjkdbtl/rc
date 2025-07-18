@@ -1,11 +1,10 @@
 #!/usr/bin/env bun
-// manage yugioh card assets
+// query Yu-Gi-Oh! card data
 
 import { $ } from "bun"
 import * as os from "os"
 import * as fs from "fs/promises"
 import * as path from "path"
-import * as https from "https"
 import { cli } from "./cli"
 
 const DIR = path.join(os.homedir(), "files/yugioh")
@@ -52,32 +51,17 @@ function toNameMap(cards) {
 	return map
 }
 
-async function exec(cmd, args, opts = {}) {
-	return new Promise((resolve, reject) => {
-		const proc = cp.spawn(cmd, args, {
-			stdio: "inherit",
-			...opts
-		})
-		proc.on("exit", resolve)
-		proc.on("error", reject)
-	})
-}
-
-var STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
-var ARGUMENT_NAMES = /([^\s,]+)/g;
-function getParamNames(func) {
-	const fnStr = func.toString().replace(STRIP_COMMENTS, '')
-	var result = fnStr.slice(fnStr.indexOf('(')+1, fnStr.indexOf(')')).match(ARGUMENT_NAMES)
-	if(result === null)
-	 result = []
-	return result
+async function getCard(id: string) {
+	const cards = await getCards()
+	const map = Number(id).toString() === id ? toIDMap(cards) : toNameMap(cards)
+	return map[id]
 }
 
 const cmds = []
 
 cmds.push({
 	name: "update",
-	desc: "Fetch newest card data from server and download card images",
+	desc: "Update local DB and card images",
 	// TODO: remove unused images
 	action: async () => {
 		await updateDB()
@@ -117,22 +101,35 @@ cmds.push({
 
 cmds.push({
 	name: "view",
-	desc: "View a card image",
+	desc: "View card image",
 	args: [
 		{ name: "id", desc: "Card ID" },
 	],
 	action: async ([id]) => {
-		const cards = await getCards()
-		const map = Number(id).toString() === id ? toIDMap(cards) : toNameMap(cards)
-		const card = map[id]
+		const card = await getCard(id)
 		if (!card) return
 		await $`open ${path.join(IMG_DIR, `${card.id}.png`)}`
 	},
 })
 
+cmds.push({
+	name: "info",
+	desc: "View card info",
+	args: [
+		{ name: "id", desc: "Card ID" },
+	],
+	action: async ([id]) => {
+		const card = await getCard(id)
+		if (!card) return
+		console.log(card.name)
+		console.log(card.humanReadableCardType)
+		console.log(card.desc)
+	},
+})
+
 try {
 	await cli({
-		desc: "Manage and query Yu-Gi-Oh! card data",
+		desc: "Query Yu-Gi-Oh! card data",
 		cmds: cmds,
 	})
 } catch (e) {

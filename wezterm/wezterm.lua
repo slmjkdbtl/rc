@@ -16,7 +16,7 @@ local cfg = wezterm.config_builder()
 
 cfg.font = wezterm.font_with_fallback({
 	"ProggySquareTT",
-	{ family = "Fusion Pixel 10px Monospaced zh_hans", scale = 0.64 },
+	{ family = "Fusion Pixel 10px M zh_hans", scale = 0.64 },
 })
 
 cfg.font_size = 26

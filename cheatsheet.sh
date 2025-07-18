@@ -199,6 +199,10 @@ file -I file.txt
 # convert character encoding
 iconv -f ISO-8859-1 -t UTF-8 src.txt > dest.txt
 
+# start a http server
+python3 -m http.server
+darkhttpd .
+
 # run TempleOS with qemu
 qemu-img create -f qcow2 temple 2G
 qemu-system-x86_64 \
@@ -229,7 +233,10 @@ for i in $(seq 1 10); do
 	echo "$i"
 done
 
-# make font subset from file
+# get font name
+fc-scan --format "%{family}\n" font.ttf
+
+# make font subset of characters in file
 pyftsubset font.ttf --text-file=file.txt --flavor=woff2 --output-file=font.woff2
 
 # convert epub to pdf
@@ -239,7 +246,7 @@ pandoc -f epub -t pdf --pdf-engine=tectonic "book.epub" -o "book.pdf"
 qpdf --empty --pages ./*.pdf -- output.pdf
 
 # extract images from pdf
-pdfimages -all input.pdf image
+pdfimages -all input.pdf img
 
 # concat images to pdf
 img2pdf ./*.jpg -o images.pdf
