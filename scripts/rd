@@ -3,6 +3,7 @@
 
 import { $ } from "bun"
 import * as fs from "fs/promises"
+import * as path from "path"
 import { cli } from "./cli"
 
 const HOST = "space55.xyz"
@@ -157,16 +158,15 @@ async function execRemote(cmd, opts: ExecRemoteOpts = {}) {
 
 async function pull(gid) {
 	const job = await call("aria2.tellStatus", [gid])
-	const zipPath = `${job.dir}/${gid}.zip`
-	const zipCmd = `zip -r "${zipPath}" ${job.files.map((f) => `"${f.path}"`).join(" ")}`
+	const zipCmd = `cd ${job.dir} && zip -r "${gid}.zip" ${job.files.map((f) => `"${path.relative(job.dir, f.path)}"`).join(" ")}`
 	await execRemote(zipCmd)
-	await $`rsync --progress -avh ${SSH_HOST}:"${zipPath}" .`
+	await $`rsync --progress -avh ${SSH_HOST}:"${job.dir}/${gid}.zip" .`
 }
 
 async function delet(gid) {
 	const job = await call("aria2.tellStatus", [gid])
 	const zipPath = `${job.dir}/${gid}.zip`
-	const rmCmd = `rm "${zipPath}" ${job.files.map((f) => `"${f.path}"`).join(" ")}`
+	const rmCmd = `rm -f "${zipPath}" ${job.files.map((f) => `"${f.path}"`).join(" ")}`
 	await execRemote(rmCmd)
 }
 

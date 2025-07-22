@@ -138,8 +138,8 @@ CLI
   upx
     https://github.com/upx/upx/
 
-  fswatch
-    https://emcrisostomo.github.io/fswatch/
+  watchexec
+    https://watchexec.github.io/
 
   cmus
     https://cmus.github.io/
@@ -338,6 +338,9 @@ CLI
 
   certbot
     https://certbot.eff.org/
+
+  gallery-dl
+    https://github.com/mikf/gallery-dl/
 
   instaloader
     https://instaloader.github.io/
@@ -570,8 +573,8 @@ GUI
   ChatGPT
     https://chatgpt.com/
 
-  hiddenbar
-    https://github.com/dwarvesf/hidden
+  Ice
+    https://icemenubar.app/
 
   TuxPaint
     https://tuxpaint.org/

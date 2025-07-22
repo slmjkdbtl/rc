@@ -1,6 +1,7 @@
 [core]
 	pager = less -+FX
 	ignorecase = false
+	quotepath = false
 [user]
 	email = tga@space55.xyz
 	name = tga

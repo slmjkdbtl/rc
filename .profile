@@ -73,6 +73,7 @@ alias dml="yt-dlp -x --audio-format mp3 -o '%(title)s.%(ext)s' --yes-playlist"
 alias dmc="yt-dlp -x --audio-format mp3 --split-chapters -o '%(chapter)s.%(ext)s' --no-playlist"
 alias ds="yt-dlp --all-subs --convert-subs srt --skip-download --no-playlist"
 alias dsl="yt-dlp --all-subs --convert-subs srt --skip-download --yes-playlist"
+alias dt="yt-dlp --skip-download --write-thumbnail --convert-thumbnails jpg --no-playlist"
 
 alias winesteam='wine "$HOME/.wine/drive_c/Program Files (x86)/Steam/Steam.exe"'
 

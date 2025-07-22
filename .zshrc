@@ -28,19 +28,15 @@ HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000000
 SAVEHIST=$HISTSIZE
 
-include() { test -f "$1" && . $1; }
-
 autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
 
-# autoload -Uz history-search-end
-# zle -N history-beginning-search-backward-end history-search-end
-# zle -N history-beginning-search-forward-end history-search-end
+include() { [ -f "$1" ] && . $1; }
+exists() { command -v "$1" > /dev/null 2>&1; }
 
-if command -v brew > /dev/null 2>&1; then
-	FPATH="$(brew --prefix)/share/zsh/site-functions:$FPATH"
-	include /opt/homebrew/etc/profile.d/z.sh
+if exists brew; then
+	include "$(brew --prefix)/etc/profile.d/z.sh"
 fi
 
 split() { echo "$1" | tr "$2" " "; }

@@ -1,28 +1,17 @@
 -- copy path / name to clipboard
--- TODO: not working?
 
 function print(s)
 	mp.msg.info(s)
 	mp.osd_message(s)
 end
 
+-- TODO: not copying correct non ascii characters
 function copy()
 	local path = mp.get_property("path")
+	local pipe = io.popen("pbcopy", "w")
+	pipe:write(path .. "")
+	pipe:close()
 	print(path)
-	mp.command_native_async({
-		name = "subprocess",
-		args = {
-			"pbcopy",
-			path
-		},
-		playback_only = false,
-	}, function(success, res, err)
-		if success then
-			print(path)
-		else
-			print("failed to copy path")
-		end
-	end)
 end
 
-mp.add_forced_key_binding("alt+y", "copy path", copy)
+mp.add_forced_key_binding("y", "copy-path", copy)
