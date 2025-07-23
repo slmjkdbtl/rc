@@ -2,7 +2,6 @@
 # get closest archived url for a site
 
 url="$1"
-timestamp="$2"
 
 if [ -z "$url" ]; then
 	echo "please specify url"

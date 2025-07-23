@@ -28,7 +28,7 @@ ffmpeg \
 	-i "$audio" \
 	-c:v libx264 \
 	-c:a aac \
-	-b:a 256k \
+	-b:a 128k \
 	-preset veryslow \
 	-tune stillimage \
 	-vf scale=480:480 \

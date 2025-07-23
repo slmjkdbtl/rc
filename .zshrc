@@ -35,10 +35,6 @@ zstyle ':completion:*' menu select
 include() { [ -f "$1" ] && . $1; }
 exists() { command -v "$1" > /dev/null 2>&1; }
 
-if exists brew; then
-	include "$(brew --prefix)/etc/profile.d/z.sh"
-fi
-
 split() { echo "$1" | tr "$2" " "; }
 getn() { echo "$1" | cut -d"$2" -f"$3"; }
 
@@ -113,3 +109,7 @@ for dir (up down) {
 	for key ($key ${key/O/[})
 	bindkey $key $dir-line-or-beginning-search
 }
+
+if exists zoxide; then
+	eval "$(zoxide init zsh)"
+fi

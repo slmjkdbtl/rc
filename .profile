@@ -1,18 +1,18 @@
 export EDITOR="vim"
-export SYSTEMD_EDITOR="vim"
+export FCEDIT="$EDITOR"
+export SYSTEMD_EDITOR="$EDITOR"
 export BROWSER="open"
 export PAGER="less"
-
-export HOMEBREW_NO_AUTO_UPDATE=1
-
-exists() { command -v "$1" > /dev/null 2>&1; }
 
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.rc/scripts:$PATH"
 
+exists() { command -v "$1" > /dev/null 2>&1; }
+
 if exists /opt/homebrew/bin/brew; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
+	export HOMEBREW_NO_AUTO_UPDATE=1
 	export CFLAGS="$CFLAGS -I$HOMEBREW_PREFIX/include"
 	export CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/include"
 	export CXXFLAGS="$CXXFLAGS -I$HOMEBREW_PREFIX/include"
@@ -33,6 +33,7 @@ alias e='$EDITOR'
 alias se='sudo -E $EDITOR'
 alias o="open"
 alias f="open ."
+alias l="ls -la"
 alias lsize="du -chs * .* | sort -h"
 alias disk="df -h ."
 alias uptext="curl -F 'f:1=<-' ix.io"
@@ -79,6 +80,10 @@ alias winesteam='wine "$HOME/.wine/drive_c/Program Files (x86)/Steam/Steam.exe"'
 
 binpath() {
 	[ -n "$1" ] && realpath "$(command -v "$1")"
+}
+
+mkcd() {
+	mkdir -p "$@" && cd "$1" || return
 }
 
 PS1='\n\u@\H\n\w\n$ '

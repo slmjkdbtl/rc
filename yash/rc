@@ -1,0 +1,59 @@
+. ~/.profile
+
+set -o brace-expand
+set -o no-clobber
+set -o emacs
+set -o extended-glob
+set -o hist-space
+set -o le-no-conv-meta
+set -o le-predict
+set -o notify-le
+
+exists() { command -v "$1" > /dev/null 2>&1; }
+
+tildefy() {
+	case "$1" in
+		"$HOME") printf '~\n' ;;
+		"$HOME"/*) printf '~/%s\n' "${1#"$HOME"/}" ;;
+		*) printf '%s\n' "$1" ;;
+	esac
+}
+
+YASH_PS1='\n'\
+'\fi.$(whoami)@${$(uname -n)%%.*}\fD.\n'\
+'\fbo.$(tildefy "$PWD")\fD. \fi.${_vcs_info}\fD.\n'\
+'$ '
+YASH_PS1P='\fk.'
+
+_update_vcs_info() {
+	_vcs_info=""
+	if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+		_vcs_info="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
+		if ! git diff-index --quiet HEAD -- > /dev/null 2>&1; then
+			_vcs_info="$_vcs_info*"
+		fi
+	fi
+}
+
+_prompt_command() {
+	_update_vcs_info
+}
+
+_update_title() {
+	# TODO
+	printf "\033];test\a"
+}
+
+_post_prompt_command() {
+	_update_title
+}
+
+PROMPT_COMMAND=_prompt_command
+POST_PROMPT_COMMAND=_post_prompt_command
+
+bindkey -e "\^[[1;3C" forward-bigword
+bindkey -e "\^[[1;3D" backward-bigword
+
+if exists zoxide; then
+	eval "$(zoxide init posix --hook prompt)"
+fi

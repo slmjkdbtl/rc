@@ -2,15 +2,12 @@
 # create screenshot from youtube video
 
 url=$1
-time=$2
-out=$3
-
-[ -z "$time" ] && time="00:00:00"
-[ -z "$out" ] && out="frame.jpg"
+time=${2:-"00:00:00"}
+out=${3:-"frame.jpg"}
 
 ffmpeg \
 	-hide_banner \
-	-i "$(yt-dlp --get-url "$url")" \
+	-i "$(yt-dlp --get-url "$url" | head -n 1)" \
 	-ss "$time" \
 	-vframes 1 \
 	-q:v 2 \

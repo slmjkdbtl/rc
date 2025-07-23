@@ -21,8 +21,8 @@ CLI
   ffmpeg
     https://ffmpeg.org/
 
-  z
-    https://github.com/rupa/z/
+  zoxide
+    https://github.com/ajeetdsouza/zoxide/
 
   rsync
     https://rsync.samba.org/
