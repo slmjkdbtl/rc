@@ -2,6 +2,7 @@
 // list all available timidity tones in lilypond compatible names
 
 import * as fs from "fs/promises"
+import { $ } from "bun"
 
 // https://lilypond.org/doc/Documentation/notation/midi-instruments
 const ins = [
@@ -135,7 +136,8 @@ const ins = [
 	"gunshot",
 ]
 
-const tonePath = "/opt/homebrew/opt/timidity/share/freepats/Tone_000"
+const timidityPath = (await $`brew --prefix timidity`.text()).trim()
+const tonePath = `${timidityPath}/share/freepats/Tone_000`
 const toneFiles = await fs.readdir(tonePath)
 const toneIDs = new Set(toneFiles.sort().map((f) => Number(f.split("_")[0])))
 

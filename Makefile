@@ -1,7 +1,7 @@
 CONFIG = $(HOME)/.config
 CMUS = $(CONFIG)/cmus
-TO_CONFIG = nvim mpv wezterm yt-dlp mpd aria2 gallery-dl yash
-TO_HOME = .vim .skhdrc .tmux.conf .gitconfig .zshrc .profile .inputrc .sqliterc
+TO_CONFIG = nvim mpv wezterm yt-dlp mpd aria2 gallery-dl
+TO_HOME = .vim .skhdrc .tmux.conf .gitconfig .zshrc .profile .inputrc .sqliterc .yashrc .hammerspoon
 CONFIG_TARGETS = $(addprefix $(CONFIG)/, $(TO_CONFIG))
 HOME_TARGETS = $(addprefix $(HOME)/, $(TO_HOME))
 CMUS_TARGETS = $(patsubst cmus/%, $(CMUS)/%, $(wildcard cmus/*))

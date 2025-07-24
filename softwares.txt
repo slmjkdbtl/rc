@@ -708,6 +708,9 @@ GUI
   Krita
     https://krita.org/
 
+  TrackWeight
+    https://github.com/KrishKrosh/TrackWeight/
+
 
 IOS
 

@@ -64,6 +64,7 @@ cmds.push({
 	desc: "Update local DB and card images",
 	// TODO: remove unused images
 	action: async () => {
+		console.log("updating db...")
 		await updateDB()
 		await fs.mkdir(IMG_DIR, { recursive: true })
 		const cards = await getCards()

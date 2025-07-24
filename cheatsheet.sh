@@ -263,6 +263,9 @@ defaults write com.apple.screencapture type -string "jpg"
 defaults write com.apple.screencapture show-thumbnail -bool false
 killall SystemUIServer
 
+# change hammerspoon config dir
+defaults write org.hammerspoon.Hammerspoon MJConfigFile "$HOME/.config/hammerspoon/init.lua"
+
 # clean all ._ files on external disk
 dot_clean /Volumes/EXTDRIVE
 find /Volumes/EXTDRIVE -name '._*' -print -delete
