@@ -219,6 +219,9 @@ CLI
   ascii
     http://www.catb.org/~esr/ascii/
 
+  ossp-uuid
+    http://www.ossp.org/pkg/lib/uuid/
+
   ios-deploy
     https://github.com/ios-control/ios-deploy/
 
@@ -758,6 +761,9 @@ IOS
 
   Prompt
     https://panic.com/prompt/
+
+  Saily
+    https://saily.com/
 
   iRealPro
     https://www.irealpro.com/

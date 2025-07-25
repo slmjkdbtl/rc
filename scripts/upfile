@@ -3,9 +3,10 @@
 
 file="$1"
 
-if [ -z "$file" ]; then
-	echo "please specify the file to host"
+if [ ! -f "$file" ]; then
+	echo "no file"
 	exit 1
 fi
 
-curl -sF "file=@$file" https://0x0.st
+. $HOME/.env
+curl -s -F "file=@$file" -H "Authorization: Bearer $SPACE55_TOKEN" https://space55.xyz/tmp

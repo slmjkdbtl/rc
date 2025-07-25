@@ -329,6 +329,9 @@ sudo hostnamectl set-hostname space55.xyz
 iptables -t nat -A PREROUTING -p tcp --dport 12000:12010 -j REDIRECT --to-port 8388
 iptables -t nat -A PREROUTING -p udp --dport 12000:12010 -j REDIRECT --to-port 8388
 
+# generate a v4 uuid
+uuid -v 4
+
 # gui guides
 : << COMMENT
 

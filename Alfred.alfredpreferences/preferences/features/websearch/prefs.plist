@@ -67,6 +67,17 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>2B226837-7AB7-4628-9641-F64E2597EA97</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>tr</string>
+			<key>text</key>
+			<string>Translate '{query}'</string>
+			<key>url</key>
+			<string>https://translate.google.com/?sl=auto&amp;tl=en&amp;text={query}</string>
+		</dict>
 		<key>2BC33016-8414-4E89-BBD4-D59D82A4138D</key>
 		<dict>
 			<key>enabled</key>
