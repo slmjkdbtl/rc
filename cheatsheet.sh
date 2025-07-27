@@ -128,6 +128,10 @@ ffmpeg -i input.mp3
       \ -metadata encoder=""
       \ output.mp3
 
+# raise a song by a half step
+ffmpeg -i music.mp3  -af "asetrate=44100*1.05946,aresample=44100" better_music.mp3
+rubberband -p 1 music.mp3 better_music.mp3
+
 # ffprobe get video / image dimension
 ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0:s=x "test.png"
 ffprobe -v error -select_streams v:0 -show_entries stream=height -of csv=p=0:s=x "test.mp4"

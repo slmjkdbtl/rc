@@ -10,30 +10,6 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>AD1D5EF8-DA3E-4CB0-8D90-1EDDC34A43D3</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>46BDEA91-E388-4527-8683-EAF0061DE79B</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>B5503E8C-92BD-4905-AA1C-CC6A094B8149</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>46BDEA91-E388-4527-8683-EAF0061DE79B</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>5E027D88-0F1F-4B6A-B190-0D81A891F357</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -44,18 +20,15 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
-		</array>
-		<key>041A9CAB-0B9F-48B9-9731-CBD1F6B0ACB5</key>
-		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>5B0D7A33-88D9-47A7-8668-F50F204C7BC7</string>
+				<string>AD1D5EF8-DA3E-4CB0-8D90-1EDDC34A43D3</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>sourceoutputuid</key>
-				<string>B693CEC5-C911-4C59-914D-82A808C88227</string>
+				<string>46BDEA91-E388-4527-8683-EAF0061DE79B</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -77,7 +50,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>1E6106DD-5612-4FFC-B7BB-6A47334195A0</string>
+				<string>5EE4530F-5A12-49D4-A883-85070CAA0EBA</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -103,7 +76,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>5EE4530F-5A12-49D4-A883-85070CAA0EBA</string>
+				<string>EBAC5B8C-FC5E-4AA6-9E18-025380BEEF22</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -115,20 +88,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>F3F0A5DF-7EFC-451D-82CF-5FE335DB5E2F</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>3F4E18A6-617B-4FAE-B96F-13E50EC70CCB</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>4A8F2C46-13A5-4B6D-B3C6-5CBABE3B035E</string>
+				<string>8CBF9369-6B71-4683-9658-9815A4299B21</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -154,7 +114,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>1E6106DD-5612-4FFC-B7BB-6A47334195A0</string>
+				<string>5EE4530F-5A12-49D4-A883-85070CAA0EBA</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -251,7 +211,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>041A9CAB-0B9F-48B9-9731-CBD1F6B0ACB5</string>
+				<string>5B0D7A33-88D9-47A7-8668-F50F204C7BC7</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -266,7 +226,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>771D562E-32F3-4D56-9FD5-23067F599C49</string>
+				<string>1E6106DD-5612-4FFC-B7BB-6A47334195A0</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -292,7 +252,20 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>EBAC5B8C-FC5E-4AA6-9E18-025380BEEF22</string>
+				<string>4A8F2C46-13A5-4B6D-B3C6-5CBABE3B035E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>8CBF9369-6B71-4683-9658-9815A4299B21</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5E027D88-0F1F-4B6A-B190-0D81A891F357</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -315,7 +288,18 @@
 			</dict>
 		</array>
 		<key>AD1D5EF8-DA3E-4CB0-8D90-1EDDC34A43D3</key>
-		<array/>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B5503E8C-92BD-4905-AA1C-CC6A094B8149</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>ADBE953B-B335-42B1-8D94-42E9EFF6A717</key>
 		<array>
 			<dict>
@@ -414,20 +398,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>3F4E18A6-617B-4FAE-B96F-13E50EC70CCB</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>F3F0A5DF-7EFC-451D-82CF-5FE335DB5E2F</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>5E027D88-0F1F-4B6A-B190-0D81A891F357</string>
+				<string>771D562E-32F3-4D56-9FD5-23067F599C49</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -654,27 +625,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>{var:raw_url}</string>
-				<key>title</key>
-				<string>No Snapshot Found</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>AD1D5EF8-DA3E-4CB0-8D90-1EDDC34A43D3</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>tasksettings</key>
 				<dict/>
 				<key>taskuid</key>
@@ -777,38 +727,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string></string>
-						<key>outputlabel</key>
-						<string>No Snapshot found</string>
-						<key>uid</key>
-						<string>46BDEA91-E388-4527-8683-EAF0061DE79B</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>else</string>
-				<key>hideelse</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>012A1EFC-9C95-47E0-8231-534FF492523A</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -842,55 +760,32 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argument</key>
-				<string>{query}</string>
-				<key>passthroughargument</key>
-				<false/>
-				<key>variables</key>
-				<dict>
-					<key>encoded_url</key>
-					<string>{query}</string>
-				</dict>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>3F4E18A6-617B-4FAE-B96F-13E50EC70CCB</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string>{query}</string>
-				<key>passthroughargument</key>
-				<false/>
-				<key>variables</key>
-				<dict>
-					<key>force_fallback</key>
-					<string>true</string>
-				</dict>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>9488B036-32FA-4E39-ADA8-FD4B86BF3B04</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>soundname</key>
-				<string>Sosumi</string>
-				<key>systemsound</key>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string></string>
+						<key>outputlabel</key>
+						<string>No Snapshot found</string>
+						<key>uid</key>
+						<string>46BDEA91-E388-4527-8683-EAF0061DE79B</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
 				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.playsound</string>
+			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
-			<string>B5503E8C-92BD-4905-AA1C-CC6A094B8149</string>
+			<string>012A1EFC-9C95-47E0-8231-534FF492523A</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -911,6 +806,26 @@
 			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
 			<string>0491E315-3047-428F-9126-09CF81C15444</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>{query}</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>force_fallback</key>
+					<string>true</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>9488B036-32FA-4E39-ADA8-FD4B86BF3B04</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -941,7 +856,7 @@
 						<key>matchmode</key>
 						<integer>0</integer>
 						<key>matchstring</key>
-						<string>{new_snapshot}</string>
+						<string>new_snapshot</string>
 						<key>outputlabel</key>
 						<string>Save Snapshot</string>
 						<key>uid</key>
@@ -962,21 +877,11 @@
 		</dict>
 		<dict>
 			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string></string>
-				<key>passthroughargument</key>
-				<false/>
-				<key>variables</key>
-				<dict>
-					<key>raw_url</key>
-					<string>{query}</string>
-				</dict>
-			</dict>
+			<dict/>
 			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
+			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
-			<string>F3F0A5DF-7EFC-451D-82CF-5FE335DB5E2F</string>
+			<string>8CBF9369-6B71-4683-9658-9815A4299B21</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -984,7 +889,7 @@
 			<key>config</key>
 			<dict>
 				<key>argument</key>
-				<string>https://web.archive.org/save/{var:encoded_url}</string>
+				<string>https://web.archive.org/save/{var:raw_url}</string>
 				<key>passthroughargument</key>
 				<false/>
 				<key>variables</key>
@@ -1003,32 +908,36 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string>{var:save_snapshot}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>5</integer>
-						<key>matchstring</key>
-						<string></string>
-						<key>outputlabel</key>
-						<string>Save Snapshot</string>
-						<key>uid</key>
-						<string>B693CEC5-C911-4C59-914D-82A808C88227</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>else</string>
-				<key>hideelse</key>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{var:raw_url}</string>
+				<key>title</key>
+				<string>No Snapshot Found</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>AD1D5EF8-DA3E-4CB0-8D90-1EDDC34A43D3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>soundname</key>
+				<string>Sosumi</string>
+				<key>systemsound</key>
 				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
+			<string>alfred.workflow.output.playsound</string>
 			<key>uid</key>
-			<string>041A9CAB-0B9F-48B9-9731-CBD1F6B0ACB5</string>
+			<string>B5503E8C-92BD-4905-AA1C-CC6A094B8149</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1052,23 +961,16 @@ Alternatively, perform the same actions from a selection or [Clipboard History](
 		<key>012A1EFC-9C95-47E0-8231-534FF492523A</key>
 		<dict>
 			<key>xpos</key>
-			<real>1510</real>
+			<real>1425</real>
 			<key>ypos</key>
 			<real>335</real>
-		</dict>
-		<key>041A9CAB-0B9F-48B9-9731-CBD1F6B0ACB5</key>
-		<dict>
-			<key>xpos</key>
-			<real>1750</real>
-			<key>ypos</key>
-			<real>610</real>
 		</dict>
 		<key>0491E315-3047-428F-9126-09CF81C15444</key>
 		<dict>
 			<key>xpos</key>
-			<real>1825</real>
+			<real>1700</real>
 			<key>ypos</key>
-			<real>545</real>
+			<real>380</real>
 		</dict>
 		<key>13251B98-7B2B-4CBF-8FA2-5A323AE5093A</key>
 		<dict>
@@ -1082,28 +984,21 @@ Alternatively, perform the same actions from a selection or [Clipboard History](
 			<key>note</key>
 			<string>Parse JSON</string>
 			<key>xpos</key>
-			<real>1265</real>
+			<real>1180</real>
 			<key>ypos</key>
 			<real>305</real>
 		</dict>
 		<key>1E6106DD-5612-4FFC-B7BB-6A47334195A0</key>
 		<dict>
 			<key>xpos</key>
-			<real>495</real>
+			<real>560</real>
 			<key>ypos</key>
 			<real>325</real>
-		</dict>
-		<key>3F4E18A6-617B-4FAE-B96F-13E50EC70CCB</key>
-		<dict>
-			<key>xpos</key>
-			<real>1010</real>
-			<key>ypos</key>
-			<real>350</real>
 		</dict>
 		<key>41D7AC8B-8807-4D3F-9A58-1344D2FC4C17</key>
 		<dict>
 			<key>xpos</key>
-			<real>1010</real>
+			<real>875</real>
 			<key>ypos</key>
 			<real>125</real>
 		</dict>
@@ -1119,7 +1014,7 @@ Alternatively, perform the same actions from a selection or [Clipboard History](
 			<key>note</key>
 			<string>Make web request</string>
 			<key>xpos</key>
-			<real>1090</real>
+			<real>1005</real>
 			<key>ypos</key>
 			<real>305</real>
 		</dict>
@@ -1140,21 +1035,21 @@ Alternatively, perform the same actions from a selection or [Clipboard History](
 		<key>5B0D7A33-88D9-47A7-8668-F50F204C7BC7</key>
 		<dict>
 			<key>xpos</key>
-			<real>1825</real>
+			<real>1700</real>
 			<key>ypos</key>
-			<real>610</real>
+			<real>445</real>
 		</dict>
 		<key>5E027D88-0F1F-4B6A-B190-0D81A891F357</key>
 		<dict>
 			<key>xpos</key>
-			<real>1590</real>
+			<real>1520</real>
 			<key>ypos</key>
-			<real>585</real>
+			<real>420</real>
 		</dict>
 		<key>5EE4530F-5A12-49D4-A883-85070CAA0EBA</key>
 		<dict>
 			<key>xpos</key>
-			<real>595</real>
+			<real>490</real>
 			<key>ypos</key>
 			<real>335</real>
 		</dict>
@@ -1168,9 +1063,16 @@ Alternatively, perform the same actions from a selection or [Clipboard History](
 		<key>771D562E-32F3-4D56-9FD5-23067F599C49</key>
 		<dict>
 			<key>xpos</key>
-			<real>675</real>
+			<real>835</real>
 			<key>ypos</key>
 			<real>305</real>
+		</dict>
+		<key>8CBF9369-6B71-4683-9658-9815A4299B21</key>
+		<dict>
+			<key>xpos</key>
+			<real>710</real>
+			<key>ypos</key>
+			<real>445</real>
 		</dict>
 		<key>9488B036-32FA-4E39-ADA8-FD4B86BF3B04</key>
 		<dict>
@@ -1182,23 +1084,23 @@ Alternatively, perform the same actions from a selection or [Clipboard History](
 		<key>AD1D5EF8-DA3E-4CB0-8D90-1EDDC34A43D3</key>
 		<dict>
 			<key>xpos</key>
-			<real>1590</real>
+			<real>1515</real>
 			<key>ypos</key>
-			<real>305</real>
+			<real>545</real>
 		</dict>
 		<key>ADBE953B-B335-42B1-8D94-42E9EFF6A717</key>
 		<dict>
 			<key>xpos</key>
-			<real>1420</real>
+			<real>1335</real>
 			<key>ypos</key>
 			<real>335</real>
 		</dict>
 		<key>B5503E8C-92BD-4905-AA1C-CC6A094B8149</key>
 		<dict>
 			<key>xpos</key>
-			<real>1590</real>
+			<real>1665</real>
 			<key>ypos</key>
-			<real>440</real>
+			<real>545</real>
 		</dict>
 		<key>BDF9FA7A-E5AE-4024-865B-EC2E0163711C</key>
 		<dict>
@@ -1210,7 +1112,7 @@ Alternatively, perform the same actions from a selection or [Clipboard History](
 		<key>C2C2DFB7-F654-496F-9A9B-A07E08129686</key>
 		<dict>
 			<key>xpos</key>
-			<real>1920</real>
+			<real>1785</real>
 			<key>ypos</key>
 			<real>90</real>
 		</dict>
@@ -1224,23 +1126,16 @@ Alternatively, perform the same actions from a selection or [Clipboard History](
 		<key>D71BC29A-B78D-48CD-8285-935CC61E7023</key>
 		<dict>
 			<key>xpos</key>
-			<real>1510</real>
+			<real>1425</real>
 			<key>ypos</key>
 			<real>265</real>
 		</dict>
 		<key>EBAC5B8C-FC5E-4AA6-9E18-025380BEEF22</key>
 		<dict>
 			<key>xpos</key>
-			<real>835</real>
+			<real>675</real>
 			<key>ypos</key>
 			<real>325</real>
-		</dict>
-		<key>F3F0A5DF-7EFC-451D-82CF-5FE335DB5E2F</key>
-		<dict>
-			<key>xpos</key>
-			<real>595</real>
-			<key>ypos</key>
-			<real>610</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
@@ -1298,7 +1193,7 @@ Alternatively, perform the same actions from a selection or [Clipboard History](
 		</dict>
 	</array>
 	<key>version</key>
-	<string>2024.1</string>
+	<string>2025.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/alfredapp/wayback-when-workflow/</string>
 </dict>

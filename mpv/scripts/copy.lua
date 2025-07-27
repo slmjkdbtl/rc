@@ -5,10 +5,9 @@ function print(s)
 	mp.osd_message(s)
 end
 
--- TODO: not copying correct non ascii characters
 function copy()
 	local path = mp.get_property("path")
-	local pipe = io.popen("pbcopy", "w")
+	local pipe = io.popen("LANG=en_US.UTF-8 pbcopy", "w")
 	pipe:write(path .. "")
 	pipe:close()
 	print(path)

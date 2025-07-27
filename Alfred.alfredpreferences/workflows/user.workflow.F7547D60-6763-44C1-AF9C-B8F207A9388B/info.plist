@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.alfredapp.vitor.lowpowermode</string>
+	<key>connections</key>
+	<dict>
+		<key>09F16EEE-6DBF-4559-87E0-EBCF59F92293</key>
+		<array/>
+		<key>5F671FDE-E06C-42F6-A4A0-EB735D77DDB3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>09F16EEE-6DBF-4559-87E0-EBCF59F92293</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Vítor Galvão</string>
+	<key>description</key>
+	<string>Toggle Low Power Mode for Battery or Power Adapter</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Low Power Mode</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>on run argv
+  do shell script "sudo /usr/bin/pmset " &amp; item 1 of argv with administrator privileges
+end run</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>09F16EEE-6DBF-4559-87E0-EBCF59F92293</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>{var:status_keyword}</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Querying Low Power Mode status…</string>
+				<key>script</key>
+				<string>function runCommand(...arguments) {
+  const task = $.NSTask.alloc.init
+  const stdout = $.NSPipe.pipe
+
+  task.executableURL = $.NSURL.fileURLWithPath(arguments[0])
+  task.arguments = arguments.slice(1)
+  task.standardOutput = stdout
+  task.launchAndReturnError(false)
+
+  const dataOut = stdout.fileHandleForReading.readDataToEndOfFileAndReturnError(false)
+  const stringOut = $.NSString.alloc.initWithDataEncoding(dataOut, $.NSUTF8StringEncoding).js
+
+  return stringOut
+}
+
+const power = runCommand("/usr/bin/pmset", "-g", "custom")
+const batteryMatch = power.match(/(Battery) Power:.*?powermode\s*(\d)\n/s)
+const adapterMatch = power.match(/(AC) Power:.*?powermode\s*(\d)\n/s)
+const batteryName = batteryMatch[1]
+const adapterName = adapterMatch[1]
+const batteryLowPowerOn = batteryMatch[2] === "1"
+const adapterLowPowerOn = adapterMatch[2] === "1"
+const batteryLowPowerState = batteryLowPowerOn ? "On" : "Off"
+const adapterLowPowerState = adapterLowPowerOn ? "On" : "Off"
+const batteryOppositeState = batteryLowPowerOn ? "off" : "on"
+const adapterOppositeState = adapterLowPowerOn ? "off" : "on"
+const batteryIcon = batteryLowPowerOn ? "images/icon_battery_on.png" : "images/icon_battery_off.png"
+const adapterIcon = adapterLowPowerOn ? "images/icon_adapter_on.png" : "images/icon_adapter_off.png"
+
+const batteryItem = {
+  title: batteryName + "’s Low Power Mode is " + batteryLowPowerState,
+  subtitle: "Action to turn it " + batteryOppositeState,
+  arg: batteryLowPowerOn ? "-b lowpowermode 0" : "-b lowpowermode 1",
+  icon: { path: batteryIcon }
+}
+
+const adapterItem = {
+  title: adapterName + "’s Low Power Mode is " + adapterLowPowerState,
+  subtitle: "Action to turn it " + adapterOppositeState,
+  arg: adapterLowPowerOn ? "-c lowpowermode 0" : "-c lowpowermode 1",
+  icon: { path: adapterIcon }
+}
+
+JSON.stringify({ items: [batteryItem, adapterItem] })</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Toggle Low Power Mode</string>
+				<key>type</key>
+				<integer>7</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>5F671FDE-E06C-42F6-A4A0-EB735D77DDB3</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>## Usage
+
+Toggle Low Power Mode for your battery or power adapter via the `lpm` keyword.
+
+![Alfred results for lpm](images/about/lpm.png)</string>
+	<key>uidata</key>
+	<dict>
+		<key>09F16EEE-6DBF-4559-87E0-EBCF59F92293</key>
+		<dict>
+			<key>xpos</key>
+			<real>255</real>
+			<key>ypos</key>
+			<real>40</real>
+		</dict>
+		<key>5F671FDE-E06C-42F6-A4A0-EB735D77DDB3</key>
+		<dict>
+			<key>note</key>
+			<string>Interactive toggle</string>
+			<key>xpos</key>
+			<real>45</real>
+			<key>ypos</key>
+			<real>40</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>lpm</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Status Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>status_keyword</string>
+		</dict>
+	</array>
+	<key>version</key>
+	<string>2024.3</string>
+	<key>webaddress</key>
+	<string>https://github.com/alfredapp/low-power-mode-workflow/</string>
+</dict>
+</plist>

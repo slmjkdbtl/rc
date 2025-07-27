@@ -8,5 +8,4 @@ if [ ! -f "$file" ]; then
 	exit 1
 fi
 
-. $HOME/.env
-curl -s -F "file=@$file" -H "Authorization: Bearer $SPACE55_TOKEN" https://space55.xyz/tmp
+curl -s -F "file=@$file" -H "User-Agent: tga" https://0x0.st

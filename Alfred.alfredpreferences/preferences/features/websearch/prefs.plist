@@ -118,7 +118,7 @@
 		<key>37E40D66-D2E5-4EC4-B748-7F700B9ED432</key>
 		<dict>
 			<key>enabled</key>
-			<true/>
+			<false/>
 			<key>keyword</key>
 			<string>yt</string>
 			<key>text</key>

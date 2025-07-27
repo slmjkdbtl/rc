@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>Search Raindrop.io</name>
-  <version>2.0.7</version>
-  <bundle>me.westerlind.alfred.raindrop-search</bundle>
-  <updated>1657831759</updated>
-  <file>search_raindrop.alfredworkflow</file>
-</workflow>

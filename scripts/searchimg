@@ -10,7 +10,7 @@ fi
 
 . $HOME/.env
 tmpfile=$(mktemp)
-status=$(curl -o "$tmpfile" -w "%{http_code}" -s -F "file=@$file" -H "Authorization: Bearer $SPACE55_TOKEN" https://space55.xyz/tmp)
+status=$(curl -o "$tmpfile" -w "%{http_code}" -s -F "file=@$file" -H "User-Agent: tga" https://0x0.st)
 
 if [ "$status" != "200" ]; then
 	echo "$status" >&2
@@ -25,5 +25,3 @@ rm "$tmpfile"
 if [ -n "$url" ]; then
 	echo "https://lens.google.com/uploadbyurl?url=$url"
 fi
-
-osascript -e "display notification \"Failed to upload image\" with title \"Oh no!\""

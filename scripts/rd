@@ -40,8 +40,8 @@ async function call(method, params = [], id = method) {
 }
 
 function fmtBytes(bytes, decimals = 2) {
-	if (bytes === 0) return "0b";
-	const k = 1024;
+	if (bytes === 0) return "0b"
+	const k = 1024
 	const dm = decimals < 0 ? 0 : decimals
 	const sizes = ["b", "kb", "mb", "gb", "tb", "pb"]
 	const i = Math.floor(Math.log(bytes) / Math.log(k))

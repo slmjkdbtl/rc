@@ -52,7 +52,7 @@ async function syncToLatest(paths) {
 		output: process.stdout,
 	})
 
-	const answer = await rl.question(`Sync to ${newestFile.path}? (y/N) `)
+	const answer = await rl.question(`sync to ${newestFile.path}? (y/N) `)
 
 	rl.close()
 

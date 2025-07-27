@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.alfredapp.vitor.pausetabs</string>
+	<key>connections</key>
+	<dict>
+		<key>00AE9D16-4A4A-4371-9B6C-4A57F90B0FD8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>71E1A8E6-E19E-4CB5-A549-C3E381DB2DA9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>4E6BB00F-78D0-4401-B0D8-12DF635CB716</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Only in current browser</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>01CE4C90-7E05-45C5-BE77-6769A3E5FA86</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>35178710-6E1E-4C86-8348-0528C06FA47C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>0C0D75D3-4308-412A-88EB-70A25A0CAC0B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1D78F34E-7704-4119-8370-27B728AAE507</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>0C7EFFD4-4267-4B4D-9C9A-1FEE01CF1079</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>6E52B082-84A2-45E8-9A2C-D2231AE941D4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>13397FC7-175F-4A5E-A5FB-B6F81FDF2229</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2E537D85-C9B0-43CB-8485-B136A1ABB446</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>1D78F34E-7704-4119-8370-27B728AAE507</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E3552813-F045-4D3D-B373-63095EA7BF22</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>2E537D85-C9B0-43CB-8485-B136A1ABB446</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0C0D75D3-4308-412A-88EB-70A25A0CAC0B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>35178710-6E1E-4C86-8348-0528C06FA47C</key>
+		<array/>
+		<key>4C3CB545-F2F5-427E-AC6C-3981B0E664F7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>13397FC7-175F-4A5E-A5FB-B6F81FDF2229</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>6E52B082-84A2-45E8-9A2C-D2231AE941D4</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Only in current browser</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>4E6BB00F-78D0-4401-B0D8-12DF635CB716</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2E537D85-C9B0-43CB-8485-B136A1ABB446</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>6E52B082-84A2-45E8-9A2C-D2231AE941D4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2E537D85-C9B0-43CB-8485-B136A1ABB446</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>71E1A8E6-E19E-4CB5-A549-C3E381DB2DA9</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2E537D85-C9B0-43CB-8485-B136A1ABB446</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C4D04842-3C36-45CF-BC40-02CB7A575B2C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>13397FC7-175F-4A5E-A5FB-B6F81FDF2229</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E3552813-F045-4D3D-B373-63095EA7BF22</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>01CE4C90-7E05-45C5-BE77-6769A3E5FA86</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E40D67BA-284C-4AB9-A184-D89EF55B0CBA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>71E1A8E6-E19E-4CB5-A549-C3E381DB2DA9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E77C8C05-99B1-43FE-8519-AB0F86FC6A11</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>4E6BB00F-78D0-4401-B0D8-12DF635CB716</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Vítor Galvão</string>
+	<key>description</key>
+	<string>Pause audio and video in web browser tabs</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Pause Tabs</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>const chromiumVariants = ["Google Chrome", "Chromium", "Opera", "Vivaldi", "Brave Browser", "Microsoft Edge"]
+const webkitVariants = ["Safari", "Webkit", "Orion"]
+const browserVariants = chromiumVariants.concat(webkitVariants)
+
+const runningAppNames = Application("System Events")
+  .applicationProcesses.where({ backgroundOnly: false })()
+  .map(app =&gt; app.name())
+
+if (runningAppNames.find(appName =&gt; appName.startsWith("firefox")))
+  console.log("Firefox is not scriptable")
+
+runningAppNames
+  .filter(appName =&gt; browserVariants.some(variant =&gt; appName.startsWith(variant)))
+  .join(",")</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>1D78F34E-7704-4119-8370-27B728AAE507</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>tasksettings</key>
+				<dict/>
+				<key>taskuid</key>
+				<string>com.alfredapp.automation.core/macOS/app.current</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.automation.task</string>
+			<key>uid</key>
+			<string>2E537D85-C9B0-43CB-8485-B136A1ABB446</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>{var:pause_all_keyword}</string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string>Pause video and audio in all browser tabs</string>
+				<key>text</key>
+				<string>Pause All</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>00AE9D16-4A4A-4371-9B6C-4A57F90B0FD8</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>// Grab environment variables
+function envVar(varName) {
+  return $.NSProcessInfo
+    .processInfo
+    .environment
+    .objectForKey(varName).js
+}
+
+const actOn = envVar("act_on")
+const skipActive = envVar("skip_active") === "1"
+const frontmostName = envVar("frontmost_name")
+const runningBrowsers = envVar("running_browsers").split(",")
+
+// Code to pause
+const pausePlayer = `
+  document.querySelectorAll("video, audio").forEach(e =&gt; e.pause())
+
+  // Pause embedded YouTube players
+  document.querySelectorAll("iframe").forEach(e =&gt; {
+    if (e.getAttribute("src").indexOf("youtube.com/embed") === -1) return
+
+    e.contentWindow.postMessage(JSON.stringify({
+      "event": "command",
+      "func": "pauseVideo"
+    }), "*")
+  })
+`
+
+// Set up
+const webkitVariants = ["Safari", "Webkit", "Orion"]
+const chromiumVariants = ["Google Chrome", "Chromium", "Opera", "Vivaldi", "Brave Browser", "Microsoft Edge"]
+
+const targetBrowsers = (actOn === "all") ? runningBrowsers : [frontmostName]
+
+// Pause tabs
+targetBrowsers.forEach(browserName =&gt; {
+  browser = Application(browserName)
+
+  // Webkit variants
+  if (webkitVariants.some(variant =&gt; browserName.startsWith(variant))) {
+    browser.windows()?.forEach(browserWindow =&gt; {
+      browserWindow.tabs()?.forEach(browserTab =&gt; {
+        // Skip current tab if conditions are met
+        if (skipActive &amp;&amp; frontmostName === browserName &amp;&amp; browserWindow.id() === browser.windows()[0].id() &amp;&amp; browserTab.index() === browserWindow.currentTab.index()) return
+        // Pause tab
+        browser.doJavaScript(pausePlayer, {in: browserTab})
+      })
+    })
+  // Chromium Variants
+  } else if (chromiumVariants.some(variant =&gt; browserName.startsWith(variant))) {
+    browser.windows()?.forEach(browserWindow =&gt; {
+      browserWindow.tabs()?.forEach(browserTab =&gt; {
+        // Skip current tab if conditions are met
+        if (skipActive &amp;&amp; frontmostName === browserName &amp;&amp; browserWindow.id() === browser.windows()[0].id() &amp;&amp; browserTab.id() === browserWindow.activeTab.id()) return
+        // Pause tab
+        browserTab.execute({javascript: pausePlayer})
+      })
+    })
+  } else {
+    throw new Error(browserName + " is not a supported browser")
+  }
+})</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>35178710-6E1E-4C86-8348-0528C06FA47C</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>frontmost_name</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>0C0D75D3-4308-412A-88EB-70A25A0CAC0B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.transform</string>
+			<key>uid</key>
+			<string>E3552813-F045-4D3D-B373-63095EA7BF22</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>running_browsers</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>01CE4C90-7E05-45C5-BE77-6769A3E5FA86</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>act_on</key>
+					<string>all</string>
+					<key>skip_active</key>
+					<string>0</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>71E1A8E6-E19E-4CB5-A549-C3E381DB2DA9</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>act_on</key>
+					<string>frontmost</string>
+					<key>skip_active</key>
+					<string>0</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>4E6BB00F-78D0-4401-B0D8-12DF635CB716</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>E40D67BA-284C-4AB9-A184-D89EF55B0CBA</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>E77C8C05-99B1-43FE-8519-AB0F86FC6A11</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>{var:pause_others_keyword}</string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string>Pause video and audio in all browser tabs except current one</string>
+				<key>text</key>
+				<string>Pause Others</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>4C3CB545-F2F5-427E-AC6C-3981B0E664F7</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>act_on</key>
+					<string>all</string>
+					<key>skip_active</key>
+					<string>1</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>13397FC7-175F-4A5E-A5FB-B6F81FDF2229</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>C4D04842-3C36-45CF-BC40-02CB7A575B2C</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>act_on</key>
+					<string>frontmost</string>
+					<key>skip_active</key>
+					<string>1</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>6E52B082-84A2-45E8-9A2C-D2231AE941D4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>0C7EFFD4-4267-4B4D-9C9A-1FEE01CF1079</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>## Setup
+
+Turn on `Allow JavaScript from Apple Events` in the browsers you want to control. The exact location of the option depends on the browser.
+
+## Usage
+
+Pause audio and video in all tabs of all open web browsers via the `pause all` keyword. `pause others` does the same except for the current tab.
+
+![Alfred search for pause](images/about/pauses.png)
+
+* &lt;kbd&gt;↩&lt;/kbd&gt; Pause tabs in all supported browsers.
+* &lt;kbd&gt;⌘&lt;/kbd&gt;&lt;kbd&gt;↩&lt;/kbd&gt; Pause tabs in current browser.</string>
+	<key>uidata</key>
+	<dict>
+		<key>00AE9D16-4A4A-4371-9B6C-4A57F90B0FD8</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
+			<key>note</key>
+			<string>Pause audio and video in all running browsers</string>
+			<key>xpos</key>
+			<real>40</real>
+			<key>ypos</key>
+			<real>35</real>
+		</dict>
+		<key>01CE4C90-7E05-45C5-BE77-6769A3E5FA86</key>
+		<dict>
+			<key>xpos</key>
+			<real>900</real>
+			<key>ypos</key>
+			<real>65</real>
+		</dict>
+		<key>0C0D75D3-4308-412A-88EB-70A25A0CAC0B</key>
+		<dict>
+			<key>xpos</key>
+			<real>565</real>
+			<key>ypos</key>
+			<real>65</real>
+		</dict>
+		<key>0C7EFFD4-4267-4B4D-9C9A-1FEE01CF1079</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>7</integer>
+			<key>xpos</key>
+			<real>40</real>
+			<key>ypos</key>
+			<real>745</real>
+		</dict>
+		<key>13397FC7-175F-4A5E-A5FB-B6F81FDF2229</key>
+		<dict>
+			<key>note</key>
+			<string>Act on all browsers
+Skip active tab</string>
+			<key>xpos</key>
+			<real>265</real>
+			<key>ypos</key>
+			<real>490</real>
+		</dict>
+		<key>1D78F34E-7704-4119-8370-27B728AAE507</key>
+		<dict>
+			<key>note</key>
+			<string>Grab all running web browsers</string>
+			<key>xpos</key>
+			<real>650</real>
+			<key>ypos</key>
+			<real>35</real>
+		</dict>
+		<key>2E537D85-C9B0-43CB-8485-B136A1ABB446</key>
+		<dict>
+			<key>xpos</key>
+			<real>400</real>
+			<key>ypos</key>
+			<real>35</real>
+		</dict>
+		<key>35178710-6E1E-4C86-8348-0528C06FA47C</key>
+		<dict>
+			<key>note</key>
+			<string>Pause tabs</string>
+			<key>xpos</key>
+			<real>980</real>
+			<key>ypos</key>
+			<real>35</real>
+		</dict>
+		<key>4C3CB545-F2F5-427E-AC6C-3981B0E664F7</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>7</integer>
+			<key>note</key>
+			<string>Pause audio and video in frontmost app</string>
+			<key>xpos</key>
+			<real>40</real>
+			<key>ypos</key>
+			<real>460</real>
+		</dict>
+		<key>4E6BB00F-78D0-4401-B0D8-12DF635CB716</key>
+		<dict>
+			<key>note</key>
+			<string>Act on frontmost app
+Do not skip active tab</string>
+			<key>xpos</key>
+			<real>260</real>
+			<key>ypos</key>
+			<real>195</real>
+		</dict>
+		<key>6E52B082-84A2-45E8-9A2C-D2231AE941D4</key>
+		<dict>
+			<key>note</key>
+			<string>Act on frontmost app
+Skip active tab</string>
+			<key>xpos</key>
+			<real>265</real>
+			<key>ypos</key>
+			<real>620</real>
+		</dict>
+		<key>71E1A8E6-E19E-4CB5-A549-C3E381DB2DA9</key>
+		<dict>
+			<key>note</key>
+			<string>Act on all browsers
+Do not skip active tab</string>
+			<key>xpos</key>
+			<real>260</real>
+			<key>ypos</key>
+			<real>65</real>
+		</dict>
+		<key>C4D04842-3C36-45CF-BC40-02CB7A575B2C</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>7</integer>
+			<key>xpos</key>
+			<real>40</real>
+			<key>ypos</key>
+			<real>620</real>
+		</dict>
+		<key>E3552813-F045-4D3D-B373-63095EA7BF22</key>
+		<dict>
+			<key>xpos</key>
+			<real>815</real>
+			<key>ypos</key>
+			<real>65</real>
+		</dict>
+		<key>E40D67BA-284C-4AB9-A184-D89EF55B0CBA</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
+			<key>xpos</key>
+			<real>40</real>
+			<key>ypos</key>
+			<real>195</real>
+		</dict>
+		<key>E77C8C05-99B1-43FE-8519-AB0F86FC6A11</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
+			<key>xpos</key>
+			<real>40</real>
+			<key>ypos</key>
+			<real>320</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>pause all</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Pause All Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>pause_all_keyword</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>pause others</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Pause Others Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>pause_others_keyword</string>
+		</dict>
+	</array>
+	<key>version</key>
+	<string>25.1</string>
+	<key>webaddress</key>
+	<string>https://github.com/alfredapp/pause-tabs-workflow/</string>
+</dict>
+</plist>

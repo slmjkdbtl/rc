@@ -390,6 +390,12 @@ CLI
   opencc
     https://opencc.byvoid.com/
 
+  git-lfs
+    https://git-lfs.com/
+
+  git-filter-repo
+    https://github.com/newren/git-filter-repo/
+
 
 GUI
 
@@ -927,6 +933,12 @@ ALFRED
   Wayback When
     https://alfred.app/workflows/alfredapp/wayback-when/
 
+  Google Suggest
+    https://alfred.app/workflows/alfredapp/google-suggest/
+
+  YouTube Suggest
+    https://alfred.app/workflows/alfredapp/youtube-suggest/
+
   Currency Converter
     https://alfred.app/workflows/alfredapp/currency-converter/
 
@@ -935,6 +947,9 @@ ALFRED
 
   Network Quality
     https://alfred.app/workflows/alfredapp/network-quality/
+
+  Raindrop.io
+    https://raindrop.io/integrations/alfred/
 
 
 GAMES

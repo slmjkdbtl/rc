@@ -3,6 +3,7 @@ export FCEDIT="$EDITOR"
 export SYSTEMD_EDITOR="$EDITOR"
 export BROWSER="open"
 export PAGER="less"
+export LANG="en_US.UTF-8"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
@@ -63,6 +64,7 @@ alias ffmpeg="ffmpeg -hide_banner"
 alias map="xargs -n1"
 alias reload='exec $SHELL -l'
 alias path='echo -e ${PATH//:/\\n}'
+alias clearbrewcache='rm -rf $(brew --cache)/*'
 alias ase="/Applications/Aseprite.app/Contents/MacOS/aseprite --batch"
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
