@@ -390,6 +390,12 @@ CLI
   opencc
     https://opencc.byvoid.com/
 
+  sf2dump
+    https://www.linuxsampler.org/libgig/
+
+  fx-upscale
+    https://github.com/finnvoor/fx-upscale/
+
   git-lfs
     https://git-lfs.com/
 
@@ -455,6 +461,18 @@ GUI
 
   Sunvox
     http://warmplace.ru/soft/sunvox/
+
+  Logic Pro
+    https://www.apple.com/logic-pro/
+
+  Ardour
+    https://ardour.org/
+
+  Carla
+    https://kx.studio/carla/
+
+  Hydrogen
+    http://hydrogen-music.org/
 
   Bosca Ceoil
     https://yurisizov.itch.io/boscaceoil-blue
@@ -720,6 +738,21 @@ GUI
   TrackWeight
     https://github.com/KrishKrosh/TrackWeight/
 
+  Polyphone
+    https://www.polyphone.io/
+
+  MIDI Monitor
+    https://www.snoize.com/MIDIMonitor/
+
+  BlackHole
+    https://github.com/ExistentialAudio/BlackHole
+
+  Xbox 360 Driver
+    https://github.com/360Controller/360Controller
+
+  BackgroundMusic
+    https://github.com/kyleneideck/BackgroundMusic
+
 
 IOS
 
@@ -927,9 +960,6 @@ ALFRED
   kill
     https://github.com/ngreenstein/alfred-process-killer/
 
-  ChatGPT / DALL-E
-    https://alfred.app/workflows/alfredapp/openai/
-
   Wayback When
     https://alfred.app/workflows/alfredapp/wayback-when/
 
@@ -941,9 +971,6 @@ ALFRED
 
   Currency Converter
     https://alfred.app/workflows/alfredapp/currency-converter/
-
-  Shortcuts
-    https://alfred.app/workflows/alfredapp/shortcuts/
 
   Network Quality
     https://alfred.app/workflows/alfredapp/network-quality/
@@ -993,17 +1020,6 @@ GAMES
   SuperTux
     https://www.supertux.org/
 
-
-SYSTEM
-
-  BlackHole
-    https://github.com/ExistentialAudio/BlackHole
-
-  Xbox 360 Driver
-    https://github.com/360Controller/360Controller
-
-  BackgroundMusic
-    https://github.com/kyleneideck/BackgroundMusic
 
 FONTS
 
@@ -1178,20 +1194,11 @@ Self Host
   cgit
     https://git.zx2c4.com/cgit/
 
-  netdata
-    https://github.com/netdata/netdata/
-
   ArchiveBox
     https://archivebox.io/
 
   Ladder
     https://github.com/everywall/ladder
-
-  OpenGist
-    https://github.com/thomiceli/opengist
-
-  Directus
-    https://directus.io/
 
   Pi-hole
     https://pi-hole.net/
@@ -1201,6 +1208,9 @@ PLUGINS
 
   sforzando
     https://www.plogue.com/products/sforzando.html
+
+  sfizz
+    https://sfztools.github.io/sfizz/
 
   SketchCassette II
     https://aberrantdsp.com/plugins/sketchcassette/

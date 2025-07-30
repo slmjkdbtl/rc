@@ -13,13 +13,13 @@ install: $(CONFIG_TARGETS) $(HOME_TARGETS) $(CMUS_TARGETS)
 uninstall:
 	rm $(CONFIG_TARGETS) $(HOME_TARGETS) $(CMUS_TARGETS)
 
+$(CMUS)/%: cmus/% | $(CMUS)
+	ln -sf $(realpath $<) $@
+
 $(CONFIG)/%: % | $(CONFIG)
 	ln -sf $(realpath $<) $@
 
 $(HOME)/%: %
-	ln -sf $(realpath $<) $@
-
-$(CMUS)/%: cmus/% | $(CMUS)
 	ln -sf $(realpath $<) $@
 
 $(CONFIG):

@@ -360,4 +360,11 @@ if software like mpv can't display Chinese font
       > Inactive
       > Download the font (e.g. PingFang SC)
 
+logic pro enable undo for plugins and mixer
+
+  - Logic Pro.app
+      > Edit
+      > Undo History
+      > Check "Mixer" and "Plug-In" in "Include Parameter Changes From"
+
 COMMENT

@@ -285,6 +285,7 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'jdonaldson/vaxe'
 Plug 'karolbelina/uxntal.vim'
 Plug 'vim-scripts/applescript.vim'
+Plug 'sfztools/sfz.vim'
 " TODO: get from $(brew --prefix lilypond)/share/lilypond/current/vim/
 Plug 'keysmashes/vim-lilypond'
 
