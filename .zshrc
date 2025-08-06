@@ -98,8 +98,8 @@ zplug add "zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
 zplug add "hlissner/zsh-autopair" "autopair.zsh"
 
 bindkey -e
-bindkey "^[[1;3C" forward-word
-bindkey "^[[1;3D" backward-word
+bindkey "\e[1;3C" forward-word
+bindkey "\e[1;3D" backward-word
 
 # https://unix.stackexchange.com/a/691482/368625
 for dir (up down) {

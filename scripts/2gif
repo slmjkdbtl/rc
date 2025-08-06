@@ -8,9 +8,10 @@ help() {
 	echo "  $ 2gif [options] <src>"
 	echo ""
 	echo "OPTIONS"
-	echo "  -f, --fps      fps"
-	echo "  -s, --size     gif dimension"
-	echo "  -o, --output   output file name"
+	echo "  -f, --fps           fps"
+	echo "  -s, --size          gif dimension"
+	echo "  -t, --transparent   remove white background"
+	echo "      --fuzz          background remove fuzz"
 	echo ""
 	echo "EXAMPLE"
 	echo "  $ 2gif --size -1:320 --fps 60 cat.mov"
@@ -21,11 +22,6 @@ die() {
 	exit 1
 }
 
-ntharg() {
-	shift "$1"
-	echo "$1"
-}
-
 if [ -z "$1" ]; then
 	help
 	exit 0
@@ -33,6 +29,8 @@ fi
 
 size="-1:240"
 fps=30
+transparent=0
+fuzz=5
 
 while [ -n "$1" ]; do
 	case $1 in
@@ -52,12 +50,15 @@ while [ -n "$1" ]; do
 				die "-f / --fps requires argument"
 			fi
 		;;
-		-o|--output)
+		-t|--transparent)
+			transparent=1
+		;;
+		--fuzz)
 			if [ -n "$2" ]; then
-				dest=$2
+				fuzz=$2
 				shift
 			else
-				die "-o / --output requires argument"
+				die "--fuzz requires argument"
 			fi
 		;;
 		--)
@@ -75,13 +76,27 @@ while [ -n "$1" ]; do
 done
 
 src=$1
-ext=$(echo "${src##*.}" | tr '[:upper:]' '[:lower:]')
-name=$(basename "$src" ".$ext")
+name="${src%%.*}"
 dest="$name.gif"
+
+if [ $transparent = 1 ]; then
+	mkdir .tmp
+	ffmpeg -i "$src" .tmp/%04d.png
+	cd .tmp || exit
+	for f in *.png; do
+		magick "$f" -fuzz "$fuzz%" -transparent white "t_$f"
+	done
+	cd .. || exit
+	src=".tmp/t_%04d.png"
+fi
 
 ffmpeg \
 	-hide_banner \
 	-i "$src" \
-	-vf "fps=$fps,scale=$size:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+	-vf "fps=$fps,scale=$size:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=64[p];[s1][p]paletteuse=dither=bayer:bayer_scale=3" \
 	-loop 0 \
 	"$dest"
+
+if [ $transparent = 1 ]; then
+	rm -rf .tmp
+fi

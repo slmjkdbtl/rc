@@ -45,6 +45,9 @@ CLI
   emscripten
     https://emscripten.org/
 
+  ollama
+    https://ollama.com/
+
   htop
     https://htop.dev/
 
@@ -245,6 +248,9 @@ CLI
 
   graphviz
     https://graphviz.org/
+
+  ouch
+    https://github.com/ouch-org/ouch/
 
   trash
     https://hasseg.org/trash/
@@ -899,6 +905,9 @@ BROWSER EXTENSIONS
 
   SteamDB
     https://steamdb.info/extension/
+
+  Tampermonkey
+    https://www.tampermonkey.net/
 
   Get cookies.txt LOCALLY
     https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc
