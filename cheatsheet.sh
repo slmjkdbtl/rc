@@ -128,7 +128,7 @@ ffmpeg -i input.mp3
       \ -metadata encoder=""
       \ output.mp3
 
-# raise a song by a half step
+# transpose a song up a half step
 ffmpeg -i music.mp3  -af "asetrate=44100*1.05946,aresample=44100" better_music.mp3
 rubberband -p 1 music.mp3 better_music.mp3
 
@@ -335,6 +335,10 @@ iptables -t nat -A PREROUTING -p udp --dport 12000:12010 -j REDIRECT --to-port 8
 
 # generate a v4 uuid
 uuid -v 4
+
+# start simple git server
+git instaweb
+git instaweb --stop
 
 # gui guides
 : << COMMENT

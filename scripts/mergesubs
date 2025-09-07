@@ -1,42 +1,65 @@
-#!/bin/sh
-# merge subtitles into video
+#!/usr/bin/env bun
+// merge subtitles into video
 
-src="$1"
+import * as fs from "node:fs/promises"
+import * as path from "node:path"
+import { $ } from "bun"
 
-if [ -z "$src" ]; then
-	echo "please specify file name"
-	exit 1
-fi
+const HELP = `
+Search for {name}.{lang}.srt and embed subtitles to video.
 
-if [ ! -f "$src" ]; then
-	echo "file doesn't exist"
-	exit 1
-fi
+USAGE
+  $ mergesubs <vid>
+`.trim()
 
-dir=$(dirname "$src")
-cd "$dir" || exit
-ext="${src##*.}"
-name=$(basename "$src" ".$ext")
-dest="$name.subbed.$ext"
-i=0
+const file = process.argv[2]
 
-set --
+if (!file || !await Bun.file(file).exists()) {
+	console.log(HELP)
+	process.exit()
+}
 
-for f in "$name".*.srt; do
-	set -- "$@" "-i" "$f"
-done
+const ext = path.extname(file)
+const name = path.basename(file, ext)
+const dest = `${name}.subbed${ext}`
+const regex = new RegExp(`^${name}\\.(?<lang>.+?)\\.srt$`)
+const langs = []
 
-for f in "$name".*.srt; do
-	lang=$(echo "$f" | sed "s/$name.\([^\.]*\).srt/\1/")
-	set -- "$@" "-map" "$((i + 1))" "-metadata:s:s:$i" "language=$lang"
-	i=$((i + 1))
-done
+for (const file of await fs.readdir(".")) {
+	const match = file.match(regex)
+	if (!match) continue
+	langs.push(match.groups["lang"])
+}
 
-ffmpeg \
-	-hide_banner \
-	-i "$src" \
-	"$@" \
-	-map 0 \
-	-c copy \
-	-c:s mov_text \
-	"$dest"
+if (langs.length <= 0) {
+	process.exit()
+}
+
+const inputArgs = [
+	"-i", file,
+]
+
+const mapArgs = [
+	"-map", "0",
+]
+
+const metaArgs = []
+
+langs.forEach((lang, i) => {
+	inputArgs.push("-i", `${name}.${lang}.srt`)
+	mapArgs.push("-map", `${i + 1}`)
+	metaArgs.push(`-metadata:s:s:${i}`, `language=${lang}`)
+})
+
+const args = [
+	"-hide_banner",
+	...inputArgs,
+	...mapArgs,
+	"-c:v", "copy",
+	"-c:a", "copy",
+	"-c:s", "mov_text",
+	...metaArgs,
+	dest,
+]
+
+await $`ffmpeg ${args}`

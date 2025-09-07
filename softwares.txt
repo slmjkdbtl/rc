@@ -48,6 +48,9 @@ CLI
   ollama
     https://ollama.com/
 
+  cursor-cli
+    https://cursor.com/cli/
+
   htop
     https://htop.dev/
 
@@ -366,8 +369,11 @@ CLI
   translate-shell
     https://github.com/soimort/translate-shell/
 
-  auto-subtitle
-    https://github.com/m1guelpf/auto-subtitle/
+  llama.cpp
+    https://github.com/ggml-org/llama.cpp/
+
+  whisper.cpp
+    https://github.com/ggml-org/whisper.cpp/
 
   scrcpy
     https://github.com/Genymobile/scrcpy/
@@ -699,8 +705,8 @@ GUI
   JSON Viewer
     https://jsonviewer.app/
 
-  SQLiteManager
-    https://www.sqlabs.com/sqlitemanager.php
+  Base
+    https://menial.co.uk/base/
 
   OpenTabletDriver
     https://opentabletdriver.net/
@@ -1028,6 +1034,12 @@ GAMES
 
   SuperTux
     https://www.supertux.org/
+
+  osu!
+    https://osu.ppy.sh/
+
+  The Battle for Wesnoth
+    https://www.wesnoth.org/
 
 
 FONTS

@@ -290,6 +290,7 @@ cmds.push({
 	],
 	action: async ([gid]) => {
 		await delet(gid)
+		await remove(gid)
 	},
 })
 
