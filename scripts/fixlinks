@@ -2,7 +2,7 @@
 # remove broken links
 
 for f in *; do
-	if ! [ -e "$f" ]; then
+	if [ ! -e "$f" ]; then
 		echo "rm \"$f\""
 		rm "$f"
 	fi

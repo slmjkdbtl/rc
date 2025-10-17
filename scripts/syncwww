@@ -1,5 +1,5 @@
 #!/usr/bin/env bun
-// sync www.ts server lib file across projects
+// sync www lib file across projects
 
 import * as os from "os"
 import * as path from "path"
@@ -8,23 +8,33 @@ import * as readline from "node:readline/promises"
 
 const home = os.homedir()
 
-const locations = [
-	`${home}/dev/www/www.ts`,
-	`${home}/dev/space55.xyz/www.ts`,
-	`${home}/dev/coilsprite.com/www.ts`,
-	`${home}/dev/davidmurray.xyz/www.ts`,
-	`${home}/dev/shrooom.net/www.ts`,
-	`${home}/dev/zhuazhuazhua.me/www.ts`,
-	`${home}/dev/fff/www.ts`,
-	`${home}/dev/triospacedesign.com/www.ts`,
+const files = [
+	"package.json",
+	"server.ts",
+	"db.ts",
+	"html.ts",
+	"game.ts",
+	"utils.ts",
+	"math.ts",
 ]
 
-async function syncToLatest(paths) {
+const locations = [
+	`${home}/dev/www`,
+	`${home}/dev/space55.xyz/www`,
+	`${home}/dev/coilsprite.com/www`,
+	`${home}/dev/davidmurray.xyz/www`,
+	`${home}/dev/shrooom.net/www`,
+	`${home}/dev/zhuazhuazhua.me/www`,
+	`${home}/dev/fff/www`,
+]
 
+const newestFiles = {}
+
+async function checkFile(file, locations) {
 	const contents = {}
 	let newestFile = null
 	const pathsToWrite = []
-
+	const paths = locations.map((l) => path.join(l, file))
 	for (const p of paths) {
 		const f = Bun.file(p)
 		contents[p] = await f.text()
@@ -35,38 +45,53 @@ async function syncToLatest(paths) {
 			}
 		}
 	}
-
 	for (const p of paths) {
 		if (contents[p] !== contents[newestFile.path]) {
 			pathsToWrite.push(p)
 		}
 	}
-
 	if (pathsToWrite.length === 0) {
-		console.log("up to date")
 		return
 	}
-
-	const rl = readline.createInterface({
-		input: process.stdin,
-		output: process.stdout,
-	})
-
-	const answer = await rl.question(`sync to ${newestFile.path}? (y/N) `)
-
-	rl.close()
-
-	if (answer !== "y") {
-		return
+	newestFiles[file] = {
+		path: newestFile.path,
+		content: contents[newestFile.path],
+		pathsToWrite: pathsToWrite,
 	}
-
-	const content = contents[newestFile.path]
-
-	for (const p of pathsToWrite) {
-		console.log(`updating: ${p}`)
-		Bun.write(p, content)
-	}
-
 }
 
-await syncToLatest(locations)
+function tildefy(p) {
+	return p.replace(new RegExp(`^${home}`), "~")
+}
+
+for (const file of files) {
+	await checkFile(file, locations)
+}
+
+if (Object.keys(newestFiles).length === 0) {
+	console.log("up to date")
+	process.exit(0)
+}
+
+for (const file in newestFiles) {
+	console.log(`${file}: ${tildefy(newestFiles[file].path)}`)
+}
+
+const rl = readline.createInterface({
+	input: process.stdin,
+	output: process.stdout,
+})
+
+const answer = await rl.question(`confirm sync? (y/N) `)
+
+rl.close()
+
+if (answer === "y") {
+	for (const file in newestFiles) {
+		const dest = newestFiles[file]
+		for (const p of dest.pathsToWrite) {
+			console.log(tildefy(p))
+			Bun.write(p, dest.content)
+		}
+	}
+}

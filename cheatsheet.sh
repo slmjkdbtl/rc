@@ -132,6 +132,9 @@ ffmpeg -i input.mp3
 ffmpeg -i music.mp3  -af "asetrate=44100*1.05946,aresample=44100" better_music.mp3
 rubberband -p 1 music.mp3 better_music.mp3
 
+# check song loudness
+ffmpeg -i music.wav -filter_complex ebur128 -f null -
+
 # ffprobe get video / image dimension
 ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0:s=x "test.png"
 ffprobe -v error -select_streams v:0 -show_entries stream=height -of csv=p=0:s=x "test.mp4"
@@ -332,6 +335,9 @@ sudo hostnamectl set-hostname space55.xyz
 # redirect all ports 12000-12010 to port 8388
 iptables -t nat -A PREROUTING -p tcp --dport 12000:12010 -j REDIRECT --to-port 8388
 iptables -t nat -A PREROUTING -p udp --dport 12000:12010 -j REDIRECT --to-port 8388
+
+# convert magnet link to torrent file
+aria2c --bt-metadata-only=true --bt-save-metadata=true "magnet:?xt=urn:btih:..."
 
 # generate a v4 uuid
 uuid -v 4

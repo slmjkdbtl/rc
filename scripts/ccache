@@ -1,0 +1,9 @@
+#!/bin/sh
+
+rm -rf "$HOME/Library/Caches/Homebrew"
+rm -rf "$HOME/Library/Caches/ms-playwright"
+rm -rf "$HOME/Library/Caches/pip"
+rm -rf "$HOME/Library/Caches/raindrop.io-updater"
+rm -rf "$HOME/Library/Caches/com.spotify.client"
+rm -rf "$HOME/Library/Caches/com.spotify.client.helper"
+rm -rf "$HOME/.Trash"/*

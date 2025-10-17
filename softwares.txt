@@ -225,6 +225,9 @@ CLI
   ascii
     http://www.catb.org/~esr/ascii/
 
+  mapscii
+    https://github.com/rastapasta/mapscii/
+
   ossp-uuid
     http://www.ossp.org/pkg/lib/uuid/
 
@@ -375,6 +378,9 @@ CLI
   whisper.cpp
     https://github.com/ggml-org/whisper.cpp/
 
+  rclip
+    https://github.com/yurijmikhalevich/rclip/
+
   scrcpy
     https://github.com/Genymobile/scrcpy/
 
@@ -407,6 +413,12 @@ CLI
 
   fx-upscale
     https://github.com/finnvoor/fx-upscale/
+
+  container
+    https://github.com/apple/container/
+
+  cdp
+    https://www.composersdesktop.com/
 
   git-lfs
     https://git-lfs.com/
@@ -515,6 +527,9 @@ GUI
 
   Steam Link
     https://store.steampowered.com/app/353380/Steam_Link/
+
+  Handy
+    https://handy.computer/
 
   Monodraw
     https://monodraw.helftone.com/
@@ -651,6 +666,12 @@ GUI
   O.H.R.RPG.C.E
     http://rpg.hamsterrepublic.com/ohrrpgce/
 
+  RustDesk
+    https://rustdesk.com/
+
+  ImHex
+    https://imhex.werwolv.net
+
   HexFiend
     http://ridiculousfish.com/hexfiend/
 
@@ -702,6 +723,12 @@ GUI
   REXPaint
     http://gridsagegames.com/rexpaint/
 
+  Disk Drill
+    https://www.cleverfiles.com/
+
+  LocalSend
+    https://localsend.org/
+
   JSON Viewer
     https://jsonviewer.app/
 
@@ -752,6 +779,12 @@ GUI
 
   Polyphone
     https://www.polyphone.io/
+
+  SoundThread
+    https://github.com/j-p-higgins/SoundThread/
+
+  FartScrollLid
+    https://github.com/iannuttall/fartscroll-lid/
 
   MIDI Monitor
     https://www.snoize.com/MIDIMonitor/
@@ -960,9 +993,6 @@ ZSH
   zsh-autosuggestions
     https://github.com/zsh-users/zsh-autosuggestions
 
-  zsh-history-substring-search
-    https://github.com/zsh-users/zsh-history-substring-search
-
   zsh-autopair
     https://github.com/hlissner/zsh-autopair
 
@@ -1091,6 +1121,9 @@ FONTS
 
   Chevy Ray
     http://pixel-fonts.com/
+
+  Two Slice
+    https://joefatula.com/twoslice.html/
 
   sitelen pona pona
     https://jackhumbert.github.io/sitelen-pona-pona/

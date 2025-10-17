@@ -1,0 +1,36 @@
+#!/bin/sh
+# extract all album covers from music library
+
+musicdir="$HOME/Music/Media.localized/Music"
+coverdir="$HOME/files/covers"
+
+mkdir -p "$coverdir"
+
+for artist in "$musicdir"/*; do
+	for album in "$artist"/*; do
+		imgpath="$coverdir/$(basename "$artist") - $(basename "$album").jpg"
+		if [ -f "$imgpath" ]; then
+			break
+		fi
+		for song in "$album"/*; do
+			codec=$(ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of csv=p=0 "$song")
+			if [ "$codec" = "png" ]; then
+				ffmpeg -i "$song" -an -vcodec mjpeg -q:v 2 "$imgpath" > /dev/null 2>&1
+			else
+				ffmpeg -i "$song" -an -vcodec copy "$imgpath" > /dev/null 2>&1
+			fi
+			echo "$imgpath"
+			break
+		done
+	done
+done
+
+for img in "$coverdir"/*.jpg; do
+	name=$(basename "$img" .jpg)
+	artist=${name%% - *}
+	album=${name#* - *}
+	if [ ! -d "$musicdir/$artist/$album" ]; then
+		echo "rm $img"
+		rm "$img"
+	fi
+done

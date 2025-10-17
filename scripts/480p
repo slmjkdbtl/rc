@@ -8,6 +8,7 @@ if [ ! -f "$src" ]; then
 fi
 
 res=${2:-480}
+ext=${src##*.}
 
-dest="$(basename "$src" .mp4)-${res}p.mp4"
+dest="$(basename "$src" ".$ext")-${res}p.mp4"
 ffmpeg -i "$src" -vf scale="-2:$res" -pix_fmt yuv420p "$dest" || exit 1
