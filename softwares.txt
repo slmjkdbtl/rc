@@ -207,6 +207,9 @@ CLI
   caddy
     https://caddyserver.com/
 
+  mitmproxy
+    https://mitmproxy.org/
+
   imapsync
     https://imapsync.lamiral.info/
 
@@ -590,6 +593,9 @@ GUI
 
   Kiwix
     https://kiwix.org/
+
+  MacPacker
+    https://macpacker.app/
 
   LinearMouse
     https://linearmouse.app/

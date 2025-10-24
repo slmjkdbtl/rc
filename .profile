@@ -79,6 +79,7 @@ alias dsl="yt-dlp --all-subs --convert-subs srt --skip-download --yes-playlist"
 alias dt="yt-dlp --skip-download --write-thumbnail --convert-thumbnails jpg --no-playlist"
 alias di="gallery-dl"
 alias capturepage="bunx playwright screenshot"
+alias tmpdir='cd "$(mktemp -d)"'
 
 alias winesteam='wine "$HOME/.wine/drive_c/Program Files (x86)/Steam/Steam.exe"'
 

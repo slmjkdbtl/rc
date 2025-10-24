@@ -340,6 +340,7 @@ iptables -t nat -A PREROUTING -p udp --dport 12000:12010 -j REDIRECT --to-port 8
 aria2c --bt-metadata-only=true --bt-save-metadata=true "magnet:?xt=urn:btih:..."
 
 # generate a v4 uuid
+uuidgen
 uuid -v 4
 
 # start simple git server
