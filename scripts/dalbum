@@ -1,5 +1,5 @@
 #!/bin/sh
-# download music from youtube playlist
+# download music from youtube playlist and bandcamp
 
 help() {
 	echo "Download music from youtube playlist"
@@ -7,6 +7,27 @@ help() {
 	echo "USAGE"
 	echo "    $ dalbum <name> <url>"
 }
+
+chapter=0
+
+while [ -n "$1" ]; do
+	case $1 in
+		-c|--chapter)
+			chapter=1
+		;;
+		--)
+			shift
+			break
+		;;
+		-?*)
+			die "unknown option: $1"
+		;;
+		*)
+			break
+		;;
+	esac
+	shift
+done
 
 album="$1"
 url="$2"
@@ -19,60 +40,57 @@ fi
 dir="$HOME/files/todo/listen/$album"
 mkdir "$dir"
 
-case "$url" in
-	*"list="*)
-		(
-			cd "$dir" || exit
-			yt-dlp \
-				-o '%(playlist_index)02d - %(title)s.%(ext)s' \
-				-i \
-				--yes-playlist \
-				-x --audio-format mp3 \
-				"$url"
-			i=1
-			for f in *.mp3; do
-				mv "$f" ".b-$f"
-				title=$(basename "$f" ".mp3" | cut -c6-)
-				ffmpeg \
-					-hide_banner \
-					-i ".b-$f" \
-					-c copy \
-					-metadata track="$i" \
-					-metadata album="$album" \
-					-metadata title="$title" \
-					"$f"
-				rm ".b-$f"
-				i=$((i + 1))
-			done
-		)
-	;;
-	*)
-		(
-			cd "$dir" || exit
-			yt-dlp \
-				--split-chapters \
-				-o '%(chapter_number)02d - %(chapter)s.%(ext)s' \
-				-i \
-				--no-playlist \
-				-x --audio-format mp3 \
-				"$url"
-			i=1
-			for f in *.mp3; do
-				mv "$f" ".b-$f"
-				title=$(basename "$f" ".mp3" | cut -c6-)
-				ffmpeg \
-					-hide_banner \
-					-i ".b-$f" \
-					-c copy \
-					-metadata track="$i" \
-					-metadata album="$album" \
-					-metadata title="$title" \
-					"$f"
-				rm ".b-$f"
-				i=$((i + 1))
-			done
-		)
-	;;
-esac
+if [ $chapter = 1 ]; then
+	(
+		cd "$dir" || exit
+		yt-dlp \
+			--split-chapters \
+			-o '%(chapter_number)02d - %(chapter)s.%(ext)s' \
+			-i \
+			--no-playlist \
+			-x --audio-format mp3 \
+			"$url"
+		i=1
+		for f in *.mp3; do
+			mv "$f" ".b-$f"
+			title=$(basename "$f" ".mp3" | cut -c6-)
+			ffmpeg \
+				-hide_banner \
+				-i ".b-$f" \
+				-c copy \
+				-metadata track="$i" \
+				-metadata album="$album" \
+				-metadata title="$title" \
+				"$f"
+			rm ".b-$f"
+			i=$((i + 1))
+		done
+	)
+else
+	(
+		cd "$dir" || exit
+		yt-dlp \
+			-o '%(playlist_index)02d - %(title)s.%(ext)s' \
+			-i \
+			--yes-playlist \
+			-x --audio-format mp3 \
+			"$url"
+		i=1
+		for f in *.mp3; do
+			mv "$f" ".b-$f"
+			title=$(basename "$f" ".mp3" | cut -c6-)
+			ffmpeg \
+				-hide_banner \
+				-i ".b-$f" \
+				-c copy \
+				-metadata track="$i" \
+				-metadata album="$album" \
+				-metadata title="$title" \
+				"$f"
+			rm ".b-$f"
+			i=$((i + 1))
+		done
+	)
+fi
 
 echo "music downloaded to \"$dir\""

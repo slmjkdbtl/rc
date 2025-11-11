@@ -1,0 +1,26 @@
+font-family = ProggySquareTT
+font-family = Fusion Pixel 10px M zh_hans
+font-size = 24
+window-width = 96
+window-height = 36
+window-padding-x = 16
+window-padding-y = 0
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+adjust-cursor-thickness = 3
+adjust-underline-thickness = 3
+palette = 0=#262427
+palette = 1=#ec7580
+palette = 2=#9ae0a0
+palette = 3=#ffca72
+palette = 4=#8abbff
+palette = 5=#f7aad7
+palette = 6=#7ce9df
+palette = 7=#dadada
+background = #000000
+foreground = #dadada
+cursor-color = #dadada
+cursor-text = #000000
+selection-background = #ffca72
+selection-foreground = #000000

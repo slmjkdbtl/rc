@@ -10,7 +10,7 @@ local magenta = "#f7aad7"
 local cyan    = "#7ce9df"
 local white   = "#dadada"
 
-local titlebar_bg = "#1b1b1b"
+local titlebar_bg = "#151515"
 
 local cfg = wezterm.config_builder()
 
@@ -72,24 +72,24 @@ cfg.colors = {
 		inactive_tab_edge = "none",
 		active_tab = {
 			bg_color = bg,
-			fg_color = "#bbb",
+			fg_color = "#bbbbbb",
 		},
 		inactive_tab = {
 			bg_color = "none",
-			fg_color = "#666",
+			fg_color = "#555555",
 		},
 		inactive_tab_hover = {
 			bg_color = "none",
-			fg_color = "#bbb",
+			fg_color = "#bbbbbb",
 		},
 		new_tab = {
 			bg_color = "none",
-			fg_color = "#666",
+			fg_color = "#555555",
 			intensity = "Bold",
 		},
 		new_tab_hover = {
 			bg_color = "none",
-			fg_color = "#aaa",
+			fg_color = "#bbbbbb",
 			intensity = "Bold",
 		},
 	},

@@ -8,5 +8,5 @@ if [ -z "$file" ]; then
 	exit 1
 fi
 
-charset=$(file -b --mime-encoding "$file")
+charset=$(uchardet "$file")
 iconv -f "$charset" -t UTF-8 "$file"

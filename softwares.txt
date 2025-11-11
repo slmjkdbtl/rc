@@ -168,6 +168,9 @@ CLI
   fzy
     https://github.com/jhawthorn/fzy/
 
+  up
+    https://github.com/akavel/up/
+
   delta
     https://github.com/dandavison/delta/
 
@@ -399,6 +402,9 @@ CLI
   rdap
     https://github.com/icann/icann-rdap/
 
+  uchardet
+    https://www.freedesktop.org/wiki/Software/uchardet/
+
   durdraw
     https://durdraw.org/
 
@@ -566,6 +572,9 @@ GUI
 
   Flycast
     https://github.com/flyinghead/flycast/
+
+  Azahar
+    https://azahar-emu.org/
 
   Play!
     https://purei.org/
@@ -1118,6 +1127,12 @@ FONTS
 
   Noto
     https://fonts.google.com/noto/
+
+  Sarasa Gothic
+    https://picaq.github.io/sarasa/
+
+  WenQuanYi
+    http://wenq.org/
 
   IBM Plex
     https://www.ibm.com/plex/
