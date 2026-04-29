@@ -1,9 +1,23 @@
 #!/bin/sh
 
-rm -rf "$HOME/Library/Caches/Homebrew"
-rm -rf "$HOME/Library/Caches/ms-playwright"
-rm -rf "$HOME/Library/Caches/pip"
-rm -rf "$HOME/Library/Caches/raindrop.io-updater"
-rm -rf "$HOME/Library/Caches/com.spotify.client"
-rm -rf "$HOME/Library/Caches/com.spotify.client.helper"
-rm -rf "$HOME/.Trash"/*
+DIRS="
+$HOME/Library/Caches/Homebrew
+$HOME/Library/Caches/pip
+$HOME/Library/Caches/Arc
+$HOME/Library/Caches/Firefox
+$HOME/.Trash
+"
+
+total_freed=0
+
+for dir in $DIRS
+do
+	[ -d "$dir" ] || continue
+	freed=$(du -sk "$dir" 2>/dev/null | awk '{print $1}')
+	rm -rf "${dir:?}"/*
+	total_freed=$((total_freed + freed))
+    echo "$dir $(numfmt --from-unit=1024 --to=iec $freed)"
+done
+
+echo "---------------------------------"
+echo "Total Freed: $(numfmt --from-unit=1024 --to=iec $total_freed)"

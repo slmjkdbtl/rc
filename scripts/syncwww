@@ -4,7 +4,7 @@
 import * as os from "os"
 import * as path from "path"
 import * as fs from "fs/promises"
-import * as readline from "node:readline/promises"
+import * as readline from "readline/promises"
 
 const home = os.homedir()
 
@@ -26,6 +26,7 @@ const locations = [
 	`${home}/dev/shrooom.net/www`,
 	`${home}/dev/zhuazhuazhua.me/www`,
 	`${home}/dev/fff/www`,
+	`${home}/dev/elsajin/www`,
 ]
 
 const newestFiles = {}

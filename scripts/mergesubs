@@ -12,7 +12,7 @@ USAGE
   $ mergesubs <vid>
 `.trim()
 
-const file = process.argv[2]
+const file = process.argv[2].normalize("NFC")
 
 if (!file || !await Bun.file(file).exists()) {
 	console.log(HELP)
@@ -26,12 +26,13 @@ const regex = new RegExp(`^${name}\\.(?<lang>.+?)\\.srt$`)
 const langs = []
 
 for (const file of await fs.readdir(".")) {
-	const match = file.match(regex)
-	if (!match) continue
+	const match = file.normalize("NFC").match(regex)
+	if (!match || !match.groups) continue
 	langs.push(match.groups["lang"])
 }
 
 if (langs.length <= 0) {
+	console.log("no subtitles found")
 	process.exit()
 }
 

@@ -48,9 +48,6 @@ CLI
   ollama
     https://ollama.com/
 
-  cursor-cli
-    https://cursor.com/cli/
-
   htop
     https://htop.dev/
 
@@ -110,6 +107,9 @@ CLI
 
   m-cli
     https://github.com/rgcr/m-cli/
+
+  mole
+    https://github.com/tw93/Mole/
 
   browsh
     https://www.brow.sh/
@@ -192,11 +192,17 @@ CLI
   cmark
     https://github.com/commonmark/cmark
 
+  comrak
+    https://comrak.ee/
+
   lilypond
     http://lilypond.org/
 
   tectonic
     https://tectonic-typesetting.github.io/
+
+  typst
+    https://github.com/typst/typst/
 
   eyed3
     https://eyed3.readthedocs.io/
@@ -257,6 +263,9 @@ CLI
 
   wrangler
     https://github.com/cloudflare/workers-sdk/
+
+  bore
+    https://github.com/ekzhang/bore/
 
   graphviz
     https://graphviz.org/
@@ -429,6 +438,9 @@ CLI
   cdp
     https://www.composersdesktop.com/
 
+  unar
+    https://theunarchiver.com/
+
   git-lfs
     https://git-lfs.com/
 
@@ -501,14 +513,11 @@ GUI
   Ardour
     https://ardour.org/
 
-  Carla
-    https://kx.studio/carla/
-
-  Hydrogen
-    http://hydrogen-music.org/
-
   Bosca Ceoil
     https://yurisizov.itch.io/boscaceoil-blue
+
+  Halloy
+    https://halloy.chat/
 
   Little Snitch Mini
     https://www.obdev.at/products/littlesnitch-mini/
@@ -530,6 +539,9 @@ GUI
 
   Keka
     https://www.keka.io/
+
+  Nugget
+    https://github.com/leminlimez/Nugget/
 
   Steam
     https://store.steampowered.com/about/
@@ -587,6 +599,9 @@ GUI
 
   Vita3K
     https://vita3k.org/
+
+  Nestopia
+    http://0ldsk00l.ca/nestopia/
 
   RetroArch
     https://www.retroarch.com/
@@ -671,6 +686,9 @@ GUI
 
   SolveSpace
     https://solvespace.com/
+
+  LeoCAD
+    https://www.leocad.org/
 
   KeyCastr
     https://github.com/keycastr/keycastr/
@@ -786,9 +804,6 @@ GUI
   OmniDiskSweeper
     https://www.omnigroup.com/more
 
-  Krita
-    https://krita.org/
-
   TrackWeight
     https://github.com/KrishKrosh/TrackWeight/
 
@@ -863,6 +878,9 @@ IOS
 
   Saily
     https://saily.com/
+
+  Tello
+    https://tello.com/
 
   iRealPro
     https://www.irealpro.com/
@@ -1077,6 +1095,9 @@ GAMES
   0ad
     https://play0ad.com/media/videos/
 
+  c2048
+    https://github.com/mevdschee/2048.c/
+
   SuperTux
     https://www.supertux.org/
 
@@ -1115,6 +1136,12 @@ FONTS
   tom7
     http://fonts.tom7.com/fonts98.html
     http://fonts.tom7.com/fonts93.html
+
+  Unifont
+    https://unifoundry.com/unifont/index.html
+
+  Junicode
+    https://psb1558.github.io/Junicode-font/
 
   Zpix
     https://github.com/SolidZORO/zpix-pixel-font/
@@ -1256,6 +1283,12 @@ Self Host
 
   Shadowsocks
     https://shadowsocks.org/
+
+  Copyparty
+    https://github.com/9001/copyparty/
+
+  PocketBase
+    https://pocketbase.io/
 
   Discourse
     https://www.discourse.org/

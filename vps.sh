@@ -75,7 +75,7 @@ sudo systemctl enable --now caddy
 # reload caddy config
 sudo systemctl reload caddy
 
-# setup aria2c
+# setup aria2c daemon
 sudo apt install aria2c
 mkdir ~/downloads
 mkdir -p ~/.local/share/aria2

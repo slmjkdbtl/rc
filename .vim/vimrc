@@ -501,12 +501,15 @@ call pair#bind()
 
 " file type detection
 au BufRead,BufNewFile *.h        set ft=c
+au BufRead,BufNewFile *.m        set ft=objc
 au BufRead,BufNewFile *.dt       set ft=dirty
+au BufRead,BufNewFile Caddyfile  set ft=conf
 
 " file type comments
 au FileType c                setl cms=//%s
 au FileType cs               setl cms=//%s
 au FileType cpp              setl cms=//%s
+au FileType objc             setl cms=//%s
 au FileType rust             setl cms=//%s
 au FileType go               setl cms=//%s
 au FileType glsl             setl cms=//%s
@@ -520,6 +523,7 @@ au FileType make             setl cms=#%s
 au FileType python           setl cms=#%s
 au FileType ruby             setl cms=#%s
 au FileType gitignore        setl cms=#%s
+au FileType conf             setl cms=#%s
 au FileType dirty            setl cms=--%s
 au FileType lua              setl cms=--%s
 au FileType sql              setl cms=--%s

@@ -132,6 +132,9 @@ ffmpeg -i input.mp3
 ffmpeg -i music.mp3  -af "asetrate=44100*1.05946,aresample=44100" better_music.mp3
 rubberband -p 1 music.mp3 better_music.mp3
 
+# slow down / speed up audio
+ffmpeg -i input.wav -af atempo=2 output.wav
+
 # check song loudness
 ffmpeg -i music.wav -filter_complex ebur128 -f null -
 
@@ -139,7 +142,8 @@ ffmpeg -i music.wav -filter_complex ebur128 -f null -
 ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0:s=x "test.png"
 ffprobe -v error -select_streams v:0 -show_entries stream=height -of csv=p=0:s=x "test.mp4"
 
-# caddy static file server
+# static file server
+copyparty
 caddy file-server --browse --listen :2015
 
 # curl use header
@@ -187,6 +191,7 @@ du -chs ./* .* | sort -h
 
 # expose a local port
 cloudflared tunnel --url localhost:3000
+bore local 8000 --to bore.pub
 
 # notify
 osascript -e 'display notification "msg" with title "title"'
@@ -258,8 +263,8 @@ pdfimages -all input.pdf img
 # concat images to pdf
 img2pdf ./*.jpg -o images.pdf
 
-# make unsigned binary runnable
-xattr -d com.apple.quarantine bin
+# make unsigned binary / app runnable
+xattr -rd com.apple.quarantine bin
 
 # prevent macos writing metadata files on USB drives
 defaults write com.apple.desktopservices DSDontWriteNetworkStores true
