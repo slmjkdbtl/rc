@@ -48,8 +48,8 @@ CLI
   ollama
     https://ollama.com/
 
-  htop
-    https://htop.dev/
+  btop
+    https://github.com/aristocratos/btop/
 
   mosh
     https://mosh.org/
@@ -324,6 +324,9 @@ CLI
   rubberband
     https://breakfastquay.com/rubberband/
 
+  caligula
+    https://github.com/ifd3f/caligula/
+
   figlet
     http://www.figlet.org/
 
@@ -440,6 +443,9 @@ CLI
 
   unar
     https://theunarchiver.com/
+
+  libimobiledevice
+    https://libimobiledevice.org/
 
   git-lfs
     https://git-lfs.com/
@@ -972,11 +978,17 @@ BROWSER EXTENSIONS
   Yomitan
     https://yomitan.wiki/
 
+  Language Reactor
+    https://www.languagereactor.com/
+
   Raindrop.io
     https://help.raindrop.io/install-extension/
 
   SteamDB
     https://steamdb.info/extension/
+
+  Indie Wiki Buddy
+    https://getindie.wiki/
 
   Tampermonkey
     https://www.tampermonkey.net/
@@ -1122,7 +1134,7 @@ FONTS
     https://abrudz.github.io/APL2741/
 
   Unscii
-    http://pelulamu.net/unscii/
+    https://viznut.fi/unscii/
 
   Inconsolata
     https://levien.com/type/myfonts/inconsolata.html
@@ -1144,7 +1156,7 @@ FONTS
     https://psb1558.github.io/Junicode-font/
 
   Zpix
-    https://github.com/SolidZORO/zpix-pixel-font/
+    https://zpix.vercel.app/
 
   Ark Pixel Font
     http://ark-pixel-font.takwolf.com/
@@ -1154,9 +1166,6 @@ FONTS
 
   Noto
     https://fonts.google.com/noto/
-
-  Sarasa Gothic
-    https://picaq.github.io/sarasa/
 
   WenQuanYi
     http://wenq.org/
@@ -1171,10 +1180,7 @@ FONTS
     http://pixel-fonts.com/
 
   Two Slice
-    https://joefatula.com/twoslice.html/
-
-  sitelen pona pona
-    https://jackhumbert.github.io/sitelen-pona-pona/
+    https://joefatula.com/twoslice.html
 
   nasin nanpa
     https://github.com/etbcor/nasin-nanpa

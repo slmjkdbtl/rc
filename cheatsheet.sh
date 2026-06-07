@@ -245,6 +245,10 @@ for i in $(seq 1 10); do
 	echo "$i"
 done
 
+# convert color profile to sRGB
+sips --matchTo "/System/Library/ColorSync/Profiles/sRGB Profile.icc" input.png --out output.png
+magick input.png  -colorspace sRGB output.png
+
 # get font name
 fc-scan --format "%{family}\n" font.ttf
 

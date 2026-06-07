@@ -74,7 +74,7 @@ cmds.push({
 		)
 		for (const card of cards) {
 			if (existing.has(card.id + "")) continue
-			console.log(`${card.name} (${card.id})`)
+			console.log(`+ ${card.name} (${card.id})`)
 			const file = path.join(IMG_DIR, `${card.id}.png`)
 			const res = await fetch(card.card_images[0].image_url)
 			await Bun.write(file, res)
