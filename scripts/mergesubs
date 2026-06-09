@@ -36,6 +36,8 @@ if (langs.length <= 0) {
 	process.exit()
 }
 
+langs.sort()
+
 const inputArgs = [
 	"-i", file,
 ]

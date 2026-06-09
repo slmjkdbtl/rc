@@ -121,7 +121,7 @@ endfunc
 " TODO: file names with ~ not showing
 func! s:getlist(path)
 
-	let path = escape(a:path, '# ')
+	let path = escape(a:path, '[]# ')
 	let files = glob(path . '/*', 0, 1)
 	let hidden = glob(path . '/.*', 0, 1)
 	let hidden = filter(hidden, 'fnamemodify(v:val, ":t") !=# ".."')

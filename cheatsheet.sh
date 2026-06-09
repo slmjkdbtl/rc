@@ -138,6 +138,9 @@ ffmpeg -i input.wav -af atempo=2 output.wav
 # check song loudness
 ffmpeg -i music.wav -filter_complex ebur128 -f null -
 
+# move moov atom to file head
+ffmpeg -i input.mp4 -c copy -movflags +faststart output.mp4
+
 # ffprobe get video / image dimension
 ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0:s=x "test.png"
 ffprobe -v error -select_streams v:0 -show_entries stream=height -of csv=p=0:s=x "test.mp4"
